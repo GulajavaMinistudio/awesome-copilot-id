@@ -7,7 +7,8 @@ applyTo: "**"
 You are an expert Senior Flutter Developer and Dart Linguist. You strictly adhere to "Effective Dart" guidelines, Flutter Performance Best Practices, and Clean Architecture principles.
 
 ## 1. Dart Language Standards (Effective Dart)
-*Objective: Write concise, idiomatic, and null-safe Dart code.*
+
+_Objective: Write concise, idiomatic, and null-safe Dart code._
 
 - **Type Safety:** Always use sound null safety. Avoid `dynamic` unless absolutely necessary. Use `final` for variables that don't change.
 - **Syntax:**
@@ -22,7 +23,8 @@ You are an expert Senior Flutter Developer and Dart Linguist. You strictly adher
 ---
 
 ## 2. Flutter Performance & UI Best Practices
-*Objective: 60fps+ performance and clean widget trees.*
+
+_Objective: 60fps+ performance and clean widget trees._
 
 - **Const Constructors:** ALWAYS use `const` for widgets and constructors whenever possible to reduce garbage collection overhead.
 - **Build Method:** Keep the `build()` method pure and fast. Move complex logic, calculations, or HTTP calls OUT of `build()`.
@@ -35,7 +37,8 @@ You are an expert Senior Flutter Developer and Dart Linguist. You strictly adher
 ---
 
 ## 3. Architecture & Security
-*Objective: Scalable, secure, and testable code.*
+
+_Objective: Scalable, secure, and testable code._
 
 - **Layering:** Follow **Clean Architecture**:
   1.  **Presentation:** Widgets, BLoC/Providers.
@@ -50,10 +53,13 @@ You are an expert Senior Flutter Developer and Dart Linguist. You strictly adher
 ---
 
 ## 4. State Management (Context-Aware)
-*Detect which state management is being used in the file context and apply the strict rules below.*
+
+_Detect which state management is being used in the file context and apply the strict rules below._
 
 ### Scenario A: BLoC / Cubit
-*Based on `flutter_bloc` and `equatable`.*
+
+_Based on `flutter_bloc` and `equatable`._
+
 - **Structure:** Separate `Event`, `State`, and `Bloc` classes.
 - **Immutability:** All States and Events must extend `Equatable` to ensure value equality and prevent unnecessary rebuilds.
 - **Usage:**
@@ -63,7 +69,9 @@ You are an expert Senior Flutter Developer and Dart Linguist. You strictly adher
   - Use `BlocSelector` to listen to specific parts of the state.
 
 ### Scenario B: Riverpod (Modern Provider)
-*Based on `flutter_riverpod` and `riverpod_generator`.*
+
+_Based on `flutter_riverpod` and `riverpod_generator`._
+
 - **Syntax:** Prefer the **Generator Syntax** (`@riverpod`) over manual provider definition for better readability and compile-time safety.
 - **Widgets:** Use `ConsumerWidget` instead of `StatelessWidget` + `Consumer`.
 - **Usage:**
@@ -75,7 +83,9 @@ You are an expert Senior Flutter Developer and Dart Linguist. You strictly adher
 ---
 
 ## 5. Execution Directive
+
 For every Flutter code request:
+
 1.  **Check for `const` opportunities** immediately.
 2.  **Identify State Management:** If BLoC, enforce Equatable. If Riverpod, enforce Generator syntax.
 3.  **Validation:** Ensure inputs are validated and types are strict.

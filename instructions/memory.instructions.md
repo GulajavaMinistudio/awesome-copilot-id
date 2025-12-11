@@ -38,7 +38,7 @@ applyTo: "**"
   - `@ProductManagerPRD` untuk Requirements (PRD)
   - `@SpecificationArchitect` untuk Technical Specification
   - `@PlannerArchitect` untuk Implementation Planning
-  - `@BeastModeDev` atau `@MiniBeast` untuk Coding/Implementation
+  - `@BeastModeDev`, `@GodModeDev` atau `@MiniBeast` untuk Coding/Implementation
   - `@QATestArchitect` untuk Testing
   - `@DocumentationWriter` untuk User Documentation
 - **New Session per Phase**: User prefer memulai sesi chat baru saat berpindah
