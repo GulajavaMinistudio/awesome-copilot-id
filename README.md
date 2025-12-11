@@ -119,16 +119,18 @@ handoffs:  # Optional workflow transitions
 
 Instructions are rules and guidelines that GitHub Copilot follows when generating code. Place them in `.github/instructions/` directory.
 
-| Instruction                              | Description                                           | Apply To             |
-| ---------------------------------------- | ----------------------------------------------------- | -------------------- |
-| **taming-copilot**                       | Core directives for precise, surgical code assistance | All files (`**`)     |
-| **clean-code-clean-architecture**        | Clean code principles and architecture patterns       | All files (`**`)     |
-| **strict-clean-code-clean-architecture** | Strict enforcement of clean code/architecture         | All files (`**`)     |
-| **nodejs-codestyle**                     | Node.js best practices and conventions                | `**/*.js`, `**/*.ts` |
-| **eloquent-js-codestyle**                | Eloquent JavaScript style guide                       | `**/*.js`            |
-| **php-laravel-codestyle**                | Laravel framework conventions                         | `**/*.php`           |
-| **markdown**                             | Markdown formatting standards                         | `**/*.md`            |
-| **memory**                               | Project-specific context and preferences              | All files (`**`)     |
+| Instruction                              | Description                                           | Apply To                |
+| ---------------------------------------- | ----------------------------------------------------- | ----------------------- |
+| **taming-copilot**                       | Core directives for precise, surgical code assistance | All files (`**`)        |
+| **clean-code-clean-architecture**        | Clean code principles and architecture patterns       | All files (`**`)        |
+| **strict-clean-code-clean-architecture** | Strict enforcement of clean code/architecture         | All files (`**`)        |
+| **nodejs-codestyle**                     | Node.js best practices and conventions                | `**/*.js`, `**/*.ts`    |
+| **eloquent-js-codestyle**                | Eloquent JavaScript style guide                       | `**/*.js`               |
+| **php-laravel-codestyle**                | Laravel framework conventions                         | `**/*.php`              |
+| **flutter-codestyle**                    | Flutter and Dart best practices                       | `**/*.dart`             |
+| **html-css-responsive**                  | Responsive HTML/CSS design principles                 | `**/*.html`, `**/*.css` |
+| **markdown**                             | Markdown formatting standards                         | `**/*.md`               |
+| **memory**                               | Project-specific context and preferences              | All files (`**`)        |
 
 ### Instruction Format
 
