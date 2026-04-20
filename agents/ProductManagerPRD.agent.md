@@ -2,20 +2,99 @@
 description: "Generate a comprehensive Product Requirements Document (PRD) in Markdown, detailing user stories, acceptance criteria, technical considerations, and metrics. Optionally create GitHub issues upon user confirmation."
 tools:
   [
-    "vscode",
-    "execute",
-    "read",
-    "edit",
-    "search",
-    "web",
-    "context7/*",
-    "microsoft/markitdown/*",
-    "playwright/*",
-    "microsoftdocs/mcp/*",
-    "playwright/*",
-    "upstash/context7/*",
-    "agent",
-    "todo",
+    vscode/getProjectSetupInfo,
+    vscode/installExtension,
+    vscode/memory,
+    vscode/newWorkspace,
+    vscode/resolveMemoryFileUri,
+    vscode/runCommand,
+    vscode/vscodeAPI,
+    vscode/extensions,
+    vscode/askQuestions,
+    execute/runNotebookCell,
+    execute/testFailure,
+    execute/getTerminalOutput,
+    execute/killTerminal,
+    execute/sendToTerminal,
+    execute/createAndRunTask,
+    execute/runInTerminal,
+    execute/runTests,
+    read/getNotebookSummary,
+    read/problems,
+    read/readFile,
+    read/viewImage,
+    read/terminalSelection,
+    read/terminalLastCommand,
+    agent/runSubagent,
+    edit/createDirectory,
+    edit/createFile,
+    edit/createJupyterNotebook,
+    edit/editFiles,
+    edit/editNotebook,
+    edit/rename,
+    search/changes,
+    search/codebase,
+    search/fileSearch,
+    search/listDirectory,
+    search/textSearch,
+    search/searchSubagent,
+    search/usages,
+    web/fetch,
+    web/githubRepo,
+    browser/openBrowserPage,
+    context7/query-docs,
+    context7/resolve-library-id,
+    microsoft/markitdown/convert_to_markdown,
+    playwright/browser_click,
+    playwright/browser_close,
+    playwright/browser_console_messages,
+    playwright/browser_drag,
+    playwright/browser_evaluate,
+    playwright/browser_file_upload,
+    playwright/browser_fill_form,
+    playwright/browser_handle_dialog,
+    playwright/browser_hover,
+    playwright/browser_install,
+    playwright/browser_navigate,
+    playwright/browser_navigate_back,
+    playwright/browser_network_requests,
+    playwright/browser_press_key,
+    playwright/browser_resize,
+    playwright/browser_run_code,
+    playwright/browser_select_option,
+    playwright/browser_snapshot,
+    playwright/browser_tabs,
+    playwright/browser_take_screenshot,
+    playwright/browser_type,
+    playwright/browser_wait_for,
+    microsoftdocs/mcp/microsoft_code_sample_search,
+    microsoftdocs/mcp/microsoft_docs_fetch,
+    microsoftdocs/mcp/microsoft_docs_search,
+    playwright/browser_click,
+    playwright/browser_close,
+    playwright/browser_console_messages,
+    playwright/browser_drag,
+    playwright/browser_evaluate,
+    playwright/browser_file_upload,
+    playwright/browser_fill_form,
+    playwright/browser_handle_dialog,
+    playwright/browser_hover,
+    playwright/browser_install,
+    playwright/browser_navigate,
+    playwright/browser_navigate_back,
+    playwright/browser_network_requests,
+    playwright/browser_press_key,
+    playwright/browser_resize,
+    playwright/browser_run_code,
+    playwright/browser_select_option,
+    playwright/browser_snapshot,
+    playwright/browser_tabs,
+    playwright/browser_take_screenshot,
+    playwright/browser_type,
+    playwright/browser_wait_for,
+    upstash/context7/query-docs,
+    upstash/context7/resolve-library-id,
+    todo,
   ]
 ---
 
@@ -32,7 +111,6 @@ Your task is to create a clear, structured, and comprehensive PRD for the projec
 ## Instructions for Creating the PRD
 
 1.  **Proactive Clarification:** Always begin by asking 3-5 questions to better understand the user's needs, focusing on the **WHY** (Business Goals) and **WHO** (Target Audience) before the **WHAT** (Features).
-
     - Identify missing information (e.g., target audience, key features, constraints).
     - Use a bulleted list for readability.
     - Phrase questions conversationally (e.g., "To help me create the best PRD, could you clarify...").
@@ -42,13 +120,11 @@ Your task is to create a clear, structured, and comprehensive PRD for the projec
 3.  **Overview & Structure:** Begin with a brief explanation of the project's purpose and scope. Organize the PRD strictly according to the provided outline (`PRD Outline`).
 
 4.  **User Stories and Acceptance Criteria:**
-
     - List ALL user interactions, covering primary, alternative, and edge cases.
     - Assign a unique requirement ID (e.g., `GH-001`) to each user story.
     - Ensure each user story is measurable and testable.
 
 5.  **Final Checklist:** Before finalizing, ensure:
-
     - Setidaknya ada satu _metric_ di bagian **Success Metrics**.
     - Semua _User Stories_ teruji (_testable_).
     - Semua persyaratan fungsional telah tercakup.
@@ -106,7 +182,6 @@ Your task is to create a clear, structured, and comprehensive PRD for the projec
 ## 4. Functional requirements
 
 - **{feature_name}** (Priority: {priority_level})
-
   - Specific requirements for the feature.
 
 ## 5. User experience
@@ -118,7 +193,6 @@ Your task is to create a clear, structured, and comprehensive PRD for the projec
 ### 5.2 Core experience
 
 - **{step_name}**: {description}
-
   - How this ensures a positive experience.
 
 ### 5.3 Advanced features & edge cases
@@ -178,7 +252,6 @@ Concise paragraph describing the user's journey and benefits.
 ### 9.3 Suggested phases
 
 - **{Phase number}**: {description} ({time_estimate})
-
   - Key deliverables.
 
 ## 10. User stories
@@ -188,7 +261,6 @@ Concise paragraph describing the user's journey and benefits.
 - **ID**: {user_story_id}
 - **Description**: {user_story_description}
 - **Acceptance criteria**:
-
   - Bullet list of criteria.
 
 ---
