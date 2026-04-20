@@ -10,6 +10,7 @@ A curated collection of custom agents, instructions, and prompts for GitHub Copi
 This repository provides a comprehensive set of tools to enhance your GitHub Copilot experience, including:
 
 - **🤖 Custom Agents**: Specialized AI agents for different development scenarios
+- **🧩 Reusable Agent Examples**: Example `.agent.md` files and an `AGENTS.md` reference file that can be adapted and reused in other projects
 - **📝 Instructions**: Best practices and coding guidelines for various languages and frameworks
 - **💡 Prompts**: Ready-to-use prompts for common development tasks
 
@@ -64,16 +65,21 @@ This repository provides a comprehensive set of tools to enhance your GitHub Cop
 
 Custom agents are specialized AI assistants for specific development roles and tasks. Each agent can have its own behavior, available tools, and instructions. Place them in `.github/agents/` directory.
 
-| Agent                      | Description                                                 | Best For                                                |
-| -------------------------- | ----------------------------------------------------------- | ------------------------------------------------------- |
-| **GodModeDev**             | Senior Expert Software Engineer with deep thinking protocol | Complex architectural decisions, full-stack development |
-| **BeastModeDev**           | Highly autonomous development agent                         | End-to-end feature implementation                       |
-| **MiniBeast**              | Lightweight version of BeastModeDev                         | Quick tasks and iterations                              |
-| **PlannerArchitect**       | Strategic planning and architecture design                  | System design, technical planning                       |
-| **SpecificationArchitect** | Technical specification creation                            | Writing detailed specs and documentation                |
-| **ProductManagerPRD**      | Product requirement document creation                       | Feature planning, PRD writing                           |
-| **QATestArchitect**        | Testing strategy and test case design                       | Test planning, QA workflows                             |
-| **DocumentationWriter**    | Technical documentation specialist                          | Writing docs, guides, and tutorials                     |
+> [!TIP]
+> This repository includes both custom agent files and an `AGENTS.md` example that you can copy, reuse, and adjust to fit the needs of other projects.
+
+| Agent                      | Description                                                   | Best For                                                     |
+| -------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------ |
+| **GodModeDev**             | Senior Expert Software Engineer with deep thinking protocol   | Complex architectural decisions, full-stack development      |
+| **BeastModeDev**           | Highly autonomous development agent                           | End-to-end feature implementation                            |
+| **MiniBeast**              | Lightweight version of BeastModeDev                           | Quick tasks and iterations                                   |
+| **PlannerArchitect**       | Strategic planning and architecture design                    | System design, technical planning                            |
+| **SpecificationArchitect** | Technical specification creation                              | Writing detailed specs and implementation docs               |
+| **ProductManagerPRD**      | Product requirement document creation                         | Feature planning, PRD writing                                |
+| **QATestArchitect**        | Testing strategy and test case design                         | Test planning, QA workflows                                  |
+| **DocumentationWriter**    | Technical documentation specialist                            | Writing docs, guides, and tutorials                          |
+| **CodeReviewSpecialist**   | Language-agnostic expert reviewer for clean code and security | Architecture review, code smell detection, refactoring plans |
+| **LaravelSecurityAuditor** | Laravel-focused security and code quality auditor             | OWASP checks, audit reports, Laravel 11+/PHP 8.3+ hardening  |
 
 ### How to Use Custom Agents
 
@@ -83,6 +89,8 @@ Custom agents are specialized AI assistants for specific development roles and t
    ```text
    #GodModeDev implement authentication system with JWT
    #PlannerArchitect design microservices architecture
+   #CodeReviewSpecialist review my service layer and suggest refactoring
+   #LaravelSecurityAuditor audit this controller for OWASP issues
    ```
 
 ### Custom Agent File Structure
@@ -213,10 +221,12 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 @workspace /chat #GodModeDev implement the shopping cart based on the plan
 ```
 
-### Code Quality
+### Code Quality & Security
 
 ```markdown
 @workspace #review-and-refactor src/services/payment.js
+@workspace /chat #CodeReviewSpecialist review src/services/payment.js
+@workspace /chat #LaravelSecurityAuditor audit app/Http/Controllers/CheckoutController.php
 ```
 
 ### Documentation
@@ -237,7 +247,7 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 
 1. **Start with Planning**: Use `PlannerArchitect` or `create-specification` before implementation
 2. **Follow Instructions**: Ensure relevant instruction files are in your `.github/instructions/` directory
-3. **Use Appropriate Agents**: Match the agent to your task complexity
+3. **Use Appropriate Agents**: Match the agent to your task complexity and domain (planning, implementation, review, security, or documentation)
 4. **Leverage Memory**: Use `#remember` to store project-specific context
 5. **Iterate**: Use prompts like `update-implementation-plan` to refine your approach
 
