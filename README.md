@@ -135,6 +135,46 @@ We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub S
 > - Every output must be verified against the PRD and Spec before proceeding.
 > - We recommend starting a new chat session when switching phases to maintain context focus.
 
+### 🎯 Use Cases
+
+#### End-to-End Feature Development (SDLC Workflow)
+
+Following our strict sequential workflow, here is how you would develop a new feature:
+
+**Phase 1: Requirements & Clarification**
+```text
+@ProductManagerPRD create a PRD for the shopping cart feature
+@ClarificationAnalyst interrogate the new shopping cart PRD for missing edge cases
+```
+
+**Phase 2: Specification & Planning**
+```text
+@SpecificationArchitect design a technical specification for the shopping cart based on the PRD
+@ClarificationAnalyst interrogate the technical specification for any technical ambiguities
+@PlannerArchitect create a step-by-step implementation plan for the shopping cart
+@ArtifactConsistencyChecker verify that the plan and spec cover all requirements in the PRD
+```
+
+**Phase 3: Implementation & Review**
+```text
+@GodModeDev implement the shopping cart based on the plan, and ensure all tests pass
+@ExpertCodeReviewer review the newly implemented service layer and suggest refactoring
+```
+
+**Phase 4: Documentation & Bug Fixing**
+```text
+@DiataxisDocumentationArchitect write an API reference guide for the new endpoints
+@BugRemediationArchitect analyze the bug report for the checkout failure and propose a fix
+```
+
+### 🌟 Best Practices
+
+1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `@GodModeDev` for coding.
+2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.opencode`, `.agents`, or `.github`).
+3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
+4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
+5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
+
 ## 📝 Instructions
 
 Instructions are rules and guidelines that GitHub Copilot follows when generating code. Place them in `.github/instructions/` directory.
@@ -222,46 +262,6 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 - **Variables**: `${workspaceFolder}`, `${selection}`, `${file}`, `${input:variableName}`
 - **Markdown links**: Reference other workspace files using relative paths
 - **Tool references**: Use `#tool:toolName` syntax (e.g., `#tool:githubRepo`)
-
-## 🎯 Use Cases
-
-### End-to-End Feature Development (SDLC Workflow)
-
-Following our strict sequential workflow, here is how you would develop a new feature:
-
-**Phase 1: Requirements & Clarification**
-```text
-@ProductManagerPRD create a PRD for the shopping cart feature
-@ClarificationAnalyst interrogate the new shopping cart PRD for missing edge cases
-```
-
-**Phase 2: Specification & Planning**
-```text
-@SpecificationArchitect design a technical specification for the shopping cart based on the PRD
-@ClarificationAnalyst interrogate the technical specification for any technical ambiguities
-@PlannerArchitect create a step-by-step implementation plan for the shopping cart
-@ArtifactConsistencyChecker verify that the plan and spec cover all requirements in the PRD
-```
-
-**Phase 3: Implementation & Review**
-```text
-@GodModeDev implement the shopping cart based on the plan, and ensure all tests pass
-@ExpertCodeReviewer review the newly implemented service layer and suggest refactoring
-```
-
-**Phase 4: Documentation & Bug Fixing**
-```text
-@DiataxisDocumentationArchitect write an API reference guide for the new endpoints
-@BugRemediationArchitect analyze the bug report for the checkout failure and propose a fix
-```
-
-## 🌟 Best Practices
-
-1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `@GodModeDev` for coding.
-2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.opencode`, `.agents`, or `.github`).
-3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
-4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
-5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
 
 ## 🛠️ Customization
 
