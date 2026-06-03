@@ -122,7 +122,7 @@ mode: all
 We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
 
 1. **PRD (Requirements)**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
-2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD and resolve ambiguities.
+2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD (and subsequently the Technical Specification) to resolve ambiguities.
 3. **Spec (Technical Specification)**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
 4. **Consistency Check**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD, Spec, and Plan.
 5. **Plan (Implementation Planning)**: Use `@PlannerArchitect` to generate executable implementation plans.
@@ -238,6 +238,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 **Phase 2: Specification & Planning**
 ```text
 @SpecificationArchitect design a technical specification for the shopping cart based on the PRD
+@ClarificationAnalyst interrogate the technical specification for any technical ambiguities
 @PlannerArchitect create a step-by-step implementation plan for the shopping cart
 @ArtifactConsistencyChecker verify that the plan and spec cover all requirements in the PRD
 ```
