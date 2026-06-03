@@ -235,7 +235,7 @@ graph TD
 
 ## 📝 Instructions
 
-Instructions are rules and guidelines that GitHub Copilot follows when generating code. Place them in `.github/instructions/` directory.
+Instructions are rules and guidelines that your AI Assistant follows when generating code. Place them in your platform's respective directory (`.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`).
 
 | Instruction                              | Description                                           | Apply To                |
 | ---------------------------------------- | ----------------------------------------------------- | ----------------------- |
@@ -263,7 +263,7 @@ description: "Node.js coding standards"
 
 ## 💡 Prompts
 
-Prompt files are reusable templates for common development tasks like generating code, performing code reviews, or scaffolding project components. They are standalone prompts you can run directly in chat. Place them in `.github/prompts/` directory.
+Prompt files are reusable templates for common development tasks like generating code, performing code reviews, or scaffolding project components. They are standalone prompts you can run directly in chat. Place them in your platform's respective directory (`.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`).
 
 | Prompt                         | Description                         |
 | ------------------------------ | ----------------------------------- |
@@ -329,7 +329,7 @@ You can implement customizations incrementally, starting with the simplest optio
 
 Create custom instructions for consistent results across all your chat interactions. Custom instructions let you define common guidelines or rules for tasks like generating code, performing code reviews, or generating commit messages.
 
-**File location**: `.github/instructions/` or `.github/copilot-instructions.md`
+**File location**: `.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`
 
 **Format**:
 
@@ -375,7 +375,7 @@ You can use AI assistants to help create custom instructions based on programmin
 
 3. **Review and customize** the generated instruction file to match your team's needs
 
-4. **Save** the file to `.github/instructions/` with a descriptive name (e.g., `eloquent-js-codestyle.instructions.md`)
+4. **Save** the file to your platform's instructions directory (e.g., `.github/instructions/`) with a descriptive name (e.g., `eloquent-js-codestyle.instructions.md`)
 
 > [!TIP]
 > This method is especially useful for creating language-specific or framework-specific instructions based on authoritative sources.
@@ -384,7 +384,7 @@ You can use AI assistants to help create custom instructions based on programmin
 
 Prompt files let you define reusable prompts for common and repeatable development tasks. They're standalone prompts you can run directly in chat.
 
-**File location**: `.github/prompts/`
+**File location**: `.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`
 
 **Format**:
 
@@ -413,7 +413,7 @@ You are a technical architect...
 
 Custom agents are specialist assistants for specific roles or tasks. Within a custom agent file, you describe its scope, capabilities, which tools it can access, and preferred language model.
 
-**File location**: `.github/agents/`
+**File location**: `.github/agents/`, `.opencode/agents/`, or `.agents/rules/`
 
 **Format**:
 
