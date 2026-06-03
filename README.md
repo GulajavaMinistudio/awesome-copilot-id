@@ -117,6 +117,24 @@ mode: all
 - Specify core directives and interaction philosophies
 - Detail how the agent should utilize its assigned skill
 
+## 🔄 Workflow & Methodology (Spec Kit Inspired)
+
+We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
+
+1. **PRD (Requirements)**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
+2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD and resolve ambiguities.
+3. **Spec (Technical Specification)**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
+4. **Consistency Check**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD, Spec, and Plan.
+5. **Plan (Implementation Planning)**: Use `@PlannerArchitect` to generate executable implementation plans.
+6. **Code (Implementation)**: Use `@GodModeDev` for coding, ensuring strict testing (unit/widget/integration) after every phase.
+7. **Review**: Use `@ExpertCodeReviewer` for code review and security audits. *(For bug fixes, use `@BugRemediationArchitect`)*
+8. **Docs**: Use `@DiataxisDocumentationArchitect` for user documentation.
+
+> [!IMPORTANT]
+> - Complete and structured documentation must exist before coding begins.
+> - Every output must be verified against the PRD and Spec before proceeding.
+> - We recommend starting a new chat session when switching phases to maintain context focus.
+
 ## 📝 Instructions
 
 Instructions are rules and guidelines that GitHub Copilot follows when generating code. Place them in `.github/instructions/` directory.
@@ -207,32 +225,33 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 
 ## 🎯 Use Cases
 
-### Feature Development
+### End-to-End Feature Development (SDLC Workflow)
 
-```markdown
+Following our strict sequential workflow, here is how you would develop a new feature:
+
+**Phase 1: Requirements & Clarification**
+```text
 @ProductManagerPRD create a PRD for the shopping cart feature
-@PlannerArchitect create an implementation plan for shopping cart
-@GodModeDev implement the shopping cart based on the plan
+@ClarificationAnalyst interrogate the new shopping cart PRD for missing edge cases
 ```
 
-### Code Quality & Security
-
-```markdown
-@ExpertCodeReviewer review my service layer and suggest refactoring
-@BugRemediationArchitect analyze the bug report for the checkout failure
+**Phase 2: Specification & Planning**
+```text
+@SpecificationArchitect design a technical specification for the shopping cart based on the PRD
+@PlannerArchitect create a step-by-step implementation plan for the shopping cart
+@ArtifactConsistencyChecker verify that the plan and spec cover all requirements in the PRD
 ```
 
-### Documentation
-
-```markdown
-@DiataxisDocumentationArchitect write an API reference guide for the endpoints
+**Phase 3: Implementation & Review**
+```text
+@GodModeDev implement the shopping cart based on the plan, and ensure all tests pass
+@ExpertCodeReviewer review the newly implemented service layer and suggest refactoring
 ```
 
-### Project Planning
-
-```markdown
-@SpecificationArchitect design a technical specification for the microservices architecture
-@ArtifactConsistencyChecker verify that the plan covers all PRD requirements
+**Phase 4: Documentation & Bug Fixing**
+```text
+@DiataxisDocumentationArchitect write an API reference guide for the new endpoints
+@BugRemediationArchitect analyze the bug report for the checkout failure and propose a fix
 ```
 
 ## 🌟 Best Practices
