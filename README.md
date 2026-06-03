@@ -39,7 +39,13 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
    > [!IMPORTANT]
    > **Don't copy everything!** Only select the agents, skills, or rules that match your development needs.
 
-3. Example manual installation for specific agents and skills:
+3. **Mandatory Step**: Copy the `AGENTS.md` file to the root of your project. This file contains the core SDLC rules, directives, and interaction philosophy that all agents must follow to ensure consistency.
+
+   ```bash
+   cp awesome-copilot-id/AGENTS.md ./
+   ```
+
+4. Example manual installation for specific agents and skills:
 
    ```bash
    # Create directories based on your platform (e.g., Google Antigravity)
@@ -52,7 +58,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
    cp -r awesome-copilot-id/.agents/skills/karpathy-guidelines .agents/skills/
    ```
 
-4. Restart your IDE or AI assistant to apply the changes.
+5. Restart your IDE or AI assistant to apply the changes.
 
 > [!TIP]
 > You can also reference these files from a central location in your system and symlink them to your projects for easier management.
@@ -174,6 +180,58 @@ Following our strict sequential workflow, here is how you would develop a new fe
 3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
 4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
 5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
+
+### 📊 SDLC Workflow Diagram
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef agent fill:#0d1117,color:#58a6ff,stroke:#30363d,stroke-width:2px;
+    classDef phase fill:#238636,color:#ffffff,stroke:#2ea043,stroke-width:2px,rx:10px,ry:10px;
+
+    %% Nodes
+    Phase1[Phase 1: Requirements]:::phase
+    Phase2[Phase 2: Specification]:::phase
+    Phase3[Phase 3: Planning]:::phase
+    Phase4[Phase 4: Implementation & Code]:::phase
+    Phase5[Phase 5: Documentation]:::phase
+
+    AgentPM["@ProductManagerPRD<br/>(Creates PRD)"]:::agent
+    AgentCA1["@ClarificationAnalyst<br/>(Interrogates PRD)"]:::agent
+
+    AgentSA["@SpecificationArchitect<br/>(Creates Tech Spec)"]:::agent
+    AgentCA2["@ClarificationAnalyst<br/>(Interrogates Spec)"]:::agent
+    AgentACC["@ArtifactConsistencyChecker<br/>(Validates Traceability)"]:::agent
+
+    AgentPA["@PlannerArchitect<br/>(Creates Implementation Plan)"]:::agent
+
+    AgentGMD["@GodModeDev<br/>(Writes Code & Tests)"]:::agent
+    AgentECR["@ExpertCodeReviewer<br/>(Audits Code)"]:::agent
+    AgentBRA["@BugRemediationArchitect<br/>(Fixes Bugs)"]:::agent
+
+    AgentDDA["@DiataxisDocumentationArchitect<br/>(Writes User Docs)"]:::agent
+
+    %% Flow
+    Phase1 --> AgentPM
+    AgentPM --> AgentCA1
+    AgentCA1 --> Phase2
+
+    Phase2 --> AgentSA
+    AgentSA --> AgentCA2
+    AgentCA2 --> AgentACC
+    AgentACC --> Phase3
+
+    Phase3 --> AgentPA
+    AgentPA --> Phase4
+
+    Phase4 --> AgentGMD
+    AgentGMD --> AgentECR
+    AgentECR -.->|If issues/bugs| AgentBRA
+    AgentBRA -.-> AgentGMD
+    AgentECR --> Phase5
+
+    Phase5 --> AgentDDA
+```
 
 ## 📝 Instructions
 
