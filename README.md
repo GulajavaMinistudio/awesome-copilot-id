@@ -257,11 +257,11 @@ Following our strict sequential workflow, here is how you would develop a new fe
 
 ## 🌟 Best Practices
 
-1. **Start with Planning**: Use `PlannerArchitect` or `create-specification` before implementation
-2. **Follow Instructions**: Ensure relevant instruction files are in your `.github/instructions/` directory
-3. **Use Appropriate Agents**: Match the agent to your task complexity and domain (planning, implementation, review, security, or documentation)
-4. **Leverage Memory**: Use `#remember` to store project-specific context
-5. **Iterate**: Use prompts like `update-implementation-plan` to refine your approach
+1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `@GodModeDev` for coding.
+2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.opencode`, `.agents`, or `.github`).
+3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
+4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
+5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
 
 ## 🛠️ Customization
 
