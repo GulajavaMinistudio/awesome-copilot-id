@@ -1,25 +1,27 @@
 # Awesome Copilot Indonesia 🇮🇩
 
-A curated collection of custom agents, instructions, and prompts for GitHub Copilot, specifically tailored for Indonesian developers and development workflows.
+A curated collection of custom agents, skills, rules, and prompts. Originally for GitHub Copilot, this collection now fully supports **OpenCode** and **Google Antigravity**, specifically tailored for Indonesian developers and development workflows.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ## 📋 Overview
 
-This repository provides a comprehensive set of tools to enhance your GitHub Copilot experience, including:
+This repository provides a comprehensive set of tools to enhance your AI-assisted development experience, including:
 
-- **🤖 Custom Agents**: Specialized AI agents for different development scenarios
-- **🧩 Reusable Agent Examples**: Example `.agent.md` files and an `AGENTS.md` reference file that can be adapted and reused in other projects
-- **📝 Instructions**: Best practices and coding guidelines for various languages and frameworks
-- **💡 Prompts**: Ready-to-use prompts for common development tasks
+- **🤖 Custom Agents**: Specialized AI agents for different development scenarios (PRD, Specification, Planning, Coding, Review).
+- **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
+- **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
+- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), and GitHub Copilot (`.github`).
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- GitHub Copilot subscription (Individual, Business, or Enterprise)
-- Visual Studio Code or compatible IDE with GitHub Copilot extension
+- An AI Assistant platform of your choice:
+  - **OpenCode**
+  - **Google Antigravity**
+  - **GitHub Copilot** (Individual, Business, or Enterprise)
 
 ### Installation
 
@@ -29,99 +31,91 @@ This repository provides a comprehensive set of tools to enhance your GitHub Cop
    git clone https://github.com/yourusername/awesome-copilot-id.git
    ```
 
-2. **Choose what you need**: Browse through the available agents, instructions, and prompts to select only what fits your workflow.
+2. **Choose your platform configuration**:
+   - For **OpenCode**: Copy the `.opencode` directory from `opencode-configuration/` to your project root.
+   - For **Google Antigravity**: Copy the `.agents` directory to your project root.
+   - For **GitHub Copilot**: Copy the `.github` directory to your project root.
 
    > [!IMPORTANT]
-   > **Don't copy everything!** Only select the agents, instructions, or prompts that match your development needs. Having too many can create conflicts or unwanted behavior.
+   > **Don't copy everything!** Only select the agents, skills, or rules that match your development needs.
 
-3. Copy selected files to your project's `.github` directory:
+3. Example manual installation for specific agents and skills:
 
    ```bash
-   # Create .github directory if it doesn't exist
-   mkdir -p .github
+   # Create directories based on your platform (e.g., Google Antigravity)
+   mkdir -p .agents/rules .agents/skills
 
-   # Example: Copy only specific agents you need
-   mkdir -p .github/agents
-   cp awesome-copilot-id/agents/GodModeDev.agent.md .github/agents/
-   cp awesome-copilot-id/agents/PlannerArchitect.agent.md .github/agents/
-
-   # Example: Copy only specific instructions you need
-   mkdir -p .github/instructions
-   cp awesome-copilot-id/instructions/nodejs-codestyle.instructions.md .github/instructions/
-   cp awesome-copilot-id/instructions/clean-code-clean-architecture.instructions.md .github/instructions/
-
-   # Example: Copy only specific prompts you need
-   mkdir -p .github/prompts
-   cp awesome-copilot-id/prompts/create-readme.prompt.md .github/prompts/
-   cp awesome-copilot-id/prompts/review-and-refactor.prompt.md .github/prompts/
+   # Copy specific agents
+   cp awesome-copilot-id/.agents/rules/GodModeDev.md .agents/rules/
+   
+   # Copy specific skills
+   cp -r awesome-copilot-id/.agents/skills/karpathy-guidelines .agents/skills/
    ```
 
-4. Restart your IDE to apply the changes
+4. Restart your IDE or AI assistant to apply the changes.
 
 > [!TIP]
 > You can also reference these files from a central location in your system and symlink them to your projects for easier management.
 
 ## 🤖 Custom Agents
 
-Custom agents are specialized AI assistants for specific development roles and tasks. Each agent can have its own behavior, available tools, and instructions. Place them in `.github/agents/` directory.
+Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.agents/rules/`, `.opencode/agents/`, or `.github/agents/`).
 
-> [!TIP]
-> This repository includes both custom agent files and an `AGENTS.md` example that you can copy, reuse, and adjust to fit the needs of other projects.
-
-| Agent                      | Description                                                   | Best For                                                     |
-| -------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------ |
-| **GodModeDev**             | Senior Expert Software Engineer with deep thinking protocol   | Complex architectural decisions, full-stack development      |
-| **BeastModeDev**           | Highly autonomous development agent                           | End-to-end feature implementation                            |
-| **MiniBeast**              | Lightweight version of BeastModeDev                           | Quick tasks and iterations                                   |
-| **PlannerArchitect**       | Strategic planning and architecture design                    | System design, technical planning                            |
-| **SpecificationArchitect** | Technical specification creation                              | Writing detailed specs and implementation docs               |
-| **ProductManagerPRD**      | Product requirement document creation                         | Feature planning, PRD writing                                |
-| **QATestArchitect**        | Testing strategy and test case design                         | Test planning, QA workflows                                  |
-| **DocumentationWriter**    | Technical documentation specialist                            | Writing docs, guides, and tutorials                          |
-| **CodeReviewSpecialist**   | Language-agnostic expert reviewer for clean code and security | Architecture review, code smell detection, refactoring plans |
-| **LaravelSecurityAuditor** | Laravel-focused security and code quality auditor             | OWASP checks, audit reports, Laravel 11+/PHP 8.3+ hardening  |
+| Agent | Associated Skill | Description | Best For |
+| --- | --- | --- | --- |
+| **@ProductManagerPRD** | `product-manager-prd` | Product Requirement Document creation | Feature planning, writing user stories, and acceptance criteria |
+| **@ClarificationAnalyst** | `clarification-analyst` | Requirement interrogation | Finding ambiguities and missing edge cases in PRD/Specs |
+| **@SpecificationArchitect** | `specification-architect` | Technical specification creation | Writing detailed, machine-readable tech specs |
+| **@ArtifactConsistencyChecker**| `artifact-consistency-checker`| Consistency & traceability audit | Validating PRD vs Spec vs Plan to prevent scope creep |
+| **@PlannerArchitect** | `planner-architect` | Strategic planning & architecture | Generating formal, structured implementation plans |
+| **@GodModeDev** | `karpathy-guidelines` | God-Tier Autonomous Engineer | Coding, implementation, and surgical modifications |
+| **@ExpertCodeReviewer** | `expert-code-reviewer` | Code review and security audit | Clean Code/SOLID audits and refactoring plans |
+| **@BugRemediationArchitect** | `bug-remediation-architect`| Bug analysis and fixing | Root cause analysis and structured bug-fix plans |
+| **@DiataxisDocumentationArchitect**| `diataxis-documentation-architect`| Technical documentation specialist | Writing tutorials, how-to guides, and reference docs |
 
 ### How to Use Custom Agents
 
-1. **From Agent Dropdown**: Select the custom agent from the agents dropdown in the Chat view
-2. **Type in Chat**: Use `#agent-name` syntax in chat
+Depending on your platform (OpenCode, Antigravity, or Copilot), you can usually invoke these agents via chat:
 
-   ```text
-   #GodModeDev implement authentication system with JWT
-   #PlannerArchitect design microservices architecture
-   #CodeReviewSpecialist review my service layer and suggest refactoring
-   #LaravelSecurityAuditor audit this controller for OWASP issues
-   ```
+```text
+@GodModeDev implement the shopping cart based on the plan
+@ExpertCodeReviewer review my service layer and suggest refactoring
+@ProductManagerPRD create a PRD for the user authentication module
+```
 
-### Custom Agent File Structure
+## 🤹 Skills
 
-Custom agent files use the `.agent.md` extension with:
+Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.agents/skills` or `.opencode/skills`).
 
-**Header (YAML frontmatter)**:
+| Skill | Description |
+| --- | --- |
+| **memory-manager** | Standardized workflow for reading/writing `memory.instructions.md` to persist context |
+| **karpathy-guidelines** | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications |
+| **product-manager-prd** | Workflow to generate comprehensive PRDs |
+| **clarification-analyst** | Interrogates requirements for hidden assumptions and edge cases |
+| **specification-architect** | Generates detailed technical specs based on clarified requirements |
+| **artifact-consistency-checker** | Validates traceability across documents to prevent missing coverage |
+| **planner-architect** | Generates formal executable implementation plans |
+| **expert-code-reviewer** | Code review and security audit against Clean Code principles |
+| **bug-remediation-architect** | Workflow for tracing root causes and generating bug-fix strategies |
+| **diataxis-documentation-architect**| Audits and writes structured documentation based on Diátaxis Framework |
+
+### Agent and Skill Configuration File Structure
+
+Agent files use the `.md` or `.agent.md` extension depending on the platform, and feature a YAML frontmatter:
 
 ```yaml
 ---
-description: "Generate an implementation plan"
-name: "Planner"  # Optional, defaults to filename
-argument-hint: "Optional hint for users"
-tools: ["search", "fetch", "usages"]  # Available tools
-model: "Claude Sonnet 4"  # Optional model selection
-handoffs:  # Optional workflow transitions
-  - label: "Implement Plan"
-    agent: "agent"
-    prompt: "Implement the plan outlined above."
-    send: false
+description: "God Mode Developer - God-Tier Autonomous Engineer with Deep Thinking Protocol."
+mode: all
 ---
 ```
 
 **Body**: Instructions and guidelines for the agent behavior. You can:
 
-- Reference other files using Markdown links
-- Use `#tool:toolName` syntax to reference specific tools
 - Define specialized instructions for the agent's role
-
-> [!TIP]
-> Use handoffs to create guided sequential workflows between agents. For example, planning → implementation → review.
+- Specify core directives and interaction philosophies
+- Detail how the agent should utilize its assigned skill
 
 ## 📝 Instructions
 
@@ -216,31 +210,29 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 ### Feature Development
 
 ```markdown
-@workspace #breakdown-feature-prd implement shopping cart feature
-@workspace #create-implementation-plan for shopping cart
-@workspace /chat #GodModeDev implement the shopping cart based on the plan
+@ProductManagerPRD create a PRD for the shopping cart feature
+@PlannerArchitect create an implementation plan for shopping cart
+@GodModeDev implement the shopping cart based on the plan
 ```
 
 ### Code Quality & Security
 
 ```markdown
-@workspace #review-and-refactor src/services/payment.js
-@workspace /chat #CodeReviewSpecialist review src/services/payment.js
-@workspace /chat #LaravelSecurityAuditor audit app/Http/Controllers/CheckoutController.php
+@ExpertCodeReviewer review my service layer and suggest refactoring
+@BugRemediationArchitect analyze the bug report for the checkout failure
 ```
 
 ### Documentation
 
 ```markdown
-@workspace #create-readme
-@workspace #documentation-writer for API endpoints
+@DiataxisDocumentationArchitect write an API reference guide for the endpoints
 ```
 
 ### Project Planning
 
 ```markdown
-@workspace /chat #PlannerArchitect design microservices architecture
-@workspace #create-specification for API gateway service
+@SpecificationArchitect design a technical specification for the microservices architecture
+@ArtifactConsistencyChecker verify that the plan covers all PRD requirements
 ```
 
 ## 🌟 Best Practices
