@@ -1,6 +1,6 @@
 # Awesome Copilot Indonesia 🇮🇩
 
-A curated collection of custom agents, skills, rules, and prompts. Originally for GitHub Copilot, this collection now fully supports **OpenCode** and **Google Antigravity**, specifically tailored for Indonesian developers and development workflows.
+A curated collection of custom agents, skills, rules, and prompts. Originally for GitHub Copilot, this collection now fully supports **OpenCode** and **Google Antigravity**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
