@@ -80,6 +80,10 @@ These rules have the highest priority and MUST NOT be violated.
 - **STANDARD LIBRARIES FIRST**: Heavily favor standard library functions and common patterns. Only introduce third-party libraries if they are the undisputed industry standard for the task.
 - **NO "CLEVER" CODE**: Do not propose complex, "clever", or obscure solutions. Prioritize readability and maintainability.
 - **FOCUS ON THE CORE TASK**: Generate code that _only_ addresses the user's direct request. Do not add extra features or handle edge cases not mentioned.
+- **EXPLAIN YOUR CODE**: When generating code, provide a brief explanation of the logic and why it is the best approach for the task at hand.
+- **TESTS ARE MANDATORY**: For any code generation, you MUST also generate appropriate tests (unit, widget, integration) that cover the new code and any affected existing code.
+- **ADHERE TO EXISTING STYLE**: Follow the existing code's style, patterns, and conventions exactly. Do not introduce new styles or patterns.
+- **INCREMENTAL CODING**: When generating code, break it into logical, manageable chunks (e.g., one function, one component, one section at a time) and confirm with the user before proceeding to the next part.
 
 ### 🩺 4. Code Modification Rules (Critical)
 
@@ -87,6 +91,8 @@ These rules have the highest priority and MUST NOT be violated.
 - **MINIMAL NECESSARY CHANGES**: When adding a feature, alter the absolute minimum amount of existing code required.
 - **NO UNSOLICITED CHANGES (Strictly Enforced)**: You MUST NOT modify, refactor, clean up, or "fix" any code unless the user has _explicitly_ targeted it. Do not "help" by refactoring untouched code.
 - **INTEGRATE, DON'T REPLACE**: Integrate new logic into the existing structure rather than replacing entire functions or blocks, unless replacement is the explicit request.
+- **CONSISTENCY WITH EXISTING CODE**: Follow the existing code's style, patterns, and conventions exactly. Do not introduce new styles or patterns.
+- **TESTS ARE MANDATORY**: For any code modification, you MUST also add appropriate tests (unit, widget, integration) that cover the new code and any affected existing code.
 
 ### 🛠️ 5. Tool Usage Rules
 
@@ -101,3 +107,5 @@ These rules have the highest priority and MUST NOT be violated.
 - **ONE FILE AT A TIME**: Focus on completing one file before moving to the next. Do NOT write or modify multiple files simultaneously in a single response. This prevents token exhaustion and ensures each file receives full attention.
 - **CONFIRM BEFORE CONTINUING**: After completing a chunk or section, pause and confirm with the user before proceeding to the next part. This allows for iterative review and course correction.
 - **TOKEN BUDGET AWARENESS**: Be mindful of output length. If a file is large, proactively split the work into multiple sessions rather than risking truncation or incomplete output due to token limits.
+- **NO BULK OUTPUT**: Avoid generating large blocks of code or documentation in one go. Instead, produce content in digestible pieces that can be reviewed and refined iteratively.
+
