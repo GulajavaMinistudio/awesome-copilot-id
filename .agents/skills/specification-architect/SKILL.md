@@ -3,13 +3,17 @@ name: specification-architect
 description: "Generates or updates highly detailed, machine-readable technical specification documents in the /spec/ directory."
 license: MIT
 ---
+
 <!-- markdownlint-disable -->
+
 # Specification Architect Skill
 
 ## Overview
+
 This skill is used to translate Product Requirements Documents (PRDs) into structured, unambiguous Technical Specifications. It defines the "WHAT" of the technical constraints, data contracts, and acceptance criteria without writing source code. This skill accompanies the `@SpecificationArchitect` agent.
 
 ## When to Use
+
 - When transitioning from PRD (or Clarification Phase) to Technical Design.
 - When you need to define data contracts, interfaces, and architecture boundaries.
 - When updating an existing technical specification based on new business requirements.
@@ -19,27 +23,37 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 ## Operational Workflow
 
 ### Phase 1: Understand, Clarify, & Read PRD
+
 - Ask if there is an existing PRD. If yes, you **MUST** read and analyze it to extract business goals and user stories.
 - Clarify if creating a new spec or updating an existing one.
 
 ### Phase 2: Investigate the Codebase
+
 - Explore the existing codebase using search/read tools to understand current data structures, dependencies, and test coverage.
 
-### Phase 3: Collaborate & Draft
-- Discuss findings with the user. Draft the specification sections focusing on **WHAT** the system should do.
-- Ensure all requirements are testable and unambiguous.
+### Phase 3: Collaborate & Technical Grilling (Iterative)
+
+- Discuss findings with the user using the "Grill With Docs" method. Draft the specification sections focusing on **WHAT** the system should do.
+- **Halt and Iterate:** Ask **ONE** specific question at a time regarding data contracts, interfaces, or constraints. Wait for the user's decision before asking the next question.
+- **Do the Heavy Lifting:** Present technical trade-offs. (e.g., "The PRD requires real-time updates. Based on our codebase, we can use (A) the existing WebSockets implementation, or (B) implement Server-Sent Events (SSE). I recommend (A) for consistency. Do you agree?").
+- Ensure all requirements are testable and unambiguous before moving to Phase 4.
 
 ### Phase 4: Quality Control & File Generation
-- Review the drafted spec for completeness and consistency.
-- Generate the file in the `/spec/` directory using the naming convention `spec-[purpose]-[name].md`.
-- Purpose prefixes must be one of: `schema`, `tool`, `data`, `infrastructure`, `process`, `architecture`, or `design`.
+
+- **Evaluate Complexity:** Determine if the specification can be consolidated into a single file. **Consolidate whenever possible to minimize file overhead.**
+- **Modular Escalation:** Only propose splitting into multiple files if the specification covers distinct functional modules or becomes too large.
+- **Master Index (If applicable):** If split, create a `spec-index.md` that serves as the entry point and links to all related spec files.
+- **File Generation:** Generate files in the `/spec/` directory using naming convention `spec-[purpose]-[name].md`.
+- **Consistency Check:** Ensure all internal links between spec files are relative and valid.
 
 ---
 
 ## Handling Edge Cases
+
 - **Non-existent Implementation:** Define the spec based on design intent BEFORE code is written.
 - **Complex Systems:** Break them down into smaller components and specify each individually.
 - **Updates:** Highlight changes and ensure backward compatibility is documented.
+- **File Consolidation:** If a spec update involves a small, related feature, append it to the existing specification rather than creating a new file.
 
 ---
 
@@ -98,24 +112,28 @@ tags: [Optional: List of relevant tags or categories]
 - **CI/CD Integration**: [automated testing pipelines]
 - **Coverage Requirements**: [minimum code coverage thresholds]
 
-## 7. Rationale & Context
+## 7. Rationale, Context & Architecture Decisions (ADRs)
 
-[Explain the reasoning behind the requirements, constraints, and guidelines. Provide context for design decisions.]
+[Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made during the planning phase (e.g., choosing a specific database or protocol), document it here as an ADR (Context, Decision, Consequences).]
 
 ## 8. Dependencies & External Integrations
 
 [Define the external systems, services, and architectural dependencies required. Focus on **what** is needed rather than **how** it's implemented.]
 
 ### External Systems
+
 - **EXT-001**: [External system name] - [Purpose and integration type]
 
 ### Third-Party Services
+
 - **SVC-001**: [Service name] - [Required capabilities and SLA requirements]
 
 ### Infrastructure Dependencies
+
 - **INF-001**: [Infrastructure component] - [Requirements and constraints]
 
 ### Data Dependencies
+
 - **DAT-001**: [External data source] - [Format, frequency, and access requirements]
 
 ## 9. Examples & Edge Cases
@@ -133,3 +151,17 @@ tags: [Optional: List of relevant tags or categories]
 [Link to related spec 1]
 [Link to relevant external documentation]
 ```
+
+---
+
+## Implementation Guidelines
+
+### DO (Always)
+
+- **Anchor to the Codebase:** Always reference existing patterns, libraries, or files in the current codebase when proposing technical options.
+- **Identify ADRs:** Proactively point out when a user's choice is a "hard-to-reverse" architectural decision.
+
+### DON'T (Avoid)
+
+- **Machine Gun Questioning:** Do not ask multiple architectural questions in a single prompt. Resolve one interface/contract before moving to the next.
+- **Silent Assumptions:** Do not automatically pick a data type, API protocol (REST/GraphQL), or library without verifying it with the user first.
