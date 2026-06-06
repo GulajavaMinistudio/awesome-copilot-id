@@ -1,5 +1,5 @@
 <!-- markdownlint-disable -->
-# AGENTS.md - Tukang Kompres PDF Application
+# AGENTS.md - Tukang Kompres PDF Application (Silahkan sesuaikan dengan konteks aplikasi Anda)
 
 ## Communication
 
@@ -41,6 +41,7 @@
 - **Documentation First**: Complete and structured documentation must exist before coding begins
 - **Testing Required per Phase**: After each implementation phase, testing (unit/widget/integration test) is MANDATORY and all tests must pass before a phase is considered complete or before proceeding to the next phase
 - **Custom Agents Usage**: User uses custom Agents and their paired Skills according to each development phase:
+  - `@BrainstormingExplorerAnalyst` (Skill: `brainstorming-explorer`) for Project Discovery and Brainstorming (Phase 0)
   - `@ProductManagerPRD` (Skill: `product-manager-prd`) for Requirements (PRD)
   - `@ClarificationAnalyst` (Skill: `clarification-analyst`) for Interrogating PRD/Spec to resolve ambiguity
   - `@SpecificationArchitect` (Skill: `specification-architect`) for Technical Specification

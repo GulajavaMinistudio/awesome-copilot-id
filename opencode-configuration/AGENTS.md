@@ -1,5 +1,5 @@
 <!-- markdownlint-disable -->
-# AGENTS.md - Tukang Kompres PDF Application
+# AGENTS.md - Tukang Kompres PDF Application (Silahkan sesuaikan dengan konteks aplikasi Anda)
 
 ## Communication
 
@@ -41,6 +41,7 @@
 - **Documentation First**: Complete and structured documentation must exist before coding begins
 - **Testing Required per Phase**: After each implementation phase, testing (unit/widget/integration test) is MANDATORY and all tests must pass before a phase is considered complete or before proceeding to the next phase
 - **Custom Agents Usage**: User uses custom Agents and their paired Skills according to each development phase:
+  - `@BrainstormingExplorerAnalyst` (Skill: `brainstorming-explorer`) for Project Discovery and Brainstorming (Phase 0)
   - `@ProductManagerPRD` (Skill: `product-manager-prd`) for Requirements (PRD)
   - `@ClarificationAnalyst` (Skill: `clarification-analyst`) for Interrogating PRD/Spec to resolve ambiguity
   - `@SpecificationArchitect` (Skill: `specification-architect`) for Technical Specification
@@ -101,3 +102,5 @@ These rules have the highest priority and MUST NOT be violated.
 - **ONE FILE AT A TIME**: Focus on completing one file before moving to the next. Do NOT write or modify multiple files simultaneously in a single response. This prevents token exhaustion and ensures each file receives full attention.
 - **CONFIRM BEFORE CONTINUING**: After completing a chunk or section, pause and confirm with the user before proceeding to the next part. This allows for iterative review and course correction.
 - **TOKEN BUDGET AWARENESS**: Be mindful of output length. If a file is large, proactively split the work into multiple sessions rather than risking truncation or incomplete output due to token limits.
+- **NO BULK OUTPUT**: Avoid generating large blocks of code or documentation in one go. Instead, produce content in digestible pieces that can be reviewed and refined iteratively.
+  
