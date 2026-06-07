@@ -1,4 +1,5 @@
 # Awesome Copilot Indonesia 🇮🇩
+<!-- markdownlint-disable -->
 
 A curated collection of custom agents, skills, rules, and prompts. Originally for GitHub Copilot, this collection now fully supports **OpenCode** and **Google Antigravity**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
 
@@ -67,17 +68,18 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 
 Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.agents/rules/`, `.opencode/agents/`, or `.github/agents/`).
 
-| Agent | Associated Skill | Description | Best For |
-| --- | --- | --- | --- |
-| **@ProductManagerPRD** | `product-manager-prd` | Product Requirement Document creation | Feature planning, writing user stories, and acceptance criteria |
-| **@ClarificationAnalyst** | `clarification-analyst` | Requirement interrogation | Finding ambiguities and missing edge cases in PRD/Specs |
-| **@SpecificationArchitect** | `specification-architect` | Technical specification creation | Writing detailed, machine-readable tech specs |
-| **@ArtifactConsistencyChecker**| `artifact-consistency-checker`| Consistency & traceability audit | Validating PRD vs Spec vs Plan to prevent scope creep |
-| **@PlannerArchitect** | `planner-architect` | Strategic planning & architecture | Generating formal, structured implementation plans |
-| **@GodModeDev** | `karpathy-guidelines` | God-Tier Autonomous Engineer | Coding, implementation, and surgical modifications |
-| **@ExpertCodeReviewer** | `expert-code-reviewer` | Code review and security audit | Clean Code/SOLID audits and refactoring plans |
-| **@BugRemediationArchitect** | `bug-remediation-architect`| Bug analysis and fixing | Root cause analysis and structured bug-fix plans |
-| **@DiataxisDocumentationArchitect**| `diataxis-documentation-architect`| Technical documentation specialist | Writing tutorials, how-to guides, and reference docs |
+| Agent                               | Associated Skill                   | Description                           | Best For                                                        |
+| ----------------------------------- | ---------------------------------- | ------------------------------------- | --------------------------------------------------------------- |
+| **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`           | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
+| **@ProductManagerPRD**              | `product-manager-prd`              | Product Requirement Document creation | Feature planning, writing user stories, and acceptance criteria |
+| **@ClarificationAnalyst**           | `clarification-analyst`            | Requirement interrogation             | Finding ambiguities and missing edge cases in PRD/Specs         |
+| **@SpecificationArchitect**         | `specification-architect`          | Technical specification creation      | Writing detailed, machine-readable tech specs                   |
+| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`     | Consistency & traceability audit      | Validating PRD vs Spec vs Plan to prevent scope creep           |
+| **@PlannerArchitect**               | `planner-architect`                | Strategic planning & architecture     | Generating formal, structured implementation plans              |
+| **@GodModeDev**                     | `karpathy-guidelines`              | God-Tier Autonomous Engineer          | Coding, implementation, and surgical modifications              |
+| **@ExpertCodeReviewer**             | `expert-code-reviewer`             | Code review and security audit        | Clean Code/SOLID audits and refactoring plans                   |
+| **@BugRemediationArchitect**        | `bug-remediation-architect`        | Bug analysis and fixing               | Root cause analysis and structured bug-fix plans                |
+| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect` | Technical documentation specialist    | Writing tutorials, how-to guides, and reference docs            |
 
 ### How to Use Custom Agents
 
@@ -93,18 +95,19 @@ Depending on your platform (OpenCode, Antigravity, or Copilot), you can usually 
 
 Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.agents/skills` or `.opencode/skills`).
 
-| Skill | Description |
-| --- | --- |
-| **memory-manager** | Standardized workflow for reading/writing `memory.instructions.md` to persist context |
-| **karpathy-guidelines** | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications |
-| **product-manager-prd** | Workflow to generate comprehensive PRDs |
-| **clarification-analyst** | Interrogates requirements for hidden assumptions and edge cases |
-| **specification-architect** | Generates detailed technical specs based on clarified requirements |
-| **artifact-consistency-checker** | Validates traceability across documents to prevent missing coverage |
-| **planner-architect** | Generates formal executable implementation plans |
-| **expert-code-reviewer** | Code review and security audit against Clean Code principles |
-| **bug-remediation-architect** | Workflow for tracing root causes and generating bug-fix strategies |
-| **diataxis-documentation-architect**| Audits and writes structured documentation based on Diátaxis Framework |
+| Skill                                | Description                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| **brainstorming-explorer**           | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation |
+| **memory-manager**                   | Standardized workflow for reading/writing `memory.instructions.md` to persist context           |
+| **karpathy-guidelines**              | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications |
+| **product-manager-prd**              | Workflow to generate comprehensive PRDs                                                         |
+| **clarification-analyst**            | Interrogates requirements for hidden assumptions and edge cases                                 |
+| **specification-architect**          | Generates detailed technical specs based on clarified requirements                              |
+| **artifact-consistency-checker**     | Validates traceability across documents to prevent missing coverage                             |
+| **planner-architect**                | Generates formal executable implementation plans                                                |
+| **expert-code-reviewer**             | Code review and security audit against Clean Code principles                                    |
+| **bug-remediation-architect**        | Workflow for tracing root causes and generating bug-fix strategies                              |
+| **diataxis-documentation-architect** | Audits and writes structured documentation based on Diátaxis Framework                          |
 
 ### Agent and Skill Configuration File Structure
 
@@ -127,6 +130,7 @@ mode: all
 
 We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
 
+0. **Discovery (Phase 0)**: Use `@BrainstormingExplorerAnalyst` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
 1. **PRD (Requirements)**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
 2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD (and subsequently the Technical Specification) to resolve ambiguities.
 3. **Spec (Technical Specification)**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
@@ -190,12 +194,14 @@ graph TD
     classDef phase fill:#238636,color:#ffffff,stroke:#2ea043,stroke-width:2px,rx:10px,ry:10px;
 
     %% Nodes
+    Phase0[Phase 0: Discovery]:::phase
     Phase1[Phase 1: Requirements]:::phase
     Phase2[Phase 2: Specification]:::phase
     Phase3[Phase 3: Planning]:::phase
     Phase4[Phase 4: Implementation & Code]:::phase
     Phase5[Phase 5: Documentation]:::phase
 
+    AgentBEA["@BrainstormingExplorerAnalyst<br/>(Explores Code & Brainstorms)"]:::agent
     AgentPM["@ProductManagerPRD<br/>(Creates PRD)"]:::agent
     AgentCA1["@ClarificationAnalyst<br/>(Interrogates PRD)"]:::agent
 
@@ -212,6 +218,9 @@ graph TD
     AgentDDA["@DiataxisDocumentationArchitect<br/>(Writes User Docs)"]:::agent
 
     %% Flow
+    Phase0 --> AgentBEA
+    AgentBEA --> Phase1
+
     Phase1 --> AgentPM
     AgentPM --> AgentCA1
     AgentCA1 --> Phase2
