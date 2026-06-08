@@ -24,7 +24,7 @@ Use this skill when:
 
 ### Phase 1: Artifact Aggregation
 Collect all documents related to the current feature in progress. You **must** read and retain the context of at least TWO of the following documents to perform a comparison:
-1. `prd.md` (Upstream Document / Business Needs)
+1. PRD (e.g., `prd-feature-*.md`) (Upstream Document / Business Needs)
 2. `spec-*.md` (Middle Document / Architectural Specs)
 3. `plan-*.md` (Downstream Document / Implementation Plan & Tasks)
 

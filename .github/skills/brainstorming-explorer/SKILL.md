@@ -46,13 +46,13 @@ Analyze the code quality based on the user's preferred paradigms (e.g., SOLID pr
 
 ### Phase 4: Discovery Draft Generation
 
-Once the user signals that the exploration is sufficient, explicitly offer to generate the `project-discovery-draft.md`. If approved, strictly use the Mandatory Template below.
+Once the user signals that the exploration is sufficient, explicitly offer to generate the `project-discovery-draft-<project_or_feature_name>-<date_ddmmyyyy>.md`. If approved, strictly use the Mandatory Template below.
 
 ---
 
 ## Mandatory Template: Project Discovery Draft
 
-When authorized to write the discovery document, you MUST output it in the following format (usually saved to `docs/project-discovery-draft.md`):
+When authorized to write the discovery document, you MUST output it in the following format (usually saved to `docs/project-discovery-draft-<project_or_feature_name>-<date_ddmmyyyy>.md`):
 
 ```md
 ---

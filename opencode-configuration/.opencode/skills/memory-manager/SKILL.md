@@ -19,14 +19,15 @@ This skill provides a standardized protocol for managing the project's persisten
 
 > **⚠️ DIRECTIVE:** This workflow MUST be executed before ANY read or write operation. Never hardcode or assume the memory file path.
 
-1. **Search for `memory.instructions.md`** across the following directories, in priority order:
+1. **Search for `memory.instructions.md`** across ALL of the following directories:
    - `.opencode/instructions/`
    - `.github/instructions/`
    - `.agents/instructions/`
    - `instructions/` (at the project root)
-2. **Use tools** such as `list_dir` or file search to check each location.
+2. **Use tools** such as `list_dir` or file search to check EVERY location.
 3. **Resolution:**
-   - **If FOUND:** Lock the discovered path as the target for all subsequent read/write operations in this session.
+   - **If exactly ONE file is FOUND:** Lock the discovered path as the target for all subsequent read/write operations in this session.
+   - **If MULTIPLE files are FOUND:** You MUST pause and present the list of found paths to the user. Ask the user which path should be locked as the active memory for this session. Do NOT proceed until the user explicitly chooses one.
    - **If NOT FOUND in any location:** Create the `instructions/` folder at the project root and initialize a new `memory.instructions.md` file inside it using the **Initial Memory Template** below.
 
 ### Initial Memory Template (For New Files Only)
@@ -34,6 +35,7 @@ This skill provides a standardized protocol for managing the project's persisten
 ```md
 # Project Memory Log
 
+> Active Location: [path_where_this_file_is_created]
 > This file is managed by the `memory-manager` skill.
 > It persists context across AI chat sessions to prevent knowledge loss.
 > Do NOT manually edit this file unless necessary.
@@ -56,8 +58,8 @@ Use this workflow to load context at the beginning of a new session.
    - **Dead-Ends** — Approaches that failed previously. Do NOT repeat these.
    - **Pending Actions / Blockers** — What remains to be done or what issues are unresolved.
    - **Checkpoint Tail** — The 1-sentence HTML comment at the bottom for rapid context recovery.
-4. **Acknowledge to the user** (in Bahasa Indonesia) that context has been loaded. Example:
-   > *"Saya telah membaca memori proyek. Fase SDLC terakhir adalah [Phase]. Progres terakhir mencakup [Milestones]. Saya siap melanjutkan."*
+4. **Acknowledge to the user** (in Bahasa Indonesia) that context has been loaded AND explicitly state the locked path. Example:
+   > *"Saya telah membaca memori proyek dari `[discovered_path]`. Fase SDLC terakhir adalah [Phase]. Progres terakhir mencakup [Milestones]. Saya siap melanjutkan."*
 5. **Proceed** with the user's request, now fully informed by historical context.
 
 ---
@@ -73,17 +75,18 @@ Use this workflow to persist progress after a significant milestone.
    - What decisions were made.
    - What remains to be done next.
 3. **Append** a new checkpoint entry to the **bottom** of the memory file using the **Mandatory Checkpoint Template** below. Do NOT overwrite or delete existing entries unless the user explicitly requests a memory compaction.
-4. **Confirm to the user** (in Bahasa Indonesia) that the checkpoint has been saved. Example:
-   > *"Checkpoint memori telah disimpan. Progres sesi ini telah dicatat untuk kontinuitas di sesi berikutnya."*
+4. **Confirm to the user** (in Bahasa Indonesia) that the checkpoint has been saved AND explicitly state the locked path. Example:
+   > *"Checkpoint memori telah disimpan ke dalam `[discovered_path]`. Progres sesi ini telah dicatat untuk kontinuitas di sesi berikutnya."*
 
 ### Mandatory Checkpoint Template
 
 ```md
 ## 📝 Session Checkpoint: [YYYY-MM-DD]
 
+- **Active Memory Path:** [path_to_this_file]
 - **Current SDLC Phase:** [e.g., Planning / Specification / Implementation / Review / Documentation]
 - **Active Artifacts:**
-  - `[path/to/prd.md]` — Status: ✅ Finalized
+  - `[path/to/prd-feature-*.md]` — Status: ✅ Finalized
   - `[path/to/spec.md]` — Status: 🔄 In Progress
   - `[path/to/plan.md]` — Status: ⏳ Pending
 - **Achieved Milestones:**
