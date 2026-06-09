@@ -3,13 +3,17 @@ name: memory-manager
 description: "Standardized workflow for discovering, reading, and writing the project's memory file (memory.instructions.md) to persist context across chat sessions."
 license: MIT
 ---
+
 <!-- markdownlint-disable -->
+
 # Memory Manager Skill
 
 ## Overview
+
 This skill provides a standardized protocol for managing the project's persistent memory file (`memory.instructions.md`). It ensures that AI agents can reliably save and restore context across chat sessions, regardless of which instruction directory the project uses. This skill is **agent-agnostic** — any agent in the ecosystem can invoke it.
 
 ## When to Use
+
 - **Write Mode:** At the end of a significant milestone or phase completion, when the user agrees to save progress.
 - **Read Mode:** At the start of a new chat session to bootstrap context from prior sessions.
 
@@ -20,6 +24,7 @@ This skill provides a standardized protocol for managing the project's persisten
 > **⚠️ DIRECTIVE:** This workflow MUST be executed before ANY read or write operation. Never hardcode or assume the memory file path.
 
 1. **Search for `memory.instructions.md`** across ALL of the following directories:
+   - `.commandcode/instructions/`
    - `.opencode/instructions/`
    - `.github/instructions/`
    - `.agents/instructions/`
@@ -59,7 +64,7 @@ Use this workflow to load context at the beginning of a new session.
    - **Pending Actions / Blockers** — What remains to be done or what issues are unresolved.
    - **Checkpoint Tail** — The 1-sentence HTML comment at the bottom for rapid context recovery.
 4. **Acknowledge to the user** (in Bahasa Indonesia) that context has been loaded AND explicitly state the locked path. Example:
-   > *"Saya telah membaca memori proyek dari `[discovered_path]`. Fase SDLC terakhir adalah [Phase]. Progres terakhir mencakup [Milestones]. Saya siap melanjutkan."*
+   > _"Saya telah membaca memori proyek dari `[discovered_path]`. Fase SDLC terakhir adalah [Phase]. Progres terakhir mencakup [Milestones]. Saya siap melanjutkan."_
 5. **Proceed** with the user's request, now fully informed by historical context.
 
 ---
@@ -76,7 +81,7 @@ Use this workflow to persist progress after a significant milestone.
    - What remains to be done next.
 3. **Append** a new checkpoint entry to the **bottom** of the memory file using the **Mandatory Checkpoint Template** below. Do NOT overwrite or delete existing entries unless the user explicitly requests a memory compaction.
 4. **Confirm to the user** (in Bahasa Indonesia) that the checkpoint has been saved AND explicitly state the locked path. Example:
-   > *"Checkpoint memori telah disimpan ke dalam `[discovered_path]`. Progres sesi ini telah dicatat untuk kontinuitas di sesi berikutnya."*
+   > _"Checkpoint memori telah disimpan ke dalam `[discovered_path]`. Progres sesi ini telah dicatat untuk kontinuitas di sesi berikutnya."_
 
 ### Mandatory Checkpoint Template
 
