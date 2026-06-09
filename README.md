@@ -1,7 +1,7 @@
 # Awesome Copilot Indonesia 🇮🇩
 <!-- markdownlint-disable -->
 
-A curated collection of custom agents, skills, rules, and prompts. Originally for GitHub Copilot, this collection now fully supports **OpenCode** and **Google Antigravity**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
+A curated collection of custom agents, skills, rules, and prompts. Originally for **GitHub Copilot**, this collection now fully supports **OpenCode**, **Google Antigravity**, and **CommandCode**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -13,13 +13,14 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - **🤖 Custom Agents**: Specialized AI agents for different development scenarios (PRD, Specification, Planning, Coding, Review).
 - **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
 - **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
-- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), and GitHub Copilot (`.github`).
+- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), and CommandCode (`.commandcode`).
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
 - An AI Assistant platform of your choice:
+  - **CommandCode**
   - **OpenCode**
   - **Google Antigravity**
   - **GitHub Copilot** (Individual, Business, or Enterprise)
@@ -33,6 +34,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
    ```
 
 2. **Choose your platform configuration**:
+   - For **CommandCode**: Copy the `.commandcode` directory to your project root.
    - For **OpenCode**: Copy the `.opencode` directory from `opencode-configuration/` to your project root.
    - For **Google Antigravity**: Copy the `.agents` directory to your project root.
    - For **GitHub Copilot**: Copy the `.github` directory to your project root.
@@ -66,24 +68,27 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 
 ## 🤖 Custom Agents
 
-Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.agents/rules/`, `.opencode/agents/`, or `.github/agents/`).
+Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.commandcode/agents/`, `.agents/rules/`, `.opencode/agents/`, or `.github/agents/`).
 
-| Agent                               | Associated Skill                   | Description                           | Best For                                                        |
-| ----------------------------------- | ---------------------------------- | ------------------------------------- | --------------------------------------------------------------- |
+> [!IMPORTANT]
+> **Don't forget to copy `AGENTS.md`** to your project root after copying these agents. This file contains the core SDLC rules that all agents must follow. See [Step #3 in Installation](#installation) for details.
+
+| Agent                               | Associated Skill                   | Description                                          | Best For                                                            |
+| ----------------------------------- | ---------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
 | **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`           | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
-| **@ProductManagerPRD**              | `product-manager-prd`              | Product Requirement Document creation | Feature planning, writing user stories, and acceptance criteria |
-| **@ClarificationAnalyst**           | `clarification-analyst`            | Requirement interrogation             | Finding ambiguities and missing edge cases in PRD/Specs         |
-| **@SpecificationArchitect**         | `specification-architect`          | Technical specification creation      | Writing detailed, machine-readable tech specs                   |
-| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`     | Consistency & traceability audit      | Validating PRD vs Spec vs Plan to prevent scope creep           |
-| **@PlannerArchitect**               | `planner-architect`                | Strategic planning & architecture     | Generating formal, structured implementation plans              |
-| **@GodModeDev**                     | `karpathy-guidelines`              | God-Tier Autonomous Engineer          | Coding, implementation, and surgical modifications              |
-| **@ExpertCodeReviewer**             | `expert-code-reviewer`             | Code review and security audit        | Clean Code/SOLID audits and refactoring plans                   |
-| **@BugRemediationArchitect**        | `bug-remediation-architect`        | Bug analysis and fixing               | Root cause analysis and structured bug-fix plans                |
-| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect` | Technical documentation specialist    | Writing tutorials, how-to guides, and reference docs            |
+| **@ProductManagerPRD**              | `product-manager-prd`              | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
+| **@ClarificationAnalyst**           | `clarification-analyst`            | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs             |
+| **@SpecificationArchitect**         | `specification-architect`          | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
+| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`     | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
+| **@PlannerArchitect**               | `planner-architect`                | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
+| **@GodModeDev**                     | `karpathy-guidelines`              | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
+| **@ExpertCodeReviewer**             | `expert-code-reviewer`             | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
+| **@BugRemediationArchitect**        | `bug-remediation-architect`        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
+| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect` | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
 
 ### How to Use Custom Agents
 
-Depending on your platform (OpenCode, Antigravity, or Copilot), you can usually invoke these agents via chat:
+Depending on your platform (CommandCode, OpenCode, Antigravity, or Copilot), you can usually invoke these agents via chat:
 
 ```text
 @GodModeDev implement the shopping cart based on the plan
@@ -93,7 +98,10 @@ Depending on your platform (OpenCode, Antigravity, or Copilot), you can usually 
 
 ## 🤹 Skills
 
-Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.agents/skills` or `.opencode/skills`).
+Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.commandcode/skills`, `.agents/skills` or `.opencode/skills`).
+
+> [!IMPORTANT]
+> **Don't forget to copy `AGENTS.md`** to your project root after copying these skills. This file contains the core SDLC rules that all agents and skills must follow. See [Step #3 in Installation](#installation) for details.
 
 | Skill                                | Description                                                                                     |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------- |
@@ -180,7 +188,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ### 🌟 Best Practices
 
 1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `@GodModeDev` for coding.
-2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.opencode`, `.agents`, or `.github`).
+2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.commandcode`, `.opencode`, `.agents`, or `.github`).
 3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
 4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
 5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
@@ -244,7 +252,10 @@ graph TD
 
 ## 📝 Instructions
 
-Instructions are rules and guidelines that your AI Assistant follows when generating code. Place them in your platform's respective directory (`.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`).
+Instructions are rules and guidelines that your AI Assistant follows when generating code. Place them in your platform's respective directory (`.commandcode/instructions/`, `.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`).
+
+> [!IMPORTANT]
+> **Don't forget to copy `AGENTS.md`** to your project root after copying these instructions. This file contains the core SDLC rules that bind all instructions. See [Step #3 in Installation](#installation) for details.
 
 | Instruction                              | Description                                           | Apply To                |
 | ---------------------------------------- | ----------------------------------------------------- | ----------------------- |
@@ -272,7 +283,7 @@ description: "Node.js coding standards"
 
 ## 💡 Prompts
 
-Prompt files are reusable templates for common development tasks like generating code, performing code reviews, or scaffolding project components. They are standalone prompts you can run directly in chat. Place them in your platform's respective directory (`.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`).
+Prompt files are reusable templates for common development tasks like generating code, performing code reviews, or scaffolding project components. They are standalone prompts you can run directly in chat. Place them in your platform's respective directory (`.commandcode/prompts/`, `.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`).
 
 | Prompt                         | Description                         |
 | ------------------------------ | ----------------------------------- |
@@ -338,7 +349,7 @@ You can implement customizations incrementally, starting with the simplest optio
 
 Create custom instructions for consistent results across all your chat interactions. Custom instructions let you define common guidelines or rules for tasks like generating code, performing code reviews, or generating commit messages.
 
-**File location**: `.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`
+**File location**: `.commandcode/instructions/`, `.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`
 
 **Format**:
 
@@ -393,7 +404,7 @@ You can use AI assistants to help create custom instructions based on programmin
 
 Prompt files let you define reusable prompts for common and repeatable development tasks. They're standalone prompts you can run directly in chat.
 
-**File location**: `.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`
+**File location**: `.commandcode/prompts/`, `.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`
 
 **Format**:
 
@@ -422,7 +433,7 @@ You are a technical architect...
 
 Custom agents are specialist assistants for specific roles or tasks. Within a custom agent file, you describe its scope, capabilities, which tools it can access, and preferred language model.
 
-**File location**: `.github/agents/`, `.opencode/agents/`, or `.agents/rules/`
+**File location**: `.commandcode/agents/`, `.github/agents/`, `.opencode/agents/`, or `.agents/rules/`
 
 **Format**:
 
