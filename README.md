@@ -6,6 +6,10 @@ A curated collection of custom agents, skills, rules, and prompts. Originally fo
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
+<p align="center">
+  <img src="hero-cat-agent.png" alt="Awesome Copilot Indonesia" width="700">
+</p>
+
 ## 📋 Overview
 
 This repository provides a comprehensive set of tools to enhance your AI-assisted development experience, including:
