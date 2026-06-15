@@ -122,6 +122,7 @@ Skills provide agents with specialized capabilities, workflows, and prompts. The
 | **expert-code-reviewer**             | Code review and security audit against Clean Code principles                                    |
 | **bug-remediation-architect**        | Workflow for tracing root causes and generating bug-fix strategies                              |
 | **diataxis-documentation-architect** | Audits and writes structured documentation based on Diátaxis Framework                          |
+| **fable-protocol**                    | An advanced, autonomous AI agent skill designed to execute complex, multi-step, and long-horizon tasks with high reliability and minimal human interruption |
 
 ### Agent and Skill Configuration File Structure
 
