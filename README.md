@@ -54,6 +54,9 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
    cp awesome-copilot-id/AGENTS.md ./
    ```
 
+   > [!IMPORTANT]
+   > After copying `AGENTS.md`, you **must** open it and update the first line (`# AGENTS.md - [Your Application Name]`) to match your actual project's context. This helps the AI agents understand the specific project they are working on.
+
 4. Example manual installation for specific agents and skills:
 
    ```bash

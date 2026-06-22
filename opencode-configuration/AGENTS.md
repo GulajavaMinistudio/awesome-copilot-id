@@ -1,5 +1,5 @@
 <!-- markdownlint-disable -->
-# AGENTS.md - Tukang Kompres PDF Application (Silahkan sesuaikan dengan konteks aplikasi Anda)
+# AGENTS.md - [Your Application Name] (Please replace this title with your actual project context)
 
 ## Communication
 
