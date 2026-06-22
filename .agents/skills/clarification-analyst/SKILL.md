@@ -1,6 +1,6 @@
 ---
 name: clarification-analyst
-description: "Helps interrogate Product Requirements (PRD) and Technical Specifications to find ambiguities, missing edge cases, and hidden assumptions."
+description: "Helps interrogate Product Requirements (PRD), Technical Specifications, and Implementation Plans to find ambiguities, missing edge cases, and hidden assumptions."
 license: MIT
 ---
 
@@ -10,7 +10,7 @@ license: MIT
 
 ## Overview
 
-This skill focuses on executing a systematic clarification phase against requirement documents (PRD) or Technical Specifications. It ensures that no unvalidated assumptions slip through before entering the implementation phases (Planning & Coding). This skill accompanies the `@ClarificationAnalyst` agent.
+This skill focuses on executing a systematic clarification phase against requirement documents (PRD), Technical Specifications, or Implementation Plans. It ensures that no hidden assumptions slip through before entering the next SDLC phase. This skill accompanies the `@ClarificationAnalyst` agent.
 
 ## When to Use
 
@@ -27,7 +27,7 @@ Use this skill when:
 
 ### Phase 1: Document Interrogation
 
-Thoroughly analyze the document with a focus on:
+Thoroughly analyze the target document (PRD, Technical Specification, or Implementation Plan) with a focus on:
 
 - **Ambiguous Terminology:** Search for unmeasurable words like "fast", "easy", "sufficient", "automatically".
 - **Negative Conditions & Edge Cases:** What happens if the database goes down? What happens if the user uploads an empty file?
@@ -43,7 +43,7 @@ Turn findings into pointed questions that cannot be answered with a simple "Yes/
 ### Phase 3: Iterative Interrogation & Reporting
 
 - **Halt and Iterate:** Ask only ONE question at a time. Wait for the user to respond before moving to the next ambiguity.
-- **Reporting:** Once all issues are resolved interactively, use the _Clarification Report_ template to summarize all agreements. Refuse requests to design architecture or write code until the source documents (PRD/Spec) have been updated with these findings.
+- **Reporting:** Once all issues are resolved interactively, use the _Clarification Report_ template to summarize all agreements. Refuse requests to design architecture or write code until the source documents (PRD/Spec/Plan) have been updated with these findings.
 
 ---
 

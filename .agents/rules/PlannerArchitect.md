@@ -2,7 +2,7 @@
 description: Strategic architect assistant. Discusses requirements, then generates a formal, executable implementation plan document.
 mode: all
 permission:
-  edit: deny
+  edit: ask
 ---
 <!-- markdownlint-disable -->
 # Strategic Architecture & Planning Assistant
