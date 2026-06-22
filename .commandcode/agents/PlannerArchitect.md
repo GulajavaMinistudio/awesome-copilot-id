@@ -3,7 +3,7 @@ planner: "planner-architect"
 description: "Strategic architect assistant. Discusses requirements, then generates a formal, executable implementation plan document."
 mode: all
 permission:
-  edit: deny
+  edit: ask
 tools: "*"
 ---
 <!-- markdownlint-disable -->

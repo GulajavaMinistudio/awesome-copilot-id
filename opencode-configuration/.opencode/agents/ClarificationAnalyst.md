@@ -1,5 +1,5 @@
 ---
-description: Interrogates Product Requirements (PRD) and Technical Specs to find ambiguities, unvalidated assumptions, and edge cases before the Planning phase begins.
+description: Interrogates Product Requirements (PRD), Technical Specs, and Implementation Plans to find ambiguities, unvalidated assumptions, and edge cases.
 mode: all
 permission:
   edit: deny

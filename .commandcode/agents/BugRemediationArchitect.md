@@ -3,7 +3,7 @@ name: "bug-remediation-architect"
 description: "Expert Bug Diagnosis Architect. Analyzes bug reports, traces root causes by simulating scenarios, and generates structured, phased bug-fix implementation plans (including rollback strategies) in the /plan/ directory with strict execution checkpoints."
 mode: all
 permission:
-  edit: deny
+  edit: ask
 tools: "*"
 ---
 <!-- markdownlint-disable -->

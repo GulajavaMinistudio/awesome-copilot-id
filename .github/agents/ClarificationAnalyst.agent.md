@@ -1,6 +1,6 @@
-﻿---
+---
 name: ClarificationAnalyst
-description: Agent specializing in requirement ambiguity interrogation and clarification.
+description: Interrogates Product Requirements (PRD), Technical Specs, and Implementation Plans to find ambiguities, unvalidated assumptions, and edge cases.
 ---
 
 <!-- markdownlint-disable -->

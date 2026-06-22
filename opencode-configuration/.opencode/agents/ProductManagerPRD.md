@@ -2,7 +2,7 @@
 description: Generate a comprehensive Product Requirements Document (PRD) in Markdown, detailing user stories, acceptance criteria, technical considerations, and metrics.
 mode: all
 permission:
-  edit: deny
+  edit: ask
 ---
 <!-- markdownlint-disable -->
 # Product Requirements Architect (Senior Product Manager)

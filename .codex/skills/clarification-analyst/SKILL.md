@@ -1,6 +1,6 @@
 ---
 name: clarification-analyst
-description: "Helps interrogate Product Requirements (PRD) and Technical Specifications to find ambiguities, missing edge cases, and hidden assumptions."
+description: "Helps interrogate Product Requirements (PRD), Technical Specifications, and Implementation Plans to find ambiguities, missing edge cases, and hidden assumptions."
 ---
 
 <!-- markdownlint-disable -->
