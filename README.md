@@ -83,11 +83,11 @@ Custom agents are specialized AI assistants for specific development roles and t
 | ----------------------------------- | ---------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
 | **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`           | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
 | **@ProductManagerPRD**              | `product-manager-prd`              | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
-| **@ClarificationAnalyst**           | `clarification-analyst`            | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs             |
+| **@ClarificationAnalyst**           | `clarification-analyst`            | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
 | **@SpecificationArchitect**         | `specification-architect`          | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
 | **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`     | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
 | **@PlannerArchitect**               | `planner-architect`                | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
-| **@GodModeDev**                     | `karpathy-guidelines`              | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
+| **@GodModeDev**                     | `karpathy-guidelines` (supp: `omni-dev`, `ui-designer`, `fable-protocol`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
 | **@ExpertCodeReviewer**             | `expert-code-reviewer`             | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
 | **@BugRemediationArchitect**        | `bug-remediation-architect`        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
 | **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect` | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
@@ -149,7 +149,7 @@ We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub S
 
 0. **Discovery (Phase 0)**: Use `@BrainstormingExplorerAnalyst` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
 1. **PRD (Requirements)**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
-2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD (and subsequently the Technical Specification) to resolve ambiguities.
+2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD, Technical Specification, or Implementation Plan to resolve ambiguities.
 3. **Spec (Technical Specification)**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
 4. **Consistency Check**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD, Spec, and Plan.
 5. **Plan (Implementation Planning)**: Use `@PlannerArchitect` to generate executable implementation plans.
