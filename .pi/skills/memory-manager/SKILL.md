@@ -23,13 +23,14 @@ This skill provides a standardized protocol for managing the project's persisten
 
 > **⚠️ DIRECTIVE:** This workflow MUST be executed before ANY read or write operation. Never hardcode or assume the memory file path.
 
-1. **Search for `memory.instructions.md`** across ALL of the following directories:
-   - `.commandcode/instructions/`
-   - `.opencode/instructions/`
-   - `.github/instructions/`
-   - `.agents/instructions/`
-   - `instructions/` (at the project root)
-2. **Use tools** such as `list_dir` or file search to check EVERY location.
+1. **Search recursively for `memory.instructions.md`** across ALL subdirectories within the project, prioritizing the following instruction roots and their subfolders:
+   - `.pi/instructions/` (and subfolders)
+   - `.commandcode/instructions/` (and subfolders)
+   - `.opencode/instructions/` (and subfolders)
+   - `.github/instructions/` (and subfolders)
+   - `.agents/instructions/` (and subfolders)
+   - `instructions/` (and subfolders at the project root)
+2. **Use recursive search tools** (such as `grep_search` searching for filename `memory.instructions.md` or glob patterns like `**/memory.instructions.md`) to scan across subfolders, ignoring build/vendor folders (`node_modules`, `.git`, `dist`).
 3. **Resolution:**
    - **If exactly ONE file is FOUND:** Lock the discovered path as the target for all subsequent read/write operations in this session.
    - **If MULTIPLE files are FOUND:** You MUST pause and present the list of found paths to the user. Ask the user which path should be locked as the active memory for this session. Do NOT proceed until the user explicitly chooses one.
@@ -97,9 +98,6 @@ Use this workflow to persist progress after a significant milestone.
 - **Achieved Milestones:**
   - [Concise description of what was accomplished]
   - [Another achievement, if any]
-- **Dead-Ends (Do NOT Repeat):**
-  - **Attempted:** [Approach that was tried and failed]
-  - **Reason:** [Why it failed / root cause]
 - **Updated Files:**
   - `[relative/path/to/file1]` — [Brief description of change]
   - `[relative/path/to/file2]` — [Brief description of change]

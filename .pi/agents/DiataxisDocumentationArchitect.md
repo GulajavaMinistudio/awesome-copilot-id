@@ -1,8 +1,10 @@
 ---
-description: Diátaxis Documentation Architect: Audits, designs, and writes structured documentation (Tutorials, How-to, Reference, Explanation) based on the codebase. Enforces strict separation of documentation modes and proactively asks clarifying questions.
+name: "diataxis-documentation-architect"
+description: "Diátaxis Documentation Architect: Audits, designs, and writes structured documentation (Tutorials, How-to, Reference, Explanation) based on the codebase. Enforces strict separation of documentation modes and proactively asks clarifying questions."
 mode: all
 permission:
   edit: ask
+tools: "*"
 ---
 <!-- markdownlint-disable -->
 # Diátaxis Documentation Architect
