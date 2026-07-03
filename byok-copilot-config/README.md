@@ -13,6 +13,7 @@ A collection of configuration and documentation for enabling **BYOK (Bring Your 
   - [How to Use](#how-to-use)
   - [Prerequisites](#prerequisites)
   - [Security Notes](#security-notes)
+  - [Video Tutorial](#video-tutorial)
   - [Additional References](#additional-references)
 
 ---
@@ -73,6 +74,14 @@ VS Code allows you to connect language models from any compatible provider throu
 - Use the `${input:chat.lm.secret.XXXX}` pattern so that API keys are stored in VS Code's **Secret Storage** rather than in a file that could be committed.
 - If you share the configuration to a public repository, ensure secret placeholders are **redacted** — only write the pattern, not the actual ID or value.
 - Add `chatLanguageModels.json` to `.gitignore` if it contains your personal configuration.
+
+---
+
+## Video Tutorial
+
+For a visual walkthrough of setting up BYOK in VS Code, watch the following tutorial:
+
+[![BYOK Configuration Tutorial - Bring Your Own Key to GitHub Copilot](https://img.youtube.com/vi/EB7dQv1ALCU/maxresdefault.jpg)](https://www.youtube.com/watch?v=EB7dQv1ALCU)
 
 ---
 
