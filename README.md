@@ -17,8 +17,8 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - **🤖 Custom Agents**: Specialized AI agents for different development scenarios (PRD, Specification, Planning, Coding, Review).
 - **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
 - **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
-- **� BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
-- **�🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
+- **🔑 BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
+- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
 
 ## 🚀 Getting Started
 
@@ -358,7 +358,7 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 - **Markdown links**: Reference other workspace files using relative paths
 - **Tool references**: Use `#tool:toolName` syntax (e.g., `#tool:githubRepo`)
 
-## � BYOK Copilot Config
+## 🔑 BYOK Copilot Config
 
 A ready-to-use configuration template for enabling **BYOK (Bring Your Own Key)** on GitHub Copilot in Visual Studio Code. Use your own API keys from various providers (OpenRouter, DeepSeek, Opencode Zen, Opencode Go, Kilo Gateway, and others) to extend the list of available chat models.
 
@@ -367,7 +367,7 @@ A ready-to-use configuration template for enabling **BYOK (Bring Your Own Key)**
 
 See the full documentation and setup guide: [byok-copilot-config/](byok-copilot-config/)
 
-## �🛠️ Customization
+## 🛠️ Customization
 
 You can implement customizations incrementally, starting with the simplest options and gradually adding more complexity as needed.
 
@@ -530,3 +530,4 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 ## **Made with ❤️ for Indonesian Developers**
+

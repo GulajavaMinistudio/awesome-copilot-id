@@ -1,0 +1,16 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^powershell -ExecutionPolicy Bypass -File verify-all-emoji\\.ps1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^powershell -ExecutionPolicy Bypass -File fix-customization\\.ps1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^powershell -Command \"Get-ChildItem -Filter \\*\\.ps1 \\| Select-Object Name\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

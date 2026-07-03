@@ -25,6 +25,7 @@ This documentation explains how to configure **BYOK (Bring Your Own Key)** in Vi
     - [Provider-Level Properties](#provider-level-properties)
   - [Real-World Configuration Example](#real-world-configuration-example)
     - [Explanation of the Example Structure Above](#explanation-of-the-example-structure-above)
+  - [Security Notes](#security-notes)
   - [Model Property Reference](#model-property-reference)
   - [Updating Provider Details](#updating-provider-details)
   - [Configuring Models for Other Features](#configuring-models-for-other-features)
@@ -71,6 +72,8 @@ VS Code provides **three options** for adding new language models:
 ## Adding Models from Built-in Providers
 
 VS Code provides a ready-to-use list of built-in providers. To add a model from one of these providers:
+
+![Add Models dropdown showing built-in providers and Custom Endpoint option](img/screen1a.png)
 
 1. Open the **Language Models editor** by selecting the **gear icon (Manage Language Models)** from the model picker in the Chat panel, or run the `Chat: Manage Language Models` command from the Command Palette.
 2. Select **Add Models**, then choose a model provider from the list that appears.
@@ -183,6 +186,8 @@ Its structure is a **JSON array** with two configuration levels:
 
 1. **Provider-level** — information about the provider (name, vendor, API key, model list).
 2. **Model-level** — details for each model (id, url, capabilities, context window, etc.).
+
+![Language Models editor showing all configured providers and their models](img/screen1.png)
 
 ### Provider-Level Properties
 
@@ -532,6 +537,31 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
 - Some models in **Opencode Go** (`minimax-m3`, `minimax-m2.7`, `qwen3.7-max`, `qwen3.7-plus`) use `apiType: messages` at the model level to override the provider's `apiType`, since those endpoints use the Messages API.
 - The `settings` block is **optional** and is only used to set the default `reasoningEffort` per model on a specific provider.
 - All secret API keys use the `${input:chat.lm.secret.XXXX}` pattern which references VS Code's **Secret Storage**. When VS Code first loads the configuration, it will prompt you to enter the API key for each placeholder.
+
+![Chat model picker showing BYOK models grouped by provider alongside built-in Copilot models](img/screen2.png)
+
+![Chat model picker with pinned favorite models at the top of the list](img/screen2a.png)
+
+After saving the configuration, the Language Models editor will display all configured provider groups with their models, context sizes, and capabilities:
+
+![Language Models editor showing configured provider groups with their models and capabilities](img/screen3.png)
+
+The chat model picker will then show all available models grouped by provider. Pinned models appear at the top for quick access, and models requiring a paid plan show an **Upgrade** badge:
+
+![Chat model picker with pinned models, provider groups, and upgrade badges](img/screen4.png)
+
+Scrolling down in the model picker reveals additional models from other providers such as **Opencode Go**, with popular models like Kimi, Qwen, and MiMo available for selection:
+
+![Chat model picker showing additional models from Opencode Go and other providers](img/screen5.png)
+
+---
+
+## Security Notes
+
+- **Never** write API keys in _plaintext_ inside `chatLanguageModels.json`, regardless of whether the file is stored in a public or private repository.
+- The `${input:chat.lm.secret.XXXX}` pattern stores API keys in VS Code's **Secret Storage** rather than in a file that could be committed. If you share the configuration to a public repository, ensure placeholders are **redacted** — write only the pattern, not the actual ID or value.
+- Add your personal `chatLanguageModels.json` to `.gitignore` if it contains your personal configuration outside this template.
+- For **Copilot Business/Enterprise** users, the organization administrator must enable the **Bring Your Own Language Model Key in VS Code** policy in [Copilot policy settings](https://github.com/settings/copilot/features) on GitHub.com before BYOK can be used.
 
 ---
 

@@ -26,14 +26,17 @@ VS Code allows you to connect language models from any compatible provider throu
 - Copy a proven `chatLanguageModels.json` configuration example.
 - Configure models for other features (inline chat, utility tasks, etc.).
 
+![Language Models editor showing configured BYOK providers and their models](img/screen1.png)
+
 ---
 
 ## Folder Contents
 
-| File                     | Description                                                                                    |
+| File / Folder            | Description                                                                                    |
 | ------------------------ | ---------------------------------------------------------------------------------------------- |
 | `byok-config-copilot.md` | Complete BYOK documentation for GitHub Copilot in VS Code, including model property references |
 | `README.md`              | This file — the entry point and folder overview                                                |
+| `img/`                   | Screenshot images referenced in both `README.md` and `byok-config-copilot.md`                  |
 
 ---
 
@@ -50,6 +53,8 @@ VS Code allows you to connect language models from any compatible provider throu
 - **Windows**: `%APPDATA%\Code\User\chatLanguageModels.json`
 - **macOS**: `~/Library/Application Support/Code/User/chatLanguageModels.json`
 - **Linux**: `~/.config/Code/User/chatLanguageModels.json`
+
+![Chat model picker showing BYOK models alongside built-in Copilot models, with pinned favorites](img/screen2a.png)
 
 ---
 
