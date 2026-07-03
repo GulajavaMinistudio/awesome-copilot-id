@@ -1,7 +1,7 @@
 # Awesome Copilot Indonesia 🇮🇩
 <!-- markdownlint-disable -->
 
-A curated collection of custom agents, skills, rules, and prompts. Originally for **GitHub Copilot**, this collection now fully supports **OpenCode**, **Google Antigravity**, **CommandCode**, **ChatGPT Codex**, and **Pi Dev Coding Agent**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
+A curated collection of custom agents, skills, rules, and prompts. Originally for **GitHub Copilot**, this collection now fully supports **OpenCode**, **Google Antigravity**, **CommandCode**, **ChatGPT Codex**, **Pi Dev Coding Agent**, and **Oh My Pi (`omp`)**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -17,7 +17,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - **🤖 Custom Agents**: Specialized AI agents for different development scenarios (PRD, Specification, Planning, Coding, Review).
 - **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
 - **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
-- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), and Pi Dev Coding Agent (`.pi`).
+- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
 
 ## 🚀 Getting Started
 
@@ -29,7 +29,8 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
   - **Google Antigravity**
   - **GitHub Copilot** (Individual, Business, or Enterprise)
   - **ChatGPT Codex**
-  - **Pi Dev Coding Agent**
+  - **Pi Dev Coding Agent** ([pi.dev](https://pi.dev/))
+  - **Oh My Pi (`omp`)** ([omp.sh](https://omp.sh/))
 
 ### Installation
 
@@ -46,6 +47,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
    - For **GitHub Copilot**: Copy the `.github` directory to your project root.
    - For **ChatGPT Codex**: Copy the `.codex` directory to your project root.
    - For **Pi Dev Coding Agent**: Copy the `.pi` directory to your project root.
+   - For **Oh My Pi (`omp`)**: Copy the `.omp` directory to your project root.
 
    > [!IMPORTANT]
    > **Don't copy everything!** Only select the agents, skills, or rules that match your development needs.
@@ -79,7 +81,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 
 ## 🤖 Custom Agents
 
-Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.commandcode/agents/`, `.agents/rules/`, `.opencode/agents/`, `.github/agents/`, `.codex/agents/`, or `.pi/agents/`).
+Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.commandcode/agents/`, `.agents/rules/`, `.opencode/agents/`, `.github/agents/`, `.codex/agents/`, `.pi/agents/`, or `.omp/agents/`).
 
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these agents. This file contains the core SDLC rules that all agents must follow. See [Step #3 in Installation](#installation) for details.
@@ -99,7 +101,7 @@ Custom agents are specialized AI assistants for specific development roles and t
 
 ### How to Use Custom Agents
 
-Depending on your platform (CommandCode, OpenCode, Antigravity, Copilot, ChatGPT Codex, or Pi Dev Coding Agent), you can usually invoke these agents via chat:
+Depending on your platform (CommandCode, OpenCode, Antigravity, Copilot, ChatGPT Codex, Pi Dev, or Oh My Pi `omp`), you can usually invoke these agents via chat:
 
 ```text
 @GodModeDev implement the shopping cart based on the plan
@@ -109,7 +111,7 @@ Depending on your platform (CommandCode, OpenCode, Antigravity, Copilot, ChatGPT
 
 ## 🤹 Skills
 
-Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.commandcode/skills`, `.agents/skills`, `.opencode/skills`, `.codex/skills`, or `.pi/skills`).
+Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.commandcode/skills`, `.agents/skills`, `.opencode/skills`, `.codex/skills`, `.pi/skills`, or `.omp/skills`).
 
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these skills. This file contains the core SDLC rules that all agents and skills must follow. See [Step #3 in Installation](#installation) for details.
@@ -202,7 +204,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ### 🌟 Best Practices
 
 1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `@GodModeDev` for coding.
-2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.commandcode`, `.opencode`, `.agents`, `.github`, `.codex`, or `.pi`).
+2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.commandcode`, `.opencode`, `.agents`, `.github`, `.codex`, `.pi`, or `.omp`).
 3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
 4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
 5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
@@ -266,7 +268,7 @@ graph TD
 
 ## 📝 Instructions
 
-Instructions are rules and guidelines that your AI Assistant follows when generating code. Place them in your platform's respective directory (`.commandcode/instructions/`, `.github/instructions/`, `.opencode/instructions/`, `.agents/rules/`, or `.pi/instructions/`).
+Instructions are rules and guidelines that your AI Assistant follows when generating code. Place them in your platform's respective directory (`.commandcode/instructions/`, `.github/instructions/`, `.opencode/instructions/`, `.agents/rules/`, `.pi/instructions/`, or `.omp/instructions/`).
 
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these instructions. This file contains the core SDLC rules that bind all instructions. See [Step #3 in Installation](#installation) for details.

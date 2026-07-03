@@ -24,6 +24,7 @@ This skill provides a standardized protocol for managing the project's persisten
 > **⚠️ DIRECTIVE:** This workflow MUST be executed before ANY read or write operation. Never hardcode or assume the memory file path.
 
 1. **Search recursively for `memory.instructions.md`** across ALL subdirectories within the project, prioritizing the following instruction roots and their subfolders:
+   - `.omp/instructions/` (and subfolders)
    - `.pi/instructions/` (and subfolders)
    - `.commandcode/instructions/` (and subfolders)
    - `.opencode/instructions/` (and subfolders)
