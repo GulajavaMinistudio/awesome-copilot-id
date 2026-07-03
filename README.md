@@ -17,7 +17,8 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - **🤖 Custom Agents**: Specialized AI agents for different development scenarios (PRD, Specification, Planning, Coding, Review).
 - **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
 - **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
-- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
+- **� BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
+- **�🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
 
 ## 🚀 Getting Started
 
@@ -86,18 +87,18 @@ Custom agents are specialized AI assistants for specific development roles and t
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these agents. This file contains the core SDLC rules that all agents must follow. See [Step #3 in Installation](#installation) for details.
 
-| Agent                               | Associated Skill                   | Description                                          | Best For                                                            |
-| ----------------------------------- | ---------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`           | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
-| **@ProductManagerPRD**              | `product-manager-prd`              | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
-| **@ClarificationAnalyst**           | `clarification-analyst`            | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
-| **@SpecificationArchitect**         | `specification-architect`          | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
-| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`     | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
-| **@PlannerArchitect**               | `planner-architect`                | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
+| Agent                               | Associated Skill                                                          | Description                                          | Best For                                                            |
+| ----------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`                                                  | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
+| **@ProductManagerPRD**              | `product-manager-prd`                                                     | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
+| **@ClarificationAnalyst**           | `clarification-analyst`                                                   | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
+| **@SpecificationArchitect**         | `specification-architect`                                                 | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
+| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`                                            | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
+| **@PlannerArchitect**               | `planner-architect`                                                       | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
 | **@GodModeDev**                     | `karpathy-guidelines` (supp: `omni-dev`, `ui-designer`, `fable-protocol`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
-| **@ExpertCodeReviewer**             | `expert-code-reviewer`             | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
-| **@BugRemediationArchitect**        | `bug-remediation-architect`        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
-| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect` | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
+| **@ExpertCodeReviewer**             | `expert-code-reviewer`                                                    | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
+| **@BugRemediationArchitect**        | `bug-remediation-architect`                                               | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
+| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect`                                        | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
 
 ### How to Use Custom Agents
 
@@ -119,7 +120,7 @@ Skills provide agents with specialized capabilities, workflows, and prompts. The
 | Skill                                | Description                                                                                                                                                         |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **brainstorming-explorer**           | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                                                                     |
-| **memory-manager**                   | Standardized workflow for reading/writing `memory.instructions.md` to persist context (supports recursive sub-folder discovery)                                       |
+| **memory-manager**                   | Standardized workflow for reading/writing `memory.instructions.md` to persist context (supports recursive sub-folder discovery)                                     |
 | **karpathy-guidelines**              | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                                                                     |
 | **omni-dev**                         | Omni-expert principal software architect. Enforces clean code, clean architecture, deep reasoning, mandatory testing, and strict anti-ambiguity protocols           |
 | **product-manager-prd**              | Workflow to generate comprehensive PRDs                                                                                                                             |
@@ -357,7 +358,16 @@ tools: ["edit", "search", "runCommands"]  # Available tools
 - **Markdown links**: Reference other workspace files using relative paths
 - **Tool references**: Use `#tool:toolName` syntax (e.g., `#tool:githubRepo`)
 
-## 🛠️ Customization
+## � BYOK Copilot Config
+
+A ready-to-use configuration template for enabling **BYOK (Bring Your Own Key)** on GitHub Copilot in Visual Studio Code. Use your own API keys from various providers (OpenRouter, DeepSeek, Opencode Zen, Opencode Go, Kilo Gateway, and others) to extend the list of available chat models.
+
+> [!NOTE]
+> BYOK models work without a GitHub account or Copilot plan and are used for chat and utility tasks only. Some features (semantic search, inline suggestions, embeddings) still require GitHub Copilot.
+
+See the full documentation and setup guide: [byok-copilot-config/](byok-copilot-config/)
+
+## �🛠️ Customization
 
 You can implement customizations incrementally, starting with the simplest options and gradually adding more complexity as needed.
 
@@ -506,6 +516,8 @@ Please feel free to submit a Pull Request.
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
 - [VS Code GitHub Copilot Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [Awesome Copilot](https://github.com/github/awesome-copilot) - A curated list of GitHub Copilot resources, extensions, and examples
+- [VS Code BYOK Documentation](https://code.visualstudio.com/docs/agent-customization/language-models) - Official guide for bringing your own language model keys
+- [BYOK Config Template](byok-copilot-config/) - Pre-built `chatLanguageModels.json` template included in this repository
 
 ## ⭐ Support
 
