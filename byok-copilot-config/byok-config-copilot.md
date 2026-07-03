@@ -362,7 +362,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
     ],
     "settings": {
       "deepseek-v4-flash-free": {
-        "reasoningEffort": "max"
+        "reasoningEffort": "high"
       },
       "mimo-v2.5-free": {
         "reasoningEffort": "max"
@@ -410,7 +410,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
         "name": "Kimi K2.7 Code",
         "url": "https://opencode.ai/zen/go/v1",
         "toolCalling": true,
-        "vision": true,
+        "vision": false,
         "maxInputTokens": 256000,
         "maxOutputTokens": 16000,
         "thinking": true,
@@ -421,7 +421,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
         "name": "Kimi K2.6",
         "url": "https://opencode.ai/zen/go/v1",
         "toolCalling": true,
-        "vision": true,
+        "vision": false,
         "maxInputTokens": 256000,
         "maxOutputTokens": 16000,
         "thinking": true,
@@ -432,7 +432,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
         "name": "DeepSeek V4 Pro",
         "url": "https://opencode.ai/zen/go/v1",
         "toolCalling": true,
-        "vision": true,
+        "vision": false,
         "maxInputTokens": 384000,
         "maxOutputTokens": 16000,
         "thinking": true,
@@ -443,7 +443,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
         "name": "DeepSeek V4 Flash",
         "url": "https://opencode.ai/zen/go/v1",
         "toolCalling": true,
-        "vision": true,
+        "vision": false,
         "maxInputTokens": 384000,
         "maxOutputTokens": 16000,
         "thinking": true,
@@ -465,7 +465,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
         "name": "MiMo-V2.5-Pro",
         "url": "https://opencode.ai/zen/go/v1",
         "toolCalling": true,
-        "vision": true,
+        "vision": false,
         "maxInputTokens": 256000,
         "maxOutputTokens": 16000,
         "thinking": true,
@@ -489,7 +489,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
         "url": "https://opencode.ai/zen/go/v1",
         "apiType": "messages",
         "toolCalling": true,
-        "vision": true,
+        "vision": false,
         "maxInputTokens": 256000,
         "maxOutputTokens": 16000,
         "thinking": true,
@@ -523,6 +523,12 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
     "settings": {
       "minimax-m3": {
         "reasoningEffort": "max"
+      },
+      "glm-5.2": {
+        "reasoningEffort": "high"
+      },
+      "mimo-v2.5": {
+        "reasoningEffort": "max"
       }
     }
   }
@@ -535,6 +541,7 @@ Below is an example of a `chatLanguageModels.json` file commonly used by develop
 - **Copilot** & **Copilot CLI** (`vendor: copilot`) — uses built-in Copilot models, only requires setting `reasoningEffort` per model in the `settings` block.
 - **Deepseek Platform, Kilo Gateway, Opencode Zen, OpenRouter-AutoFree, Opencode Go** (`vendor: customendpoint`) — custom endpoints compatible with the Chat Completions API, with explicitly declared models.
 - Some models in **Opencode Go** (`minimax-m3`, `minimax-m2.7`, `qwen3.7-max`, `qwen3.7-plus`) use `apiType: messages` at the model level to override the provider's `apiType`, since those endpoints use the Messages API.
+- Some models in **Opencode Go** (`kimi-k2.7-code`, `kimi-k2.6`, `deepseek-v4-pro`, `deepseek-v4-flash`, `mimo-v2.5-pro`, `minimax-m2.7`) have `vision: false` because those model variants do not support image inputs.
 - The `settings` block is **optional** and is only used to set the default `reasoningEffort` per model on a specific provider.
 - All secret API keys use the `${input:chat.lm.secret.XXXX}` pattern which references VS Code's **Secret Storage**. When VS Code first loads the configuration, it will prompt you to enter the API key for each placeholder.
 
