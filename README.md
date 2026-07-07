@@ -35,10 +35,31 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 
 ### Installation
 
+Choose either the **Automated (recommended)** or **Manual** installation method:
+
+#### Method 1: Automated Installation (One-Liner)
+
+Run the following command in your terminal inside your project root directory:
+
+*   **Linux / macOS (Bash/Zsh):**
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash
+    ```
+*   **Windows Terminal (PowerShell):**
+    ```powershell
+    irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex
+    ```
+
+The interactive script will download the repository, prompt you to choose your platform configuration, copy the files, and safely handle existing configuration files (such as `memory.instructions.md` and `AGENTS.md`) by offering options to keep, replace, or merge them.
+
+---
+
+#### Method 2: Manual Installation
+
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/awesome-copilot-id.git
+   git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git
    ```
 
 2. **Choose your platform configuration**:
