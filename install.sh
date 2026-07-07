@@ -12,7 +12,8 @@ NC='\033[0m' # No Color
 echo -e "${CYAN}=== Awesome Copilot ID - Installer ===${NC}"
 
 # 1. Define target directory (default: current directory)
-read -p "Enter your target project path (default: .): " TARGET_PATH
+# Redirect stdin from /dev/tty to allow reading from keyboard when piped via curl
+read -p "Enter your target project path (default: .): " TARGET_PATH < /dev/tty
 TARGET_PATH=${TARGET_PATH:-.}
 
 # Convert to absolute path if possible
@@ -93,7 +94,7 @@ echo -e "5) ${GREEN}ChatGPT Codex${NC} (.codex)"
 echo -e "6) ${GREEN}Pi Dev Coding Agent${NC} (.pi)"
 echo -e "7) ${GREEN}Oh My Pi${NC} (.omp)"
 echo -e "8) ${GREEN}All Platforms${NC} (Install all configurations above)"
-read -p "Enter your choice (1-8): " CHOICE
+read -p "Enter your choice (1-8): " CHOICE < /dev/tty
 
 PLATFORM_DIRS=()
 case $CHOICE in
@@ -124,7 +125,7 @@ for dir in "${PLATFORM_DIRS[@]}"; do
             if [ ${#MEMORY_FILES[@]} -gt 0 ]; then
                 for mem_file in "${MEMORY_FILES[@]}"; do
                     echo -e "${YELLOW}Found pre-existing memory file: $mem_file${NC}"
-                    read -p "Do you want to: [k]eep the existing file, or [r]eplace it with the template? (K/r): " MEM_CHOICE
+                    read -p "Do you want to: [k]eep the existing file, or [r]eplace it with the template? (K/r): " MEM_CHOICE < /dev/tty
                     MEM_CHOICE=${MEM_CHOICE:-k}
                     
                     if [[ "$MEM_CHOICE" =~ ^[Rr]$ ]]; then
@@ -141,7 +142,7 @@ for dir in "${PLATFORM_DIRS[@]}"; do
                 done
             fi
             
-            read -p "Folder '$dir' already exists in target. Overwrite entire folder? (y/N): " CONFIRM
+            read -p "Folder '$dir' already exists in target. Overwrite entire folder? (y/N): " CONFIRM < /dev/tty
             CONFIRM=${CONFIRM:-n}
             if [[ "$CONFIRM" =~ ^[Yy]$ ]]; then
                 rm -rf "$DST_DIR"
@@ -183,7 +184,7 @@ DST_AGENTS="$TARGET_PATH/AGENTS.md"
 if [ -f "$SRC_AGENTS" ]; then
     if [ -f "$DST_AGENTS" ]; then
         echo -e "${YELLOW}File 'AGENTS.md' already exists in target.${NC}"
-        read -p "Do you want to: [k]eep existing, [r]eplace with template, or [m]erge them? (K/r/m): " AGENTS_CHOICE
+        read -p "Do you want to: [k]eep existing, [r]eplace with template, or [m]erge them? (K/r/m): " AGENTS_CHOICE < /dev/tty
         AGENTS_CHOICE=${AGENTS_CHOICE:-k}
         
         if [[ "$AGENTS_CHOICE" =~ ^[Rr]$ ]]; then
