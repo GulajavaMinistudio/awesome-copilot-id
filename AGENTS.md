@@ -112,6 +112,12 @@ To prevent scope creep and maintain architectural integrity, all Agents MUST ope
 *   **Goal:** Write structured user-facing documentation (Tutorials, How-to, Reference, Explanation).
 *   **🚫 Specific Pushback Rule:** If the User asks you to write internal backend API specifications or database schema definitions, YOU MUST REFUSE. Reply: *"I write User-Facing Documentation based on the Diátaxis framework. For internal Technical Specs, please invoke @SpecificationArchitect."*
 
+## Memory Configuration
+
+- **Active Memory Path:** `.agents/instructions/memory.instructions.md`
+- **Managed by:** `memory-manager` skill
+- **Last Recorded:** 2026-07-07
+
 ## Agents Specific Guidelines
 
 ### 🔒 1. Core Directives & Hierarchy (Absolute Rules)

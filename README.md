@@ -117,22 +117,22 @@ Skills provide agents with specialized capabilities, workflows, and prompts. The
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these skills. This file contains the core SDLC rules that all agents and skills must follow. See [Step #3 in Installation](#installation) for details.
 
-| Skill                                | Description                                                                                                                                                         |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **brainstorming-explorer**           | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                                                                     |
-| **memory-manager**                   | Standardized workflow for reading/writing `memory.instructions.md` to persist context (supports recursive sub-folder discovery)                                     |
-| **karpathy-guidelines**              | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                                                                     |
-| **omni-dev**                         | Omni-expert principal software architect. Enforces clean code, clean architecture, deep reasoning, mandatory testing, and strict anti-ambiguity protocols           |
-| **product-manager-prd**              | Workflow to generate comprehensive PRDs                                                                                                                             |
-| **clarification-analyst**            | Interrogates requirements for hidden assumptions and edge cases                                                                                                     |
-| **specification-architect**          | Generates detailed technical specs based on clarified requirements                                                                                                  |
-| **ui-designer**                      | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive, non-templated interfaces with opinionated aesthetics, deliberate typography, and exact UX copy |
-| **artifact-consistency-checker**     | Validates traceability across documents to prevent missing coverage                                                                                                 |
-| **planner-architect**                | Generates formal executable implementation plans                                                                                                                    |
-| **expert-code-reviewer**             | Code review and security audit against Clean Code principles                                                                                                        |
-| **bug-remediation-architect**        | Workflow for tracing root causes and generating bug-fix strategies                                                                                                  |
-| **diataxis-documentation-architect** | Audits and writes structured documentation based on Diátaxis Framework                                                                                              |
-| **fable-protocol**                   | An advanced, autonomous AI agent skill designed to execute complex, multi-step, and long-horizon tasks with high reliability and minimal human interruption         |
+| Skill                                | Description                                                                                                                                                                                        |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **brainstorming-explorer**           | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                                                                                                    |
+| **memory-manager**                   | Standardized workflow for discovering, reading, writing, and compacting `memory.instructions.md` with a permanent Knowledge Base for cross-session decisions and fast-path discovery via AGENTS.md |
+| **karpathy-guidelines**              | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                                                                                                    |
+| **omni-dev**                         | Omni-expert principal software architect. Enforces clean code, clean architecture, deep reasoning, mandatory testing, and strict anti-ambiguity protocols                                          |
+| **product-manager-prd**              | Workflow to generate comprehensive PRDs                                                                                                                                                            |
+| **clarification-analyst**            | Interrogates requirements for hidden assumptions and edge cases                                                                                                                                    |
+| **specification-architect**          | Generates detailed technical specs based on clarified requirements                                                                                                                                 |
+| **ui-designer**                      | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive, non-templated interfaces with opinionated aesthetics, deliberate typography, and exact UX copy                                |
+| **artifact-consistency-checker**     | Validates traceability across documents to prevent missing coverage                                                                                                                                |
+| **planner-architect**                | Generates formal executable implementation plans                                                                                                                                                   |
+| **expert-code-reviewer**             | Code review and security audit against Clean Code principles                                                                                                                                       |
+| **bug-remediation-architect**        | Workflow for tracing root causes and generating bug-fix strategies                                                                                                                                 |
+| **diataxis-documentation-architect** | Audits and writes structured documentation based on Diátaxis Framework                                                                                                                             |
+| **fable-protocol**                   | An advanced, autonomous AI agent skill designed to execute complex, multi-step, and long-horizon tasks with high reliability and minimal human interruption                                        |
 
 ### Agent and Skill Configuration File Structure
 
