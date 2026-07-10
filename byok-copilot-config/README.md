@@ -1,6 +1,6 @@
 # BYOK Copilot Config
 <!-- markdownlint-disable -->
-A collection of configuration and documentation for enabling **BYOK (Bring Your Own Key)** on GitHub Copilot in Visual Studio Code. This folder is intended for developers who want to use their **own API key** from various language model providers (OpenRouter, DeepSeek, Opencode Zen, Opencode Go, and others) while working with Copilot in VS Code.
+A collection of configuration and documentation for enabling **BYOK (Bring Your Own Key)** on GitHub Copilot in Visual Studio Code. This folder is intended for developers who want to use their **own API key** from various language model providers (OpenRouter, DeepSeek, Opencode Zen, Opencode Go, Kilo Gateway, and others) while working with Copilot in VS Code.
 
 ---
 
@@ -62,7 +62,7 @@ VS Code allows you to connect language models from any compatible provider throu
 ## Prerequisites
 
 - **Visual Studio Code** version that supports BYOK configuration (check the official documentation for the minimum version).
-- **API key** from the model provider you want to use (OpenRouter, DeepSeek, Opencode Zen, etc.).
+- **API key** from the model provider you want to use (OpenRouter, DeepSeek, Opencode Zen, Kilo Gateway, etc.).
 - Optional: model provider extensions (e.g., AI Toolkit, Foundry Toolkit, Ollama) if you want to use local models or models from the extension marketplace.
 - For **Copilot Business/Enterprise** users, the organization administrator must enable the **Bring Your Own Language Model Key in VS Code** policy in [Copilot policy settings](https://github.com/settings/copilot/features) on GitHub.com first.
 

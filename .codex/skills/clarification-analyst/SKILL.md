@@ -15,7 +15,7 @@ description: "Helps interrogate Product Requirements (PRD), Technical Specificat
 
 ## Overview
 
-This skill focuses on executing a systematic clarification phase against requirement documents (PRD) or Technical Specifications. It ensures that no unvalidated assumptions slip through before entering the implementation phases (Planning & Coding). This skill accompanies the `@ClarificationAnalyst` agent.
+This skill focuses on executing a systematic clarification phase against requirement documents (PRD), Technical Specifications, or Implementation Plans. It ensures that no hidden assumptions slip through before entering the next SDLC phase. This skill accompanies the `@ClarificationAnalyst` agent.
 
 ## When to Use
 
@@ -32,23 +32,30 @@ Use this skill when:
 
 ### Phase 1: Document Interrogation
 
-Thoroughly analyze the document with a focus on:
+Thoroughly analyze the target document (PRD, Technical Specification, or Implementation Plan) with a focus on:
 
 - **Ambiguous Terminology:** Search for unmeasurable words like "fast", "easy", "sufficient", "automatically".
 - **Negative Conditions & Edge Cases:** What happens if the database goes down? What happens if the user uploads an empty file?
 - **Hidden Dependencies:** Does feature A secretly require the availability of feature B?
+- **Code Contradictions:** Cross-reference the stated requirements with the actual codebase. If the code behaves one way (e.g., cancels entire orders) but the plan suggests another (e.g., partial cancellation), surface the contradiction.
+- **Fuzzy Language:** Spot overloaded or imprecise terminology and propose canonical terms. When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `CONTEXT-FORMAT.md`.
 
 ### Phase 2: Formulating Sharp Questions (The "Grill Me" Approach)
 
 Turn findings into pointed questions that cannot be answered with a simple "Yes/No", and **always do the heavy lifting by providing concrete options.**
 
 - **Bad (Lazy):** "How should we handle the error if the connection drops?"
-- **Good (Heavy Lifting):** "If the connection is lost during compression, should we (A) Implement an automatic retry 3 times before failing, or (B) Fail immediately and show a manual 'Try Again' button to the user?"
+- **Good (Heavy Lifting + Recommendation):** "If the connection is lost during compression, should we (A) Implement an automatic retry 3 times before failing, or (B) Fail immediately and show a manual 'Try Again' button? **My recommendation is (A)** because it ensures a smoother UX on unstable networks, but what is your decision?"
 
 ### Phase 3: Iterative Interrogation & Reporting
 
 - **Halt and Iterate:** Ask only ONE question at a time. Wait for the user to respond before moving to the next ambiguity.
-- **Reporting:** Once all issues are resolved interactively, use the _Clarification Report_ template to summarize all agreements. Refuse requests to design architecture or write code until the source documents (PRD/Spec) have been updated with these findings.
+- **Reporting:** Once all issues are resolved interactively, use the _Clarification Report_ template to summarize all agreements. Refuse requests to design architecture or write code until the source documents (PRD/Spec/Plan) have been updated with these findings.
+
+### Phase 4: Artifact Generation (Domain & Decisions)
+
+- **CONTEXT.md (Inline Updates):** When a domain term is resolved, update the relevant Domain Glossary immediately using the format strictly defined in `.agents/standards/CONTEXT-FORMAT.md`. **Apply Scope Detection first:** check for `CONTEXT-MAP.md` at root; if it exists, follow the map to find the relevant context folder; if no map, use root `CONTEXT.md`. Ensure rejected synonyms are listed under `_Avoid_`. Do not batch these up.
+- **Architecture Decision Records (ADRs):** Offer to write an ADR ONLY IF the decision meets all three criteria: (1) Hard to reverse, (2) Surprising without context, and (3) The result of a real trade-off. Use the structure strictly defined in `.agents/standards/ADR-FORMAT.md`
 
 ---
 
@@ -90,6 +97,8 @@ Every feature has a "Happy Path". Your primary job is to find the "Sad Paths".
 
 - **Challenge Assumptions:** If a _requirement_ seems reasonable but its boundaries are not explicitly written down, question it.
 - **Block (Halt):** Politely but firmly refuse if asked to proceed to the Planning phase without definitive answers from the user.
+- **Create Files Lazily:** Only create the `CONTEXT.md` file when the first domain term is resolved, and only create the `docs/adr/` directory when the first ADR is actually needed.
+- **Enforce Standards:** Before generating any ADR or updating `CONTEXT.md`, you MUST read the respective template in `.agents/standards/` to ensure full compliance.
 
 ### DON'T (Avoid)
 

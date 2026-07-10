@@ -3,19 +3,22 @@ name: artifact-consistency-checker
 description: "Performs consistency and traceability audits across documents (PRD vs Spec vs Plan) to detect missing coverage and scope creep."
 license: MIT
 ---
+
 <!-- markdownlint-disable -->
+
 # Artifact Consistency Checker Skill
 
 ## Overview
 
-This skill focuses on verifying the **traceability** and **consistency** of your Software Development Life Cycle (SDLC) artifacts. It is used to ensure that no single *requirement* is missed, and no "dark features" are added without justification when moving from the PRD document, to the Technical Specification, and finally to the Implementation Plan. This skill accompanies the `@ArtifactConsistencyChecker` agent.
+This skill focuses on verifying the **traceability** and **consistency** of your Software Development Life Cycle (SDLC) artifacts. It is used to ensure that no single _requirement_ is missed, and no "dark features" are added without justification when moving from the PRD document, to the Technical Specification, and finally to the Implementation Plan. This skill accompanies the `@ArtifactConsistencyChecker` agent.
 
 ## When to Use
 
 Use this skill when:
-- The user has finished creating the *Implementation Plan* and is ready to start *coding* (invoking `@GodModeDev`).
-- The team suspects an indication of *scope creep* (features being added silently without business approval).
-- There is confusion regarding which document is the latest *Source of Truth*.
+
+- The user has finished creating the _Implementation Plan_ and is ready to start _coding_ (invoking `@GodModeDev`).
+- The team suspects an indication of _scope creep_ (features being added silently without business approval).
+- There is confusion regarding which document is the latest _Source of Truth_.
 - The user specifically requests an "audit", "consistency check", "traceability review", or "traceability matrix".
 
 ---
@@ -23,19 +26,38 @@ Use this skill when:
 ## Operational Workflow
 
 ### Phase 1: Artifact Aggregation
-Collect all documents related to the current feature in progress. You **must** read and retain the context of at least TWO of the following documents to perform a comparison:
-1. PRD (e.g., `prd-feature-*.md`) (Upstream Document / Business Needs)
-2. `spec-*.md` (Middle Document / Architectural Specs)
-3. `plan-*.md` (Downstream Document / Implementation Plan & Tasks)
+
+Collect all documents related to the current feature in progress. You **must** read and retain the context of:
+
+1. PRD (e.g., `prd-feature-*.md`)
+2. `spec-*.md`
+3. `plan-*.md`
+4. The relevant Domain Glossary. **Apply Scope Detection:** check for `CONTEXT-MAP.md` at root first; if it exists, follow the map to find the relevant context folder; if no map, use root `CONTEXT.md`.
+5. Existing ADRs in `docs/adr/`.
+6. **Project Standards:** The formatting templates in `.agents/standards/`.
+7. The codebase.
 
 ### Phase 2: Tri-Directional Audit
+
 Perform a rigorous point-by-point mapping:
-- **Upstream to Downstream (Missing Coverage):** Take requirement X in the PRD, check if requirement X has an architectural design in the Spec, and has an explicit execution *task* in the Plan.
-- **Downstream to Upstream (Orphaned Items):** Take *task* Y in the Plan, trace upwards (to Spec/PRD) to see who requested *task* Y. If no one requested it, this is *scope creep*.
+
+- **Upstream to Downstream (Missing Coverage):** Take requirement X in the PRD, check if requirement X has an architectural design in the Spec, and has an explicit execution _task_ in the Plan.
+- **Downstream to Upstream (Orphaned Items):** Take _task_ Y in the Plan, trace upwards (to Spec/PRD) to see who requested _task_ Y. If no one requested it, this is _scope creep_.
 - **Lateral (Contradictions):** Look for specific parameters (file size limits, time limits, SLAs, frameworks) and ensure the numbers are consistent and do not contradict each other across all documents.
+- **Compliance Audit (Standards Check):** Verify if the PRD, Spec, and Plan follow the naming conventions and structure defined in `.agents/standards/`. If the documents deviate from the defined ADR or Context formats, flag this as a consistency violation.
+- **ADR Triple Gate Audit:** Verify each existing ADR in `docs/adr/` meets **all three** criteria from `ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. Flag any ADR that fails these criteria as unnecessary. Conversely, flag decisions in Spec/Plan that meet all three criteria but lack a corresponding ADR.
+- **`_Avoid_` Synonym Audit:** Verify that the Domain Glossary entries include `_Avoid_` lists for rejected synonyms as required by `CONTEXT-FORMAT.md`. If documents use a synonym listed under `_Avoid_` instead of the canonical term, flag it as a domain language violation.
 
 ### Phase 3: Reporting & Corrective Action
-Create an audit report using the *Consistency Audit Report* format. If the audit status is **FAIL** or there are major issues, **deny** the user permission to proceed to the next phase. The user must align and correct the faulty documents first.
+
+Create an audit report using the _Consistency Audit Report_ format. If the audit status is **FAIL** or there are major issues, **deny** the user permission to proceed to the next phase. The user must align and correct the faulty documents first.
+
+### Phase 4: Constructive Remediation
+
+Do not just report the errors. For every "FAIL", propose a specific corrective action:
+
+- If a Plan contradicts the PRD: "Update the Plan to match PRD, or update the PRD to reflect the new technical reality."
+- If terminology is wrong: "Change [Term] to [Canonical Term from the Domain Glossary] and ensure the rejected term is listed under `_Avoid_`."
 
 ---
 
@@ -57,7 +79,7 @@ Look for technical tasks that are excessive and have no foundation or were never
 
 ### Detecting Missing Coverage
 
-Look for sweet promises in the PRD that are never technically executed in the *planning* stage.
+Look for sweet promises in the PRD that are never technically executed in the _planning_ stage.
 
 ```diff
 # Example in PRD (Upstream)
@@ -77,9 +99,14 @@ Look for sweet promises in the PRD that are never technically executed in the *p
 ## Implementation Guidelines
 
 ### DO (Always)
-- **Enforce Traceability:** Whenever you validate a *Plan*, ensure you can point exactly to the sentence or ID in the PRD/Spec that justifies the task.
-- **Block (Halt) the Coding Process:** Apply a *halt* status on development if the documents are still fundamentally contradictory.
+
+- **Enforce Traceability:** Whenever you validate a _Plan_, ensure you can point exactly to the sentence or ID in the PRD/Spec that justifies the task.
+- **Block (Halt) the Coding Process:** Apply a _halt_ status on development if the documents are still fundamentally contradictory.
+- **Enforce Domain Language:** If the Plan uses terminology that differs from the Domain Glossary (via `CONTEXT.md` or `CONTEXT-MAP.md`), or uses a synonym listed under `_Avoid_`, it is a consistency failure. Treat it as a documentation bug.
+- **Enforce Documentation Standards:** Always compare the generated documents against `.agents/standards/ADR-FORMAT.md` and `CONTEXT-FORMAT.md`. If a document structure is "broken" or does not match the mandatory template, list it as a "Consistency Failure" in the Audit Report.
+- **Respect Lazy Creation:** Do NOT flag the absence of `CONTEXT.md` or `docs/adr/` as a failure if no domain terms have been resolved or no architectural decisions have been made. These files are created lazily per project standards.
 
 ### DON'T (Avoid)
-- **Subjectively Evaluating Architecture Quality:** Do not complain if the user plans to use *React* instead of *Vue*, UNLESS the PRD/Spec documents specifically forbid it. Your focus is strictly "Are these documents aligned?".
+
+- **Subjectively Evaluating Architecture Quality:** Do not complain if the user plans to use _React_ instead of _Vue_, UNLESS the PRD/Spec documents specifically forbid it. Your focus is strictly "Are these documents aligned?".
 - **Auto-Fix (Fixing it yourself):** Do not unilaterally modify and overwrite PRD or Plan documents to force content alignment without user approval. You cannot know for sure which document (Upstream or Downstream) represents the user's true intention.

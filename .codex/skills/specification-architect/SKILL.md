@@ -35,6 +35,7 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 ### Phase 2: Investigate the Codebase
 
 - Explore the existing codebase using search/read tools to understand current data structures, dependencies, and test coverage.
+- **Context/Architecture Audit:** **Apply Scope Detection first:** check for `CONTEXT-MAP.md` at the root; if it exists, follow the map to find the relevant context folder; if no map exists, use the root `CONTEXT.md`. Also read the `docs/adr/` directory (if it exists). Use these as the "Source of Truth" for terminology and architectural constraints. If your proposed technical design conflicts with an existing ADR, highlight this conflict to the user immediately.
 
 ### Phase 3: Collaborate & Technical Grilling (Iterative)
 
@@ -42,9 +43,11 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 - **Halt and Iterate:** Ask **ONE** specific question at a time regarding data contracts, interfaces, or constraints. Wait for the user's decision before asking the next question.
 - **Do the Heavy Lifting:** Present technical trade-offs. (e.g., "The PRD requires real-time updates. Based on our codebase, we can use (A) the existing WebSockets implementation, or (B) implement Server-Sent Events (SSE). I recommend (A) for consistency. Do you agree?").
 - Ensure all requirements are testable and unambiguous before moving to Phase 4.
+- **Domain Consistency Check:** If the user proposes a term or data structure that conflicts with the established Domain Glossary, challenge it. "Our Glossary defines [Term] as [Definition], but you are proposing [New Term/Def] — shall we update the Glossary or stick to the existing definition?" When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `CONTEXT-FORMAT.md`.
 
 ### Phase 4: Quality Control & File Generation
 
+- **Compliance Check:** Before generating any file (Spec, ADR, or Context updates), verify against `.agents/standards/ADR-FORMAT.md` (for ADRs), `.agents/standards/CONTEXT-FORMAT.md` (for Glossary), or general documentation standards.
 - **Evaluate Complexity:** Determine if the specification can be consolidated into a single file. **Consolidate whenever possible to minimize file overhead.**
 - **Modular Escalation:** Only propose splitting into multiple files if the specification covers distinct functional modules or becomes too large.
 - **Master Index (If applicable):** If split, create a `spec-index.md` that serves as the entry point and links to all related spec files.
@@ -86,7 +89,7 @@ tags: [Optional: List of relevant tags or categories]
 
 ## 2. Definitions
 
-[List and define all acronyms, abbreviations, and domain-specific terms used in this specification.]
+[List and define all acronyms, abbreviations, and domain-specific terms used in this specification. **All terms MUST align with the project's Domain Glossary (via `CONTEXT.md` or `CONTEXT-MAP.md`).** Rejected synonyms must be listed under `_Avoid_`.]
 
 ## 3. Requirements, Constraints & Guidelines
 
@@ -119,7 +122,7 @@ tags: [Optional: List of relevant tags or categories]
 
 ## 7. Rationale, Context & Architecture Decisions (ADRs)
 
-[Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made during the planning phase (e.g., choosing a specific database or protocol), document it here as an ADR (Context, Decision, Consequences).]
+[Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made, you MUST create a separate ADR file in `docs/adr/` (following `.agents/standards/ADR-FORMAT.md`) and link to it here. Do NOT embed the entire ADR within this document.]
 
 ## 8. Dependencies & External Integrations
 
@@ -164,7 +167,9 @@ tags: [Optional: List of relevant tags or categories]
 ### DO (Always)
 
 - **Anchor to the Codebase:** Always reference existing patterns, libraries, or files in the current codebase when proposing technical options.
-- **Identify ADRs:** Proactively point out when a user's choice is a "hard-to-reverse" architectural decision.
+- **Identify ADRs:** Proactively point out when a user's choice is a "hard-to-reverse" architectural decision. Before offering to create an ADR, verify the decision meets **all three** criteria from `ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. If any criterion is missing, skip the ADR.
+- **Enforce ADRs:** If an ADR already exists for a component you are specifying, your specification MUST include a section referencing that ADR as the rationale for the design. Do not contradict established architectural decisions.
+- **Use Standards:** ALWAYS refer to the templates in `.agents/standards/` before drafting a document to ensure strict formatting compliance.
 
 ### DON'T (Avoid)
 
