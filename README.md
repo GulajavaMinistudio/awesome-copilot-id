@@ -172,6 +172,16 @@ mode: all
 - Specify core directives and interaction philosophies
 - Detail how the agent should utilize its assigned skill
 
+### Session Locking & Utility Skills (Cross-Cutting)
+
+To prevent context bleeding and scope creep, our SDLC agents enforce **Strict Session Isolation**. Once an agent persona (e.g., `@SpecificationArchitect`) is activated in a chat session, that session is locked to that persona. 
+
+However, we have **Utility Skills** that can be invoked at any time without triggering a session lock clash:
+- **Persona-Bound Skills:** Contain a `## 🎭 Dynamic Persona Activation` block in their `SKILL.md`. Invoking them locks the session. If you try to invoke a different persona-bound skill in the same session, the agent will reject it to maintain focus.
+- **Utility Skills:** Skills without the persona activation block (like `grilling`, `memory-manager`, and `fable-protocol`). These can be invoked freely by any agent in the middle of a session. For example, `@ClarificationAnalyst` can invoke the `grilling` skill to interrogate a document without losing its analyst persona.
+
+**Custom User Skills:** Any custom skill you create or download that lacks the `Dynamic Persona Activation` block will automatically be treated as a Utility Skill and can be freely called at any time.
+
 ## 🔄 Workflow & Methodology (Spec Kit Inspired)
 
 We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
