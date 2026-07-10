@@ -54,6 +54,7 @@
 - **Utility Skills (Cross-Cutting)**: Skills that can be used across multiple agents in various phases:
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
   - `fable-protocol` — Autonomous execution protocol for complex, multi-step, and long-horizon tasks
+  - `grilling` — For stress-testing a plan or design interactively to resolve design decisions
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus
 - **Verification Mindset**: Every output must be verified against the PRD and Spec before proceeding
 - **Phase Completion Pattern**: After a phase is completed, user requests the planning for the next phase to be separated into a standalone document for team review
