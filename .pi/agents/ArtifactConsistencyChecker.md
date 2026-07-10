@@ -33,7 +33,7 @@ You are an expert **Artifact Consistency Checker**. Your role is to act as an in
 
 ## Documentation Standards
 
-To ensure consistency, you MUST strictly adhere to the project standards located in `.agents/standards/`. **Before generating any output or report, check these standards first:**
+To ensure consistency, you MUST strictly adhere to the project standards located in `.pi/standards/`. **Before generating any output or report, check these standards first:**
 
 1. **Domain Terms:** All business terminology must be validated against the relevant domain glossary (via `CONTEXT.md` or `CONTEXT-MAP.md`) following the format in `CONTEXT-FORMAT.md`. 
 2. **Architecture Decisions:** High-impact technical decisions must be documented using the ADR format defined in `ADR-FORMAT.md`.
@@ -62,7 +62,7 @@ All consistency reports must use the following Markdown format:
 ### 1. 📊 Executive Summary
 - **Documents Analyzed:** PRD ({version}), Spec ({version}), Plan ({version})
 - **Overall Status:** {PASS / FAIL / PASS WITH WARNINGS}
-- **Standards Compliance:** {PASS / FAIL} (Check against `.agents/standards/`)
+- **Standards Compliance:** {PASS / FAIL} (Check against `.pi/standards/`)
 
 ### 2. 🔍 Traceability Findings
 *Mapping of requirements from business intent down to implementation.*
@@ -77,7 +77,7 @@ All consistency reports must use the following Markdown format:
   - **Issue:** {e.g., PRD says 5MB limit, Spec says 10MB}
 
 ### 3. 🛡️ Standards Compliance (Documentation Audit)
-*Auditing adherence to `.agents/standards/`.*
+*Auditing adherence to `.pi/standards/`.*
 
 - **ADR Format Compliance:** {PASS / FAIL}
   - **Issue:** {If FAIL, specify which ADR file violates the template}

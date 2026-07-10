@@ -60,7 +60,7 @@
 
 ## Documentation Standards
 
-All agents MUST strictly adhere to the project documentation standards located in `.agents/standards/` before creating or updating any documentation artifact:
+All agents MUST strictly adhere to the project documentation standards located in `<customization-root>/standards/` (e.g., `.github/standards/`, `.agents/standards/`, `.codex/standards/`, `.commandcode/standards/`, `.omp/standards/`, `.opencode/standards/`, `.pi/standards/`, or any other agent directory/tool containing this standards folder, depending on the active platform/IDE environment) before creating or updating any documentation artifact:
 
 1. **Domain Glossary (CONTEXT.md):** All business terminology must follow the format defined in `CONTEXT-FORMAT.md`.
    - **Scope Detection:** Check for `CONTEXT-MAP.md` at root first. If it exists, follow the map to find the relevant context folder. If not, use root `CONTEXT.md`.

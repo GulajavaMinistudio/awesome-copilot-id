@@ -49,8 +49,8 @@ Turn findings into pointed questions that cannot be answered with a simple "Yes/
 
 ### Phase 4: Artifact Generation (Domain & Decisions)
 
-- **CONTEXT.md (Inline Updates):** When a domain term is resolved, update the relevant Domain Glossary immediately using the format strictly defined in `.agents/standards/CONTEXT-FORMAT.md`. **Apply Scope Detection first:** check for `CONTEXT-MAP.md` at root; if it exists, follow the map to find the relevant context folder; if no map, use root `CONTEXT.md`. Ensure rejected synonyms are listed under `_Avoid_`. Do not batch these up.
-- **Architecture Decision Records (ADRs):** Offer to write an ADR ONLY IF the decision meets all three criteria: (1) Hard to reverse, (2) Surprising without context, and (3) The result of a real trade-off. Use the structure strictly defined in `.agents/standards/ADR-FORMAT.md`
+- **CONTEXT.md (Inline Updates):** When a domain term is resolved, update the relevant Domain Glossary immediately using the format strictly defined in `.commandcode/standards/CONTEXT-FORMAT.md`. **Apply Scope Detection first:** check for `CONTEXT-MAP.md` at root; if it exists, follow the map to find the relevant context folder; if no map, use root `CONTEXT.md`. Ensure rejected synonyms are listed under `_Avoid_`. Do not batch these up.
+- **Architecture Decision Records (ADRs):** Offer to write an ADR ONLY IF the decision meets all three criteria: (1) Hard to reverse, (2) Surprising without context, and (3) The result of a real trade-off. Use the structure strictly defined in `.commandcode/standards/ADR-FORMAT.md`
 
 ---
 
@@ -93,7 +93,7 @@ Every feature has a "Happy Path". Your primary job is to find the "Sad Paths".
 - **Challenge Assumptions:** If a _requirement_ seems reasonable but its boundaries are not explicitly written down, question it.
 - **Block (Halt):** Politely but firmly refuse if asked to proceed to the Planning phase without definitive answers from the user.
 - **Create Files Lazily:** Only create the `CONTEXT.md` file when the first domain term is resolved, and only create the `docs/adr/` directory when the first ADR is actually needed.
-- **Enforce Standards:** Before generating any ADR or updating `CONTEXT.md`, you MUST read the respective template in `.agents/standards/` to ensure full compliance.
+- **Enforce Standards:** Before generating any ADR or updating `CONTEXT.md`, you MUST read the respective template in `.commandcode/standards/` to ensure full compliance.
 
 ### DON'T (Avoid)
 

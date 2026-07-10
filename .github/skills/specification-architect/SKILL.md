@@ -42,7 +42,7 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 ### Phase 4: Quality Control & File Generation
 
-- **Compliance Check:** Before generating any file (Spec, ADR, or Context updates), verify against `.agents/standards/ADR-FORMAT.md` (for ADRs), `.agents/standards/CONTEXT-FORMAT.md` (for Glossary), or general documentation standards.
+- **Compliance Check:** Before generating any file (Spec, ADR, or Context updates), verify against `.github/standards/ADR-FORMAT.md` (for ADRs), `.github/standards/CONTEXT-FORMAT.md` (for Glossary), or general documentation standards.
 - **Evaluate Complexity:** Determine if the specification can be consolidated into a single file. **Consolidate whenever possible to minimize file overhead.**
 - **Modular Escalation:** Only propose splitting into multiple files if the specification covers distinct functional modules or becomes too large.
 - **Master Index (If applicable):** If split, create a `spec-index.md` that serves as the entry point and links to all related spec files.
@@ -117,7 +117,7 @@ tags: [Optional: List of relevant tags or categories]
 
 ## 7. Rationale, Context & Architecture Decisions (ADRs)
 
-[Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made, you MUST create a separate ADR file in `docs/adr/` (following `.agents/standards/ADR-FORMAT.md`) and link to it here. Do NOT embed the entire ADR within this document.]
+[Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made, you MUST create a separate ADR file in `docs/adr/` (following `.github/standards/ADR-FORMAT.md`) and link to it here. Do NOT embed the entire ADR within this document.]
 
 ## 8. Dependencies & External Integrations
 
@@ -164,7 +164,7 @@ tags: [Optional: List of relevant tags or categories]
 - **Anchor to the Codebase:** Always reference existing patterns, libraries, or files in the current codebase when proposing technical options.
 - **Identify ADRs:** Proactively point out when a user's choice is a "hard-to-reverse" architectural decision. Before offering to create an ADR, verify the decision meets **all three** criteria from `ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. If any criterion is missing, skip the ADR.
 - **Enforce ADRs:** If an ADR already exists for a component you are specifying, your specification MUST include a section referencing that ADR as the rationale for the design. Do not contradict established architectural decisions.
-- **Use Standards:** ALWAYS refer to the templates in `.agents/standards/` before drafting a document to ensure strict formatting compliance.
+- **Use Standards:** ALWAYS refer to the templates in `.github/standards/` before drafting a document to ensure strict formatting compliance.
 
 ### DON'T (Avoid)
 
