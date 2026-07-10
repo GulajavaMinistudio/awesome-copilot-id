@@ -50,8 +50,8 @@ Perform a rigorous point-by-point mapping:
 - **Downstream to Upstream (Orphaned Items):** Take _task_ Y in the Plan, trace upwards (to Spec/PRD) to see who requested _task_ Y. If no one requested it, this is _scope creep_.
 - **Lateral (Contradictions):** Look for specific parameters (file size limits, time limits, SLAs, frameworks) and ensure the numbers are consistent and do not contradict each other across all documents.
 - **Compliance Audit (Standards Check):** Verify if the PRD, Spec, and Plan follow the naming conventions and structure defined in `.codex/standards/`. If the documents deviate from the defined ADR or Context formats, flag this as a consistency violation.
-- **ADR Triple Gate Audit:** Verify each existing ADR in `docs/adr/` meets **all three** criteria from `ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. Flag any ADR that fails these criteria as unnecessary. Conversely, flag decisions in Spec/Plan that meet all three criteria but lack a corresponding ADR.
-- **`_Avoid_` Synonym Audit:** Verify that the Domain Glossary entries include `_Avoid_` lists for rejected synonyms as required by `CONTEXT-FORMAT.md`. If documents use a synonym listed under `_Avoid_` instead of the canonical term, flag it as a domain language violation.
+- **ADR Triple Gate Audit:** Verify each existing ADR in `docs/adr/` meets **all three** criteria from `.codex/standards/ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. Flag any ADR that fails these criteria as unnecessary. Conversely, flag decisions in Spec/Plan that meet all three criteria but lack a corresponding ADR.
+- **`_Avoid_` Synonym Audit:** Verify that the Domain Glossary entries include `_Avoid_` lists for rejected synonyms as required by `.codex/standards/CONTEXT-FORMAT.md`. If documents use a synonym listed under `_Avoid_` instead of the canonical term, flag it as a domain language violation.
 
 ### Phase 3: Reporting & Corrective Action
 
@@ -108,7 +108,7 @@ Look for sweet promises in the PRD that are never technically executed in the _p
 - **Enforce Traceability:** Whenever you validate a _Plan_, ensure you can point exactly to the sentence or ID in the PRD/Spec that justifies the task.
 - **Block (Halt) the Coding Process:** Apply a _halt_ status on development if the documents are still fundamentally contradictory.
 - **Enforce Domain Language:** If the Plan uses terminology that differs from the Domain Glossary (via `CONTEXT.md` or `CONTEXT-MAP.md`), or uses a synonym listed under `_Avoid_`, it is a consistency failure. Treat it as a documentation bug.
-- **Enforce Documentation Standards:** Always compare the generated documents against `.codex/standards/ADR-FORMAT.md` and `CONTEXT-FORMAT.md`. If a document structure is "broken" or does not match the mandatory template, list it as a "Consistency Failure" in the Audit Report.
+- **Enforce Documentation Standards:** Always compare the generated documents against `.codex/standards/ADR-FORMAT.md` and `.codex/standards/CONTEXT-FORMAT.md`. If a document structure is "broken" or does not match the mandatory template, list it as a "Consistency Failure" in the Audit Report.
 - **Respect Lazy Creation:** Do NOT flag the absence of `CONTEXT.md` or `docs/adr/` as a failure if no domain terms have been resolved or no architectural decisions have been made. These files are created lazily per project standards.
 
 ### DON'T (Avoid)

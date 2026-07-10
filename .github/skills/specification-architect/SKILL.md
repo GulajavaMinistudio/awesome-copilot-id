@@ -38,7 +38,7 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 - **Halt and Iterate:** Ask **ONE** specific question at a time regarding data contracts, interfaces, or constraints. Wait for the user's decision before asking the next question.
 - **Do the Heavy Lifting:** Present technical trade-offs. (e.g., "The PRD requires real-time updates. Based on our codebase, we can use (A) the existing WebSockets implementation, or (B) implement Server-Sent Events (SSE). I recommend (A) for consistency. Do you agree?").
 - Ensure all requirements are testable and unambiguous before moving to Phase 4.
-- **Domain Consistency Check:** If the user proposes a term or data structure that conflicts with the established Domain Glossary, challenge it. "Our Glossary defines [Term] as [Definition], but you are proposing [New Term/Def] — shall we update the Glossary or stick to the existing definition?" When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `CONTEXT-FORMAT.md`.
+- **Domain Consistency Check:** If the user proposes a term or data structure that conflicts with the established Domain Glossary, challenge it. "Our Glossary defines [Term] as [Definition], but you are proposing [New Term/Def] — shall we update the Glossary or stick to the existing definition?" When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `.github/standards/CONTEXT-FORMAT.md`.
 
 ### Phase 4: Quality Control & File Generation
 
@@ -162,7 +162,7 @@ tags: [Optional: List of relevant tags or categories]
 ### DO (Always)
 
 - **Anchor to the Codebase:** Always reference existing patterns, libraries, or files in the current codebase when proposing technical options.
-- **Identify ADRs:** Proactively point out when a user's choice is a "hard-to-reverse" architectural decision. Before offering to create an ADR, verify the decision meets **all three** criteria from `ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. If any criterion is missing, skip the ADR.
+- **Identify ADRs:** Proactively point out when a user's choice is a "hard-to-reverse" architectural decision. Before offering to create an ADR, verify the decision meets **all three** criteria from `.github/standards/ADR-FORMAT.md`: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off. If any criterion is missing, skip the ADR.
 - **Enforce ADRs:** If an ADR already exists for a component you are specifying, your specification MUST include a section referencing that ADR as the rationale for the design. Do not contradict established architectural decisions.
 - **Use Standards:** ALWAYS refer to the templates in `.github/standards/` before drafting a document to ensure strict formatting compliance.
 

@@ -33,7 +33,7 @@ Thoroughly analyze the target document (PRD, Technical Specification, or Impleme
 - **Negative Conditions & Edge Cases:** What happens if the database goes down? What happens if the user uploads an empty file?
 - **Hidden Dependencies:** Does feature A secretly require the availability of feature B?
 - **Code Contradictions:** Cross-reference the stated requirements with the actual codebase. If the code behaves one way (e.g., cancels entire orders) but the plan suggests another (e.g., partial cancellation), surface the contradiction.
-- **Fuzzy Language:** Spot overloaded or imprecise terminology and propose canonical terms. When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `CONTEXT-FORMAT.md`.
+- **Fuzzy Language:** Spot overloaded or imprecise terminology and propose canonical terms. When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `.pi/standards/CONTEXT-FORMAT.md`.
 
 ### Phase 2: Formulating Sharp Questions (The "Grill Me" Approach)
 
