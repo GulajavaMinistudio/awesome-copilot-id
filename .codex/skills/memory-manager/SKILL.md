@@ -12,7 +12,7 @@ license: MIT
 
 - **Legacy agent alias:** `memory-manager`.
 - **Codex usage:** Trigger this skill by naming `$memory-manager` or by asking for the matching SDLC phase/task.
-- **Operating boundary:** Gunakan untuk membaca atau menyimpan checkpoint proyek di memory.instructions.md. Selalu lakukan discovery path sebelum membaca atau menulis memori.
+- **Operating boundary:** Use to read or save project checkpoints in memory.instructions.md. Always perform a path discovery before reading or writing memory.
 
 ## Overview
 
