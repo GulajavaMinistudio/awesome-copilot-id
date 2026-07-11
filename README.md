@@ -1,10 +1,10 @@
-# Awesome Copilot Indonesia 🇮🇩
+# Awesome Copilot Indonesia 🇮🇩 - AI Agents & SDLC Workflows
 <!-- markdownlint-disable -->
 
 A curated collection of custom agents, skills, rules, and prompts. Originally for **GitHub Copilot**, this collection now fully supports **OpenCode**, **Google Antigravity**, **CommandCode**, **ChatGPT Codex**, **Pi Dev Coding Agent**, and **Oh My Pi (`omp`)**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#-contributing)
 
 <p align="center">
   <img src="hero-cat-agent.png" alt="Awesome Copilot Indonesia" width="700">
@@ -19,6 +19,24 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
 - **🔑 BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
 - **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
+
+## 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Custom Agents](#-custom-agents)
+- [Skills](#-skills)
+- [Workflow & Methodology](#-workflow--methodology-spec-kit-inspired)
+- [Instructions](#-instructions)
+- [Prompts](#-prompts)
+- [BYOK Copilot Config](#-byok-copilot-config)
+- [Advanced Customization Guide](#️-advanced-customization-guide)
+- [Contributing](#-contributing)
+- [Resources](#-resources)
+- [Support](#-support)
+- [License](#-license)
 
 ## 🚀 Getting Started
 
@@ -503,7 +521,7 @@ A ready-to-use configuration template for enabling **BYOK (Bring Your Own Key)**
 
 See the full documentation and setup guide: [byok-copilot-config/](byok-copilot-config/)
 
-## 🛠️ Customization
+## 🛠️ Advanced Customization Guide
 
 You can implement customizations incrementally, starting with the simplest options and gradually adding more complexity as needed.
 
