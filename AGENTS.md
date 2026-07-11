@@ -47,7 +47,7 @@
   - `@SpecificationArchitect` (Skill: `specification-architect`) for Technical Specification
   - `@ArtifactConsistencyChecker` (Skill: `artifact-consistency-checker`) for Validating traceability across PRD, Spec, and Plan
   - `@PlannerArchitect` (Skill: `planner-architect`) for Implementation Planning
-  - `@GodModeDev` (Skill: `karpathy-guidelines`, supplementary: `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
+  - `@GodModeDev` (Skill: `god-mode-dev`, supplementary: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
   - `@ExpertCodeReviewer` (Skill: `expert-code-reviewer`) for Code Review and Security Audit
   - `@BugRemediationArchitect` (Skill: `bug-remediation-architect`) for Root Cause Analysis and Bug Fixing
   - `@DiataxisDocumentationArchitect` (Skill: `diataxis-documentation-architect`) for User Documentation based on the Diátaxis Framework
