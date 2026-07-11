@@ -183,7 +183,9 @@ try {
 
     Write-Host ""
     Write-Host "[OK] Installation completed successfully!" -ForegroundColor Green
-    Write-Host "[IMPORTANT]: Do not forget to open the 'AGENTS.md' file in your project and customize your project name on the first line so that AI agents can recognize your project context correctly." -ForegroundColor Yellow
+    Write-Host "[IMPORTANT]: Please review 'AGENTS.md' in your project to:" -ForegroundColor Yellow
+    Write-Host "1. Customize the project name on the first line so that AI agents can recognize your project context." -ForegroundColor Yellow
+    Write-Host "2. Change the language preference (default is Indonesian) to your preferred language if necessary." -ForegroundColor Yellow
     Write-Host ""
 
 } finally {

@@ -211,4 +211,6 @@ else
 fi
 
 echo -e "\n${GREEN}[OK] Installation completed successfully!${NC}"
-echo -e "${YELLOW}[IMPORTANT]: Do not forget to open the 'AGENTS.md' file in your project and customize your project name on the first line so that AI agents can recognize your project context correctly.${NC}\n"
+echo -e "${YELLOW}[IMPORTANT]: Please review 'AGENTS.md' in your project to:"
+echo -e "1. Customize the project name on the first line so that AI agents can recognize your project context."
+echo -e "2. Change the language preference (default is Indonesian) to your preferred language if necessary.${NC}\n"
