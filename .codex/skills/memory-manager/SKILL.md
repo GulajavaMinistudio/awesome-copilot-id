@@ -119,8 +119,8 @@ Use this workflow to load context at the beginning of a new session.
    - **Latest Milestones** — What was accomplished in the last session(s).
    - **Pending Actions / Blockers** — What remains to be done or what issues are unresolved.
    - **Checkpoint Tail** — The 1-sentence HTML comment at the bottom for rapid context recovery.
-5. **Acknowledge to the user** (in Bahasa Indonesia) that context has been loaded AND explicitly state the locked path. Mention both Knowledge Base and checkpoint context. Example:
-   > _"Saya telah membaca memori proyek dari `[discovered_path]`. Knowledge Base memuat [N] pola arsitektur dan [N] dead-ends. Fase SDLC terakhir adalah [Phase]. Progres terakhir mencakup [Milestones]. Saya siap melanjutkan."_
+5. **Acknowledge to the user** that context has been loaded AND explicitly state the locked path. Mention both Knowledge Base and checkpoint context. Example:
+   > _"I have read the project memory from `[discovered_path]`. The Knowledge Base contains [N] architectural patterns and [N] dead-ends. The last SDLC phase was [Phase]. Recent progress includes [Milestones]. I am ready to proceed."_
 6. **Proceed** with the user's request, now fully informed by historical context.
 
 ---
@@ -136,15 +136,15 @@ Use this workflow to persist progress after a significant milestone.
    - What decisions were made.
    - What remains to be done next.
 3. **Append** a new checkpoint entry to the **bottom** of the memory file (after all existing checkpoints) using the **Mandatory Checkpoint Template** below. Do NOT overwrite or delete existing entries unless the user explicitly requests a memory compaction.
-4. **Confirm to the user** (in Bahasa Indonesia) that the checkpoint has been saved AND explicitly state the locked path. Example:
-   > _"Checkpoint memori telah disimpan ke dalam `[discovered_path]`. Progres sesi ini telah dicatat untuk kontinuitas di sesi berikutnya."_
+4. **Confirm to the user** that the checkpoint has been saved AND explicitly state the locked path. Example:
+   > _"Memory checkpoint has been saved to `[discovered_path]`. This session's progress has been recorded for continuity in the next session."_
 5. **Offer to record the active memory path in `AGENTS.md`** (if not already recorded):
    - Check if `AGENTS.md` exists at the project root.
    - Check if a `## Memory Configuration` section with an `Active Memory Path` entry already exists and matches the current locked path.
    - **If the path is NOT yet recorded** (or `AGENTS.md` has no Memory Configuration section), ask the user:
-     > _"Apakah Anda ingin menyimpan path memory ini ke `AGENTS.md` untuk mempercepat sesi berikutnya?"_
+     > _"Would you like to save this memory path to `AGENTS.md` to speed up the next session?"_
    - **If the user agrees:** Add or update the `## Memory Configuration` section in `AGENTS.md` using the format defined in **AGENTS.md Integration** below. Confirm to the user:
-     > _"Path memory telah dicatat di `AGENTS.md`. Sesi berikutnya akan langsung menggunakan path ini tanpa perlu recursive search."_
+     > _"The memory path has been recorded in `AGENTS.md`. The next session will directly use this path without needing a recursive search."_
    - **If the user declines:** Respect the decision. Do not ask again in the same session.
    - **If the path is already recorded and matches:** Skip the offer silently. No update needed.
    - **If `AGENTS.md` does not exist:** Skip the offer. Inform the user that `AGENTS.md` was not found at the project root.
@@ -202,13 +202,13 @@ Use this workflow when the user requests memory cleanup or when checkpoints accu
 5. **Update the Knowledge Base** by appending or merging the extracted entries. Do NOT duplicate entries already present in the Knowledge Base.
 6. **Delete the compacted checkpoints** from the file, keeping only the 2–3 most recent.
 7. **Update the Knowledge Base header note** with the compaction date and range of sessions compacted. Example:
-   > _"Checkpoints for Sesi 1–18 compacted on 2026-07-07. Knowledge promoted to this section."_
-8. **Present the compaction summary to the user** (in Bahasa Indonesia) before finalizing. Include:
+   > _"Checkpoints for Sessions 1–18 compacted on 2026-07-07. Knowledge promoted to this section."_
+8. **Present the compaction summary to the user** before finalizing. Include:
    - Which sessions were compacted.
    - What knowledge was promoted (count of patterns, dead-ends, metrics).
    - Which checkpoints were retained.
-9. **Confirm to the user** (in Bahasa Indonesia) after the compaction is complete. Example:
-   > _"Kompaksi memori selesai di `[discovered_path]`. [N] checkpoint dihapus, [N] entri dipromosikan ke Knowledge Base. [N] checkpoint terbaru dipertahankan."_
+9. **Confirm to the user** after the compaction is complete. Example:
+   > _"Memory compaction complete at `[discovered_path]`. [N] checkpoints deleted, [N] entries promoted to Knowledge Base. [N] most recent checkpoints retained."_
 10. **Verify AGENTS.md path (if recorded):** After compaction is complete, if the active memory path is recorded in `AGENTS.md`, verify that the file still exists at that path. If the file was moved or renamed during compaction (unlikely but possible), update the path in `AGENTS.md` to reflect the new location.
 
 ### Knowledge Base Update Template (For Compaction Only)
@@ -218,7 +218,7 @@ When promoting knowledge during compaction, append to the existing Knowledge Bas
 **Architecture & Patterns (bullet list):**
 
 ```md
-- **[Pattern Name]:** [Concise description]. [Source: Sesi X, still valid as of YYYY-MM-DD]
+- **[Pattern Name]:** [Concise description]. [Source: Session X, still valid as of YYYY-MM-DD]
 ```
 
 **Dead-Ends (table row):**

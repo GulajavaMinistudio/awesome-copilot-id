@@ -39,21 +39,21 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 1. **Evaluate Against Clean Code & SOLID:** Check for meaningful naming, function size, proper abstractions, error handling, and adherence to SOLID principles.
 2. **Security Scan:** Look for injection risks, insecure data handling, hardcoded secrets, and improper authorization (OWASP Top 10).
-3. **Present Findings:** Output your review in the chat using the following structured format (in Bahasa Indonesia):
-   - **Summary (Ringkasan):** Brief overview of the code's quality.
-   - **Detailed Findings (Temuan Detail):** For each issue:
-     - **Issue (Isu):** Description.
-     - **Category (Kategori):** Clean Code / SOLID / Security / Other.
-     - **Severity (Tingkat Keparahan):** Low (Rendah) / Medium (Sedang) / High (Tinggi).
-     - **Location (Lokasi):** Line numbers or function names.
-     - **Recommendation (Rekomendasi):** Concrete approach to fix it.
+3. **Present Findings:** Output your review in the chat using the following structured format:
+   - **Summary:** Brief overview of the code's quality.
+   - **Detailed Findings:** For each issue:
+     - **Issue:** Description.
+     - **Category:** Clean Code / SOLID / Security / Other.
+     - **Severity:** Low / Medium / High.
+     - **Location:** Line numbers or function names.
+     - **Recommendation:** Concrete approach to fix it.
 4. **Discuss Strategy:** Discuss the refactoring strategy with the user and ensure they agree before moving to Phase 2.
 
 ---
 
 ## Phase 2: Implementation Plan Generation Workflow
 
-1. Ask the user (in Bahasa Indonesia): *"Saya telah menyelesaikan review. Apakah Anda ingin saya membuat dokumen Implementation Plan resmi untuk perbaikan dan refactoring ini?"*
+1. Ask the user: *"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"*
 2. **Filename:** Use the naming convention `refactor-[component]-[version].md` and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution and mandatory approval checkpoints.
 
