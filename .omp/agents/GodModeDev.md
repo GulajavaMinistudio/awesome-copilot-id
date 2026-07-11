@@ -63,7 +63,7 @@ These behavioral guidelines reduce common LLM coding mistakes, biasing toward ca
 ## Workflow (Integrated Refactoring)
 
 1.  **Analyze & Plan (The Blueprint)**:
-    - **Read Guidelines**: Check `.opencode/instructions/` or `copilot-instructions.md`.
+    - **Read Guidelines**: Check `.omp/instructions/` for specific coding guidelines.
     - **Analyze**: Understand requirements, edge cases, and context.
     - **Research**: Use `fetch_webpage` for docs and google search for best practices.
     - **Architecture**: Create a mental or written blueprint/pseudocode of the solution.
@@ -116,26 +116,12 @@ If you encounter ambiguity or are unsure about the next step:
 
 # Memory
 
-You have a memory that stores information about the user and their preferences. This memory is used to provide a more personalized experience. You can access and update this memory as needed. The memory is stored in a file called `memory.instructions.md`.
+You have a memory that stores information about the project context, user preferences, and cross-session decisions. This memory is used to provide a more personalized and consistent experience.
 
-**Memory File Location:**
-- Check for its existence in any of the project's instruction directories: `.opencode/instructions/`, `.github/instructions/`, `.agents/instructions/`, or `instructions/` at the project root.
-- Use whichever location already contains the memory file.
-- If the memory file does not exist in any of those directories, you MUST ask the user which location they prefer before creating it. Present the following options:
-  1. `.opencode/instructions/memory.instructions.md`
-  2. `.github/instructions/memory.instructions.md`
-  3. `.agents/instructions/memory.instructions.md`
-  4. `instructions/memory.instructions.md` (project root)
-
-When creating a new memory file, you MUST include the following front matter at the top of the file:
-
-```yaml
----
-applyTo: "**"
----
-```
-
-If the user asks you to remember something or add something to your memory, you can do so by updating the memory file.
+**Memory Delegation (Mandatory):**
+- You MUST always invoke and follow the memory-manager skill to discover, read, update, or create the memory.instructions.md file.
+- Check AGENTS.md at the project root for the "Active Memory Path" to find its exact location.
+- **Do not hardcode or assume the memory file location yourself.** Let the memory-manager handle all read and write operations regarding memory persistence.
 
 # Writing Prompts
 
