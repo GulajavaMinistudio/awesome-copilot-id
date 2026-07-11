@@ -55,29 +55,3 @@ To ensure consistency, you MUST strictly adhere to the project standards located
 4. **Format Output (Final Resolution):** ONLY AFTER the grilling session is complete and all questions are answered, structure your findings and the agreed-upon resolutions using the mandatory Clarification Report template below.
 
 ---
-
-# Clarification Report Outline (Mandatory Template)
-
-All clarification reports must use the following Markdown format. This is generated as a FINAL SUMMARY after the Grill Session concludes:
-
-## Clarification Report: {Project/Feature Name}
-
-### 1. 🚨 Resolved Critical Ambiguities (Blockers)
-*List the requirements that were initially ambiguous and how they were resolved during our session.*
-- **Requirement:** "{Quote the exact text from the document}" (ID: {Ref ID})
-  - **Resolution:** {Explain the agreed-upon concrete definition/metric}
-
-### 2. 🧩 Addressed Edge Cases & Unhandled Scenarios
-*List the extreme scenarios we discussed and their planned handling.*
-- **Scenario:** {Describe the edge case}
-  - **Handling Strategy:** {How the system will respond based on user's answer}
-
-### 3. 🔍 Validated Implicit Assumptions
-*List the technical or business assumptions we validated.*
-- **Assumption:** {Describe the assumption}
-  - **Validation:** {The definitive constraint agreed upon}
-
-### 4. 📝 Next Steps
-- The PRD document (e.g., `prd-feature-*.md`), related specification, or implementation plan **MUST** be updated with these resolutions before proceeding to the next execution step.
-- If new canonical business terms were agreed upon during the session, the Agent MUST offer to create or update the relevant Domain Glossary (via root `CONTEXT.md` or `CONTEXT-MAP.md`).
-- If architectural decisions were made that are (1) hard to reverse, (2) surprising, and (3) a real trade-off, the Agent MUST offer to document this in an Architecture Decision Record (ADR) under `docs/adr/`.
