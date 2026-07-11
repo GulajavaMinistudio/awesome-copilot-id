@@ -36,7 +36,7 @@
 ## Workflow & Methodology
 
 - **SDLC Strict Adherence**: User follows a strict and structured SDLC workflow
-- **Sequential Development**: Must follow the order: PRD → Clarification → Spec → Consistency Check → Plan → Code → Review → Docs
+- **Sequential Development**: Must follow the order: PRD → Clarification → Spec → Clarification → Consistency Check → Plan → Clarification → Code → Review → Docs
 - **No Skip Phases**: No phase may be skipped; each phase must be completed before moving on
 - **Documentation First**: Complete and structured documentation must exist before coding begins
 - **Testing Required per Phase**: After each implementation phase, testing (unit/widget/integration test) is MANDATORY and all tests must pass before a phase is considered complete or before proceeding to the next phase

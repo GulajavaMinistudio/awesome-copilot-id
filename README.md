@@ -188,13 +188,15 @@ We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub S
 
 0. **Discovery (Phase 0)**: Use `@BrainstormingExplorerAnalyst` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
 1. **PRD (Requirements)**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
-2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD, Technical Specification, or Implementation Plan to resolve ambiguities.
+2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD to resolve ambiguities.
 3. **Spec (Technical Specification)**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
-4. **Consistency Check**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD, Spec, and Plan.
-5. **Plan (Implementation Planning)**: Use `@PlannerArchitect` to generate executable implementation plans.
-6. **Code (Implementation)**: Use `@GodModeDev` for coding, ensuring strict testing (unit/widget/integration) after every phase.
-7. **Review**: Use `@ExpertCodeReviewer` for code review and security audits. *(For bug fixes, use `@BugRemediationArchitect`)*
-8. **Docs**: Use `@DiataxisDocumentationArchitect` for user documentation.
+4. **Spec Clarification**: Use `@ClarificationAnalyst` to interrogate the technical specification.
+5. **Consistency Check**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD and Spec.
+6. **Plan (Implementation Planning)**: Use `@PlannerArchitect` to generate executable implementation plans.
+7. **Plan Clarification**: Use `@ClarificationAnalyst` to interrogate the implementation plan.
+8. **Code (Implementation)**: Use `@GodModeDev` for coding, ensuring strict testing (unit/widget/integration) after every phase.
+9. **Review**: Use `@ExpertCodeReviewer` for code review and security audits. *(For bug fixes, use `@BugRemediationArchitect`)*
+10. **Docs**: Use `@DiataxisDocumentationArchitect` for user documentation.
 
 > [!IMPORTANT]
 > - Complete and structured documentation must exist before coding begins.
@@ -210,26 +212,58 @@ Following our strict sequential workflow, here is how you would develop a new fe
 **Phase 1: Requirements & Clarification**
 ```text
 @ProductManagerPRD create a PRD for the shopping cart feature
+```
+*(Once the PRD is complete and approved, use the `memory-manager` skill to save context, then open a new chat session to prevent context bleeding)*
+
+```text
 @ClarificationAnalyst interrogate the new shopping cart PRD for missing edge cases
 ```
+*(Answer the Clarification Analyst's questions one by one. Once finished and the PRD is revised, use `memory-manager` to save context, then proceed to the Spec phase in a new chat session)*
 
 **Phase 2: Specification & Planning**
 ```text
 @SpecificationArchitect design a technical specification for the shopping cart based on the PRD
-@ClarificationAnalyst interrogate the technical specification for any technical ambiguities
-@PlannerArchitect create a step-by-step implementation plan for the shopping cart
-@ArtifactConsistencyChecker verify that the plan and spec cover all requirements in the PRD
 ```
+*(Once the Spec is complete, use `memory-manager` and open a new chat session)*
+
+```text
+@ClarificationAnalyst interrogate the technical specification for any technical ambiguities
+```
+*(Once the Spec interrogation is finalized, use `memory-manager` and open a new chat session)*
+
+```text
+@ArtifactConsistencyChecker verify that the spec covers all requirements in the PRD
+```
+*(If no PRD requirements are missing from the Spec, use `memory-manager` and open a new chat session)*
+
+```text
+@PlannerArchitect create a step-by-step implementation plan for the shopping cart
+```
+*(Once the Plan is created, use `memory-manager` and open a new chat session)*
+
+```text
+@ClarificationAnalyst interrogate the implementation plan for any unhandled edge cases
+```
+*(Once all edge cases in the Plan are addressed, use `memory-manager` to save context, then open a new chat session to begin coding)*
 
 **Phase 3: Implementation & Review**
 ```text
 @GodModeDev implement the shopping cart based on the plan, and ensure all tests pass
+```
+*(Once code implementation and testing are complete, use `memory-manager` and open a new chat session)*
+
+```text
 @ExpertCodeReviewer review the newly implemented service layer and suggest refactoring
 ```
+*(Apply any refactoring suggestions if needed, use `memory-manager` to save context, then open a new chat session for documentation)*
 
 **Phase 4: Documentation & Bug Fixing**
 ```text
 @DiataxisDocumentationArchitect write an API reference guide for the new endpoints
+```
+*(If bugs are discovered later, use the specialized bug remediation agent in a separate chat session)*
+
+```text
 @BugRemediationArchitect analyze the bug report for the checkout failure and propose a fix
 ```
 
@@ -240,6 +274,16 @@ Following our strict sequential workflow, here is how you would develop a new fe
 3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
 4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
 5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
+
+### 🌐 Language Preferences
+
+By default, the rules in this repository are configured to instruct the AI agents to communicate in **Indonesian (Bahasa Indonesia)**. 
+
+If you prefer to interact in English or another language, you can easily change this. Open the `AGENTS.md` file and modify the following sections:
+1. Under `## Communication`, change the language rule:
+   `- **Language**: Communication must use clear and proper English`
+2. Under `## User Communication Style`, adjust the preference:
+   `- Uses formal but casual English`
 
 ### 📊 SDLC Workflow Diagram
 
@@ -266,6 +310,7 @@ graph TD
     AgentACC["@ArtifactConsistencyChecker<br/>(Validates Traceability)"]:::agent
 
     AgentPA["@PlannerArchitect<br/>(Creates Implementation Plan)"]:::agent
+    AgentCA3["@ClarificationAnalyst<br/>(Interrogates Plan)"]:::agent
 
     AgentGMD["@GodModeDev<br/>(Writes Code & Tests)"]:::agent
     AgentECR["@ExpertCodeReviewer<br/>(Audits Code)"]:::agent
@@ -287,7 +332,8 @@ graph TD
     AgentACC --> Phase3
 
     Phase3 --> AgentPA
-    AgentPA --> Phase4
+    AgentPA --> AgentCA3
+    AgentCA3 --> Phase4
 
     Phase4 --> AgentGMD
     AgentGMD --> AgentECR
@@ -296,6 +342,65 @@ graph TD
     AgentECR --> Phase5
 
     Phase5 --> AgentDDA
+```
+
+#### Text-based Alternative (Fallback)
+
+```text
+[ Phase 0: Discovery ]
+          |
+          v
+  (@BrainstormingExplorerAnalyst)
+          |
+          v
+[ Phase 1: Requirements ]
+          |
+          v
+  (@ProductManagerPRD)
+          |
+          v
+  (@ClarificationAnalyst)
+     (Interrogate PRD)
+          |
+          v
+[ Phase 2: Specification ]
+          |
+          v
+  (@SpecificationArchitect)
+          |
+          v
+  (@ClarificationAnalyst)
+     (Interrogate Spec)
+          |
+          v
+  (@ArtifactConsistencyChecker)
+     (Traceability)
+          |
+          v
+[ Phase 3: Planning ]
+          |
+          v
+  (@PlannerArchitect)
+          |
+          v
+  (@ClarificationAnalyst)
+     (Interrogate Plan)
+          |
+          v
+[ Phase 4: Implementation & Code ]
+          |
+          v
+  (@GodModeDev) ───────────────────> (@ExpertCodeReviewer)
+          ^                                      |
+          |                                      | (If bugs/issues)
+          |                                      v
+          └───────────────────────── (@BugRemediationArchitect)
+          |
+          v
+[ Phase 5: Documentation ]
+          |
+          v
+  (@DiataxisDocumentationArchitect)
 ```
 
 ## 📝 Instructions
