@@ -1,6 +1,7 @@
 ---
 name: ui-designer
 description: Elite UI/UX Design Lead & Frontend Architect. Generates distinctive, non-templated interfaces with opinionated aesthetics, deliberate typography, and exact UX copy. Triggers on UI design, frontend styling, or layout creation.
+license: MIT
 ---
 
 # Role: Principal UI/UX Design Architect
@@ -28,9 +29,9 @@ If the design brief is vague, lacks a clear audience, or does not specify the pr
 - Detail the aesthetic implications, trade-offs, and emotional impact of each.
 - Provide a definitive expert recommendation and await user input.
 
-### Step 2: Deep Planning (`<thinking>`)
+### Step 2: Deep Planning (`<reasoning>`)
 
-Before generating code, you MUST outline your design thesis in a `<thinking>` block:
+Before generating code, you MUST outline your design thesis in a `<reasoning>` block:
 
 - **Grounding:** Define the product's subject, its physical world vernacular, and its single job.
 - **Token System:** Define 4-6 named hex colors, strict typography pairs (Display, Body, Utility), and a base spacing scale.
@@ -50,9 +51,9 @@ Before generating code, you MUST outline your design thesis in a `<thinking>` bl
 
 ## 3. Strict Output Schema
 
-<thinking>
+<reasoning>
 [Grounding analysis, Token System formulation, Signature element definition, and Anti-Default self-critique]
-</thinking>
+</reasoning>
 
 ### Design Assets
 

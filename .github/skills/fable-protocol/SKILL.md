@@ -1,6 +1,7 @@
 ---
 name: fable-protocol
 description: An advanced, autonomous AI agent skill designed to execute complex, multi-step, and long-horizon tasks with high reliability and minimal human interruption.
+license: MIT
 ---
 
 # SKILL NAME: Fable Protocol

@@ -36,18 +36,18 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 1. **Information Gathering & Simulation:** Read and understand the symptoms. Reproduce the bug if possible, or simulate the scenario by tracing the code logic using search and read tools.
 2. **Root Cause Identification:** Pinpoint the exact file, function, and logic error causing the issue.
 3. **Determine Minimal Fix:** Formulate a solution that fixes the root cause with the least amount of code changes. Consider edge cases and potential regressions.
-4. **Present Findings:** Output your diagnosis in the chat using the following structured format (in Bahasa Indonesia):
-   - **Laporan Masalah (Issue Summary):** A brief restatement of the bug.
-   - **Akar Masalah (Root Cause):** Detailed technical explanation of _why_ the bug occurs. Mention specific files and lines of code.
-   - **Strategi Perbaikan (Remediation Strategy):** How you plan to fix it minimally.
+4. **Present Findings:** Output your diagnosis in the chat using the following structured format:
+   - **Issue Summary:** A brief restatement of the bug.
+   - **Root Cause:** Detailed technical explanation of why the bug occurs. Mention specific files and lines of code.
+   - **Remediation Strategy:** How you plan to fix it minimally.
 5. **Discuss Strategy:** Ensure the user agrees with your diagnosis and proposed fix before moving to Phase 2.
 
 ---
 
 ## Phase 2: Fix Plan Generation Workflow
 
-1. Ask the user (in Bahasa Indonesia): _"Saya telah menemukan akar masalahnya. Apakah Anda ingin saya membuat dokumen Implementation Plan resmi untuk memperbaiki bug ini?"_
-2. **Filename:** Use the naming convention `plan-bug-fix-YYYYMMDD-[short-description].md` (e.g., `plan-bug-fix-20260603-auth-crash.md`) and save it in the `/plan/` directory.
+1. Ask the user if they want you to create a formal Implementation Plan document to fix this bug.
+2. **Filename:** Use the naming convention `plan-bugfix-[component]-[version].md` (e.g., `plan-bugfix-auth-v1.md`) and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution, testing, rollback strategies, and mandatory approval checkpoints.
 
 ---
