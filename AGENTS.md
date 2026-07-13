@@ -1,5 +1,5 @@
 <!-- markdownlint-disable -->
-# AGENTS.md - Awesome Copilot ID (Multi-Agent SDLC System)
+# AGENTS.md - [Your Application Name] (Please replace this title with your actual project context)
 
 ## Communication
 
@@ -92,15 +92,15 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 
 If the mandatory files are not provided in the prompt context, the agent must halt execution and ask the user to provide them, unless explicitly overridden by the user.
 
-| Agent / Phase | Mandatory Upstream Document(s) |
-|---|---|
-| `@ProductManagerPRD` | Project Discovery Draft |
-| `@ClarificationAnalyst` | PRD, Spec, OR Plan (depending on target) |
-| `@SpecificationArchitect` | Approved PRD |
-| `@PlannerArchitect` | Approved Technical Spec |
-| `@GodModeDev` | Implementation Plan OR Bug Remediation Plan |
-| `@ExpertCodeReviewer` | Technical Spec AND Implementation Plan |
-| `@ArtifactConsistencyChecker` | PRD, Spec, AND Plan |
+| Agent / Phase                     | Mandatory Upstream Document(s)                                          |
+| --------------------------------- | ----------------------------------------------------------------------- |
+| `@ProductManagerPRD`              | Project Discovery Draft                                                 |
+| `@ClarificationAnalyst`           | PRD, Spec, OR Plan (depending on target)                                |
+| `@SpecificationArchitect`         | Approved PRD                                                            |
+| `@PlannerArchitect`               | Approved Technical Spec                                                 |
+| `@GodModeDev`                     | Implementation Plan OR Bug Remediation Plan                             |
+| `@ExpertCodeReviewer`             | Technical Spec AND Implementation Plan                                  |
+| `@ArtifactConsistencyChecker`     | PRD, Spec, AND Plan                                                     |
 | `@DiataxisDocumentationArchitect` | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
 
 *Note: Phase 0 (`@BrainstormingExplorerAnalyst`) and surgical bug analysis (`@BugRemediationArchitect`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
