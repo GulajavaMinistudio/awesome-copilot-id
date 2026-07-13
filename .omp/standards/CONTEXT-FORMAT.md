@@ -38,6 +38,9 @@ _Avoid_: Client, buyer, account
 ## Rules
 
 - **Be opinionated.** When multiple words exist for the same concept, pick the best one and list the others under `_Avoid_`.
+- **Strict Avoid Syntax:** You MUST format rejected synonyms exactly as `_Avoid_: {Synonym}` (italicized with an underscore, followed by a colon). Do not use `**Avoid:**` or `*Avoid:*`. This strict formatting is required for automated regex parsing by the ArtifactConsistencyChecker.
+- **Acronym Handling:** Use the spelled-out, full name as the Canonical Term unless the acronym is universally used in the industry (e.g., API). Place the acronym inside the definition. Do NOT create duplicate entries for an acronym and its full name.
+- **Direct Overwrites:** If a domain term's definition evolves during the project, overwrite the existing definition directly. Do not keep a history or changelog inside this file.
 - **Keep definitions tight.** One or two sentences max. Define what it IS, not what it does.
 - **Exclude generic concepts.** Only include terms specific to this project's business context. General programming concepts (timeouts, error types, utility patterns) don't belong. Before adding a term, ask: is this a concept unique to this context, or a general programming concept? Only the former belongs.
 - **Group terms under subheadings** when natural clusters emerge. If all terms belong to a single cohesive area, a flat list is fine.

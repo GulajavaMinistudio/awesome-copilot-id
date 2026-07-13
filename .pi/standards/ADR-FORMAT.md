@@ -11,24 +11,33 @@ ADRs live in `docs/adr/` and serve as the project's architectural memory.
    - **Surprising without context:** A reader will wonder "why on earth did they do it this way?"
    - **Real trade-off:** There were distinct alternatives and you picked one for specific reasons.
    *If a decision is easy to reverse or obvious, skip the ADR.*
+4. **Terminology Compliance:** You **MUST** strictly use the terminology defined in the project's `CONTEXT.md` (Domain Glossary) when writing the ADR. Do not introduce synonyms or generic terms for established domain concepts.
 
 ## Mandatory Template
 
 ```md
-# {Sequential-Number}-{Short title of the decision}
+# {Sequential-Number} - {Short title of the decision}
 
-{1-3 sentences: what's the context, what did we decide, and why.}
+**Date:** {YYYY-MM-DD}  
+**Status:** {Proposed | Accepted | Deprecated | Superseded by ADR-NNNN}  
+
+## Context
+{1-3 sentences: Explain the problem, the context, and the constraints. Why do we need to make this decision?}
+
+## Decision
+{1-2 sentences: What did we explicitly decide to do or not do?}
+
+## Consequences
+{1-2 sentences: What are the non-obvious downstream effects or trade-offs we are accepting?}
 ```
 
-That's it. An ADR can be a single paragraph. The value is in recording *that* a decision was made and *why* — not in filling out sections.
+*Note: While the template provides structure, keep the content as concise as possible. The value is in recording **that** a decision was made and **why**, not in writing a novel.*
 
 ## Optional Sections
 
-Only include these when they add genuine value. Most ADRs won't need them.
+Only include these when they add genuine value:
 
-- **Status:** `proposed | accepted | deprecated | superseded by ADR-NNNN` — useful when decisions are revisited
-- **Considered Options:** Only when the rejected alternatives are worth remembering
-- **Consequences:** Only when non-obvious downstream effects need to be called out
+- **Considered Options:** Only list rejected alternatives if the rejection reason is non-obvious and worth remembering.
 
 ## When to offer an ADR
 
