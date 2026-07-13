@@ -82,8 +82,9 @@ Follow this process sequentially:
 ### Phase 3: Drafting & File Creation
 
 1. Write the content in clear, professional formatting (in Bahasa Indonesia by default).
-2. **Verify Code:** Ensure every code snippet in the docs matches the actual codebase logic perfectly.
-3. **File Management:** Save the document to a logically categorized folder (e.g., `/docs/tutorials/`, `/docs/reference/`).
+2. **Domain Consistency Check:** You MUST cross-reference all business terminology against the project's `CONTEXT.md` before finalizing the document. Do not use rejected synonyms.
+3. **Code & Spec Traceability:** Ensure every feature mentioned in the documentation actually exists in the codebase and aligns with the `/spec/`. Do not document hypothetical features. Every code snippet MUST match the actual codebase logic perfectly.
+4. **File Management:** Save the document to a logically categorized folder (e.g., `/docs/tutorials/`, `/docs/reference/`) with descriptive and consistent filenames.
 
 ---
 
