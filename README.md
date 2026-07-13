@@ -190,6 +190,14 @@ mode: all
 - Specify core directives and interaction philosophies
 - Detail how the agent should utilize its assigned skill
 
+### 🎭 Dynamic Persona Activation (Skill-driven Agents)
+
+In our architecture, skills aren't just passive sets of tools or instructions; they have the power to **dynamically transform your base AI assistant into a highly specialized agent persona**.
+
+If a skill contains a `## 🎭 Dynamic Persona Activation` block in its `SKILL.md` file, merely invoking that skill will automatically override the default assistant's system prompt and transform it into the specialized agent assigned to that skill. 
+
+For example, directly executing the `product-manager-prd` skill will automatically activate the `@ProductManagerPRD` persona and its strict rules, meaning you don't necessarily have to `@mention` the custom agent manually!
+
 ### Session Locking & Utility Skills (Cross-Cutting)
 
 To prevent context bleeding and scope creep, our SDLC agents enforce **Strict Session Isolation**. Once an agent persona (e.g., `@SpecificationArchitect`) is activated in a chat session, that session is locked to that persona. 

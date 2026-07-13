@@ -22,7 +22,7 @@ Before responding to the user, you MUST write exactly: **[Activating Persona: Pl
 
 ## Overview
 
-This skill outlines the workflow to transform technical specifications and requirements into formal, structured, and executable implementation plans. It ensures plans are machine-readable and highly deterministic. This skill accompanies the `@PlannerArchitect` agent.
+This skill outlines the workflow to transform technical specifications and requirements into formal, structured, and executable implementation plans. It ensures plans are machine-readable, highly deterministic, and fully traceable. This skill accompanies the `@PlannerArchitect` agent.
 
 ## When to Use
 
@@ -36,6 +36,7 @@ This skill outlines the workflow to transform technical specifications and requi
 
 1.  **Start with Understanding:**
     - **Check for Specs:** Look for a formal technical specification document (e.g., in `/spec/`). If it exists, you **MUST read and deeply analyze it** to align with its data contracts and constraints.
+    - **Enforce Standards:** You MUST read `CONTEXT.md` (Domain Glossary) and the `docs/adr/` directory. Ensure your planned implementation does not violate established architectural decisions or terminology.
     - Clarify goals and identify affected components.
 2.  **Analyze Before Planning:**
     - Review existing codebase patterns and test coverage.
@@ -48,7 +49,7 @@ This skill outlines the workflow to transform technical specifications and requi
 ## Phase 2: Implementation Plan Generation Workflow
 
 1.  Offer the user: "I have gathered all the necessary information. Would you like me to generate the formal Implementation Plan file?"
-2.  If agreed, create the new file using the strictly defined file naming convention (`[purpose]-[component]-[version].md`) and save it in the `/plan/` directory.
+2.  If agreed, create the new file using the strictly defined file naming convention (`plan-[purpose]-[component]-[version].md`) and save it in the `/plan/` directory.
 3.  Purpose prefixes: `upgrade|refactor|feature|data|infrastructure|process|architecture|design`.
 4.  **Content:** The file's content **MUST** adhere to the Mandatory Implementation Plan Template below.
 
@@ -57,6 +58,8 @@ This skill outlines the workflow to transform technical specifications and requi
 ## AI-Optimized Implementation Standards
 
 - **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
+- **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific requirement in the Spec or PRD to prevent _scope creep_.
+- **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in `CONTEXT.md`.
 - Use explicit, unambiguous, and machine-parseable language (tables, lists).
 - Include specific file paths, function names, and line numbers.
 
@@ -98,21 +101,21 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 - GOAL-001: [Describe the goal of this phase]
 
-| Task     | Description                                                             | Completed | Date |
-| -------- | ----------------------------------------------------------------------- | --------- | ---- |
-| TASK-001 | Description of task 1                                                   |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 |           |      |
+| Task     | Description                                                             | Ref ID  | Completed | Date |
+| -------- | ----------------------------------------------------------------------- | ------- | --------- | ---- |
+| TASK-001 | Description of task 1                                                   | REQ-001 |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       |           |      |
 
 ### Implementation Phase 2
 
 - GOAL-002: [Describe the goal of this phase]
 
-| Task     | Description                                                     | Completed | Date |
-| -------- | --------------------------------------------------------------- | --------- | ---- |
-| TASK-002 | Description of task 2                                           |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    |           |      |
+| Task     | Description                                                     | Ref ID  | Completed | Date |
+| -------- | --------------------------------------------------------------- | ------- | --------- | ---- |
+| TASK-002 | Description of task 2                                           | REQ-002 |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       |           |      |
 
 ## 3. Alternatives
 
