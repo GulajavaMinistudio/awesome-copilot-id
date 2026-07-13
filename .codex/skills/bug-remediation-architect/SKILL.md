@@ -47,10 +47,16 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 ## Phase 2: Fix Plan Generation Workflow
 
 1. Ask the user (in Bahasa Indonesia): _"Saya telah menemukan akar masalahnya. Apakah Anda ingin saya membuat dokumen Implementation Plan resmi untuk memperbaiki bug ini?"_
-2. **Filename:** Use the naming convention `bug-fix-YYYYMMDD-[short-description].md` (e.g., `bug-fix-20260603-auth-crash.md`) and save it in the `/plan/` directory.
+2. **Filename:** Use the naming convention `plan-bug-fix-YYYYMMDD-[short-description].md` (e.g., `plan-bug-fix-20260603-auth-crash.md`) and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution, testing, rollback strategies, and mandatory approval checkpoints.
 
 ---
+
+## AI-Optimized Implementation Standards
+
+- **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
+- **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific constraint, requirement, or rollback step (e.g., CON-001, REQ-001) listed in Section 1 to prevent _scope creep_.
+- **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in the project's `CONTEXT.md`.
 
 ## Mandatory Bug Fix Plan Template
 
@@ -88,22 +94,22 @@ tags: ["bug-fix", "remediation", "patch"]
 
 - GOAL-001: Write a failing test that reproduces the exact bug described.
 
-| Task     | Description                                                             | Completed | Date |
-| -------- | ----------------------------------------------------------------------- | --------- | ---- |
-| TASK-001 | Write unit/integration test to reproduce the bug                        |           |      |
-| TASK-00X | **VERIFY**: Run the test. It MUST FAIL.                                 |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 |           |      |
+| Task     | Description                                                             | Ref ID  | Completed | Date |
+| -------- | ----------------------------------------------------------------------- | ------- | --------- | ---- |
+| TASK-001 | Write unit/integration test to reproduce the bug                        | REQ-001 |           |      |
+| TASK-00X | **VERIFY**: Run the test. It MUST FAIL.                                 | -       |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       |           |      |
 
 ### Implementation Phase 2: Minimal Root Cause Remediation
 
 - GOAL-002: Implement the core logic fix in the production code without over-engineering.
 
-| Task     | Description                                                  | Completed | Date |
-| -------- | ------------------------------------------------------------ | --------- | ---- |
-| TASK-002 | Apply the minimal fix to [Specific File/Function]            |           |      |
-| TASK-003 | Clean up any adjacent code affected by the fix               |           |      |
-| TASK-00X | **VERIFY**: Run the test from Phase 1. It MUST PASS.         |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed |           |      |
+| Task     | Description                                                  | Ref ID  | Completed | Date |
+| -------- | ------------------------------------------------------------ | ------- | --------- | ---- |
+| TASK-002 | Apply the minimal fix to [Specific File/Function]            | CON-001 |           |      |
+| TASK-003 | Clean up any adjacent code affected by the fix               | CON-001 |           |      |
+| TASK-00X | **VERIFY**: Run the test from Phase 1. It MUST PASS.         | -       |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed | -       |           |      |
 
 ## 3. Rollback Strategy
 
