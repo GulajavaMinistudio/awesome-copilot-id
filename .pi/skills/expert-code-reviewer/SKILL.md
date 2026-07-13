@@ -51,10 +51,16 @@ This skill provides the structured workflow for analyzing codebase implementatio
 ## Phase 2: Implementation Plan Generation Workflow
 
 1. Ask the user: _"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"_
-2. **Filename:** Use the naming convention `refactor-[component]-[version].md` and save it in the `/plan/` directory.
+2. **Filename:** Use the naming convention `plan-refactor-[component]-[version].md` and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution and mandatory approval checkpoints.
 
 ---
+
+## AI-Optimized Implementation Standards
+
+- **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
+- **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific requirement, principle, or security flaw (e.g., REQ-001, PRN-001, SEC-001) listed in Section 1 to prevent _scope creep_.
+- **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in the project's `CONTEXT.md`.
 
 ## Mandatory Refactoring Plan Template
 
@@ -93,21 +99,21 @@ tags: ["refactor", "clean-code", "architecture", "security"]
 
 - GOAL-001: [Describe the goal of this phase]
 
-| Task     | Description                                                             | Completed | Date |
-| -------- | ----------------------------------------------------------------------- | --------- | ---- |
-| TASK-001 | Description of task 1 (include exact file paths)                        |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 |           |      |
+| Task     | Description                                                             | Ref ID  | Completed | Date |
+| -------- | ----------------------------------------------------------------------- | ------- | --------- | ---- |
+| TASK-001 | Description of task 1 (include exact file paths)                        | SEC-001 |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       |           |      |
 
 ### Implementation Phase 2: Core Architectural Refactoring
 
 - GOAL-002: [Describe the goal of this phase]
 
-| Task     | Description                                                     | Completed | Date |
-| -------- | --------------------------------------------------------------- | --------- | ---- |
-| TASK-003 | Description of task 3                                           |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    |           |      |
+| Task     | Description                                                     | Ref ID  | Completed | Date |
+| -------- | --------------------------------------------------------------- | ------- | --------- | ---- |
+| TASK-003 | Description of task 3                                           | PRN-001 |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       |           |      |
 
 ## 3. Alternatives
 
