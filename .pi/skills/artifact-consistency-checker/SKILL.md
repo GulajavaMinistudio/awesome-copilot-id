@@ -35,7 +35,7 @@ Use this skill when:
 
 ---
 
-## Operational Workflow
+## ⚙️ Operational Workflow
 
 ### Phase 1: Artifact Aggregation
 

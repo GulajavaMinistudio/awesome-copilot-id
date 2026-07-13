@@ -32,7 +32,7 @@ This skill outlines the workflow to transform technical specifications and requi
 
 ---
 
-## Phase 1: Strategic Discussion & Analysis Workflow
+## ⚙️ Operational Workflow
 
 1.  **Start with Understanding:**
     - **Check for Specs:** Look for a formal technical specification document (e.g., in `/spec/`). If it exists, you **MUST read and deeply analyze it** to align with its data contracts and constraints.
@@ -46,7 +46,7 @@ This skill outlines the workflow to transform technical specifications and requi
 
 ---
 
-## Phase 2: Implementation Plan Generation Workflow
+## ⚙️ Operational Workflow
 
 1.  Offer the user: "I have gathered all the necessary information. Would you like me to generate the formal Implementation Plan file?"
 2.  If agreed, create the new file using the strictly defined file naming convention (`plan-[purpose]-[component]-[version].md`) and save it in the `/plan/` directory.

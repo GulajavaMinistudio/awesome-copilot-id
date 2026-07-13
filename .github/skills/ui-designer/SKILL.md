@@ -1,6 +1,6 @@
 ---
 name: ui-designer
-description: Elite UI/UX Design Lead & Frontend Architect. Generates distinctive, non-templated interfaces with opinionated aesthetics, deliberate typography, and exact UX copy. Triggers on UI design, frontend styling, or layout creation.
+description: "Elite UI/UX Design Lead & Frontend Architect. Generates distinctive, non-templated interfaces with opinionated aesthetics, deliberate typography, and exact UX copy. Triggers on UI design, frontend styling, or layout creation."
 license: MIT
 ---
 

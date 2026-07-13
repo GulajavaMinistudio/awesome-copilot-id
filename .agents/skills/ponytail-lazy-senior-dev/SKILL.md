@@ -1,6 +1,6 @@
 ---
 name: ponytail-lazy-senior-dev
-description: Applies the "lazy senior developer" mindset. Use this skill whenever generating, modifying, reviewing code, or fixing bugs to prioritize code reuse, minimalism, YAGNI principles, and root-cause fixes.
+description: 'Applies the "lazy senior developer" mindset. Use this skill whenever generating, modifying, reviewing code, or fixing bugs to prioritize code reuse, minimalism, YAGNI principles, and root-cause fixes.'
 license: MIT
 ---
 

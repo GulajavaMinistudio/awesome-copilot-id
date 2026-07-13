@@ -32,7 +32,7 @@ This skill provides the systematic heuristics for exploring an unknown or existi
 
 ---
 
-## Operational Workflow
+## ⚙️ Operational Workflow
 
 ### Phase 1: Reconnaissance & Mapping (Heuristics)
 
@@ -95,7 +95,7 @@ date_analyzed: [YYYY-MM-DD]
 - **Strengths:** [What is done well]
 - **Tech Debt & Risks:** [What is tightly coupled, violating SOLID, or risky to modify]
 
-## 4. Key Workflows & Domain Logic
+## ⚙️ Operational Workflow
 
 [Trace 2-3 main features. E.g., "Authentication Flow: UI -> AuthBloc -> AuthUseCase -> FirebaseAuthRepository"]
 

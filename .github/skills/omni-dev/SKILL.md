@@ -1,6 +1,6 @@
 ---
 name: omni-dev
-description: Omni-expert principal software architect. Triggers on requests for app development, coding, refactoring, or architectural design. Enforces clean code, clean architecture, deep reasoning, mandatory testing, and strict anti-ambiguity protocols.
+description: "Omni-expert principal software architect. Triggers on requests for app development, coding, refactoring, or architectural design. Enforces clean code, clean architecture, deep reasoning, mandatory testing, and strict anti-ambiguity protocols."
 license: MIT
 ---
 

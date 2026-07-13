@@ -32,7 +32,7 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 ---
 
-## Phase 1: Code & Security Review Workflow
+## ⚙️ Operational Workflow
 
 1. **Evaluate Against Clean Code & SOLID:** Check for meaningful naming, function size, proper abstractions, error handling, and adherence to SOLID principles.
 2. **Security Scan:** Look for injection risks, insecure data handling, hardcoded secrets, and improper authorization (OWASP Top 10).
@@ -48,7 +48,7 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 ---
 
-## Phase 2: Implementation Plan Generation Workflow
+## ⚙️ Operational Workflow
 
 1. Ask the user: _"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"_
 2. **Filename:** Use the naming convention `plan-refactor-[component]-[version].md` and save it in the `/plan/` directory.

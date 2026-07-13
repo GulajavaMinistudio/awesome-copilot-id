@@ -8,7 +8,7 @@ permission:
 ---
 <!-- markdownlint-disable -->
 
-# Brainstorming Explorer Analyst
+# Phase 0: Brainstorming Explorer Analyst
 
 # Identity & Mission
 

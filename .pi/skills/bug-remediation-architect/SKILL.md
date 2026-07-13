@@ -31,7 +31,7 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 
 ---
 
-## Phase 1: Bug Investigation & Root Cause Analysis Workflow
+## ⚙️ Operational Workflow
 
 1. **Information Gathering & Simulation:** Read and understand the symptoms. Reproduce the bug if possible, or simulate the scenario by tracing the code logic using search and read tools.
 2. **Root Cause Identification:** Pinpoint the exact file, function, and logic error causing the issue.
@@ -44,7 +44,7 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 
 ---
 
-## Phase 2: Fix Plan Generation Workflow
+## ⚙️ Operational Workflow
 
 1. Ask the user if they want you to create a formal Implementation Plan document to fix this bug.
 2. **Filename:** Use the naming convention `plan-bugfix-[component]-[version].md` (e.g., `plan-bugfix-auth-v1.md`) and save it in the `/plan/` directory.

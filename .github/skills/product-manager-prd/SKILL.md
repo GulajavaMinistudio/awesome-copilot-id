@@ -3,6 +3,7 @@ name: product-manager-prd
 description: "Workflow to generate a comprehensive Product Requirements Document (PRD) detailing user stories, acceptance criteria, technical considerations, and metrics."
 license: MIT
 ---
+
 <!-- markdownlint-disable -->
 # Product Manager PRD Skill
 
@@ -27,7 +28,7 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 
 ---
 
-## PRD Generation Workflow
+## ⚙️ Operational Workflow
 
 1.  **Analyze Context:** Review the existing codebase only to understand Technical Constraints and Integration Points that might affect the PRD.
 2.  **Clarification Protocol:** Ask 3-5 questions to better understand the user's needs, focusing on the WHY and WHO before the WHAT.

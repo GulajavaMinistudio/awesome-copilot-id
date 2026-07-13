@@ -32,7 +32,7 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 ---
 
-## Operational Workflow
+## ⚙️ Operational Workflow
 
 ### Phase 1: Understand, Clarify, & Read PRD
 
