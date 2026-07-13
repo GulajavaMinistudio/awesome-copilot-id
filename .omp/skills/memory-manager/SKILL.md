@@ -151,7 +151,7 @@ Use this workflow to persist progress after a significant milestone.
 - **Active Memory Path:** [path_to_this_file]
 - **Current SDLC Phase:** [e.g., Planning / Specification / Implementation / Review / Documentation]
 - **Active Artifacts:**
-  - `[path/to/prd-feature-*.md]` — Status: ✅ Finalized
+  - `[path/to/prd-*.md]` — Status: ✅ Finalized
   - `[path/to/spec.md]` — Status: 🔄 In Progress
   - `[path/to/plan.md]` — Status: ⏳ Pending
 - **Achieved Milestones:**

@@ -145,6 +145,6 @@ _List the technical or business assumptions we validated._
 
 ### 4. 📝 Next Steps
 
-- The PRD document (e.g., `prd-feature-*.md`), related specification, or implementation plan **MUST** be updated with these resolutions before proceeding to the next execution step.
+- The PRD document (e.g., `prd-*.md`), related specification, or implementation plan **MUST** be updated with these resolutions before proceeding to the next execution step.
 - If new canonical business terms were agreed upon during the session, the Agent MUST offer to create or update the relevant Domain Glossary (via root `CONTEXT.md` or `CONTEXT-MAP.md`).
 - If architectural decisions were made that are (1) hard to reverse, (2) surprising, and (3) a real trade-off, the Agent MUST offer to document this in an Architecture Decision Record (ADR) under `docs/adr/`.

@@ -41,7 +41,7 @@ Use this skill when:
 
 Collect all documents related to the current feature in progress. You **must** read and retain the context of:
 
-1. PRD (e.g., `prd-feature-*.md`)
+1. PRD (e.g., `prd-*.md`)
 2. `spec-*.md`
 3. `plan-*.md`
 4. The relevant Domain Glossary. **Apply Scope Detection:** check for `CONTEXT-MAP.md` at root first; if it exists, follow the map to find the relevant context folder; if no map, use root `CONTEXT.md`.
@@ -139,7 +139,7 @@ Use this skill when:
 
 Collect all documents related to the current feature in progress. You **must** read and retain the context of:
 
-1. PRD (e.g., `prd-feature-*.md`)
+1. PRD (e.g., `prd-*.md`)
 2. `spec-*.md`
 3. `plan-*.md`
 4. The relevant Domain Glossary. **Apply Scope Detection:** check for `CONTEXT-MAP.md` at root first; if it exists, follow the map to find the relevant context folder; if no map, use root `CONTEXT.md`.

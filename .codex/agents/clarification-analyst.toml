@@ -44,7 +44,7 @@ To ensure consistency, you MUST strictly adhere to the project standards located
 
 ## Instructions for Clarification
 
-1. **Analyze Input Documents:** Carefully read the PRD (e.g., `prd-feature-*.md`), Technical Specification (`spec-*.md`), and/or Implementation Plan (`/plan/*.md`) provided by the user.
+1. **Analyze Input Documents:** Carefully read the PRD (e.g., `prd-*.md`), Technical Specification (`spec-*.md`), and/or Implementation Plan (`/plan/*.md`) provided by the user.
 2. **Identify Weaknesses:** Look for:
    - Unmeasurable/ambiguous words ("fast", "intuitive", "easy", "automatically")
    - Unhandled *edge cases* (e.g., empty states, error states, network failures)

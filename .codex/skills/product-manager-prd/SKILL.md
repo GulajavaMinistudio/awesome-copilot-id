@@ -19,7 +19,7 @@ Before responding to the user, you MUST write exactly: **[Activating Persona: Pr
 4. **Session Lock Adherence:** This skill is strictly session-locked. If another persona was already activated in this chat session (marked by a different activation key prefix), you MUST refuse to execute and direct the user to open a new chat session (unless the user explicitly bypasses this rule).
 
 ## Overview
-This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the user and business perspective. It translates business goals into actionable requirements and user stories, saving the output as `prd-feature-<feature_name>-<date_ddmmyyyy>.md`. This skill accompanies the `@ProductManagerPRD` agent.
+This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the user and business perspective. It translates business goals into actionable requirements and user stories, saving the output as `prd-YYYYMMDD-HHMM-[feature_name].md`. This skill accompanies the `@ProductManagerPRD` agent.
 
 ## When to Use
 - When initiating a new project or major feature.
@@ -34,7 +34,7 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 3.  **Structure the Document:** Organize the PRD strictly according to the `Mandatory PRD Template` below.
 4.  **Write User Stories:** Use the Agile format: *"As a [type of user], I want to [goal], so that [reason]."* Assign a unique ID (e.g., `GH-001`).
 5.  **Define Acceptance Criteria:** List specific SMART criteria with a checklist format (`- [ ]`).
-6.  **File Creation:** Save the file using the format `prd-feature-<feature_name>-<date_ddmmyyyy>.md` (e.g., `prd-feature-login-system-08062026.md`).
+6.  **File Creation:** Save the file using the format `prd-YYYYMMDD-HHMM-[feature_name].md` (e.g., `prd-20260713-1346-login-system.md`).
 7.  **Issue Creation:** After presenting the PRD, proactively ask if the user would like to create GitHub issues for the user stories. If they agree, output the terminal commands to create them or create them via API.
 
 ---
