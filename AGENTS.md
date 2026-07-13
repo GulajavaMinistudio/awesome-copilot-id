@@ -85,6 +85,26 @@ To prevent scope creep and maintain architectural integrity, all Agents MUST ope
 - **PUSHBACK:** The agent must halt progress, flag the architectural or requirements deviation, and recommend updating the upstream specification or plan documents before proceeding.
 
 
+
+### 📂 Mandatory Context Injection Protocol
+
+To prevent context loss, hallucinations, and to enforce strict SDLC traceability, agents MUST be provided with the required upstream documents when invoked. Users are allowed to include other relevant files to complete the analysis.
+
+If the mandatory files are not provided in the prompt context, the agent must halt execution and ask the user to provide them, unless explicitly overridden by the user.
+
+| Agent / Phase | Mandatory Upstream Document(s) |
+|---|---|
+| `@ProductManagerPRD` | Project Discovery Draft |
+| `@ClarificationAnalyst` | PRD, Spec, OR Plan (depending on target) |
+| `@SpecificationArchitect` | Approved PRD |
+| `@PlannerArchitect` | Approved Technical Spec |
+| `@GodModeDev` | Implementation Plan OR Bug Remediation Plan |
+| `@ExpertCodeReviewer` | Technical Spec AND Implementation Plan |
+| `@ArtifactConsistencyChecker` | PRD, Spec, AND Plan |
+| `@DiataxisDocumentationArchitect` | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+
+*Note: Phase 0 (`@BrainstormingExplorerAnalyst`) and surgical bug analysis (`@BugRemediationArchitect`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
+
 ### 1. Phase 0: Project Discovery
 - **Target Agent:** `@BrainstormingExplorerAnalyst`
 - **Goal:** Define the foundational "WHAT" and "WHY" (Project Brief, max 2-5 pages). Includes exploring existing codebases, critiquing architecture, and identifying tech debt to provide a complete business + technical foundation for the PRD.

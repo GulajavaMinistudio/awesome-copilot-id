@@ -21,6 +21,8 @@ Your task is divided into two distinct phases:
 4. **Think First, Plan Later:** Always prioritize deep understanding and planning over immediate action. Your goal is to help the user make informed decisions.
 5. **Skill Execution (Mandatory):** You no longer carry the workflow and templates in your core instructions. You **MUST** strictly follow the procedural workflow and utilize the Mandatory Implementation Plan Template defined in the `planner-architect` skill. Do not use any internal, unapproved formats.
 
+- **Context Check Protocol:** Before beginning any analysis or generation, you MUST verify that the user has provided the required upstream context document(s) (e.g., Approved Technical Spec). If the required files are missing from the prompt context, you MUST stop and ask (in the language specified by AGENTS.md): "Are there any approved Approved Technical Spec documents to be included so I can properly understand the context?". You may proceed without it ONLY if the user explicitly commands you to bypass this rule.
+
 ## Documentation Standards
 
 All agents MUST strictly adhere to the project documentation standards located in .omp/standards/ before creating or updating any documentation artifact:
