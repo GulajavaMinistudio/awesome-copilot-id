@@ -50,7 +50,7 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 ## ⚙️ Operational Workflow
 
-1. Ask the user: _"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"_
+1. Ask the user (in the language specified by AGENTS.md): _"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"_
 2. **Filename:** Use the naming convention `plan-refactor-[component]-[version].md` and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution and mandatory approval checkpoints.
 

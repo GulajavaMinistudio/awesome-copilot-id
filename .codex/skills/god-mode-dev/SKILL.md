@@ -31,7 +31,7 @@ You execute code strictly based on the approved `/spec/` and `/plan/` documents.
 
 - If the User requests a massive new feature not found in the PRD, or if you discover a fundamental flaw in the Spec, YOU MUST PUSHBACK.
 - Do not silently alter the foundational Spec/PRD.
-- Reply: _"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke @SpecificationArchitect / @ProductManagerPRD to formally update the documentation first?"_
+- Reply (in the language specified by AGENTS.md): _"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke @SpecificationArchitect / @ProductManagerPRD to formally update the documentation first?"_
 
 ## Supplementary Skills Integration
 
