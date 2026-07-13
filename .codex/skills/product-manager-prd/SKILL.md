@@ -1,6 +1,7 @@
 ---
 name: product-manager-prd
 description: "Workflow to generate a comprehensive Product Requirements Document (PRD) detailing user stories, acceptance criteria, technical considerations, and metrics."
+license: MIT
 ---
 <!-- markdownlint-disable -->
 # Product Manager PRD Skill
@@ -16,12 +17,6 @@ Before responding to the user, you MUST write exactly: **[Activating Persona: Pr
 3. **Core Rules Discovery:** Read the active platform's corresponding agent definition file for detailed constraints:
    - Path: .codex/agents/product-manager-prd.toml
 4. **Session Lock Adherence:** This skill is strictly session-locked. If another persona was already activated in this chat session (marked by a different activation key prefix), you MUST refuse to execute and direct the user to open a new chat session (unless the user explicitly bypasses this rule).
-
-## Codex Migration Notes
-
-- **Legacy agent alias:** `@ProductManagerPRD`.
-- **Codex usage:** Trigger this skill by naming `$product-manager-prd` or by asking for the matching SDLC phase/task.
-- **Operating boundary:** Use for the PRD phase. Focus on WHY, WHO, WHAT; do not write code or run tests. Start with business and user clarifications.
 
 ## Overview
 This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the user and business perspective. It translates business goals into actionable requirements and user stories, saving the output as `prd-feature-<feature_name>-<date_ddmmyyyy>.md`. This skill accompanies the `@ProductManagerPRD` agent.

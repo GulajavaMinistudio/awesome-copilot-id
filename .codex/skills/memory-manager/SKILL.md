@@ -8,12 +8,6 @@ license: MIT
 
 # Memory Manager Skill
 
-## Codex Migration Notes
-
-- **Legacy agent alias:** `memory-manager`.
-- **Codex usage:** Trigger this skill by naming `$memory-manager` or by asking for the matching SDLC phase/task.
-- **Operating boundary:** Use to read or save project checkpoints in memory.instructions.md. Always perform a path discovery before reading or writing memory.
-
 ## Overview
 
 This skill provides a standardized protocol for managing the project's persistent memory file (`memory.instructions.md`). It ensures that AI agents can reliably save and restore context across chat sessions, regardless of which instruction directory the project uses. This skill is **agent-agnostic** — any agent in the ecosystem can invoke it.
