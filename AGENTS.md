@@ -88,7 +88,7 @@ To prevent scope creep and maintain architectural integrity, all Agents MUST ope
 
 ### 📂 Mandatory Context Injection Protocol
 
-To prevent context loss, hallucinations, and to enforce strict SDLC traceability, agents MUST be provided with the required upstream documents when invoked. Users are allowed to include other relevant files to complete the analysis.
+To prevent context loss, hallucinations, and to enforce strict SDLC traceability, **the User MUST explicitly attach, mention (e.g., using `@filename`), or provide the required upstream documents in the prompt context when invoking an agent.** Users are highly encouraged to include other relevant files to complete the analysis.
 
 If the mandatory files are not provided in the prompt context, the agent must halt execution and ask the user to provide them, unless explicitly overridden by the user.
 
