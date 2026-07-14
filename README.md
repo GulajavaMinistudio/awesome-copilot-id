@@ -125,18 +125,18 @@ Custom agents are specialized AI assistants for specific development roles and t
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these agents. This file contains the core SDLC rules that all agents must follow. See [Step #3 in Installation](#installation) for details.
 
-| Agent                               | Associated Skill                                                          | Description                                          | Best For                                                            |
-| ----------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`                                                  | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
-| **@ProductManagerPRD**              | `product-manager-prd`                                                     | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
-| **@ClarificationAnalyst**           | `clarification-analyst`                                                   | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
-| **@SpecificationArchitect**         | `specification-architect`                                                 | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
-| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`                                            | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
-| **@PlannerArchitect**               | `planner-architect`                                                       | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
+| Agent                               | Associated Skill                                                                                                      | Description                                          | Best For                                                            |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`                                                                                              | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
+| **@ProductManagerPRD**              | `product-manager-prd`                                                                                                 | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
+| **@ClarificationAnalyst**           | `clarification-analyst`                                                                                               | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
+| **@SpecificationArchitect**         | `specification-architect`                                                                                             | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
+| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`                                                                                        | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
+| **@PlannerArchitect**               | `planner-architect`                                                                                                   | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
 | **@GodModeDev**                     | `god-mode-dev` (supp: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
-| **@ExpertCodeReviewer**             | `expert-code-reviewer`                                                    | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
-| **@BugRemediationArchitect**        | `bug-remediation-architect`                                               | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
-| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect`                                        | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
+| **@ExpertCodeReviewer**             | `expert-code-reviewer`                                                                                                | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
+| **@BugRemediationArchitect**        | `bug-remediation-architect`                                                                                           | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
+| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect`                                                                                    | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
 
 ### How to Use Custom Agents
 
@@ -238,7 +238,7 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 If the mandatory files are not provided in the prompt context, the agent will halt execution and ask you to provide them.
 
 | Agent / Phase                     | Mandatory Upstream Document(s)                                          |
-|-----------------------------------|-------------------------------------------------------------------------|
+| --------------------------------- | ----------------------------------------------------------------------- |
 | `@ProductManagerPRD`              | Project Discovery Draft (OR existing PRD for updates)                   |
 | `@ClarificationAnalyst`           | PRD, Spec, OR Plan (depending on target)                                |
 | `@SpecificationArchitect`         | Approved PRD (OR existing Spec for updates)                             |
@@ -255,6 +255,12 @@ If the mandatory files are not provided in the prompt context, the agent will ha
 #### End-to-End Feature Development (SDLC Workflow)
 
 Following our strict sequential workflow, here is how you would develop a new feature:
+
+**Phase 0: Project Discovery**
+```text
+@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md
+```
+*(Note: `@business-brief.md` is a placeholder for any human-written file provided by you, such as raw meeting notes, client requirements, or a simple text file with your ideas. Once the Discovery Draft is finalized, use `memory-manager` to save context, then open a new chat session)*
 
 **Phase 1: Requirements & Clarification**
 ```text
@@ -328,6 +334,12 @@ For small, surgical tasks (like renaming a function, tweaking CSS, or fixing a t
 #### Advanced SDLC Workflow (Slash Commands & Context Injection)
 
 In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invoke the agent's underlying skill directly using the slash command syntax (`/<skill-name>`). Furthermore, to strictly comply with the **Mandatory Context Injection Protocol**, you should explicitly attach the required upstream documents and relevant source code files using the `@filename` syntax.
+
+**Phase 0: Project Discovery**
+```text
+/brainstorming-explorer explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md
+```
+*(Note: `@business-brief.md` is a placeholder for any human-written file provided by you, such as raw meeting notes, client requirements, or a simple text file with your ideas)*
 
 **Phase 1: Requirements & Clarification**
 ```text
@@ -713,5 +725,5 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## **Made with ❤️ for Indonesian Developers**
+## **Made with ❤️ from Indonesian Developers**
 
