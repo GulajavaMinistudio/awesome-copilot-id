@@ -232,6 +232,25 @@ We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub S
 > - Every output must be verified against the PRD and Spec before proceeding.
 > - We recommend starting a new chat session when switching phases to maintain context focus.
 
+### 📂 Mandatory Context Injection Protocol
+
+To prevent context loss, hallucinations, and to enforce strict SDLC traceability, **you MUST explicitly attach, mention (e.g., using `@filename`), or provide the required upstream documents in the prompt context when invoking an agent.** You are also highly encouraged to include other relevant files or code snippets to complete the analysis.
+
+If the mandatory files are not provided in the prompt context, the agent will halt execution and ask you to provide them.
+
+| Agent / Phase                     | Mandatory Upstream Document(s)                                          |
+|-----------------------------------|-------------------------------------------------------------------------|
+| `@ProductManagerPRD`              | Project Discovery Draft (OR existing PRD for updates)                   |
+| `@ClarificationAnalyst`           | PRD, Spec, OR Plan (depending on target)                                |
+| `@SpecificationArchitect`         | Approved PRD (OR existing Spec for updates)                             |
+| `@PlannerArchitect`               | Approved Technical Spec (OR existing Plan for updates)                  |
+| `@GodModeDev`                     | Implementation Plan OR Bug Remediation Plan                             |
+| `@ExpertCodeReviewer`             | Technical Spec AND Implementation Plan                                  |
+| `@ArtifactConsistencyChecker`     | PRD, Spec, AND Plan                                                     |
+| `@DiataxisDocumentationArchitect` | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+
+*Note: Phase 0 (`@BrainstormingExplorerAnalyst`) and surgical bug analysis (`@BugRemediationArchitect`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
+
 ### 🎯 Use Cases
 
 #### End-to-End Feature Development (SDLC Workflow)
@@ -295,6 +314,16 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```text
 @BugRemediationArchitect analyze the bug report for the checkout failure and propose a fix
 ```
+
+#### Minor Fixes & Ad-hoc Tasks (SDLC Bypass)
+
+For small, surgical tasks (like renaming a function, tweaking CSS, or fixing a typo), forcing the full SDLC (PRD -> Spec -> Plan -> Code) is inefficient. You can use the "escape hatch" to bypass the SDLC protocol by explicitly commanding the agent.
+
+**Example Prompt for Minor Tasks:**
+```text
+@GodModeDev [Bypass SDLC] This is a minor fix. Please refactor the `calculateTotal` function in @cart.js to be more concise, and add some padding to the `.btn-checkout` class in @style.css.
+```
+*Note: Even when bypassing the SDLC, you are still highly encouraged to attach the specific source code files (e.g., `@cart.js`, `@style.css`) to provide the agent with the necessary context.*
 
 ### 🌟 Best Practices
 

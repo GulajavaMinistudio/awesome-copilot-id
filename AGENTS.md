@@ -105,6 +105,8 @@ If the mandatory files are not provided in the prompt context, the agent must ha
 
 *Note: Phase 0 (`@BrainstormingExplorerAnalyst`) and surgical bug analysis (`@BugRemediationArchitect`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
+*Note: For minor fixes and ad-hoc tasks, users may bypass the mandatory document check by explicitly commanding the agent (e.g., "[Bypass SDLC]"). In these cases, users are still highly encouraged to attach the specific source code files to provide context.*
+
 ### 1. Phase 0: Project Discovery
 - **Target Agent:** `@BrainstormingExplorerAnalyst`
 - **Goal:** Define the foundational "WHAT" and "WHY" (Project Brief, max 2-5 pages). Includes exploring existing codebases, critiquing architecture, and identifying tech debt to provide a complete business + technical foundation for the PRD.
