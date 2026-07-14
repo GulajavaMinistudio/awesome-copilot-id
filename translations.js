@@ -31,7 +31,7 @@ window.translations = {
 <span class="text-success">> All tests passed (18/18) with 100% coverage!</span>`,
     
     // Overview
-    overview_title: "📋 Overview",
+    overview_title: "Overview",
     overview_desc: "Awesome Copilot Indonesia is a curated collection of custom AI agents, skills, rules, and prompts designed to accelerate your software development lifecycle (SDLC).",
     overview_agents_title: "Custom Agents",
     overview_agents_desc: "Specialized AI agents for each phase of development (PRD, Technical Specs, Strategic Planning, Coding, and Review).",
@@ -45,7 +45,7 @@ window.translations = {
     overview_multi_desc: "Out-of-the-box configurations for Google Antigravity (.agents), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, and Oh My Pi (omp).",
     
     // Getting Started
-    install_title: "🚀 Getting Started",
+    install_title: "Getting Started",
     install_desc: "Choose either the fast automated installation or perform a manual setup based on the AI assistant platform you use.",
     install_prereq_title: "Platform Prerequisites",
     install_method1_tab: "Method 1: Automated (Recommended)",
@@ -60,8 +60,11 @@ window.translations = {
     install_method2_step4: "Restart your IDE or AI Assistant to apply the changes.",
     
     // Custom Agents Section
-    agents_title: "🤖 Custom Agents",
+    agents_title: "Custom Agents",
     agents_desc: "Leverage custom AI agents specialized for specific roles and tasks throughout the development lifecycle.",
+    agent_group_1: "Phase 1-3: Strategy & Specs",
+    agent_group_2: "Phase 4: Execution & Review",
+    agent_group_3: "Phase 5: Documentation",
     agent_label_best: "Best For:",
     agent_label_prompt: "Usage Example:",
     
@@ -96,7 +99,7 @@ window.translations = {
     agent_dda_best: "Writing user-facing manuals, API documentations, and clear system explanations.",
     
     // Examples & Stepper
-    examples_title: "💡 Workflow & Examples",
+    examples_title: "Workflow & Examples",
     examples_desc: "Understand how the software development lifecycle (SDLC) is executed sequentially using a suite of AI agents.",
     stepper_title: "AI Agent SDLC Sequence",
     
@@ -135,7 +138,7 @@ window.translations = {
     panel_5_input: "Approved Spec / Source Code",
     
     // Stepper Footer
-    protocol_title: "📂 Context Injection Protocol",
+    protocol_title: "Context Injection Protocol",
     protocol_desc: "AI assistants require upstream documents to maintain consistency and prevent context drift. Always include the following files:",
     protocol_th_agent: "Agent / Phase",
     protocol_th_doc: "Required Supporting Documents",
@@ -144,16 +147,16 @@ window.translations = {
     protocol_pa_doc: "Approved Technical Spec",
     protocol_gmd_doc: "Approved Implementation Plan / Bug Remediation Plan",
     
-    bypass_title: "🛠️ SDLC Bypass (Minor Tasks)",
+    bypass_title: "SDLC Bypass (Minor Tasks)",
     bypass_desc1: "For minor emergency fixes (e.g., updating text, tweaking CSS padding, or fixing typos), you can bypass the full SDLC using the <code>[Bypass SDLC]</code> tag.",
     bypass_desc2: "Even when bypassing, it is recommended to attach the target file in your chat prompt to provide appropriate context.",
     bypass_code_sample: "@GodModeDev [Bypass SDLC] Please fix the checkout button padding in @style.css for consistency.",
     
     // Use Case Tabs
-    uc_tab_sdlc: "🔄 End-to-End SDLC (@Mentions)",
-    uc_tab_bypass: "🛠️ SDLC Bypass (Minor Fixes)",
-    uc_tab_slash: "⚡ Advanced (Slash Commands)",
-    slash_title: "⚡ Autonomous Workflows with Slash Commands",
+    uc_tab_sdlc: "End-to-End SDLC (@Mentions)",
+    uc_tab_bypass: "SDLC Bypass (Minor Fixes)",
+    uc_tab_slash: "Advanced (Slash Commands)",
+    slash_title: "Autonomous Workflows with Slash Commands",
     slash_desc: "In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invoke the agent's underlying skill directly using the slash command syntax <code>/&lt;skill-name&gt;</code>. Here is the full workflow of using slash commands for a feature development lifecycle:",
     slash_p0_title: "Exploring Codebase & Brainstorming",
     slash_p1_title: "Creating PRD & Clarifying Requirements",
@@ -169,7 +172,7 @@ window.translations = {
     footer_guide: "Installation Guide",
     footer_contrib: "Contributing Guidelines",
     footer_license: "MIT License",
-    footer_copyright: "© 2026 Awesome Copilot Indonesia. Made with ❤️ by Indonesian Developers.",
+    footer_copyright: "© {year} Awesome Copilot Indonesia. Made with ❤️ by Indonesian Developers.",
     footer_lang_selector: "English (EN)",
     footer_privacy: "Privacy",
     footer_terms: "Terms",
@@ -207,7 +210,7 @@ window.translations = {
 <span class="text-success">> Semua pengujian berhasil (18/18) dengan 100% cakupan!</span>`,
     
     // Overview
-    overview_title: "📋 Overview",
+    overview_title: "Overview",
     overview_desc: "Awesome Copilot Indonesia adalah koleksi konfigurasi agen AI, skill, aturan, dan prompt kustom yang siap pakai untuk mempercepat siklus hidup pengembangan perangkat lunak (SDLC) Anda.",
     overview_agents_title: "Custom Agents",
     overview_agents_desc: "Agen AI khusus untuk setiap fase pengembangan (PRD, Technical Specs, Strategic Planning, Coding, hingga Review).",
@@ -221,7 +224,7 @@ window.translations = {
     overview_multi_desc: "Konfigurasi siap pakai untuk Google Antigravity (`.agents`), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, dan Oh My Pi (`omp`).",
     
     // Getting Started
-    install_title: "🚀 Getting Started",
+    install_title: "Getting Started",
     install_desc: "Pilih metode instalasi otomatis yang cepat atau lakukan instalasi manual sesuai dengan platform asisten AI yang Anda gunakan.",
     install_prereq_title: "Prasyarat Platform",
     install_method1_tab: "Metode 1: Otomatis (Rekomendasi)",
@@ -236,8 +239,11 @@ window.translations = {
     install_method2_step4: "Mulai ulang IDE atau Asisten AI Anda untuk menerapkan perubahan.",
     
     // Custom Agents Section
-    agents_title: "🤖 Custom Agents",
+    agents_title: "Custom Agents",
     agents_desc: "Gunakan agen AI kustom yang berspesialisasi dalam peran dan tugas tertentu dalam siklus pengembangan.",
+    agent_group_1: "Fase 1-3: Strategi & Spesifikasi",
+    agent_group_2: "Fase 4: Eksekusi & Review",
+    agent_group_3: "Fase 5: Dokumentasi",
     agent_label_best: "Paling Cocok Untuk:",
     agent_label_prompt: "Contoh Prompt Penggunaan:",
     
@@ -272,7 +278,7 @@ window.translations = {
     agent_dda_best: "Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.",
     
     // Examples & Stepper
-    examples_title: "💡 Alur Kerja & Contoh",
+    examples_title: "Alur Kerja & Contoh",
     examples_desc: "Pahami bagaimana siklus hidup pengembangan perangkat lunak (SDLC) dijalankan menggunakan rangkaian agen AI secara sekuensial.",
     stepper_title: "Sekuens Alur SDLC Agen AI",
     
@@ -311,7 +317,7 @@ window.translations = {
     panel_5_input: "Approved Spec / Source Code",
     
     // Stepper Footer
-    protocol_title: "📂 Protokol Injeksi Konteks",
+    protocol_title: "Protokol Injeksi Konteks",
     protocol_desc: "Asisten AI memerlukan dokumen hulu (upstream) untuk menjaga konsistensi pengerjaan dan mencegah delusi konteks. Harap selalu sertakan dokumen berikut saat memanggil agen terkait:",
     protocol_th_agent: "Agen / Fase",
     protocol_th_doc: "Dokumen Pendukung Wajib",
@@ -320,16 +326,16 @@ window.translations = {
     protocol_pa_doc: "Spesifikasi Teknis yang disetujui",
     protocol_gmd_doc: "Rencana Implementasi / Rencana Perbaikan Bug",
     
-    bypass_title: "🛠️ Bypass SDLC (Pekerjaan Minor)",
+    bypass_title: "Bypass SDLC (Pekerjaan Minor)",
     bypass_desc1: "Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati tahapan SDLC penuh menggunakan bendera penunjuk <code>[Bypass SDLC]</code>.",
     bypass_desc2: "Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.",
     bypass_code_sample: "@GodModeDev [Bypass SDLC] Tolong perbaiki padding tombol checkout di @style.css agar konsisten.",
     
     // Use Case Tabs
-    uc_tab_sdlc: "🔄 End-to-End SDLC (@Mentions)",
-    uc_tab_bypass: "🛠️ SDLC Bypass (Perbaikan Minor)",
-    uc_tab_slash: "⚡ Lanjutan (Slash Commands)",
-    slash_title: "⚡ Alur Kerja Mandiri dengan Slash Commands",
+    uc_tab_sdlc: "End-to-End SDLC (@Mentions)",
+    uc_tab_bypass: "SDLC Bypass (Perbaikan Minor)",
+    uc_tab_slash: "Lanjutan (Slash Commands)",
+    slash_title: "Alur Kerja Mandiri dengan Slash Commands",
     slash_desc: "Di sebagian besar platform (seperti VS Code Copilot, Antigravity, OpenCode), Anda dapat memanggil keahlian (skill) agen secara langsung menggunakan perintah garis miring (slash commands) <code>/&lt;nama-skill&gt;</code>. Berikut alur lengkap penggunaan perintah slash untuk siklus hidup pengembangan fitur:",
     slash_p0_title: "Mengeksplorasi Codebase & Brainstorming",
     slash_p1_title: "Membuat PRD & Mengklarifikasi Kebutuhan",
@@ -345,7 +351,7 @@ window.translations = {
     footer_guide: "Panduan Instalasi",
     footer_contrib: "Pedoman Kontribusi",
     footer_license: "Lisensi MIT",
-    footer_copyright: "© 2026 Awesome Copilot Indonesia. Made with ❤️ by Indonesian Developers.",
+    footer_copyright: "© {year} Awesome Copilot Indonesia. Made with ❤️ by Indonesian Developers.",
     footer_lang_selector: "Bahasa Indonesia (ID)",
     footer_privacy: "Privasi",
     footer_terms: "Ketentuan",

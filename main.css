@@ -1,26 +1,31 @@
 :root {
-  /* Brand & Accent Colors */
-  --colors-primary: #ff385c;
-  --colors-primary-hover: #e00b41;
-  --colors-primary-disabled: #ffd1da;
+  /* Brand & Accent Colors - Indigo & Cyan Tech Theme */
+  --colors-primary: #6366f1;
+  --colors-primary-hover: #4f46e5;
+  --colors-primary-disabled: #c7d2fe;
   
   /* Text Colors */
-  --colors-ink: #222222;
-  --colors-body: #3f3f3f;
-  --colors-muted: #6a6a6a;
+  --colors-ink: #0f172a;
+  --colors-body: #334155;
+  --colors-muted: #64748b;
   
   /* Surface Colors */
   --colors-canvas: #ffffff;
-  --colors-surface-soft: #f7f7f7;
-  --colors-surface-strong: #f2f2f2;
+  --colors-surface-soft: #f8fafc;
+  --colors-surface-strong: #f1f5f9;
   
   /* Border Colors */
-  --colors-hairline: #dddddd;
-  --colors-hairline-soft: #ebebeb;
-  --colors-border-strong: #c1c1c1;
+  --colors-hairline: #e2e8f0;
+  --colors-hairline-soft: #f1f5f9;
+  --colors-border-strong: #cbd5e1;
+  
+  /* Border Radiuses */
+  --radius-sm: 8px;
+  --radius-md: 12px;
   
   /* Fonts */
   --font-family: 'Google Sans', -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  --font-display: 'Outfit', 'Google Sans', -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
   
   /* Spacing */
   --spacing-section: 64px;
@@ -36,6 +41,7 @@ body {
   font-family: var(--font-family);
   color: var(--colors-ink);
   background-color: var(--colors-canvas);
+  position: relative; /* Essential for Bootstrap Scrollspy to calculate offsets correctly */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -70,9 +76,11 @@ body {
 }
 
 /* Typography Overrides */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .display-5 {
+  font-family: var(--font-display);
   color: var(--colors-ink);
-  font-weight: 600; /* Airbnb Cereal modest display weight */
+  font-weight: 600; /* Outfit display weight */
+  letter-spacing: -0.02em;
 }
 
 p, li {
@@ -81,12 +89,12 @@ p, li {
 }
 
 /* Buttons */
-.btn-rausch {
+.btn-brand {
   background-color: var(--colors-primary) !important;
   color: #ffffff !important;
   border: none !important;
   font-weight: 500;
-  border-radius: 8px !important;
+  border-radius: var(--radius-sm) !important;
   padding: 10px 24px !important;
   height: 48px;
   display: inline-flex;
@@ -95,12 +103,12 @@ p, li {
   transition: background-color 0.2s ease-in-out, transform 0.1s ease;
 }
 
-.btn-rausch:hover,
-.btn-rausch:focus {
+.btn-brand:hover,
+.btn-brand:focus {
   background-color: var(--colors-primary-hover) !important;
 }
 
-.btn-rausch:active {
+.btn-brand:active {
   background-color: var(--colors-primary-hover) !important;
   transform: scale(0.98);
 }
@@ -110,7 +118,7 @@ p, li {
   color: var(--colors-ink) !important;
   border: 1px solid var(--colors-ink) !important;
   font-weight: 500;
-  border-radius: 8px !important;
+  border-radius: var(--radius-sm) !important;
   padding: 10px 24px !important;
   height: 48px;
   display: inline-flex;
@@ -137,7 +145,8 @@ p, li {
 .app-bar {
   background-color: var(--colors-canvas);
   border-bottom: 1px solid var(--colors-hairline);
-  height: 80px;
+  min-height: 80px;
+  height: auto;
   transition: box-shadow 0.2s ease-in-out;
 }
 
@@ -159,30 +168,74 @@ p, li {
   color: var(--colors-ink) !important;
 }
 
-.nav-link-custom.active::after {
-  content: '';
-  position: absolute;
-  bottom: -28px; /* Position underline precisely at bottom border of navbar */
-  left: 16px;
-  right: 16px;
-  height: 2px;
-  background-color: var(--colors-ink);
+/* Responsive Navbar Styling */
+@media (min-width: 992px) {
+  .app-bar {
+    height: 80px;
+  }
+  .nav-link-custom.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0px; /* Position underline directly under the menu text */
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background-color: var(--colors-ink);
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* Override any hardcoded desktop height helpers on mobile navbar elements */
+  .app-bar .h-100 {
+    height: auto !important;
+  }
+  
+  .navbar-collapse {
+    background-color: var(--colors-canvas);
+    padding: 16px 0 24px 0;
+    border-top: 1px solid var(--colors-hairline-soft);
+    margin-top: 8px;
+  }
+  
+  .nav-link-custom {
+    padding: 10px 0 !important;
+  }
+  
+  /* Disable active line position on mobile */
+  .nav-link-custom.active::after {
+    display: none !important;
+  }
 }
 
 /* Code Snippets and Commands */
-/* Console Mockup */
+/* Console Mockup - Slate 950 Dark Theme */
 .console-mockup {
-  background-color: var(--colors-canvas);
-  border-radius: 14px !important;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 4px 12px, rgba(0, 0, 0, 0.08) 0 8px 24px;
+  background-color: #0b0f19 !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 10px 30px;
+  border: 1px solid #1e293b !important;
+}
+
+.console-mockup code {
+  color: #f1f5f9 !important;
+}
+
+.console-mockup .text-muted-custom {
+  color: #64748b !important;
+}
+
+.console-mockup strong {
+  color: #818cf8 !important; /* Prompt symbol $ in vibrant Indigo */
 }
 
 pre {
   background-color: var(--colors-surface-soft);
   border: 1px solid var(--colors-hairline);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 16px;
   font-size: 14px;
+  white-space: pre-wrap; /* Enable soft-wrap */
+  word-break: break-word; /* Wrap long lines safely */
 }
 
 /* Interactive Agent List styling */
@@ -191,13 +244,14 @@ pre {
   background-color: var(--colors-canvas) !important;
   border-left: 3px solid transparent !important;
   border-radius: 0 !important;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
 #agentList .list-group-item:hover {
   color: var(--colors-primary) !important;
   background-color: var(--colors-surface-soft) !important;
+  padding-left: 28px !important; /* Subtle shift on hover */
 }
 
 #agentList .list-group-item.active {
@@ -205,6 +259,25 @@ pre {
   background-color: var(--colors-surface-soft) !important;
   border-left: 3px solid var(--colors-primary) !important;
   font-weight: 600 !important;
+}
+
+/* Mobile Accordion Interactive Styles */
+#agentsAccordion .accordion-item {
+  transition: background-color 0.2s ease;
+}
+
+#agentsAccordion .accordion-button {
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#agentsAccordion .accordion-button:not(.collapsed) {
+  color: var(--colors-primary) !important;
+  background-color: var(--colors-surface-soft) !important;
+}
+
+#agentsAccordion .accordion-button:focus {
+  box-shadow: none !important;
+  border-color: rgba(99, 102, 241, 0.1) !important;
 }
 
 /* Stepper Styles */
@@ -286,5 +359,81 @@ code {
   color: #ffffff !important;
   background-color: var(--colors-ink) !important;
   border-color: var(--colors-ink) !important;
+}
+
+/* Flex container code block wrapper to prevent text overlapping copy button */
+.position-relative:has(pre) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--colors-surface-soft);
+  border: 1px solid var(--colors-hairline);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  gap: 16px;
+}
+
+/* Make inner pre plain and allow soft-wrap */
+.position-relative:has(pre) pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  white-space: pre-wrap; /* Enable soft-wrap */
+  word-break: break-word; /* Wrap long lines safely */
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* De-absolute copy buttons when wrapped inside flex code blocks */
+.position-relative:has(pre) .copy-btn {
+  position: static !important;
+  transform: none !important;
+  flex-shrink: 0;
+  margin: 0 !important;
+}
+
+/* Interactive Overview Feature Cards */
+.feature-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease-in-out !important;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.15), 0 4px 12px -5px rgba(0, 0, 0, 0.05);
+  border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Custom Scrollbars for code blocks */
+pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-sm);
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: var(--colors-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: var(--colors-muted);
+}
+
+/* Dark mode scrollbars for console mockups */
+.console-mockup pre::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.console-mockup pre::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.console-mockup pre::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
 

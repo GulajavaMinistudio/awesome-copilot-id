@@ -20,11 +20,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Outfit:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
+  <body>
     <!-- Navbar / App Bar -->
     <nav class="navbar navbar-expand-lg app-bar sticky-top py-0">
       <div class="container h-100">
@@ -57,7 +57,7 @@
               <a class="nav-link nav-link-custom" href="#examples" data-i18n="nav_examples">Contoh</a>
             </li>
           </ul>
-          <div class="d-flex align-items-center flex-column flex-lg-row gap-3 my-3 my-lg-0">
+          <div class="d-flex align-items-start align-items-lg-center flex-column flex-lg-row gap-3 my-3 my-lg-0">
             <!-- Language Selector Dropdown -->
             <div class="dropdown">
               <button class="btn btn-sm btn-outline-ink dropdown-toggle px-3 d-flex align-items-center gap-1" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="height: 38px; border-radius: 8px;">
@@ -68,7 +68,7 @@
                 <li><button class="dropdown-item lang-select-btn fw-medium py-2" data-lang="id">Bahasa Indonesia (ID)</button></li>
               </ul>
             </div>
-            <a href="#installation" class="btn btn-rausch text-white py-2 px-3 fw-medium d-flex align-items-center" data-i18n="nav_cta" style="height: 38px;">
+            <a href="#installation" class="btn btn-brand text-white py-2 px-3 fw-medium d-flex align-items-center" data-i18n="nav_cta" style="height: 38px;">
               Get Started
             </a>
           </div>
@@ -93,7 +93,7 @@
                 Koleksi agen, skill, aturan, dan prompt kustom yang siap pakai untuk mengoptimalkan alur kerja AI-assisted development Anda di berbagai platform (Antigravity, Copilot, OpenCode, dll).
               </p>
               <div class="d-flex flex-wrap gap-3">
-                <a href="#installation" class="btn btn-rausch" data-i18n="hero_cta_install">
+                <a href="#installation" class="btn btn-brand" data-i18n="hero_cta_install">
                   Mulai Instalasi
                 </a>
                 <a href="#agents" class="btn btn-outline-ink" data-i18n="hero_cta_agents">
@@ -136,28 +136,28 @@
           </div>
           <div class="row g-4 mt-2">
             <div class="col-md-4">
-              <div class="py-3 px-1">
+              <div class="py-4 px-4 feature-card bg-white border-hairline h-100" style="border-radius: 12px; transition: all 0.2s ease-in-out;">
                 <span class="fs-3 mb-3 d-block">🤖</span>
                 <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_agents_title">Custom Agents</h3>
-                <p class="text-body-custom small" data-i18n="overview_agents_desc">
+                <p class="text-body-custom small mb-0" data-i18n="overview_agents_desc">
                   Agen AI khusus untuk setiap fase pengembangan (PRD, Technical Specs, Strategic Planning, Coding, hingga Review).
                 </p>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="py-3 px-1">
+              <div class="py-4 px-4 feature-card bg-white border-hairline h-100" style="border-radius: 12px; transition: all 0.2s ease-in-out;">
                 <span class="fs-3 mb-3 d-block">🤹</span>
                 <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_skills_title">Specialized Skills</h3>
-                <p class="text-body-custom small" data-i18n="overview_skills_desc">
+                <p class="text-body-custom small mb-0" data-i18n="overview_skills_desc">
                   Kemampuan khusus seperti Karpathy Guidelines, Ponytail lazy dev, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.
                 </p>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="py-3 px-1">
+              <div class="py-4 px-4 feature-card bg-white border-hairline h-100" style="border-radius: 12px; transition: all 0.2s ease-in-out;">
                 <span class="fs-3 mb-3 d-block">📝</span>
                 <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_rules_title">Rules & Instructions</h3>
-                <p class="text-body-custom small" data-i18n="overview_rules_desc">
+                <p class="text-body-custom small mb-0" data-i18n="overview_rules_desc">
                   Panduan coding terbaik yang disesuaikan dengan bahasa pemrograman dan framework populer untuk menjaga kualitas kode Anda.
                 </p>
               </div>
@@ -299,10 +299,11 @@
               </p>
             </div>
           </div>
-          <div class="row g-5">
+          <div class="row g-5 d-none d-lg-flex">
             <!-- Left side: Interactive Agent List -->
             <div class="col-lg-5">
               <div class="list-group list-group-flush border-hairline bg-white" style="border-radius: 12px; overflow: hidden;" id="agentList" role="tablist">
+                <div class="px-4 py-2 bg-light border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_1">Phase 1-3: Strategy & Specs</div>
                 <button class="list-group-item list-group-item-action active border-0 py-3 px-4 fw-medium text-ink" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
                   @BrainstormingExplorerAnalyst
                 </button>
@@ -321,6 +322,7 @@
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
                   @PlannerArchitect
                 </button>
+                <div class="px-4 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_2">Phase 4: Execution & Review</div>
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
                   @GodModeDev
                 </button>
@@ -330,6 +332,7 @@
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-bra-tab" data-bs-toggle="list" href="#agent-bra" role="tab" aria-controls="agent-bra">
                   @BugRemediationArchitect
                 </button>
+                <div class="px-4 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_3">Phase 5: Documentation</div>
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-dda-tab" data-bs-toggle="list" href="#agent-dda" role="tab" aria-controls="agent-dda">
                   @DiataxisDocumentationArchitect
                 </button>
@@ -536,6 +539,253 @@
                   <div class="position-relative">
                     <pre class="bg-surface-soft border-hairline text-ink"><code>@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md</code></pre>
                     <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alternative Mobile Accordion Layout -->
+          <div class="row d-block d-lg-none mt-2">
+            <div class="col-12">
+              <div class="accordion border-hairline bg-white" id="agentsAccordion" style="border-radius: 12px; overflow: hidden;">
+                <!-- BEA Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-bea">
+                    <button class="accordion-button fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bea" aria-expanded="true" aria-controls="mob-collapse-bea">
+                      @BrainstormingExplorerAnalyst
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-bea" class="accordion-collapse collapse show" aria-labelledby="mob-heading-bea" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">brainstorming-explorer</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_bea_desc">Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_bea_best">Memahami proyek baru atau lama, menganalisis utang teknis, dan memetakan alur kerja sebelum merumuskan PRD.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PM Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-pm">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-pm" aria-expanded="false" aria-controls="mob-collapse-pm">
+                      @ProductManagerPRD
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-pm" class="accordion-collapse collapse" aria-labelledby="mob-heading-pm" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">product-manager-prd</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_pm_desc">Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_pm_best">Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@ProductManagerPRD create a PRD for the user authentication module based on @discovery-draft.md</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@ProductManagerPRD create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CA Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-ca">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca" aria-expanded="false" aria-controls="mob-collapse-ca">
+                      @ClarificationAnalyst
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-ca" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">clarification-analyst</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@ClarificationAnalyst interrogate the new @prd-shopping-cart.md for missing edge cases</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@ClarificationAnalyst interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SA Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-sa">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-sa" aria-expanded="false" aria-controls="mob-collapse-sa">
+                      @SpecificationArchitect
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-sa" class="accordion-collapse collapse" aria-labelledby="mob-heading-sa" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">specification-architect</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_sa_desc">Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_sa_best">Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ACC Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-acc">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-acc" aria-expanded="false" aria-controls="mob-collapse-acc">
+                      @ArtifactConsistencyChecker
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-acc" class="accordion-collapse collapse" aria-labelledby="mob-heading-acc" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">artifact-consistency-checker</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_acc_desc">Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_acc_best">Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@ArtifactConsistencyChecker verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@ArtifactConsistencyChecker verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PA Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-pa">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-pa" aria-expanded="false" aria-controls="mob-collapse-pa">
+                      @PlannerArchitect
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-pa" class="accordion-collapse collapse" aria-labelledby="mob-heading-pa" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">planner-architect</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_pa_desc">Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_pa_best">Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- GMD Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-gmd">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-gmd" aria-expanded="false" aria-controls="mob-collapse-gmd">
+                      @GodModeDev
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-gmd" class="accordion-collapse collapse" aria-labelledby="mob-heading-gmd" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">god-mode-dev</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_gmd_desc">Agen developer otonom tingkat tinggi untuk menulis kode, melakukan modifikasi bedah, dan menulis pengujian unit/integrasi secara ketat.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_gmd_best">Menulis kode fitur, memodifikasi file, memperbaiki error, dan menguji fungsionalitas secara langsung di workspace.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@GodModeDev implement the shopping cart based on @plan-shopping-cart.md</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@GodModeDev implement the shopping cart based on @plan-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ECR Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-ecr">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ecr" aria-expanded="false" aria-controls="mob-collapse-ecr">
+                      @ExpertCodeReviewer
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-ecr" class="accordion-collapse collapse" aria-labelledby="mob-heading-ecr" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">expert-code-reviewer</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ecr_desc">Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan aspek keamanan, serta memberikan rencana refaktorisasi.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ecr_best">Menjaga standar kebersihan kode dan melakukan audit keamanan sebelum digabungkan (merge) ke branch utama.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@ExpertCodeReviewer review my service layer and suggest refactoring</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@ExpertCodeReviewer review my service layer and suggest refactoring">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BRA Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-bra">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bra" aria-expanded="false" aria-controls="mob-collapse-bra">
+                      @BugRemediationArchitect
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-bra" class="accordion-collapse collapse" aria-labelledby="mob-heading-bra" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">bug-remediation-architect</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_bra_desc">Menganalisis laporan bug, melacak akar penyebab masalah (RCA), dan menyusun rencana perbaikan bedah beserta strategi rollback yang aman.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_bra_best">Menyelesaikan masalah bug yang kompleks di codebase tanpa merusak bagian kode lainnya.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@BugRemediationArchitect analyze the bug report in @issue-123.md and propose a fix for @cart.js</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@BugRemediationArchitect analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- DDA Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-dda">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-dda" aria-expanded="false" aria-controls="mob-collapse-dda">
+                      @DiataxisDocumentationArchitect
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-dda" class="accordion-collapse collapse" aria-labelledby="mob-heading-dda" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">diataxis-documentation-architect</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_dda_desc">Penulis dokumentasi teknis profesional yang mengikuti kerangka kerja Diátaxis (Tutorial, Panduan, Referensi, Penjelasan).</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_dda_best">Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code>@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md</code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -895,6 +1145,9 @@
               <li><a href="#" class="text-muted-custom text-decoration-none hover-link">Google Antigravity</a></li>
               <li><a href="#" class="text-muted-custom text-decoration-none hover-link">OpenCode Agent</a></li>
               <li><a href="#" class="text-muted-custom text-decoration-none hover-link">CommandCode</a></li>
+              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">ChatGPT Codex</a></li>
+              <li><a href="https://pi.dev/" target="_blank" class="text-muted-custom text-decoration-none hover-link">Pi Dev Coding Agent</a></li>
+              <li><a href="https://omp.sh/" target="_blank" class="text-muted-custom text-decoration-none hover-link">Oh My Pi (omp)</a></li>
             </ul>
           </div>
           <!-- Column 2: Agen Utama -->
@@ -913,8 +1166,8 @@
             <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
               <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id" target="_blank" class="text-muted-custom text-decoration-none hover-link">GitHub Project</a></li>
               <li><a href="#installation" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_guide">Panduan Instalasi</a></li>
-              <li><a href="#" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_contrib">Pedoman Kontribusi</a></li>
-              <li><a href="#" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_license">Lisensi MIT</a></li>
+              <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id#-contributing" target="_blank" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_contrib">Pedoman Kontribusi</a></li>
+              <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id/blob/main/LICENSE" target="_blank" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_license">Lisensi MIT</a></li>
             </ul>
           </div>
         </div>
@@ -927,9 +1180,9 @@
           <div class="col-md-6 text-center text-md-end">
             <ul class="list-inline mb-0 small">
               <li class="list-inline-item"><span class="text-muted-custom me-3" id="footer-lang-label" data-i18n="footer_lang_selector"><i class="bi bi-globe"></i> English (EN)</span></li>
-              <li class="list-inline-item"><a href="#" class="text-muted-custom text-decoration-none hover-link me-2" data-i18n="footer_privacy">Privasi</a></li>
-              <li class="list-inline-item"><a href="#" class="text-muted-custom text-decoration-none hover-link me-2" data-i18n="footer_terms">Ketentuan</a></li>
-              <li class="list-inline-item"><a href="#" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_sitemap">Sitemap</a></li>
+              <li class="list-inline-item"><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id" target="_blank" class="text-muted-custom text-decoration-none hover-link me-2" data-i18n="footer_privacy">Privasi</a></li>
+              <li class="list-inline-item"><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id" target="_blank" class="text-muted-custom text-decoration-none hover-link me-2" data-i18n="footer_terms">Ketentuan</a></li>
+              <li class="list-inline-item"><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id" target="_blank" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_sitemap">Sitemap</a></li>
             </ul>
           </div>
         </div>
@@ -938,6 +1191,41 @@
 
     <!-- Scripts -->
     <script>
+      // Custom Scrollspy Logic to guarantee active class switching on scroll/resize/load
+      const sections = document.querySelectorAll('section[id]');
+      const navItems = document.querySelectorAll('.nav-link-custom');
+
+      function updateActiveNav() {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 120; // threshold set slightly below navbar height (80px)
+
+        const isAtBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50;
+
+        if (isAtBottom) {
+          currentSectionId = sections[sections.length - 1].getAttribute('id');
+        } else {
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+              currentSectionId = section.getAttribute('id');
+            }
+          });
+        }
+
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === `#${currentSectionId}`) {
+            item.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav);
+      window.addEventListener('resize', updateActiveNav);
+      document.addEventListener('DOMContentLoaded', updateActiveNav);
+      updateActiveNav(); // Initial call
+
       // Close mobile navbar collapse when a link is clicked
       const navLinks = document.querySelectorAll('.nav-link-custom');
       const menuToggle = document.getElementById('navbarNav');
@@ -1041,10 +1329,14 @@
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           if (window.translations && window.translations[lang] && window.translations[lang][key]) {
+            let translationText = window.translations[lang][key];
+            if (key === 'footer_copyright') {
+              translationText = translationText.replace('{year}', new Date().getFullYear());
+            }
             if (el.tagName === 'TITLE') {
-              el.textContent = window.translations[lang][key];
+              el.textContent = translationText;
             } else {
-              el.innerHTML = window.translations[lang][key];
+              el.innerHTML = translationText;
             }
           }
         });
