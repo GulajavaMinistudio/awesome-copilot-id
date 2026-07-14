@@ -209,23 +209,37 @@ p, li {
 
 /* Code Snippets and Commands */
 /* Console Mockup - Slate 950 Dark Theme */
+/* Console Mockup - Catppuccin Macchiato Theme */
 .console-mockup {
-  background-color: #0b0f19 !important;
+  background-color: #363a4f !important; /* Catppuccin Macchiato Surface 0 */
   border-radius: var(--radius-md) !important;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 10px 30px;
-  border: 1px solid #1e293b !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 10px 30px;
+  border: 1px solid #5b6078 !important; /* Catppuccin Macchiato Surface 2 */
 }
 
 .console-mockup code {
-  color: #f1f5f9 !important;
+  color: #cad3f5 !important; /* Catppuccin Macchiato Text */
 }
 
 .console-mockup .text-muted-custom {
-  color: #64748b !important;
+  color: #a5adcb !important; /* Catppuccin Macchiato Subtext 0 */
 }
 
 .console-mockup strong {
-  color: #818cf8 !important; /* Prompt symbol $ in vibrant Indigo */
+  color: #c6a0f6 !important; /* Catppuccin Macchiato Mauve */
+}
+
+/* Catppuccin Palette Overrides for console syntax text */
+.console-mockup .text-success {
+  color: #a6da95 !important; /* Catppuccin Macchiato Green */
+}
+
+.console-mockup .text-primary {
+  color: #8aadf4 !important; /* Catppuccin Macchiato Blue */
+}
+
+.console-mockup .text-info {
+  color: #8bd5ca !important; /* Catppuccin Macchiato Teal */
 }
 
 pre {

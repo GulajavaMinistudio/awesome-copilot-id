@@ -19,14 +19,14 @@ window.translations = {
     console_label: "terminal",
     console_content: `<strong>$</strong> /planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md
 <span class="text-muted-custom">[Phase 3] Analyzing spec-shopping-cart.md...</span>
-<span style="color: var(--colors-primary);">✔</span> Context validated (Traceability: 100%)
-<span style="color: var(--colors-primary);">✔</span> Implementation plan drafted: plan-shopping-cart.md
+<span class="text-success">✔</span> Context validated (Traceability: 100%)
+<span class="text-success">✔</span> Implementation plan drafted: plan-shopping-cart.md
 
 <strong>$</strong> /god-mode-dev implement the shopping cart based on @plan-shopping-cart.md
 <span class="text-muted-custom">[Phase 4] Loaded plan-shopping-cart.md...</span>
-<span style="color: var(--colors-primary);">➜</span> Task 1/3: Scaffold cart service layer... <span class="text-success">Done</span>
-<span style="color: var(--colors-primary);">➜</span> Task 2/3: Integrate UI view & styling... <span class="text-success">Done</span>
-<span style="color: var(--colors-primary);">➜</span> Task 3/3: Write unit/integration tests... <span class="text-success">Done</span>
+<span class="text-info">➜</span> Task 1/3: Scaffold cart service layer... <span class="text-success">Done</span>
+<span class="text-info">➜</span> Task 2/3: Integrate UI view & styling... <span class="text-success">Done</span>
+<span class="text-info">➜</span> Task 3/3: Write unit/integration tests... <span class="text-success">Done</span>
 <span class="text-primary">> Running 18 tests in cart.spec.js...</span>
 <span class="text-success">> All tests passed (18/18) with 100% coverage!</span>`,
     
@@ -114,7 +114,7 @@ window.translations = {
     step_label_input: "Input Document:",
     
     panel_0_title: "Phase 0: Project Discovery",
-    panel_0_desc: "Explore the existing codebase, analyze the architecture, and generate a raw discovery draft before drafting the PRD.",
+    panel_0_desc: "Explore the existing codebase, analyze the architecture, and generate a raw discovery draft before drafting the PRD. <strong>Business Brief</strong> is the initial brief detailing business goals, features, and project scope.",
     panel_0_input: "Business Brief / Ideas",
     
     panel_1_title: "Phase 1: Requirements & Clarification",
@@ -198,14 +198,14 @@ window.translations = {
     console_label: "terminal",
     console_content: `<strong>$</strong> /planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md
 <span class="text-muted-custom">[Fase 3] Menganalisis spec-shopping-cart.md...</span>
-<span style="color: var(--colors-primary);">✔</span> Konteks tervalidasi (Ketertelusuran: 100%)
-<span style="color: var(--colors-primary);">✔</span> Rencana implementasi dirancang: plan-shopping-cart.md
+<span class="text-success">✔</span> Konteks tervalidasi (Ketertelusuran: 100%)
+<span class="text-success">✔</span> Rencana implementasi dirancang: plan-shopping-cart.md
 
 <strong>$</strong> /god-mode-dev implement the shopping cart based on @plan-shopping-cart.md
 <span class="text-muted-custom">[Fase 4] Memuat plan-shopping-cart.md...</span>
-<span style="color: var(--colors-primary);">➜</span> Tugas 1/3: Membuat framework cart service... <span class="text-success">Selesai</span>
-<span style="color: var(--colors-primary);">➜</span> Tugas 2/3: Integrasi tampilan UI & styling... <span class="text-success">Selesai</span>
-<span style="color: var(--colors-primary);">➜</span> Tugas 3/3: Menulis unit/integration tests... <span class="text-success">Selesai</span>
+<span class="text-info">➜</span> Tugas 1/3: Membuat framework cart service... <span class="text-success">Selesai</span>
+<span class="text-info">➜</span> Tugas 2/3: Integrasi tampilan UI & styling... <span class="text-success">Selesai</span>
+<span class="text-info">➜</span> Tugas 3/3: Menulis unit/integration tests... <span class="text-success">Selesai</span>
 <span class="text-primary">> Menjalankan 18 pengujian di cart.spec.js...</span>
 <span class="text-success">> Semua pengujian berhasil (18/18) dengan 100% cakupan!</span>`,
     
@@ -293,7 +293,7 @@ window.translations = {
     step_label_input: "Dokumen Input:",
     
     panel_0_title: "Phase 0: Project Discovery (Penemuan Proyek)",
-    panel_0_desc: "Eksplorasi kode yang ada, analisis arsitektur, dan buat draf penemuan proyek awal sebelum merancang PRD.",
+    panel_0_desc: "Eksplorasi kode yang ada, analisis arsitektur, dan buat draf penemuan proyek awal sebelum merancang PRD. <strong>Business Brief</strong> adalah dokumen acuan awal yang menjabarkan tujuan bisnis, fitur utama, dan ruang lingkup proyek.",
     panel_0_input: "Business Brief / Ideas",
     
     panel_1_title: "Phase 1: Requirements & Clarification (Kebutuhan & Klarifikasi)",
