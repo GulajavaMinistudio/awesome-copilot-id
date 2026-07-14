@@ -29,8 +29,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - [Custom Agents](#-custom-agents)
 - [Skills](#-skills)
 - [Workflow & Methodology](#-workflow--methodology-spec-kit-inspired)
-- [Instructions](#-instructions)
-- [Prompts](#-prompts)
+- [Supplementary Skills](#-supplementary-skills)
 - [BYOK Copilot Config](#-byok-copilot-config)
 - [Advanced Customization Guide](#️-advanced-customization-guide)
 - [Contributing](#-contributing)
@@ -461,14 +460,15 @@ graph TD
   (@DiataxisDocumentationArchitect)
 ```
 
-## 📝 Instructions
+## 🌟 Supplementary Skills
 
-Instructions are rules and guidelines that your AI Assistant follows when generating code. Place them in your platform's respective directory (`.commandcode/instructions/`, `.github/instructions/`, `.opencode/instructions/`, `.agents/rules/`, `.pi/instructions/`, or `.omp/instructions/`).
+Previously categorized as standalone "Prompts" and "Instructions", these optional capabilities have now been consolidated into the `supplementary-skill/` directory as custom skills. These skills provide additional guidelines, workflows, and prompts that you can manually include in your platform's skills directory (e.g., `.agents/skills/`) to enhance your agents.
 
-> [!IMPORTANT]
-> **Don't forget to copy `AGENTS.md`** to your project root after copying these instructions. This file contains the core SDLC rules that bind all instructions. See [Step #3 in Installation](#installation) for details.
+### Coding Guidelines & Architecture (Formerly Instructions)
 
-| Instruction                              | Description                                           | Apply To                |
+These skills enforce coding standards and best practices:
+
+| Supplementary Skill                      | Description                                           | Apply To                |
 | ---------------------------------------- | ----------------------------------------------------- | ----------------------- |
 | **taming-copilot**                       | Core directives for precise, surgical code assistance | All files (`**`)        |
 | **clean-code-clean-architecture**        | Clean code principles and architecture patterns       | All files (`**`)        |
@@ -481,22 +481,11 @@ Instructions are rules and guidelines that your AI Assistant follows when genera
 | **markdown**                             | Markdown formatting standards                         | `**/*.md`               |
 | **memory**                               | Project-specific context and preferences              | All files (`**`)        |
 
-### Instruction Format
+### Task Automation & Prompt Workflows (Formerly Prompts)
 
-```markdown
----
-applyTo: "**/*.js"
-description: "Node.js coding standards"
----
+These skills provide structured workflows for common development tasks:
 
-# Your instruction content here
-```
-
-## 💡 Prompts
-
-Prompt files are reusable templates for common development tasks like generating code, performing code reviews, or scaffolding project components. They are standalone prompts you can run directly in chat. Place them in your platform's respective directory (`.commandcode/prompts/`, `.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`).
-
-| Prompt                         | Description                         |
+| Supplementary Skill            | Description                         |
 | ------------------------------ | ----------------------------------- |
 | **create-readme**              | Generate comprehensive README files |
 | **create-specification**       | Create technical specifications     |
@@ -511,46 +500,8 @@ Prompt files are reusable templates for common development tasks like generating
 | **remember**                   | Store project context               |
 | **project-memory-keeper**      | Maintain project memory             |
 
-### How to Use Prompt Files
-
-You have multiple options to run a prompt file:
-
-1. **In Chat View**: Type `/` followed by the prompt name in the chat input field
-
-   ```text
-   /create-specification for user authentication module
-   /create-readme
-   ```
-
-2. **From Command Palette**: Run `Chat: Run Prompt` command (Ctrl+Shift+P) and select a prompt file
-
-3. **From Editor**: Open the prompt file and press the play button in the editor title area
-
 > [!TIP]
-> You can add extra information in the chat input field. For example: `/create-react-form formName=MyForm` or `/breakdown-feature-prd for shopping cart`
-
-### Prompt File Structure
-
-Prompt files use the `.prompt.md` extension and can include:
-
-**Header (YAML frontmatter)**:
-
-```yaml
----
-description: "A short description of the prompt"
-name: "prompt-name"  # Optional, defaults to filename
-argument-hint: "Optional hint text for users"
-agent: "agent"  # ask, edit, agent, or custom agent name
-model: "gpt-4"  # Optional language model
-tools: ["edit", "search", "runCommands"]  # Available tools
----
-```
-
-**Body**: The prompt text with instructions. You can use:
-
-- **Variables**: `${workspaceFolder}`, `${selection}`, `${file}`, `${input:variableName}`
-- **Markdown links**: Reference other workspace files using relative paths
-- **Tool references**: Use `#tool:toolName` syntax (e.g., `#tool:githubRepo`)
+> Since these are now fully structured as skills, you can simply copy any desired folder from `supplementary-skill/` into your active `.agents/skills/` (or equivalent) directory to activate them.
 
 ## 🔑 BYOK Copilot Config
 
