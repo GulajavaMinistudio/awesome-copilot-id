@@ -258,44 +258,45 @@ Following our strict sequential workflow, here is how you would develop a new fe
 
 **Phase 1: Requirements & Clarification**
 ```text
-@ProductManagerPRD create a PRD for the shopping cart feature
+@ProductManagerPRD create a PRD for the shopping cart feature based on @discovery-draft.md
 ```
 *(Once the PRD is complete and approved, use the `memory-manager` skill to save context, then open a new chat session to prevent context bleeding)*
 
 ```text
-@ClarificationAnalyst interrogate the new shopping cart PRD for missing edge cases
+@ClarificationAnalyst interrogate the new @prd-shopping-cart.md for missing edge cases
 ```
 *(Answer the Clarification Analyst's questions one by one. Once finished and the PRD is revised, use `memory-manager` to save context, then proceed to the Spec phase in a new chat session)*
 
-**Phase 2: Specification & Planning**
+**Phase 2: Technical Specification**
 ```text
-@SpecificationArchitect design a technical specification for the shopping cart based on the PRD
+@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md
 ```
 *(Once the Spec is complete, use `memory-manager` and open a new chat session)*
 
 ```text
-@ClarificationAnalyst interrogate the technical specification for any technical ambiguities
+@ClarificationAnalyst interrogate the new @spec-shopping-cart.md for any technical ambiguities
 ```
 *(Once the Spec interrogation is finalized, use `memory-manager` and open a new chat session)*
 
 ```text
-@ArtifactConsistencyChecker verify that the spec covers all requirements in the PRD
+@ArtifactConsistencyChecker verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md
 ```
 *(If no PRD requirements are missing from the Spec, use `memory-manager` and open a new chat session)*
 
+**Phase 3: Implementation Planning**
 ```text
-@PlannerArchitect create a step-by-step implementation plan for the shopping cart
+@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md
 ```
 *(Once the Plan is created, use `memory-manager` and open a new chat session)*
 
 ```text
-@ClarificationAnalyst interrogate the implementation plan for any unhandled edge cases
+@ClarificationAnalyst interrogate the @plan-shopping-cart.md for any unhandled edge cases
 ```
 *(Once all edge cases in the Plan are addressed, use `memory-manager` to save context, then open a new chat session to begin coding)*
 
-**Phase 3: Implementation & Review**
+**Phase 4: Implementation & Review**
 ```text
-@GodModeDev implement the shopping cart based on the plan, and ensure all tests pass
+@GodModeDev implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass
 ```
 *(Once code implementation and testing are complete, use `memory-manager` and open a new chat session)*
 
@@ -304,14 +305,14 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Apply any refactoring suggestions if needed, use `memory-manager` to save context, then open a new chat session for documentation)*
 
-**Phase 4: Documentation & Bug Fixing**
+**Phase 5: Documentation & Bug Fixing**
 ```text
-@DiataxisDocumentationArchitect write an API reference guide for the new endpoints
+@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md and @cart.js
 ```
 *(If bugs are discovered later, use the specialized bug remediation agent in a separate chat session)*
 
 ```text
-@BugRemediationArchitect analyze the bug report for the checkout failure and propose a fix
+@BugRemediationArchitect analyze the bug report in @issue-123.md and propose a fix for @cart.js
 ```
 
 #### Minor Fixes & Ad-hoc Tasks (SDLC Bypass)
@@ -323,6 +324,44 @@ For small, surgical tasks (like renaming a function, tweaking CSS, or fixing a t
 @GodModeDev [Bypass SDLC] This is a minor fix. Please refactor the `calculateTotal` function in @cart.js to be more concise, and add some padding to the `.btn-checkout` class in @style.css.
 ```
 *Note: Even when bypassing the SDLC, you are still highly encouraged to attach the specific source code files (e.g., `@cart.js`, `@style.css`) to provide the agent with the necessary context.*
+
+#### Advanced SDLC Workflow (Slash Commands & Context Injection)
+
+In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invoke the agent's underlying skill directly using the slash command syntax (`/<skill-name>`). Furthermore, to strictly comply with the **Mandatory Context Injection Protocol**, you should explicitly attach the required upstream documents and relevant source code files using the `@filename` syntax.
+
+**Phase 1: Requirements & Clarification**
+```text
+/product-manager-prd create a PRD for the shopping cart feature based on @discovery-draft.md
+```
+```text
+/clarification-analyst interrogate the new @prd-shopping-cart.md for missing edge cases
+```
+
+**Phase 2: Technical Specification & Audit**
+```text
+/specification-architect design a technical specification based on @prd-shopping-cart.md
+```
+```text
+/artifact-consistency-checker verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md
+```
+
+**Phase 3: Implementation Planning**
+```text
+/planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md
+```
+
+**Phase 4: Execution & Coding**
+```text
+/god-mode-dev implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css
+```
+
+**Phase 5: Documentation & Bug Fixing**
+```text
+/diataxis-documentation-architect write an API reference guide based on @spec-shopping-cart.md and @cart.js
+```
+```text
+/bug-remediation-architect analyze the bug report in @issue-123.md and propose a fix for @cart.js
+```
 
 ### 🌟 Best Practices
 
