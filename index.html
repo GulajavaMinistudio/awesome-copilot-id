@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="page_title">Awesome Copilot Indonesia 🇮🇩 - Custom AI Agents & SDLC Workflows</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="translations.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
+    <!-- Navbar / App Bar -->
+    <nav class="navbar navbar-expand-lg app-bar sticky-top py-0">
+      <div class="container h-100">
+        <a class="navbar-brand text-ink fw-bold" href="#">
+          Awesome Copilot<span style="color: var(--colors-primary);">.id</span>
+        </a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse h-100" id="navbarNav">
+          <ul class="navbar-nav mx-auto h-100 align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom active" href="#overview" data-i18n="nav_overview">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#installation" data-i18n="nav_installation">Instalasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#agents" data-i18n="nav_agents">Custom Agents</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#examples" data-i18n="nav_examples">Contoh</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center flex-column flex-lg-row gap-3 my-3 my-lg-0">
+            <!-- Language Selector Dropdown -->
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-ink dropdown-toggle px-3 d-flex align-items-center gap-1" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="height: 38px; border-radius: 8px;">
+                <span id="active-lang-label">🌐 EN</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end border-hairline shadow-sm" aria-labelledby="langDropdown">
+                <li><button class="dropdown-item lang-select-btn fw-medium py-2" data-lang="en">English (EN)</button></li>
+                <li><button class="dropdown-item lang-select-btn fw-medium py-2" data-lang="id">Bahasa Indonesia (ID)</button></li>
+              </ul>
+            </div>
+            <a href="#installation" class="btn btn-rausch text-white py-2 px-3 fw-medium d-flex align-items-center" data-i18n="nav_cta" style="height: 38px;">
+              Get Started
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="section-padding bg-canvas border-bottom-hairline">
+        <div class="container my-md-5">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <div class="badge bg-light text-muted-custom border-hairline py-2 px-3 mb-4 rounded-pill uppercase-tag" data-i18n="hero_eyebrow">
+                Awesome Copilot Indonesia
+              </div>
+              <h1 class="display-5 text-ink fw-bold mb-4" style="line-height: 1.2;" data-i18n="hero_title">
+                Akselerasi SDLC Anda dengan Custom AI Agents
+              </h1>
+              <p class="lead text-body-custom mb-5" data-i18n="hero_desc">
+                Koleksi agen, skill, aturan, dan prompt kustom yang siap pakai untuk mengoptimalkan alur kerja AI-assisted development Anda di berbagai platform (Antigravity, Copilot, OpenCode, dll).
+              </p>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="#installation" class="btn btn-rausch" data-i18n="hero_cta_install">
+                  Mulai Instalasi
+                </a>
+                <a href="#agents" class="btn btn-outline-ink" data-i18n="hero_cta_agents">
+                  Jelajahi Agen
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="console-mockup border-hairline p-4">
+                <div class="d-flex align-items-center mb-3">
+                  <span class="console-dot bg-danger me-1" style="width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+                  <span class="console-dot bg-warning me-1" style="width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+                  <span class="console-dot bg-success me-3" style="width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+                  <span class="text-muted-custom small" data-i18n="console_label">terminal</span>
+                </div>
+                <pre class="bg-transparent border-0 p-0 m-0"><code class="text-ink" id="console-code-block" data-i18n="console_content"><strong>$</strong> awesome-copilot-id init
+<span style="color: var(--colors-primary);">✔</span> Platform detected: Google Antigravity
+<span style="color: var(--colors-primary);">✔</span> memory.instructions.md created
+<span style="color: var(--colors-primary);">✔</span> 10 custom agents installed successfully!
+
+<strong>$</strong> @GodModeDev [Bypass SDLC] implement auth
+<span class="text-muted-custom">Analyzing codebase...</span>
+<span class="text-primary">> Injecting auth middleware...</span>
+<span class="text-success">> All tests passed (12/12)</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Overview Section -->
+      <section id="overview" class="section-padding bg-light" style="border-bottom: 1px solid var(--colors-hairline);">
+        <div class="container py-md-4">
+          <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="overview_title">📋 Overview</h2>
+              <p class="text-body-custom lead" data-i18n="overview_desc">
+                Awesome Copilot Indonesia adalah koleksi konfigurasi agen AI, skill, aturan, dan prompt kustom yang siap pakai untuk mempercepat siklus hidup pengembangan perangkat lunak (SDLC) Anda.
+              </p>
+            </div>
+          </div>
+          <div class="row g-4 mt-2">
+            <div class="col-md-4">
+              <div class="py-3 px-1">
+                <span class="fs-3 mb-3 d-block">🤖</span>
+                <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_agents_title">Custom Agents</h3>
+                <p class="text-body-custom small" data-i18n="overview_agents_desc">
+                  Agen AI khusus untuk setiap fase pengembangan (PRD, Technical Specs, Strategic Planning, Coding, hingga Review).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="py-3 px-1">
+                <span class="fs-3 mb-3 d-block">🤹</span>
+                <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_skills_title">Specialized Skills</h3>
+                <p class="text-body-custom small" data-i18n="overview_skills_desc">
+                  Kemampuan khusus seperti Karpathy Guidelines, Ponytail lazy dev, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="py-3 px-1">
+                <span class="fs-3 mb-3 d-block">📝</span>
+                <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_rules_title">Rules & Instructions</h3>
+                <p class="text-body-custom small" data-i18n="overview_rules_desc">
+                  Panduan coding terbaik yang disesuaikan dengan bahasa pemrograman dan framework populer untuk menjaga kualitas kode Anda.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row g-4 mt-4 pt-4" style="border-top: 1px solid var(--colors-hairline-soft);">
+            <div class="col-md-6">
+              <div class="d-flex gap-3">
+                <span class="fs-4">🔑</span>
+                <div>
+                  <h4 class="h6 text-ink fw-semibold" data-i18n="overview_byok_title">BYOK Copilot Config</h4>
+                  <p class="text-body-custom small mb-0" data-i18n="overview_byok_desc">
+                    Template konfigurasi siap pakai untuk menggunakan API key Anda sendiri (OpenRouter, DeepSeek, dll) di VS Code Copilot Chat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex gap-3">
+                <span class="fs-4">🔌</span>
+                <div>
+                  <h4 class="h6 text-ink fw-semibold" data-i18n="overview_multi_title">Dukungan Multi-Platform</h4>
+                  <p class="text-body-custom small mb-0" data-i18n="overview_multi_desc">
+                    Konfigurasi siap pakai untuk Google Antigravity (`.agents`), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, dan Oh My Pi (`omp`).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Installation Section -->
+      <section id="installation" class="section-padding bg-canvas" style="border-bottom: 1px solid var(--colors-hairline);">
+        <div class="container py-md-4">
+          <div class="row g-5">
+            <!-- Left side: Prerequisites & Introduction -->
+            <div class="col-lg-4">
+              <h2 class="text-ink fw-bold mb-4" style="font-size: 28px;" data-i18n="install_title">🚀 Getting Started</h2>
+              <p class="text-body-custom mb-4" data-i18n="install_desc">
+                Pilih metode instalasi otomatis yang cepat atau lakukan instalasi manual sesuai dengan platform asisten AI yang Anda gunakan.
+              </p>
+              <div class="p-4 bg-surface-soft border-hairline" style="border-radius: 12px;">
+                <h4 class="h6 text-ink fw-bold mb-3" data-i18n="install_prereq_title">Prasyarat Platform</h4>
+                <ul class="list-unstyled mb-0 d-flex flex-wrap gap-2">
+                  <li><span class="badge bg-white text-ink border-hairline">Google Antigravity</span></li>
+                  <li><span class="badge bg-white text-ink border-hairline">GitHub Copilot</span></li>
+                  <li><span class="badge bg-white text-ink border-hairline">OpenCode</span></li>
+                  <li><span class="badge bg-white text-ink border-hairline">CommandCode</span></li>
+                  <li><span class="badge bg-white text-ink border-hairline">ChatGPT Codex</span></li>
+                  <li><span class="badge bg-white text-ink border-hairline">Pi Dev</span></li>
+                  <li><span class="badge bg-white text-ink border-hairline">Oh My Pi (omp)</span></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Right side: Tabs for Automated vs Manual -->
+            <div class="col-lg-8">
+              <!-- Custom Airbnb-style Nav Tabs -->
+              <ul class="nav nav-tabs border-0 mb-4" id="installTabs" role="tablist" style="border-bottom: 1px solid var(--colors-hairline) !important;">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active install-tab-btn px-0 pb-3 me-4 border-0 bg-transparent fw-semibold" id="automated-tab" data-bs-toggle="tab" data-bs-target="#automated-pane" type="button" role="tab" aria-controls="automated-pane" aria-selected="true" style="color: var(--colors-ink); border-bottom: 2px solid var(--colors-ink); margin-bottom: -1px;" data-i18n="install_method1_tab">
+                    Metode 1: Otomatis (Rekomendasi)
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link install-tab-btn px-0 pb-3 border-0 bg-transparent fw-semibold" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual-pane" type="button" role="tab" aria-controls="manual-pane" aria-selected="false" style="color: var(--colors-muted); border-bottom: 2px solid transparent;" data-i18n="install_method2_tab">
+                    Metode 2: Manual
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="installTabsContent">
+                <!-- Automated Pane -->
+                <div class="tab-pane fade show active" id="automated-pane" role="tabpanel" aria-labelledby="automated-tab">
+                  <p class="text-body-custom mb-4" data-i18n="install_method1_desc">
+                    Jalankan satu perintah (one-liner) di terminal pada direktori root proyek Anda:
+                  </p>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method1_linux">Linux / macOS (Bash/Zsh)</h5>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink"><code>curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash</code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash">Copy</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method1_win">Windows Terminal (PowerShell)</h5>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink"><code>irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex</code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Manual Pane -->
+                <div class="tab-pane fade" id="manual-pane" role="tabpanel" aria-labelledby="manual-tab">
+                  <ol class="text-body-custom ps-3">
+                    <li class="mb-3">
+                      <strong data-i18n="install_method2_step1">Clone repositori ini:</strong>
+                      <div class="position-relative mt-2 mb-3">
+                        <pre class="bg-surface-soft border-hairline text-ink"><code>git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git</code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git">Copy</button>
+                      </div>
+                    </li>
+                    <li class="mb-3">
+                      <strong data-i18n="install_method2_step2">Pilih konfigurasi platform Anda:</strong>
+                      <p class="small text-muted-custom mt-1 mb-0" data-i18n="install_method2_step2_desc">
+                        Salin folder platform yang relevan ke root proyek Anda. Contoh untuk Google Antigravity, salin folder <code>.agents</code>. Untuk GitHub Copilot, salin folder <code>.github</code>.
+                      </p>
+                    </li>
+                    <li class="mb-3">
+                      <strong data-i18n="install_method2_step3">Salin file <code>AGENTS.md</code> ke root proyek:</strong>
+                      <div class="position-relative mt-2 mb-3">
+                        <pre class="bg-surface-soft border-hairline text-ink"><code>cp awesome-copilot-id/AGENTS.md ./</code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="cp awesome-copilot-id/AGENTS.md ./">Copy</button>
+                      </div>
+                      <p class="small text-muted-custom mt-1" data-i18n="install_method2_step3_desc">
+                        <em>Penting:</em> Setelah disalin, buka <code>AGENTS.md</code> dan sesuaikan baris pertama dengan nama proyek Anda untuk membantu konteks pemahaman agen AI.
+                      </p>
+                    </li>
+                    <li>
+                      <strong data-i18n="install_method2_step4">Mulai ulang IDE atau Asisten AI Anda untuk menerapkan perubahan.</strong>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Custom Agents Section -->
+      <section id="agents" class="section-padding bg-light" style="border-bottom: 1px solid var(--colors-hairline);">
+        <div class="container py-md-4">
+          <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="agents_title">🤖 Custom Agents</h2>
+              <p class="text-body-custom lead" data-i18n="agents_desc">
+                Gunakan agen AI kustom yang berspesialisasi dalam peran dan tugas tertentu dalam siklus pengembangan.
+              </p>
+            </div>
+          </div>
+          <div class="row g-5">
+            <!-- Left side: Interactive Agent List -->
+            <div class="col-lg-5">
+              <div class="list-group list-group-flush border-hairline bg-white" style="border-radius: 12px; overflow: hidden;" id="agentList" role="tablist">
+                <button class="list-group-item list-group-item-action active border-0 py-3 px-4 fw-medium text-ink" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
+                  @BrainstormingExplorerAnalyst
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-pm-tab" data-bs-toggle="list" href="#agent-pm" role="tab" aria-controls="agent-pm">
+                  @ProductManagerPRD
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ca-tab" data-bs-toggle="list" href="#agent-ca" role="tab" aria-controls="agent-ca">
+                  @ClarificationAnalyst
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-sa-tab" data-bs-toggle="list" href="#agent-sa" role="tab" aria-controls="agent-sa">
+                  @SpecificationArchitect
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-acc-tab" data-bs-toggle="list" href="#agent-acc" role="tab" aria-controls="agent-acc">
+                  @ArtifactConsistencyChecker
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
+                  @PlannerArchitect
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
+                  @GodModeDev
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ecr-tab" data-bs-toggle="list" href="#agent-ecr" role="tab" aria-controls="agent-ecr">
+                  @ExpertCodeReviewer
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-bra-tab" data-bs-toggle="list" href="#agent-bra" role="tab" aria-controls="agent-bra">
+                  @BugRemediationArchitect
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-dda-tab" data-bs-toggle="list" href="#agent-dda" role="tab" aria-controls="agent-dda">
+                  @DiataxisDocumentationArchitect
+                </button>
+              </div>
+            </div>
+            
+            <!-- Right side: Sticky Agent Details -->
+            <div class="col-lg-7">
+              <div class="tab-content" id="agentDetailsContent">
+                <!-- BEA Detail -->
+                <div class="tab-pane fade show active p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-bea" role="tabpanel" aria-labelledby="agent-bea-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@BrainstormingExplorerAnalyst</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">brainstorming-explorer</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_bea_desc">
+                    Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_bea_best">
+                    Memahami proyek baru atau lama, menganalisis utang teknis, dan memetakan alur kerja sebelum merumuskan PRD.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
+                  </div>
+                </div>
+
+                <!-- PM Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-pm" role="tabpanel" aria-labelledby="agent-pm-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@ProductManagerPRD</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">product-manager-prd</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_pm_desc">
+                    Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_pm_best">
+                    Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@ProductManagerPRD create a PRD for the user authentication module based on @discovery-draft.md</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@ProductManagerPRD create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
+                  </div>
+                </div>
+
+                <!-- CA Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ca" role="tabpanel" aria-labelledby="agent-ca-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@ClarificationAnalyst</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">clarification-analyst</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_ca_desc">
+                    Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_ca_best">
+                    Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@ClarificationAnalyst interrogate the new @prd-shopping-cart.md for missing edge cases</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@ClarificationAnalyst interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                  </div>
+                </div>
+
+                <!-- SA Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-sa" role="tabpanel" aria-labelledby="agent-sa-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@SpecificationArchitect</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">specification-architect</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_sa_desc">
+                    Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_sa_best">
+                    Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                  </div>
+                </div>
+
+                <!-- ACC Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-acc" role="tabpanel" aria-labelledby="agent-acc-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@ArtifactConsistencyChecker</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">artifact-consistency-checker</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_acc_desc">
+                    Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_acc_best">
+                    Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@ArtifactConsistencyChecker verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@ArtifactConsistencyChecker verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md">Copy</button>
+                  </div>
+                </div>
+
+                <!-- PA Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-pa" role="tabpanel" aria-labelledby="agent-pa-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@PlannerArchitect</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">planner-architect</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_pa_desc">
+                    Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_pa_best">
+                    Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                  </div>
+                </div>
+
+                <!-- GMD Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-gmd" role="tabpanel" aria-labelledby="agent-gmd-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@GodModeDev</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">god-mode-dev</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_gmd_desc">
+                    Agen developer otonom tingkat tinggi untuk menulis kode, melakukan modifikasi bedah, dan menulis pengujian unit/integrasi secara ketat.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_gmd_best">
+                    Menulis kode fitur, memodifikasi file, memperbaiki error, dan menguji fungsionalitas secara langsung di workspace.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@GodModeDev implement the shopping cart based on @plan-shopping-cart.md</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@GodModeDev implement the shopping cart based on @plan-shopping-cart.md">Copy</button>
+                  </div>
+                </div>
+
+                <!-- ECR Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ecr" role="tabpanel" aria-labelledby="agent-ecr-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@ExpertCodeReviewer</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">expert-code-reviewer</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_ecr_desc">
+                    Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan aspek keamanan, serta memberikan rencana refaktorisasi.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_ecr_best">
+                    Menjaga standar kebersihan kode dan melakukan audit keamanan sebelum digabungkan (merge) ke branch utama.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@ExpertCodeReviewer review my service layer and suggest refactoring</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@ExpertCodeReviewer review my service layer and suggest refactoring">Copy</button>
+                  </div>
+                </div>
+
+                <!-- BRA Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-bra" role="tabpanel" aria-labelledby="agent-bra-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@BugRemediationArchitect</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">bug-remediation-architect</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_bra_desc">
+                    Menganalisis laporan bug, melacak akar penyebab masalah (RCA), dan menyusun rencana perbaikan bedah beserta strategi rollback yang aman.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_bra_best">
+                    Menyelesaikan masalah bug yang kompleks di codebase tanpa merusak bagian kode lainnya.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@BugRemediationArchitect analyze the bug report in @issue-123.md and propose a fix for @cart.js</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@BugRemediationArchitect analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                  </div>
+                </div>
+
+                <!-- DDA Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-dda" role="tabpanel" aria-labelledby="agent-dda-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">@DiataxisDocumentationArchitect</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">diataxis-documentation-architect</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_dda_desc">
+                    Penulis dokumentasi teknis profesional yang mengikuti kerangka kerja Diátaxis (Tutorial, Panduan, Referensi, Penjelasan).
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_dda_best">
+                    Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code>@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md</code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Example Usage Section -->
+      <section id="examples" class="section-padding bg-canvas" style="border-bottom: 1px solid var(--colors-hairline);">
+        <div class="container py-md-4">
+          <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="examples_title">💡 Alur Kerja & Contoh</h2>
+              <p class="text-body-custom lead" data-i18n="examples_desc">
+                Pahami bagaimana siklus hidup pengembangan perangkat lunak (SDLC) dijalankan menggunakan rangkaian agen AI secara sekuensial.
+              </p>
+            </div>
+          </div>
+
+          <!-- Use Case Tab Pills -->
+          <div class="row mb-4">
+            <div class="col-12 text-center">
+              <div class="nav nav-pills justify-content-center gap-2 mb-4" id="useCaseTabs" role="tablist">
+                <button class="nav-link active usecase-pill-btn rounded-pill px-4 py-2" id="uc-sdlc-tab" data-bs-toggle="pill" data-bs-target="#uc-sdlc-pane" type="button" role="tab" aria-controls="uc-sdlc-pane" aria-selected="true" data-i18n="uc_tab_sdlc">
+                  🔄 End-to-End SDLC (@Mentions)
+                </button>
+                <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-bypass-tab" data-bs-toggle="pill" data-bs-target="#uc-bypass-pane" type="button" role="tab" aria-controls="uc-bypass-pane" aria-selected="false" data-i18n="uc_tab_bypass">
+                  🛠️ SDLC Bypass (Minor Fixes)
+                </button>
+                <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-slash-tab" data-bs-toggle="pill" data-bs-target="#uc-slash-pane" type="button" role="tab" aria-controls="uc-slash-pane" aria-selected="false" data-i18n="uc_tab_slash">
+                  ⚡ Advanced (Slash Commands)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Use Case Tab Content -->
+          <div class="tab-content" id="useCaseTabsContent">
+            <!-- Tab 1: E2E SDLC (@Mentions) -->
+            <div class="tab-pane fade show active" id="uc-sdlc-pane" role="tabpanel" aria-labelledby="uc-sdlc-tab">
+              <!-- Interactive SDLC Stepper -->
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
+                    <h3 class="h5 text-ink fw-bold mb-4 text-center" data-i18n="stepper_title">Sekuens Alur SDLC Agen AI</h3>
+                    
+                    <!-- Stepper Buttons -->
+                    <div class="d-flex justify-content-between align-items-center mb-4 position-relative flex-wrap gap-3" id="sdlc-stepper" style="z-index: 1;">
+                      <!-- Background Line for Stepper -->
+                      <div class="position-absolute w-100 top-50 start-0 translate-middle-y d-none d-md-block" style="height: 2px; background-color: var(--colors-hairline); z-index: -1;"></div>
+                      
+                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 active sdlc-step-btn" data-step="0">
+                        <span class="badge bg-ink text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">0</span> <span data-i18n="step_label_0">Discovery</span>
+                      </button>
+                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="1">
+                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">1</span> <span data-i18n="step_label_1">Requirements</span>
+                      </button>
+                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="2">
+                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">2</span> <span data-i18n="step_label_2">Specification</span>
+                      </button>
+                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="3">
+                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">3</span> <span data-i18n="step_label_3">Planning</span>
+                      </button>
+                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="4">
+                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">4</span> <span data-i18n="step_label_4">Execution</span>
+                      </button>
+                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="5">
+                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">5</span> <span data-i18n="step_label_5">Documentation</span>
+                      </button>
+                    </div>
+
+                    <!-- Stepper Content Panels -->
+                    <div class="bg-white border-hairline p-4" style="border-radius: 12px;" id="sdlc-panels">
+                      <!-- Step 0 Panel -->
+                      <div class="sdlc-panel" id="panel-0">
+                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_0_title">Phase 0: Project Discovery (Penemuan Proyek)</h4>
+                        <p class="text-body-custom small mb-3" data-i18n="panel_0_desc">
+                          Eksplorasi kode yang ada, analisis arsitektur, dan buat draf penemuan proyek awal sebelum merancang PRD.
+                        </p>
+                        <div class="mb-3">
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> @BrainstormingExplorerAnalyst</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_0_input">Business Brief / Ideas</span></span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code>@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Step 1 Panel (Hidden by default) -->
+                      <div class="sdlc-panel d-none" id="panel-1">
+                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_1_title">Phase 1: Requirements & Clarification (Kebutuhan & Klarifikasi)</h4>
+                        <p class="text-body-custom small mb-3" data-i18n="panel_1_desc">
+                          Buat PRD yang terperinci dan lakukan klarifikasi/interogasi mendalam untuk menghilangkan ambiguitas kebutuhan fitur.
+                        </p>
+                        <div class="mb-3">
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> @ProductManagerPRD & @ClarificationAnalyst</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_1_input">Discovery Draft</span></span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code>@ProductManagerPRD create a PRD for the shopping cart feature based on @discovery-draft.md</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@ProductManagerPRD create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Step 2 Panel (Hidden by default) -->
+                      <div class="sdlc-panel d-none" id="panel-2">
+                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_2_title">Phase 2: Technical Specification (Spesifikasi Teknis)</h4>
+                        <p class="text-body-custom small mb-3" data-i18n="panel_2_desc">
+                          Rancang arsitektur detail, buat skema data, definisikan API, dan catat keputusan arsitektur penting (ADR) serta pastikan ketertelusurannya dengan PRD.
+                        </p>
+                        <div class="mb-3">
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> @SpecificationArchitect & @ArtifactConsistencyChecker</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_2_input">Approved PRD</span></span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code>@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Step 3 Panel (Hidden by default) -->
+                      <div class="sdlc-panel d-none" id="panel-3">
+                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_3_title">Phase 3: Implementation Planning (Rencana Implementasi)</h4>
+                        <p class="text-body-custom small mb-3" data-i18n="panel_3_desc">
+                          Pecah spesifikasi teknis menjadi langkah-langkah implementasi strategis dan buat checklist rencana coding yang aman.
+                        </p>
+                        <div class="mb-3">
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> @PlannerArchitect & @ClarificationAnalyst</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_3_input">Approved Spec</span></span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code>@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Step 4 Panel (Hidden by default) -->
+                      <div class="sdlc-panel d-none" id="panel-4">
+                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_4_title">Phase 4: Execution & Review (Eksekusi Kode & Tinjauan)</h4>
+                        <p class="text-body-custom small mb-3" data-i18n="panel_4_desc">
+                          Tulis kode fitur secara bertahap dan teratur berdasarkan rencana yang disetujui, tambahkan pengujian unit, serta lakukan peninjauan kode.
+                        </p>
+                        <div class="mb-3">
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> @GodModeDev & @ExpertCodeReviewer</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_4_input">Approved Plan</span></span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code>@GodModeDev implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@GodModeDev implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Step 5 Panel (Hidden by default) -->
+                      <div class="sdlc-panel d-none" id="panel-5">
+                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_5_title">Phase 5: User Documentation & Support (Dokumentasi Pengguna)</h4>
+                        <p class="text-body-custom small mb-3" data-i18n="panel_5_desc">
+                          Tulis dokumentasi teknis atau panduan pengguna yang ramah dan terstruktur mengikuti standar Diátaxis.
+                        </p>
+                        <div class="mb-3">
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> @DiataxisDocumentationArchitect</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_5_input">Approved Spec / Source Code</span></span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code>@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md and @cart.js</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Context Injection guidelines (Full Width, Centered 8-col) -->
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
+                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="protocol_title">📂 Protokol Injeksi Konteks</h3>
+                    <p class="text-body-custom small mb-4 text-center" data-i18n="protocol_desc">
+                      Asisten AI memerlukan dokumen hulu (upstream) untuk menjaga konsistensi pengerjaan dan mencegah delusi konteks. Harap selalu sertakan dokumen berikut saat memanggil agen terkait:
+                    </p>
+                    
+                    <div class="table-responsive bg-white">
+                      <table class="table text-start align-middle" style="font-size: 13px;">
+                        <thead>
+                          <tr>
+                            <th scope="col" data-i18n="protocol_th_agent">Agen / Fase</th>
+                            <th scope="col" data-i18n="protocol_th_doc">Dokumen Pendukung Wajib</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="fw-medium">@ProductManagerPRD</td>
+                            <td data-i18n="protocol_pm_doc">Project Discovery Draft (atau PRD yang ada)</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-medium">@SpecificationArchitect</td>
+                            <td data-i18n="protocol_sa_doc">PRD yang telah disetujui</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-medium">@PlannerArchitect</td>
+                            <td data-i18n="protocol_pa_doc">Spesifikasi Teknis yang disetujui</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-medium">@GodModeDev</td>
+                            <td data-i18n="protocol_gmd_doc">Rencana Implementasi / Rencana Perbaikan Bug</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: SDLC Bypass (Minor Fixes) -->
+            <div class="tab-pane fade" id="uc-bypass-pane" role="tabpanel" aria-labelledby="uc-bypass-tab">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
+                    <h3 class="h5 text-ink fw-bold mb-3" data-i18n="bypass_title">🛠️ Bypass SDLC (Pekerjaan Minor)</h3>
+                    <p class="text-body-custom small mb-3" data-i18n="bypass_desc1">
+                      Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati tahapan SDLC penuh menggunakan bendera penunjuk <code>[Bypass SDLC]</code>.
+                    </p>
+                    <p class="text-body-custom small mb-4" data-i18n="bypass_desc2">
+                      Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
+                    </p>
+                    <div class="position-relative">
+                      <pre class="bg-white border-hairline text-ink mb-0"><code id="bypass-code-block" data-i18n="bypass_code_sample">@GodModeDev [Bypass SDLC] Please fix the checkout button padding in @style.css for consistency.</code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" id="bypass-copy-btn" data-clipboard="@GodModeDev [Bypass SDLC] Please fix the checkout button padding in @style.css for consistency.">Copy</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Advanced (Slash Commands & Context Injection) -->
+            <div class="tab-pane fade" id="uc-slash-pane" role="tabpanel" aria-labelledby="uc-slash-tab">
+              <div class="row justify-content-center">
+                <div class="col-lg-10">
+                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
+                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="slash_title">⚡ Alur Kerja Mandiri dengan Slash Commands</h3>
+                    <p class="text-body-custom small mb-4 text-center" data-i18n="slash_desc">
+                      Di sebagian besar platform (seperti VS Code Copilot, Antigravity, OpenCode), Anda dapat memanggil keahlian (skill) agen secara langsung menggunakan perintah garis miring (slash commands) <code>/&lt;nama-skill&gt;</code>. Berikut alur lengkap penggunaan perintah slash untuk siklus hidup pengembangan fitur:
+                    </p>
+                    
+                    <!-- Copyable command timeline list -->
+                    <div class="d-flex flex-column gap-3">
+                      <!-- Phase 0 -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 0: Discovery</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p0_title">Mengeksplorasi Codebase & Brainstorming</span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/brainstorming-explorer explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/brainstorming-explorer explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Phase 1 PRD -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 1: PRD & Clarification</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p1_title">Membuat PRD & Mengklarifikasi Kebutuhan</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/product-manager-prd create a PRD for the shopping cart feature based on @discovery-draft.md</code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/product-manager-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/clarification-analyst interrogate the new @prd-shopping-cart.md for missing edge cases</code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/clarification-analyst interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Phase 2 Spec -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 2: Specification & Audit</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p2_title">Menyusun Spek Teknis & Memeriksa Konsistensi</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/specification-architect design a technical specification based on @prd-shopping-cart.md</code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/specification-architect design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/artifact-consistency-checker verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/artifact-consistency-checker verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Phase 3 Planning -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 3: Implementation Planning</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p3_title">Menyusun Rencana Implementasi</span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md</code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Phase 4 Execution -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 4: Execution & Coding</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p4_title">Menulis & Mengimplementasikan Kode</span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/god-mode-dev implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css</code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/god-mode-dev implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Phase 5 Documentation -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 5: Documentation & Bug Fixes</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p5_title">Menulis Dokumentasi & Memperbaiki Bug</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/diataxis-documentation-architect write an API reference guide based on @spec-shopping-cart.md and @cart.js</code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/diataxis-documentation-architect write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code>/bug-remediation-architect analyze the bug report in @issue-123.md and propose a fix for @cart.js</code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-clipboard="/bug-remediation-architect analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white" style="border-top: 1px solid var(--colors-hairline);">
+      <div class="container py-5">
+        <div class="row g-4">
+          <!-- Column 1: Platform -->
+          <div class="col-md-4">
+            <h5 class="text-ink fw-semibold mb-3" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="footer_col_platform">Platform Dukungan</h5>
+            <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
+              <li><a href="https://github.com/features/copilot" target="_blank" class="text-muted-custom text-decoration-none hover-link">GitHub Copilot</a></li>
+              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">Google Antigravity</a></li>
+              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">OpenCode Agent</a></li>
+              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">CommandCode</a></li>
+            </ul>
+          </div>
+          <!-- Column 2: Agen Utama -->
+          <div class="col-md-4">
+            <h5 class="text-ink fw-semibold mb-3" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="footer_col_agents">Agen Utama</h5>
+            <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
+              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">@ProductManagerPRD</a></li>
+              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">@SpecificationArchitect</a></li>
+              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">@PlannerArchitect</a></li>
+              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">@GodModeDev</a></li>
+            </ul>
+          </div>
+          <!-- Column 3: Repositori -->
+          <div class="col-md-4">
+            <h5 class="text-ink fw-semibold mb-3" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="footer_col_repo">Repositori</h5>
+            <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
+              <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id" target="_blank" class="text-muted-custom text-decoration-none hover-link">GitHub Project</a></li>
+              <li><a href="#installation" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_guide">Panduan Instalasi</a></li>
+              <li><a href="#" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_contrib">Pedoman Kontribusi</a></li>
+              <li><a href="#" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_license">Lisensi MIT</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Legal band -->
+        <div class="row pt-4 mt-4 align-items-center" style="border-top: 1px solid var(--colors-hairline-soft);">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <span class="text-muted-custom small" data-i18n="footer_copyright">© 2026 Awesome Copilot Indonesia. Made with ❤️ by Indonesian Developers.</span>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <ul class="list-inline mb-0 small">
+              <li class="list-inline-item"><span class="text-muted-custom me-3" id="footer-lang-label" data-i18n="footer_lang_selector"><i class="bi bi-globe"></i> English (EN)</span></li>
+              <li class="list-inline-item"><a href="#" class="text-muted-custom text-decoration-none hover-link me-2" data-i18n="footer_privacy">Privasi</a></li>
+              <li class="list-inline-item"><a href="#" class="text-muted-custom text-decoration-none hover-link me-2" data-i18n="footer_terms">Ketentuan</a></li>
+              <li class="list-inline-item"><a href="#" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_sitemap">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Close mobile navbar collapse when a link is clicked
+      const navLinks = document.querySelectorAll('.nav-link-custom');
+      const menuToggle = document.getElementById('navbarNav');
+      const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+      navLinks.forEach((l) => {
+        l.addEventListener('click', () => {
+          if (menuToggle.classList.contains('show')) {
+            bsCollapse.hide();
+          }
+        });
+      });
+      // App Bar Scroll Effect
+      window.addEventListener('scroll', function() {
+        const appBar = document.querySelector('.app-bar');
+        if (window.scrollY > 10) {
+          appBar.classList.add('scrolled');
+        } else {
+          appBar.classList.remove('scrolled');
+        }
+      });
+
+      // Copy to Clipboard interaction
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const text = this.getAttribute('data-clipboard');
+          navigator.clipboard.writeText(text).then(() => {
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            this.classList.add('btn-success', 'text-white');
+            this.classList.remove('btn-outline-secondary');
+            setTimeout(() => {
+              this.textContent = originalText;
+              this.classList.remove('btn-success', 'text-white');
+              this.classList.add('btn-outline-secondary');
+            }, 2000);
+          }).catch(err => {
+            console.error('Failed to copy text: ', err);
+          });
+        });
+      });
+
+      // Tab switcher aesthetic adjustments
+      const tabElList = document.querySelectorAll('.install-tab-btn');
+      tabElList.forEach(tabEl => {
+        tabEl.addEventListener('shown.bs.tab', function (event) {
+          event.target.style.color = 'var(--colors-ink)';
+          event.target.style.borderBottom = '2px solid var(--colors-ink)';
+          event.relatedTarget.style.color = 'var(--colors-muted)';
+          event.relatedTarget.style.borderBottom = '2px solid transparent';
+        });
+      });
+
+      // SDLC Stepper interaction
+      const stepBtns = document.querySelectorAll('.sdlc-step-btn');
+      const panels = document.querySelectorAll('.sdlc-panel');
+
+      stepBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const stepNum = this.getAttribute('data-step');
+          
+          // Reset active classes on all buttons and change badge backgrounds
+          stepBtns.forEach(b => {
+            b.classList.remove('active', 'btn-dark');
+            b.classList.add('btn-light');
+            const badge = b.querySelector('.badge');
+            badge.classList.remove('bg-ink');
+            badge.classList.add('bg-secondary');
+          });
+
+          // Set active state on clicked button
+          this.classList.add('active', 'btn-dark');
+          this.classList.remove('btn-light');
+          const activeBadge = this.querySelector('.badge');
+          activeBadge.classList.add('bg-ink');
+          activeBadge.classList.remove('bg-secondary');
+
+          // Hide all panels, show active panel
+          panels.forEach(p => p.classList.add('d-none'));
+          document.getElementById('panel-' + stepNum).classList.remove('d-none');
+        });
+      });
+
+      // Translation Switcher Logic
+      function setLanguage(lang) {
+        // Save preference in localStorage
+        localStorage.setItem('preferred-language', lang);
+
+        // Update active dropdown text
+        const activeLangLabel = document.getElementById('active-lang-label');
+        if (activeLangLabel) {
+          activeLangLabel.textContent = `🌐 ${lang.toUpperCase()}`;
+        }
+
+        // Update footer label
+        const footerLangLabel = document.getElementById('footer-lang-label');
+        if (footerLangLabel) {
+          footerLangLabel.innerHTML = `<i class="bi bi-globe"></i> ${lang === 'en' ? 'English (EN)' : 'Bahasa Indonesia (ID)'}`;
+        }
+
+        // Translate all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (window.translations && window.translations[lang] && window.translations[lang][key]) {
+            if (el.tagName === 'TITLE') {
+              el.textContent = window.translations[lang][key];
+            } else {
+              el.innerHTML = window.translations[lang][key];
+            }
+          }
+        });
+
+        // Update clipboard attributes for translatable code samples
+        const bypassCopyBtn = document.getElementById('bypass-copy-btn');
+        if (bypassCopyBtn && window.translations && window.translations[lang] && window.translations[lang].bypass_code_sample) {
+          bypassCopyBtn.setAttribute('data-clipboard', window.translations[lang].bypass_code_sample);
+        }
+      }
+
+      // Bind dropdown selection clicks
+      document.querySelectorAll('.lang-select-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+        });
+      });
+
+      // Initialize default or saved language
+      document.addEventListener('DOMContentLoaded', () => {
+        // Default to English ('en') as requested by user
+        const savedLang = localStorage.getItem('preferred-language') || 'en';
+        setLanguage(savedLang);
+      });
+    </script>
+  </body>
+</html>
