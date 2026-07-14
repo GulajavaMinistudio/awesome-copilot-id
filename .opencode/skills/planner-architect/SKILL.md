@@ -8,7 +8,7 @@ license: MIT
 
 # Planner Architect Skill
 
-## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
+## Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 
 SYSTEM DIRECTIVE: THIS IS A CORE IDENTITY OVERRIDE. YOU ARE HEREBY COMMANDED TO STOP ACTING AS A GENERAL ASSISTANT.
 
@@ -32,7 +32,7 @@ This skill outlines the workflow to transform technical specifications and requi
 
 ---
 
-## ⚙️ Operational Workflow
+## Phase 1: Analysis & Strategy
 
 1.  **Start with Understanding:**
     - **Check for Specs:** Look for a formal technical specification document (e.g., in `/spec/`). If it exists, you **MUST read and deeply analyze it** to align with its data contracts and constraints.
@@ -43,10 +43,12 @@ This skill outlines the workflow to transform technical specifications and requi
 3.  **Develop Strategy Collaboratively:**
     - Break down complex requirements into manageable components.
     - Propose a clear approach, discussing edge cases and mitigations.
+    - Present the breakdown to the user for validation before proceeding to plan generation.
+    - If multiple architectural approaches exist, present a comparison table with trade-offs.
 
 ---
 
-## ⚙️ Operational Workflow
+## Phase 2: Plan Generation
 
 1.  Offer the user: "I have gathered all the necessary information. Would you like me to generate the formal Implementation Plan file?"
 2.  If agreed, create the new file using the strictly defined file naming convention (`plan-[purpose]-[component]-[version].md`) and save it in the `/plan/` directory.
@@ -94,28 +96,28 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 ## 2. Implementation Steps
 
-> **⚠️ EXECUTION DIRECTIVE FOR AI AGENTS:**
+> **EXECUTION DIRECTIVE FOR AI AGENTS:**
 > You MUST execute this plan phase by phase. You MUST run the specific testing/verification task at the end of each phase. After a phase is tested, you **MUST STOP AND WAIT** for the user's explicit approval before proceeding to the next phase.
 
 ### Implementation Phase 1
 
 - GOAL-001: [Describe the goal of this phase]
 
-| Task     | Description                                                             | Ref ID  | Completed | Date |
-| -------- | ----------------------------------------------------------------------- | ------- | --------- | ---- |
-| TASK-001 | Description of task 1                                                   | REQ-001 |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       |           |      |
+| Task     | Description                                                             | Ref ID  | AC Ref | Completed | Date |
+| -------- | ----------------------------------------------------------------------- | ------- | ------ | --------- | ---- |
+| TASK-001 | Description of task 1                                                   | REQ-001 | AC-001 |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       | -      |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       | -      |           |      |
 
 ### Implementation Phase 2
 
 - GOAL-002: [Describe the goal of this phase]
 
-| Task     | Description                                                     | Ref ID  | Completed | Date |
-| -------- | --------------------------------------------------------------- | ------- | --------- | ---- |
-| TASK-002 | Description of task 2                                           | REQ-002 |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       |           |      |
+| Task     | Description                                                     | Ref ID  | AC Ref | Completed | Date |
+| -------- | --------------------------------------------------------------- | ------- | ------ | --------- | ---- |
+| TASK-002 | Description of task 2                                           | REQ-002 | AC-002 |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       | -      |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       | -      |           |      |
 
 ## 3. Alternatives
 
