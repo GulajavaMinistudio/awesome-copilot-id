@@ -180,7 +180,7 @@ p, li {
     left: 16px;
     right: 16px;
     height: 2px;
-    background-color: var(--colors-ink);
+    background-color: #dd7878;
   }
 }
 
