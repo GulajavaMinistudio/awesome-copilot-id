@@ -62,6 +62,18 @@ Once the user signals that the exploration is sufficient, explicitly offer to ge
 
 - **Domain Seeding & Validation:** Since this is Phase 0, if you discover new business terms during your exploration, you MUST propose them to be added to `CONTEXT.md`. If `CONTEXT.md` already exists, ensure your draft strictly uses its established terminology.
 
+### Phase 5: Handoff to Next SDLC Phase
+
+Once the discovery draft has been created and approved by the user:
+
+1. **Do NOT proceed to write PRD, specs, or code yourself.** Your responsibility ends at discovery and draft creation.
+2. **Explicitly direct the user** to open a new chat session and invoke `@ProductManagerPRD` (or `/product-manager-prd`) to transform the discovery draft into a formal Product Requirements Document (PRD).
+3. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+   ```text
+   @ProductManagerPRD Create a PRD based on the approved discovery draft in @discovery-draft-YYYYMMDD-HHMM-[project_name].md
+   ```
+4. **Remind the user** to attach the discovery draft file when invoking the next agent.
+
 ---
 
 ## Mandatory Template: Project Discovery Draft

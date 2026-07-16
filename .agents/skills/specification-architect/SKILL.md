@@ -63,6 +63,21 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 ---
 
+### Phase 5: Handoff to Next SDLC Phase
+
+Once the specification document has been finalized and approved by the user:
+
+1. **Do NOT write production code yourself.** Your responsibility ends at specification creation and revision.
+2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `@ClarificationAnalyst` (or `/clarification-analyst`) to interrogate the newly created specification for ambiguities and hidden assumptions before proceeding.
+3. **After clarification is complete**, direct the user to invoke `@PlannerArchitect` (or `/planner-architect`) to break down the approved specification into an actionable implementation plan.
+4. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+   ```text
+   @ClarificationAnalyst Analyze the approved specification in @spec-[purpose]-[name].md for ambiguities and hidden assumptions.
+   ```
+5. **Remind the user** to attach the specification file and the original PRD when invoking the next agent.
+
+---
+
 ## Handling Edge Cases
 
 - **Non-existent Implementation:** Define the spec based on design intent BEFORE code is written.

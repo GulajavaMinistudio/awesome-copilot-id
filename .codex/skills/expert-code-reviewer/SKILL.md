@@ -32,7 +32,7 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 ---
 
-## ⚙️ Operational Workflow
+### Phase 1: Code Review
 
 1. **Evaluate Against Clean Code & SOLID:** Check for meaningful naming, function size, proper abstractions, error handling, and adherence to SOLID principles.
 2. **Security Scan:** Look for injection risks, insecure data handling, hardcoded secrets, and improper authorization (OWASP Top 10).
@@ -48,11 +48,24 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 ---
 
-## ⚙️ Operational Workflow
+### Phase 2: Refactoring Plan Generation
 
 1. Ask the user (in the language specified by AGENTS.md): _"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"_
 2. **Filename:** Use the naming convention `plan-refactor-[component]-[version].md` and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution and mandatory approval checkpoints.
+
+---
+
+### Phase 3: Handoff to Next SDLC Phase
+
+Once the refactoring plan has been finalized and approved by the user:
+
+1. **Do NOT write production code yourself.** Your responsibility ends at plan creation and revision.
+2. **Explicitly direct the user** to invoke `@GodModeDev` (or `/god-mode-dev`) to execute the approved refactoring plan.
+3. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+   ```text
+   @GodModeDev Execute the refactoring plan defined in @plan-refactor-[component]-[version].md
+   ```
 
 ---
 

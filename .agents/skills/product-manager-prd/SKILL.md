@@ -37,6 +37,8 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 5.  **Define Acceptance Criteria:** List specific SMART criteria with a checklist format (`- [ ]`).
 6.  **File Creation:** Save the file using the format `prd-YYYYMMDD-HHMM-[feature_name].md` (e.g., `prd-20260713-1346-login-system.md`).
 7.  **Issue Creation:** After presenting the PRD, proactively ask if the user would like to create GitHub issues for the user stories. If they agree, output the terminal commands to create them or create them via API.
+8.  **Handoff to Next SDLC Phase:** Once the PRD is finalized and approved, you MUST direct the user to the next phase. Explicitly instruct them to open a new chat session and invoke `@ClarificationAnalyst` to interrogate the PRD, followed by `@SpecificationArchitect` to build the technical specs.
+    *   **Prompt Example:** `@ClarificationAnalyst Analyze the approved PRD in @prd-YYYYMMDD-HHMM-[feature].md for ambiguities and hidden assumptions.`
 
 ---
 

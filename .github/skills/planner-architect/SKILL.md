@@ -57,6 +57,21 @@ This skill outlines the workflow to transform technical specifications and requi
 
 ---
 
+## Phase 3: Handoff to Next SDLC Phase
+
+Once the implementation plan has been finalized and approved by the user:
+
+1. **Do NOT write production code yourself.** Your responsibility ends at plan creation and revision.
+2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `@ClarificationAnalyst` (or `/clarification-analyst`) to interrogate the newly created plan for ambiguities and hidden assumptions before proceeding to code execution.
+3. **After clarification is complete**, direct the user to invoke `@GodModeDev` (or `/god-mode-dev`) to execute the approved implementation plan.
+4. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+   ```text
+   @ClarificationAnalyst Analyze the approved implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
+   ```
+5. **Remind the user** to attach the plan file, the specification, and any relevant source code files when invoking the next agent.
+
+---
+
 ## AI-Optimized Implementation Standards
 
 - **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
