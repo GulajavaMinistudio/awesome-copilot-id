@@ -31,7 +31,7 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 
 ---
 
-## ⚙️ Operational Workflow
+## ⚙️ Phase 1: Diagnostic Workflow
 
 1. **Information Gathering & Simulation:** Read and understand the symptoms. Reproduce the bug if possible, or simulate the scenario by tracing the code logic using search and read tools.
 2. **Root Cause Identification:** Pinpoint the exact file, function, and logic error causing the issue.
@@ -44,11 +44,25 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 
 ---
 
-## ⚙️ Operational Workflow
+## ⚙️ Phase 2: Plan Generation Workflow
 
 1. Ask the user if they want you to create a formal Implementation Plan document to fix this bug.
 2. **Filename:** Use the naming convention `plan-bugfix-[component]-[version].md` (e.g., `plan-bugfix-auth-v1.md`) and save it in the `/plan/` directory.
 3. **Template:** The file MUST strictly adhere to the template below, enforcing step-by-step execution, testing, rollback strategies, and mandatory approval checkpoints.
+
+---
+
+## ⚙️ Phase 3: Handoff to Execution Agent
+
+Once the bug fix plan has been created and approved by the user:
+
+1. **Do NOT execute the fix yourself.** Your responsibility ends at plan creation and revision.
+2. **Explicitly direct the user** to open a new chat session and invoke `@GodModeDev` (or `/god-mode-dev`) to execute the approved plan.
+3. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+   ```text
+   @GodModeDev [Bypass SDLC] Execute the approved bug fix plan in @plan-bugfix-[component]-[version].md. Target files are @[affected-file-1] and @[affected-file-2].
+   ```
+4. **Remind the user** to attach the plan file and the relevant source code files when invoking `@GodModeDev`.
 
 ---
 
