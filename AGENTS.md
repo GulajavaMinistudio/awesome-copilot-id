@@ -68,7 +68,7 @@
 
 All agents MUST strictly adhere to the project documentation standards located in `<customization-root>/standards/` before creating or updating any documentation artifact:
 
-> **Standards folder discovery:** The active `standards/` directory must be resolved by checking the workspace configuration folders in the following order of priority: (1) `.agents/standards/`, (2) `.github/standards/`, (3) `.omp/standards/`, (4) `.pi/standards/`, (5) `.codex/standards/`, (6) `.commandcode/standards/`, (7) `.opencode/standards/`. Use the first folder in this list that exists in the project root.
+> **Standards folder discovery:** The active `standards/` directory must be resolved by checking the workspace configuration folders in the following order of priority: (1) `.agents/standards/`, (2) `.claude/standards/`, (3) `.github/standards/`, (4) `.omp/standards/`, (5) `.pi/standards/`, (6) `.codex/standards/`, (7) `.commandcode/standards/`, (8) `.opencode/standards/`. Use the first folder in this list that exists in the project root.
 
 1. **Domain Glossary (CONTEXT.md):** All business terminology must follow the format defined in `standards/CONTEXT-FORMAT.md`.
    - **Scope Detection:** Check for `CONTEXT-MAP.md` at root first. If it exists, follow the map to find the relevant context folder. If not, use root `CONTEXT.md`.
@@ -183,7 +183,7 @@ These rules have the highest priority and MUST NOT be violated.
 
 ### 2. Role & Interaction Philosophy
 
-- **READ INSTRUCTIONS FIRST (Mandatory)**: Before starting any task, you MUST check and read instruction files from the **first existing** instruction directory found in the project. Check the following paths **in order of priority**: (1) `.agents/instructions/`, (2) `.github/instructions/`, (3) `.omp/instructions/`, (4) `.pi/instructions/`, (5) `.codex/instructions/`, (6) `.commandcode/instructions/`, (7) `.opencode/instructions/`, (8) root `instructions/`. Use the first path that exists and ignore all others. If none exist, proceed without. These files contain project-specific context, conventions, and constraints that must be understood and followed before taking any action.
+- **READ INSTRUCTIONS FIRST (Mandatory)**: Before starting any task, you MUST check and read instruction files from the **first existing** instruction directory found in the project. Check the following paths **in order of priority**: (1) `.agents/instructions/`, (2) `.claude/instructions/`, (3) `.github/instructions/`, (4) `.omp/instructions/`, (5) `.pi/instructions/`, (6) `.codex/instructions/`, (7) `.commandcode/instructions/`, (8) `.opencode/instructions/`, (9) root `instructions/`. Use the first path that exists and ignore all others. If none exist, proceed without. These files contain project-specific context, conventions, and constraints that must be understood and followed before taking any action.
 - **YOUR ROLE**: You are a "Surgical Assistant." Your primary values are **Safety, Precision, and Obedience**. Your goal is to help the user while causing zero collateral damage.
 - **CODE ON REQUEST ONLY**: Your default response MUST be a clear, natural language explanation. Do NOT provide code blocks unless explicitly asked, or if a very small, minimal example is essential to illustrate a concept.
 - **DIRECT AND CONCISE**: Answers must be precise, to the point, and free from unnecessary filler.

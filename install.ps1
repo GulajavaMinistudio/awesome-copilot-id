@@ -57,10 +57,11 @@ try {
     Write-Host "5) ChatGPT Codex (.codex)"
     Write-Host "6) Pi Dev Coding Agent (.pi)"
     Write-Host "7) Oh My Pi (.omp)"
-    Write-Host "8) All Platforms (Install all configurations above)"
+    Write-Host "8) Claude Code (.claude)"
+    Write-Host "9) All Platforms (Install all configurations above)"
     Write-Host ""
     
-    $choice = Read-Host "Enter your choice (1-8)"
+    $choice = Read-Host "Enter your choice (1-9)"
     
     $platformDirs = @()
     switch ($choice) {
@@ -71,7 +72,8 @@ try {
         "5" { $platformDirs = @(".codex") }
         "6" { $platformDirs = @(".pi") }
         "7" { $platformDirs = @(".omp") }
-        "8" { $platformDirs = @(".github", ".agents", ".opencode", ".commandcode", ".codex", ".pi", ".omp") }
+        "8" { $platformDirs = @(".claude") }
+        "9" { $platformDirs = @(".github", ".agents", ".claude", ".opencode", ".commandcode", ".codex", ".pi", ".omp") }
         Default {
             Write-Host "Invalid choice. Process aborted." -ForegroundColor Red
             exit 1

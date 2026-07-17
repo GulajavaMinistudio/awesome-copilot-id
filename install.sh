@@ -93,8 +93,9 @@ echo -e "4) ${GREEN}CommandCode${NC} (.commandcode)"
 echo -e "5) ${GREEN}ChatGPT Codex${NC} (.codex)"
 echo -e "6) ${GREEN}Pi Dev Coding Agent${NC} (.pi)"
 echo -e "7) ${GREEN}Oh My Pi${NC} (.omp)"
-echo -e "8) ${GREEN}All Platforms${NC} (Install all configurations above)"
-read -p "Enter your choice (1-8): " CHOICE < /dev/tty
+echo -e "8) ${GREEN}Claude Code${NC} (.claude)"
+echo -e "9) ${GREEN}All Platforms${NC} (Install all configurations above)"
+read -p "Enter your choice (1-9): " CHOICE < /dev/tty
 
 PLATFORM_DIRS=()
 case $CHOICE in
@@ -105,7 +106,8 @@ case $CHOICE in
     5) PLATFORM_DIRS=(".codex") ;;
     6) PLATFORM_DIRS=(".pi") ;;
     7) PLATFORM_DIRS=(".omp") ;;
-    8) PLATFORM_DIRS=(".github" ".agents" ".opencode" ".commandcode" ".codex" ".pi" ".omp") ;;
+    8) PLATFORM_DIRS=(".claude") ;;
+    9) PLATFORM_DIRS=(".github" ".agents" ".claude" ".opencode" ".commandcode" ".codex" ".pi" ".omp") ;;
     *) echo -e "${RED}Invalid choice. Process aborted.${NC}"; exit 1 ;;
 esac
 

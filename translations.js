@@ -42,7 +42,7 @@ window.translations = {
     overview_byok_title: "BYOK Copilot Config",
     overview_byok_desc: "Ready-to-use configuration templates for bringing your own API keys (OpenRouter, DeepSeek, etc.) to VS Code Copilot Chat.",
     overview_multi_title: "Multi-Platform Support",
-    overview_multi_desc: "Out-of-the-box configurations for Google Antigravity (.agents), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, and Oh My Pi (omp).",
+    overview_multi_desc: "Out-of-the-box configurations for Google Antigravity (.agents), Claude Code (.claude), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, and Oh My Pi (omp).",
     
     // Getting Started
     install_title: "Getting Started",
@@ -221,7 +221,7 @@ window.translations = {
     overview_byok_title: "BYOK Copilot Config",
     overview_byok_desc: "Template konfigurasi siap pakai untuk menggunakan API key Anda sendiri (OpenRouter, DeepSeek, dll) di VS Code Copilot Chat.",
     overview_multi_title: "Dukungan Multi-Platform",
-    overview_multi_desc: "Konfigurasi siap pakai untuk Google Antigravity (`.agents`), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, dan Oh My Pi (`omp`).",
+    overview_multi_desc: "Konfigurasi siap pakai untuk Google Antigravity (`.agents`), Claude Code (`.claude`), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, dan Oh My Pi (`omp`).",
     
     // Getting Started
     install_title: "Getting Started",
