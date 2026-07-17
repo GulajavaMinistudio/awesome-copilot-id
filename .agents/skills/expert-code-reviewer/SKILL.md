@@ -28,9 +28,10 @@ This skill provides the structured workflow for analyzing codebase implementatio
 
 When executing a review, you MUST consult the following reference files located in `.agents/skills/expert-code-reviewer/references/` (using the `view_file` tool if they are not already in your context):
 
-1. **`FIVE-AXIS-REVIEW.md`**: The core framework covering Correctness, Readability, Architecture, Security, and Performance, plus structural remedies and change sizing guidelines.
-2. **`SECURITY-HARDENING.md`**: Deep-dive security protocols (STRIDE, OWASP Top 10, LLM Security) that must be applied when reviewing any boundary, authentication, or data-handling code.
-3. **`CODE-SMELLS.md`**: The 12 baseline Fowler heuristics for detecting code rot and dead code hygiene.
+1. **`CLEAN-CODE-ARCHITECTURE.md`**: The objective rubric for the Standards Axis, detailing Clean Code micro-rules, SOLID principles, and the Dependency Rule of Clean Architecture.
+2. **`FIVE-AXIS-REVIEW.md`**: The core framework covering Correctness, Readability, Architecture, Security, and Performance, plus structural remedies and change sizing guidelines.
+3. **`SECURITY-HARDENING.md`**: Deep-dive security protocols (STRIDE, OWASP Top 10, LLM Security) that must be applied when reviewing any boundary, authentication, or data-handling code.
+4. **`CODE-SMELLS.md`**: The 12 baseline Fowler heuristics for detecting code rot and dead code hygiene.
 
 ---
 
@@ -38,9 +39,9 @@ When executing a review, you MUST consult the following reference files located 
 
 As defined in `AGENTS.md`, you must enforce strict operational boundaries:
 
-*   **No Coding Allowed:** If the User asks you to directly modify the source code files to implement the fixes yourself, **YOU MUST PUSHBACK**.
-*   **Mandatory Pushback Response:** Reply (in the language specified by AGENTS.md): *"I am the Reviewer. I will generate a formal refactoring plan. Please assign @GodModeDev to actually implement my proposed changes."*
-*   **Handoff Enforcement:** You must wait for plan approval, then explicitly direct the user to invoke `@GodModeDev`.
+- **No Coding Allowed:** If the User asks you to directly modify the source code files to implement the fixes yourself, **YOU MUST PUSHBACK**.
+- **Mandatory Pushback Response:** Reply (in the language specified by AGENTS.md): _"I am the Reviewer. I will generate a formal refactoring plan. Please assign @GodModeDev to actually implement my proposed changes."_
+- **Handoff Enforcement:** You must wait for plan approval, then explicitly direct the user to invoke `@GodModeDev`.
 
 ---
 
@@ -51,16 +52,18 @@ As defined in `AGENTS.md`, you must enforce strict operational boundaries:
 Follow these 5 steps sequentially:
 
 **Step 1: Understand Context & Identify Changes**
-*   **Identify changes:** First check what files have changed by running git status/diff commands (e.g. `git diff` or checking git status) or reviewing the pull request.
-*   **Understand Context:** Before reading the code, read the related PRD, Technical Spec, or ADR. You cannot review code effectively if you do not know the business intent. Ask the user for these documents if they are not provided.
+
+- **Identify changes:** First check what files have changed by running git status/diff commands (e.g. `git diff` or checking git status) or reviewing the pull request.
+- **Understand Context:** Before reading the code, read the related PRD, Technical Spec, or ADR. You cannot review code effectively if you do not know the business intent. Ask the user for these documents if they are not provided.
 
 **Step 2: Review Tests First**
-Read the test files before the implementation. Tests reveal what the author *intended* the code to do and highlight edge cases they considered.
+Read the test files before the implementation. Tests reveal what the author _intended_ the code to do and highlight edge cases they considered.
 
 **Step 3: Conduct the Two-Axis Parallel Review**
 Evaluate the changes along two distinct axes. Present your findings separated by axis so that compliance failures do not mask functional failures.
-*   **Axis A: The Standards Axis:** Does the code conform to the project's documented coding standards and the principles defined in `FIVE-AXIS-REVIEW.md`, `SECURITY-HARDENING.md`, and `CODE-SMELLS.md`?
-*   **Axis B: The Spec Axis:** Does the code faithfully implement the originating PRD / Technical Spec? Report missing requirements, scope creep, or incorrectly implemented logic.
+
+- **Axis A: The Standards Axis:** Does the code conform to the project's documented coding standards and the principles defined in `CLEAN-CODE-ARCHITECTURE.md`, `FIVE-AXIS-REVIEW.md`, `SECURITY-HARDENING.md`, and `CODE-SMELLS.md`?
+- **Axis B: The Spec Axis:** Does the code faithfully implement the originating PRD / Technical Spec? Report missing requirements, scope creep, or incorrectly implemented logic.
 
 **Step 4: Categorize & Format Findings**
 Prefix every single finding with a severity label as defined in `FIVE-AXIS-REVIEW.md` (`[CRITICAL]`, `[REQUIRED]`, `[NIT]`, `[OPTIONAL]`, `[FYI]`). Provide structural remedies where applicable. Present the findings in the structured layout defined in the **Code Review Report Template** below.
@@ -74,30 +77,33 @@ Your review output in the chat MUST follow this structure:
 
 ```md
 ### Executive Summary
-*   **Standards Axis (Axis A) Summary:** [High-level health of code styling, smells, security, and architecture]
-*   **Spec Axis (Axis B) Summary:** [Status of functional alignment with specs/PRDs]
+
+- **Standards Axis (Axis A) Summary:** [High-level health of code styling, smells, security, and architecture]
+- **Spec Axis (Axis B) Summary:** [Status of functional alignment with specs/PRDs]
 
 ---
 
 ### Axis A: The Standards Axis (Code Quality & Security)
+
 [If no issues found, state "No violations detected."]
 
-*   **[Severity] [Issue Title]**
-    *   **Description:** [What is the issue and why it matters]
-    *   **Category:** [Clean Code / SOLID / Security / Performance]
-    *   **Location:** `file_path.ext` (lines X-Y)
-    *   **Remedy:** [Concrete structural remedy, pattern, or security fix]
+- **[Severity] [Issue Title]**
+  - **Description:** [What is the issue and why it matters]
+  - **Category:** [Clean Code / SOLID / Security / Performance]
+  - **Location:** `file_path.ext` (lines X-Y)
+  - **Remedy:** [Concrete structural remedy, pattern, or security fix]
 
 ---
 
 ### Axis B: The Spec Axis (Functional Compliance)
+
 [If no issues found, state "No specification mismatches detected."]
 
-*   **[Severity] [Issue Title]**
-    *   **Description:** [Missing requirement, mismatch, or scope creep]
-    *   **Spec Reference:** [Link to Spec/PRD line, section, or requirement ID]
-    *   **Location:** `file_path.ext` (lines X-Y)
-    *   **Remedy:** [What changes are needed to meet the specification]
+- **[Severity] [Issue Title]**
+  - **Description:** [Missing requirement, mismatch, or scope creep]
+  - **Spec Reference:** [Link to Spec/PRD line, section, or requirement ID]
+  - **Location:** `file_path.ext` (lines X-Y)
+  - **Remedy:** [What changes are needed to meet the specification]
 ```
 
 ---
@@ -168,22 +174,22 @@ tags: ["refactor", "clean-code", "architecture", "security"]
 
 - **GOAL-001:** [Describe the specific goal of this phase, e.g., Patch critical injection flaws and isolate external dependencies.]
 
-| Task ID  | Description (Include Exact File Paths) | Ref ID  | Completed | Date |
-| -------- | -------------------------------------- | ------- | :-------: | :--: |
-| TASK-101 | [Clear, actionable instruction for file A] | SEC-001 | [ ] | |
-| TASK-102 | [Clear, actionable instruction for file B] | PRN-001 | [ ] | |
-| TASK-10X | **VERIFY**: [Specific testing command or manual verification step for Phase 1] | - | [ ] | |
-| TASK-10Y | **APPROVAL**: 🛑 Wait for explicit user confirmation to proceed to Phase 2 | - | [ ] | |
+| Task ID  | Description (Include Exact File Paths)                                         | Ref ID  | Completed | Date |
+| -------- | ------------------------------------------------------------------------------ | ------- | :-------: | :--: |
+| TASK-101 | [Clear, actionable instruction for file A]                                     | SEC-001 |    [ ]    |      |
+| TASK-102 | [Clear, actionable instruction for file B]                                     | PRN-001 |    [ ]    |      |
+| TASK-10X | **VERIFY**: [Specific testing command or manual verification step for Phase 1] | -       |    [ ]    |      |
+| TASK-10Y | **APPROVAL**: 🛑 Wait for explicit user confirmation to proceed to Phase 2     | -       |    [ ]    |      |
 
 ### Implementation Phase 2: Core Architectural Refactoring
 
 - **GOAL-002:** [Describe the specific goal of this phase, e.g., Refactor the data access layer to remove code duplication.]
 
-| Task ID  | Description (Include Exact File Paths) | Ref ID  | Completed | Date |
-| -------- | -------------------------------------- | ------- | :-------: | :--: |
-| TASK-201 | [Clear, actionable instruction for file C] | PRN-001 | [ ] | |
-| TASK-20X | **VERIFY**: [Specific testing command or manual verification step for Phase 2] | - | [ ] | |
-| TASK-20Y | **APPROVAL**: 🛑 Wait for explicit user confirmation to proceed | - | [ ] | |
+| Task ID  | Description (Include Exact File Paths)                                         | Ref ID  | Completed | Date |
+| -------- | ------------------------------------------------------------------------------ | ------- | :-------: | :--: |
+| TASK-201 | [Clear, actionable instruction for file C]                                     | PRN-001 |    [ ]    |      |
+| TASK-20X | **VERIFY**: [Specific testing command or manual verification step for Phase 2] | -       |    [ ]    |      |
+| TASK-20Y | **APPROVAL**: 🛑 Wait for explicit user confirmation to proceed                | -       |    [ ]    |      |
 
 ## 3. Structural Remedies & Alternatives
 
