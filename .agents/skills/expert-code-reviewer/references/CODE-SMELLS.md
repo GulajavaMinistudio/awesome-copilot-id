@@ -7,6 +7,7 @@ When performing a code review (specifically evaluating the **Readability** and *
 > **Important Constraint:** These smells are *heuristics*, not hard rules. A documented repository standard always overrides this baseline. If the repo explicitly endorses a pattern that would normally be flagged as a smell, suppress the finding.
 
 ---
+<!-- markdownlint-disable -->
 
 ## The 12 Baseline Smells
 

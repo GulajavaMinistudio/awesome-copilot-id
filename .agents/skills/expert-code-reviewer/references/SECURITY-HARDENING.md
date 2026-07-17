@@ -1,7 +1,7 @@
 # Security Hardening Reference
 
 This document defines the security review procedures for `@ExpertCodeReviewer`. It is a mandatory reference for the **Security** axis of any code review and must be read in full when the code under review touches authentication, authorization, data storage, external integrations, user input handling, file uploads, or AI/LLM features.
-
+<!-- markdownlint-disable -->
 ---
 
 ## Phase 0: Threat Modeling (Do This First)
@@ -33,14 +33,14 @@ What is worth stealing or disrupting in this system? Examples:
 
 For each trust boundary identified above, run through the STRIDE lens. This is a quick check, not a lengthy ceremony.
 
-| Threat | The Question to Ask | Typical Mitigation |
-|---|---|---|
-| **S**poofing | Can an attacker impersonate a legitimate user or service? | Strong authentication, signature verification on callbacks |
-| **T**ampering | Can data be altered in transit or at rest without detection? | HTTPS everywhere, parameterized queries, cryptographic integrity checks |
-| **R**epudiation | Can a user or service deny having performed an action? | Audit logging of all security-relevant events |
-| **I**nformation Disclosure | Can sensitive data leak to unauthorized parties? | Encryption at rest and in transit, output field allowlists, generic error messages |
-| **D**enial of Service | Can the system be overwhelmed or made unavailable? | Rate limiting, input size caps, request timeouts, pagination |
-| **E**levation of Privilege | Can a user gain capabilities they should not have? | Fine-grained authorization checks on every protected operation, principle of least privilege |
+| Threat                     | The Question to Ask                                          | Typical Mitigation                                                                           |
+| -------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| **S**poofing               | Can an attacker impersonate a legitimate user or service?    | Strong authentication, signature verification on callbacks                                   |
+| **T**ampering              | Can data be altered in transit or at rest without detection? | HTTPS everywhere, parameterized queries, cryptographic integrity checks                      |
+| **R**epudiation            | Can a user or service deny having performed an action?       | Audit logging of all security-relevant events                                                |
+| **I**nformation Disclosure | Can sensitive data leak to unauthorized parties?             | Encryption at rest and in transit, output field allowlists, generic error messages           |
+| **D**enial of Service      | Can the system be overwhelmed or made unavailable?           | Rate limiting, input size caps, request timeouts, pagination                                 |
+| **E**levation of Privilege | Can a user gain capabilities they should not have?           | Fine-grained authorization checks on every protected operation, principle of least privilege |
 
 ### Step 4 — Write Abuse Cases
 
@@ -267,16 +267,16 @@ Use this checklist as a final verification pass after completing the STRIDE anal
 
 When an author offers one of these justifications for skipping a security control, the reviewer must push back firmly:
 
-| Rationalization | Why It Is Wrong |
-|---|---|
-| "This is an internal tool, security doesn't matter." | Internal tools are frequently the weakest link. Supply-chain attacks and insider threats specifically target internal tooling. |
-| "We'll add security later." | Retrofitting security into an existing system is 10–100x harder and more expensive than building it in from the start. |
-| "No one would try to exploit this." | Automated scanners run continuously against all public-facing infrastructure. The assumption of obscurity is not a defense. |
-| "The framework handles security for us." | Frameworks provide tools and defaults, not guarantees. Developers must use those tools correctly. Misconfiguration (OWASP A05) is a top category. |
-| "It's just a prototype / MVP." | Prototypes become production with alarming regularity. Security habits formed during prototyping persist into the shipped product. |
-| "Threat modeling is overkill here." | Five minutes of "how would I attack this?" prevents the design flaws that no subsequent control can fully patch. OWASP A04 (Insecure Design) is the root cause of the most severe breaches. |
-| "It's just LLM output — it's only text." | That text can be a SQL statement, a shell command, or a `<script>` tag. It must be treated as untrusted input from an external source. |
-| "The audit passed, so the dependency is safe." | Audits only match known advisories. They cannot detect a newly malicious package, a recently compromised maintainer, or a typosquatted package with no advisory yet filed. |
+| Rationalization                                      | Why It Is Wrong                                                                                                                                                                             |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "This is an internal tool, security doesn't matter." | Internal tools are frequently the weakest link. Supply-chain attacks and insider threats specifically target internal tooling.                                                              |
+| "We'll add security later."                          | Retrofitting security into an existing system is 10–100x harder and more expensive than building it in from the start.                                                                      |
+| "No one would try to exploit this."                  | Automated scanners run continuously against all public-facing infrastructure. The assumption of obscurity is not a defense.                                                                 |
+| "The framework handles security for us."             | Frameworks provide tools and defaults, not guarantees. Developers must use those tools correctly. Misconfiguration (OWASP A05) is a top category.                                           |
+| "It's just a prototype / MVP."                       | Prototypes become production with alarming regularity. Security habits formed during prototyping persist into the shipped product.                                                          |
+| "Threat modeling is overkill here."                  | Five minutes of "how would I attack this?" prevents the design flaws that no subsequent control can fully patch. OWASP A04 (Insecure Design) is the root cause of the most severe breaches. |
+| "It's just LLM output — it's only text."             | That text can be a SQL statement, a shell command, or a `<script>` tag. It must be treated as untrusted input from an external source.                                                      |
+| "The audit passed, so the dependency is safe."       | Audits only match known advisories. They cannot detect a newly malicious package, a recently compromised maintainer, or a typosquatted package with no advisory yet filed.                  |
 
 ### Red Flags in Code
 

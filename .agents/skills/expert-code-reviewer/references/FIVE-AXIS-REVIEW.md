@@ -1,6 +1,7 @@
 # Five-Axis Code Review Reference
 
 This document defines the comprehensive review framework for `@ExpertCodeReviewer`. Every code review MUST evaluate the submitted code along all five axes below. No axis may be skipped.
+<!-- markdownlint-disable -->
 
 ---
 
@@ -87,13 +88,13 @@ The following are the minimum security checks to perform on **every** review, re
 
 Every finding from any axis MUST be labeled with one of the following severity levels. Include the label as a prefix in the finding description to make priority crystal clear.
 
-| Label | Meaning | Action Required |
-|---|---|---|
-| **`[CRITICAL]`** | A defect that will cause data loss, a security breach, a system crash, or incorrect behavior in a clearly reachable scenario. | Must be fixed before this change is merged. Non-negotiable. |
+| Label            | Meaning                                                                                                                                 | Action Required                                                                                                       |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **`[CRITICAL]`** | A defect that will cause data loss, a security breach, a system crash, or incorrect behavior in a clearly reachable scenario.           | Must be fixed before this change is merged. Non-negotiable.                                                           |
 | **`[REQUIRED]`** | A clear violation of an established architectural principle, a significant code smell, or a flaw that will create maintenance problems. | Must be addressed. The author must either fix it or make a compelling case for why the principle does not apply here. |
-| **`[NIT]`** | A minor style inconsistency or naming preference that does not affect correctness or architecture. | Optional. The author can fix it or leave it. |
-| **`[OPTIONAL]`** | A suggestion for a potentially better approach that is a matter of preference or trade-off. | The author is free to take it or leave it. No justification required. |
-| **`[FYI]`** | Contextual information, a pointer to related code, or a heads-up that is not itself a flaw. | No action required. |
+| **`[NIT]`**      | A minor style inconsistency or naming preference that does not affect correctness or architecture.                                      | Optional. The author can fix it or leave it.                                                                          |
+| **`[OPTIONAL]`** | A suggestion for a potentially better approach that is a matter of preference or trade-off.                                             | The author is free to take it or leave it. No justification required.                                                 |
+| **`[FYI]`**      | Contextual information, a pointer to related code, or a heads-up that is not itself a flaw.                                             | No action required.                                                                                                   |
 
 ---
 
@@ -101,16 +102,16 @@ Every finding from any axis MUST be labeled with one of the following severity l
 
 When you identify an architectural issue, do not just flag it — propose a concrete remedy. Match the problem pattern to one of the following remedies:
 
-| Problem Pattern | Remedy |
-|---|---|
-| Long `if/else if` chain or `switch` on type | Replace with a typed dispatch map (dictionary/object) or a polymorphic strategy. The caller selects a handler by key, not by conditional. |
-| Two branches doing almost the same thing | Collapse: extract the shared logic into one function. Pass the differing parts as parameters or use a simple flag only if the paths are truly just one decision apart. |
-| A function that both orchestrates a workflow AND contains business logic | Separate: the orchestrator should only call other functions; all business rules should be extracted into their own focused functions. |
-| Feature-specific logic living inside a shared utility module | Move: the shared module should only contain generic, reusable logic. Feature logic belongs in the feature's own module. |
-| A utility function being reimplemented when one already exists in the codebase | Reuse: search the codebase for the canonical implementation and call it. Do not add a duplicate. |
-| Unclear data shapes passed as generic objects or maps | Make type boundaries explicit: define a dedicated type/struct/interface for the shape. Use it at every callsite for clarity and safety. |
-| A wrapper class or function that only delegates to another without adding behavior | Delete: the pass-through wrapper adds indirection without value. Call the underlying function directly. |
-| A single large file or function that handles too many responsibilities | Extract helpers / split: create new files or modules for each distinct responsibility. Use the change-splitting strategies below to keep the PR reviewable. |
+| Problem Pattern                                                                    | Remedy                                                                                                                                                                 |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Long `if/else if` chain or `switch` on type                                        | Replace with a typed dispatch map (dictionary/object) or a polymorphic strategy. The caller selects a handler by key, not by conditional.                              |
+| Two branches doing almost the same thing                                           | Collapse: extract the shared logic into one function. Pass the differing parts as parameters or use a simple flag only if the paths are truly just one decision apart. |
+| A function that both orchestrates a workflow AND contains business logic           | Separate: the orchestrator should only call other functions; all business rules should be extracted into their own focused functions.                                  |
+| Feature-specific logic living inside a shared utility module                       | Move: the shared module should only contain generic, reusable logic. Feature logic belongs in the feature's own module.                                                |
+| A utility function being reimplemented when one already exists in the codebase     | Reuse: search the codebase for the canonical implementation and call it. Do not add a duplicate.                                                                       |
+| Unclear data shapes passed as generic objects or maps                              | Make type boundaries explicit: define a dedicated type/struct/interface for the shape. Use it at every callsite for clarity and safety.                                |
+| A wrapper class or function that only delegates to another without adding behavior | Delete: the pass-through wrapper adds indirection without value. Call the underlying function directly.                                                                |
+| A single large file or function that handles too many responsibilities             | Extract helpers / split: create new files or modules for each distinct responsibility. Use the change-splitting strategies below to keep the PR reviewable.            |
 
 ---
 
@@ -120,10 +121,10 @@ A change that is too large is a review risk: reviewers lose focus, bugs hide in 
 
 ### Size Guidelines
 
-| Lines Changed | Assessment |
-|---|---|
-| ~100 lines | Ideal. Easy to review thoroughly. |
-| ~300 lines | Acceptable. May need extra care in review. |
+| Lines Changed | Assessment                                                           |
+| ------------- | -------------------------------------------------------------------- |
+| ~100 lines    | Ideal. Easy to review thoroughly.                                    |
+| ~300 lines    | Acceptable. May need extra care in review.                           |
 | ~1,000+ lines | Must be split. A change of this size cannot be reviewed effectively. |
 
 ### File Size Signal
