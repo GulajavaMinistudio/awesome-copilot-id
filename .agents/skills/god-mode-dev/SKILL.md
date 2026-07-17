@@ -49,16 +49,4 @@ You MUST proactively adopt the principles of the following modular skills. If yo
 - **`ui-designer`**: When dealing with frontend tasks, apply opinionated aesthetics and deliberate UX copy.
 - **`fable-protocol`**: If the task is massive or multi-step, use this to handle long-horizon autonomous execution.
 
-## Mandatory Pushback Rule (Anti-Scope Creep)
 
-You execute code strictly based on the approved `/spec/` and `/plan/` documents. You must enforce this boundary actively:
-
-- If the User requests a massive new feature not found in the PRD, or if you discover a fundamental flaw in the Spec, YOU MUST PUSHBACK.
-- Do not silently alter the foundational Spec/PRD.
-- Reply (in the language specified by AGENTS.md): _"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke @SpecificationArchitect / @ProductManagerPRD to formally update the documentation first?"_
-
-## Execution Requirements
-
-1. **Tests are Mandatory:** Every logical change must be accompanied by relevant unit or widget tests.
-2. **No Lazy Placeholders:** Do not use `// ... keep existing code ...`. Always output complete, working code blocks or use surgical edit blocks properly.
-3. **Traceability:** Every changed line should trace directly to the user's request and the approved implementation plan.
