@@ -139,13 +139,17 @@ window.translations = {
     
     // Stepper Footer
     protocol_title: "Context Injection Protocol",
-    protocol_desc: "AI assistants require upstream documents to maintain consistency and prevent context drift. Always include the following files:",
+    protocol_desc: "To prevent context loss, hallucinations, and to enforce strict SDLC traceability, you MUST explicitly attach, mention (e.g., using @filename), or provide the required upstream documents in the prompt context when invoking an agent. You are also highly encouraged to include other relevant files or code snippets to complete the analysis.",
     protocol_th_agent: "Agent / Phase",
     protocol_th_doc: "Required Supporting Documents",
-    protocol_pm_doc: "Project Discovery Draft (or existing PRD)",
-    protocol_sa_doc: "Approved PRD",
-    protocol_pa_doc: "Approved Technical Spec",
-    protocol_gmd_doc: "Approved Implementation Plan / Bug Remediation Plan",
+    protocol_pm_doc: "Project Discovery Draft (OR existing PRD for updates)",
+    protocol_ca_doc: "PRD, Spec, OR Plan (depending on target)",
+    protocol_sa_doc: "Approved PRD (OR existing Spec for updates)",
+    protocol_pa_doc: "Approved Technical Spec (OR existing Plan for updates)",
+    protocol_gmd_doc: "Implementation Plan OR Bug Remediation Plan",
+    protocol_ecr_doc: "Technical Spec AND Implementation Plan",
+    protocol_acc_doc: "PRD, Spec, AND Plan",
+    protocol_dda_doc: "PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files",
     
     bypass_title: "SDLC Bypass (Minor Tasks)",
     bypass_desc1: "For minor emergency fixes (e.g., updating text, tweaking CSS padding, or fixing typos), you can bypass the full SDLC using the <code>[Bypass SDLC]</code> tag.",
@@ -318,13 +322,17 @@ window.translations = {
     
     // Stepper Footer
     protocol_title: "Protokol Injeksi Konteks",
-    protocol_desc: "Asisten AI memerlukan dokumen hulu (upstream) untuk menjaga konsistensi pengerjaan dan mencegah delusi konteks. Harap selalu sertakan dokumen berikut saat memanggil agen terkait:",
+    protocol_desc: "Untuk mencegah hilangnya konteks, halusinasi, dan untuk menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil agen. Anda juga sangat disarankan untuk menyertakan file atau potongan kode relevan lainnya untuk melengkapi analisis.",
     protocol_th_agent: "Agen / Fase",
     protocol_th_doc: "Dokumen Pendukung Wajib",
     protocol_pm_doc: "Project Discovery Draft (atau PRD yang ada)",
+    protocol_ca_doc: "PRD, Spec, ATAU Plan (tergantung target)",
     protocol_sa_doc: "PRD yang telah disetujui",
     protocol_pa_doc: "Spesifikasi Teknis yang disetujui",
-    protocol_gmd_doc: "Rencana Implementasi / Rencana Perbaikan Bug",
+    protocol_gmd_doc: "Rencana Implementasi ATAU Rencana Perbaikan Bug",
+    protocol_ecr_doc: "Spesifikasi Teknis DAN Rencana Implementasi",
+    protocol_acc_doc: "PRD, Spec, DAN Plan",
+    protocol_dda_doc: "PRD, Spesifikasi Teknis, Rencana Implementasi, ATAU File Source Code Relevan",
     
     bypass_title: "Bypass SDLC (Pekerjaan Minor)",
     bypass_desc1: "Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati tahapan SDLC penuh menggunakan bendera penunjuk <code>[Bypass SDLC]</code>.",

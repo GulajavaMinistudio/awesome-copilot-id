@@ -968,7 +968,7 @@
                   <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
                     <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="protocol_title">📂 Protokol Injeksi Konteks</h3>
                     <p class="text-body-custom small mb-4 text-center" data-i18n="protocol_desc">
-                      Asisten AI memerlukan dokumen hulu (upstream) untuk menjaga konsistensi pengerjaan dan mencegah delusi konteks. Harap selalu sertakan dokumen berikut saat memanggil agen terkait:
+                      Untuk mencegah hilangnya konteks, halusinasi, dan untuk menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil agen. Anda juga sangat disarankan untuk menyertakan file atau potongan kode relevan lainnya untuk melengkapi analisis.
                     </p>
                     
                     <div class="table-responsive bg-white">
@@ -985,6 +985,10 @@
                             <td data-i18n="protocol_pm_doc">Project Discovery Draft (atau PRD yang ada)</td>
                           </tr>
                           <tr>
+                            <td class="fw-medium">@ClarificationAnalyst</td>
+                            <td data-i18n="protocol_ca_doc">PRD, Spec, ATAU Plan (tergantung target)</td>
+                          </tr>
+                          <tr>
                             <td class="fw-medium">@SpecificationArchitect</td>
                             <td data-i18n="protocol_sa_doc">PRD yang telah disetujui</td>
                           </tr>
@@ -994,7 +998,19 @@
                           </tr>
                           <tr>
                             <td class="fw-medium">@GodModeDev</td>
-                            <td data-i18n="protocol_gmd_doc">Rencana Implementasi / Rencana Perbaikan Bug</td>
+                            <td data-i18n="protocol_gmd_doc">Rencana Implementasi ATAU Rencana Perbaikan Bug</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-medium">@ExpertCodeReviewer</td>
+                            <td data-i18n="protocol_ecr_doc">Spesifikasi Teknis DAN Rencana Implementasi</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-medium">@ArtifactConsistencyChecker</td>
+                            <td data-i18n="protocol_acc_doc">PRD, Spec, DAN Plan</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-medium">@DiataxisDocumentationArchitect</td>
+                            <td data-i18n="protocol_dda_doc">PRD, Spesifikasi Teknis, Rencana Implementasi, ATAU File Source Code Relevan</td>
                           </tr>
                         </tbody>
                       </table>
