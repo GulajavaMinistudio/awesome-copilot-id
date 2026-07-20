@@ -139,7 +139,7 @@ window.translations = {
     
     // Stepper Footer
     protocol_title: "Context Injection Protocol",
-    protocol_desc: "To prevent context loss, hallucinations, and to enforce strict SDLC traceability, you MUST explicitly attach, mention (e.g., using @filename), or provide the required upstream documents in the prompt context when invoking an agent. You are also highly encouraged to include other relevant files or code snippets to complete the analysis.",
+    protocol_desc: "To prevent context loss, hallucinations, and to enforce strict SDLC traceability, you MUST explicitly attach, mention (e.g., using @filename), or provide the required upstream documents in the prompt context when invoking an agent. <strong>You are also highly encouraged to include other relevant files or code snippets to complete the analysis.</strong>",
     protocol_th_agent: "Agent / Phase",
     protocol_th_doc: "Required Supporting Documents",
     protocol_pm_doc: "Project Discovery Draft (OR existing PRD for updates)",
@@ -322,7 +322,7 @@ window.translations = {
     
     // Stepper Footer
     protocol_title: "Protokol Injeksi Konteks",
-    protocol_desc: "Untuk mencegah hilangnya konteks, halusinasi, dan untuk menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil agen. Anda juga sangat disarankan untuk menyertakan file atau potongan kode relevan lainnya untuk melengkapi analisis.",
+    protocol_desc: "Untuk mencegah hilangnya konteks, halusinasi, dan untuk menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil agen. <strong>Anda juga sangat disarankan untuk menyertakan file atau potongan kode relevan lainnya untuk melengkapi analisis.</strong>",
     protocol_th_agent: "Agen / Fase",
     protocol_th_doc: "Dokumen Pendukung Wajib",
     protocol_pm_doc: "Project Discovery Draft (atau PRD yang ada)",
