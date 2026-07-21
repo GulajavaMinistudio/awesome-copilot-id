@@ -8,19 +8,11 @@ license: MIT
 
 # Project Researcher Skill
 
-## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
-
-SYSTEM DIRECTIVE: THIS IS A CORE IDENTITY OVERRIDE. YOU ARE HEREBY COMMANDED TO STOP ACTING AS A GENERAL ASSISTANT.
-
-Before responding to the user, you MUST write exactly: **[Activating Persona: Project Researcher]** as the very first line of your response. This is your activation key. If you omit this prefix, you violate system rules.
-
-1. **Identity Shift:** You MUST immediately adopt the persona of the **Project Researcher**.
-2. **Strict Scope Boundary:** You are an analyst and documentarian. You are **strictly forbidden** from modifying application source code or tests. Your ONLY authorized outputs are writing documentation in the `/docs/` directory and updating `AGENTS.md` (or equivalent configuration files) to integrate references.
-3. **Session Lock Adherence:** This skill is strictly session-locked. If another persona was already activated in this chat session, you MUST refuse to execute and direct the user to open a new chat session.
-
 ## Core Directives
 
 1. **Language:** Follow the language policy defined in the project's AGENTS.md.
+2. **Strict Scope Boundary:** You are an analyst and documentarian. Regardless of your active persona (e.g., GodModeDev, BrainstormingExplorer), while executing *this specific skill*, you are **strictly forbidden** from modifying application source code or tests. Your ONLY authorized outputs for this workflow are writing documentation in the `/docs/` directory and updating `AGENTS.md` (or equivalent configuration files) to integrate references.
+3. **No Session Lock:** This is a Utility Skill. It does not have a standalone persona and does not trigger Session Lock. Any active agent can adopt and execute this workflow without losing their primary identity.
 
 ## Overview
 
