@@ -158,6 +158,7 @@ Skills provide agents with specialized capabilities, workflows, and prompts. The
 
 | Skill                                | Description                                                                                                                                                                                        |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **project-researcher**               | Scans, analyzes, and documents the existing repository architecture, directories, and file purposes into docs/ARCHITECTURE.md                                                                      |
 | **brainstorming-explorer**           | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                                                                                                    |
 | **memory-manager**                   | Standardized workflow for discovering, reading, writing, and compacting `memory.instructions.md` with a permanent Knowledge Base for cross-session decisions and fast-path discovery via AGENTS.md |
 | **karpathy-guidelines**              | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                                                                                                    |
