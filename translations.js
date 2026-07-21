@@ -36,7 +36,7 @@ window.translations = {
     overview_agents_title: "Custom Agents",
     overview_agents_desc: "Specialized AI agents for each phase of development (PRD, Technical Specs, Strategic Planning, Coding, and Review).",
     overview_skills_title: "Specialized Skills",
-    overview_skills_desc: "Advanced capabilities like Karpathy Guidelines, Ponytail lazy dev, and Fable Protocol for complex autonomous task execution.",
+    overview_skills_desc: "Advanced capabilities like Project Researcher for automated architecture mapping, Karpathy Guidelines, Ponytail lazy dev, and Fable Protocol for complex autonomous task execution.",
     overview_rules_title: "Rules & Instructions",
     overview_rules_desc: "Best practice coding guidelines tailored for popular languages and frameworks to maintain code quality.",
     overview_byok_title: "BYOK Copilot Config",
@@ -68,8 +68,8 @@ window.translations = {
     agent_label_best: "Best For:",
     agent_label_prompt: "Usage Example:",
     
-    agent_bea_desc: "Systematically explores the existing codebase, critiques architecture, and generates raw project discovery drafts (Phase 0 Discovery).",
-    agent_bea_best: "Understanding new or legacy codebases, analyzing technical debt, and mapping workflows before drafting the PRD.",
+    agent_bea_desc: "Systematically explores the existing codebase, critiques architecture, maps repository structure into ARCHITECTURE.md using the Project Researcher skill, and generates raw project discovery drafts (Phase 0 Discovery).",
+    agent_bea_best: "Understanding new or legacy codebases, analyzing technical debt, and generating architecture maps before drafting the PRD.",
     
     agent_pm_desc: "Generates comprehensive Product Requirements Documents (PRDs), including User Stories, flows, and acceptance criteria.",
     agent_pm_best: "Writing business and functional requirements for new features before technical specifications are drafted.",
@@ -245,7 +245,7 @@ window.translations = {
     overview_agents_title: "Custom Agents",
     overview_agents_desc: "Agen AI khusus untuk setiap fase pengembangan (PRD, Technical Specs, Strategic Planning, Coding, hingga Review).",
     overview_skills_title: "Specialized Skills",
-    overview_skills_desc: "Kemampuan khusus seperti Karpathy Guidelines, Ponytail lazy dev, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.",
+    overview_skills_desc: "Kemampuan khusus seperti Project Researcher untuk pemetaan arsitektur otomatis, Karpathy Guidelines, Ponytail lazy dev, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.",
     overview_rules_title: "Rules & Instructions",
     overview_rules_desc: "Panduan coding terbaik yang disesuaikan dengan bahasa pemrograman dan framework populer untuk menjaga kualitas kode Anda.",
     overview_byok_title: "BYOK Copilot Config",
@@ -277,8 +277,8 @@ window.translations = {
     agent_label_best: "Paling Cocok Untuk:",
     agent_label_prompt: "Contoh Prompt Penggunaan:",
     
-    agent_bea_desc: "Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).",
-    agent_bea_best: "Memahami proyek baru atau lama, menganalisis utang teknis, dan memetakan alur kerja sebelum merumuskan PRD.",
+    agent_bea_desc: "Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).",
+    agent_bea_best: "Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.",
     
     agent_pm_desc: "Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.",
     agent_pm_best: "Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.",
