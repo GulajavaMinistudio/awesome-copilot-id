@@ -58,6 +58,7 @@
   - `@DiataxisDocumentationArchitect` (Skill: `diataxis-documentation-architect`) for User Documentation based on the Diátaxis Framework
 - **Utility Skills (Cross-Cutting)**: Skills that can be used across multiple agents in various phases (these are NOT persona-bound and do NOT trigger Session Lock):
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
+  - `project-researcher` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
   - `fable-protocol` — Autonomous execution protocol for complex, multi-step, and long-horizon tasks. Note: also used as a **supplementary** skill by `@GodModeDev` for complex implementation tasks.
   - `grilling` — For stress-testing a plan or design interactively to resolve design decisions
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus
