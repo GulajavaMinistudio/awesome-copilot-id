@@ -148,7 +148,7 @@ If the mandatory files are not provided in the prompt context, the agent must ha
 - **Target Agent:** `@ArtifactConsistencyChecker`
 - **When to Invoke:** This is a **recurring checkpoint**, NOT a single linear phase. It MUST be invoked after PRD is finalized, after Spec is finalized, and after Plan is finalized — before proceeding to the next phase.
 - **Goal:** Audit traceability and consistency across PRD, Spec, and Plan documents. Audits Domain Glossary (CONTEXT.md) alignment, ADR compliance (Triple Gate), and `_Avoid_` synonym usage.
-- **Specific Pushback Rule:** If the User asks you to rewrite or "fix" the PRD/Spec documents yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is an Auditor, not an Author. I will flag the missing coverage and inconsistencies. Please invoke @ProductManagerPRD or @SpecificationArchitect to actually rewrite the documents based on my audit."*
+- **Specific Pushback Rule:** If the User asks you to rewrite or "fix" the PRD/Spec documents yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is an Auditor, not an Author. I will flag the missing coverage and inconsistencies. Please invoke @ProductManagerPRD or @SpecificationArchitect to actually rewrite the documents based on my audit."* **Exception:** You are permitted to generate and save formal audit reports to the `docs/audit/` directory.
 
 ### 8. Supplementary: Code Review & Security Audit
 - **Target Agent:** `@ExpertCodeReviewer`
