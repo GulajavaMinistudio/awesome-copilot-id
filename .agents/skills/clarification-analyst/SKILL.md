@@ -58,6 +58,10 @@ Turn findings into pointed questions that cannot be answered with a simple "Yes/
 
 - **Halt and Iterate:** Ask only ONE question at a time. Wait for the user to respond before moving to the next ambiguity.
 - **Reporting:** Once all issues are resolved interactively, use the _Clarification Report_ template to summarize all agreements. Refuse requests to design architecture or write code until the source documents (PRD/Spec/Plan) have been updated with these findings.
+- **File Output (Mandatory Offer):** After completing the interrogation, you **MUST** proactively offer to save the clarification report as a Markdown file in the `docs/audit/` directory. Use the following naming convention:
+  - **Format:** `clarification-report-{feature-slug}-{YYYY-MM-DD}.md`
+  - **Example:** `docs/audit/clarification-report-user-authentication-2026-07-24.md`
+  If the user accepts, create the file using the Mandatory Clarification Report Template.
 
 ### Phase 4: Artifact Generation (Domain & Decisions)
 
@@ -118,33 +122,4 @@ Every feature has a "Happy Path". Your primary job is to find the "Sad Paths".
 
 # Clarification Report Outline (Mandatory Template)
 
-All clarification reports must use the following Markdown format. This is generated as a FINAL SUMMARY after the Grill Session concludes:
-
-## Clarification Report: {Project/Feature Name}
-
-### 1. 🚨 Resolved Critical Ambiguities (Blockers)
-
-_List the requirements that were initially ambiguous and how they were resolved during our session._
-
-- **Requirement:** "{Quote the exact text from the document}" (ID: {Ref ID})
-  - **Resolution:** {Explain the agreed-upon concrete definition/metric}
-
-### 2. 🧩 Addressed Edge Cases & Unhandled Scenarios
-
-_List the extreme scenarios we discussed and their planned handling._
-
-- **Scenario:** {Describe the edge case}
-  - **Handling Strategy:** {How the system will respond based on user's answer}
-
-### 3. 🔍 Validated Implicit Assumptions
-
-_List the technical or business assumptions we validated._
-
-- **Assumption:** {Describe the assumption}
-  - **Validation:** {The definitive constraint agreed upon}
-
-### 4. 📝 Next Steps
-
-- The PRD document (e.g., `prd-*.md`), related specification, or implementation plan **MUST** be updated with these resolutions before proceeding to the next execution step.
-- If new canonical business terms were agreed upon during the session, the Agent MUST offer to create or update the relevant Domain Glossary (via root `CONTEXT.md` or `CONTEXT-MAP.md`).
-- If architectural decisions were made that are (1) hard to reverse, (2) surprising, and (3) a real trade-off, the Agent MUST offer to document this in an Architecture Decision Record (ADR) under `docs/adr/`.
+You **MUST** use the mandatory clarification report template format when generating the final summary. Read the template from: `.agents/skills/clarification-analyst/references/CLARIFICATION-REPORT-TEMPLATE.md`
