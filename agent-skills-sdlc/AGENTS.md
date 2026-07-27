@@ -94,18 +94,20 @@ To prevent scope creep and maintain architectural integrity, all Agents MUST ope
 
 To prevent context loss, hallucinations, and to enforce strict SDLC traceability, **the User MUST explicitly attach, mention (e.g., using `@filename`), or provide the required upstream documents in the prompt context when invoking a skill.**
 
-| Command / Phase | Mandatory Upstream Document(s) |
-|---|---|
-| `/prd` | Project Discovery Draft (OR existing PRD for updates) |
-| `/clarify` | PRD, Spec, OR Plan (depending on target) |
-| `/spec` | Approved PRD (OR existing Spec for updates) |
-| `/plan` | Approved Technical Spec (OR existing Plan for updates) |
-| `/implement` | Implementation Plan OR Bug Remediation Plan |
-| `/review` | Technical Spec AND Implementation Plan |
-| `/consistency-check` | PRD, Spec, AND Plan |
-| `/docs` | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+| Command / Phase      | Mandatory Upstream Document(s)                                          |
+| -------------------- | ----------------------------------------------------------------------- |
+| `/prd`               | Project Discovery Draft (OR existing PRD for updates)                   |
+| `/clarify`           | PRD, Spec, OR Plan (depending on target)                                |
+| `/spec`              | Approved PRD (OR existing Spec for updates)                             |
+| `/plan`              | Approved Technical Spec (OR existing Plan for updates)                  |
+| `/implement`         | Implementation Plan OR Bug Remediation Plan                             |
+| `/review`            | Technical Spec AND Implementation Plan                                  |
+| `/consistency-check` | PRD, Spec, AND Plan                                                     |
+| `/docs`              | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
 
 *Note: Phase 0 (`/brainstorming`) and surgical bug analysis (`/bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
+
+*Note: For minor fixes and ad-hoc tasks, users may bypass the mandatory document check by explicitly commanding the agent (e.g., "[Bypass SDLC]"). In these cases, users are still highly encouraged to attach the specific source code files to provide context.*
 
 ### 1. Phase 0: Project Discovery (`/brainstorming`)
 - **Goal:** Define the foundational "WHAT" and "WHY" (Project Brief, max 2-5 pages). Includes exploring existing codebases, critiquing architecture, and identifying tech debt.
