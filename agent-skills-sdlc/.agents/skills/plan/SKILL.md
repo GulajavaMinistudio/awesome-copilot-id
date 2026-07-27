@@ -62,8 +62,10 @@ This skill outlines the workflow to transform technical specifications and requi
     - Clarify goals and identify affected components.
 2.  **Analyze Before Planning:**
     - Review existing codebase patterns and test coverage.
+    - **Identify Dependency Graph:** Map what components depend on what. Implementation order must follow the dependency graph bottom-up (build foundations first).
 3.  **Develop Strategy Collaboratively:**
-    - Break down complex requirements into manageable components.
+    - **Slice Vertically:** Break down complex requirements by vertical feature paths (e.g., Auth schema + API + UI) rather than horizontal layers (e.g., all database, then all API). Each vertical slice must deliver working, testable functionality.
+    - **Apply Task Sizing Limits:** Break down tasks until they are small enough to be implementable and verifiable. A task is too large if it touches > 5 files or multiple independent subsystems.
     - Propose a clear approach, discussing edge cases and mitigations.
     - Present the breakdown to the user for validation before proceeding to plan generation.
     - If multiple architectural approaches exist, present a comparison table with trade-offs.
@@ -97,10 +99,42 @@ Once the implementation plan has been finalized and approved by the user:
 ## AI-Optimized Implementation Standards
 
 - **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
+- **Vertical Slicing:** Group tasks by vertical feature slices (e.g., schema + API + UI for one feature) rather than horizontal layers. Each phase should leave the system in a working state.
+- **Task Sizing Limits:** Never create a single task that touches more than 5 files. Break large tasks into smaller, verifiable units (S: 1-2 files, M: 3-5 files).
+- **Dependency Ordering:** Arrange tasks bottom-up. Build foundational dependencies first.
 - **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific requirement in the Spec or PRD to prevent _scope creep_.
 - **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in `CONTEXT.md`.
-- Use explicit, unambiguous, and machine-parseable language (tables, lists).
-- Include specific file paths, function names, and line numbers.
+- Use explicit, unambiguous, and machine-parseable language (tables, lists). Include specific file paths, function names, and line numbers.
+
+---
+
+## 🚩 Red Flags (Self-Correction for AI)
+
+**SYSTEM DIRECTIVE:** Before finalizing your plan, you MUST perform a strict self-audit of the generated task list against the following anti-patterns. If any red flag is detected, you MUST rewrite the offending tasks before presenting the plan.
+
+1.  **🚫 Anti-Pattern: Horizontal Slicing (The "Layer Cake" Fallacy)**
+    - *Detection:* Tasks are grouped by technical layers (e.g., "Task 1: Create all DB tables", "Task 2: Build all APIs", "Task 3: Build UI").
+    - *Correction:* Reorganize into **Vertical Feature Slices**. A single task MUST span all layers required to make a feature work (e.g., "Task 1: User Login Feature [Schema + Auth API + UI]").
+
+2.  **🚫 Anti-Pattern: Bloated Tasks (XL Sizing / Scope Creep)**
+    - *Detection:* A single task has an estimated file impact of `> 5 files`, touches multiple independent subsystems (e.g., Auth AND Billing), or uses the word "and" to join two major actions in the title.
+    - *Correction:* Decompose the task into smaller, highly cohesive tasks (Size S: 1-2 files, or Size M: 3-5 files).
+
+3.  **🚫 Anti-Pattern: Vague or Unverifiable Acceptance Criteria (AC)**
+    - *Detection:* AC uses subjective verbs like "Implement...", "Improve...", or "Make it look good...".
+    - *Correction:* Rewrite AC as strict, testable, boolean conditions. (e.g., "Given X, when Y happens, then Z is returned").
+
+4.  **🚫 Anti-Pattern: Missing Verification Steps**
+    - *Detection:* A task or phase concludes without a `VERIFY` step defining exactly how to prove the code works.
+    - *Correction:* Add specific verification steps (e.g., "Run `npm run test:auth`", or "Manually click login button and verify redirect to `/dashboard`").
+
+5.  **🚫 Anti-Pattern: Dependency Inversion (Cart Before the Horse)**
+    - *Detection:* Frontend or downstream tasks are scheduled *before* their required backend foundations (Schemas, Interfaces, APIs).
+    - *Correction:* Order tasks strictly **Bottom-Up**. Ensure every task's dependencies (`Dep` column) point only to tasks that are scheduled *prior* to it.
+
+6.  **🚫 Anti-Pattern: Silently Changing the Requirements**
+    - *Detection:* You introduced a new feature, column, or API endpoint that does not exist in the attached Spec or PRD document.
+    - *Correction:* Remove the hallucinated feature. You are the Planner, not the Product Manager. Strictly map everything via `Ref ID`.
 
 ---
 
@@ -140,21 +174,21 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 - GOAL-001: [Describe the goal of this phase]
 
-| Task     | Description                                                             | Ref ID  | AC Ref | Completed | Date |
-| -------- | ----------------------------------------------------------------------- | ------- | ------ | --------- | ---- |
-| TASK-001 | Description of task 1                                                   | REQ-001 | AC-001 |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       | -      |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       | -      |           |      |
+| Task     | Description                                                             | Ref ID  | AC Ref | Dep   | Files | Completed | Date |
+| -------- | ----------------------------------------------------------------------- | ------- | ------ | ----- | ----- | --------- | ---- |
+| TASK-001 | Description of task 1                                                   | REQ-001 | AC-001 | -     | 1-2   |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       | -      | -     | -     |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       | -      | -     | -     |           |      |
 
 ### Implementation Phase 2
 
 - GOAL-002: [Describe the goal of this phase]
 
-| Task     | Description                                                     | Ref ID  | AC Ref | Completed | Date |
-| -------- | --------------------------------------------------------------- | ------- | ------ | --------- | ---- |
-| TASK-002 | Description of task 2                                           | REQ-002 | AC-002 |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       | -      |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       | -      |           |      |
+| Task     | Description                                                     | Ref ID  | AC Ref | Dep      | Files | Completed | Date |
+| -------- | --------------------------------------------------------------- | ------- | ------ | -------- | ----- | --------- | ---- |
+| TASK-002 | Description of task 2                                           | REQ-002 | AC-002 | TASK-001 | 3-5   |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       | -      | -        | -     |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       | -      | -        | -     |           |      |
 
 ## 3. Alternatives
 
