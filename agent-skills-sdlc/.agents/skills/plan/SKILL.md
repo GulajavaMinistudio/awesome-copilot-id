@@ -63,8 +63,13 @@ This skill outlines the workflow to transform technical specifications and requi
 2.  **Analyze Before Planning:**
     - Review existing codebase patterns and test coverage.
     - **Identify Dependency Graph:** You MUST explicitly write out the dependency graph (e.g., via a bulleted hierarchy or mermaid diagram) showing what components depend on what. Implementation order must follow this graph bottom-up (build foundations first).
+    - **Identify Prefactoring:** Look for opportunities to "make the change easy, then make the easy change." Schedule prefactoring tasks first before adding new features.
 3.  **Develop Strategy Collaboratively:**
-    - **Slice Vertically:** Break down complex requirements by vertical feature paths (e.g., Auth schema + API + UI) rather than horizontal layers (e.g., all database, then all API). Each vertical slice must deliver working, testable functionality.
+    - **Slice Vertically (Tracer Bullets):** Break down complex requirements by vertical feature paths (e.g., Auth schema + API + UI) rather than horizontal layers. Each vertical slice must deliver a demoable, end-to-end behavior from the user's perspective.
+    - **Exception for Wide Refactors (Expand-Contract):** If a refactor has a massive blast radius (e.g., renaming a core DB column breaking 1000s of call sites), DO NOT force it into a single tracer bullet. You MUST sequence it using the **Expand-Contract Pattern**: 
+      1. *Expand:* Add the new form beside the old so nothing breaks.
+      2. *Migrate:* Move call sites over in isolated batches.
+      3. *Contract:* Delete the old form once no callers remain.
     - **Apply Task Sizing Limits:** For each proposed task, you MUST explicitly list the "Files likely touched" to prove it stays within bounds. A task is strictly too large if it touches > 5 files or multiple independent subsystems.
     - Propose a clear approach, discussing edge cases and mitigations.
     - Present the mapped dependency graph and task breakdown to the user for validation before proceeding to plan generation.
@@ -124,15 +129,19 @@ Once the implementation plan has been finalized and approved by the user:
     - *Detection:* AC uses subjective verbs like "Implement...", "Improve...", or "Make it look good...".
     - *Correction:* Rewrite AC as strict, testable, boolean conditions. (e.g., "Given X, when Y happens, then Z is returned").
 
-4.  **🚫 Anti-Pattern: Missing Verification Steps**
+4.  **🚫 Anti-Pattern: Mechanical, Layer-by-Layer Task Descriptions**
+    - *Detection:* The task description lists internal engineering chores (e.g., "Create SQL table, add ORM model, build controller").
+    - *Correction:* Rewrite the description to define the **end-to-end behavior from the user's perspective** (e.g., "User can submit a registration form and see a success message").
+
+5.  **🚫 Anti-Pattern: Missing Verification Steps**
     - *Detection:* A task or phase concludes without a `VERIFY` step defining exactly how to prove the code works.
     - *Correction:* Add specific verification steps (e.g., "Run `npm run test:auth`", or "Manually click login button and verify redirect to `/dashboard`").
 
-5.  **🚫 Anti-Pattern: Dependency Inversion (Cart Before the Horse)**
+6.  **🚫 Anti-Pattern: Dependency Inversion (Cart Before the Horse)**
     - *Detection:* Frontend or downstream tasks are scheduled *before* their required backend foundations (Schemas, Interfaces, APIs).
     - *Correction:* Order tasks strictly **Bottom-Up**. Ensure every task's dependencies (`Dep` column) point only to tasks that are scheduled *prior* to it.
 
-6.  **🚫 Anti-Pattern: Silently Changing the Requirements**
+7.  **🚫 Anti-Pattern: Silently Changing the Requirements**
     - *Detection:* You introduced a new feature, column, or API endpoint that does not exist in the attached Spec or PRD document.
     - *Correction:* Remove the hallucinated feature. You are the Planner, not the Product Manager. Strictly map everything via `Ref ID`.
 
