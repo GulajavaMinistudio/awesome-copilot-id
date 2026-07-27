@@ -117,7 +117,7 @@ tags: ["bug-fix", "remediation", "patch"]
 
 ## 2. Implementation Steps
 
-> **⚠️ EXECUTION DIRECTIVE FOR AI AGENTS:**
+> **⚠️ EXECUTION DIRECTIVE FOR AI AGENTS (`/implement`):**
 > You MUST execute this plan phase by phase. You MUST run the specific testing/verification task at the end of each phase. After a phase is tested, you **MUST STOP AND WAIT** for the user's explicit approval before proceeding to the next phase.
 
 ### Implementation Phase 1: Test Writing (Test-Driven Bug Fixing)
