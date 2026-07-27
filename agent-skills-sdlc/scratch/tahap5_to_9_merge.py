@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 
 # Base paths
 rules_dir = r"d:\WebstormProject\awesome-copilot-id\.agents\rules"
@@ -72,13 +73,23 @@ def robust_cleanup(text):
             "DiataxisDocumentationArchitect": "diataxis-documentation-architect",
             "ArtifactConsistencyChecker": "artifact-consistency-checker"
         }
-        text = text.replace(f"the `{old_skill_names[old]}` skill", "this skill")
+        old_skill_name = old_skill_names[old]
+        text = text.replace(f"the `{old_skill_name}` skill", "this skill")
+        
+        # Replace the hardcoded path for templates/references to use the new skill directory name
+        new_skill_dir = new.replace('/', '')
+        text = text.replace(f".agents/skills/{old_skill_name}/", f".agents/skills/{new_skill_dir}/")
 
     text = text.replace("``/", "`/")
     text = text.replace("/``", "/`")
     
     # Remove ambiguous sentence
-    text = text.replace("You no longer carry the workflow and templates in your core instructions. ", "")
+    pattern = r'You no longer carry.*?in your core instructions\.\s*'
+    text = re.sub(pattern, "", text)
+    
+    # Remove redundant Core Rules Discovery block and renumber
+    pattern = r"3\.\s+\*\*Core Rules Discovery:\*\*.*?4\.\s+(\*\*Session Lock Adherence:\*\*)"
+    text = re.sub(pattern, r"3. \1", text, flags=re.DOTALL)
     
     return text
 
@@ -182,6 +193,21 @@ for stage in stages:
     with open(skill_path_new, 'w', encoding='utf-8') as f:
         f.write(new_content)
     
+    # Copy any extra files/folders from old_skill to new_skill (excluding SKILL.md)
+    old_dir = os.path.dirname(skill_path_old)
+    new_dir = os.path.dirname(skill_path_new)
+    for item in os.listdir(old_dir):
+        if item.lower() == 'skill.md':
+            continue
+        
+        src_path = os.path.join(old_dir, item)
+        dst_path = os.path.join(new_dir, item)
+        
+        if os.path.isdir(src_path):
+            shutil.copytree(src_path, dst_path, dirs_exist_ok=True)
+        else:
+            shutil.copy2(src_path, dst_path)
+            
     print(f"Successfully processed {slash}")
 
 print("All Tahap 5-9 completed.")
