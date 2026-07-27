@@ -1,6 +1,6 @@
 # Five-Axis Code Review Reference
 
-This document defines the comprehensive review framework for `@ExpertCodeReviewer`. Every code review MUST evaluate the submitted code along all five axes below. No axis may be skipped.
+This document defines the comprehensive review framework for the `/review` skill. Every code review MUST evaluate the submitted code along all five axes below. No axis may be skipped.
 <!-- markdownlint-disable -->
 
 ---

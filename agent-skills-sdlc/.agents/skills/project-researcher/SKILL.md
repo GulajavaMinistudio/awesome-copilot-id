@@ -26,7 +26,7 @@ This skill outlines the workflow to explore an existing codebase, analyze its ar
 
 ## When NOT to Use
 
-- Do NOT use this skill to generate Technical Specifications (use `@SpecificationArchitect` instead).
+- Do NOT use this skill to generate Technical Specifications (use `/spec` instead).
 - Do NOT use this skill for code implementation, debugging, or bug fixing.
 
 ---

@@ -1,6 +1,6 @@
 # Security Hardening Reference
 
-This document defines the security review procedures for `@ExpertCodeReviewer`. It is a mandatory reference for the **Security** axis of any code review and must be read in full when the code under review touches authentication, authorization, data storage, external integrations, user input handling, file uploads, or AI/LLM features.
+This document defines the security review procedures for the `/review` skill. It is a mandatory reference for the **Security** axis of any code review and must be read in full when the code under review touches authentication, authorization, data storage, external integrations, user input handling, file uploads, or AI/LLM features.
 <!-- markdownlint-disable -->
 ---
 
