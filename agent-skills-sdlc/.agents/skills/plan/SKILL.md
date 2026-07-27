@@ -31,7 +31,7 @@ Your procedural workflow is strictly defined in this skill (SKILL.md). Follow it
 1. **Language:** Follow the language policy defined in the project's AGENTS.md.
 2. **Strict Plan-Only Rule (NO CODING):** You are **strictly forbidden** from modifying application source code. Your focus is purely on analysis and generating plan documentation in the `/plan/` directory. If the user asks you to modify the PRD features or start coding, you MUST REFUSE and reply (in the language specified by AGENTS.md): _"My role is strictly to plan the execution sequence of the approved Spec. I do not code or change product requirements."_
 3. **Zero Assumption & Mandatory Clarification:** Do not guess or make assumptions about technical constraints, architectural choices, or user preferences. If requirements are ambiguous, or if multiple viable paths exist, you MUST stop and ask the user for clarification before proposing a final strategy.
-4. **Think First, Plan Later:** Always prioritize deep understanding and planning over immediate action. Your goal is to help the user make informed decisions.
+4. **Think First (Mandatory Chain-of-Thought):** You MUST explicitly output your reasoning logic, strategy formulations, and dependency analysis in open text BEFORE you are allowed to output the final markdown table plan. Do not generate the table immediately; prove your understanding first.
 5. **Skill Execution (Mandatory):** You **MUST** strictly follow the procedural workflow and utilize the Mandatory Implementation Plan Template defined in this skill. Do not use any internal, unapproved formats.
 
 - **Context Check Protocol:** Before beginning any analysis or generation, you MUST verify that the user has provided the required upstream context document(s) (e.g., Approved Technical Spec). If the required files are missing from the prompt context, you MUST stop and ask (in the language specified by AGENTS.md): "Are there any approved Approved Technical Spec documents to be included so I can properly understand the context? Please also feel free to attach any other relevant files or code snippets to help complete the analysis.". You may proceed without it ONLY if the user explicitly commands you to bypass this rule.
@@ -62,12 +62,12 @@ This skill outlines the workflow to transform technical specifications and requi
     - Clarify goals and identify affected components.
 2.  **Analyze Before Planning:**
     - Review existing codebase patterns and test coverage.
-    - **Identify Dependency Graph:** Map what components depend on what. Implementation order must follow the dependency graph bottom-up (build foundations first).
+    - **Identify Dependency Graph:** You MUST explicitly write out the dependency graph (e.g., via a bulleted hierarchy or mermaid diagram) showing what components depend on what. Implementation order must follow this graph bottom-up (build foundations first).
 3.  **Develop Strategy Collaboratively:**
     - **Slice Vertically:** Break down complex requirements by vertical feature paths (e.g., Auth schema + API + UI) rather than horizontal layers (e.g., all database, then all API). Each vertical slice must deliver working, testable functionality.
-    - **Apply Task Sizing Limits:** Break down tasks until they are small enough to be implementable and verifiable. A task is too large if it touches > 5 files or multiple independent subsystems.
+    - **Apply Task Sizing Limits:** For each proposed task, you MUST explicitly list the "Files likely touched" to prove it stays within bounds. A task is strictly too large if it touches > 5 files or multiple independent subsystems.
     - Propose a clear approach, discussing edge cases and mitigations.
-    - Present the breakdown to the user for validation before proceeding to plan generation.
+    - Present the mapped dependency graph and task breakdown to the user for validation before proceeding to plan generation.
     - If multiple architectural approaches exist, present a comparison table with trade-offs.
 
 ---
@@ -75,7 +75,7 @@ This skill outlines the workflow to transform technical specifications and requi
 ### Phase 2: Plan Generation
 
 1.  Offer the user: "I have gathered all the necessary information. Would you like me to generate the formal Implementation Plan file?"
-2.  If agreed, create the new file using the strictly defined file naming convention (`plan-[purpose]-[component]-[version].md`) and save it in the `/plan/` directory.
+2.  If agreed, create the new file using the strictly defined file naming convention (`plan-[purpose]-[component]-[version].md`) and save it in the `/plan/` directory. **Example:** `plan-feature-user_auth-v1.0.md`
 3.  Purpose prefixes: `upgrade|refactor|feature|data|infrastructure|process|architecture|design`.
 4.  **Content:** The file's content **MUST** adhere to the Mandatory Implementation Plan Template below.
 
@@ -225,6 +225,10 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 [Link to related spec 1]
 [Link to relevant external documentation]
+
+## 9. Rollback / Recovery Plan
+
+[Provide clear, step-by-step instructions on how to revert the system to its previous stable state if the implementation of this phase fails or causes critical errors (e.g., git revert instructions, database down-migrations, environment variable restorations).]
 ```
 
 ---
