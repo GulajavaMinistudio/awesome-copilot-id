@@ -74,6 +74,12 @@ This skill outlines the workflow to transform technical specifications and requi
     - Propose a clear approach, discussing edge cases and mitigations.
     - Present the mapped dependency graph and task breakdown to the user for validation before proceeding to plan generation.
     - If multiple architectural approaches exist, present a comparison table with trade-offs.
+    - **Sizing & Phasing Strategy:** When a feature is large, you MUST break it down into independently deliverable and verifiable phases. Do not create a monolithic plan where nothing works until the very end. Use the following structured phasing approach:
+      - **Phase 1 (Minimum Viable Product / MVP):** The absolute smallest vertical slice (database to UI) that delivers core value and tests the primary hypothesis. *(Example: User can submit a basic raw form and data is saved to the database, ignoring complex validation or polished UI).*
+      - **Phase 2 (Core Experience):** Complete the "happy path" end-to-end. Add essential business logic, necessary UI/UX elements, and core data validations. *(Example: Form now has proper layout styling, real-time input validation, and redirects the user on success).*
+      - **Phase 3 (Edge Cases & Resilience):** Handle errors, negative paths, and edge cases. *(Example: Network failure retries, duplicate submission prevention, and custom error messages for backend API failures).*
+      - **Phase 4 (Optimization & Polish):** Add performance improvements, monitoring, analytics, and final UI polish. *(Example: Query caching, lazy loading components, and adding telemetry/tracking events).*
+      **Crucial Rule:** Every single phase MUST be mergeable and verifiable independently. It must leave the application in a fully working, stable state that can be safely deployed.
 
 ---
 
@@ -110,6 +116,16 @@ Once the implementation plan has been finalized and approved by the user:
 - **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific requirement in the Spec or PRD to prevent _scope creep_.
 - **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in `CONTEXT.md`.
 - Use explicit, unambiguous, and machine-parseable language (tables, lists). Include specific file paths, function names, and line numbers.
+
+## 🎯 Best Practices for Planning
+
+1. **Be Specific (No Ambiguity)**: Never use vague terms like "update the logic" or "create a component". Provide exact file paths (`src/utils/auth.ts`), exact function names (`verifyToken`), and precise variable names. Both humans and AI should know exactly *where* and *what* to touch.
+2. **Consider Edge Cases (Defensive Planning)**: Do not just plan for the "happy path". Explicitly include steps to handle error scenarios (e.g., API timeouts), null/undefined values, and empty states (e.g., displaying "No data found" when a list is empty).
+3. **Minimize Changes (Surgical Edits)**: Prefer extending existing code over rewriting or refactoring large blocks when possible. The smaller the change footprint, the lower the risk of introducing regressions.
+4. **Maintain Patterns (Follow the Pack)**: Follow existing project conventions strictly. If the project uses React Context for state, do not plan to introduce Redux just for one feature. Mimic the surrounding code style.
+5. **Enable Testing (Design for Testability)**: Structure your changes so they can be easily tested incrementally. If you are planning a complex calculation, isolate it into a pure function so a unit test can be easily written for it in the same phase.
+6. **Think Incrementally (Verifiable Steps)**: Each individual step and phase should be verifiable on its own. Do not plan a Step 2 that relies on an un-testable, invisible state from Step 1.
+7. **Document Decisions (The "Why")**: Explain *why* a step is necessary, not just *what* it does. (e.g., Instead of "Add Redis", write "Add Redis cache to prevent database throttling during peak login hours"). This provides critical context for the implementing developer or AI.
 
 ---
 
