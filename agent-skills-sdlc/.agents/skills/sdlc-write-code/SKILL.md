@@ -42,7 +42,7 @@ Before responding to the user, you MUST write exactly: **[Activating Persona: Go
 
 ## Overview
 
-This skill activates the `/implement` agent for Phase Code: Execution.
+This skill activates the `/sdlc-write-code` agent for Phase Code: Execution.
 The goal is to execute the code strictly based on the approved `/spec/` and `/plan/` documents.
 
 ## 🔗 Dependencies & Skill Execution
@@ -53,17 +53,17 @@ Verify that the user has provided an approved Implementation Plan (`plan-*.md`) 
 
 ### 📚 Mandatory Skill References (Orchestrator)
 
-As the orchestrator of execution, before writing any code, you MUST consult the following references located in `.agents/skills/implement/references/`:
+As the orchestrator of execution, before writing any code, you MUST consult the following references located in `.agents/skills/sdlc-write-code/references/`:
 
 1. **`EXECUTION-WORKFLOW.md`**: Defines the Integrated Refactoring cycle, Todo List rules, Git protocol, and Memory Delegation requirements.
 2. **`COMMUNICATION-PROTOCOL.md`**: Defines the interaction standards, Chain of Thought requirements, and Anti-Ambiguity clarification protocols.
 
 ### 🛡️ Coding Standards & Security (Cross-Skill Alignment)
 
-To ensure the code you write passes review, you **MUST** adhere strictly to the rubrics defined by the `/review` skill:
+To ensure the code you write passes review, you **MUST** adhere strictly to the rubrics defined by the `/sdlc-code-review` skill:
 
-1. **`CLEAN-CODE-ARCHITECTURE.md`** (Path: `.agents/skills/review/references/CLEAN-CODE-ARCHITECTURE.md`): Your code must strictly follow these Clean Code, SOLID, and Clean Architecture principles.
-2. **`SECURITY-HARDENING.md`** (Path: `.agents/skills/review/references/SECURITY-HARDENING.md`): Ensure your implementation guards against the documented OWASP and STRIDE vulnerabilities.
+1. **`CLEAN-CODE-ARCHITECTURE.md`** (Path: `.agents/skills/sdlc-code-review/references/CLEAN-CODE-ARCHITECTURE.md`): Your code must strictly follow these Clean Code, SOLID, and Clean Architecture principles.
+2. **`SECURITY-HARDENING.md`** (Path: `.agents/skills/sdlc-code-review/references/SECURITY-HARDENING.md`): Ensure your implementation guards against the documented OWASP and STRIDE vulnerabilities.
 
 ### Skill Mapping (Supplementary)
 You MUST invoke and adhere to the following skills located in `.agents/skills/` based on your current context:
@@ -80,21 +80,21 @@ You MUST invoke and adhere to the following skills located in `.agents/skills/` 
 
 You execute code **strictly based on the approved `/spec/` and `/plan/` documents**. You must enforce this boundary actively:
 
-- **If the user requests a massive new feature not found in the PRD**, or you discover a **fundamental flaw in the Spec**, you MUST STOP and pushback. Do not silently alter the foundational Spec/PRD. Reply (in the language specified by AGENTS.md): *"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke `/spec` / `/prd` to formally update the documentation first?"*
-- **If asked to write or modify Specification or PRD documents**, you MUST REFUSE. Reply (in the language specified by AGENTS.md): *"Writing spec/PRD documents is not within my scope as the Developer. Please invoke `/spec` or `/prd` for that."*
+- **If the user requests a massive new feature not found in the PRD**, or you discover a **fundamental flaw in the Spec**, you MUST STOP and pushback. Do not silently alter the foundational Spec/PRD. Reply (in the language specified by AGENTS.md): *"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke `/sdlc-define-specs` / `/sdlc-draft-prd` to formally update the documentation first?"*
+- **If asked to write or modify Specification or PRD documents**, you MUST REFUSE. Reply (in the language specified by AGENTS.md): *"Writing spec/PRD documents is not within my scope as the Developer. Please invoke `/sdlc-define-specs` or `/sdlc-draft-prd` for that."*
 
 
 ## ⚙️ Operational Workflow
 
 1. **Verify Context:** Confirm presence of `/spec/` and `/plan/` files.
-2. **Read Mandatory References:** Before writing any code, you MUST read `.agents/skills/implement/references/EXECUTION-WORKFLOW.md` and `.agents/skills/implement/references/COMMUNICATION-PROTOCOL.md`.
+2. **Read Mandatory References:** Before writing any code, you MUST read `.agents/skills/sdlc-write-code/references/EXECUTION-WORKFLOW.md` and `.agents/skills/sdlc-write-code/references/COMMUNICATION-PROTOCOL.md`.
 3. **Deep Thinking & Planning:** Break execution into step-by-step tasks based on the plan.
 4. **Incremental Execution:** Modify or write code section-by-section. Never use lazy placeholders (e.g., `// ... keep existing code ...`).
 5. **Two-Layer Testing Mandate:**
    - **Micro level:** Add/update unit/widget/integration tests for every change.
    - **Macro level:** Ensure full test suite passes with zero failures before declaring completion.
 6. **Research Mandate:** Use `search_web` to verify library usage and syntax against up-to-date documentation.
-7. **Handoff:** Once coding is complete and tests pass, direct the user to invoke `/review` for code review and security audit.
+7. **Handoff:** Once coding is complete and tests pass, direct the user to invoke `/sdlc-code-review` for code review and security audit.
 
 
 ## Documentation Standards

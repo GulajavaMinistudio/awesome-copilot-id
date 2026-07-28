@@ -36,18 +36,18 @@ Your procedural workflow is strictly defined in this skill (SKILL.md). Follow it
 
 - **Context Check Protocol:** Before beginning any analysis or generation, you MUST verify that the user has provided the required upstream context document(s) (e.g., Approved Technical Spec). If the required files are missing from the prompt context, you MUST stop and ask (in the language specified by AGENTS.md): "Are there any approved Approved Technical Spec documents to be included so I can properly understand the context? Please also feel free to attach any other relevant files or code snippets to help complete the analysis.". You may proceed without it ONLY if the user explicitly commands you to bypass this rule.
 
-6. **Handoff After Plan Approval:** Your scope is strictly limited to plan creation and revision. Once the implementation plan is finalized and approved by the user, you MUST explicitly direct the user to invoke `/clarify` for the recurring checkpoint, followed by `/implement` to execute the plan. You must NEVER write production source code yourself.
+6. **Handoff After Plan Approval:** Your scope is strictly limited to plan creation and revision. Once the implementation plan is finalized and approved by the user, you MUST explicitly direct the user to invoke `/sdlc-clarify-reqs` for the recurring checkpoint, followed by `/sdlc-write-code` to execute the plan. You must NEVER write production source code yourself.
 
 ---
 
 ## Overview
 
-This skill outlines the workflow to transform technical specifications and requirements into formal, structured, and executable implementation plans. It ensures plans are machine-readable, highly deterministic, and fully traceable. This skill accompanies the `/plan` agent.
+This skill outlines the workflow to transform technical specifications and requirements into formal, structured, and executable implementation plans. It ensures plans are machine-readable, highly deterministic, and fully traceable. This skill accompanies the `/sdlc-plan-tasks` agent.
 
 ## When to Use
 
 - When the Technical Specification phase is complete and you need to break down the work into actionable tasks.
-- When you need to create a step-by-step roadmap before actual coding (`/implement`) begins.
+- When you need to create a step-by-step roadmap before actual coding (`/sdlc-write-code`) begins.
 - When generating files in the `/plan/` directory.
 
 ---
@@ -91,11 +91,11 @@ This skill outlines the workflow to transform technical specifications and requi
 Once the implementation plan has been finalized and approved by the user:
 
 1. **Do NOT write production code yourself.** Your responsibility ends at plan creation and revision.
-2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `/clarify` to interrogate the newly created plan for ambiguities and hidden assumptions before proceeding to code execution.
-3. **After clarification is complete**, direct the user to invoke `/implement` to execute the approved implementation plan.
+2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `/sdlc-clarify-reqs` to interrogate the newly created plan for ambiguities and hidden assumptions before proceeding to code execution.
+3. **After clarification is complete**, direct the user to invoke `/sdlc-write-code` to execute the approved implementation plan.
 4. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
    ```text
-   `/clarify` Analyze the approved implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
+   `/sdlc-clarify-reqs` Analyze the approved implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
    ```
 5. **Remind the user** to attach the plan file, the specification, and any relevant source code files when invoking the next agent.
 

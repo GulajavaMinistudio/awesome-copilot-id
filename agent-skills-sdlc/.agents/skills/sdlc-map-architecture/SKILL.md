@@ -26,7 +26,7 @@ This skill outlines the workflow to explore an existing codebase, analyze its ar
 
 ## When NOT to Use
 
-- Do NOT use this skill to generate Technical Specifications (use `/spec` instead).
+- Do NOT use this skill to generate Technical Specifications (use `/sdlc-define-specs` instead).
 - Do NOT use this skill for code implementation, debugging, or bug fixing.
 
 ---
@@ -54,7 +54,7 @@ This skill outlines the workflow to explore an existing codebase, analyze its ar
 ## Phase 2: Documentation Generation Workflow
 
 1.  Check for the existence of `ARCHITECTURE.md` inside the `/docs/` directory. (If `/docs/` does not exist, create it). If `ARCHITECTURE.md` already exists, read its content first and ask the user whether to fully regenerate the document or update only the affected sections.
-2.  **Content:** The file's content **MUST** adhere to the Mandatory Architecture Template. You MUST read this template from `.agents/skills/project-researcher/references/ARCHITECTURE-TEMPLATE.md` before generating the document.
+2.  **Content:** The file's content **MUST** adhere to the Mandatory Architecture Template. You MUST read this template from `.agents/skills/sdlc-map-architecture/references/ARCHITECTURE-TEMPLATE.md` before generating the document.
 3.  **Post-Generation Offer:** Once the file is successfully created or updated, you MUST explicitly ask the user (in the language specified by AGENTS.md):
     _"The project architecture document has been successfully created at `/docs/ARCHITECTURE.md`. Would you like me to add a reference link to this document inside `AGENTS.md` (or other agent index files) so other agents can read it?"_
 4.  **APPROVAL:** Wait for user confirmation before proceeding to Phase 3.

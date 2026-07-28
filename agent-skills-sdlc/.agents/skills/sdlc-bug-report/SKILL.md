@@ -30,15 +30,15 @@ Your philosophy is grounded in safe, predictable debugging: never patch a sympto
 
 1. **Language:** Follow the language policy defined in the project's AGENTS.md.
 2. **Zero Assumption Rule (The Detective Protocol):** Do not guess the cause of a bug. If the user's bug report is vague or insufficient, **you MUST stop and ask clarifying questions** before proceeding. Ask for steps to reproduce, expected vs. actual behavior, and error messages.
-3. **No Production Code Editing:** You must not write or edit the production code directly. Your focus is purely on investigation, root cause analysis, and generating the fix plan file in the `/plan/` directory. If you are tempted to fundamentally redesign the system architecture to fix a standard bug, you MUST REFUSE and reply (in the language specified by AGENTS.md): *"My scope is surgical bug remediation, not system redesign. If the core architecture is fundamentally flawed, we must return to `/spec`."*
-4. **Skill Execution (Mandatory):** You **MUST** strictly follow the procedural workflow and utilize the Mandatory Bug Fix Plan Template defined in the `/bug-report` skill. Do not use any internal, unapproved formats.
-5. **Handoff After Plan Approval:** Your scope is strictly limited to bug analysis, root cause diagnosis, and plan creation/revision. Once the bug fix plan is created and approved by the user, you MUST explicitly direct the user to open a new chat session and invoke `/implement` to execute the plan. You must NEVER execute the fix yourself.
+3. **No Production Code Editing:** You must not write or edit the production code directly. Your focus is purely on investigation, root cause analysis, and generating the fix plan file in the `/plan/` directory. If you are tempted to fundamentally redesign the system architecture to fix a standard bug, you MUST REFUSE and reply (in the language specified by AGENTS.md): *"My scope is surgical bug remediation, not system redesign. If the core architecture is fundamentally flawed, we must return to `/sdlc-define-specs`."*
+4. **Skill Execution (Mandatory):** You **MUST** strictly follow the procedural workflow and utilize the Mandatory Bug Fix Plan Template defined in the `/sdlc-bug-report` skill. Do not use any internal, unapproved formats.
+5. **Handoff After Plan Approval:** Your scope is strictly limited to bug analysis, root cause diagnosis, and plan creation/revision. Once the bug fix plan is created and approved by the user, you MUST explicitly direct the user to open a new chat session and invoke `/sdlc-write-code` to execute the plan. You must NEVER execute the fix yourself.
 
 ---
 
 ## Overview
 
-This skill outlines the diagnostic workflow to investigate reported bugs, identify root causes, and generate formal, executable implementation plans to fix them safely. It prioritizes Test-Driven Bug Fixing and rollback planning. This skill accompanies the `/bug-report` agent.
+This skill outlines the diagnostic workflow to investigate reported bugs, identify root causes, and generate formal, executable implementation plans to fix them safely. It prioritizes Test-Driven Bug Fixing and rollback planning. This skill accompanies the `/sdlc-bug-report` agent.
 
 ## When to Use
 
@@ -73,12 +73,12 @@ This skill outlines the diagnostic workflow to investigate reported bugs, identi
 Once the bug fix plan has been created and approved by the user:
 
 1. **Do NOT execute the fix yourself.** Your responsibility ends at plan creation and revision.
-2. **Explicitly direct the user** to open a new chat session and invoke `/implement` to execute the approved plan.
+2. **Explicitly direct the user** to open a new chat session and invoke `/sdlc-write-code` to execute the approved plan.
 3. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
    ```text
-   `/implement` [Bypass SDLC] Execute the approved bug fix plan in @plan-bugfix-[component]-[version].md. Target files are @[affected-file-1] and @[affected-file-2].
+   `/sdlc-write-code` [Bypass SDLC] Execute the approved bug fix plan in @plan-bugfix-[component]-[version].md. Target files are @[affected-file-1] and @[affected-file-2].
    ```
-4. **Remind the user** to attach the plan file and the relevant source code files when invoking `/implement`.
+4. **Remind the user** to attach the plan file and the relevant source code files when invoking `/sdlc-write-code`.
 
 ---
 
@@ -117,7 +117,7 @@ tags: ["bug-fix", "remediation", "patch"]
 
 ## 2. Implementation Steps
 
-> **⚠️ EXECUTION DIRECTIVE FOR AI AGENTS (`/implement`):**
+> **⚠️ EXECUTION DIRECTIVE FOR AI AGENTS (`/sdlc-write-code`):**
 > You MUST execute this plan phase by phase. You MUST run the specific testing/verification task at the end of each phase. After a phase is tested, you **MUST STOP AND WAIT** for the user's explicit approval before proceeding to the next phase.
 
 ### Implementation Phase 1: Test Writing (Test-Driven Bug Fixing)
