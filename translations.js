@@ -56,8 +56,9 @@ window.translations = {
     install_method2_step2: "Choose your platform configuration:",
     install_method2_step2_desc: "Copy the relevant platform folder to your project root. Example: for Google Antigravity, copy the <code>.agents</code> directory. For GitHub Copilot, copy <code>.github</code>.",
     install_method2_step3: "Copy the <code>AGENTS.md</code> file to your project root:",
-    install_method2_step3_desc: "<em>Important:</em> After copying, open <code>AGENTS.md</code> and update the first line with your project's name to help the AI agents understand your project context.",
-    install_method2_step4: "Restart your IDE or AI Assistant to apply the changes.",
+    install_method2_step3_desc: "<em>Important:</em> After copying, open <code>AGENTS.md</code> and edit it to:<br>1. Change the <code>[Your Application Name]</code> placeholder to your project name.<br>2. Add a brief <code>[Project Description]</code>.<br>3. Adjust the <code>Language:</code> preference to your desired output language.",
+    install_general_warning: "<strong>Important:</strong> After installation is complete, open the <code>AGENTS.md</code> file in your project root and edit it to:<br>1. Change the <code>[Your Application Name]</code> placeholder to your project name.<br>2. Add a brief <code>[Project Description]</code>.<br>3. Adjust the <code>Language:</code> preference to your desired output language.",
+    install_method2_step4: "Restart your IDE or AI assistant to apply changes.",
     
     // Custom Agents Section
     agents_title: "Custom Agents",
@@ -281,7 +282,8 @@ window.translations = {
     install_method2_step2: "Pilih konfigurasi platform Anda:",
     install_method2_step2_desc: "Salin folder platform yang relevan ke root proyek Anda. Contoh: untuk Google Antigravity, salin folder <code>.agents</code>. Untuk GitHub Copilot, salin folder <code>.github</code>.",
     install_method2_step3: "Salin file <code>AGENTS.md</code> ke root proyek:",
-    install_method2_step3_desc: "<em>Penting:</em> Setelah disalin, buka <code>AGENTS.md</code> dan sesuaikan baris pertama dengan nama proyek Anda untuk membantu konteks pemahaman agen AI.",
+    install_method2_step3_desc: "<em>Penting:</em> Setelah disalin, buka <code>AGENTS.md</code> dan ubah:<br>1. Placeholder <code>[Your Application Name]</code> dengan nama proyek Anda.<br>2. Tambahkan <code>[Project Description]</code> yang singkat.<br>3. Sesuaikan preferensi <code>Language:</code> sesuai kebutuhan Anda.",
+    install_general_warning: "<strong>Penting:</strong> Setelah instalasi selesai, buka file <code>AGENTS.md</code> di root proyek Anda dan ubah:<br>1. Placeholder <code>[Your Application Name]</code> dengan nama proyek Anda.<br>2. Tambahkan <code>[Project Description]</code> yang singkat.<br>3. Sesuaikan preferensi <code>Language:</code> sesuai kebutuhan Anda.",
     install_method2_step4: "Mulai ulang IDE atau Asisten AI Anda untuk menerapkan perubahan.",
     
     // Custom Agents Section
