@@ -195,6 +195,22 @@ window.translations = {
     slash_p4_title: "Writing & Implementing Code",
     slash_p5_title: "Writing Documentation & Fixing Bugs",
     
+    // New SDLC Slash Workflow (Tab 4)
+    uc_tab_sdlc_slash: "🚀 Advanced SDLC Workflow",
+    install_sdlc_warning: "<strong>Important for Advanced SDLC Workflow (Option 9 / agent-skills-sdlc):</strong> You MUST copy the <code>AGENTS.md</code> file from the <code>agent-skills-sdlc/</code> folder to your project root. After copying, edit it to:<br>1. Change the <code>[Your Application Name]</code> placeholder to your project name.<br>2. Add a brief <code>[Project Description]</code>.<br>3. Adjust the <code>Language:</code> preference to your desired output language.",
+    sdlc_slash_title: "⚡ Advanced SDLC Skills Workflow",
+    sdlc_slash_desc: "This highly structured workflow uses a dedicated set of slash commands specifically mapped to each SDLC phase (defined in <code>agent-skills-sdlc/AGENTS.md</code>).",
+    prompt_sdlc_0: "/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md",
+    prompt_sdlc_1a: "/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md",
+    prompt_sdlc_1b: "/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases",
+    prompt_sdlc_2a: "/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md",
+    prompt_sdlc_2b: "/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md",
+    prompt_sdlc_3: "/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md",
+    prompt_sdlc_4a: "/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css",
+    prompt_sdlc_4b: "/sdlc-code-review review my service layer and suggest refactoring",
+    prompt_sdlc_5a: "/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js",
+    prompt_sdlc_5b: "/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js",
+    
     // Footer
     footer_col_platform: "Supported Platforms",
     footer_col_agents: "Core Agents",
@@ -403,6 +419,22 @@ window.translations = {
     slash_p3_title: "Menyusun Rencana Implementasi",
     slash_p4_title: "Menulis & Mengimplementasikan Kode",
     slash_p5_title: "Menulis Dokumentasi & Memperbaiki Bug",
+    
+    // New SDLC Slash Workflow (Tab 4)
+    uc_tab_sdlc_slash: "🚀 Advanced SDLC Workflow",
+    install_sdlc_warning: "<strong>Penting untuk Advanced SDLC Workflow (Opsi 9 / agent-skills-sdlc):</strong> Anda WAJIB menyalin file <code>AGENTS.md</code> dari dalam folder <code>agent-skills-sdlc/</code> ke root proyek Anda. Setelah disalin, buka dan ubah:<br>1. Placeholder <code>[Your Application Name]</code> dengan nama proyek Anda.<br>2. Tambahkan <code>[Project Description]</code> yang singkat.<br>3. Sesuaikan preferensi <code>Language:</code> sesuai kebutuhan Anda.",
+    sdlc_slash_title: "⚡ Alur Kerja Mandiri Advanced SDLC Skills",
+    sdlc_slash_desc: "Alur kerja terstruktur ini menggunakan set perintah slash khusus yang dipetakan ke setiap fase SDLC (seperti yang didefinisikan dalam <code>agent-skills-sdlc/AGENTS.md</code>).",
+    prompt_sdlc_0: "/sdlc-explore-ideas telusuri basis kode ini dan tulis draf penemuan untuk fitur keranjang belanja baru berdasarkan @business-brief.md",
+    prompt_sdlc_1a: "/sdlc-draft-prd buat PRD untuk fitur keranjang belanja berdasarkan @discovery-draft.md",
+    prompt_sdlc_1b: "/sdlc-clarify-reqs interogasi @prd-shopping-cart.md baru untuk mencari edge case yang terlewat",
+    prompt_sdlc_2a: "/sdlc-define-specs rancang spesifikasi teknis berdasarkan @prd-shopping-cart.md",
+    prompt_sdlc_2b: "/sdlc-audit-consistency verifikasi bahwa @spec-shopping-cart.md secara ketat mengikuti @prd-shopping-cart.md",
+    prompt_sdlc_3: "/sdlc-plan-tasks buat rencana implementasi bertahap berdasarkan @spec-shopping-cart.md",
+    prompt_sdlc_4a: "/sdlc-write-code implementasikan keranjang belanja berdasarkan @plan-shopping-cart.md. File target adalah @cart.js dan @style.css",
+    prompt_sdlc_4b: "/sdlc-code-review tinjau lapisan layanan (service layer) saya dan berikan saran refactoring",
+    prompt_sdlc_5a: "/sdlc-generate-docs tulis panduan referensi API berdasarkan @spec-shopping-cart.md dan @cart.js",
+    prompt_sdlc_5b: "/sdlc-bug-report analisis laporan bug di @issue-123.md dan usulkan perbaikan untuk @cart.js",
     
     // Footer
     footer_col_platform: "Platform Dukungan",

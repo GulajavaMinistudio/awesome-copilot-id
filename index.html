@@ -281,6 +281,11 @@
                         <em>Penting:</em> Setelah disalin, buka <code>AGENTS.md</code> dan sesuaikan baris pertama dengan nama proyek Anda untuk membantu konteks pemahaman agen AI.
                       </p>
                     </li>
+                    <li class="mb-3">
+                      <div class="alert alert-warning small py-2 px-3 mt-2" data-i18n="install_sdlc_warning">
+                        <strong>Penting untuk Advanced SDLC Workflow (Opsi 9 / agent-skills-sdlc):</strong> Anda WAJIB menyalin file <code>AGENTS.md</code> dari dalam folder <code>agent-skills-sdlc/</code> ke root proyek Anda. Setelah disalin, buka dan ubah:<br>1. Placeholder <code>[Your Application Name]</code> dengan nama proyek Anda.<br>2. Tambahkan <code>[Project Description]</code> yang singkat.<br>3. Sesuaikan preferensi <code>Language:</code> sesuai kebutuhan Anda.
+                      </div>
+                    </li>
                     <li>
                       <strong data-i18n="install_method2_step4">Mulai ulang IDE atau Asisten AI Anda untuk menerapkan perubahan.</strong>
                     </li>
@@ -821,6 +826,9 @@
                 <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-slash-tab" data-bs-toggle="pill" data-bs-target="#uc-slash-pane" type="button" role="tab" aria-controls="uc-slash-pane" aria-selected="false" data-i18n="uc_tab_slash">
                   ⚡ Advanced (Slash Commands)
                 </button>
+                <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-sdlc-slash-tab" data-bs-toggle="pill" data-bs-target="#uc-sdlc-slash-pane" type="button" role="tab" aria-controls="uc-sdlc-slash-pane" aria-selected="false" data-i18n="uc_tab_sdlc_slash">
+                  🚀 Advanced SDLC Workflow
+                </button>
               </div>
             </div>
           </div>
@@ -1139,6 +1147,122 @@
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_bra_3">/bug-remediation-architect analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
                             <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_3" data-clipboard="/bug-remediation-architect analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 4: Advanced SDLC Workflow (Slash Commands) -->
+            <div class="tab-pane fade" id="uc-sdlc-slash-pane" role="tabpanel" aria-labelledby="uc-sdlc-slash-tab">
+              <div class="row justify-content-center">
+                <div class="col-lg-10">
+                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
+                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="sdlc_slash_title">⚡ Advanced SDLC Skills Workflow</h3>
+                    <p class="text-body-custom small mb-4 text-center" data-i18n="sdlc_slash_desc">
+                      This highly structured workflow uses a dedicated set of slash commands specifically mapped to each SDLC phase (defined in <code>agent-skills-sdlc/AGENTS.md</code>).
+                    </p>
+                    
+                    <div class="alert alert-warning small mb-4 text-start" data-i18n="install_sdlc_warning">
+                      <strong>Important for Advanced SDLC Workflow (Option 9 / agent-skills-sdlc):</strong> You MUST copy the <code>AGENTS.md</code> file from the <code>agent-skills-sdlc/</code> folder to your project root. After copying, edit it to:<br>1. Change the <code>[Your Application Name]</code> placeholder to your project name.<br>2. Add a brief <code>[Project Description]</code>.<br>3. Adjust the <code>Language:</code> preference to your desired output language.
+                    </div>
+                    
+                    <div class="d-flex flex-column gap-3">
+                      <!-- Phase 0 -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 0: Discovery</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p0_title">Mengeksplorasi Codebase & Brainstorming</span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_0">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_0" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Phase 1 PRD -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 1: PRD & Clarification</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p1_title">Membuat PRD & Mengklarifikasi Kebutuhan</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_1a">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_1a" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_1b">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_1b" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Phase 2 Spec -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 2: Specification & Audit</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p2_title">Menyusun Spek Teknis & Memeriksa Konsistensi</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_2a">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_2a" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_2b">/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_2b" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Phase 3 Planning -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 3: Implementation Planning</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p3_title">Menyusun Rencana Implementasi</span>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_3">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_3" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        </div>
+                      </div>
+
+                      <!-- Phase 4 Execution -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 4: Execution & Coding</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p4_title">Menulis & Mengimplementasikan Kode</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_4a">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_4a" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_4b">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_4b" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Phase 5 Documentation -->
+                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 5: Documentation & Bug Fixes</span>
+                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p5_title">Menulis Dokumentasi & Memperbaiki Bug</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_5a">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_5a" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sdlc_5b">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sdlc_5b" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
                           </div>
                         </div>
                       </div>
