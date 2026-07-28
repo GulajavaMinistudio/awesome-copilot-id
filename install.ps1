@@ -58,12 +58,14 @@ try {
     Write-Host "6) Pi Dev Coding Agent (.pi)"
     Write-Host "7) Oh My Pi (.omp)"
     Write-Host "8) Claude Code (.claude)"
-    Write-Host "9) All Platforms (Install all configurations above)"
+    Write-Host "9) Google Antigravity - Advanced Skills SDLC Workflow (.agents)"
+    Write-Host "10) All Platforms (Install all standard configurations above)"
     Write-Host ""
     
-    $choice = Read-Host "Enter your choice (1-9)"
+    $choice = Read-Host "Enter your choice (1-10)"
     
     $platformDirs = @()
+    $isSdlc = $false
     switch ($choice) {
         "1" { $platformDirs = @(".github") }
         "2" { $platformDirs = @(".agents") }
@@ -73,7 +75,8 @@ try {
         "6" { $platformDirs = @(".pi") }
         "7" { $platformDirs = @(".omp") }
         "8" { $platformDirs = @(".claude") }
-        "9" { $platformDirs = @(".github", ".agents", ".claude", ".opencode", ".commandcode", ".codex", ".pi", ".omp") }
+        "9" { $platformDirs = @("agent-skills-sdlc/.agents"); $isSdlc = $true }
+        "10" { $platformDirs = @(".github", ".agents", ".claude", ".opencode", ".commandcode", ".codex", ".pi", ".omp") }
         Default {
             Write-Host "Invalid choice. Process aborted." -ForegroundColor Red
             exit 1
@@ -83,7 +86,8 @@ try {
     # 5. Copy chosen platform configuration directories
     foreach ($dir in $platformDirs) {
         $srcDir = Join-Path $sourceContentDir $dir
-        $dstDir = Join-Path $targetPath $dir
+        $dstBase = Split-Path $dir -Leaf
+        $dstDir = Join-Path $targetPath $dstBase
         
         if (Test-Path $srcDir) {
             $restoreList = @()
@@ -97,23 +101,23 @@ try {
                         $relPath = Resolve-Path $targetMem.FullName -Relative
                         Write-Host "Found pre-existing memory file: $relPath" -ForegroundColor Yellow
                         $confirmMem = Read-Host "Do you want to: [k]eep the existing file, or [r]eplace it with the template? (K/r)"
+                        $tempBackupPath = [System.IO.Path]::GetTempFileName()
+                        Copy-Item -Path $targetMem.FullName -Destination $tempBackupPath -Force
+                        
                         if ($confirmMem -match '^[Rr]$') {
-                            # Replace: Back up to .bak
-                            $bakPath = $targetMem.FullName + ".bak"
-                            Copy-Item -Path $targetMem.FullName -Destination $bakPath -Force
-                            Write-Host "Created backup of your memory file at: $bakPath" -ForegroundColor Yellow
+                            # Replace: Back up to a temp location, will restore as .bak
+                            $restoreList += @{ Target = $targetMem.FullName + ".bak"; TempSource = $tempBackupPath; Mode = "Replace" }
+                            Write-Host "Will backup your memory file to .bak after folder copy." -ForegroundColor Yellow
                         } else {
                             # Keep: Back up to a temp location to restore after copy
-                            $tempBackupPath = [System.IO.Path]::GetTempFileName()
-                            Copy-Item -Path $targetMem.FullName -Destination $tempBackupPath -Force
-                            $restoreList += @{ Target = $targetMem.FullName; TempSource = $tempBackupPath }
+                            $restoreList += @{ Target = $targetMem.FullName; TempSource = $tempBackupPath; Mode = "Keep" }
                         }
                     }
                 }
                 
-                $confirmFolder = Read-Host "Folder '$dir' already exists in target. Overwrite entire folder? (y/N)"
+                $confirmFolder = Read-Host "Folder '$dstBase' already exists in target. Overwrite entire folder? (y/N)"
                 if ($confirmFolder -notmatch '^[Yy]$') {
-                    Write-Host "Skipping copy of '$dir'..." -ForegroundColor Yellow
+                    Write-Host "Skipping copy of '$dstBase'..." -ForegroundColor Yellow
                     # Clean up temp files if copy is skipped
                     foreach ($item in $restoreList) {
                         if (Test-Path $item.TempSource) { Remove-Item -Path $item.TempSource -Force }
@@ -126,7 +130,7 @@ try {
             
             # Copy directory structure
             Copy-Item -Path $srcDir -Destination $targetPath -Recurse -Force
-            Write-Host "Successfully copied $dir to $targetPath" -ForegroundColor Green
+            Write-Host "Successfully copied $dstBase to $targetPath" -ForegroundColor Green
             
             # Restore kept memory files
             foreach ($item in $restoreList) {
@@ -136,7 +140,11 @@ try {
                 }
                 Copy-Item -Path $item.TempSource -Destination $item.Target -Force
                 Remove-Item -Path $item.TempSource -Force
-                Write-Host "Kept existing memory file: $($item.Target)" -ForegroundColor Green
+                if ($item.Mode -eq "Replace") {
+                    Write-Host "Created backup of existing memory file at: $($item.Target)" -ForegroundColor Green
+                } else {
+                    Write-Host "Kept existing memory file: $($item.Target)" -ForegroundColor Green
+                }
             }
         } else {
             Write-Host "Warning: Folder '$dir' not found in source repository." -ForegroundColor Yellow
@@ -144,7 +152,11 @@ try {
     }
 
     # 6. Copy AGENTS.md
-    $srcAgents = Join-Path $sourceContentDir "AGENTS.md"
+    if ($isSdlc) {
+        $srcAgents = Join-Path $sourceContentDir "agent-skills-sdlc/AGENTS.md"
+    } else {
+        $srcAgents = Join-Path $sourceContentDir "AGENTS.md"
+    }
     $dstAgents = Join-Path $targetPath "AGENTS.md"
 
     if (Test-Path $srcAgents) {

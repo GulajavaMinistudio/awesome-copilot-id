@@ -94,10 +94,12 @@ echo -e "5) ${GREEN}ChatGPT Codex${NC} (.codex)"
 echo -e "6) ${GREEN}Pi Dev Coding Agent${NC} (.pi)"
 echo -e "7) ${GREEN}Oh My Pi${NC} (.omp)"
 echo -e "8) ${GREEN}Claude Code${NC} (.claude)"
-echo -e "9) ${GREEN}All Platforms${NC} (Install all configurations above)"
-read -p "Enter your choice (1-9): " CHOICE < /dev/tty
+echo -e "9) ${GREEN}Google Antigravity - Advanced Skills SDLC Workflow${NC} (.agents)"
+echo -e "10) ${GREEN}All Platforms${NC} (Install all standard configurations above)"
+read -p "Enter your choice (1-10): " CHOICE < /dev/tty
 
 PLATFORM_DIRS=()
+IS_SDLC=false
 case $CHOICE in
     1) PLATFORM_DIRS=(".github") ;;
     2) PLATFORM_DIRS=(".agents") ;;
@@ -107,18 +109,21 @@ case $CHOICE in
     6) PLATFORM_DIRS=(".pi") ;;
     7) PLATFORM_DIRS=(".omp") ;;
     8) PLATFORM_DIRS=(".claude") ;;
-    9) PLATFORM_DIRS=(".github" ".agents" ".claude" ".opencode" ".commandcode" ".codex" ".pi" ".omp") ;;
+    9) PLATFORM_DIRS=("agent-skills-sdlc/.agents"); IS_SDLC=true ;;
+    10) PLATFORM_DIRS=(".github" ".agents" ".claude" ".opencode" ".commandcode" ".codex" ".pi" ".omp") ;;
     *) echo -e "${RED}Invalid choice. Process aborted.${NC}"; exit 1 ;;
 esac
 
 # 5. Copy chosen platform configuration directories
 for dir in "${PLATFORM_DIRS[@]}"; do
     SRC_DIR="$SOURCE_CONTENT_DIR/$dir"
-    DST_DIR="$TARGET_PATH/$dir"
+    DST_BASE=$(basename "$dir")
+    DST_DIR="$TARGET_PATH/$DST_BASE"
     
     if [ -d "$SRC_DIR" ]; then
         RESTORE_LATER=()
         RESTORE_TARGETS=()
+        RESTORE_MODES=()
         
         # If destination directory already exists, check for memory.instructions.md
         if [ -d "$DST_DIR" ]; then
@@ -130,26 +135,30 @@ for dir in "${PLATFORM_DIRS[@]}"; do
                     read -p "Do you want to: [k]eep the existing file, or [r]eplace it with the template? (K/r): " MEM_CHOICE < /dev/tty
                     MEM_CHOICE=${MEM_CHOICE:-k}
                     
+                    TEMP_BAK=$(mktemp)
+                    cp "$mem_file" "$TEMP_BAK"
+                    
                     if [[ "$MEM_CHOICE" =~ ^[Rr]$ ]]; then
-                        # Replace: Back up to .bak
-                        cp "$mem_file" "${mem_file}.bak"
-                        echo -e "${YELLOW}Created backup of your memory file at: ${mem_file}.bak${NC}"
+                        # Replace: Back up to a temporary file, will restore as .bak
+                        RESTORE_LATER+=("$TEMP_BAK")
+                        RESTORE_TARGETS+=("${mem_file}.bak")
+                        RESTORE_MODES+=("Replace")
+                        echo -e "${YELLOW}Will backup your memory file to .bak after folder copy.${NC}"
                     else
                         # Keep: Back up to a temporary file to restore after copy
-                        TEMP_BAK=$(mktemp)
-                        cp "$mem_file" "$TEMP_BAK"
                         RESTORE_LATER+=("$TEMP_BAK")
                         RESTORE_TARGETS+=("$mem_file")
+                        RESTORE_MODES+=("Keep")
                     fi
                 done
             fi
             
-            read -p "Folder '$dir' already exists in target. Overwrite entire folder? (y/N): " CONFIRM < /dev/tty
+            read -p "Folder '$DST_BASE' already exists in target. Overwrite entire folder? (y/N): " CONFIRM < /dev/tty
             CONFIRM=${CONFIRM:-n}
             if [[ "$CONFIRM" =~ ^[Yy]$ ]]; then
                 rm -rf "$DST_DIR"
             else
-                echo -e "${YELLOW}Skipping copy of '$dir'...${NC}"
+                echo -e "${YELLOW}Skipping copy of '$DST_BASE'...${NC}"
                 # Clean up temporary backups if copy is skipped
                 for temp_bak in "${RESTORE_LATER[@]}"; do
                     rm -f "$temp_bak"
@@ -160,18 +169,23 @@ for dir in "${PLATFORM_DIRS[@]}"; do
         
         # Copy directory structure
         cp -r "$SRC_DIR" "$TARGET_PATH/"
-        echo -e "Successfully copied ${GREEN}$dir${NC} to $TARGET_PATH/"
+        echo -e "Successfully copied ${GREEN}$DST_BASE${NC} to $TARGET_PATH/"
         
         # Restore kept memory files if any
         if [ ${#RESTORE_LATER[@]} -gt 0 ]; then
             for i in "${!RESTORE_LATER[@]}"; do
                 temp_bak="${RESTORE_LATER[$i]}"
                 target_mem="${RESTORE_TARGETS[$i]}"
+                mode="${RESTORE_MODES[$i]:-Keep}"
                 # Re-create parent directory just in case it was deleted
                 mkdir -p "$(dirname "$target_mem")"
                 cp "$temp_bak" "$target_mem"
                 rm -f "$temp_bak"
-                echo -e "Kept existing memory file: ${GREEN}$target_mem${NC}"
+                if [ "$mode" = "Replace" ]; then
+                    echo -e "Created backup of existing memory file at: ${GREEN}$target_mem${NC}"
+                else
+                    echo -e "Kept existing memory file: ${GREEN}$target_mem${NC}"
+                fi
             done
         fi
     else
@@ -180,7 +194,11 @@ for dir in "${PLATFORM_DIRS[@]}"; do
 done
 
 # 6. Copy AGENTS.md
-SRC_AGENTS="$SOURCE_CONTENT_DIR/AGENTS.md"
+if [ "$IS_SDLC" = true ]; then
+    SRC_AGENTS="$SOURCE_CONTENT_DIR/agent-skills-sdlc/AGENTS.md"
+else
+    SRC_AGENTS="$SOURCE_CONTENT_DIR/AGENTS.md"
+fi
 DST_AGENTS="$TARGET_PATH/AGENTS.md"
 
 if [ -f "$SRC_AGENTS" ]; then
