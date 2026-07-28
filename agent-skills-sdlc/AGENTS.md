@@ -1,5 +1,7 @@
 <!-- markdownlint-disable -->
-# AGENTS.md - SDLC Agent Skills (Slash Commands Edition)
+# AGENTS.md - [Your Application Name] (Please replace this title with your actual project context)
+
+> **Project Description:** [Please write a 1-3 sentence summary of what this project is about, its core domain, and its primary goals. This helps all agents understand the big picture context before diving into specifics.]
 
 ## Communication
 
@@ -94,16 +96,16 @@ To prevent scope creep and maintain architectural integrity, all Agents MUST ope
 
 To prevent context loss, hallucinations, and to enforce strict SDLC traceability, **the User MUST explicitly attach, mention (e.g., using `@filename`), or provide the required upstream documents in the prompt context when invoking a skill.**
 
-| Command / Phase      | Mandatory Upstream Document(s)                                          |
-| -------------------- | ----------------------------------------------------------------------- |
-| `/sdlc-draft-prd`        | Project Discovery Draft (OR existing PRD for updates)                   |
-| `/sdlc-clarify-reqs`     | PRD, Spec, OR Plan (depending on target)                                |
-| `/sdlc-define-specs`     | Approved PRD (OR existing Spec for updates)                             |
-| `/sdlc-plan-tasks`       | Approved Technical Spec (OR existing Plan for updates)                  |
-| `/sdlc-write-code`       | Implementation Plan OR Bug Remediation Plan                             |
-| `/sdlc-code-review`      | Technical Spec AND Implementation Plan                                  |
-| `/sdlc-audit-consistency`| PRD, Spec, AND Plan                                                     |
-| `/sdlc-generate-docs`    | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+| Command / Phase           | Mandatory Upstream Document(s)                                          |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `/sdlc-draft-prd`         | Project Discovery Draft (OR existing PRD for updates)                   |
+| `/sdlc-clarify-reqs`      | PRD, Spec, OR Plan (depending on target)                                |
+| `/sdlc-define-specs`      | Approved PRD (OR existing Spec for updates)                             |
+| `/sdlc-plan-tasks`        | Approved Technical Spec (OR existing Plan for updates)                  |
+| `/sdlc-write-code`        | Implementation Plan OR Bug Remediation Plan                             |
+| `/sdlc-code-review`       | Technical Spec AND Implementation Plan                                  |
+| `/sdlc-audit-consistency` | PRD, Spec, AND Plan                                                     |
+| `/sdlc-generate-docs`     | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
 
 *Note: Phase 0 (`/sdlc-explore-ideas`) and surgical bug analysis (`/sdlc-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
