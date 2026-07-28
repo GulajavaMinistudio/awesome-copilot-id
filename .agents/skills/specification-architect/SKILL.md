@@ -38,6 +38,7 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 - Ask if there is an existing PRD. If yes, you **MUST** read and analyze it to extract business goals and user stories.
 - Clarify if creating a new spec or updating an existing one.
+- **Surface Assumptions Immediately:** Before writing any spec content or asking technical questions, you MUST explicitly list your architectural assumptions in an `ASSUMPTIONS I'M MAKING:` block. (e.g., "1. We are using PostgreSQL, 2. We are targeting modern browsers only"). Do not silently fill in ambiguous requirements.
 
 ### Phase 2: Investigate the Codebase
 
@@ -49,6 +50,8 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 - Discuss findings with the user using the "Grill With Docs" method. Draft the specification sections focusing on **WHAT** the system should do.
 - **Halt and Iterate:** Ask **ONE** specific question at a time regarding data contracts, interfaces, or constraints. Wait for the user's decision before asking the next question.
 - **Do the Heavy Lifting:** Present technical trade-offs. (e.g., "The PRD requires real-time updates. Based on our codebase, we can use (A) the existing WebSockets implementation, or (B) implement Server-Sent Events (SSE). I recommend (A) for consistency. Do you agree?").
+- **Reframe Vague Requirements:** If the PRD has subjective requirements (e.g., "Make the dashboard faster"), you MUST translate them into concrete, testable conditions (e.g., "LCP < 2.5s", "API Response < 200ms") and verify them with the user.
+- **Define Testing Seams:** Sketch out the boundaries at which the feature will be tested. Prefer existing seams (e.g., existing API boundaries). If new seams are needed, design them with the fewest boundaries possible (ideally one).
 - Ensure all requirements are testable and unambiguous before moving to Phase 4.
 - **Domain Consistency Check:** If the user proposes a term or data structure that conflicts with the established Domain Glossary, challenge it. "Our Glossary defines [Term] as [Definition], but you are proposing [New Term/Def] — shall we update the Glossary or stick to the existing definition?" When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `.agents/standards/CONTEXT-FORMAT.md`.
 
@@ -142,11 +145,19 @@ tags: [Optional: List of relevant tags or categories]
 - **CI/CD Integration**: [automated testing pipelines]
 - **Coverage Requirements**: [minimum code coverage thresholds]
 
-## 7. Rationale, Context & Architecture Decisions (ADRs)
+## 7. Implementation Boundaries
+
+[Explicitly define the guardrails for the implementation agent (`@GodModeDev`) using the Three-Tier System:]
+
+- **Always do:** [e.g., Run tests before commits, follow naming conventions, validate inputs]
+- **Ask first:** [e.g., Database schema changes, adding new NPM dependencies, changing CI config]
+- **Never do:** [e.g., Commit secrets, edit vendor directories, remove failing tests without approval]
+
+## 8. Rationale, Context & Architecture Decisions (ADRs)
 
 [Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made, you MUST create a separate ADR file in `docs/adr/` (following `.agents/standards/ADR-FORMAT.md`) and link to it here. Do NOT embed the entire ADR within this document.]
 
-## 8. Dependencies & External Integrations
+## 9. Dependencies & External Integrations
 
 [Define the external systems, services, and architectural dependencies required. Focus on **what** is needed rather than **how** it's implemented.]
 
@@ -166,17 +177,17 @@ tags: [Optional: List of relevant tags or categories]
 
 - **DAT-001**: [External data source] - [Format, frequency, and access requirements]
 
-## 9. Examples & Edge Cases
+## 10. Examples & Edge Cases
 
 ` ` `javascript
 // Code snippet or data example demonstrating the correct application of the guidelines, including edge cases
 ` ` `
 
-## 10. Validation Criteria
+## 11. Validation Criteria
 
 [List the criteria or tests that must be satisfied for compliance with this specification.]
 
-## 11. Related Specifications / Further Reading
+## 12. Related Specifications / Further Reading
 
 [Link to related spec 1]
 [Link to relevant external documentation]
@@ -197,3 +208,4 @@ tags: [Optional: List of relevant tags or categories]
 
 - **Machine Gun Questioning:** Do not ask multiple architectural questions in a single prompt. Resolve one interface/contract before moving to the next.
 - **Silent Assumptions:** Do not automatically pick a data type, API protocol (REST/GraphQL), or library without verifying it with the user first.
+- **Code Snippets for Logic:** Do NOT include specific file paths or code snippets for implementation logic, as they go stale quickly. **Exception:** You MAY use code snippets if they encode a decision more precisely than prose (e.g., a GraphQL schema, a TypeScript interface, or a State Machine).
