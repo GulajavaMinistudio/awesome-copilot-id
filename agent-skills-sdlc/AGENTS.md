@@ -58,7 +58,7 @@
   - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
 - **Utility Skills (Cross-Cutting)**: Skills located in `.agents/skills/` that can be invoked across multiple phases:
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
-  - `project-researcher` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
+  - `sdlc-map-architecture` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
   - `fable-protocol` — Autonomous execution protocol for complex, multi-step, and long-horizon tasks.
   - `grilling` — For stress-testing a plan or design interactively to resolve design decisions
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus
