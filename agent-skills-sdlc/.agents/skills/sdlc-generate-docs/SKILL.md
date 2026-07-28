@@ -1,12 +1,12 @@
 ---
-name: docs
+name: sdlc-generate-docs
 description: "Workflow for auditing, designing, and writing structured documentation based on the Diátaxis Framework (Tutorials, How-to, Reference, Explanation)."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Diátaxis Documentation Architect Skill (`/docs`)
+# Diátaxis Documentation Architect Skill (`/sdlc-generate-docs`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 

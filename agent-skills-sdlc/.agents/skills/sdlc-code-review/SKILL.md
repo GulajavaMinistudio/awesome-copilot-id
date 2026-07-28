@@ -1,12 +1,12 @@
 ---
-name: review
+name: sdlc-code-review
 description: "Language-agnostic workflow for code reviews and security audits using a Two-Axis (Standards vs Spec) approach against Clean Code/SOLID principles, generating formal refactoring plans."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Expert Code Reviewer Skill (`/review`)
+# Expert Code Reviewer Skill (`/sdlc-code-review`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 

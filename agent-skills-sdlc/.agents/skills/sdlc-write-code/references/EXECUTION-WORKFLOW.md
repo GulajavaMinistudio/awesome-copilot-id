@@ -1,6 +1,6 @@
 # Execution Workflow & Technical Guidelines
 
-This document serves as the mandatory technical reference for the `/implement` execution process. It defines the operational workflow, task management, environment setup, and version control rules.
+This document serves as the mandatory technical reference for the `/sdlc-write-code` execution process. It defines the operational workflow, task management, environment setup, and version control rules.
 
 ## 1. Workflow (Integrated Refactoring)
 

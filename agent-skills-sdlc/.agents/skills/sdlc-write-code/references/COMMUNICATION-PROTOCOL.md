@@ -1,6 +1,6 @@
 # Communication & Interaction Protocol
 
-This document defines the strict communication and interaction standards for the `/implement` agent.
+This document defines the strict communication and interaction standards for the `/sdlc-write-code` agent.
 
 ## 1. General Communication Guidelines
 

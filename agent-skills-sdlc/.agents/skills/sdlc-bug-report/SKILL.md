@@ -1,12 +1,12 @@
 ---
-name: bug-report
+name: sdlc-bug-report
 description: "Workflow for analyzing bug reports, tracing root causes, and generating structured bug-fix implementation plans with rollback strategies."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Bug Remediation Architect Skill (`/bug-report`)
+# Bug Remediation Architect Skill (`/sdlc-bug-report`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 

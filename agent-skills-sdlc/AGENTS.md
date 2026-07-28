@@ -46,16 +46,16 @@
   - **Micro level (per change):** Every individual code generation or modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
   - **Macro level (per phase):** The entire test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase.
 - **Custom Slash Commands Usage**: User triggers skills using slash commands according to each development phase:
-  - `/brainstorming` for Project Discovery, Codebase Exploration & Brainstorming (Phase 0)
-  - `/prd` for Product Requirements Document (PRD)
-  - `/clarify` **[Recurring Checkpoint]** — Invoked after PRD, after Spec, and after Plan to interrogate and resolve ambiguity.
-  - `/spec` for Technical Specification
-  - `/consistency-check` **[Recurring Checkpoint]** — Invoked after PRD, Spec, and Plan are drafted to validate traceability.
-  - `/plan` for Implementation Planning
-  - `/implement` (Supplementary: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
-  - `/review` for Code Review and Security Audit
-  - `/bug-report` for Root Cause Analysis and Bug Fixing
-  - `/docs` for User Documentation based on the Diátaxis Framework
+  - `/sdlc-explore-ideas` for Project Discovery, Codebase Exploration & Brainstorming (Phase 0)
+  - `/sdlc-draft-prd` for Product Requirements Document (PRD)
+  - `/sdlc-clarify-reqs` **[Recurring Checkpoint]** — Invoked after PRD, after Spec, and after Plan to interrogate and resolve ambiguity.
+  - `/sdlc-define-specs` for Technical Specification
+  - `/sdlc-audit-consistency` **[Recurring Checkpoint]** — Invoked after PRD, Spec, and Plan are drafted to validate traceability.
+  - `/sdlc-plan-tasks` for Implementation Planning
+  - `/sdlc-write-code` (Supplementary: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
+  - `/sdlc-code-review` for Code Review and Security Audit
+  - `/sdlc-bug-report` for Root Cause Analysis and Bug Fixing
+  - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
 - **Utility Skills (Cross-Cutting)**: Skills located in `.agents/skills/` that can be invoked across multiple phases:
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
   - `project-researcher` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
@@ -96,58 +96,58 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 
 | Command / Phase      | Mandatory Upstream Document(s)                                          |
 | -------------------- | ----------------------------------------------------------------------- |
-| `/prd`               | Project Discovery Draft (OR existing PRD for updates)                   |
-| `/clarify`           | PRD, Spec, OR Plan (depending on target)                                |
-| `/spec`              | Approved PRD (OR existing Spec for updates)                             |
-| `/plan`              | Approved Technical Spec (OR existing Plan for updates)                  |
-| `/implement`         | Implementation Plan OR Bug Remediation Plan                             |
-| `/review`            | Technical Spec AND Implementation Plan                                  |
-| `/consistency-check` | PRD, Spec, AND Plan                                                     |
-| `/docs`              | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+| `/sdlc-draft-prd`        | Project Discovery Draft (OR existing PRD for updates)                   |
+| `/sdlc-clarify-reqs`     | PRD, Spec, OR Plan (depending on target)                                |
+| `/sdlc-define-specs`     | Approved PRD (OR existing Spec for updates)                             |
+| `/sdlc-plan-tasks`       | Approved Technical Spec (OR existing Plan for updates)                  |
+| `/sdlc-write-code`       | Implementation Plan OR Bug Remediation Plan                             |
+| `/sdlc-code-review`      | Technical Spec AND Implementation Plan                                  |
+| `/sdlc-audit-consistency`| PRD, Spec, AND Plan                                                     |
+| `/sdlc-generate-docs`    | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
 
-*Note: Phase 0 (`/brainstorming`) and surgical bug analysis (`/bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
+*Note: Phase 0 (`/sdlc-explore-ideas`) and surgical bug analysis (`/sdlc-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
 *Note: For minor fixes and ad-hoc tasks, users may bypass the mandatory document check by explicitly commanding the agent (e.g., "[Bypass SDLC]"). In these cases, users are still highly encouraged to attach the specific source code files to provide context.*
 
-### 1. Phase 0: Project Discovery (`/brainstorming`)
+### 1. Phase 0: Project Discovery (`/sdlc-explore-ideas`)
 - **Goal:** Define the foundational "WHAT" and "WHY" (Project Brief, max 2-5 pages). Includes exploring existing codebases, critiquing architecture, and identifying tech debt.
-- **Specific Pushback Rule:** If the User requests writing API contracts, database schemas, or actual source code, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"As the Brainstorming Explorer, my focus is on discovery — understanding business goals, exploring the existing codebase, and critiquing its architecture. Writing schemas or code belongs to the Specification/Code phase. Let's finish the Discovery Draft first."* Once approved, direct the user to invoke `/prd`.
+- **Specific Pushback Rule:** If the User requests writing API contracts, database schemas, or actual source code, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"As the Brainstorming Explorer, my focus is on discovery — understanding business goals, exploring the existing codebase, and critiquing its architecture. Writing schemas or code belongs to the Specification/Code phase. Let's finish the Discovery Draft first."* Once approved, direct the user to invoke `/sdlc-draft-prd`.
 
-### 2. Phase PRD: Product Requirements (`/prd`)
+### 2. Phase PRD: Product Requirements (`/sdlc-draft-prd`)
 - **Goal:** Define User Stories, flows, and Acceptance Criteria.
-- **Specific Pushback Rule:** If the User asks to define backend column data types or precise JSON payloads, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"As the Product Manager, I define behavior, not technical implementation. Let's focus on user acceptance criteria first."* Once approved, direct the user to invoke `/clarify`, followed by `/spec`.
+- **Specific Pushback Rule:** If the User asks to define backend column data types or precise JSON payloads, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"As the Product Manager, I define behavior, not technical implementation. Let's focus on user acceptance criteria first."* Once approved, direct the user to invoke `/sdlc-clarify-reqs`, followed by `/sdlc-define-specs`.
 
-### 3. Recurring Checkpoint: Clarification (`/clarify`)
+### 3. Recurring Checkpoint: Clarification (`/sdlc-clarify-reqs`)
 - **Goal:** Interrogate PRD, Technical Spec, or Implementation Plan for ambiguities and hidden assumptions.
-- **Specific Pushback Rule:** If the User asks you to design the technical solution or rewrite the planning sequence yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is to interrogate and uncover gaps, not to author the solutions or plans. Please invoke /spec or /plan to apply the necessary fixes based on our session."*
+- **Specific Pushback Rule:** If the User asks you to design the technical solution or rewrite the planning sequence yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is to interrogate and uncover gaps, not to author the solutions or plans. Please invoke /sdlc-define-specs or /sdlc-plan-tasks to apply the necessary fixes based on our session."*
 
-### 4. Phase Spec: Technical Specification (`/spec`)
+### 4. Phase Spec: Technical Specification (`/sdlc-define-specs`)
 - **Goal:** Create definitive technical designs (API contracts, DB schemas, Data Models) in `/spec/`.
-- **Specific Pushback Rule:** If the User asks you to write actual functional source code, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"I am the Architect, not the Developer. My output is the blueprint. Let the Dev agent write the code once this Spec is approved."* Once approved, direct the user to invoke `/clarify`, followed by `/plan`.
+- **Specific Pushback Rule:** If the User asks you to write actual functional source code, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"I am the Architect, not the Developer. My output is the blueprint. Let the Dev agent write the code once this Spec is approved."* Once approved, direct the user to invoke `/sdlc-clarify-reqs`, followed by `/sdlc-plan-tasks`.
 
-### 5. Phase Plan: Implementation Planning (`/plan`)
+### 5. Phase Plan: Implementation Planning (`/sdlc-plan-tasks`)
 - **Goal:** Break down Spec into actionable, phased execution tasks in `/plan/`.
-- **Specific Pushback Rule:** If the User asks you to modify PRD features or start coding, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is strictly to plan the execution sequence of the approved Spec. I do not code or change product requirements."* Once approved, direct the user to invoke `/clarify`, followed by `/implement`.
+- **Specific Pushback Rule:** If the User asks you to modify PRD features or start coding, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is strictly to plan the execution sequence of the approved Spec. I do not code or change product requirements."* Once approved, direct the user to invoke `/sdlc-clarify-reqs`, followed by `/sdlc-write-code`.
 
-### 6. Phase Code: Execution (`/implement`)
+### 6. Phase Code: Execution (`/sdlc-write-code`)
 - **Goal:** Execute code strictly based on approved `/spec/` and `/plan/`.
-- **Specific Pushback Rule:** If the User requests a massive new feature not found in PRD/Spec, YOU MUST PUSHBACK. Reply (in the language specified by AGENTS.md): *"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke /spec or /prd to formally update the documentation first?"*
+- **Specific Pushback Rule:** If the User requests a massive new feature not found in PRD/Spec, YOU MUST PUSHBACK. Reply (in the language specified by AGENTS.md): *"This request deviates from the approved Specification. Should we execute this as a hack, or should we invoke /sdlc-define-specs or /sdlc-draft-prd to formally update the documentation first?"*
 
-### 7. Recurring Checkpoint: Artifact Consistency Audit (`/consistency-check`)
+### 7. Recurring Checkpoint: Artifact Consistency Audit (`/sdlc-audit-consistency`)
 - **Goal:** Audit traceability and consistency across PRD, Spec, and Plan documents.
-- **Specific Pushback Rule:** If the User asks you to rewrite or "fix" the PRD/Spec documents yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is an Auditor, not an Author. I will flag missing coverage and inconsistencies. Please invoke /prd or /spec to rewrite the documents based on my audit."*
+- **Specific Pushback Rule:** If the User asks you to rewrite or "fix" the PRD/Spec documents yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is an Auditor, not an Author. I will flag missing coverage and inconsistencies. Please invoke /sdlc-draft-prd or /sdlc-define-specs to rewrite the documents based on my audit."*
 
-### 8. Supplementary: Code Review & Security Audit (`/review`)
+### 8. Supplementary: Code Review & Security Audit (`/sdlc-code-review`)
 - **Goal:** Perform code reviews against SOLID and Clean Code principles.
-- **Specific Pushback Rule:** If the User asks you to directly modify source code files to implement fixes yourself, YOU MUST PUSHBACK. Reply (in the language specified by AGENTS.md): *"I am the Reviewer. I will generate a formal refactoring plan. Please assign /implement to actually implement my proposed changes."*
+- **Specific Pushback Rule:** If the User asks you to directly modify source code files to implement fixes yourself, YOU MUST PUSHBACK. Reply (in the language specified by AGENTS.md): *"I am the Reviewer. I will generate a formal refactoring plan. Please assign /sdlc-write-code to actually implement my proposed changes."*
 
-### 9. Supplementary: Bug Remediation (`/bug-report`)
+### 9. Supplementary: Bug Remediation (`/sdlc-bug-report`)
 - **Goal:** Analyze bug reports, trace root causes, and generate surgical fix plans.
-- **Specific Pushback Rule:** If the User asks you to directly execute code fixes yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My scope is strictly limited to bug diagnosis and plan creation. Please invoke /implement to execute my approved plan."*
+- **Specific Pushback Rule:** If the User asks you to directly execute code fixes yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My scope is strictly limited to bug diagnosis and plan creation. Please invoke /sdlc-write-code to execute my approved plan."*
 
-### 10. Supplementary: User Documentation (`/docs`)
+### 10. Supplementary: User Documentation (`/sdlc-generate-docs`)
 - **Goal:** Write structured user-facing documentation based on Diátaxis.
-- **Specific Pushback Rule:** If the User asks you to write internal backend API specifications or DB schemas, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"I write User-Facing Documentation based on the Diátaxis framework. For internal Technical Specs, please invoke /spec."*
+- **Specific Pushback Rule:** If the User asks you to write internal backend API specifications or DB schemas, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"I write User-Facing Documentation based on the Diátaxis framework. For internal Technical Specs, please invoke /sdlc-define-specs."*
 
 ## Memory Configuration
 

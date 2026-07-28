@@ -1,17 +1,17 @@
 ---
-name: project-researcher
+name: sdlc-map-architecture
 description: "Scans, analyzes, and documents the existing repository architecture, directories, and file purposes into docs/ARCHITECTURE.md."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Project Researcher Skill
+# Project Architecture Mapper Skill (`/sdlc-map-architecture`)
 
 ## Core Directives
 
 1. **Language:** Follow the language policy defined in the project's AGENTS.md.
-2. **Strict Scope Boundary:** You are an analyst and documentarian. Regardless of your active persona (e.g., GodModeDev, BrainstormingExplorer), while executing *this specific skill*, you are **strictly forbidden** from modifying application source code or tests. Your ONLY authorized outputs for this workflow are writing documentation in the `/docs/` directory and updating `AGENTS.md` (or equivalent configuration files) to integrate references.
+2. **Strict Scope Boundary:** You are an analyst and documentarian. Regardless of your active persona (e.g., GodModeDev, Senior Staff Engineer, Planner Architect, et al.), while executing _this specific skill_, you are **strictly forbidden** from modifying application source code or tests. Your ONLY authorized outputs for this workflow are writing documentation in the `/docs/` directory and updating `AGENTS.md` (or equivalent configuration files) to integrate references.
 3. **No Session Lock:** This is a Utility Skill. It does not have a standalone persona and does not trigger Session Lock. Any active agent can adopt and execute this workflow without losing their primary identity.
 
 ## Overview
@@ -55,15 +55,15 @@ This skill outlines the workflow to explore an existing codebase, analyze its ar
 
 1.  Check for the existence of `ARCHITECTURE.md` inside the `/docs/` directory. (If `/docs/` does not exist, create it). If `ARCHITECTURE.md` already exists, read its content first and ask the user whether to fully regenerate the document or update only the affected sections.
 2.  **Content:** The file's content **MUST** adhere to the Mandatory Architecture Template. You MUST read this template from `.agents/skills/project-researcher/references/ARCHITECTURE-TEMPLATE.md` before generating the document.
-3.  **Post-Generation Offer:** Once the file is successfully created or updated, you MUST explicitly ask the user (in the language specified by AGENTS.md): 
-    *"The project architecture document has been successfully created at `/docs/ARCHITECTURE.md`. Would you like me to add a reference link to this document inside `AGENTS.md` (or other agent index files) so other agents can read it?"*
+3.  **Post-Generation Offer:** Once the file is successfully created or updated, you MUST explicitly ask the user (in the language specified by AGENTS.md):
+    _"The project architecture document has been successfully created at `/docs/ARCHITECTURE.md`. Would you like me to add a reference link to this document inside `AGENTS.md` (or other agent index files) so other agents can read it?"_
 4.  **APPROVAL:** Wait for user confirmation before proceeding to Phase 3.
 
 ---
 
 ## Phase 3: Agent Index Integration Workflow (Conditional)
 
-*Execute this phase ONLY if the user approved the offer in Phase 2, Step 4.*
+_Execute this phase ONLY if the user approved the offer in Phase 2, Step 4._
 
 1.  Locate the `AGENTS.md` file (or the primary agent configuration/index file in the `.agents/` or root directory).
 2.  Read the current contents of `AGENTS.md`.
@@ -71,4 +71,3 @@ This skill outlines the workflow to explore an existing codebase, analyze its ar
     - Format example: `- **Project Architecture Map:** Read [/docs/ARCHITECTURE.md](/docs/ARCHITECTURE.md) to understand the directory layout and architectural constraints before suggesting code changes.`
 4.  Save the changes to `AGENTS.md`.
 5.  Notify the user that the integration is complete and the project is now ready to be navigated by other agents.
-

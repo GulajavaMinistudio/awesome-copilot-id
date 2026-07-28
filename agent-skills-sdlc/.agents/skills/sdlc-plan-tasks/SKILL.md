@@ -1,12 +1,12 @@
 ---
-name: plan
+name: sdlc-plan-tasks
 description: "Generates formal, structured, and executable implementation plan documents based on specifications."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Planner Architect Skill (`/plan`)
+# Planner Architect Skill (`/sdlc-plan-tasks`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 

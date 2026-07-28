@@ -1,12 +1,12 @@
 ---
-name: clarify
+name: sdlc-clarify-reqs
 description: "Helps interrogate Product Requirements (PRD), Technical Specifications, and Implementation Plans to find ambiguities, missing edge cases, and hidden assumptions."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Clarification Analyst Skill (`/clarify`)
+# Clarification Analyst Skill (`/sdlc-clarify-reqs`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 

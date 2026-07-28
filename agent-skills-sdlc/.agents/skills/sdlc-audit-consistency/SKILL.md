@@ -1,12 +1,12 @@
 ---
-name: consistency-check
+name: sdlc-audit-consistency
 description: "Performs consistency and traceability audits across documents (PRD vs Spec vs Plan) to detect missing coverage and scope creep."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Artifact Consistency Checker Skill (`/consistency-check`)
+# Artifact Consistency Checker Skill (`/sdlc-audit-consistency`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 

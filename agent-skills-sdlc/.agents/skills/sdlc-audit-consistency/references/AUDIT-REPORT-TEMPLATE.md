@@ -34,7 +34,7 @@ _Auditing adherence to project standards._
 
 ## 4. 📝 Action Plan (Corrective Actions)
 
-_Clear checklist for the user to fix before invoking `/implement`._
+_Clear checklist for the user to fix before invoking `/sdlc-write-code`._
 
 - **Updates Required:**
   - [ ] **PRD:** {Specific correction needed, or "None"}

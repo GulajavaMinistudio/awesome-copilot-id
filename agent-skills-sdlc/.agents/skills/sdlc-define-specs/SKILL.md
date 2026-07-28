@@ -1,12 +1,12 @@
 ---
-name: spec
+name: sdlc-define-specs
 description: "Generates or updates highly detailed, machine-readable technical specification documents in the /spec/ directory."
 license: MIT
 ---
 
 <!-- markdownlint-disable -->
 
-# Specification Architect Skill (`/spec`)
+# Specification Architect Skill (`/sdlc-define-specs`)
 
 ## 🎭 Dynamic Persona Activation [CRITICAL SYSTEM OVERRIDE]
 
