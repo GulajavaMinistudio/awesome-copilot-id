@@ -29,6 +29,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - [Custom Agents](#-custom-agents)
 - [Skills](#-skills)
 - [Workflow & Methodology](#-workflow--methodology-spec-kit-inspired)
+- [NEW: Advanced Skills SDLC Workflow](#-new-advanced-skills-sdlc-workflow-agent-skills-sdlc)
 - [Supplementary Skills](#-supplementary-skills)
 - [BYOK Copilot Config](#-byok-copilot-config)
 - [Advanced Customization Guide](#️-advanced-customization-guide)
