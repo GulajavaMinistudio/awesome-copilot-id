@@ -99,7 +99,7 @@ The interactive script will download the repository, prompt you to choose your p
    ```
 
    > [!IMPORTANT]
-   > After copying `AGENTS.md`, you **must** open it and update the first line (`# AGENTS.md - [Your Application Name]`) to match your actual project's context. This helps the AI agents understand the specific project they are working on.
+   > After copying `AGENTS.md`, you **must** open it and update the first line (`# AGENTS.md - [Your Application Name]`) to match your actual project's context, as well as the `[Project Description]` placeholder (if present). This helps the AI agents understand the specific project they are working on. You can also adjust the language preferences in the `## Communication` section as needed.
 
 4. Example manual installation for specific agents and skills:
 
@@ -511,6 +511,59 @@ graph TD
           |
           v
   (@DiataxisDocumentationArchitect)
+```
+
+## 🚀 NEW: Advanced Skills SDLC Workflow (`agent-skills-sdlc`)
+
+We have introduced a highly opinionated, structured workflow housed entirely in the `agent-skills-sdlc/` directory. This "Advanced SDLC Edition" replaces the manual `@AgentName` invocations with a streamlined set of **Slash Commands** designed specifically for platforms like Google Antigravity, OpenCode, and Copilot.
+
+If you installed this workflow using Option 9 in the installation script (or copied the `.agents` folder from `agent-skills-sdlc/`), you now have access to these dedicated SDLC slash commands.
+
+> [!IMPORTANT]
+> When setting up this Advanced SDLC workflow manually, **you must also copy the `AGENTS.md` file located inside the `agent-skills-sdlc/` folder** to your project root (do not use the standard `AGENTS.md` from the main repository). 
+> After copying, open the file and update the `[Your Application Name]` and `[Project Description]` placeholders, and adjust the language preferences in the `## Communication` section as needed.
+
+### SDLC Slash Commands Table
+
+| Slash Command               | SDLC Phase / Best For                                               |
+| --------------------------- | ------------------------------------------------------------------- |
+| `/sdlc-explore-ideas`       | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
+| `/sdlc-draft-prd`           | Phase 1: Feature planning, writing user stories, and acceptance criteria |
+| `/sdlc-clarify-reqs`        | Recurring: Finding ambiguities and missing edge cases in PRD/Specs/Plans |
+| `/sdlc-define-specs`        | Phase 2: Writing detailed, machine-readable tech specs              |
+| `/sdlc-audit-consistency`   | Recurring: Validating PRD vs Spec vs Plan to prevent scope creep    |
+| `/sdlc-plan-tasks`          | Phase 3: Generating formal, structured implementation plans         |
+| `/sdlc-write-code`          | Phase 4: Coding, implementation, and surgical modifications         |
+| `/sdlc-code-review`         | Phase 4: Clean Code/SOLID audits and refactoring plans              |
+| `/sdlc-bug-report`          | Phase 5: Root cause analysis and structured bug-fix plans           |
+| `/sdlc-generate-docs`       | Phase 5: Writing tutorials, how-to guides, and reference docs       |
+
+### Example Usage (Advanced SDLC Workflow)
+
+Using the new SDLC slash commands makes context injection straightforward and enforces strict phase isolation.
+
+**Phase 1: Requirements**
+```text
+/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md
+```
+
+**Phase 2: Technical Specification**
+```text
+/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md
+```
+```text
+/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md
+```
+
+**Phase 4: Execution & Coding**
+```text
+/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css
+```
+
+**Minor Fixes (Bypassing SDLC)**
+For quick edits, you can bypass the SDLC requirements directly:
+```text
+/sdlc-write-code Please refactor the `calculateTotal` function in @cart.js. This is a minor fix, bypass the SDLC plan requirement.
 ```
 
 ## 🌟 Supplementary Skills
