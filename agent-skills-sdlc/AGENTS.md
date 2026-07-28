@@ -40,6 +40,7 @@
 
 ## Workflow & Methodology
 
+- **Base Persona Activation**: At the start of a new project or session (before any specific phase is determined), the user should interact with the **SDLC Orchestrator** (the Base Persona). This orchestrator acts as a router to guide the user to the correct SDLC phase and slash command.
 - **SDLC Strict Adherence**: User follows a strict and structured SDLC workflow
 - **Sequential Development**: Must follow the order: **Discovery (Phase 0)** → PRD → Clarification → Spec → Clarification → Consistency Check → Plan → Clarification → Code → Review → Docs
 - **No Skip Phases**: No phase may be skipped; each phase must be completed before moving on
@@ -109,7 +110,7 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 
 *Note: Phase 0 (`/sdlc-explore-ideas`) and surgical bug analysis (`/sdlc-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
-*Note: For minor fixes and ad-hoc tasks, users may bypass the mandatory document check by explicitly commanding the agent (e.g., "[Bypass SDLC]"). In these cases, users are still highly encouraged to attach the specific source code files to provide context.*
+*Note: For minor fixes, refactoring, and ad-hoc tasks, the mandatory document check can be bypassed. Agents MUST proactively offer this bypass option to the user (e.g., "If this is just a minor fix, let me know and we can bypass the SDLC requirements") rather than rigidly demanding the `[Bypass SDLC]` tag upfront. In these cases, users are still highly encouraged to attach the specific source code files to provide context.*
 
 ### 1. Phase 0: Project Discovery (`/sdlc-explore-ideas`)
 - **Goal:** Define the foundational "WHAT" and "WHY" (Project Brief, max 2-5 pages). Includes exploring existing codebases, critiquing architecture, and identifying tech debt.
