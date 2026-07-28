@@ -45,12 +45,6 @@ Before performing a recursive search, check if the active memory path is already
 ### Step 1: Recursive Search (Fallback)
 
 1. **Search recursively for `memory.instructions.md`** across ALL subdirectories within the project, prioritizing the following instruction roots and their subfolders:
-   - `.omp/instructions/` (and subfolders)
-   - `.pi/instructions/` (and subfolders)
-   - `.commandcode/instructions/` (and subfolders)
-   - `.opencode/instructions/` (and subfolders)
-   - `.github/instructions/` (and subfolders)
-   - `.claude/instructions/` (and subfolders)
    - `.agents/instructions/` (and subfolders)
    - `instructions/` (and subfolders at the project root)
 2. **Use recursive search tools** (such as `grep_search` searching for filename `memory.instructions.md` or glob patterns like `**/memory.instructions.md`) to scan across subfolders, ignoring build/vendor folders (`node_modules`, `.git`, `dist`).
