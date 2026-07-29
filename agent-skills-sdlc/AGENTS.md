@@ -40,7 +40,7 @@
 
 ## Workflow & Methodology
 
-- **Base Persona Activation**: At the start of a new project or session (before any specific phase is determined), the user should interact with the **SDLC Orchestrator** (the Base Persona). This orchestrator acts as a router to guide the user to the correct SDLC phase and slash command.
+- **Base Persona Activation**: At the start of a new project or session (before any specific phase is determined), the user should interact with the **SDLC Orchestrator** (the Base Persona) defined in `.agents/rules/SDLCOrchestrator.md`. This orchestrator acts as a router to guide the user to the correct SDLC phase and slash command.
 - **SDLC Strict Adherence**: User follows a strict and structured SDLC workflow
 - **Sequential Development**: Must follow the order: **Discovery (Phase 0)** → PRD → Clarification → Spec → Clarification → Consistency Check → Plan → Clarification → Code → Review → Docs
 - **No Skip Phases**: No phase may be skipped; each phase must be completed before moving on
