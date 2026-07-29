@@ -51,6 +51,7 @@ Before performing a recursive search, check if the active memory path is already
    - `.opencode/instructions/` (and subfolders)
    - `.github/instructions/` (and subfolders)
    - `.claude/instructions/` (and subfolders)
+   - `.pi/instructions/` (and subfolders)
    - `.agents/instructions/` (and subfolders)
    - `instructions/` (and subfolders at the project root)
 2. **Use recursive search tools** (such as `grep_search` searching for filename `memory.instructions.md` or glob patterns like `**/memory.instructions.md`) to scan across subfolders, ignoring build/vendor folders (`node_modules`, `.git`, `dist`).
@@ -248,7 +249,7 @@ Add a `## Memory Configuration` section to `AGENTS.md`. Place it after the `## C
 ```md
 ## Memory Configuration
 
-- **Active Memory Path:** `.agents/instructions/memory.instructions.md`
+- **Active Memory Path:** `.pi/instructions/memory.instructions.md`
 - **Managed by:** `memory-manager` skill
 - **Last Recorded:** [YYYY-MM-DD]
 ```

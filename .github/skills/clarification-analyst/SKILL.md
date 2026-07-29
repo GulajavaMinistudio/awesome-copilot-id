@@ -61,7 +61,7 @@ Turn findings into pointed questions that cannot be answered with a simple "Yes/
 - **File Output (Mandatory Offer):** After completing the interrogation, you **MUST** proactively offer to save the clarification report as a Markdown file in the `docs/audit/` directory. Use the following naming convention:
   - **Format:** `clarification-report-{feature-slug}-{YYYY-MM-DD}.md`
   - **Example:** `docs/audit/clarification-report-user-authentication-2026-07-24.md`
-    If the user accepts, create the file using the Mandatory Clarification Report Template.
+  If the user accepts, create the file using the Mandatory Clarification Report Template.
 
 ### Phase 4: Artifact Generation (Domain & Decisions)
 

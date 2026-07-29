@@ -40,11 +40,24 @@ This skill outlines the workflow to transform technical specifications and requi
     - Clarify goals and identify affected components.
 2.  **Analyze Before Planning:**
     - Review existing codebase patterns and test coverage.
+    - **Identify Dependency Graph:** You MUST explicitly write out the dependency graph (e.g., via a bulleted hierarchy or mermaid diagram) showing what components depend on what. Implementation order must follow this graph bottom-up (build foundations first).
+    - **Identify Prefactoring:** Look for opportunities to "make the change easy, then make the easy change." Schedule prefactoring tasks first before adding new features.
 3.  **Develop Strategy Collaboratively:**
-    - Break down complex requirements into manageable components.
+    - **Slice Vertically (Tracer Bullets):** Break down complex requirements by vertical feature paths (e.g., Auth schema + API + UI) rather than horizontal layers. Each vertical slice must deliver a demoable, end-to-end behavior from the user's perspective.
+    - **Exception for Wide Refactors (Expand-Contract):** If a refactor has a massive blast radius (e.g., renaming a core DB column breaking 1000s of call sites), DO NOT force it into a single tracer bullet. You MUST sequence it using the **Expand-Contract Pattern**: 
+      1. *Expand:* Add the new form beside the old so nothing breaks.
+      2. *Migrate:* Move call sites over in isolated batches.
+      3. *Contract:* Delete the old form once no callers remain.
+    - **Apply Task Sizing Limits:** For each proposed task, you MUST explicitly list the "Files likely touched" to prove it stays within bounds. A task is strictly too large if it touches > 5 files or multiple independent subsystems.
     - Propose a clear approach, discussing edge cases and mitigations.
-    - Present the breakdown to the user for validation before proceeding to plan generation.
+    - Present the mapped dependency graph and task breakdown to the user for validation before proceeding to plan generation.
     - If multiple architectural approaches exist, present a comparison table with trade-offs.
+    - **Sizing & Phasing Strategy:** When a feature is large, you MUST break it down into independently deliverable and verifiable phases. Do not create a monolithic plan where nothing works until the very end. Use the following structured phasing approach:
+      - **Phase 1 (Minimum Viable Product / MVP):** The absolute smallest vertical slice (database to UI) that delivers core value and tests the primary hypothesis. *(Example: User can submit a basic raw form and data is saved to the database, ignoring complex validation or polished UI).*
+      - **Phase 2 (Core Experience):** Complete the "happy path" end-to-end. Add essential business logic, necessary UI/UX elements, and core data validations. *(Example: Form now has proper layout styling, real-time input validation, and redirects the user on success).*
+      - **Phase 3 (Edge Cases & Resilience):** Handle errors, negative paths, and edge cases. *(Example: Network failure retries, duplicate submission prevention, and custom error messages for backend API failures).*
+      - **Phase 4 (Optimization & Polish):** Add performance improvements, monitoring, analytics, and final UI polish. *(Example: Query caching, lazy loading components, and adding telemetry/tracking events).*
+      **Crucial Rule:** Every single phase MUST be mergeable and verifiable independently. It must leave the application in a fully working, stable state that can be safely deployed.
 
 ---
 
@@ -75,10 +88,58 @@ Once the implementation plan has been finalized and approved by the user:
 ## AI-Optimized Implementation Standards
 
 - **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
+- **Vertical Slicing:** Group tasks by vertical feature slices (e.g., schema + API + UI for one feature) rather than horizontal layers. Each phase should leave the system in a working state.
+- **Task Sizing Limits:** Never create a single task that touches more than 5 files. Break large tasks into smaller, verifiable units (S: 1-2 files, M: 3-5 files).
+- **Dependency Ordering:** Arrange tasks bottom-up. Build foundational dependencies first.
 - **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific requirement in the Spec or PRD to prevent _scope creep_.
 - **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in `CONTEXT.md`.
-- Use explicit, unambiguous, and machine-parseable language (tables, lists).
-- Include specific file paths, function names, and line numbers.
+- Use explicit, unambiguous, and machine-parseable language (tables, lists). Include specific file paths, function names, and line numbers.
+
+---
+
+## 🎯 Best Practices for Planning
+
+1. **Be Specific (No Ambiguity)**: Never use vague terms like "update the logic" or "create a component". Provide exact file paths (`src/utils/auth.ts`), exact function names (`verifyToken`), and precise variable names. Both humans and AI should know exactly *where* and *what* to touch.
+2. **Consider Edge Cases (Defensive Planning)**: Do not just plan for the "happy path". Explicitly include steps to handle error scenarios (e.g., API timeouts), null/undefined values, and empty states (e.g., displaying "No data found" when a list is empty).
+3. **Minimize Changes (Surgical Edits)**: Prefer extending existing code over rewriting or refactoring large blocks when possible. The smaller the change footprint, the lower the risk of introducing regressions.
+4. **Maintain Patterns (Follow the Pack)**: Follow existing project conventions strictly. If the project uses React Context for state, do not plan to introduce Redux just for one feature. Mimic the surrounding code style.
+5. **Enable Testing (Design for Testability)**: Structure your changes so they can be easily tested incrementally. If you are planning a complex calculation, isolate it into a pure function so a unit test can be easily written for it in the same phase.
+6. **Think Incrementally (Verifiable Steps)**: Each individual step and phase should be verifiable on its own. Do not plan a Step 2 that relies on an un-testable, invisible state from Step 1.
+7. **Document Decisions (The "Why")**: Explain *why* a step is necessary, not just *what* it does. (e.g., Instead of "Add Redis", write "Add Redis cache to prevent database throttling during peak login hours"). This provides critical context for the implementing developer or AI.
+
+---
+
+## 🚩 Red Flags (Self-Correction for AI)
+
+**SYSTEM DIRECTIVE:** Before finalizing your plan, you MUST perform a strict self-audit of the generated task list against the following anti-patterns. If any red flag is detected, you MUST rewrite the offending tasks before presenting the plan.
+
+1.  **🚫 Anti-Pattern: Horizontal Slicing (The "Layer Cake" Fallacy)**
+    - *Detection:* Tasks are grouped by technical layers (e.g., "Task 1: Create all DB tables", "Task 2: Build all APIs", "Task 3: Build UI").
+    - *Correction:* Reorganize into **Vertical Feature Slices**. A single task MUST span all layers required to make a feature work (e.g., "Task 1: User Login Feature [Schema + Auth API + UI]").
+
+2.  **🚫 Anti-Pattern: Bloated Tasks (XL Sizing / Scope Creep)**
+    - *Detection:* A single task has an estimated file impact of `> 5 files`, touches multiple independent subsystems (e.g., Auth AND Billing), or uses the word "and" to join two major actions in the title.
+    - *Correction:* Decompose the task into smaller, highly cohesive tasks (Size S: 1-2 files, or Size M: 3-5 files).
+
+3.  **🚫 Anti-Pattern: Vague or Unverifiable Acceptance Criteria (AC)**
+    - *Detection:* AC uses subjective verbs like "Implement...", "Improve...", or "Make it look good...".
+    - *Correction:* Rewrite AC as strict, testable, boolean conditions. (e.g., "Given X, when Y happens, then Z is returned").
+
+4.  **🚫 Anti-Pattern: Mechanical, Layer-by-Layer Task Descriptions**
+    - *Detection:* The task description lists internal engineering chores (e.g., "Create SQL table, add ORM model, build controller").
+    - *Correction:* Rewrite the description to define the **end-to-end behavior from the user's perspective** (e.g., "User can submit a registration form and see a success message").
+
+5.  **🚫 Anti-Pattern: Missing Verification Steps**
+    - *Detection:* A task or phase concludes without a `VERIFY` step defining exactly how to prove the code works.
+    - *Correction:* Add specific verification steps (e.g., "Run `npm run test:auth`", or "Manually click login button and verify redirect to `/dashboard`").
+
+6.  **🚫 Anti-Pattern: Dependency Inversion (Cart Before the Horse)**
+    - *Detection:* Frontend or downstream tasks are scheduled *before* their required backend foundations (Schemas, Interfaces, APIs).
+    - *Correction:* Order tasks strictly **Bottom-Up**. Ensure every task's dependencies (`Dep` column) point only to tasks that are scheduled *prior* to it.
+
+7.  **🚫 Anti-Pattern: Silently Changing the Requirements**
+    - *Detection:* You introduced a new feature, column, or API endpoint that does not exist in the attached Spec or PRD document.
+    - *Correction:* Remove the hallucinated feature. You are the Planner, not the Product Manager. Strictly map everything via `Ref ID`.
 
 ---
 
@@ -118,21 +179,21 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 - GOAL-001: [Describe the goal of this phase]
 
-| Task     | Description                                                             | Ref ID  | AC Ref | Completed | Date |
-| -------- | ----------------------------------------------------------------------- | ------- | ------ | --------- | ---- |
-| TASK-001 | Description of task 1                                                   | REQ-001 | AC-001 |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       | -      |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       | -      |           |      |
+| Task     | Description                                                             | Ref ID  | AC Ref | Dep   | Files | Completed | Date |
+| -------- | ----------------------------------------------------------------------- | ------- | ------ | ----- | ----- | --------- | ---- |
+| TASK-001 | Description of task 1                                                   | REQ-001 | AC-001 | -     | 1-2   |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase]         | -       | -      | -     | -     |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed to Phase 2 | -       | -      | -     | -     |           |      |
 
 ### Implementation Phase 2
 
 - GOAL-002: [Describe the goal of this phase]
 
-| Task     | Description                                                     | Ref ID  | AC Ref | Completed | Date |
-| -------- | --------------------------------------------------------------- | ------- | ------ | --------- | ---- |
-| TASK-002 | Description of task 2                                           | REQ-002 | AC-002 |           |      |
-| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       | -      |           |      |
-| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       | -      |           |      |
+| Task     | Description                                                     | Ref ID  | AC Ref | Dep      | Files | Completed | Date |
+| -------- | --------------------------------------------------------------- | ------- | ------ | -------- | ----- | --------- | ---- |
+| TASK-002 | Description of task 2                                           | REQ-002 | AC-002 | TASK-001 | 3-5   |           |      |
+| TASK-00X | **VERIFY**: [Specific testing/verification step for this phase] | -       | -      | -        | -     |           |      |
+| TASK-00Y | **APPROVAL**: Wait for explicit user confirmation to proceed    | -       | -      | -        | -     |           |      |
 
 ## 3. Alternatives
 
@@ -169,4 +230,8 @@ tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`
 
 [Link to related spec 1]
 [Link to relevant external documentation]
+
+## 9. Rollback / Recovery Plan
+
+[Provide clear, step-by-step instructions on how to revert the system to its previous stable state if the implementation of this phase fails or causes critical errors (e.g., git revert instructions, database down-migrations, environment variable restorations).]
 ```

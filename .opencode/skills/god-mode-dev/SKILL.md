@@ -39,14 +39,27 @@ To ensure the code you write passes review, you **MUST** adhere strictly to the 
 1. **`CLEAN-CODE-ARCHITECTURE.md`** (Path: `.opencode/skills/expert-code-reviewer/references/CLEAN-CODE-ARCHITECTURE.md`): Your code must strictly follow these Clean Code, SOLID, and Clean Architecture principles.
 2. **`SECURITY-HARDENING.md`** (Path: `.opencode/skills/expert-code-reviewer/references/SECURITY-HARDENING.md`): Ensure your implementation guards against the documented OWASP and STRIDE vulnerabilities.
 
-## 🔗 Supplementary Skills Integration (Mandatory)
+### Skill Mapping (Supplementary)
+You MUST invoke and adhere to the following skills located in `.opencode/skills/` based on your current context:
 
-You MUST proactively adopt the principles of the following modular skills. If you are unfamiliar with their constraints, use the `view_file` tool to read their respective `SKILL.md` files:
+- **`karpathy-guidelines` (MANDATORY / ALWAYS ACTIVE):** Read `.opencode/skills/karpathy-guidelines/SKILL.md`. **Purpose:** To prevent AI coding hallucinations and over-engineering. Always apply maximum simplicity, state assumptions explicitly, and make targeted, surgical code changes instead of rewriting entire files.
+- **`omni-dev` (Supplementary):** Read `.opencode/skills/omni-dev/SKILL.md`. **Purpose:** To govern principal software architecture decisions. Use this when you need deep reasoning for structuring complex systems, ensuring rigorous typing, and maintaining strict separation of concerns.
+- **`ponytail-lazy-senior-dev` (Supplementary):** Read `.opencode/skills/ponytail-lazy-senior-dev/SKILL.md`. **Purpose:** To enforce the "lazy senior developer" mindset. Use this to prioritize code reuse, minimalism, YAGNI (You Aren't Gonna Need It) principles, and to implement root-cause fixes rather than temporary band-aids.
+- **`ui-designer` (Supplementary):** Read `.opencode/skills/ui-designer/SKILL.md`. **Purpose:** To guide frontend development. Use this exclusively when working on frontend layouts, CSS styling, or UI/UX tasks to ensure opinionated aesthetics and deliberate user experience copy.
+- **`fable-protocol` (Supplementary):** Read `.opencode/skills/fable-protocol/SKILL.md`. **Purpose:** To orchestrate long-running tasks. Use this when your implementation task is massive, requires multiple sequential steps, or demands autonomous long-horizon execution without constant human interruption.
 
-- **`karpathy-guidelines`** (Path: `.opencode/skills/karpathy-guidelines/SKILL.md`): Apply maximum simplicity, state assumptions explicitly, and make surgical changes. **(Always Active)**
-- **`omni-dev`**: Ensure clean architecture, rigorous typing, and separation of concerns.
-- **`ponytail-lazy-senior-dev`**: Code reuse, minimalism, YAGNI principles, and root-cause fixes.
-- **`ui-designer`**: When dealing with frontend tasks, apply opinionated aesthetics and deliberate UX copy.
-- **`fable-protocol`**: If the task is massive or multi-step, use this to handle long-horizon autonomous execution.
+---
+
+## ⚙️ Operational Workflow
+
+1. **Verify Context:** Confirm presence of `/spec/` and `/plan/` files.
+2. **Read Mandatory References:** Before writing any code, you MUST read `.opencode/skills/god-mode-dev/references/EXECUTION-WORKFLOW.md` and `.opencode/skills/god-mode-dev/references/COMMUNICATION-PROTOCOL.md`.
+3. **Deep Thinking & Planning:** Break execution into step-by-step tasks based on the plan.
+4. **Incremental Execution:** Modify or write code section-by-section. Never use lazy placeholders (e.g., `// ... keep existing code ...`).
+5. **Two-Layer Testing Mandate:**
+   - **Micro level:** Add/update unit/widget/integration tests for every change.
+   - **Macro level:** Ensure full test suite passes with zero failures before declaring completion.
+6. **Research Mandate:** Use `search_web` to verify library usage and syntax against up-to-date documentation.
+7. **Handoff:** Once coding is complete and tests pass, direct the user to invoke `@ExpertCodeReviewer` for code review and security audit.
 
 

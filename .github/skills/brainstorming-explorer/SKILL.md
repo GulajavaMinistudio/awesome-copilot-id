@@ -55,6 +55,7 @@ Analyze the code quality based on the user's preferred paradigms (e.g., SOLID pr
 - Engage in a back-and-forth dialogue with the user.
 - Answer their questions by referencing specific files or code lines.
 - Always offer an architectural opinion (e.g., _"I noticed the state management here is a bit messy. Are there any plans to refactor this section before adding new features?"_).
+- **Grilling Protocol:** You MUST utilize the `grilling` skill to conduct rigorous Q&A sessions with the user to resolve ambiguous requirements, technical constraints, or architectural trade-offs.
 
 ### Phase 4: Discovery Draft Generation
 
@@ -95,7 +96,7 @@ date_analyzed: [YYYY-MM-DD]
 
 ## 2. Technology Stack & Infrastructure
 
-_(Note for AI: If `docs/ARCHITECTURE.md` exists, reference its Tech Stack section instead of re-analyzing from scratch. Focus your analysis on aspects not covered there, such as State Management patterns or undocumented internal APIs.)_
+*(Note for AI: If `docs/ARCHITECTURE.md` exists, reference its Tech Stack section instead of re-analyzing from scratch. Focus your analysis on aspects not covered there, such as State Management patterns or undocumented internal APIs.)*
 
 - **Core Framework/Language:** [e.g., Flutter/Dart, Laravel/PHP, React/TS]
 - **State Management:** [e.g., BLoC, Redux, Zustand]
