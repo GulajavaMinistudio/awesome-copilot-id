@@ -29,6 +29,7 @@ This skill outlines the workflow to transform technical specifications and requi
 - When the Technical Specification phase is complete and you need to break down the work into actionable tasks.
 - When you need to create a step-by-step roadmap before actual coding (`@GodModeDev`) begins.
 - When generating files in the `/plan/` directory.
+- When you need to revise an existing implementation plan based on a Clarification Report or Consistency Audit Report.
 
 ---
 
@@ -70,9 +71,15 @@ This skill outlines the workflow to transform technical specifications and requi
 
 ---
 
-## Phase 3: Handoff to Next SDLC Phase
+## Phase 3: Audit Remediation (Post-Audit Revision)
 
-Once the implementation plan has been finalized and approved by the user:
+If the user provides an Audit Report or Clarification Report (where the Readiness Score is below 80), your task is to meticulously update the existing implementation plan to resolve all listed 'Critical Blockers', 'Missing Coverage', or 'Orphaned Items'. You must strictly maintain the existing plan structure, including Phase groupings and dependencies (Dep column), and only alter the tasks that require fixing.
+
+---
+
+## Phase 4: Handoff to Next SDLC Phase
+
+Once the implementation plan has been finalized and approved by the user (or successfully remediated to a score >= 80):
 
 1. **Do NOT write production code yourself.** Your responsibility ends at plan creation and revision.
 2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `@ClarificationAnalyst` (or `/clarification-analyst`) to interrogate the newly created plan for ambiguities and hidden assumptions before proceeding to code execution.

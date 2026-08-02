@@ -25,6 +25,7 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 ## When to Use
 - When initiating a new project or major feature.
 - When you need to translate business requirements into structured User Stories and Acceptance Criteria.
+- When you need to update or revise an existing PRD based on a Clarification Report or Consistency Audit Report.
 
 ---
 
@@ -37,7 +38,8 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 5.  **Define Acceptance Criteria:** List specific SMART criteria with a checklist format (`- [ ]`).
 6.  **File Creation:** Save the file using the format `prd-YYYYMMDD-HHMM-[feature_name].md` (e.g., `prd-20260713-1346-login-system.md`).
 7.  **Issue Creation:** After presenting the PRD, proactively ask if the user would like to create GitHub issues for the user stories. If they agree, output the terminal commands to create them or create them via API.
-8.  **Handoff to Next SDLC Phase:** Once the PRD is finalized and approved, you MUST direct the user to the next phase. Explicitly instruct them to open a new chat session and invoke `@ClarificationAnalyst` to interrogate the PRD, followed by `@SpecificationArchitect` to build the technical specs.
+8.  **Audit Remediation (Post-Audit Revision):** If the user provides an Audit Report or Clarification Report (where the Readiness Score is below 80), your task is to meticulously update the existing PRD to resolve all listed 'Critical Blockers' and 'Missing Coverage'. You must strictly maintain the existing PRD structure and only alter the sections that require fixing.
+9.  **Handoff to Next SDLC Phase:** Once the PRD is finalized and approved (or successfully remediated to a score >= 80), you MUST direct the user to the next phase. Explicitly instruct them to open a new chat session and invoke `@ClarificationAnalyst` to interrogate the PRD, followed by `@SpecificationArchitect` to build the technical specs.
     *   **Prompt Example:** `@ClarificationAnalyst Analyze the approved PRD in @prd-YYYYMMDD-HHMM-[feature].md for ambiguities and hidden assumptions.`
 
 ---
