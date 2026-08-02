@@ -1,30 +1,44 @@
-# Clarification Report: {Project/Feature Name}
+# 🔍 Clarification Report [Review Iteration {X}]
 
-All clarification reports must use this Markdown format. This is generated as a FINAL SUMMARY after the Grill Session concludes.
+**Readiness Score:** {Score}/100
+**Status:** {Good Enough / Below Threshold}
 
-## 1. 🚨 Resolved Critical Ambiguities (Blockers)
+**Score Breakdown:**
 
-_List the requirements that were initially ambiguous and how they were resolved during our session._
+- **Completeness (max 40):** {Score} - {Reason}
+- **Clarity (max 30):** {Score} - {Reason}
+- **Alignment (max 30):** {Score} - {Reason}
+- **Critical Flaw Veto:** {Yes/No} - {Explain if triggered, otherwise "None"}
 
-- **Requirement:** "{Quote the exact text from the document}" (ID: {Ref ID})
-  - **Resolution:** {Explain the agreed-upon concrete definition/metric}
+---
 
-## 2. 🧩 Addressed Edge Cases & Unhandled Scenarios
+## 1. 🚨 Critical Findings (Blockers)
 
-_List the extreme scenarios we discussed and their planned handling._
+_List any remaining critical ambiguities or blocking issues that must be fixed to reach the 80-point threshold. If none, write "None"._
 
-- **Scenario:** {Describe the edge case}
-  - **Handling Strategy:** {How the system will respond based on user's answer}
+- **Requirement:** "{Quote exact text}"
+  - **Issue:** {Explain why this is blocking}
 
-## 3. 🔍 Validated Implicit Assumptions
+## 2. 🧩 Resolved Items & Agreements
 
-_List the technical or business assumptions we validated._
+_List the ambiguities and edge cases that were successfully resolved during this session._
 
-- **Assumption:** {Describe the assumption}
-  - **Validation:** {The definitive constraint agreed upon}
+- **Requirement:** "{Quote exact text}"
+  - **Resolution:** {Explain the agreed-upon handling}
+
+## 3. ⚠️ Assumed / Auto-Resolved / Out of Scope (The 20% we skip)
+
+_List extreme edge cases, unknown details, or remaining questions that were automatically resolved by the AI's "Heavy Lifting" recommendation because the user chose to PROCEED._
+
+- **Scenario / Question:** {Describe the edge case / unasked question}
+  - **Handling:** `[Assumed / Auto-Resolved]` or `[Assumed / Out of Scope]` - {Brief reason / The AI's technical recommendation}
 
 ## 4. 📝 Next Steps
 
-- The PRD document (e.g., `prd-*.md`), related specification, or implementation plan **MUST** be updated with these resolutions before proceeding to the next execution step.
-- If new canonical business terms were agreed upon during the session, the Agent MUST offer to create or update the relevant Domain Glossary (via root `CONTEXT.md` or `CONTEXT-MAP.md`).
-- If architectural decisions were made that are (1) hard to reverse, (2) surprising, and (3) a real trade-off, the Agent MUST offer to document this in an Architecture Decision Record (ADR) under `docs/adr/`.
+- The upstream document (PRD/Spec/Plan) MUST be updated with these resolutions (by the respective author agent) if the score is below 80.
+- If new canonical business terms were agreed upon, update the Domain Glossary (`CONTEXT.md`).
+- If architectural decisions were made, document them as an ADR under `docs/adr/`.
+
+---
+> **User Decision Prompt:** (Only insert this block if Score >= 80 or Iteration >= 3)
+> The document has achieved a Readiness Score of {Score}/100. It is ready for the next phase. Do you want to **PROCEED** to the next phase, or do you want to **REFINE** and clarify further?
