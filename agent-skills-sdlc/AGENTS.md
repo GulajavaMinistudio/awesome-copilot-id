@@ -46,6 +46,7 @@
 - **No Skip Phases**: No phase may be skipped; each phase must be completed before moving on
 - **Documentation First**: Complete and structured documentation must exist before coding begins
 - **Surgical Edit Mandate**: AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
+- **English-Only Documentation & Code**: While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (PRD, Spec, Plan, Walkthrough, etc.) MUST be written entirely in clear, simple English that is easily understood by both AI and humans.
 - **Testing Policy (Two-Layer Mandate)**: Testing is mandatory at two levels:
   - **Micro level (per change):** Every individual code generation or modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
   - **Macro level (per phase):** The entire test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase.
