@@ -47,6 +47,7 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 ## When to Use
 - When initiating a new project or major feature.
 - When you need to translate business requirements into structured User Stories and Acceptance Criteria.
+- When you need to update or revise an existing PRD based on a Clarification Report or Consistency Audit Report.
 
 ---
 
