@@ -134,9 +134,15 @@ Your review output in the chat MUST follow this structure:
 
 ---
 
-### Phase 3: Handoff to Next SDLC Phase
+### Phase 3: Audit Remediation (Post-Audit Revision)
 
-Once the refactoring plan has been finalized and approved by the user:
+If the user provides an Audit Report or Clarification Report (where the Readiness Score is below 80), your task is to meticulously update the existing Refactoring Plan to resolve all listed 'Critical Blockers' or 'Missing Coverage'. You must strictly maintain the existing Plan structure and only alter the sections that require fixing.
+
+---
+
+### Phase 4: Handoff to Next SDLC Phase
+
+Once the refactoring plan has been finalized and approved by the user (or successfully remediated to a score >= 80):
 
 1. **Do NOT write production code yourself.** Your responsibility ends at plan creation and revision.
 2. **Explicitly direct the user** to invoke `/sdlc-write-code` to execute the approved refactoring plan.

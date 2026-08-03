@@ -5,7 +5,8 @@ All consistency reports must strictly use this Markdown format. Do not omit any 
 ## 1. 📊 Executive Summary
 
 - **Documents Analyzed:** PRD ({version/name}), Spec ({version/name}), Plan ({version/name})
-- **Overall Status:** {PASS / FAIL / PASS WITH WARNINGS}
+- **Review Iteration:** {1, 2, 3, etc.}
+- **Readiness Score:** {0-100} / 100
 - **Standards Compliance:** {PASS / FAIL} (Checked against `.agents/standards/`)
 
 ## 2. 🔍 Traceability Findings

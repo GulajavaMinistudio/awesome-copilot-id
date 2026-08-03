@@ -104,9 +104,15 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 ---
 
-### Phase 5: Handoff to Next SDLC Phase
+### Phase 5: Audit Remediation (Post-Audit Revision)
 
-Once the specification document has been finalized and approved by the user:
+If the user provides an Audit Report or Clarification Report (where the Readiness Score is below 80), your task is to meticulously update the existing Technical Specification to resolve all listed 'Critical Blockers', 'Missing Coverage', or 'Contradictions'. You must strictly maintain the existing Specification structure and only alter the sections that require fixing.
+
+---
+
+### Phase 6: Handoff to Next SDLC Phase
+
+Once the specification document has been finalized and approved by the user (or successfully remediated to a score >= 80):
 
 1. **Do NOT write production code yourself.** Your responsibility ends at specification creation and revision.
 2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `/sdlc-clarify-reqs` to interrogate the newly created specification for ambiguities and hidden assumptions before proceeding.
