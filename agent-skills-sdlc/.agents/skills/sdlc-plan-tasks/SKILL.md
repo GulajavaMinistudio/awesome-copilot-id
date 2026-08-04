@@ -100,16 +100,20 @@ If the user provides an Audit Report or Clarification Report (where the Readines
 
 ### Phase 4: Handoff to Next SDLC Phase
 
-Once the implementation plan has been finalized and approved by the user (or successfully remediated to a score >= 80):
+Once the implementation plan has been generated or revised, you must guide the user to the next step based on the plan's status:
 
 1. **Do NOT write production code yourself.** Your responsibility ends at plan creation and revision.
-2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `/sdlc-clarify-reqs` to interrogate the newly created plan for ambiguities and hidden assumptions before proceeding to code execution.
-3. **After clarification is complete**, direct the user to invoke `/sdlc-write-code` to execute the approved implementation plan.
-4. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+2. **For Newly Created Plans:** Direct the user to the next SDLC checkpoint. Recommend invoking `/sdlc-clarify-reqs` **in a new chat session** to interrogate the plan for ambiguities. Provide this handoff prompt:
    ```text
-   `/sdlc-clarify-reqs` Analyze the approved implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
+   `/sdlc-clarify-reqs` Analyze the newly created implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
    ```
-5. **Remind the user** to attach the plan file, the specification, and any relevant source code files when invoking the next agent.
+3. **For Remediated Plans (Score >= 80):** If the plan was successfully remediated based on a previous audit and has achieved a Readiness Score of 80 or higher, you MUST present the user with an explicit choice:
+   - **Option A (Proceed to Code):** If the user is satisfied with the fixes, they can bypass further clarification and directly invoke `/sdlc-write-code` **in a new chat session** to execute the plan. Provide this handoff prompt:
+     ```text
+     `/sdlc-write-code` Execute the implementation plan defined in @plan-[purpose]-[component]-[version].md.
+     ```
+   - **Option B (Refine Further):** If the user wants to ensure absolute safety, they can invoke `/sdlc-clarify-reqs` again **in a new chat session** for another round of interrogation.
+4. **Remind the user** to **start a new chat session** before invoking the next agent to prevent context bleeding. They must always attach the plan file, the specification, and any relevant source code files in the new session.
 
 ---
 

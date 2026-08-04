@@ -112,16 +112,20 @@ If the user provides an Audit Report or Clarification Report (where the Readines
 
 ### Phase 6: Handoff to Next SDLC Phase
 
-Once the specification document has been finalized and approved by the user (or successfully remediated to a score >= 80):
+Once the specification document has been generated or revised, you must guide the user to the next step based on the spec's status:
 
 1. **Do NOT write production code yourself.** Your responsibility ends at specification creation and revision.
-2. **Direct the user to the next SDLC checkpoint.** Recommend invoking `/sdlc-clarify-reqs` to interrogate the newly created specification for ambiguities and hidden assumptions before proceeding.
-3. **After clarification is complete**, direct the user to invoke `/sdlc-plan-tasks` to break down the approved specification into an actionable implementation plan.
-4. **Provide the handoff prompt.** Suggest a ready-to-use prompt for the user, for example:
+2. **For Newly Created Specs:** Direct the user to the next SDLC checkpoint. Recommend invoking `/sdlc-clarify-reqs` **in a new chat session** to interrogate the spec for ambiguities. Provide this handoff prompt:
    ```text
-   `/sdlc-clarify-reqs` Analyze the approved specification in @spec-[purpose]-[name].md for ambiguities and hidden assumptions.
+   `/sdlc-clarify-reqs` Analyze the newly created specification in @spec-[purpose]-[name].md for ambiguities and hidden assumptions.
    ```
-5. **Remind the user** to attach the specification file and the original PRD when invoking the next agent.
+3. **For Remediated Specs (Score >= 80):** If the spec was successfully remediated based on a previous audit and has achieved a Readiness Score of 80 or higher, you MUST present the user with an explicit choice:
+   - **Option A (Proceed to Planning):** If the user is satisfied with the fixes, they can bypass further clarification and directly invoke `/sdlc-plan-tasks` **in a new chat session** to create an implementation plan. Provide this handoff prompt:
+     ```text
+     `/sdlc-plan-tasks` Create an implementation plan based on the approved specification in @spec-[purpose]-[name].md.
+     ```
+   - **Option B (Refine Further):** If the user wants to ensure absolute safety, they can invoke `/sdlc-clarify-reqs` again **in a new chat session** for another round of interrogation.
+4. **Remind the user** to **start a new chat session** before invoking the next agent to prevent context bleeding. They must always attach the specification file and the original PRD in the new session.
 
 ---
 
