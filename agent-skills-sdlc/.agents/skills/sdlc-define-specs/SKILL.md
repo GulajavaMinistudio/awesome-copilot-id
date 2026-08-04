@@ -119,12 +119,23 @@ Once the specification document has been generated or revised, you must guide th
    ```text
    `/sdlc-clarify-reqs` Analyze the newly created specification in @spec-[purpose]-[name].md for ambiguities and hidden assumptions.
    ```
-3. **For Remediated Specs (Score >= 80):** If the spec was successfully remediated based on a previous audit and has achieved a Readiness Score of 80 or higher, you MUST present the user with an explicit choice:
-   - **Option A (Proceed to Planning):** If the user is satisfied with the fixes, they can bypass further clarification and directly invoke `/sdlc-plan-tasks` **in a new chat session** to create an implementation plan. Provide this handoff prompt:
-     ```text
-     `/sdlc-plan-tasks` Create an implementation plan based on the approved specification in @spec-[purpose]-[name].md.
+3. **For Remediated Specs:** If you just revised the spec based on a previous audit report, you must follow this exact sequence before handing off:
+   - **Step 1 (Mental Calculation):** Evaluate your fixes against the *Clarification & Consistency Check Policy (Quality Gate)* rubrics defined in `AGENTS.md` (Completeness 40%, Clarity 30%, Alignment 30%). Calculate your new Projected Readiness Score based on what you actually fixed.
+   - **Step 2 (Update Audit Report):** Use your file editing tools to append a `Remediation Status` block to the top of the original audit report file to mark it as resolved. Example format:
+     ```markdown
+     > [!SUCCESS]
+     > **REMEDIATION STATUS: RESOLVED**
+     > This audit report has been remediated by Specification Architect.
+     > - **Projected Readiness Score:** [Your Score from Step 1]/100
      ```
-   - **Option B (Refine Further):** If the user wants to ensure absolute safety, they can invoke `/sdlc-clarify-reqs` again **in a new chat session** for another round of interrogation.
+   - **Step 3 (Chat Output & Routing):** In your chat response, output your **Self-Assessment Calculation**, explaining how you scored the fixes based on the `AGENTS.md` rubrics. Then route the user based on that score:
+     - **If Projected Score >= 80:** Present an explicit choice:
+       - **Option A (Proceed to Planning):** If the user is satisfied with the fixes, they can bypass further clarification and directly invoke `/sdlc-plan-tasks` **in a new chat session** to create an implementation plan. Provide this handoff prompt:
+         ```text
+         `/sdlc-plan-tasks` Create an implementation plan based on the approved specification in @spec-[purpose]-[name].md.
+         ```
+       - **Option B (Refine Further):** If the user wants to ensure absolute safety, they can invoke `/sdlc-clarify-reqs` again **in a new chat session** for another round of interrogation.
+     - **If Projected Score < 80:** Tell the user that the spec is still not ready, and recommend they run `/sdlc-clarify-reqs` again **in a new chat session** to find remaining gaps.
 4. **Remind the user** to **start a new chat session** before invoking the next agent to prevent context bleeding. They must always attach the specification file and the original PRD in the new session.
 
 ---

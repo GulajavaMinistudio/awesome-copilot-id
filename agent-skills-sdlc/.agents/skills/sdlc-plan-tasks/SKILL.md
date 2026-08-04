@@ -107,12 +107,23 @@ Once the implementation plan has been generated or revised, you must guide the u
    ```text
    `/sdlc-clarify-reqs` Analyze the newly created implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
    ```
-3. **For Remediated Plans (Score >= 80):** If the plan was successfully remediated based on a previous audit and has achieved a Readiness Score of 80 or higher, you MUST present the user with an explicit choice:
-   - **Option A (Proceed to Code):** If the user is satisfied with the fixes, they can bypass further clarification and directly invoke `/sdlc-write-code` **in a new chat session** to execute the plan. Provide this handoff prompt:
-     ```text
-     `/sdlc-write-code` Execute the implementation plan defined in @plan-[purpose]-[component]-[version].md.
+3. **For Remediated Plans:** If you just revised the plan based on a previous audit report, you must follow this exact sequence before handing off:
+   - **Step 1 (Mental Calculation):** Evaluate your fixes against the *Clarification & Consistency Check Policy (Quality Gate)* rubrics defined in `AGENTS.md` (Completeness 40%, Clarity 30%, Alignment 30%). Calculate your new Projected Readiness Score based on what you actually fixed.
+   - **Step 2 (Update Audit Report):** Use your file editing tools to append a `Remediation Status` block to the top of the original audit report file to mark it as resolved. Example format:
+     ```markdown
+     > [!SUCCESS]
+     > **REMEDIATION STATUS: RESOLVED**
+     > This audit report has been remediated by Planner Architect.
+     > - **Projected Readiness Score:** [Your Score from Step 1]/100
      ```
-   - **Option B (Refine Further):** If the user wants to ensure absolute safety, they can invoke `/sdlc-clarify-reqs` again **in a new chat session** for another round of interrogation.
+   - **Step 3 (Chat Output & Routing):** In your chat response, output your **Self-Assessment Calculation**, explaining how you scored the fixes based on the `AGENTS.md` rubrics. Then route the user based on that score:
+     - **If Projected Score >= 80:** Present an explicit choice:
+       - **Option A (Proceed to Code):** If the user is satisfied with the fixes, they can bypass further clarification and directly invoke `/sdlc-write-code` **in a new chat session** to execute the plan. Provide this handoff prompt:
+         ```text
+         `/sdlc-write-code` Execute the implementation plan defined in @plan-[purpose]-[component]-[version].md.
+         ```
+       - **Option B (Refine Further):** If the user wants to ensure absolute safety, they can invoke `/sdlc-clarify-reqs` again **in a new chat session** for another round of interrogation.
+     - **If Projected Score < 80:** Tell the user that the plan is still not ready, and recommend they run `/sdlc-clarify-reqs` again **in a new chat session** to find remaining gaps.
 4. **Remind the user** to **start a new chat session** before invoking the next agent to prevent context bleeding. They must always attach the plan file, the specification, and any relevant source code files in the new session.
 
 ---
