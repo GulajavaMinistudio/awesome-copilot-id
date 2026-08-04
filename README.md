@@ -217,17 +217,15 @@ However, we have **Utility Skills** that can be invoked at any time without trig
 
 We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
 
-0. **Discovery (Phase 0)**: Use `@BrainstormingExplorerAnalyst` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
-1. **PRD (Requirements)**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
-2. **Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD to resolve ambiguities.
-3. **Spec (Technical Specification)**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
-4. **Spec Clarification**: Use `@ClarificationAnalyst` to interrogate the technical specification.
-5. **Consistency Check**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD and Spec.
-6. **Plan (Implementation Planning)**: Use `@PlannerArchitect` to generate executable implementation plans.
-7. **Plan Clarification**: Use `@ClarificationAnalyst` to interrogate the implementation plan.
-8. **Code (Implementation)**: Use `@GodModeDev` for coding, ensuring strict testing (unit/widget/integration) after every phase.
-9. **Review**: Use `@ExpertCodeReviewer` for code review and security audits. *(For bug fixes, use `@BugRemediationArchitect`)*
-10. **Docs**: Use `@DiataxisDocumentationArchitect` for user documentation.
+- **Phase 0: Project Discovery**: Use `@BrainstormingExplorerAnalyst` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
+- **Phase PRD: Product Requirements**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
+- **Recurring Checkpoint: Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD, Spec, or Plan to resolve ambiguities.
+- **Phase Spec: Technical Specification**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
+- **Phase Plan: Implementation Planning**: Use `@PlannerArchitect` to generate executable implementation plans.
+- **Phase Code: Execution**: Use `@GodModeDev` for coding, ensuring strict testing (unit/widget/integration) after every phase.
+- **Recurring Checkpoint: Artifact Consistency Audit**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD, Spec, and Plan to prevent scope creep.
+- **Supplementary: Code Review & Security Audit**: Use `@ExpertCodeReviewer` for code review and security audits. *(For bug fixes, use `@BugRemediationArchitect`)*
+- **Supplementary: User Documentation**: Use `@DiataxisDocumentationArchitect` for user documentation.
 
 > [!IMPORTANT]
 > - Complete and structured documentation must exist before coding begins.
@@ -265,7 +263,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Note: `@business-brief.md` is a placeholder for any human-written file provided by you, such as raw meeting notes, client requirements, or a simple text file with your ideas. Once the Discovery Draft is finalized, use `memory-manager` to save context, then open a new chat session)*
 
-**Phase 1: Requirements & Clarification**
+**Phase PRD: Requirements & Clarification**
 ```text
 @ProductManagerPRD create a PRD for the shopping cart feature based on @discovery-draft.md
 ```
@@ -276,7 +274,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Answer the Clarification Analyst's questions one by one. Once finished and the PRD is revised, use `memory-manager` to save context, then proceed to the Spec phase in a new chat session)*
 
-**Phase 2: Technical Specification**
+**Phase Spec: Technical Specification**
 ```text
 @SpecificationArchitect design a technical specification based on @prd-shopping-cart.md
 ```
@@ -292,7 +290,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(If no PRD requirements are missing from the Spec, use `memory-manager` and open a new chat session)*
 
-**Phase 3: Implementation Planning**
+**Phase Plan: Implementation Planning**
 ```text
 @PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md
 ```
@@ -303,7 +301,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Once all edge cases in the Plan are addressed, use `memory-manager` to save context, then open a new chat session to begin coding)*
 
-**Phase 4: Implementation & Review**
+**Phase Code: Implementation & Review**
 ```text
 @GodModeDev implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass
 ```
@@ -314,7 +312,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Apply any refactoring suggestions if needed, use `memory-manager` to save context, then open a new chat session for documentation)*
 
-**Phase 5: Documentation & Bug Fixing**
+**Supplementary: Documentation & Bug Fixing**
 ```text
 @DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md and @cart.js
 ```
@@ -344,7 +342,7 @@ In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invo
 ```
 *(Note: `@business-brief.md` is a placeholder for any human-written file provided by you, such as raw meeting notes, client requirements, or a simple text file with your ideas)*
 
-**Phase 1: Requirements & Clarification**
+**Phase PRD: Requirements & Clarification**
 ```text
 /product-manager-prd create a PRD for the shopping cart feature based on @discovery-draft.md
 ```
@@ -352,7 +350,7 @@ In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invo
 /clarification-analyst interrogate the new @prd-shopping-cart.md for missing edge cases
 ```
 
-**Phase 2: Technical Specification & Audit**
+**Phase Spec: Technical Specification & Audit**
 ```text
 /specification-architect design a technical specification based on @prd-shopping-cart.md
 ```
@@ -360,17 +358,17 @@ In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invo
 /artifact-consistency-checker verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md
 ```
 
-**Phase 3: Implementation Planning**
+**Phase Plan: Implementation Planning**
 ```text
 /planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md
 ```
 
-**Phase 4: Execution & Coding**
+**Phase Code: Execution & Coding**
 ```text
 /god-mode-dev implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css
 ```
 
-**Phase 5: Documentation & Bug Fixing**
+**Supplementary: Documentation & Bug Fixing**
 ```text
 /diataxis-documentation-architect write an API reference guide based on @spec-shopping-cart.md and @cart.js
 ```
@@ -405,12 +403,12 @@ graph TD
     classDef phase fill:#238636,color:#ffffff,stroke:#2ea043,stroke-width:2px,rx:10px,ry:10px;
 
     %% Nodes
-    Phase0[Phase 0: Discovery]:::phase
-    Phase1[Phase 1: Requirements]:::phase
-    Phase2[Phase 2: Specification]:::phase
-    Phase3[Phase 3: Planning]:::phase
-    Phase4[Phase 4: Implementation & Code]:::phase
-    Phase5[Phase 5: Documentation]:::phase
+    Phase0[Phase 0: Project Discovery]:::phase
+    Phase1[Phase PRD: Product Requirements]:::phase
+    Phase2[Phase Spec: Technical Specification]:::phase
+    Phase3[Phase Plan: Implementation Planning]:::phase
+    Phase4[Phase Code: Execution]:::phase
+    Phase5[Supplementary: User Documentation]:::phase
 
     AgentBEA["@BrainstormingExplorerAnalyst<br/>(Explores Code & Brainstorms)"]:::agent
     AgentPM["@ProductManagerPRD<br/>(Creates PRD)"]:::agent
@@ -458,13 +456,13 @@ graph TD
 #### Text-based Alternative (Fallback)
 
 ```text
-[ Phase 0: Discovery ]
+[ Phase 0: Project Discovery ]
           |
           v
   (@BrainstormingExplorerAnalyst)
           |
           v
-[ Phase 1: Requirements ]
+[ Phase PRD: Product Requirements ]
           |
           v
   (@ProductManagerPRD)
@@ -474,7 +472,7 @@ graph TD
      (Interrogate PRD)
           |
           v
-[ Phase 2: Specification ]
+[ Phase Spec: Technical Specification ]
           |
           v
   (@SpecificationArchitect)
@@ -488,7 +486,7 @@ graph TD
      (Traceability)
           |
           v
-[ Phase 3: Planning ]
+[ Phase Plan: Implementation Planning ]
           |
           v
   (@PlannerArchitect)
@@ -498,7 +496,7 @@ graph TD
      (Interrogate Plan)
           |
           v
-[ Phase 4: Implementation & Code ]
+[ Phase Code: Execution ]
           |
           v
   (@GodModeDev) ───────────────────> (@ExpertCodeReviewer)
@@ -508,7 +506,7 @@ graph TD
           └───────────────────────── (@BugRemediationArchitect)
           |
           v
-[ Phase 5: Documentation ]
+[ Supplementary: User Documentation ]
           |
           v
   (@DiataxisDocumentationArchitect)
@@ -528,27 +526,27 @@ If you installed this workflow using Option 9 in the installation script (or cop
 
 | Slash Command               | SDLC Phase / Best For                                               |
 | --------------------------- | ------------------------------------------------------------------- |
-| `/sdlc-explore-ideas`       | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
-| `/sdlc-draft-prd`           | Phase 1: Feature planning, writing user stories, and acceptance criteria |
-| `/sdlc-clarify-reqs`        | Recurring: Finding ambiguities and missing edge cases in PRD/Specs/Plans |
-| `/sdlc-define-specs`        | Phase 2: Writing detailed, machine-readable tech specs              |
-| `/sdlc-audit-consistency`   | Recurring: Validating PRD vs Spec vs Plan to prevent scope creep    |
-| `/sdlc-plan-tasks`          | Phase 3: Generating formal, structured implementation plans         |
-| `/sdlc-write-code`          | Phase 4: Coding, implementation, and surgical modifications         |
-| `/sdlc-code-review`         | Phase 4: Clean Code/SOLID audits and refactoring plans              |
-| `/sdlc-bug-report`          | Phase 5: Root cause analysis and structured bug-fix plans           |
-| `/sdlc-generate-docs`       | Phase 5: Writing tutorials, how-to guides, and reference docs       |
+| `/sdlc-explore-ideas`       | Phase 0: Project Discovery, exploring codebase, generating raw drafts |
+| `/sdlc-draft-prd`           | Phase PRD: Feature planning, writing user stories, and acceptance criteria |
+| `/sdlc-clarify-reqs`        | Recurring Checkpoint: Finding ambiguities in PRD/Specs/Plans        |
+| `/sdlc-define-specs`        | Phase Spec: Writing detailed, machine-readable tech specs           |
+| `/sdlc-audit-consistency`   | Recurring Checkpoint: Validating PRD vs Spec vs Plan traceability   |
+| `/sdlc-plan-tasks`          | Phase Plan: Generating formal, structured implementation plans      |
+| `/sdlc-write-code`          | Phase Code: Coding, implementation, and surgical modifications      |
+| `/sdlc-code-review`         | Supplementary: Clean Code/SOLID audits and refactoring plans        |
+| `/sdlc-bug-report`          | Supplementary: Root cause analysis and structured bug-fix plans     |
+| `/sdlc-generate-docs`       | Supplementary: Writing tutorials, how-to guides, and reference docs |
 
 ### Example Usage (Advanced SDLC Workflow)
 
 Using the new SDLC slash commands makes context injection straightforward and enforces strict phase isolation.
 
-**Phase 1: Requirements**
+**Phase PRD: Requirements**
 ```text
 /sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md
 ```
 
-**Phase 2: Technical Specification**
+**Phase Spec: Technical Specification**
 ```text
 /sdlc-define-specs design a technical specification based on @prd-shopping-cart.md
 ```
@@ -556,7 +554,7 @@ Using the new SDLC slash commands makes context injection straightforward and en
 /sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md
 ```
 
-**Phase 4: Execution & Coding**
+**Phase Code: Execution & Coding**
 ```text
 /sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css
 ```
