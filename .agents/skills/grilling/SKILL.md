@@ -30,3 +30,4 @@ During the grilling session, you MUST actively apply the project's documentation
    - If it does, document it **lazily** as an ADR under `docs/adr/` using the format defined in `.agents/standards/ADR-FORMAT.md`. Do not embed the ADR in other documents.
 
 Do not enact the plan until I confirm we have reached a shared understanding.
+

@@ -61,3 +61,4 @@ Before generating code, you MUST outline your design thesis in a `<reasoning>` b
 [Design tokens, global variables, or config]
 [Complete, responsive, production-ready frontend code with realistic UX copy]
 ```
+

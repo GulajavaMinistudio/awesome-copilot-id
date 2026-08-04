@@ -45,12 +45,6 @@ Before performing a recursive search, check if the active memory path is already
 ### Step 1: Recursive Search (Fallback)
 
 1. **Search recursively for `memory.instructions.md`** across ALL subdirectories within the project, prioritizing the following instruction roots and their subfolders:
-   - `.omp/instructions/` (and subfolders)
-   - `.pi/instructions/` (and subfolders)
-   - `.commandcode/instructions/` (and subfolders)
-   - `.opencode/instructions/` (and subfolders)
-   - `.github/instructions/` (and subfolders)
-   - `.claude/instructions/` (and subfolders)
    - `.agents/instructions/` (and subfolders)
    - `instructions/` (and subfolders at the project root)
 2. **Use recursive search tools** (such as `grep_search` searching for filename `memory.instructions.md` or glob patterns like `**/memory.instructions.md`) to scan across subfolders, ignoring build/vendor folders (`node_modules`, `.git`, `dist`).
@@ -274,3 +268,4 @@ Add a `## Memory Configuration` section to `AGENTS.md`. Place it after the `## C
 - **Promoting ephemeral state to Knowledge Base:** Do NOT promote in-progress metrics, session-specific file lists, or temporary blockers to the Knowledge Base. Only promote finalized, stable, and generalizable knowledge.
 - **Trusting AGENTS.md path without verification:** NEVER assume the recorded `Active Memory Path` in `AGENTS.md` is still valid. Always verify the file exists before locking the path. A stale path must trigger fallback to recursive search (Step 1).
 - **Modifying AGENTS.md without consent:** NEVER add, update, or remove the `## Memory Configuration` section in `AGENTS.md` without explicitly asking the user. The fast path is a convenience, not a silent side effect.
+
