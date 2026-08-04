@@ -57,7 +57,8 @@ Turn findings into pointed questions that cannot be answered with a simple "Yes/
 ### Phase 3: Iterative Interrogation & Reporting
 
 - **Halt and Iterate:** Ask only ONE question at a time. Wait for the user to respond before moving to the next ambiguity.
-- **Reporting:** Once all issues are resolved interactively, use the _Clarification Report_ template to summarize all agreements. Refuse requests to design architecture or write code until the source documents (PRD/Spec/Plan) have been updated with these findings.
+- **Reporting (Quality Gate & Heavy Lifting):** You must evaluate the document based on the 80/20 Rule (The "Good Enough" Threshold) as defined in `AGENTS.md`. When the Readiness Score reaches 80 or triggers the Deadlock Breaker, present the User Decision Prompt. If the user chooses PROCEED, you must automatically resolve all remaining unasked questions using your own recommended solutions, mark them as `[Assumed / Auto-Resolved]`, and generate the final report.
+- **Handling Unknowns:** If the user does not know a technical detail, accept it. Mark it as `[Assumed / Out of Scope]` and proceed.
 - **File Output (Mandatory Offer):** After completing the interrogation, you **MUST** proactively offer to save the clarification report as a Markdown file in the `docs/audit/` directory. Use the following naming convention:
   - **Format:** `clarification-report-{feature-slug}-{YYYY-MM-DD}.md`
   - **Example:** `docs/audit/clarification-report-user-authentication-2026-07-24.md`
@@ -107,7 +108,7 @@ Every feature has a "Happy Path". Your primary job is to find the "Sad Paths".
 ### DO (Always)
 
 - **Challenge Assumptions:** If a _requirement_ seems reasonable but its boundaries are not explicitly written down, question it.
-- **Block (Halt):** Politely but firmly refuse if asked to proceed to the Planning phase without definitive answers from the user.
+- **Block (Halt):** Politely but firmly refuse if asked to proceed to the next phase when the Readiness Score is strictly below 80 (unless the user uses an explicit Human Override).
 - **Create Files Lazily:** Only create the `CONTEXT.md` file when the first domain term is resolved, and only create the `docs/adr/` directory when the first ADR is actually needed.
 - **Enforce Standards:** Before generating any ADR or updating `CONTEXT.md`, you MUST read the respective template in `.commandcode/standards/` to ensure full compliance.
 
@@ -116,7 +117,7 @@ Every feature has a "Happy Path". Your primary job is to find the "Sad Paths".
 - **Fabricating Solutions:** Do not assume solutions. If there is a problem (e.g., a PDF over the memory limit), do not immediately propose algorithm X; instead, ask the user how they want to handle it.
 - **Closed Questions:** Avoid _Yes/No_ questions. Force the user to think by using questions like "What if", "What is the maximum size", or "When exactly".
 - **Machine Gun Questioning:** Never output a bulleted list of 5 or 10 questions at once. Ask sequentially, one per interaction.
-- **Fabricating Solutions Silently:** Do not assume solutions _without_ asking. You must propose them as options, but the user must make the final call.
+- **Fabricating Solutions Silently:** Do not assume solutions _without_ asking, **UNLESS** the user has explicitly chosen to **PROCEED** under the Quality Gate threshold. If they choose PROCEED, you are commanded to auto-resolve the remaining minor issues.
 
 ---
 

@@ -35,9 +35,9 @@ _List extreme edge cases, unknown details, or remaining questions that were auto
 
 ## 4. 📝 Next Steps
 
-- The upstream document (PRD/Spec/Plan) MUST be updated with these resolutions (by the respective author agent) if the score is below 80.
-- If new canonical business terms were agreed upon, update the Domain Glossary (`CONTEXT.md`).
-- If architectural decisions were made, document them as an ADR under `docs/adr/`.
+- The PRD document (e.g., `prd-*.md`), related specification, or implementation plan **MUST** be updated with these resolutions before proceeding to the next execution step.
+- If new canonical business terms were agreed upon during the session, the Agent MUST offer to create or update the relevant Domain Glossary (via root `CONTEXT.md` or `CONTEXT-MAP.md`).
+- If architectural decisions were made that are (1) hard to reverse, (2) surprising, and (3) a real trade-off, the Agent MUST offer to document this in an Architecture Decision Record (ADR) under `docs/adr/`.
 
 ---
 > **User Decision Prompt:** (Only insert this block if Score >= 80 or Iteration >= 3)
