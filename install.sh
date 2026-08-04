@@ -86,39 +86,26 @@ fi
 
 # 4. Interactive menu for platform selection
 echo -e "\nSelect the AI Assistant platform you want to install in your project:"
-echo -e "1) ${GREEN}GitHub Copilot${NC} (.github)"
-echo -e "2) ${GREEN}Google Antigravity${NC} (.agents)"
-echo -e "3) ${GREEN}OpenCode${NC} (.opencode)"
-echo -e "4) ${GREEN}CommandCode${NC} (.commandcode)"
-echo -e "5) ${GREEN}ChatGPT Codex${NC} (.codex)"
-echo -e "6) ${GREEN}Pi Dev Coding Agent${NC} (.pi)"
-echo -e "7) ${GREEN}Oh My Pi${NC} (.omp)"
-echo -e "8) ${GREEN}Claude Code${NC} (.claude)"
-echo -e "9) ${GREEN}Google Antigravity - Advanced Skills SDLC Workflow${NC} (.agents)"
-echo -e "10) ${GREEN}All Platforms${NC} (Install all standard configurations above)"
-read -p "Enter your choice (1-10): " CHOICE < /dev/tty
+echo -e "1) ${GREEN}Standard Platforms${NC} (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) -> installs to .agents/"
+echo -e "2) ${GREEN}Claude Code${NC} -> installs to .claude/"
+echo -e "3) ${GREEN}Cursor${NC} -> installs to .cursor/"
+echo -e "4) ${GREEN}All Platforms${NC} (Install to .agents/, .claude/, and .cursor/)"
+read -p "Enter your choice (1-4): " CHOICE < /dev/tty
 
-PLATFORM_DIRS=()
-IS_SDLC=false
+DEST_DIRS=()
 case $CHOICE in
-    1) PLATFORM_DIRS=(".github") ;;
-    2) PLATFORM_DIRS=(".agents") ;;
-    3) PLATFORM_DIRS=(".opencode") ;;
-    4) PLATFORM_DIRS=(".commandcode") ;;
-    5) PLATFORM_DIRS=(".codex") ;;
-    6) PLATFORM_DIRS=(".pi") ;;
-    7) PLATFORM_DIRS=(".omp") ;;
-    8) PLATFORM_DIRS=(".claude") ;;
-    9) PLATFORM_DIRS=("agent-skills-sdlc/.agents"); IS_SDLC=true ;;
-    10) PLATFORM_DIRS=(".github" ".agents" ".claude" ".opencode" ".commandcode" ".codex" ".pi" ".omp") ;;
+    1) DEST_DIRS=(".agents") ;;
+    2) DEST_DIRS=(".claude") ;;
+    3) DEST_DIRS=(".cursor") ;;
+    4) DEST_DIRS=(".agents" ".claude" ".cursor") ;;
     *) echo -e "${RED}Invalid choice. Process aborted.${NC}"; exit 1 ;;
 esac
 
 # 5. Copy chosen platform configuration directories
-for dir in "${PLATFORM_DIRS[@]}"; do
-    SRC_DIR="$SOURCE_CONTENT_DIR/$dir"
-    DST_BASE=$(basename "$dir")
-    DST_DIR="$TARGET_PATH/$DST_BASE"
+SRC_DIR="$SOURCE_CONTENT_DIR/.agents"
+
+for dst_dir_name in "${DEST_DIRS[@]}"; do
+    DST_DIR="$TARGET_PATH/$dst_dir_name"
     
     if [ -d "$SRC_DIR" ]; then
         RESTORE_LATER=()
@@ -153,12 +140,12 @@ for dir in "${PLATFORM_DIRS[@]}"; do
                 done
             fi
             
-            read -p "Folder '$DST_BASE' already exists in target. Overwrite entire folder? (y/N): " CONFIRM < /dev/tty
+            read -p "Folder '$dst_dir_name' already exists in target. Overwrite entire folder? (y/N): " CONFIRM < /dev/tty
             CONFIRM=${CONFIRM:-n}
             if [[ "$CONFIRM" =~ ^[Yy]$ ]]; then
                 rm -rf "$DST_DIR"
             else
-                echo -e "${YELLOW}Skipping copy of '$DST_BASE'...${NC}"
+                echo -e "${YELLOW}Skipping copy of '$dst_dir_name'...${NC}"
                 # Clean up temporary backups if copy is skipped
                 for temp_bak in "${RESTORE_LATER[@]}"; do
                     rm -f "$temp_bak"
@@ -167,9 +154,10 @@ for dir in "${PLATFORM_DIRS[@]}"; do
             fi
         fi
         
-        # Copy directory structure
-        cp -r "$SRC_DIR" "$TARGET_PATH/"
-        echo -e "Successfully copied ${GREEN}$DST_BASE${NC} to $TARGET_PATH/"
+        # Create destination directory and copy contents
+        mkdir -p "$DST_DIR"
+        cp -a "$SRC_DIR/." "$DST_DIR/"
+        echo -e "Successfully copied agents configuration to ${GREEN}$TARGET_PATH/$dst_dir_name${NC}"
         
         # Restore kept memory files if any
         if [ ${#RESTORE_LATER[@]} -gt 0 ]; then
@@ -189,16 +177,13 @@ for dir in "${PLATFORM_DIRS[@]}"; do
             done
         fi
     else
-        echo -e "${YELLOW}Warning: Folder '$dir' not found in source repository.${NC}"
+        echo -e "${RED}Error: Source folder '.agents' not found in source repository.${NC}"
+        exit 1
     fi
 done
 
 # 6. Copy AGENTS.md
-if [ "$IS_SDLC" = true ]; then
-    SRC_AGENTS="$SOURCE_CONTENT_DIR/agent-skills-sdlc/AGENTS.md"
-else
-    SRC_AGENTS="$SOURCE_CONTENT_DIR/AGENTS.md"
-fi
+SRC_AGENTS="$SOURCE_CONTENT_DIR/AGENTS.md"
 DST_AGENTS="$TARGET_PATH/AGENTS.md"
 
 if [ -f "$SRC_AGENTS" ]; then

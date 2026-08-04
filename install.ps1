@@ -50,33 +50,20 @@ try {
     # 4. Interactive menu for platform selection
     Write-Host ""
     Write-Host "Select the AI Assistant platform you want to install in your project:"
-    Write-Host "1) GitHub Copilot (.github)"
-    Write-Host "2) Google Antigravity (.agents)"
-    Write-Host "3) OpenCode (.opencode)"
-    Write-Host "4) CommandCode (.commandcode)"
-    Write-Host "5) ChatGPT Codex (.codex)"
-    Write-Host "6) Pi Dev Coding Agent (.pi)"
-    Write-Host "7) Oh My Pi (.omp)"
-    Write-Host "8) Claude Code (.claude)"
-    Write-Host "9) Google Antigravity - Advanced Skills SDLC Workflow (.agents)"
-    Write-Host "10) All Platforms (Install all standard configurations above)"
+    Write-Host "1) Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) -> installs to .agents/"
+    Write-Host "2) Claude Code -> installs to .claude/"
+    Write-Host "3) Cursor -> installs to .cursor/"
+    Write-Host "4) All Platforms (Install to .agents/, .claude/, and .cursor/)"
     Write-Host ""
     
-    $choice = Read-Host "Enter your choice (1-10)"
+    $choice = Read-Host "Enter your choice (1-4)"
     
-    $platformDirs = @()
-    $isSdlc = $false
+    $destDirs = @()
     switch ($choice) {
-        "1" { $platformDirs = @(".github") }
-        "2" { $platformDirs = @(".agents") }
-        "3" { $platformDirs = @(".opencode") }
-        "4" { $platformDirs = @(".commandcode") }
-        "5" { $platformDirs = @(".codex") }
-        "6" { $platformDirs = @(".pi") }
-        "7" { $platformDirs = @(".omp") }
-        "8" { $platformDirs = @(".claude") }
-        "9" { $platformDirs = @("agent-skills-sdlc/.agents"); $isSdlc = $true }
-        "10" { $platformDirs = @(".github", ".agents", ".claude", ".opencode", ".commandcode", ".codex", ".pi", ".omp") }
+        "1" { $destDirs = @(".agents") }
+        "2" { $destDirs = @(".claude") }
+        "3" { $destDirs = @(".cursor") }
+        "4" { $destDirs = @(".agents", ".claude", ".cursor") }
         Default {
             Write-Host "Invalid choice. Process aborted." -ForegroundColor Red
             exit 1
@@ -84,10 +71,10 @@ try {
     }
 
     # 5. Copy chosen platform configuration directories
-    foreach ($dir in $platformDirs) {
-        $srcDir = Join-Path $sourceContentDir $dir
-        $dstBase = Split-Path $dir -Leaf
-        $dstDir = Join-Path $targetPath $dstBase
+    $srcDir = Join-Path $sourceContentDir ".agents"
+    
+    foreach ($dstDirName in $destDirs) {
+        $dstDir = Join-Path $targetPath $dstDirName
         
         if (Test-Path $srcDir) {
             $restoreList = @()
@@ -115,9 +102,9 @@ try {
                     }
                 }
                 
-                $confirmFolder = Read-Host "Folder '$dstBase' already exists in target. Overwrite entire folder? (y/N)"
+                $confirmFolder = Read-Host "Folder '$dstDirName' already exists in target. Overwrite entire folder? (y/N)"
                 if ($confirmFolder -notmatch '^[Yy]$') {
-                    Write-Host "Skipping copy of '$dstBase'..." -ForegroundColor Yellow
+                    Write-Host "Skipping copy of '$dstDirName'..." -ForegroundColor Yellow
                     # Clean up temp files if copy is skipped
                     foreach ($item in $restoreList) {
                         if (Test-Path $item.TempSource) { Remove-Item -Path $item.TempSource -Force }
@@ -128,9 +115,13 @@ try {
                 Remove-Item -Path $dstDir -Recurse -Force
             }
             
-            # Copy directory structure
-            Copy-Item -Path $srcDir -Destination $targetPath -Recurse -Force
-            Write-Host "Successfully copied $dstBase to $targetPath" -ForegroundColor Green
+            # Create destination directory and copy contents
+            if (!(Test-Path $dstDir)) {
+                New-Item -ItemType Directory -Path $dstDir -Force | Out-Null
+            }
+            # Copy contents of .agents to destination
+            Copy-Item -Path "$srcDir\*" -Destination $dstDir -Recurse -Force
+            Write-Host "Successfully copied agents configuration to $dstDir" -ForegroundColor Green
             
             # Restore kept memory files
             foreach ($item in $restoreList) {
@@ -147,16 +138,13 @@ try {
                 }
             }
         } else {
-            Write-Host "Warning: Folder '$dir' not found in source repository." -ForegroundColor Yellow
+            Write-Host "Error: Source folder '.agents' not found in source repository." -ForegroundColor Red
+            exit 1
         }
     }
 
     # 6. Copy AGENTS.md
-    if ($isSdlc) {
-        $srcAgents = Join-Path $sourceContentDir "agent-skills-sdlc/AGENTS.md"
-    } else {
-        $srcAgents = Join-Path $sourceContentDir "AGENTS.md"
-    }
+    $srcAgents = Join-Path $sourceContentDir "AGENTS.md"
     $dstAgents = Join-Path $targetPath "AGENTS.md"
 
     if (Test-Path $srcAgents) {
