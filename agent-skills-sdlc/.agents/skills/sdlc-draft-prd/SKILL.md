@@ -68,7 +68,7 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
       ```text
       `/sdlc-clarify-reqs` Analyze the newly created PRD in @prd-[...].md for ambiguities and hidden assumptions.
       ```
-    - **For Remediated PRDs:** If you just revised the PRD based on a previous audit report, you must follow this exact sequence before handing off:
+    - **For Remediated PRDs:** If you just revised the PRD based on a previous audit report (e.g., clarification report or consistency audit report), you must follow this exact sequence before handing off:
       - **Step 1 (Mental Calculation):** Evaluate your fixes against the _Clarification & Consistency Check Policy (Quality Gate)_ rubrics defined in `AGENTS.md` (Completeness 40%, Clarity 30%, Alignment 30%). Calculate your new Projected Readiness Score based on what you actually fixed.
       - **Step 2 (Update Audit Report):** Use your file editing tools to append a `Remediation Status` block to the top of the original audit report file to mark it as resolved. Example format:
         ```markdown

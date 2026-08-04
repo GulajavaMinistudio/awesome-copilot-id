@@ -107,7 +107,7 @@ Once the implementation plan has been generated or revised, you must guide the u
    ```text
    `/sdlc-clarify-reqs` Analyze the newly created implementation plan in @plan-[purpose]-[component]-[version].md for ambiguities and hidden assumptions. Reference spec: @spec-[purpose]-[name].md
    ```
-3. **For Remediated Plans:** If you just revised the plan based on a previous audit report, you must follow this exact sequence before handing off:
+3. **For Remediated Plans:** If you just revised the plan based on a previous audit report (e.g., clarification report or consistency audit report), you must follow this exact sequence before handing off:
    - **Step 1 (Mental Calculation):** Evaluate your fixes against the *Clarification & Consistency Check Policy (Quality Gate)* rubrics defined in `AGENTS.md` (Completeness 40%, Clarity 30%, Alignment 30%). Calculate your new Projected Readiness Score based on what you actually fixed.
    - **Step 2 (Update Audit Report):** Use your file editing tools to append a `Remediation Status` block to the top of the original audit report file to mark it as resolved. Example format:
      ```markdown
