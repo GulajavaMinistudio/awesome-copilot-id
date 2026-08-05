@@ -7,7 +7,7 @@ A curated collection of custom agents, skills, rules, and prompts for AI-assiste
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#-contributing)
 
 <p align="center">
-  <img src="hero-cat-agent.png" alt="Awesome Copilot Indonesia" width="700">
+  <img src="hero-cat-agent1.png" alt="Awesome Copilot Indonesia" width="700">
 </p>
 
 ## 📋 Overview
@@ -73,12 +73,12 @@ The interactive script will download the repository, prompt you to choose your t
 
 The installer offers these options:
 
-| Option | Platform(s)                                                                | Destination Folder |
-| ------ | -------------------------------------------------------------------------- | ------------------ |
-| **1**  | Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) | `.agents/`         |
-| **2**  | Claude Code                                                                | `.claude/`         |
-| **3**  | Cursor                                                                     | `.cursor/`         |
-| **4**  | All Platforms (install to all three directories)                           | `.agents/`, `.claude/`, `.cursor/` |
+| Option | Platform(s)                                                                             | Destination Folder                 |
+| ------ | --------------------------------------------------------------------------------------- | ---------------------------------- |
+| **1**  | Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) | `.agents/`                         |
+| **2**  | Claude Code                                                                             | `.claude/`                         |
+| **3**  | Cursor                                                                                  | `.cursor/`                         |
+| **4**  | All Platforms (install to all three directories)                                        | `.agents/`, `.claude/`, `.cursor/` |
 
 ---
 
@@ -141,18 +141,18 @@ Custom agents are specialized AI assistants for specific development roles and t
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these agents. This file contains the core SDLC rules that all agents must follow. See [Step #3 in Installation](#installation) for details.
 
-| Slash Command               | Skill                      | Description                                          | Best For                                                            |
-| --------------------------- | -------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| `/sdlc-explore-ideas`       | `sdlc-explore-ideas`       | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
-| `/sdlc-draft-prd`           | `sdlc-draft-prd`           | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
-| `/sdlc-clarify-reqs`        | `sdlc-clarify-reqs`        | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
-| `/sdlc-define-specs`        | `sdlc-define-specs`        | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
-| `/sdlc-audit-consistency`   | `sdlc-audit-consistency`   | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
-| `/sdlc-plan-tasks`          | `sdlc-plan-tasks`          | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
-| `/sdlc-write-code`          | `sdlc-write-code` (supp: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer | Coding, implementation, and surgical modifications |
-| `/sdlc-code-review`         | `sdlc-code-review`         | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
-| `/sdlc-bug-report`          | `sdlc-bug-report`          | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
-| `/sdlc-generate-docs`       | `sdlc-generate-docs`       | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
+| Slash Command             | Skill                                                                                                                    | Description                                          | Best For                                                            |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `/sdlc-explore-ideas`     | `sdlc-explore-ideas`                                                                                                     | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
+| `/sdlc-draft-prd`         | `sdlc-draft-prd`                                                                                                         | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
+| `/sdlc-clarify-reqs`      | `sdlc-clarify-reqs`                                                                                                      | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
+| `/sdlc-define-specs`      | `sdlc-define-specs`                                                                                                      | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
+| `/sdlc-audit-consistency` | `sdlc-audit-consistency`                                                                                                 | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
+| `/sdlc-plan-tasks`        | `sdlc-plan-tasks`                                                                                                        | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
+| `/sdlc-write-code`        | `sdlc-write-code` (supp: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
+| `/sdlc-code-review`       | `sdlc-code-review`                                                                                                       | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
+| `/sdlc-bug-report`        | `sdlc-bug-report`                                                                                                        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
+| `/sdlc-generate-docs`     | `sdlc-generate-docs`                                                                                                     | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
 
 ### How to Use
 
@@ -175,33 +175,33 @@ Skills provide agents with specialized capabilities, workflows, and prompts. The
 
 These skills activate a specialized agent persona and lock the session to that phase:
 
-| Skill                      | Description                                                                                                           |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| **sdlc-explore-ideas**     | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                       |
-| **sdlc-draft-prd**         | Workflow to generate comprehensive PRDs with user stories and acceptance criteria                                     |
-| **sdlc-clarify-reqs**      | Interrogates requirements for hidden assumptions and edge cases                                                       |
-| **sdlc-define-specs**      | Generates detailed, machine-readable technical specs based on clarified requirements                                 |
-| **sdlc-audit-consistency** | Validates traceability across documents to prevent missing coverage and scope creep                                   |
-| **sdlc-plan-tasks**        | Generates formal, structured, and executable implementation plans                                                    |
-| **sdlc-write-code**        | God-Tier Autonomous Engineer for Coding/Implementation, executing code strictly based on `/spec/` and `/plan/`       |
-| **sdlc-code-review**       | Code review and security audit against Clean Code/SOLID principles                                                   |
-| **sdlc-bug-report**        | Workflow for tracing root causes and generating structured bug-fix plans                                             |
-| **sdlc-generate-docs**     | Audits and writes structured documentation based on the Diátaxis Framework                                           |
-| **sdlc-map-architecture**  | Scans, analyzes, and documents the existing repository architecture into `docs/ARCHITECTURE.md`                      |
+| Skill                      | Description                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **sdlc-explore-ideas**     | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                |
+| **sdlc-draft-prd**         | Workflow to generate comprehensive PRDs with user stories and acceptance criteria                              |
+| **sdlc-clarify-reqs**      | Interrogates requirements for hidden assumptions and edge cases                                                |
+| **sdlc-define-specs**      | Generates detailed, machine-readable technical specs based on clarified requirements                           |
+| **sdlc-audit-consistency** | Validates traceability across documents to prevent missing coverage and scope creep                            |
+| **sdlc-plan-tasks**        | Generates formal, structured, and executable implementation plans                                              |
+| **sdlc-write-code**        | God-Tier Autonomous Engineer for Coding/Implementation, executing code strictly based on `/spec/` and `/plan/` |
+| **sdlc-code-review**       | Code review and security audit against Clean Code/SOLID principles                                             |
+| **sdlc-bug-report**        | Workflow for tracing root causes and generating structured bug-fix plans                                       |
+| **sdlc-generate-docs**     | Audits and writes structured documentation based on the Diátaxis Framework                                     |
+| **sdlc-map-architecture**  | Scans, analyzes, and documents the existing repository architecture into `docs/ARCHITECTURE.md`                |
 
 ### Utility & Supplementary Skills (Cross-Cutting)
 
 These skills can be invoked by any agent at any time without triggering a session lock:
 
-| Skill                        | Description                                                                                                           |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Skill                        | Description                                                                                                                      |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | **memory-manager**           | Standardized workflow for discovering, reading, writing, and compacting `memory.instructions.md` with a permanent Knowledge Base |
-| **karpathy-guidelines**      | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                       |
-| **ponytail-lazy-senior-dev** | Applies the "lazy senior developer" mindset, prioritizing code reuse, minimalism, and YAGNI principles               |
-| **omni-dev**                 | Omni-expert principal software architect. Enforces clean code, clean architecture, and strict anti-ambiguity protocols |
-| **ui-designer**              | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive interfaces with opinionated aesthetics           |
-| **grilling**                 | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                 |
-| **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption |
+| **karpathy-guidelines**      | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                                  |
+| **ponytail-lazy-senior-dev** | Applies the "lazy senior developer" mindset, prioritizing code reuse, minimalism, and YAGNI principles                           |
+| **omni-dev**                 | Omni-expert principal software architect. Enforces clean code, clean architecture, and strict anti-ambiguity protocols           |
+| **ui-designer**              | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive interfaces with opinionated aesthetics                       |
+| **grilling**                 | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                            |
+| **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption           |
 
 ### Agent and Skill Configuration File Structure
 
@@ -263,16 +263,16 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 
 If the mandatory files are not provided in the prompt context, the agent will halt execution and ask you to provide them.
 
-| Slash Command / Phase           | Mandatory Upstream Document(s)                                          |
-| ------------------------------- | ----------------------------------------------------------------------- |
-| `/sdlc-draft-prd`               | Project Discovery Draft (OR existing PRD for updates)                   |
-| `/sdlc-clarify-reqs`            | PRD, Spec, OR Plan (depending on target)                                |
-| `/sdlc-define-specs`            | Approved PRD (OR existing Spec for updates)                             |
-| `/sdlc-plan-tasks`              | Approved Technical Spec (OR existing Plan for updates)                  |
-| `/sdlc-write-code`              | Implementation Plan OR Bug Remediation Plan                             |
-| `/sdlc-code-review`             | Technical Spec AND Implementation Plan                                  |
-| `/sdlc-audit-consistency`       | PRD, Spec, AND Plan                                                     |
-| `/sdlc-generate-docs`           | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+| Slash Command / Phase     | Mandatory Upstream Document(s)                                          |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `/sdlc-draft-prd`         | Project Discovery Draft (OR existing PRD for updates)                   |
+| `/sdlc-clarify-reqs`      | PRD, Spec, OR Plan (depending on target)                                |
+| `/sdlc-define-specs`      | Approved PRD (OR existing Spec for updates)                             |
+| `/sdlc-plan-tasks`        | Approved Technical Spec (OR existing Plan for updates)                  |
+| `/sdlc-write-code`        | Implementation Plan OR Bug Remediation Plan                             |
+| `/sdlc-code-review`       | Technical Spec AND Implementation Plan                                  |
+| `/sdlc-audit-consistency` | PRD, Spec, AND Plan                                                     |
+| `/sdlc-generate-docs`     | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
 
 *Note: Phase 0 (`/sdlc-explore-ideas`) and surgical bug analysis (`/sdlc-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
