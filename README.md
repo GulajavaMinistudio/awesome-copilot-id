@@ -1,7 +1,7 @@
 # Awesome Copilot Indonesia 🇮🇩 - AI Agents & SDLC Workflows
 <!-- markdownlint-disable -->
 
-A curated collection of custom agents, skills, rules, and prompts. Originally for **GitHub Copilot**, this collection now fully supports **OpenCode**, **Google Antigravity**, **CommandCode**, **ChatGPT Codex**, **Pi Dev Coding Agent**, and **Oh My Pi (`omp`)**, specifically tailored for Indonesian developers and development workflows. The custom agents and SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
+A curated collection of custom agents, skills, rules, and prompts for AI-assisted development, specifically tailored for Indonesian developers and development workflows. This collection uses a **Single Source of Truth** architecture: all agent configurations live in the `.agents/` directory and are automatically mapped to platform-specific folders during installation. Supported platforms include **GitHub Copilot**, **Google Antigravity**, **OpenCode**, **CommandCode**, **ChatGPT Codex**, **Pi Dev Coding Agent**, **Oh My Pi (`omp`)**, **Claude Code**, and **Cursor**. The SDLC workflows are heavily inspired by the [GitHub Spec Kit](https://github.com/github/spec-kit), with additional enhancements and refinements.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Copilot-blue)](https://github.com/features/copilot)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#-contributing)
@@ -18,7 +18,7 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
 - **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
 - **🔑 BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
-- **🔌 Multi-Platform**: Ready-to-use configurations for OpenCode (`.opencode`), Google Antigravity (`.agents`), Claude Code (`.claude`), GitHub Copilot (`.github`), CommandCode (`.commandcode`), ChatGPT Codex (`.codex`), Pi Dev Coding Agent (`.pi`), and Oh My Pi (`.omp`).
+- **🔌 Multi-Platform**: A single `.agents/` configuration that is automatically installed to the correct platform directory. Standard platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) use `.agents/`, Claude Code uses `.claude/`, and Cursor uses `.cursor/`.
 
 ## 📑 Table of Contents
 
@@ -26,10 +26,9 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Custom Agents](#-custom-agents)
+- [Custom Agents](#-custom-agents-via-sdlc-slash-commands)
 - [Skills](#-skills)
 - [Workflow & Methodology](#-workflow--methodology-spec-kit-inspired)
-- [NEW: Advanced Skills SDLC Workflow](#-new-advanced-skills-sdlc-workflow-agent-skills-sdlc)
 - [Supplementary Skills](#-supplementary-skills)
 - [BYOK Copilot Config](#-byok-copilot-config)
 - [Advanced Customization Guide](#️-advanced-customization-guide)
@@ -43,13 +42,15 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 ### Prerequisites
 
 - An AI Assistant platform of your choice:
-  - **CommandCode**
-  - **OpenCode**
-  - **Google Antigravity**
   - **GitHub Copilot** (Individual, Business, or Enterprise)
+  - **Google Antigravity**
+  - **OpenCode**
+  - **CommandCode**
   - **ChatGPT Codex**
   - **Pi Dev Coding Agent** ([pi.dev](https://pi.dev/))
   - **Oh My Pi (`omp`)** ([omp.sh](https://omp.sh/))
+  - **Claude Code**
+  - **Cursor**
 
 ### Installation
 
@@ -68,7 +69,16 @@ Run the following command in your terminal inside your project root directory:
     irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex
     ```
 
-The interactive script will download the repository, prompt you to choose your platform configuration, copy the files, and safely handle existing configuration files (such as `memory.instructions.md` and `AGENTS.md`) by offering options to keep, replace, or merge them.
+The interactive script will download the repository, prompt you to choose your target platform, copy the `.agents/` configuration to the correct destination directory (`.agents/`, `.claude/`, or `.cursor/`), and safely handle existing configuration files (such as `memory.instructions.md` and `AGENTS.md`) by offering options to keep, replace, or merge them.
+
+The installer offers these options:
+
+| Option | Platform(s)                                                                | Destination Folder |
+| ------ | -------------------------------------------------------------------------- | ------------------ |
+| **1**  | Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) | `.agents/`         |
+| **2**  | Claude Code                                                                | `.claude/`         |
+| **3**  | Cursor                                                                     | `.cursor/`         |
+| **4**  | All Platforms (install to all three directories)                           | `.agents/`, `.claude/`, `.cursor/` |
 
 ---
 
@@ -80,18 +90,24 @@ The interactive script will download the repository, prompt you to choose your p
    git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git
    ```
 
-2. **Choose your platform configuration**:
-   - For **CommandCode**: Copy the `.commandcode` directory to your project root.
-   - For **OpenCode**: Copy the `.opencode` directory from `opencode-configuration/` to your project root.
-   - For **Google Antigravity**: Copy the `.agents` directory to your project root.
-   - For **GitHub Copilot**: Copy the `.github` directory to your project root.
-   - For **ChatGPT Codex**: Copy the `.codex` directory to your project root.
-   - For **Claude Code**: Copy the `.claude` directory to your project root.
-   - For **Pi Dev Coding Agent**: Copy the `.pi` directory to your project root.
-   - For **Oh My Pi (`omp`)**: Copy the `.omp` directory to your project root.
+2. **Choose your target platform and copy the `.agents/` directory**:
+   - For **Standard Platforms** (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP): Copy the `.agents` directory as-is to your project root.
+   - For **Claude Code**: Copy the *contents* of `.agents` into a `.claude` directory at your project root.
+   - For **Cursor**: Copy the *contents* of `.agents` into a `.cursor` directory at your project root.
+
+   ```bash
+   # Standard Platforms: copy .agents/ directly
+   cp -r awesome-copilot-id/.agents ./
+
+   # Claude Code: copy contents of .agents/ into .claude/
+   mkdir -p .claude && cp -a awesome-copilot-id/.agents/. .claude/
+
+   # Cursor: copy contents of .agents/ into .cursor/
+   mkdir -p .cursor && cp -a awesome-copilot-id/.agents/. .cursor/
+   ```
 
    > [!IMPORTANT]
-   > **Don't copy everything!** Only select the agents, skills, or rules that match your development needs.
+   > The `.agents/` directory in this repository is the **Single Source of Truth**. All platform-specific directories (`.claude/`, `.cursor/`) receive an identical copy of its contents.
 
 3. **Mandatory Step**: Copy the `AGENTS.md` file to the root of your project. This file contains the core SDLC rules, directives, and interaction philosophy that all agents must follow to ensure consistency.
 
@@ -102,17 +118,15 @@ The interactive script will download the repository, prompt you to choose your p
    > [!IMPORTANT]
    > After copying `AGENTS.md`, you **must** open it and update the first line (`# AGENTS.md - [Your Application Name]`) to match your actual project's context, as well as the `[Project Description]` placeholder (if present). This helps the AI agents understand the specific project they are working on. You can also adjust the language preferences in the `## Communication` section as needed.
 
-4. Example manual installation for specific agents and skills:
+4. Example manual installation for specific skills:
 
    ```bash
-   # Create directories based on your platform (e.g., Google Antigravity)
+   # Create directories
    mkdir -p .agents/rules .agents/skills
 
-   # Copy specific agents
-   cp awesome-copilot-id/.agents/rules/GodModeDev.md .agents/rules/
-   
    # Copy specific skills
    cp -r awesome-copilot-id/.agents/skills/karpathy-guidelines .agents/skills/
+   cp -r awesome-copilot-id/.agents/skills/sdlc-write-code .agents/skills/
    ```
 
 5. Restart your IDE or AI assistant to apply the changes.
@@ -120,63 +134,74 @@ The interactive script will download the repository, prompt you to choose your p
 > [!TIP]
 > You can also reference these files from a central location in your system and symlink them to your projects for easier management.
 
-## 🤖 Custom Agents
+## 🤖 Custom Agents (via SDLC Slash Commands)
 
-Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is paired with a specific skill to accomplish its phase in the development lifecycle. Place them in your platform's respective directory (`.commandcode/agents/`, `.agents/rules/`, `.claude/agents/`, `.opencode/agents/`, `.github/agents/`, `.codex/agents/`, `.pi/agents/`, or `.omp/agents/`).
+Custom agents are specialized AI assistants for specific development roles and tasks. Each agent is activated via a **slash command** that triggers the corresponding skill. All configurations reside in the `.agents/skills/` directory (or the platform-equivalent: `.claude/skills/`, `.cursor/skills/`).
 
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these agents. This file contains the core SDLC rules that all agents must follow. See [Step #3 in Installation](#installation) for details.
 
-| Agent                               | Associated Skill                                                                                                      | Description                                          | Best For                                                            |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| **@BrainstormingExplorerAnalyst**   | `brainstorming-explorer`                                                                                              | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
-| **@ProductManagerPRD**              | `product-manager-prd`                                                                                                 | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
-| **@ClarificationAnalyst**           | `clarification-analyst`                                                                                               | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
-| **@SpecificationArchitect**         | `specification-architect`                                                                                             | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
-| **@ArtifactConsistencyChecker**     | `artifact-consistency-checker`                                                                                        | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
-| **@PlannerArchitect**               | `planner-architect`                                                                                                   | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
-| **@GodModeDev**                     | `god-mode-dev` (supp: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
-| **@ExpertCodeReviewer**             | `expert-code-reviewer`                                                                                                | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
-| **@BugRemediationArchitect**        | `bug-remediation-architect`                                                                                           | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
-| **@DiataxisDocumentationArchitect** | `diataxis-documentation-architect`                                                                                    | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
+| Slash Command               | Skill                      | Description                                          | Best For                                                            |
+| --------------------------- | -------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `/sdlc-explore-ideas`       | `sdlc-explore-ideas`       | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
+| `/sdlc-draft-prd`           | `sdlc-draft-prd`           | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
+| `/sdlc-clarify-reqs`        | `sdlc-clarify-reqs`        | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
+| `/sdlc-define-specs`        | `sdlc-define-specs`        | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
+| `/sdlc-audit-consistency`   | `sdlc-audit-consistency`   | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
+| `/sdlc-plan-tasks`          | `sdlc-plan-tasks`          | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
+| `/sdlc-write-code`          | `sdlc-write-code` (supp: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer | Coding, implementation, and surgical modifications |
+| `/sdlc-code-review`         | `sdlc-code-review`         | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
+| `/sdlc-bug-report`          | `sdlc-bug-report`          | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
+| `/sdlc-generate-docs`       | `sdlc-generate-docs`       | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
 
-### How to Use Custom Agents
+### How to Use
 
-Depending on your platform (CommandCode, OpenCode, Antigravity, Copilot, ChatGPT Codex, Pi Dev, or Oh My Pi `omp`), you can usually invoke these agents via chat:
+Invoke the agent's underlying skill directly using the slash command syntax, and attach the required upstream documents using `@filename`:
 
 ```text
-@GodModeDev implement the shopping cart based on the plan
-@ExpertCodeReviewer review my service layer and suggest refactoring
-@ProductManagerPRD create a PRD for the user authentication module
+/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md
+/sdlc-code-review review my service layer based on @spec-shopping-cart.md and @plan-shopping-cart.md
+/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md
 ```
 
 ## 🤹 Skills
 
-Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `skills` directory (e.g., `.commandcode/skills`, `.agents/skills`, `.claude/skills`, `.opencode/skills`, `.codex/skills`, `.pi/skills`, or `.omp/skills`).
+Skills provide agents with specialized capabilities, workflows, and prompts. They are located in the `.agents/skills/` directory (or the platform-equivalent: `.claude/skills/`, `.cursor/skills/`).
 
 > [!IMPORTANT]
 > **Don't forget to copy `AGENTS.md`** to your project root after copying these skills. This file contains the core SDLC rules that all agents and skills must follow. See [Step #3 in Installation](#installation) for details.
 
-| Skill                                | Description                                                                                                                                                                                        |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **project-researcher**               | Scans, analyzes, and documents the existing repository architecture, directories, and file purposes into docs/ARCHITECTURE.md                                                                      |
-| **brainstorming-explorer**           | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                                                                                                    |
-| **memory-manager**                   | Standardized workflow for discovering, reading, writing, and compacting `memory.instructions.md` with a permanent Knowledge Base for cross-session decisions and fast-path discovery via AGENTS.md |
-| **karpathy-guidelines**              | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                                                                                                    |
-| **ponytail-lazy-senior-dev**         | Applies the "lazy senior developer" mindset, prioritizing code reuse, minimalism, YAGNI principles, and root-cause fixes                                                                           |
-| **omni-dev**                         | Omni-expert principal software architect. Enforces clean code, clean architecture, deep reasoning, mandatory testing, and strict anti-ambiguity protocols                                          |
-| **god-mode-dev**                     | God-Tier Autonomous Engineer for Coding/Implementation (Phase 6), executing code strictly based on `/spec/` and `/plan/`                                                                           |
-| **product-manager-prd**              | Workflow to generate comprehensive PRDs                                                                                                                                                            |
-| **clarification-analyst**            | Interrogates requirements for hidden assumptions and edge cases                                                                                                                                    |
-| **grilling**                         | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                                                                                              |
-| **specification-architect**          | Generates detailed technical specs based on clarified requirements                                                                                                                                 |
-| **ui-designer**                      | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive, non-templated interfaces with opinionated aesthetics, deliberate typography, and exact UX copy                                |
-| **artifact-consistency-checker**     | Validates traceability across documents to prevent missing coverage                                                                                                                                |
-| **planner-architect**                | Generates formal executable implementation plans                                                                                                                                                   |
-| **expert-code-reviewer**             | Code review and security audit against Clean Code principles                                                                                                                                       |
-| **bug-remediation-architect**        | Workflow for tracing root causes and generating bug-fix strategies                                                                                                                                 |
-| **diataxis-documentation-architect** | Audits and writes structured documentation based on Diátaxis Framework                                                                                                                             |
-| **fable-protocol**                   | An advanced, autonomous AI agent skill designed to execute complex, multi-step, and long-horizon tasks with high reliability and minimal human interruption                                        |
+### SDLC Phase Skills (Persona-Bound)
+
+These skills activate a specialized agent persona and lock the session to that phase:
+
+| Skill                      | Description                                                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **sdlc-explore-ideas**     | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                       |
+| **sdlc-draft-prd**         | Workflow to generate comprehensive PRDs with user stories and acceptance criteria                                     |
+| **sdlc-clarify-reqs**      | Interrogates requirements for hidden assumptions and edge cases                                                       |
+| **sdlc-define-specs**      | Generates detailed, machine-readable technical specs based on clarified requirements                                 |
+| **sdlc-audit-consistency** | Validates traceability across documents to prevent missing coverage and scope creep                                   |
+| **sdlc-plan-tasks**        | Generates formal, structured, and executable implementation plans                                                    |
+| **sdlc-write-code**        | God-Tier Autonomous Engineer for Coding/Implementation, executing code strictly based on `/spec/` and `/plan/`       |
+| **sdlc-code-review**       | Code review and security audit against Clean Code/SOLID principles                                                   |
+| **sdlc-bug-report**        | Workflow for tracing root causes and generating structured bug-fix plans                                             |
+| **sdlc-generate-docs**     | Audits and writes structured documentation based on the Diátaxis Framework                                           |
+| **sdlc-map-architecture**  | Scans, analyzes, and documents the existing repository architecture into `docs/ARCHITECTURE.md`                      |
+
+### Utility & Supplementary Skills (Cross-Cutting)
+
+These skills can be invoked by any agent at any time without triggering a session lock:
+
+| Skill                        | Description                                                                                                           |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **memory-manager**           | Standardized workflow for discovering, reading, writing, and compacting `memory.instructions.md` with a permanent Knowledge Base |
+| **karpathy-guidelines**      | Behavioral guidelines to reduce common LLM coding mistakes and encourage surgical modifications                       |
+| **ponytail-lazy-senior-dev** | Applies the "lazy senior developer" mindset, prioritizing code reuse, minimalism, and YAGNI principles               |
+| **omni-dev**                 | Omni-expert principal software architect. Enforces clean code, clean architecture, and strict anti-ambiguity protocols |
+| **ui-designer**              | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive interfaces with opinionated aesthetics           |
+| **grilling**                 | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                 |
+| **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption |
 
 ### Agent and Skill Configuration File Structure
 
@@ -201,15 +226,15 @@ In our architecture, skills aren't just passive sets of tools or instructions; t
 
 If a skill contains a `## 🎭 Dynamic Persona Activation` block in its `SKILL.md` file, merely invoking that skill will automatically override the default assistant's system prompt and transform it into the specialized agent assigned to that skill. 
 
-For example, directly executing the `product-manager-prd` skill will automatically activate the `@ProductManagerPRD` persona and its strict rules, meaning you don't necessarily have to `@mention` the custom agent manually!
+For example, directly executing the `sdlc-draft-prd` skill will automatically activate the Product Manager persona and its strict rules, meaning you don't need to separately configure an agent file!
 
 ### Session Locking & Utility Skills (Cross-Cutting)
 
-To prevent context bleeding and scope creep, our SDLC agents enforce **Strict Session Isolation**. Once an agent persona (e.g., `@SpecificationArchitect`) is activated in a chat session, that session is locked to that persona. 
+To prevent context bleeding and scope creep, our SDLC agents enforce **Strict Session Isolation**. Once an agent persona (e.g., `/sdlc-define-specs`) is activated in a chat session, that session is locked to that persona. 
 
 However, we have **Utility Skills** that can be invoked at any time without triggering a session lock clash:
 - **Persona-Bound Skills:** Contain a `## 🎭 Dynamic Persona Activation` block in their `SKILL.md`. Invoking them locks the session. If you try to invoke a different persona-bound skill in the same session, the agent will reject it to maintain focus.
-- **Utility Skills:** Skills without the persona activation block (like `grilling`, `memory-manager`, and `fable-protocol`). These can be invoked freely by any agent in the middle of a session. For example, `@ClarificationAnalyst` can invoke the `grilling` skill to interrogate a document without losing its analyst persona.
+- **Utility Skills:** Skills without the persona activation block (like `grilling`, `memory-manager`, and `fable-protocol`). These can be invoked freely by any agent in the middle of a session. For example, `/sdlc-clarify-reqs` can invoke the `grilling` skill to interrogate a document without losing its analyst persona.
 
 **Custom User Skills:** Any custom skill you create or download that lacks the `Dynamic Persona Activation` block will automatically be treated as a Utility Skill and can be freely called at any time.
 
@@ -217,15 +242,15 @@ However, we have **Utility Skills** that can be invoked at any time without trig
 
 We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
 
-- **Phase 0: Project Discovery**: Use `@BrainstormingExplorerAnalyst` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
-- **Phase PRD: Product Requirements**: Use `@ProductManagerPRD` to define user stories and acceptance criteria.
-- **Recurring Checkpoint: Clarification**: Use `@ClarificationAnalyst` to interrogate the PRD, Spec, or Plan to resolve ambiguities.
-- **Phase Spec: Technical Specification**: Use `@SpecificationArchitect` to generate machine-readable technical specs.
-- **Phase Plan: Implementation Planning**: Use `@PlannerArchitect` to generate executable implementation plans.
-- **Phase Code: Execution**: Use `@GodModeDev` for coding, ensuring strict testing (unit/widget/integration) after every phase.
-- **Recurring Checkpoint: Artifact Consistency Audit**: Use `@ArtifactConsistencyChecker` to validate traceability across PRD, Spec, and Plan to prevent scope creep.
-- **Supplementary: Code Review & Security Audit**: Use `@ExpertCodeReviewer` for code review and security audits. *(For bug fixes, use `@BugRemediationArchitect`)*
-- **Supplementary: User Documentation**: Use `@DiataxisDocumentationArchitect` for user documentation.
+- **Phase 0: Project Discovery**: Use `/sdlc-explore-ideas` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
+- **Phase PRD: Product Requirements**: Use `/sdlc-draft-prd` to define user stories and acceptance criteria.
+- **Recurring Checkpoint: Clarification**: Use `/sdlc-clarify-reqs` to interrogate the PRD, Spec, or Plan to resolve ambiguities.
+- **Phase Spec: Technical Specification**: Use `/sdlc-define-specs` to generate machine-readable technical specs.
+- **Phase Plan: Implementation Planning**: Use `/sdlc-plan-tasks` to generate executable implementation plans.
+- **Phase Code: Execution**: Use `/sdlc-write-code` for coding, ensuring strict testing (unit/widget/integration) after every phase.
+- **Recurring Checkpoint: Artifact Consistency Audit**: Use `/sdlc-audit-consistency` to validate traceability across PRD, Spec, and Plan to prevent scope creep.
+- **Supplementary: Code Review & Security Audit**: Use `/sdlc-code-review` for code review and security audits. *(For bug fixes, use `/sdlc-bug-report`)*
+- **Supplementary: User Documentation**: Use `/sdlc-generate-docs` for user documentation.
 
 > [!IMPORTANT]
 > - Complete and structured documentation must exist before coding begins.
@@ -238,18 +263,18 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 
 If the mandatory files are not provided in the prompt context, the agent will halt execution and ask you to provide them.
 
-| Agent / Phase                     | Mandatory Upstream Document(s)                                          |
-| --------------------------------- | ----------------------------------------------------------------------- |
-| `@ProductManagerPRD`              | Project Discovery Draft (OR existing PRD for updates)                   |
-| `@ClarificationAnalyst`           | PRD, Spec, OR Plan (depending on target)                                |
-| `@SpecificationArchitect`         | Approved PRD (OR existing Spec for updates)                             |
-| `@PlannerArchitect`               | Approved Technical Spec (OR existing Plan for updates)                  |
-| `@GodModeDev`                     | Implementation Plan OR Bug Remediation Plan                             |
-| `@ExpertCodeReviewer`             | Technical Spec AND Implementation Plan                                  |
-| `@ArtifactConsistencyChecker`     | PRD, Spec, AND Plan                                                     |
-| `@DiataxisDocumentationArchitect` | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
+| Slash Command / Phase           | Mandatory Upstream Document(s)                                          |
+| ------------------------------- | ----------------------------------------------------------------------- |
+| `/sdlc-draft-prd`               | Project Discovery Draft (OR existing PRD for updates)                   |
+| `/sdlc-clarify-reqs`            | PRD, Spec, OR Plan (depending on target)                                |
+| `/sdlc-define-specs`            | Approved PRD (OR existing Spec for updates)                             |
+| `/sdlc-plan-tasks`              | Approved Technical Spec (OR existing Plan for updates)                  |
+| `/sdlc-write-code`              | Implementation Plan OR Bug Remediation Plan                             |
+| `/sdlc-code-review`             | Technical Spec AND Implementation Plan                                  |
+| `/sdlc-audit-consistency`       | PRD, Spec, AND Plan                                                     |
+| `/sdlc-generate-docs`           | PRD, Technical Spec, Implementation Plan, OR Relevant Source Code files |
 
-*Note: Phase 0 (`@BrainstormingExplorerAnalyst`) and surgical bug analysis (`@BugRemediationArchitect`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
+*Note: Phase 0 (`/sdlc-explore-ideas`) and surgical bug analysis (`/sdlc-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
 ### 🎯 Use Cases
 
@@ -259,128 +284,101 @@ Following our strict sequential workflow, here is how you would develop a new fe
 
 **Phase 0: Project Discovery**
 ```text
-@BrainstormingExplorerAnalyst explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md
+/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md
 ```
 *(Note: `@business-brief.md` is a placeholder for any human-written file provided by you, such as raw meeting notes, client requirements, or a simple text file with your ideas. Once the Discovery Draft is finalized, use `memory-manager` to save context, then open a new chat session)*
 
 **Phase PRD: Requirements & Clarification**
 ```text
-@ProductManagerPRD create a PRD for the shopping cart feature based on @discovery-draft.md
+/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md
 ```
 *(Once the PRD is complete and approved, use the `memory-manager` skill to save context, then open a new chat session to prevent context bleeding)*
 
 ```text
-@ClarificationAnalyst interrogate the new @prd-shopping-cart.md for missing edge cases
+/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases
 ```
 *(Answer the Clarification Analyst's questions one by one. Once finished and the PRD is revised, use `memory-manager` to save context, then proceed to the Spec phase in a new chat session)*
 
 **Phase Spec: Technical Specification**
 ```text
-@SpecificationArchitect design a technical specification based on @prd-shopping-cart.md
+/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md
 ```
 *(Once the Spec is complete, use `memory-manager` and open a new chat session)*
 
 ```text
-@ClarificationAnalyst interrogate the new @spec-shopping-cart.md for any technical ambiguities
+/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities
 ```
 *(Once the Spec interrogation is finalized, use `memory-manager` and open a new chat session)*
 
 ```text
-@ArtifactConsistencyChecker verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md
+/sdlc-audit-consistency verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md
 ```
 *(If no PRD requirements are missing from the Spec, use `memory-manager` and open a new chat session)*
 
 **Phase Plan: Implementation Planning**
 ```text
-@PlannerArchitect create a step-by-step implementation plan based on @spec-shopping-cart.md
+/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md
 ```
 *(Once the Plan is created, use `memory-manager` and open a new chat session)*
 
 ```text
-@ClarificationAnalyst interrogate the @plan-shopping-cart.md for any unhandled edge cases
+/sdlc-clarify-reqs interrogate the @plan-shopping-cart.md for any unhandled edge cases
 ```
 *(Once all edge cases in the Plan are addressed, use `memory-manager` to save context, then open a new chat session to begin coding)*
 
 **Phase Code: Implementation & Review**
 ```text
-@GodModeDev implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass
+/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass
 ```
 *(Once code implementation and testing are complete, use `memory-manager` and open a new chat session)*
 
 ```text
-@ExpertCodeReviewer review the newly implemented service layer and suggest refactoring
+/sdlc-code-review review the newly implemented service layer and suggest refactoring
 ```
 *(Apply any refactoring suggestions if needed, use `memory-manager` to save context, then open a new chat session for documentation)*
 
 **Supplementary: Documentation & Bug Fixing**
 ```text
-@DiataxisDocumentationArchitect write an API reference guide based on @spec-shopping-cart.md and @cart.js
+/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js
 ```
 *(If bugs are discovered later, use the specialized bug remediation agent in a separate chat session)*
 
 ```text
-@BugRemediationArchitect analyze the bug report in @issue-123.md and propose a fix for @cart.js
+/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js
 ```
 
 #### Minor Fixes & Ad-hoc Tasks (SDLC Bypass)
 
-For small, surgical tasks (like renaming a function, tweaking CSS, or fixing a typo), forcing the full SDLC (PRD -> Spec -> Plan -> Code) is inefficient. You can use the "escape hatch" to bypass the SDLC protocol by explicitly commanding the agent.
+For small, surgical tasks (like renaming a function, tweaking CSS, or fixing a typo), forcing the full SDLC (PRD -> Spec -> Plan -> Code) is inefficient. You can use the "escape hatch" to bypass the SDLC protocol by explicitly telling the agent.
 
 **Example Prompt for Minor Tasks:**
 ```text
-@GodModeDev [Bypass SDLC] This is a minor fix. Please refactor the `calculateTotal` function in @cart.js to be more concise, and add some padding to the `.btn-checkout` class in @style.css.
+/sdlc-write-code This is a minor fix. Please refactor the `calculateTotal` function in @cart.js to be more concise, and add some padding to the `.btn-checkout` class in @style.css.
 ```
 *Note: Even when bypassing the SDLC, you are still highly encouraged to attach the specific source code files (e.g., `@cart.js`, `@style.css`) to provide the agent with the necessary context.*
 
-#### Advanced SDLC Workflow (Slash Commands & Context Injection)
+#### Quick Reference: Slash Command Cheat Sheet
 
-In many platforms (such as VS Code Copilot, Antigravity, OpenCode), you can invoke the agent's underlying skill directly using the slash command syntax (`/<skill-name>`). Furthermore, to strictly comply with the **Mandatory Context Injection Protocol**, you should explicitly attach the required upstream documents and relevant source code files using the `@filename` syntax.
+Use the slash command syntax (`/<skill-name>`) to invoke agents directly. Attach the required upstream documents using `@filename` to comply with the **Mandatory Context Injection Protocol**.
 
-**Phase 0: Project Discovery**
 ```text
-/brainstorming-explorer explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md
-```
-*(Note: `@business-brief.md` is a placeholder for any human-written file provided by you, such as raw meeting notes, client requirements, or a simple text file with your ideas)*
-
-**Phase PRD: Requirements & Clarification**
-```text
-/product-manager-prd create a PRD for the shopping cart feature based on @discovery-draft.md
-```
-```text
-/clarification-analyst interrogate the new @prd-shopping-cart.md for missing edge cases
-```
-
-**Phase Spec: Technical Specification & Audit**
-```text
-/specification-architect design a technical specification based on @prd-shopping-cart.md
-```
-```text
-/artifact-consistency-checker verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md
-```
-
-**Phase Plan: Implementation Planning**
-```text
-/planner-architect create a step-by-step implementation plan based on @spec-shopping-cart.md
-```
-
-**Phase Code: Execution & Coding**
-```text
-/god-mode-dev implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css
-```
-
-**Supplementary: Documentation & Bug Fixing**
-```text
-/diataxis-documentation-architect write an API reference guide based on @spec-shopping-cart.md and @cart.js
-```
-```text
-/bug-remediation-architect analyze the bug report in @issue-123.md and propose a fix for @cart.js
+/sdlc-explore-ideas   explore the codebase based on @business-brief.md
+/sdlc-draft-prd       create a PRD based on @discovery-draft.md
+/sdlc-clarify-reqs    interrogate @prd-shopping-cart.md for missing edge cases
+/sdlc-define-specs    design a tech spec based on @prd-shopping-cart.md
+/sdlc-audit-consistency verify @spec-shopping-cart.md vs @prd-shopping-cart.md
+/sdlc-plan-tasks      create an implementation plan based on @spec-shopping-cart.md
+/sdlc-write-code      implement the shopping cart based on @plan-shopping-cart.md
+/sdlc-code-review     review the service layer based on @spec-shopping-cart.md
+/sdlc-bug-report      analyze the bug in @issue-123.md and propose a fix
+/sdlc-generate-docs   write an API reference based on @spec-shopping-cart.md
 ```
 
 ### 🌟 Best Practices
 
-1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `@GodModeDev` for coding.
-2. **Platform-Specific Directories**: Place your rules, skills, and agents in the correct directories for your platform (`.commandcode`, `.opencode`, `.agents`, `.claude`, `.github`, `.codex`, `.pi`, or `.omp`).
-3. **Use Appropriate Agents**: Match the agent to the current SDLC phase (e.g., `@SpecificationArchitect` for specs, `@ExpertCodeReviewer` for code audits).
+1. **Adhere to the SDLC Sequence**: Never skip a phase. Ensure that PRD, Specs, and Plans are fully fleshed out before invoking `/sdlc-write-code` for coding.
+2. **Use the Correct Destination Directory**: Place your configuration in the correct directory for your platform: `.agents/` for standard platforms, `.claude/` for Claude Code, or `.cursor/` for Cursor.
+3. **Use Appropriate Slash Commands**: Match the command to the current SDLC phase (e.g., `/sdlc-define-specs` for specs, `/sdlc-code-review` for code audits).
 4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
 5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
 
@@ -410,22 +408,22 @@ graph TD
     Phase4[Phase Code: Execution]:::phase
     Phase5[Supplementary: User Documentation]:::phase
 
-    AgentBEA["@BrainstormingExplorerAnalyst<br/>(Explores Code & Brainstorms)"]:::agent
-    AgentPM["@ProductManagerPRD<br/>(Creates PRD)"]:::agent
-    AgentCA1["@ClarificationAnalyst<br/>(Interrogates PRD)"]:::agent
+    AgentBEA["/sdlc-explore-ideas<br/>(Explores Code and Brainstorms)"]:::agent
+    AgentPM["/sdlc-draft-prd<br/>(Creates PRD)"]:::agent
+    AgentCA1["/sdlc-clarify-reqs<br/>(Interrogates PRD)"]:::agent
 
-    AgentSA["@SpecificationArchitect<br/>(Creates Tech Spec)"]:::agent
-    AgentCA2["@ClarificationAnalyst<br/>(Interrogates Spec)"]:::agent
-    AgentACC["@ArtifactConsistencyChecker<br/>(Validates Traceability)"]:::agent
+    AgentSA["/sdlc-define-specs<br/>(Creates Tech Spec)"]:::agent
+    AgentCA2["/sdlc-clarify-reqs<br/>(Interrogates Spec)"]:::agent
+    AgentACC["/sdlc-audit-consistency<br/>(Validates Traceability)"]:::agent
 
-    AgentPA["@PlannerArchitect<br/>(Creates Implementation Plan)"]:::agent
-    AgentCA3["@ClarificationAnalyst<br/>(Interrogates Plan)"]:::agent
+    AgentPA["/sdlc-plan-tasks<br/>(Creates Implementation Plan)"]:::agent
+    AgentCA3["/sdlc-clarify-reqs<br/>(Interrogates Plan)"]:::agent
 
-    AgentGMD["@GodModeDev<br/>(Writes Code & Tests)"]:::agent
-    AgentECR["@ExpertCodeReviewer<br/>(Audits Code)"]:::agent
-    AgentBRA["@BugRemediationArchitect<br/>(Fixes Bugs)"]:::agent
+    AgentGMD["/sdlc-write-code<br/>(Writes Code and Tests)"]:::agent
+    AgentECR["/sdlc-code-review<br/>(Audits Code)"]:::agent
+    AgentBRA["/sdlc-bug-report<br/>(Fixes Bugs)"]:::agent
 
-    AgentDDA["@DiataxisDocumentationArchitect<br/>(Writes User Docs)"]:::agent
+    AgentDDA["/sdlc-generate-docs<br/>(Writes User Docs)"]:::agent
 
     %% Flow
     Phase0 --> AgentBEA
@@ -446,7 +444,7 @@ graph TD
 
     Phase4 --> AgentGMD
     AgentGMD --> AgentECR
-    AgentECR -.->|If issues/bugs| AgentBRA
+    AgentECR -.-> |If issues/bugs| AgentBRA
     AgentBRA -.-> AgentGMD
     AgentECR --> Phase5
 
@@ -459,111 +457,60 @@ graph TD
 [ Phase 0: Project Discovery ]
           |
           v
-  (@BrainstormingExplorerAnalyst)
+  (/sdlc-explore-ideas)
           |
           v
 [ Phase PRD: Product Requirements ]
           |
           v
-  (@ProductManagerPRD)
+  (/sdlc-draft-prd)
           |
           v
-  (@ClarificationAnalyst)
+  (/sdlc-clarify-reqs)
      (Interrogate PRD)
           |
           v
 [ Phase Spec: Technical Specification ]
           |
           v
-  (@SpecificationArchitect)
+  (/sdlc-define-specs)
           |
           v
-  (@ClarificationAnalyst)
+  (/sdlc-clarify-reqs)
      (Interrogate Spec)
           |
           v
-  (@ArtifactConsistencyChecker)
+  (/sdlc-audit-consistency)
      (Traceability)
           |
           v
 [ Phase Plan: Implementation Planning ]
           |
           v
-  (@PlannerArchitect)
+  (/sdlc-plan-tasks)
           |
           v
-  (@ClarificationAnalyst)
+  (/sdlc-clarify-reqs)
      (Interrogate Plan)
           |
           v
 [ Phase Code: Execution ]
           |
           v
-  (@GodModeDev) ───────────────────> (@ExpertCodeReviewer)
+  (/sdlc-write-code) ─────────────────> (/sdlc-code-review)
           ^                                      |
           |                                      | (If bugs/issues)
           |                                      v
-          └───────────────────────── (@BugRemediationArchitect)
+          └───────────────────────── (/sdlc-bug-report)
           |
           v
 [ Supplementary: User Documentation ]
           |
           v
-  (@DiataxisDocumentationArchitect)
+  (/sdlc-generate-docs)
 ```
 
-## 🚀 NEW: Advanced Skills SDLC Workflow (`agent-skills-sdlc`)
 
-We have introduced a highly opinionated, structured workflow housed entirely in the `agent-skills-sdlc/` directory. This "Advanced SDLC Edition" replaces the manual `@AgentName` invocations with a streamlined set of **Slash Commands** designed specifically for platforms like Google Antigravity, OpenCode, and Copilot.
-
-If you installed this workflow using Option 9 in the installation script (or copied the `.agents` folder from `agent-skills-sdlc/`), you now have access to these dedicated SDLC slash commands.
-
-> [!IMPORTANT]
-> When setting up this Advanced SDLC workflow manually, **you must also copy the `AGENTS.md` file located inside the `agent-skills-sdlc/` folder** to your project root (do not use the standard `AGENTS.md` from the main repository). 
-> After copying, open the file and update the `[Your Application Name]` and `[Project Description]` placeholders, and adjust the language preferences in the `## Communication` section as needed.
-
-### SDLC Slash Commands Table
-
-| Slash Command               | SDLC Phase / Best For                                               |
-| --------------------------- | ------------------------------------------------------------------- |
-| `/sdlc-explore-ideas`       | Phase 0: Project Discovery, exploring codebase, generating raw drafts |
-| `/sdlc-draft-prd`           | Phase PRD: Feature planning, writing user stories, and acceptance criteria |
-| `/sdlc-clarify-reqs`        | Recurring Checkpoint: Finding ambiguities in PRD/Specs/Plans        |
-| `/sdlc-define-specs`        | Phase Spec: Writing detailed, machine-readable tech specs           |
-| `/sdlc-audit-consistency`   | Recurring Checkpoint: Validating PRD vs Spec vs Plan traceability   |
-| `/sdlc-plan-tasks`          | Phase Plan: Generating formal, structured implementation plans      |
-| `/sdlc-write-code`          | Phase Code: Coding, implementation, and surgical modifications      |
-| `/sdlc-code-review`         | Supplementary: Clean Code/SOLID audits and refactoring plans        |
-| `/sdlc-bug-report`          | Supplementary: Root cause analysis and structured bug-fix plans     |
-| `/sdlc-generate-docs`       | Supplementary: Writing tutorials, how-to guides, and reference docs |
-
-### Example Usage (Advanced SDLC Workflow)
-
-Using the new SDLC slash commands makes context injection straightforward and enforces strict phase isolation.
-
-**Phase PRD: Requirements**
-```text
-/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md
-```
-
-**Phase Spec: Technical Specification**
-```text
-/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md
-```
-```text
-/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md
-```
-
-**Phase Code: Execution & Coding**
-```text
-/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css
-```
-
-**Minor Fixes (Bypassing SDLC)**
-For quick edits, you can bypass the SDLC requirements directly:
-```text
-/sdlc-write-code Please refactor the `calculateTotal` function in @cart.js. This is a minor fix, bypass the SDLC plan requirement.
-```
 
 ## 🌟 Supplementary Skills
 
@@ -625,7 +572,7 @@ You can implement customizations incrementally, starting with the simplest optio
 
 Create custom instructions for consistent results across all your chat interactions. Custom instructions let you define common guidelines or rules for tasks like generating code, performing code reviews, or generating commit messages.
 
-**File location**: `.commandcode/instructions/`, `.github/instructions/`, `.opencode/instructions/`, or `.agents/rules/`
+**File location**: `.agents/instructions/` (or the platform-equivalent: `.claude/instructions/`, `.cursor/instructions/`)
 
 **Format**:
 
@@ -671,53 +618,27 @@ You can use AI assistants to help create custom instructions based on programmin
 
 3. **Review and customize** the generated instruction file to match your team's needs
 
-4. **Save** the file to your platform's instructions directory (e.g., `.github/instructions/`) with a descriptive name (e.g., `eloquent-js-codestyle.instructions.md`)
+4. **Save** the file to your platform's instructions directory (e.g., `.agents/instructions/`) with a descriptive name (e.g., `eloquent-js-codestyle.instructions.md`)
 
 > [!TIP]
 > This method is especially useful for creating language-specific or framework-specific instructions based on authoritative sources.
 
-### 2. Add Task Automation (Prompt Files)
+### 2. Create Specialized Workflows (Custom Agents / Skills)
 
-Prompt files let you define reusable prompts for common and repeatable development tasks. They're standalone prompts you can run directly in chat.
+Custom agents are specialist assistants for specific roles or tasks. In our architecture, you define them as **Skills** that include a dynamic persona activation block.
 
-**File location**: `.commandcode/prompts/`, `.github/prompts/`, `.opencode/prompts/`, or `.agents/prompts/`
+**File location**: `.agents/skills/<skill-name>/` (or the platform-equivalent: `.claude/skills/`, `.cursor/skills/`)
 
-**Format**:
+**Format**: Create a `SKILL.md` file inside the skill folder:
 
-```markdown
----
-agent: "agent"
-description: "Create technical specifications"
----
-
-## Role
-You are a technical architect...
-
-## Task
-1. Analyze the feature requirements
-2. Create a detailed technical specification
-```
-
-**Use prompt files to**:
-
-- Create reusable prompts for common coding tasks (scaffolding components, generating tests)
-- Define prompts for code reviews
-- Create step-by-step guides for complex processes
-- Generate implementation plans or architectural designs
-
-### 3. Create Specialized Workflows (Custom Agents)
-
-Custom agents are specialist assistants for specific roles or tasks. Within a custom agent file, you describe its scope, capabilities, which tools it can access, and preferred language model.
-
-**File location**: `.commandcode/agents/`, `.github/agents/`, `.opencode/agents/`, or `.agents/rules/`
-
-**Format**:
-
-```markdown
+```yaml
 ---
 description: "Frontend Developer Specialist"
-tools: ["edit", "search", "runCommands"]
 ---
+```
+
+```markdown
+## 🎭 Dynamic Persona Activation
 
 # Frontend Developer Agent
 
@@ -726,11 +647,11 @@ You are a frontend development specialist focusing on React and TypeScript...
 
 **Use custom agents to**:
 
-- Create a planning agent with read-only access for implementation plans
+- Create a planning agent for implementation plans
 - Define a research agent that can reach external resources
 - Create specialized agents for specific domains (frontend, backend, database, etc.)
 
-### 4. Extend Capabilities (MCP and Tools)
+### 3. Extend Capabilities (MCP and Tools)
 
 Connect external services and specialized tools through Model Context Protocol (MCP) to extend chat capabilities beyond code.
 
@@ -739,7 +660,7 @@ Connect external services and specialized tools through Model Context Protocol (
 - Connect database tools to query and analyze data
 - Integrate with external APIs for real-time information
 
-### 5. Choose the Right Model (Language Models)
+### 4. Choose the Right Model (Language Models)
 
 Switch between different AI models optimized for specific tasks using the model picker in chat.
 
@@ -768,6 +689,7 @@ Please feel free to submit a Pull Request.
 - [Awesome Copilot](https://github.com/github/awesome-copilot) - A curated list of GitHub Copilot resources, extensions, and examples
 - [VS Code BYOK Documentation](https://code.visualstudio.com/docs/agent-customization/language-models) - Official guide for bringing your own language model keys
 - [BYOK Config Template](byok-copilot-config/) - Pre-built `chatLanguageModels.json` template included in this repository
+- [AgentSkills](https://agentskills.io/home) - Guide and reference for creating agent skills
 
 ## ⭐ Support
 
