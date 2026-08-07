@@ -54,9 +54,31 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 
 ### Installation
 
-Choose either the **Automated (recommended)** or **Manual** installation method:
+Choose from **Agentic (`npx skills`)**, **Automated Script**, or **Manual** installation methods:
 
-#### Method 1: Automated Installation (One-Liner)
+#### Method 1: Agentic Installation via `npx skills` (Recommended for AI Agents)
+
+Install the bootstrapper skill using `npx skills` (works with Antigravity, Cursor, Claude Code, Copilot, etc.):
+
+```bash
+# Using GitHub Shorthand (Short & Recommended)
+npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init
+
+# Or using full GitHub URL
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/.agents/skills/sdlc-init
+```
+
+Then in your AI Assistant chat window, run:
+
+```text
+/sdlc-init initialize this project
+```
+
+The bootstrapper agent will autonomously download `AGENTS.md` and `.agents/` configuration, preserve existing memory files, merge global rules, and set up your project.
+
+---
+
+#### Method 2: Automated Installation (One-Liner)
 
 Run the following command in your terminal inside your project root directory:
 
@@ -143,6 +165,7 @@ Custom agents are specialized AI assistants for specific development roles and t
 
 | Slash Command             | Skill                                                                                                                    | Description                                          | Best For                                                            |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `/sdlc-init`              | `sdlc-init`                                                                                                              | Autonomous project bootstrapper                      | Initializing AGENTS.md, rules, and .agents architecture             |
 | `/sdlc-explore-ideas`     | `sdlc-explore-ideas`                                                                                                     | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
 | `/sdlc-draft-prd`         | `sdlc-draft-prd`                                                                                                         | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
 | `/sdlc-clarify-reqs`      | `sdlc-clarify-reqs`                                                                                                      | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
@@ -177,6 +200,7 @@ These skills activate a specialized agent persona and lock the session to that p
 
 | Skill                      | Description                                                                                                    |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **sdlc-init**              | Autonomous bootstrapper that initializes AGENTS.md, .agents rules, and multi-platform structures               |
 | **sdlc-explore-ideas**     | Systematic codebase exploration, architectural critique, and Project Discovery Draft generation                |
 | **sdlc-draft-prd**         | Workflow to generate comprehensive PRDs with user stories and acceptance criteria                              |
 | **sdlc-clarify-reqs**      | Interrogates requirements for hidden assumptions and edge cases                                                |
@@ -362,6 +386,7 @@ For small, surgical tasks (like renaming a function, tweaking CSS, or fixing a t
 Use the slash command syntax (`/<skill-name>`) to invoke agents directly. Attach the required upstream documents using `@filename` to comply with the **Mandatory Context Injection Protocol**.
 
 ```text
+/sdlc-init            initialize project architecture & AGENTS.md
 /sdlc-explore-ideas   explore the codebase based on @business-brief.md
 /sdlc-draft-prd       create a PRD based on @discovery-draft.md
 /sdlc-clarify-reqs    interrogate @prd-shopping-cart.md for missing edge cases
