@@ -220,20 +220,51 @@
               <!-- Custom Airbnb-style Nav Tabs -->
               <ul class="nav nav-tabs border-0 mb-4" id="installTabs" role="tablist" style="border-bottom: 1px solid var(--colors-hairline) !important;">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active install-tab-btn px-0 pb-3 me-4 border-0 bg-transparent fw-semibold" id="automated-tab" data-bs-toggle="tab" data-bs-target="#automated-pane" type="button" role="tab" aria-controls="automated-pane" aria-selected="true" style="color: var(--colors-ink); border-bottom: 2px solid var(--colors-ink); margin-bottom: -1px;" data-i18n="install_method1_tab">
-                    Metode 1: Otomatis (Rekomendasi)
+                  <button class="nav-link active install-tab-btn px-0 pb-3 me-4 border-0 bg-transparent fw-semibold" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills-pane" type="button" role="tab" aria-controls="skills-pane" aria-selected="true" style="color: var(--colors-ink); border-bottom: 2px solid var(--colors-ink); margin-bottom: -1px;" data-i18n="install_method0_tab">
+                    Metode 1: Agentic (npx skills) 🌟
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link install-tab-btn px-0 pb-3 me-4 border-0 bg-transparent fw-semibold" id="automated-tab" data-bs-toggle="tab" data-bs-target="#automated-pane" type="button" role="tab" aria-controls="automated-pane" aria-selected="false" style="color: var(--colors-muted); border-bottom: 2px solid transparent;" data-i18n="install_method1_tab">
+                    Metode 2: Skrip Otomatis
                   </button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link install-tab-btn px-0 pb-3 border-0 bg-transparent fw-semibold" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual-pane" type="button" role="tab" aria-controls="manual-pane" aria-selected="false" style="color: var(--colors-muted); border-bottom: 2px solid transparent;" data-i18n="install_method2_tab">
-                    Metode 2: Manual
+                    Metode 3: Manual
                   </button>
                 </li>
               </ul>
 
               <div class="tab-content" id="installTabsContent">
+                <!-- Agentic Skills Pane -->
+                <div class="tab-pane fade show active" id="skills-pane" role="tabpanel" aria-labelledby="skills-tab">
+                  <p class="text-body-custom mb-3" data-i18n="install_method0_desc">
+                    Instal bootstrapper skill <code>sdlc-init</code> langsung menggunakan CLI <code>npx skills</code>:
+                  </p>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method0_step1">1. Jalankan perintah di Terminal proyek Anda:</h5>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init</code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init">Copy</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method0_step2">2. Jalankan perintah di obrolan Asisten AI Anda:</h5>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink"><code>/sdlc-init setup project ini</code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="/sdlc-init setup project ini">Copy</button>
+                    </div>
+                  </div>
+                  <div class="alert alert-info small py-2 px-3 mt-4 mb-0" data-i18n="install_skills_info">
+                    <strong>Otonom & Aman:</strong> Agen AI akan mengunduh <code>AGENTS.md</code> dan folder <code>.agents/</code> secara otonom, menggabungkan aturan global, serta mengamankan catatan <code>memory.instructions.md</code> Anda secara otomatis.
+                  </div>
+                </div>
+
                 <!-- Automated Pane -->
-                <div class="tab-pane fade show active" id="automated-pane" role="tabpanel" aria-labelledby="automated-tab">
+                <div class="tab-pane fade" id="automated-pane" role="tabpanel" aria-labelledby="automated-tab">
                   <p class="text-body-custom mb-4" data-i18n="install_method1_desc">
                     Jalankan satu perintah (one-liner) di terminal pada direktori root proyek Anda:
                   </p>
