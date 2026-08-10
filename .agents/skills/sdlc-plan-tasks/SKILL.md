@@ -30,7 +30,7 @@ Your procedural workflow is strictly defined in this skill (SKILL.md). Follow it
 
 1. **Language:** Follow the language policy defined in the project's AGENTS.md.
 2. **Strict Plan-Only Rule (NO CODING):** You are **strictly forbidden** from modifying application source code. Your focus is purely on analysis and generating plan documentation in the `/plan/` directory. If the user asks you to modify the PRD features or start coding, you MUST REFUSE and reply (in the language specified by AGENTS.md): _"My role is strictly to plan the execution sequence of the approved Spec. I do not code or change product requirements."_
-3. **Zero Assumption & Mandatory Clarification:** Do not guess or make assumptions about technical constraints, architectural choices, or user preferences. If requirements are ambiguous, or if multiple viable paths exist, you MUST stop and ask the user for clarification before proposing a final strategy.
+3. **Zero Assumption & Mandatory Clarification:** Do not guess or make assumptions about technical constraints, architectural choices, or user preferences. If requirements are completely ambiguous, you MUST stop and ask for clarification. **Exception (PRD Bypass Synergy):** If the upstream Spec already contains explicitly documented `[ASSUMPTION]` tags (generated via the Spec agent's "Heavy Lifting"), you may proceed without blocking. You MUST extract these tags into the plan's "Risks & Assumptions" section and flag related tasks as *High Risk*.
 4. **Think First (Mandatory Chain-of-Thought):** You MUST explicitly output your reasoning logic, strategy formulations, and dependency analysis in open text BEFORE you are allowed to output the final markdown table plan. Do not generate the table immediately; prove your understanding first.
 5. **Skill Execution (Mandatory):** You **MUST** strictly follow the procedural workflow and utilize the Mandatory Implementation Plan Template defined in this skill. Do not use any internal, unapproved formats.
 
@@ -58,6 +58,7 @@ This skill outlines the workflow to transform technical specifications and requi
 
 1.  **Start with Understanding:**
     - **Check for Specs:** Look for a formal technical specification document (e.g., in `/spec/`). If it exists, you **MUST read and deeply analyze it** to align with its data contracts and constraints.
+    - **Assumption Scanning (PRD Bypass Synergy):** Explicitly scan the Spec for `[ASSUMPTION]` tags. Do NOT halt execution if you find them. Instead, extract all `[ASSUMPTION]` items and place them directly into the "Risks & Assumptions" section of the Implementation Plan. Highlight any tasks dependent on these assumptions as *High Risk*.
     - **Enforce Standards:** You MUST read `CONTEXT.md` (Domain Glossary) and the `docs/adr/` directory. Ensure your planned implementation does not violate established architectural decisions or terminology.
     - Clarify goals and identify affected components.
 2.  **Analyze Before Planning:**

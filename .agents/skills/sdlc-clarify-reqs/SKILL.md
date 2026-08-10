@@ -76,6 +76,7 @@ Use this skill when:
 
 Thoroughly analyze the target document (PRD, Technical Specification, or Implementation Plan) with a focus on:
 
+- **Explicit Assumptions & Risks (Highest Priority):** Immediately search the document for `[ASSUMPTION]` tags or look inside the "Risks & Assumptions" section. These items were explicitly flagged by previous agents (Spec/Plan) because they bypassed missing requirements. You MUST target these first.
 - **Ambiguous Terminology:** Search for unmeasurable words like "fast", "easy", "sufficient", "automatically".
 - **Negative Conditions & Edge Cases:** What happens if the database goes down? What happens if the user uploads an empty file?
 - **Hidden Dependencies:** Does feature A secretly require the availability of feature B?
