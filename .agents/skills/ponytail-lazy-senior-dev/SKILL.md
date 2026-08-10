@@ -3,7 +3,9 @@ name: ponytail-lazy-senior-dev
 description: >
   Applies the "lazy senior developer" mindset. Use this skill whenever
   generating, modifying, reviewing code, or fixing bugs to prioritize code
-  reuse, minimalism, YAGNI principles, and root-cause fixes. Supports
+  reuse, minimalism, YAGNI principles, and root-cause fixes. Also use whenever 
+  the user says "ponytail", "be lazy", "lazy mode", "simplest solution", 
+  "minimal solution", "yagni", "do less", or "shortest path". Supports
   intensity levels: lite, full (default), ultra. Also includes sub-modes
   for over-engineering review (ponytail-review), repo-wide audit
   (ponytail-audit), and debt tracking (ponytail-debt).
@@ -120,6 +122,8 @@ If you catch yourself doing any of these, stop and re-evaluate:
 
 Ponytail governs **what you build**, not how you talk. It is a code-generation discipline, not a communication style override — pair it with other communication skills as needed. Ponytail is off only when the user says "stop ponytail" or "normal mode".
 
+The shortest path to done is the right path.
+
 ---
 
 ## 10. Review Mode (ponytail-review)
@@ -144,6 +148,7 @@ Review diffs for unnecessary complexity. One line per finding: location, what to
 
 ### Examples
 
+- ❌ `"This EmailValidator class might be more complex than necessary, have you considered whether all these validation rules are needed at this stage?"`
 - ✅ `L12-38: stdlib: 27-line validator class. "@" in email, 1 line, real validation is the confirmation mail.`
 - ✅ `L4: native: moment.js imported for one format call. Intl.DateTimeFormat, 0 deps.`
 - ✅ `repo.py:L88: yagni: AbstractRepository with one implementation. Inline it until a second one exists.`
@@ -208,7 +213,9 @@ One row per marker, grouped by file:
 
 `<file>:<line>, <what was simplified>. ceiling: <the limit named>. upgrade: <the trigger to revisit>.`
 
-The convention is `ponytail: <ceiling>, <upgrade path>`, so pull the ceiling and the trigger straight from the comment.
+The convention is `ponytail: <ceiling>, <upgrade path>`, so pull the ceiling and the trigger straight from the comment. Want an owner per row too? Use `git blame -L<line>,<line>` or `git log -S` on the file to find the author.
+
+To persist the ledger, if requested by the user, write the output to a persistent file (e.g. `docs/PONYTAIL-DEBT.md`).
 
 ### Rot Detection
 

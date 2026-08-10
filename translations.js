@@ -72,6 +72,7 @@ window.translations = {
     agent_group_1: "Phase 1-3: Strategy & Specs",
     agent_group_2: "Phase 4: Execution & Review",
     agent_group_3: "Phase 5: Documentation",
+    agent_group_4: "Supplementary (Bypass)",
     agent_label_best: "Best For:",
     agent_label_prompt: "Usage Example:",
     
@@ -105,6 +106,9 @@ window.translations = {
     agent_dda_desc: "Technical documentation specialist who writes clear user manuals, API guides, and reference documents following the Diátaxis framework.",
     agent_dda_best: "Writing user-facing manuals, API documentations, and clear system explanations.",
     
+    agent_cj_desc: "A fast, minimalist agent combining micro-planning and execution into a single workflow for ad-hoc fixes and minor refactors outside the strict SDLC process.",
+    agent_cj_best: "Quick bug fixes, cleaning up code, and doing minor refactoring that doesn't warrant full PRD-Spec-Plan paperwork.",
+    
     // Examples & Stepper
     examples_title: "Workflow & Examples",
     examples_desc: "Understand how the software development lifecycle (SDLC) is executed sequentially using a suite of AI agents.",
@@ -130,7 +134,7 @@ window.translations = {
     
     panel_2_title: "Phase 2: Technical Specification",
     panel_2_desc: "Design detailed architecture, write data schemas, define APIs, and record key architectural decisions (ADRs) while verifying traceability.",
-    panel_2_input: "Approved PRD",
+    panel_2_input: "Approved PRD (or User Brief)",
     
     panel_3_title: "Phase 3: Implementation Planning",
     panel_3_desc: "Break down technical specifications into strategic implementation tasks and create a safe coding checklist.",
@@ -151,7 +155,7 @@ window.translations = {
     protocol_th_doc: "Required Supporting Documents",
     protocol_pm_doc: "Project Discovery Draft (OR existing PRD for updates)",
     protocol_ca_doc: "PRD, Spec, OR Plan (depending on target)",
-    protocol_sa_doc: "Approved PRD (OR existing Spec for updates)",
+    protocol_sa_doc: "Approved PRD, OR Comprehensive User Brief (if skipping PRD)",
     protocol_pa_doc: "Approved Technical Spec (OR existing Plan for updates)",
     protocol_gmd_doc: "Implementation Plan OR Bug Remediation Plan",
     protocol_ecr_doc: "Technical Spec AND Implementation Plan",
@@ -168,6 +172,7 @@ window.translations = {
     prompt_ecr_1: '/sdlc-code-review review my service layer and suggest refactoring',
     prompt_bra_1: '/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js',
     prompt_dda_1: '/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md',
+    prompt_cj_1: '/code-janitor please refactor calculateTotal in @cart.js to be more concise',
     prompt_bea_2: '/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md',
     prompt_pm_2: '/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md',
     prompt_sa_2: '/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md',
@@ -185,9 +190,9 @@ window.translations = {
     prompt_bra_3: '/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js',
 
     bypass_title: "SDLC Bypass (Minor Tasks)",
-    bypass_desc1: "For minor emergency fixes (e.g., updating text, tweaking CSS padding, or fixing typos), you can bypass the full SDLC using the <code>[Bypass SDLC]</code> tag.",
+    bypass_desc1: "For minor emergency fixes (e.g., updating text, tweaking CSS padding, or fixing typos), you can bypass the full SDLC bureaucracy by using the specialized <code>/code-janitor</code> command.",
     bypass_desc2: "Even when bypassing, it is recommended to attach the target file in your chat prompt to provide appropriate context.",
-    bypass_code_sample: "/sdlc-write-code [Bypass SDLC] Please fix the checkout button padding in @style.css for consistency.",
+    bypass_code_sample: "/code-janitor Please fix the checkout button padding in @style.css for consistency.",
     
     // Use Case Tabs
     uc_tab_sdlc: "End-to-End SDLC (Slash Commands)",
@@ -304,6 +309,7 @@ window.translations = {
     agent_group_1: "Fase 1-3: Strategi & Spesifikasi",
     agent_group_2: "Fase 4: Eksekusi & Review",
     agent_group_3: "Fase 5: Dokumentasi",
+    agent_group_4: "Suplemen (Bypass)",
     agent_label_best: "Paling Cocok Untuk:",
     agent_label_prompt: "Contoh Prompt Penggunaan:",
     
@@ -337,6 +343,9 @@ window.translations = {
     agent_dda_desc: "Penulis dokumentasi teknis profesional yang mengikuti kerangka kerja Diátaxis (Tutorial, Panduan, Referensi, Penjelasan).",
     agent_dda_best: "Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.",
     
+    agent_cj_desc: "Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.",
+    agent_cj_best: "Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.",
+    
     // Examples & Stepper
     examples_title: "Alur Kerja & Contoh",
     examples_desc: "Pahami bagaimana siklus hidup pengembangan perangkat lunak (SDLC) dijalankan menggunakan rangkaian agen AI secara sekuensial.",
@@ -362,7 +371,7 @@ window.translations = {
     
     panel_2_title: "Phase 2: Technical Specification (Spesifikasi Teknis)",
     panel_2_desc: "Rancang arsitektur detail, buat skema data, definisikan API, dan catat keputusan arsitektur penting (ADR) serta pastikan ketertelusurannya dengan PRD.",
-    panel_2_input: "Approved PRD",
+    panel_2_input: "Approved PRD (atau User Brief)",
     
     panel_3_title: "Phase 3: Implementation Planning (Rencana Implementasi)",
     panel_3_desc: "Pecah spesifikasi teknis menjadi langkah-langkah implementasi strategis dan buat checklist rencana coding yang aman.",
@@ -383,7 +392,7 @@ window.translations = {
     protocol_th_doc: "Dokumen Pendukung Wajib",
     protocol_pm_doc: "Project Discovery Draft (atau PRD yang ada)",
     protocol_ca_doc: "PRD, Spec, ATAU Plan (tergantung target)",
-    protocol_sa_doc: "PRD yang telah disetujui",
+    protocol_sa_doc: "PRD yang disetujui, ATAU User Brief komprehensif (jika bypass PRD)",
     protocol_pa_doc: "Spesifikasi Teknis yang disetujui",
     protocol_gmd_doc: "Rencana Implementasi ATAU Rencana Perbaikan Bug",
     protocol_ecr_doc: "Spesifikasi Teknis DAN Rencana Implementasi",
@@ -400,6 +409,7 @@ window.translations = {
     prompt_ecr_1: '/sdlc-code-review tinjau lapisan layanan (service layer) saya dan berikan saran refactoring',
     prompt_bra_1: '/sdlc-bug-report analisis laporan bug di @issue-123.md dan usulkan perbaikan untuk @cart.js',
     prompt_dda_1: '/sdlc-generate-docs tulis panduan referensi API berdasarkan @spec-shopping-cart.md',
+    prompt_cj_1: '/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas',
     prompt_bea_2: '/sdlc-explore-ideas telusuri basis kode ini dan tulis draf penemuan untuk fitur keranjang belanja baru berdasarkan @business-brief.md',
     prompt_pm_2: '/sdlc-draft-prd buat PRD untuk fitur keranjang belanja berdasarkan @discovery-draft.md',
     prompt_sa_2: '/sdlc-define-specs rancang spesifikasi teknis berdasarkan @prd-shopping-cart.md',
@@ -417,9 +427,9 @@ window.translations = {
     prompt_bra_3: '/sdlc-bug-report analisis laporan bug di @issue-123.md dan usulkan perbaikan untuk @cart.js',
 
     bypass_title: "Bypass SDLC (Pekerjaan Minor)",
-    bypass_desc1: "Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati tahapan SDLC penuh menggunakan bendera penunjuk <code>[Bypass SDLC]</code>.",
+    bypass_desc1: "Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati birokrasi SDLC penuh menggunakan perintah khusus <code>/code-janitor</code>.",
     bypass_desc2: "Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.",
-    bypass_code_sample: "/sdlc-write-code [Bypass SDLC] Tolong perbaiki padding tombol checkout di @style.css agar konsisten.",
+    bypass_code_sample: "/code-janitor Tolong perbaiki padding tombol checkout di @style.css agar konsisten.",
     
     // Use Case Tabs
     uc_tab_sdlc: "End-to-End SDLC (Slash Commands)",

@@ -176,6 +176,7 @@ Custom agents are specialized AI assistants for specific development roles and t
 | `/sdlc-code-review`       | `sdlc-code-review`                                                                                                       | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
 | `/sdlc-bug-report`        | `sdlc-bug-report`                                                                                                        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
 | `/sdlc-generate-docs`     | `sdlc-generate-docs`                                                                                                     | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
+| `/code-janitor`           | `code-janitor`                                                                                                           | Ad-hoc Bug Fixer & Refactorer                        | Quick fixes, cleanups, and minor refactors bypassing the SDLC       |
 
 ### How to Use
 
@@ -212,6 +213,7 @@ These skills activate a specialized agent persona and lock the session to that p
 | **sdlc-bug-report**        | Workflow for tracing root causes and generating structured bug-fix plans                                       |
 | **sdlc-generate-docs**     | Audits and writes structured documentation based on the Diátaxis Framework                                     |
 | **sdlc-map-architecture**  | Scans, analyzes, and documents the existing repository architecture into `docs/ARCHITECTURE.md`                |
+| **code-janitor**           | Persona-bound bypass agent for fast, ad-hoc fixes and minor refactors outside the strict SDLC process          |
 
 ### Utility & Supplementary Skills (Cross-Cutting)
 
@@ -264,7 +266,7 @@ However, we have **Utility Skills** that can be invoked at any time without trig
 
 ## 🔄 Workflow & Methodology (Spec Kit Inspired)
 
-We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Development must follow a sequential order, with no skipped phases:
+We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Generally, development must follow a sequential order. The PRD phase can be bypassed if the user provides a comprehensive brief:
 
 - **Phase 0: Project Discovery**: Use `/sdlc-explore-ideas` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
 - **Phase PRD: Product Requirements**: Use `/sdlc-draft-prd` to define user stories and acceptance criteria.
@@ -291,7 +293,7 @@ If the mandatory files are not provided in the prompt context, the agent will ha
 | ------------------------- | ----------------------------------------------------------------------- |
 | `/sdlc-draft-prd`         | Project Discovery Draft (OR existing PRD for updates)                   |
 | `/sdlc-clarify-reqs`      | PRD, Spec, OR Plan (depending on target)                                |
-| `/sdlc-define-specs`      | Approved PRD (OR existing Spec for updates)                             |
+| `/sdlc-define-specs`      | Approved PRD, OR Comprehensive User Brief (if skipping PRD), OR existing Spec |
 | `/sdlc-plan-tasks`        | Approved Technical Spec (OR existing Plan for updates)                  |
 | `/sdlc-write-code`        | Implementation Plan OR Bug Remediation Plan                             |
 | `/sdlc-code-review`       | Technical Spec AND Implementation Plan                                  |
@@ -397,6 +399,7 @@ Use the slash command syntax (`/<skill-name>`) to invoke agents directly. Attach
 /sdlc-code-review     review the service layer based on @spec-shopping-cart.md
 /sdlc-bug-report      analyze the bug in @issue-123.md and propose a fix
 /sdlc-generate-docs   write an API reference based on @spec-shopping-cart.md
+/code-janitor         fix typos in @style.css or do minor refactoring
 ```
 
 ### 🌟 Best Practices

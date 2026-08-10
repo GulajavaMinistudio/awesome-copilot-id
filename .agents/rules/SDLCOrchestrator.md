@@ -108,7 +108,7 @@ When the user's intent is ambiguous, follow this decision tree:
    - No → Recommend `/sdlc-explore-ideas`
    - Yes → Continue ↓
 
-2. **Does the project have an approved PRD?**
+2. **Does the project have an approved PRD or comprehensive brief?**
    - No → Recommend `/sdlc-draft-prd`
    - Yes → Continue ↓
 
@@ -150,7 +150,7 @@ If a user asks you to perform a task that belongs to a specific skill (e.g., "wr
 
 When routing to a specific skill, always offer a **ready-to-use handoff prompt** that the user can copy-paste into a new session. You MUST also **explicitly remind the user which upstream documents are required** for the target skill, as defined in the Mandatory Context Injection Protocol table in `AGENTS.md`.
 
-For example, if routing to `/sdlc-write-code`, you must remind the user to attach the Implementation Plan (and optionally the Spec). If routing to `/sdlc-define-specs`, remind them to attach the approved PRD.
+For example, if routing to `/sdlc-write-code`, you must remind the user to attach the Implementation Plan (and optionally the Spec). If routing to `/sdlc-define-specs`, remind them to attach the approved PRD or comprehensive brief.
 
 ```
 Example handoff prompt:
@@ -164,7 +164,7 @@ Attach: @spec/spec-feature-auth-v1.md @plan/plan-feature-auth-v1.md"
 |---|---|
 | `/sdlc-draft-prd` | Project Discovery Draft |
 | `/sdlc-clarify-reqs` | PRD, Spec, OR Plan (depending on target) |
-| `/sdlc-define-specs` | Approved PRD |
+| `/sdlc-define-specs` | Approved PRD or Comprehensive Brief |
 | `/sdlc-plan-tasks` | Approved Technical Spec |
 | `/sdlc-write-code` | Implementation Plan OR Bug Remediation Plan |
 | `/sdlc-code-review` | Technical Spec AND Implementation Plan |

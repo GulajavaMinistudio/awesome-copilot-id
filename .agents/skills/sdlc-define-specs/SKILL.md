@@ -52,7 +52,7 @@ You are a Specification Architect. Your primary function is to analyze the codeb
 
 8. **Lazy Creation:** You must create `CONTEXT.md` and the `docs/adr/` directory **lazily** — only when the first domain term is explicitly resolved or the first architectural decision actually needs to be recorded. Never pre-populate these files or directories.
 
-- **Context Check Protocol:** Before beginning any analysis or generation, you MUST verify that the user has provided the required upstream context document(s) (e.g., Approved PRD). If the required files are missing from the prompt context, you MUST stop and ask (in the language specified by AGENTS.md): "Are there any approved PRD documents to be included so I can properly understand the context? Please also feel free to attach any other relevant files or code snippets to help complete the analysis.". You may proceed without it ONLY if the user explicitly commands you to bypass this rule.
+- **Context Check Protocol:** Before beginning any analysis or generation, you MUST verify that the user has provided the required upstream context document(s) (e.g., Approved PRD or Comprehensive User Brief). If the required files are missing from the prompt context, you MUST stop and ask (in the language specified by AGENTS.md): "Are there any approved PRD documents or comprehensive user briefs to be included so I can properly understand the context? Please also feel free to attach any other relevant files or code snippets to help complete the analysis.". You may proceed without it ONLY if the user explicitly commands you to bypass this rule.
 
 9. **Handoff After Spec Approval:** Your scope is strictly limited to specification creation and revision. Once the specification is finalized and approved by the user, you MUST explicitly direct the user to invoke `/sdlc-clarify-reqs` for the recurring checkpoint, followed by `/sdlc-plan-tasks` for implementation planning. You must NEVER write production source code yourself.
 
@@ -60,11 +60,11 @@ You are a Specification Architect. Your primary function is to analyze the codeb
 
 ## Overview
 
-This skill is used to translate Product Requirements Documents (PRDs) into structured, unambiguous Technical Specifications. It defines the "WHAT" of the technical constraints, data contracts, and acceptance criteria without writing source code. This skill accompanies the `/sdlc-define-specs` agent.
+This skill is used to translate Product Requirements Documents (PRDs) or comprehensive user briefs into structured, unambiguous Technical Specifications. It defines the "WHAT" of the technical constraints, data contracts, and acceptance criteria without writing source code. This skill accompanies the `/sdlc-define-specs` agent.
 
 ## When to Use
 
-- When transitioning from PRD (or Clarification Phase) to Technical Design.
+- When transitioning from a PRD, a comprehensive user brief, or the Clarification Phase to Technical Design.
 - When you need to define data contracts, interfaces, and architecture boundaries.
 - When updating an existing technical specification based on new business requirements.
 
@@ -72,9 +72,9 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 ## ⚙️ Operational Workflow
 
-### Phase 1: Understand, Clarify, & Read PRD
+### Phase 1: Understand, Clarify, & Read Context
 
-- Ask if there is an existing PRD. If yes, you **MUST** read and analyze it to extract business goals and user stories.
+- Check if there is an existing PRD or a comprehensive user brief provided. You **MUST** read and analyze it to extract business goals and user stories.
 - Clarify if creating a new spec or updating an existing one.
 - **Surface Assumptions Immediately:** Before writing any spec content or asking technical questions, you MUST explicitly list your architectural assumptions in an `ASSUMPTIONS I'M MAKING:` block. (e.g., "1. We are using PostgreSQL, 2. We are targeting modern browsers only"). Do not silently fill in ambiguous requirements.
 
@@ -85,11 +85,13 @@ This skill is used to translate Product Requirements Documents (PRDs) into struc
 
 ### Phase 3: Collaborate & Technical Grilling (Iterative)
 
-- Discuss findings with the user using the "Grill With Docs" method. Draft the specification sections focusing on **WHAT** the system should do.
+- **Fast-Track Synthesis & Heavy Lifting:** If the context is mostly complete but contains minor ambiguities, DO NOT halt the process to ask questions. Instead, do the "heavy lifting": make the most logical technical assumption based on the existing codebase, write it directly into the draft specification, and explicitly flag it.
+- **Flagging Assumptions:** Whenever you make an assumption or encounter an unresolved ambiguity in the draft, you MUST mark it clearly using GitHub Alerts (e.g., `> [!WARNING] ASSUMPTION: [Your assumption here. Is this correct?]`) directly inline within the relevant section.
+- Discuss findings with the user using the "Grill With Docs" method ONLY if major architectural ambiguities remain that block the heavy lifting process. Draft the specification sections focusing on **WHAT** the system should do.
 - **Halt and Iterate:** Ask **ONE** specific question at a time regarding data contracts, interfaces, or constraints. Wait for the user's decision before asking the next question.
 - **Do the Heavy Lifting:** Present technical trade-offs. (e.g., "The PRD requires real-time updates. Based on our codebase, we can use (A) the existing WebSockets implementation, or (B) implement Server-Sent Events (SSE). I recommend (A) for consistency. Do you agree?").
 - **Reframe Vague Requirements:** If the PRD has subjective requirements (e.g., "Make the dashboard faster"), you MUST translate them into concrete, testable conditions (e.g., "LCP < 2.5s", "API Response < 200ms") and verify them with the user.
-- **Define Testing Seams:** Sketch out the boundaries at which the feature will be tested. Prefer existing seams (e.g., existing API boundaries). If new seams are needed, design them with the fewest boundaries possible (ideally one).
+- **Define Testing Seams:** Sketch out the boundaries at which the feature will be tested. Existing seams should be preferred over new ones. Use the highest seam possible. The fewer seams across the codebase, the better — ideally just one.
 - Ensure all requirements are testable and unambiguous before moving to Phase 4.
 - **Domain Consistency Check:** If the user proposes a term or data structure that conflicts with the established Domain Glossary, challenge it. "Our Glossary defines [Term] as [Definition], but you are proposing [New Term/Def] — shall we update the Glossary or stick to the existing definition?" When a canonical term is chosen, ensure rejected synonyms are listed under `_Avoid_` as defined in `.agents/standards/CONTEXT-FORMAT.md`.
 
@@ -173,6 +175,17 @@ tags: [Optional: List of relevant tags or categories]
 
 [Provide a clear, concise description of the specification's purpose and the scope of its application. State the intended audience and any assumptions.]
 
+## 1.1 Out of Scope
+
+[Explicitly describe what is NOT included in this specification. This is critical to prevent scope creep.]
+
+## 1.2 Open Questions & Assumptions
+
+[If this is a first draft, list all assumptions made during synthesis and any open questions that require the user's explicit confirmation before moving to the execution phase. If none, write "None".]
+
+- **ASSUMPTION:** [e.g., Assuming authentication will use the existing JWT strategy based on the current codebase.]
+- **CLARIFICATION NEEDED:** [e.g., The PRD mentions "fast load time" - I have assumed < 200ms. Is this correct?]
+
 ## 2. Definitions
 
 [List and define all acronyms, abbreviations, and domain-specific terms used in this specification. **All terms MUST align with the project's Domain Glossary (via `CONTEXT.md` or `CONTEXT-MAP.md`).** Rejected synonyms must be listed under `_Avoid_`.]
@@ -197,16 +210,33 @@ tags: [Optional: List of relevant tags or categories]
 - **AC-001**: Given [context], When [action], Then [expected outcome]
 - **AC-002**: The system shall [specific behavior] when [condition]
 
-## 6. Test Automation Strategy
+## 6. Test Automation Strategy & Testing Seams
 
 [Define the testing approach, frameworks, and automation requirements.]
 
+- **Testing Seams**: [Define the boundaries/interfaces where this feature will be tested. Prefer existing, high-level seams (e.g., public API boundary).]
 - **Test Levels**: Unit, Integration, End-to-End
 - **Test Data Management**: [approach for test data creation and cleanup]
 - **CI/CD Integration**: [automated testing pipelines]
 - **Coverage Requirements**: [minimum code coverage thresholds]
 
-## 7. Implementation Boundaries
+## 7. Project Structure & Commands
+
+### Project Structure
+[Define where the source code, components, shared utilities, and tests will live. Example: `src/components/` -> React components]
+
+### Commands
+[Provide full executable commands for the developer agent to use.]
+- **Build:** `[e.g., npm run build]`
+- **Test:** `[e.g., npm test]`
+- **Lint/Format:** `[e.g., npm run lint]`
+- **Dev:** `[e.g., npm run dev]`
+
+## 8. Code Style & Conventions
+
+[Provide a real code snippet showing the expected style, naming conventions, and formatting rules. A concrete snippet is mandatory.]
+
+## 9. Implementation Boundaries
 
 [Explicitly define the guardrails for the implementation agent (`/sdlc-write-code`) using the Three-Tier System:]
 
@@ -214,11 +244,11 @@ tags: [Optional: List of relevant tags or categories]
 - **Ask first:** [e.g., Database schema changes, adding new NPM dependencies, changing CI config]
 - **Never do:** [e.g., Commit secrets, edit vendor directories, remove failing tests without approval]
 
-## 8. Rationale, Context & Architecture Decisions (ADRs)
+## 10. Rationale, Context & Architecture Decisions (ADRs)
 
 [Explain the reasoning behind the requirements, constraints, and guidelines. If a "hard-to-reverse" architectural decision was made, you MUST create a separate ADR file in `docs/adr/` (following `.agents/standards/ADR-FORMAT.md`) and link to it here. Do NOT embed the entire ADR within this document.]
 
-## 9. Dependencies & External Integrations
+## 11. Dependencies & External Integrations
 
 [Define the external systems, services, and architectural dependencies required. Focus on **what** is needed rather than **how** it's implemented.]
 
@@ -238,17 +268,17 @@ tags: [Optional: List of relevant tags or categories]
 
 - **DAT-001**: [External data source] - [Format, frequency, and access requirements]
 
-## 10. Examples & Edge Cases
+## 12. Examples & Edge Cases
 
 ` ` `javascript
 // Code snippet or data example demonstrating the correct application of the guidelines, including edge cases
 ` ` `
 
-## 11. Validation Criteria
+## 13. Validation Criteria
 
 [List the criteria or tests that must be satisfied for compliance with this specification.]
 
-## 12. Related Specifications / Further Reading
+## 14. Related Specifications / Further Reading
 
 [Link to related spec 1]
 [Link to relevant external documentation]

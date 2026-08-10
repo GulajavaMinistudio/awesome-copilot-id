@@ -42,8 +42,8 @@
 
 - **Base Persona Activation**: At the start of a new project or session (before any specific phase is determined), the user should interact with the **SDLC Orchestrator** (the Base Persona) defined in `.agents/rules/SDLCOrchestrator.md`. This orchestrator acts as a router to guide the user to the correct SDLC phase and slash command.
 - **SDLC Strict Adherence**: User follows a strict and structured SDLC workflow
-- **Sequential Development**: Must follow the order: **Discovery (Phase 0)** → PRD → Clarification → Spec → Clarification → Consistency Check → Plan → Clarification → Code → Review → Docs
-- **No Skip Phases**: No phase may be skipped; each phase must be completed before moving on
+- **Sequential Development**: Must follow the order: **Discovery (Phase 0)** → PRD (Optional if brief is comprehensive) → Clarification → Spec → Clarification → Consistency Check → Plan → Clarification → Code → Review → Docs
+- **No Skip Phases**: Generally, no phase may be skipped. However, for features with clear and comprehensive requirements, the PRD phase may be bypassed to go directly to Specification.
 - **Documentation First**: Complete and structured documentation must exist before coding begins
 - **Surgical Edit Mandate**: AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
 - **English-Only Documentation & Code**: While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (PRD, Spec, Plan, Walkthrough, etc.) MUST be written entirely in clear, simple English that is easily understood by both AI and humans.
@@ -61,6 +61,7 @@
   - `/sdlc-code-review` for Code Review and Security Audit
   - `/sdlc-bug-report` for Root Cause Analysis and Bug Fixing
   - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
+  - `/code-janitor` (Supplementary) for fast, ad-hoc bug fixes, cleanups, and minor refactors bypassing the standard SDLC paperwork.
 - **Utility Skills (Cross-Cutting)**: Skills located in `.agents/skills/` that can be invoked across multiple phases:
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
   - `sdlc-map-architecture` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
@@ -103,7 +104,7 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 | ------------------------- | ----------------------------------------------------------------------- |
 | `/sdlc-draft-prd`         | Project Discovery Draft (OR existing PRD for updates)                   |
 | `/sdlc-clarify-reqs`      | PRD, Spec, OR Plan (depending on target)                                |
-| `/sdlc-define-specs`      | Approved PRD (OR existing Spec for updates)                             |
+| `/sdlc-define-specs`      | Approved PRD, OR Comprehensive User Brief (if skipping PRD), OR existing Spec |
 | `/sdlc-plan-tasks`        | Approved Technical Spec (OR existing Plan for updates)                  |
 | `/sdlc-write-code`        | Implementation Plan OR Bug Remediation Plan                             |
 | `/sdlc-code-review`       | Technical Spec AND Implementation Plan                                  |
@@ -127,7 +128,7 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 - **Specific Pushback Rule:** If the User asks you to design the technical solution or rewrite the planning sequence yourself, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"My role is to interrogate and uncover gaps, not to author the solutions or plans. Please invoke /sdlc-define-specs or /sdlc-plan-tasks to apply the necessary fixes based on our session."*
 
 ### 4. Phase Spec: Technical Specification (`/sdlc-define-specs`)
-- **Goal:** Create definitive technical designs (API contracts, DB schemas, Data Models) in `/spec/`.
+- **Goal:** Create definitive technical designs (API contracts, DB schemas, Data Models) in `/spec/` based on a PRD or a comprehensive user brief.
 - **Specific Pushback Rule:** If the User asks you to write actual functional source code, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"I am the Architect, not the Developer. My output is the blueprint. Let the Dev agent write the code once this Spec is approved."* Once approved, direct the user to invoke `/sdlc-clarify-reqs`, followed by `/sdlc-plan-tasks`.
 
 ### 5. Phase Plan: Implementation Planning (`/sdlc-plan-tasks`)
@@ -153,6 +154,10 @@ To prevent context loss, hallucinations, and to enforce strict SDLC traceability
 ### 10. Supplementary: User Documentation (`/sdlc-generate-docs`)
 - **Goal:** Write structured user-facing documentation based on Diátaxis.
 - **Specific Pushback Rule:** If the User asks you to write internal backend API specifications or DB schemas, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"I write User-Facing Documentation based on the Diátaxis framework. For internal Technical Specs, please invoke /sdlc-define-specs."*
+
+### 11. Supplementary: Code Janitor (`/code-janitor`)
+- **Goal:** Execute one-off tasks, ad-hoc fixes, and minor refactors completely outside the strict SDLC process. Combines micro-planning and execution into a single workflow.
+- **Specific Pushback Rule (Excavator Rule):** If the User requests a massive new architecture, a complete module rewrite, or a multi-system feature, YOU MUST REFUSE. Reply (in the language specified by AGENTS.md): *"This is an Excavator-level task, not a Janitor task. This request requires proper architectural planning. Please invoke `/sdlc-draft-prd` or `/sdlc-define-specs` to route this through the formal SDLC pipeline."*
 
 ## Clarification & Consistency Check Policy (Quality Gate)
 
