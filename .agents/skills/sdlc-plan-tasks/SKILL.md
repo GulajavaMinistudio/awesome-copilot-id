@@ -65,14 +65,19 @@ This skill outlines the workflow to transform technical specifications and requi
     - **Identify Dependency Graph:** You MUST explicitly write out the dependency graph (e.g., via a bulleted hierarchy or mermaid diagram) showing what components depend on what. Implementation order must follow this graph bottom-up (build foundations first).
     - **Identify Prefactoring:** Look for opportunities to "make the change easy, then make the easy change." Schedule prefactoring tasks first before adding new features.
 3.  **Develop Strategy Collaboratively:**
-    - **Slice Vertically (Tracer Bullets):** Break down complex requirements by vertical feature paths (e.g., Auth schema + API + UI) rather than horizontal layers. Each vertical slice must deliver a demoable, end-to-end behavior from the user's perspective.
+    - **Slice Vertically (Tracer Bullets):** Break down complex requirements into **Tracer Bullet** tickets. A Tracer Bullet is a minimal, end-to-end slice of functionality that cuts through all architectural layers (UI, API, business logic, database) to prove the architecture works. 
+      - **Bad (Horizontal Slicing):** Task 1: Build DB, Task 2: Build APIs, Task 3: Build UI. (Cannot be tested until the very end).
+      - **Good (Vertical Slicing):** Task 1: User can register (DB + API + UI). Task 2: User can login (DB + API + UI). (Each slice is demoable and verifiable immediately).
     - **Exception for Wide Refactors (Expand-Contract):** If a refactor has a massive blast radius (e.g., renaming a core DB column breaking 1000s of call sites), DO NOT force it into a single tracer bullet. You MUST sequence it using the **Expand-Contract Pattern**: 
       1. *Expand:* Add the new form beside the old so nothing breaks.
       2. *Migrate:* Move call sites over in isolated batches.
       3. *Contract:* Delete the old form once no callers remain.
-    - **Apply Task Sizing Limits:** For each proposed task, you MUST explicitly list the "Files likely touched" to prove it stays within bounds. A task is strictly too large if it touches > 5 files or multiple independent subsystems.
-    - Propose a clear approach, discussing edge cases and mitigations.
-    - Present the mapped dependency graph and task breakdown to the user for validation before proceeding to plan generation.
+    - **Apply Task Sizing Limits:** For each proposed task, you MUST strictly follow the **Task Sizing Guidelines** defined below. Prove it stays within bounds by estimating the files likely touched.
+    - **Quiz the User (Interactive Validation):** Before writing the final Markdown table plan, you MUST present a drafted summary list of the proposed breakdown. For each task, show:
+      - **Title:** Short descriptive name.
+      - **Blocked by:** Which other tasks (if any) must complete first.
+      - **What it delivers:** The end-to-end behavior this task makes work (from the user's perspective, not a layer-by-layer technical list).
+      - Ask the user directly: *"Does the granularity feel right? Are the blocking dependencies correct? Should any tasks be merged or split further?"* Iterate until the user approves the breakdown.
     - If multiple architectural approaches exist, present a comparison table with trade-offs.
     - **Sizing & Phasing Strategy:** When a feature is large, you MUST break it down into independently deliverable and verifiable phases. Do not create a monolithic plan where nothing works until the very end. Use the following structured phasing approach:
       - **Phase 1 (Minimum Viable Product / MVP):** The absolute smallest vertical slice (database to UI) that delivers core value and tests the primary hypothesis. *(Example: User can submit a basic raw form and data is saved to the database, ignoring complex validation or polished UI).*
@@ -128,11 +133,31 @@ Once the implementation plan has been generated or revised, you must guide the u
 
 ---
 
+## 📏 Task Sizing Guidelines
+
+When breaking down work, refer to this table to ensure tasks fit within a single focused session. Agent works best on XS to M tasks.
+
+| Size | Files | Scope | Example |
+|------|-------|-------|---------|
+| **XS** | 1 | Single function or config change | Add a validation rule |
+| **S** | 1-2 | One component or endpoint | Add a new API endpoint |
+| **M** | 3-5 | One feature slice | User registration flow |
+| **L** | 5-8 | Multi-component feature | Search with filtering and pagination |
+| **XL** | 8+ | **Too large — break it down further** | — |
+
+**Mandatory Breakdown Triggers:**
+You MUST break a task down further if:
+- It touches two or more independent subsystems (e.g., auth and billing).
+- You cannot describe the end-to-end behavior without using subjective verbs.
+- You find yourself writing "and" in the task title (a strong indicator it is actually two tasks).
+
+---
+
 ## AI-Optimized Implementation Standards
 
 - **Phase Architecture (Strict Enforcement):** Each phase MUST conclude with a testing task and a **mandatory checkpoint (APPROVAL)** requiring explicit user approval before proceeding.
 - **Vertical Slicing:** Group tasks by vertical feature slices (e.g., schema + API + UI for one feature) rather than horizontal layers. Each phase should leave the system in a working state.
-- **Task Sizing Limits:** Never create a single task that touches more than 5 files. Break large tasks into smaller, verifiable units (S: 1-2 files, M: 3-5 files).
+- **Task Sizing Limits:** Never create a single task that is L or XL-sized. Break large tasks into smaller, verifiable tracer bullets (Size S or M preferred).
 - **Dependency Ordering:** Arrange tasks bottom-up. Build foundational dependencies first.
 - **Strict Traceability:** Every actionable task (except VERIFY/APPROVAL) MUST include a `Ref ID` linking it to a specific requirement in the Spec or PRD to prevent _scope creep_.
 - **Domain Consistency:** All terminology used in the plan MUST strictly match the canonical terms defined in `CONTEXT.md`.
@@ -159,8 +184,8 @@ Once the implementation plan has been generated or revised, you must guide the u
     - *Correction:* Reorganize into **Vertical Feature Slices**. A single task MUST span all layers required to make a feature work (e.g., "Task 1: User Login Feature [Schema + Auth API + UI]").
 
 2.  **🚫 Anti-Pattern: Bloated Tasks (XL Sizing / Scope Creep)**
-    - *Detection:* A single task has an estimated file impact of `> 5 files`, touches multiple independent subsystems (e.g., Auth AND Billing), or uses the word "and" to join two major actions in the title.
-    - *Correction:* Decompose the task into smaller, highly cohesive tasks (Size S: 1-2 files, or Size M: 3-5 files).
+    - *Detection:* A single task has an estimated file impact of `>= 5 files` (Size L or XL), touches multiple independent subsystems (e.g., Auth AND Billing), or uses the word "and" to join two major actions in the title.
+    - *Correction:* Decompose the task into smaller, highly cohesive tracer bullets (Size S: 1-2 files, or Size M: 3-5 files).
 
 3.  **🚫 Anti-Pattern: Vague or Unverifiable Acceptance Criteria (AC)**
     - *Detection:* AC uses subjective verbs like "Implement...", "Improve...", or "Make it look good...".
