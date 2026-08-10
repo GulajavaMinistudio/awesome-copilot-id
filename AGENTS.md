@@ -59,12 +59,13 @@
   - `/sdlc-define-specs` for Technical Specification
   - `/sdlc-audit-consistency` **[Recurring Checkpoint]** — Invoked after PRD, Spec, and Plan are drafted to validate traceability.
   - `/sdlc-plan-tasks` for Implementation Planning
-  - `/sdlc-write-code` (Supplementary: `karpathy-guidelines`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
+  - `/sdlc-write-code` (Supplementary: `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
   - `/sdlc-code-review` for Code Review and Security Audit
   - `/sdlc-bug-report` for Root Cause Analysis and Bug Fixing
   - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
   - `/code-janitor` (Supplementary) for fast, ad-hoc bug fixes, cleanups, and minor refactors bypassing the standard SDLC paperwork.
 - **Utility Skills (Cross-Cutting)**: Skills located in `.agents/skills/` that can be invoked across multiple phases:
+  - `tdd-implement` — Test-Driven Development (TDD) and incremental implementation discipline.
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
   - `sdlc-map-architecture` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
   - `fable-protocol` — Autonomous execution protocol for complex, multi-step, and long-horizon tasks.
