@@ -327,7 +327,14 @@ Following our strict sequential workflow, here is how you would develop a new fe
 
 **Phase Spec: Technical Specification**
 ```text
+# Option 1: Standard (Based on PRD)
 /sdlc-define-specs design a technical specification based on @prd-shopping-cart.md
+
+# Option 2: PRD Bypass (Based on Brief/Discovery)
+/sdlc-define-specs design a tech spec based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].
+
+# Option 3: Direct Prompt (No upstream document)
+/sdlc-define-specs design a tech spec for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.
 ```
 *(Once the Spec is complete, use `memory-manager` and open a new chat session)*
 
@@ -343,7 +350,11 @@ Following our strict sequential workflow, here is how you would develop a new fe
 
 **Phase Plan: Implementation Planning**
 ```text
+# Option 1: Standard (Based on Spec)
 /sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md
+
+# Option 2: With Assumption Scanning (Recommended for PRD Bypass)
+/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].
 ```
 *(Once the Plan is created, use `memory-manager` and open a new chat session)*
 

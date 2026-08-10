@@ -357,8 +357,14 @@
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-acc-tab" data-bs-toggle="list" href="#agent-acc" role="tab" aria-controls="agent-acc">
                   /sdlc-audit-consistency
                 </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ca-2-tab" data-bs-toggle="list" href="#agent-ca-2" role="tab" aria-controls="agent-ca-2">
+                  <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
+                </button>
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
                   /sdlc-plan-tasks
+                </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ca-3-tab" data-bs-toggle="list" href="#agent-ca-3" role="tab" aria-controls="agent-ca-3">
+                  <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
                 </button>
                 <div class="px-4 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_2">Phase 4: Execution & Review</div>
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
@@ -458,9 +464,26 @@
                     Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.
                   </p>
                   <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-i18n-clipboard="prompt_sa_2" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                  <div class="mb-3">
+                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_1">Opsi 1 (Standar):</p>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_2">Opsi 2 (PRD Bypass):</p>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_sa_1_bypass">/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1_bypass" data-clipboard="/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].">Copy</button>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_3">Opsi 3 (Instruksi Langsung):</p>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_sa_1_direct">/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1_direct" data-clipboard="/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.">Copy</button>
+                    </div>
                   </div>
                 </div>
 
@@ -484,6 +507,26 @@
                   </div>
                 </div>
 
+                <!-- CA 2 Detail (Optional Clarification) -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ca-2" role="tabpanel" aria-labelledby="agent-ca-2-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-clarify-reqs</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-clarify-reqs</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_ca_desc">
+                    Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_ca_best">
+                    Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities</span></code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities">Copy</button>
+                  </div>
+                </div>
+
                 <!-- PA Detail -->
                 <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-pa" role="tabpanel" aria-labelledby="agent-pa-tab">
                   <div class="d-flex justify-content-between align-items-start mb-3">
@@ -498,9 +541,39 @@
                     Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.
                   </p>
                   <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="mb-3">
+                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_1">Opsi 1 (Standar):</p>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_2">Opsi 2 (Assumption Scanning):</p>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_pa_1_bypass">/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1_bypass" data-clipboard="/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CA 3 Detail (Optional Clarification) -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ca-3" role="tabpanel" aria-labelledby="agent-ca-3-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-clarify-reqs</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-clarify-reqs</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_ca_desc">
+                    Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_ca_best">
+                    Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
                   <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-i18n-clipboard="prompt_pa_2" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions</span></code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions">Copy</button>
                   </div>
                 </div>
 
@@ -699,9 +772,26 @@
                       <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
                       <p class="text-body-custom small mb-3" data-i18n="agent_sa_best">Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.</p>
                       <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                      <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1" data-i18n-clipboard="prompt_sa_2" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                      <div class="mb-3">
+                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_1">Opsi 1 (Standar):</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_2">Opsi 2 (PRD Bypass):</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1_bypass">/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1_bypass" data-clipboard="/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].">Copy</button>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_3">Opsi 3 (Instruksi Langsung):</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1_direct">/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1_direct" data-clipboard="/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.">Copy</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -731,6 +821,30 @@
                   </div>
                 </div>
 
+                <!-- CA 2 Accordion Item (Optional) -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-ca-2">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca-2" aria-expanded="false" aria-controls="mob-collapse-ca-2">
+                      <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-ca-2" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca-2" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-clarify-reqs</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- PA Accordion Item -->
                 <div class="accordion-item border-0">
                   <h2 class="accordion-header" id="mob-heading-pa">
@@ -747,9 +861,43 @@
                       <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
                       <p class="text-body-custom small mb-3" data-i18n="agent_pa_best">Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.</p>
                       <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="mb-3">
+                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_1">Opsi 1 (Standar):</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_2">Opsi 2 (Assumption Scanning):</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_pa_1_bypass">/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1_bypass" data-clipboard="/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CA 3 Accordion Item (Optional) -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-ca-3">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca-3" aria-expanded="false" aria-controls="mob-collapse-ca-3">
+                      <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-ca-3" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca-3" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-clarify-reqs</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-i18n-clipboard="prompt_pa_2" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -985,7 +1133,7 @@
                           Rancang arsitektur detail, buat skema data, definisikan API, dan catat keputusan arsitektur penting (ADR) serta pastikan ketertelusurannya dengan PRD.
                         </p>
                         <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-define-specs & /sdlc-audit-consistency</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-define-specs, /sdlc-audit-consistency, & /sdlc-clarify-reqs <span data-i18n="agent_ca_optional">(Opsional)</span></span>
                           <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_2_input">Approved PRD</span></span>
                         </div>
                         <div class="position-relative">
@@ -1001,7 +1149,7 @@
                           Pecah spesifikasi teknis menjadi langkah-langkah implementasi strategis dan buat checklist rencana coding yang aman.
                         </p>
                         <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-plan-tasks & /sdlc-clarify-reqs</span>
+                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-plan-tasks & /sdlc-clarify-reqs <span data-i18n="agent_ca_optional">(Opsional)</span></span>
                           <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_3_input">Approved Spec</span></span>
                         </div>
                         <div class="position-relative">
