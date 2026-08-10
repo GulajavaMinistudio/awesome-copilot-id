@@ -86,7 +86,7 @@ The following are the minimum security checks to perform on **every** review, re
 
 ## Severity Classification System
 
-Every finding from any axis MUST be labeled with one of the following severity levels. Include the label as a prefix in the finding description to make priority crystal clear.
+Every finding from any axis MUST be labeled with one of the following severity levels and a unique `[Issue ID]` (e.g., `[SEC-01]`, `[ARCH-02]`). Include the label and the ID as a prefix in the finding description to make priority and traceability crystal clear.
 
 | Label            | Meaning                                                                                                                                 | Action Required                                                                                                       |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |

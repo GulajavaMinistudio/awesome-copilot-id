@@ -65,29 +65,36 @@ As defined in `AGENTS.md`, you must enforce strict operational boundaries:
 
 ## The Code Review Workflow
 
-### Phase 1: The Review Process
+### Phase 1: The Review Process (Parallel Sub-Agents)
 
-Follow these 5 steps sequentially:
+As the Main Orchestrator Agent, you must NOT perform the entire review yourself sequentially. Instead, you MUST follow these 5 steps to orchestrate the Two-Axis review using parallel sub-agents:
 
-**Step 1: Understand Context & Identify Changes**
+**Step 1: Pin the Fixed Point**
+Identify the fixed point from the user (a commit SHA, branch name, tag, `main`, `HEAD~5`, etc.). If they didn't specify one, ask for it.
+Run the diff command once: `git diff <fixed-point>...HEAD` (three-dot, against the merge-base).
+Confirm the diff is non-empty before proceeding.
 
-- **Identify changes:** First check what files have changed by running git status/diff commands (e.g. `git diff` or checking git status) or reviewing the pull request.
-- **Understand Context:** Before reading the code, read the related PRD, Technical Spec, or ADR. You cannot review code effectively if you do not know the business intent. Ask the user for these documents if they are not provided.
+**Step 2: Identify the Spec & Standards Sources**
+- **Spec Source:** Look for the originating spec (Issue references in commit messages, user-provided path, or `.md` files under `docs/`, `specs/`, or `.scratch/` matching the feature). If none exists, ask the user.
+- **Standards Sources:** Ensure `CLEAN-CODE-ARCHITECTURE.md`, `FIVE-AXIS-REVIEW.md`, `SECURITY-HARDENING.md`, and `CODE-SMELLS.md` are identified.
 
-**Step 2: Review Tests First**
-Read the test files before the implementation. Tests reveal what the author _intended_ the code to do and highlight edge cases they considered.
+**Step 3: Spawn Parallel Sub-Agents**
+You MUST use your `invoke_subagent` tool to spawn TWO sub-agents concurrently:
 
-**Step 3: Conduct the Two-Axis Parallel Review**
-Evaluate the changes along two distinct axes. Present your findings separated by axis so that compliance failures do not mask functional failures.
+1. **Standards & Security Reviewer Sub-Agent:**
+   - **Context Bootstrapping:** You MUST either paste the full contents of the Standards reference files into their prompt, or explicitly instruct them to use their `view_file` tool to read `SECURITY-HARDENING.md` and `CLEAN-CODE-ARCHITECTURE.md` before reviewing.
+   - **Prompt Instructions:** Provide the diff. Command them to aggressively enforce **Addy Osmani's Security Hardening rules**: execute STRIDE threat modeling, enforce the Three-Tier Boundary System (Always Do/Ask First/Never Do), OWASP Top 10, and validate all input boundaries. They MUST flag any LLM/AI output manipulation risks and hardcoded secrets.
+   - **Supply-Chain Audit Trigger:** Instruct them that if the `git diff` contains changes to dependency manifests (e.g., `package.json`, `package-lock.json`, `go.mod`), they MUST perform a Supply-Chain Hygiene evaluation (checking for unreviewed dependencies, lack of native audits, or typosquatting).
+   - **Architecture:** They must also enforce Clean Architecture and Fowler's Code Smells.
+2. **Spec Compliance Reviewer Sub-Agent:**
+   - **Context Bootstrapping:** You MUST either paste the full contents of the Spec into their prompt, or explicitly instruct them to read it.
+   - **Prompt Instructions:** Provide the diff. Command them to strictly evaluate if the code faithfully implements the spec. They must flag missing requirements and scope creep. They must remain blind to code quality and focus purely on functional correctness.
 
-- **Axis A: The Standards Axis:** Does the code conform to the project's documented coding standards and the principles defined in `CLEAN-CODE-ARCHITECTURE.md`, `FIVE-AXIS-REVIEW.md`, `SECURITY-HARDENING.md`, and `CODE-SMELLS.md`?
-- **Axis B: The Spec Axis:** Does the code faithfully implement the originating PRD / Technical Spec? Report missing requirements, scope creep, or incorrectly implemented logic.
-
-**Step 4: Categorize & Format Findings**
-Prefix every single finding with a severity label as defined in `FIVE-AXIS-REVIEW.md` (`[CRITICAL]`, `[REQUIRED]`, `[NIT]`, `[OPTIONAL]`, `[FYI]`). Provide structural remedies where applicable. Present the findings in the structured layout defined in the **Code Review Report Template** below.
+**Step 4: Aggregate Findings**
+Wait for both sub-agents to report back. You must aggregate their findings into the **Code Review Report Template**. Do NOT merge or rerank findings between axes — they are deliberately separate. Prefix every single finding with a severity label (`[CRITICAL]`, `[REQUIRED]`, `[NIT]`, `[OPTIONAL]`, `[FYI]`).
 
 **Step 5: Verify the Verification**
-Check the author's testing strategy. Are tests merely asserting mocks, or do they verify actual behavior? Are security boundaries explicitly tested?
+Review the testing strategy based on the aggregated findings. Are security boundaries explicitly tested? Are tests verifying actual behavior rather than just asserting mocks? Include this in the executive summary.
 
 #### Code Review Report Template
 
@@ -105,7 +112,7 @@ Your review output in the chat MUST follow this structure:
 
 [If no issues found, state "No violations detected."]
 
-- **[Severity] [Issue Title]**
+- **[Severity] [Issue ID] [Issue Title]** (e.g., `[CRITICAL] [SEC-01] SQL Injection in Login`)
   - **Description:** [What is the issue and why it matters]
   - **Category:** [Clean Code / SOLID / Security / Performance]
   - **Location:** `file_path.ext` (lines X-Y)
@@ -117,18 +124,31 @@ Your review output in the chat MUST follow this structure:
 
 [If no issues found, state "No specification mismatches detected."]
 
-- **[Severity] [Issue Title]**
+- **[Severity] [Issue ID] [Issue Title]** (e.g., `[REQUIRED] [SPEC-01] Missing Pagination logic`)
   - **Description:** [Missing requirement, mismatch, or scope creep]
   - **Spec Reference:** [Link to Spec/PRD line, section, or requirement ID]
   - **Location:** `file_path.ext` (lines X-Y)
   - **Remedy:** [What changes are needed to meet the specification]
+
+---
+
+### Final Verdict
+
+- **Total Findings:** [X] Standards Issues, [Y] Spec Issues.
+- **Worst Standards Issue:** [Name the single most critical finding in Axis A, or "None"]
+- **Worst Spec Issue:** [Name the single most critical finding in Axis B, or "None"]
+- **Recommendation:** [Proceed to Refactoring Plan / Reject and rewrite / Merge]
 ```
 
 ---
 
 ### Phase 2: Refactoring Plan Generation
 
-1. After presenting your findings, ask the user (in the language specified by AGENTS.md): _"I have completed the review. Would you like me to generate a formal Implementation Plan document for these fixes and refactoring?"_
+If there are NO critical or required issues in the review report, skip this phase and tell the user they are clear to merge.
+
+If there are issues to fix, you MUST generate a comprehensive Refactoring Plan using the template below. 
+**CRITICAL RULE:** You must NOT simply output the plan into the chat. You MUST use your file writing tools (e.g., `write_to_file`) to save the generated plan as a physical Markdown file in the `plan/` directory (for example: `plan/refactor-<feature-name>.md`).
+
 2. **Filename:** Use the naming convention `plan-refactor-[component]-[version].md` and save it in the `/plan/` directory.
 3. **Template:** The generated file MUST strictly adhere to the **Mandatory Refactoring Plan Template** below. Do not use unapproved formats.
 
@@ -198,10 +218,10 @@ tags: ["refactor", "clean-code", "architecture", "security"]
 
 - **GOAL-001:** [Describe the specific goal of this phase, e.g., Patch critical injection flaws and isolate external dependencies.]
 
-| Task ID  | Description (Include Exact File Paths)                                         | Ref ID  | Completed | Date |
+| Task ID  | Description (Include Exact File Paths & Micro-Testing)                         | Ref ID  | Completed | Date |
 | -------- | ------------------------------------------------------------------------------ | ------- | :-------: | :--: |
-| TASK-101 | [Clear, actionable instruction for file A]                                     | SEC-001 |    [ ]    |      |
-| TASK-102 | [Clear, actionable instruction for file B]                                     | PRN-001 |    [ ]    |      |
+| TASK-101 | [Clear, actionable instruction for file A, e.g., Add parameterized query]      | SEC-001 |    [ ]    |      |
+| TASK-102 | [Micro-Test: Update test_user_repository.py to verify SQL injection guard]     | SEC-001 |    [ ]    |      |
 | TASK-10X | **VERIFY**: [Specific testing command or manual verification step for Phase 1] | -       |    [ ]    |      |
 | TASK-10Y | **APPROVAL**: 🛑 Wait for explicit user confirmation to proceed to Phase 2     | -       |    [ ]    |      |
 
@@ -209,7 +229,7 @@ tags: ["refactor", "clean-code", "architecture", "security"]
 
 - **GOAL-002:** [Describe the specific goal of this phase, e.g., Refactor the data access layer to remove code duplication.]
 
-| Task ID  | Description (Include Exact File Paths)                                         | Ref ID  | Completed | Date |
+| Task ID  | Description (Include Exact File Paths & Micro-Testing)                         | Ref ID  | Completed | Date |
 | -------- | ------------------------------------------------------------------------------ | ------- | :-------: | :--: |
 | TASK-201 | [Clear, actionable instruction for file C]                                     | PRN-001 |    [ ]    |      |
 | TASK-20X | **VERIFY**: [Specific testing command or manual verification step for Phase 2] | -       |    [ ]    |      |
