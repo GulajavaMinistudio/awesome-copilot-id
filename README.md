@@ -320,6 +320,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Once the PRD is complete and approved, use the `memory-manager` skill to save context, then open a new chat session to prevent context bleeding)*
 
+**Recurring Checkpoint: Clarification (Optional)**
 ```text
 /sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases
 ```
@@ -338,11 +339,13 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Once the Spec is complete, use `memory-manager` and open a new chat session)*
 
+**Recurring Checkpoint: Clarification (Optional)**
 ```text
 /sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities
 ```
 *(Once the Spec interrogation is finalized, use `memory-manager` and open a new chat session)*
 
+**Recurring Checkpoint: Consistency Audit (Optional)**
 ```text
 /sdlc-audit-consistency verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md
 ```
@@ -358,6 +361,7 @@ Following our strict sequential workflow, here is how you would develop a new fe
 ```
 *(Once the Plan is created, use `memory-manager` and open a new chat session)*
 
+**Recurring Checkpoint: Clarification (Optional)**
 ```text
 /sdlc-clarify-reqs interrogate the @plan-shopping-cart.md for any unhandled edge cases
 ```
