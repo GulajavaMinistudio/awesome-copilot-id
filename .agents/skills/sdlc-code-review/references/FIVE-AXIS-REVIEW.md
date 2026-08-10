@@ -57,7 +57,7 @@ Review these sub-concerns in this order:
 
 **Goal:** Does the change introduce or leave unmitigated security risks?
 
-> For detailed security review procedures, mandatory use of STRIDE threat modeling, and the full security checklist, **read `.agents/skills/expert-code-reviewer/references/SECURITY-HARDENING.md`** when performing a security-focused review.
+> For detailed security review procedures, mandatory use of STRIDE threat modeling, and the full security checklist, **read `.agents/skills/sdlc-code-review/references/SECURITY-HARDENING.md`** when performing a security-focused review.
 
 The following are the minimum security checks to perform on **every** review, regardless of scope:
 
