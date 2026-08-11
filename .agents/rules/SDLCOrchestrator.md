@@ -82,6 +82,7 @@ Discovery (Phase 0) → PRD → [Clarify] → Spec → [Clarify] → [Consistenc
 
 | User Intent / Signal                            | Recommended Command       | Phase                     |
 | ----------------------------------------------- | ------------------------- | ------------------------- |
+| "Initialize the project and agents"             | `/sdlc-init`              | Initialization            |
 | "I have an idea for a new app/feature"          | `/sdlc-explore-ideas`     | Phase 0: Discovery        |
 | "I want to explore this existing codebase"      | `/sdlc-explore-ideas`     | Phase 0: Discovery        |
 | "Let's write the requirements"                  | `/sdlc-draft-prd`         | Phase 1: PRD              |
@@ -98,7 +99,8 @@ Discovery (Phase 0) → PRD → [Clarify] → Spec → [Clarify] → [Consistenc
 | "Fix this bug" / "There's an error in..."       | `/sdlc-bug-report`        | Supplementary: Bug Fix    |
 | "Review my code" / "Audit for security issues"  | `/sdlc-code-review`       | Supplementary: Review     |
 | "Write the user documentation"                  | `/sdlc-generate-docs`     | Supplementary: Docs       |
-| "Map the project architecture"                  | `sdlc-map-architecture`   | Utility: Architecture Map |
+| "Map the project architecture"                  | `/sdlc-map-architecture`  | Utility: Architecture Map |
+| "Just fix this typo" / "Quick refactor"         | `/code-janitor`           | Bypass: Ad-hoc Fixes      |
 
 ### Routing Decision Logic
 
@@ -160,16 +162,16 @@ Attach: @spec/spec-feature-auth-v1.md @plan/plan-feature-auth-v1.md"
 
 **Context Injection Quick Reference (for your routing reminders):**
 
-| Target Command | Required Upstream Documents |
-|---|---|
-| `/sdlc-draft-prd` | Project Discovery Draft |
-| `/sdlc-clarify-reqs` | PRD, Spec, OR Plan (depending on target) |
-| `/sdlc-define-specs` | Approved PRD or Comprehensive Brief |
-| `/sdlc-plan-tasks` | Approved Technical Spec |
-| `/sdlc-write-code` | Implementation Plan OR Bug Remediation Plan |
-| `/sdlc-code-review` | Technical Spec AND Implementation Plan |
-| `/sdlc-audit-consistency` | PRD, Spec, AND Plan |
-| `/sdlc-generate-docs` | PRD, Technical Spec, Implementation Plan, OR Source Code |
+| Target Command            | Required Upstream Documents                              |
+| ------------------------- | -------------------------------------------------------- |
+| `/sdlc-draft-prd`         | Project Discovery Draft                                  |
+| `/sdlc-clarify-reqs`      | PRD, Spec, OR Plan (depending on target)                 |
+| `/sdlc-define-specs`      | Approved PRD or Comprehensive Brief                      |
+| `/sdlc-plan-tasks`        | Approved Technical Spec                                  |
+| `/sdlc-write-code`        | Implementation Plan OR Bug Remediation Plan              |
+| `/sdlc-code-review`       | Technical Spec AND Implementation Plan                   |
+| `/sdlc-audit-consistency` | PRD, Spec, AND Plan                                      |
+| `/sdlc-generate-docs`     | PRD, Technical Spec, Implementation Plan, OR Source Code |
 
 ---
 
@@ -177,12 +179,17 @@ Attach: @spec/spec-feature-auth-v1.md @plan/plan-feature-auth-v1.md"
 
 The following utility skills can be invoked at any time without triggering a session lock. You may invoke them directly or recommend them to the user:
 
-| Skill                   | Purpose                         | When to Suggest                                      |
-| ----------------------- | ------------------------------- | ---------------------------------------------------- |
-| `memory-manager`        | Save/restore session context    | At session start and end, or after milestones        |
-| `sdlc-map-architecture` | Map repository architecture     | When exploring a new or unfamiliar codebase          |
-| `fable-protocol`        | Autonomous multi-step execution | For complex, long-horizon tasks pre-approved by user |
-| `grilling`              | Stress-test a plan or design    | Before finalizing any major design decision          |
+| Skill                      | Purpose                         | When to Suggest                                      |
+| -------------------------- | ------------------------------- | ---------------------------------------------------- |
+| `memory-manager`           | Save/restore session context    | At session start and end, or after milestones        |
+| `sdlc-map-architecture`    | Map repository architecture     | When exploring a new or unfamiliar codebase          |
+| `fable-protocol`           | Autonomous multi-step execution | For complex, long-horizon tasks pre-approved by user |
+| `grilling`                 | Stress-test a plan or design    | Before finalizing any major design decision          |
+| `tdd-implement`            | Enforce strict TDD discipline   | When entering the coding phase and strict test coverage is required |
+| `karpathy-guidelines`      | Surgical code modifications     | To reduce LLM coding mistakes and encourage minimal edits |
+| `ponytail-lazy-senior-dev` | Lazy / minimal engineering      | To enforce YAGNI, code reuse, and shortest working paths |
+| `omni-dev`                 | Principal architect mindset     | For clean architecture and strict anti-ambiguity protocols |
+| `ui-designer`              | Elite UI/UX design              | When implementing frontend code or styling components |
 
 ---
 
@@ -192,6 +199,7 @@ For the user's convenience, you can present this summary when asked "what comman
 
 | Command                   | Description                                                   |
 | ------------------------- | ------------------------------------------------------------- |
+| `/sdlc-init`              | Autonomous project bootstrapper for initial agent setup       |
 | `/sdlc-explore-ideas`     | Phase 0: Explore codebase, brainstorm, create Discovery Draft |
 | `/sdlc-draft-prd`         | Phase 1: Write Product Requirements Document (PRD)            |
 | `/sdlc-clarify-reqs`      | Checkpoint: Interrogate PRD/Spec/Plan for ambiguities         |
@@ -202,6 +210,7 @@ For the user's convenience, you can present this summary when asked "what comman
 | `/sdlc-code-review`       | Supplementary: Code review & security audit                   |
 | `/sdlc-bug-report`        | Supplementary: Bug analysis & surgical fix plan               |
 | `/sdlc-generate-docs`     | Supplementary: User documentation (Diátaxis framework)        |
+| `/code-janitor`           | Ad-hoc Bug Fixer & Refactorer (bypasses standard SDLC)        |
 
 ---
 
