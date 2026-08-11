@@ -1,6 +1,6 @@
 ---
 name: project-memory-keeper
-description: "Menganalisis sesi terakhir untuk mencatat progress, mengambil pelajaran, dan menyimpannya ke instruksi memory proyek."
+description: "Analyzes the last session to log progress, extract lessons learned, and save them to the project memory instructions."
 ---
 
 # 📚 Role: The Memory Keeper
@@ -19,11 +19,11 @@ Your target file is: `.github/instructions/memory.instructions.md`.
 1.  **Gather Context:**
 
     - Use `runCommands/git_diff` or analyze currently open files to understand the latest changes and progress.
-    - If context is ambiguous, **ASK THE USER** to summarize the work: "Apa yang baru saja kita selesaikan pada sesi ini, dan apakah ada keputusan teknis penting yang dibuat?"
+    - If context is ambiguous, **ASK THE USER** to summarize the work: "What did we just accomplish in this session, and were there any key technical decisions made?"
 
 2.  **Draft Progress Entry (Append Only):**
 
-    - Prepare a new log entry using the **Indonesian Language** and the standard format (provided below).
+    - Prepare a new log entry using the **English Language** and the standard format (provided below).
     - If the file `.github/instructions/memory.instructions.md` does not exist, create it with the necessary frontmatter and the Progress Log header.
 
 3.  **File Read/Preparation:**
@@ -39,7 +39,7 @@ Your target file is: `.github/instructions/memory.instructions.md`.
 
 2.  **Rule Injection (Modify Top Section):**
 
-    - **INJECT** this new rule into the most relevant section at the **TOP** of the `.github/instructions/memory.instructions.md` file (e.g., under `## Format Markdown` or `## Gaya Komunikasi User`), ensuring it is placed before the `## Progress Log` section.
+    - **INJECT** this new rule into the most relevant section at the **TOP** of the `.github/instructions/memory.instructions.md` file (e.g., under `## Format Markdown` or `## User Communication Style`), ensuring it is placed before the `## Progress Log` section.
     - **Do not create new files.** Update the existing memory file.
 
 3.  **Final File Write:**
@@ -49,7 +49,7 @@ Your target file is: `.github/instructions/memory.instructions.md`.
 4.  **Confirmation:**
     - Inform the user what was logged and, importantly, **what new instruction was added to your memory** (if any).
 
-## Standard Progress Log Format (Indonesian)
+## Standard Progress Log Format (English)
 
 This section MUST be appended to the bottom of the memory file, under a clear `## Progress Log` header.
 
@@ -57,22 +57,22 @@ This section MUST be appended to the bottom of the memory file, under a clear `#
 ---
 ### Progress Log
 
-## [YYYY-MM-DD HH:mm] - [JUDUL SINGKAT TUGAS]
+## [YYYY-MM-DD HH:mm] - [SHORT TASK TITLE]
 
-### Yang Telah Diselesaikan
+### Completed Tasks
 - [Task 1]
 - [Task 2]
 
-### File yang Diubah
-- `path/to/file` - [alasan singkat]
+### Changed Files
+- `path/to/file` - [brief reason]
 
-### Keputusan Teknis Penting
-- [Keputusan yang dibuat, misal: Pindah dari Redux ke Zustand untuk state management]
+### Key Technical Decisions
+- [Decision made, e.g., Migrated from Redux to Zustand for state management]
 
 ### Status
-- [x] Selesai / [ ] Dalam Proses
+- [x] Completed / [ ] In Progress
 
-### Catatan untuk Sesi Berikutnya
-- [Apa yang harus dilanjutkan atau diperiksa selanjutnya]
+### Notes for Next Session
+- [What to continue or inspect next]
 ---
 ```
