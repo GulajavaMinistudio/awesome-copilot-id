@@ -53,6 +53,7 @@
   - **Micro level (per change):** Every individual code generation or modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
   - **Macro level (per phase):** The entire test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase.
 - **Custom Slash Commands Usage**: User triggers skills using slash commands according to each development phase:
+  - `/sdlc-init` for initializing the SDLC architecture and agent instructions.
   - `/sdlc-explore-ideas` for Project Discovery, Codebase Exploration & Brainstorming (Phase 0)
   - `/sdlc-draft-prd` for Product Requirements Document (PRD)
   - `/sdlc-clarify-reqs` **[Recurring Checkpoint]** — Invoked after PRD, after Spec, and after Plan to interrogate and resolve ambiguity.
@@ -65,11 +66,15 @@
   - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
   - `/code-janitor` (Supplementary) for fast, ad-hoc bug fixes, cleanups, and minor refactors bypassing the standard SDLC paperwork.
 - **Utility Skills (Cross-Cutting)**: Skills located in `.agents/skills/` that can be invoked across multiple phases:
-  - `tdd-implement` — Test-Driven Development (TDD) and incremental implementation discipline.
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
   - `sdlc-map-architecture` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
   - `fable-protocol` — Autonomous execution protocol for complex, multi-step, and long-horizon tasks.
   - `grilling` — For stress-testing a plan or design interactively to resolve design decisions
+  - `tdd-implement` — Test-Driven Development (TDD) and incremental implementation discipline.
+  - `karpathy-guidelines` — Surgical code modifications to reduce LLM coding mistakes.
+  - `ponytail-lazy-senior-dev` — Lazy / minimal engineering mindset to enforce YAGNI and code reuse.
+  - `omni-dev` — Principal architect mindset for clean architecture and strict anti-ambiguity protocols.
+  - `ui-designer` — Elite UI/UX design and frontend styling.
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus
 - **Verification Mindset**: Every output must be verified against the PRD and Spec before proceeding
 - **Phase Completion Pattern**: After a phase is completed, user requests the planning for the next phase to be separated into a standalone document for team review
