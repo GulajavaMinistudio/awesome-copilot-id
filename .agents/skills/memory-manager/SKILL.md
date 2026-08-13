@@ -146,8 +146,8 @@ Use this workflow to persist progress after a significant milestone.
 - **Active Memory Path:** [path_to_this_file]
 - **Current SDLC Phase:** [e.g., Planning / Specification / Implementation / Review / Documentation]
 - **Active Artifacts:**
-  - `[path/to/prd-*.md]` — Status: ✅ Finalized
-  - `[path/to/spec.md]` — Status: 🔄 In Progress
+  - `[path/to/prd-*.md]` — Status: ✅ Finalized (Readiness Score: [XX]/100)
+  - `[path/to/spec.md]` — Status: 🔄 In Progress (Readiness Score: [XX]/100)
   - `[path/to/plan.md]` — Status: ⏳ Pending
 - **Achieved Milestones:**
   - [Concise description of what was accomplished]
