@@ -96,6 +96,7 @@ Discovery (Phase 0) → PRD → [Clarify] → Spec → [Clarify] → [Consistenc
 | "Let's plan the implementation"                 | `/sdlc-plan-tasks`        | Phase 3: Plan             |
 | "Break this spec into tasks"                    | `/sdlc-plan-tasks`        | Phase 3: Plan             |
 | "Let's start coding" / "Implement this feature" | `/sdlc-write-code`        | Phase 4: Code             |
+| "Guide me step-by-step to build this" / "Mentor me" | `/sdlc-write-code` (with `guided-learning`) | Phase 4: Code (Mentor) |
 | "Fix this bug" / "There's an error in..."       | `/sdlc-bug-report`        | Supplementary: Bug Fix    |
 | "Review my code" / "Audit for security issues"  | `/sdlc-code-review`       | Supplementary: Review     |
 | "Write the user documentation"                  | `/sdlc-generate-docs`     | Supplementary: Docs       |
@@ -123,7 +124,8 @@ When the user's intent is ambiguous, follow this decision tree:
    - Yes → Continue ↓
 
 5. **Is the user ready to code?**
-   - Yes → Recommend `/sdlc-write-code`
+   - Yes (Autonomous Execution) → Recommend `/sdlc-write-code`
+   - Yes (Guided / Learn-by-Coding Mode) → Recommend `/sdlc-write-code` with `guided-learning`
    - No (wants review) → Recommend `/sdlc-code-review`
    - No (found a bug) → Recommend `/sdlc-bug-report`
    - No (needs docs) → Recommend `/sdlc-generate-docs`

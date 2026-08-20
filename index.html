@@ -384,6 +384,9 @@
                 <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-cj-tab" data-bs-toggle="list" href="#agent-cj" role="tab" aria-controls="agent-cj">
                   /code-janitor
                 </button>
+                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-gl-tab" data-bs-toggle="list" href="#agent-gl" role="tab" aria-controls="agent-gl">
+                  /guided-learning
+                </button>
               </div>
             </div>
             
@@ -674,6 +677,25 @@
                   <div class="position-relative">
                     <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
                     <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
+                  </div>
+                </div>
+                <!-- GL Detail -->
+                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-gl" role="tabpanel" aria-labelledby="agent-gl-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h3 class="text-ink fw-bold h4 mb-0">/guided-learning</h3>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">guided-learning</span>
+                  </div>
+                  <p class="text-body-custom mb-4" data-i18n="agent_gl_desc">
+                    AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                  <p class="text-body-custom small mb-4" data-i18n="agent_gl_best">
+                    Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.
+                  </p>
+                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                  <div class="position-relative">
+                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
+                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
                   </div>
                 </div>
               </div>
@@ -1018,6 +1040,30 @@
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
                         <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- GL Accordion Item -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-gl">
+                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-gl" aria-expanded="false" aria-controls="mob-collapse-gl">
+                      /guided-learning
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-gl" class="accordion-collapse collapse" aria-labelledby="mob-heading-gl" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">guided-learning</span>
+                      </div>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_gl_desc">AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_gl_best">Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.</p>
+                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
                       </div>
                     </div>
                   </div>

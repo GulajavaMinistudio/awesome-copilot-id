@@ -112,6 +112,9 @@ window.translations = {
     agent_cj_desc: "A fast, minimalist agent combining micro-planning and execution into a single workflow for ad-hoc fixes and minor refactors outside the strict SDLC process.",
     agent_cj_best: "Quick bug fixes, cleaning up code, and doing minor refactoring that doesn't warrant full PRD-Spec-Plan paperwork.",
     
+    agent_gl_desc: "AI-Guided Learning mentor. Guides you step-by-step to build a project or implement a plan without writing the code directly for you.",
+    agent_gl_best: "Paired with /sdlc-write-code or /code-janitor as a 'Mentor Mode' alternative so you can learn by typing the code yourself.",
+    
     // Examples & Stepper
     examples_title: "Workflow & Examples",
     examples_desc: "Understand how the software development lifecycle (SDLC) is executed sequentially using a suite of AI agents.",
@@ -188,6 +191,7 @@ window.translations = {
     prompt_bra_1: '/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js',
     prompt_dda_1: '/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md',
     prompt_cj_1: '/code-janitor please refactor calculateTotal in @cart.js to be more concise',
+    prompt_gl_1: '/sdlc-write-code implement @plan.md using guided-learning',
     prompt_bea_2: '/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md',
     prompt_pm_2: '/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md',
     prompt_sa_2: '/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md',
@@ -364,6 +368,9 @@ window.translations = {
     agent_cj_desc: "Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.",
     agent_cj_best: "Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.",
     
+    agent_gl_desc: "AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.",
+    agent_gl_best: "Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif 'Mentor Mode' agar pengguna dapat belajar mengetik kodenya sendiri.",
+    
     // Examples & Stepper
     examples_title: "Alur Kerja & Contoh",
     examples_desc: "Pahami bagaimana siklus hidup pengembangan perangkat lunak (SDLC) dijalankan menggunakan rangkaian agen AI secara sekuensial.",
@@ -440,6 +447,7 @@ window.translations = {
     prompt_bra_1: '/sdlc-bug-report analisis laporan bug di @issue-123.md dan usulkan perbaikan untuk @cart.js',
     prompt_dda_1: '/sdlc-generate-docs tulis panduan referensi API berdasarkan @spec-shopping-cart.md',
     prompt_cj_1: '/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas',
+    prompt_gl_1: '/sdlc-write-code implementasikan @plan.md menggunakan guided-learning',
     prompt_bea_2: '/sdlc-explore-ideas telusuri basis kode ini dan tulis draf penemuan untuk fitur keranjang belanja baru berdasarkan @business-brief.md',
     prompt_pm_2: '/sdlc-draft-prd buat PRD untuk fitur keranjang belanja berdasarkan @discovery-draft.md',
     prompt_sa_2: '/sdlc-define-specs rancang spesifikasi teknis berdasarkan @prd-shopping-cart.md',

@@ -60,7 +60,7 @@
   - `/sdlc-define-specs` for Technical Specification
   - `/sdlc-audit-consistency` **[Recurring Checkpoint]** — Invoked after PRD, Spec, and Plan are drafted to validate traceability.
   - `/sdlc-plan-tasks` for Implementation Planning
-  - `/sdlc-write-code` (Supplementary: `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
+  - `/sdlc-write-code` (Supplementary: `guided-learning`, `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
   - `/sdlc-code-review` for Code Review and Security Audit
   - `/sdlc-bug-report` for Root Cause Analysis and Bug Fixing
   - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
@@ -69,6 +69,7 @@
   - `memory-manager` — For saving and restoring working session context to/from `memory.instructions.md`
   - `sdlc-map-architecture` — For mapping repository architecture, directory structures, and generating `ARCHITECTURE.md`
   - `fable-protocol` — Autonomous execution protocol for complex, multi-step, and long-horizon tasks.
+  - `guided-learning` — AI-Guided Learning mentor. Guides the user step-by-step to build a project or implement a plan without writing the code for them. Best paired as a supplementary skill alongside `/sdlc-write-code` or `/code-janitor`.
   - `grilling` — For stress-testing a plan or design interactively to resolve design decisions
   - `tdd-implement` — Test-Driven Development (TDD) and incremental implementation discipline.
   - `karpathy-guidelines` — Surgical code modifications to reduce LLM coding mistakes.

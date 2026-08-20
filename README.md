@@ -172,7 +172,7 @@ Custom agents are specialized AI assistants for specific development roles and t
 | `/sdlc-define-specs`      | `sdlc-define-specs`                                                                                                      | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
 | `/sdlc-audit-consistency` | `sdlc-audit-consistency`                                                                                                 | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
 | `/sdlc-plan-tasks`        | `sdlc-plan-tasks`                                                                                                        | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
-| `/sdlc-write-code`        | `sdlc-write-code` (supp: `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
+| `/sdlc-write-code`        | `sdlc-write-code` (supp: `guided-learning`, `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
 | `/sdlc-code-review`       | `sdlc-code-review`                                                                                                       | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
 | `/sdlc-bug-report`        | `sdlc-bug-report`                                                                                                        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
 | `/sdlc-generate-docs`     | `sdlc-generate-docs`                                                                                                     | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
@@ -228,6 +228,7 @@ These skills can be invoked by any agent at any time without triggering a sessio
 | **omni-dev**                 | Omni-expert principal software architect. Enforces clean code, clean architecture, and strict anti-ambiguity protocols           |
 | **ui-designer**              | Elite UI/UX Design Lead & Frontend Architect. Generates distinctive interfaces with opinionated aesthetics                       |
 | **grilling**                 | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                            |
+| **guided-learning**          | AI-Guided Learning mentor. Guides the user step-by-step to build a project or implement a plan without writing the code for them.|
 | **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption           |
 
 ### Agent and Skill Configuration File Structure
