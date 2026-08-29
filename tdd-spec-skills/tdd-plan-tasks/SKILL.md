@@ -154,6 +154,13 @@ Before finalizing your plan, perform a strict self-audit against these anti-patt
 
 ---
 
+### 🧠 Proactive Memory Checkpoint Offer
+Before concluding this session or handing off to the next phase, you MUST proactively ask the user (in the language specified by AGENTS.md):
+> *"Would you like me to save this session's progress, active artifacts, and key decisions to `memory.instructions.md` using the `memory-manager` skill before proceeding to the next phase?"*
+If the user agrees, immediately execute `memory-manager` (Workflow 3: Write Mode) to append the session checkpoint.
+
+---
+
 ## 📑 Mandatory Implementation Plan Template (`/plan/plan-[feature-name].md`)
 
 ```markdown

@@ -160,6 +160,13 @@ Ensure you receive a `201 Created` status with a valid UUID.
 
 ---
 
+### 🧠 Proactive Memory Checkpoint Offer
+Before concluding this session or handing off to the next phase, you MUST proactively ask the user (in the language specified by AGENTS.md):
+> *"Would you like me to save this session's progress, active artifacts, and key decisions to `memory.instructions.md` using the `memory-manager` skill before proceeding to the next phase?"*
+If the user agrees, immediately execute `memory-manager` (Workflow 3: Write Mode) to append the session checkpoint.
+
+---
+
 ## Documentation Standards
 
 All agents MUST strictly adhere to the project documentation standards located in `standards/` before creating or updating any documentation artifact:

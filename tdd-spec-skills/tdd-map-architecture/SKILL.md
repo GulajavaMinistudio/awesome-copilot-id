@@ -91,6 +91,13 @@ _Execute ONLY if user confirms the post-generation offer._
 
 ---
 
+### 🧠 Proactive Memory Checkpoint Offer
+Once `docs/ARCHITECTURE.md` is generated or updated, you MUST proactively ask the user (in the language specified by AGENTS.md):
+> *"Would you like me to record the updated architecture map and test seams into `memory.instructions.md` using the `memory-manager` skill?"*
+If the user agrees, execute `memory-manager` (Workflow 3: Write Mode).
+
+---
+
 ## 📑 Mandatory Output Template (`docs/ARCHITECTURE.md`)
 
 ```markdown

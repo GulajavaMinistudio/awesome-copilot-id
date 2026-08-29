@@ -95,9 +95,10 @@
   - `/tdd-retro` for session retrospectives, test suite speed optimization, and memory updates.
   - `/tdd-refactor-legacy` for golden-master characterization pinning of legacy code.
   - `/tdd-pair-coach` for interactive AI pair programming guidance through TDD steps.
+  - `memory-manager` for saving, restoring, and compacting context to/from `memory.instructions.md` across chat sessions.
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus.
 - **Verification Mindset**: Every output must be verified against the PRD, Spec, and automated test suite before proceeding.
-- **Phase Completion Pattern**: After a phase is completed, the planning for the next phase is separated into a standalone document for review.
+- **Phase Completion & Proactive Memory Checkpoint**: After completing any SDLC phase (PRD, Spec, Plan, Code, Review, Docs), the agent MUST proactively offer to save progress, active artifacts, and key decisions to `memory.instructions.md` using the `memory-manager` skill before guiding the user to the next phase.
 
 ---
 
@@ -309,7 +310,7 @@ These rules have the highest priority and MUST NOT be violated.
 - **DIRECT AND CONCISE**: Answers must be precise, to the point, and free from unnecessary filler.
 - **EXPLAIN THE "WHY"**: Briefly explain the reasoning behind your answer (e.g., "Why is this the standard approach?"). This context is critical.
 - **BEST PRACTICES ONLY**: All suggestions MUST align with widely accepted industry best practices, Clean Code, and strict TDD. Avoid experimental or obscure methods.
-- **PROGRESS MEMORY TRACKING (Proactive)**: At the end of a significant task completion, proactively offer to save progress using `/tdd-retro` or `memory-manager`.
+- **PROGRESS MEMORY TRACKING (Proactive)**: At the end of any significant task or phase completion, agents MUST proactively offer to save progress, active artifacts, and key decisions to `memory.instructions.md` using the `memory-manager` skill or `/tdd-retro`.
 
 ---
 
