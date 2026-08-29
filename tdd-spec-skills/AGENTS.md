@@ -75,6 +75,7 @@
 - **Surgical Edit Mandate**: AI agents MUST prioritize targeted, surgical edits (modifying only specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
 - **English-Only Documentation & Code**: While conversational responses MUST be in Indonesian, all written code (variables, comments, commit messages) and all generated SDLC documentation (`docs/`, `/spec/`, `/plan/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
 - **Custom Slash Commands Usage**: User triggers skills using slash commands according to each development phase:
+  - `/tdd-init` for initializing the TDD-Spec SDLC architecture, AGENTS.md, CONSTITUTION.md, and CONSTRAINTS.md.
   - `/tdd-map-architecture` for System & Test Topography Mapping.
   - `/tdd-explore-ideas` for Discovery & 5-Step Idea Assessment (Phase 0).
   - `/tdd-prd` for Product Requirements Document with BDD Acceptance Criteria.
@@ -123,7 +124,11 @@ All agents MUST strictly adhere to the project documentation standards before cr
    - Numerical thresholds for test coverage, latency, bundle size, and linters are recorded in `CONSTRAINTS.md`.
    - Serves as the immutable quality contract enforced by CI and the *Floor-Guard*.
 
-4. **Reference First:** Prioritize consistency with these standards over any other formatting assumption.
+4. **Project Constitution (`CONSTITUTION.md`):**
+   - Established at project inception using `CONSTITUTION-TEMPLATE.md` to define non-negotiable architectural principles (Test-First Mandate, Spec as Executable Truth, Tracer-Bullet Vertical Slicing, Domain Fidelity, Simplicity/Rule 0).
+   - Serves as the overarching engineering charter governing all SDLC phases.
+
+5. **Reference First:** Prioritize consistency with these standards over any other formatting assumption.
 
 ---
 
@@ -141,6 +146,7 @@ To prevent context loss, hallucinations, and enforce strict SDLC traceability, *
 
 | Command / Phase          | Mandatory Upstream Document(s)                                                |
 | ------------------------ | ----------------------------------------------------------------------------- |
+| `/tdd-init`              | Repository manifests / existing CONSTITUTION / CONSTRAINTS                     |
 | `/tdd-map-architecture`  | Source code repository / test configuration                                   |
 | `/tdd-explore-ideas`     | User brief / Codebase context                                                 |
 | `/tdd-prd`               | Discovery Draft (`docs/discovery/`) OR existing PRD                           |
@@ -165,6 +171,10 @@ To prevent context loss, hallucinations, and enforce strict SDLC traceability, *
 ---
 
 ### Strict Pushback Rules per Agent:
+
+-1. **Architecture Bootstrapper & Calibrator (`/tdd-init`):**
+    - **Goal:** Initialize, auto-populate, calibrate, or amend `AGENTS.md`, `CONSTITUTION.md`, and `CONSTRAINTS.md`.
+    - **Pushback Rule:** If the user asks you to implement application feature code, YOU MUST REFUSE: *"As the TDD Bootstrapper Architect, my focus is on initializing and calibrating project governance (Constitution, Constraints, AGENTS.md). Please invoke /tdd-spec or /tdd-write-code for feature development."*
 
 0. **Pre-Phase 0: Architecture & Testability Mapping (`/tdd-map-architecture`):**
    - **Goal:** Map repository topology, CI pipelines, and public test seams into `docs/ARCHITECTURE.md`.

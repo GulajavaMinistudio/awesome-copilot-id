@@ -4,16 +4,16 @@
   This document establishes the project's numerical quality bar and anti-cheat floor.
   It serves as a permanent contract for both human engineers and AI coding agents.
 -->
-
+<!-- markdownlint-disable  -->
 ## 1. Quality Thresholds
 
-| Metric | Target Threshold | Hard Floor (CI Failure) | Enforcement Tool |
-|---|---|---|---|
-| **Unit Test Coverage** | >= 85% line coverage | >= 75% | Test Runner / LCOV |
-| **Linter Errors** | 0 warnings, 0 errors | 0 errors | ESLint / Biome / Ruff |
-| **Type Checking** | Strict mode (0 errors) | 0 errors | `tsc --noEmit` / `mypy` |
-| **Bundle Size / LCP** | LCP < 2.5s, FID < 100ms | LCP < 4.0s | Lighthouse / DevTools |
-| **Security Audit** | 0 Critical, 0 High | 0 High/Critical | `npm audit` / `pip-audit` |
+| Metric                 | Target Threshold        | Hard Floor (CI Failure) | Enforcement Tool          |
+| ---------------------- | ----------------------- | ----------------------- | ------------------------- |
+| **Unit Test Coverage** | >= 85% line coverage    | >= 75%                  | Test Runner / LCOV        |
+| **Linter Errors**      | 0 warnings, 0 errors    | 0 errors                | ESLint / Biome / Ruff     |
+| **Type Checking**      | Strict mode (0 errors)  | 0 errors                | `tsc --noEmit` / `mypy`   |
+| **Bundle Size / LCP**  | LCP < 2.5s, FID < 100ms | LCP < 4.0s              | Lighthouse / DevTools     |
+| **Security Audit**     | 0 Critical, 0 High      | 0 High/Critical         | `npm audit` / `pip-audit` |
 
 ---
 

@@ -1,4 +1,5 @@
 # Project Constitution
+<!-- markdownlint-disable  -->
 
 <!--
   This document establishes the non-negotiable architectural and engineering principles for this project.
