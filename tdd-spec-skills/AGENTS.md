@@ -251,6 +251,132 @@ To prevent context loss, hallucinations, and enforce strict SDLC traceability, *
 
 ---
 
+### Recurring Quality Gate Routing (`/tdd-clarify` vs `/tdd-analyze`)
+
+To ensure flawless execution and 100% artifact traceability, the pipeline integrates two specialized verification checkpoints between phases:
+
+```mermaid
+graph TD
+    PRD["/tdd-prd (PRD Drafted)"] -->|Handoff| Clarify1["/tdd-clarify (Interrogate PRD Edge Cases)"]
+    Clarify1 --> Spec["/tdd-spec (Technical Spec Drafted)"]
+    
+    Spec -->|Handoff Option 1 (Recommended)| Clarify2["/tdd-clarify (Interrogate Test Seams & Assumptions)"]
+    Spec -->|Handoff Option 2| Analyze1["/tdd-analyze (Audit Blast Radius & Mocking Traps)"]
+    
+    Clarify2 --> Plan["/tdd-plan-tasks (Implementation Plan Drafted)"]
+    Analyze1 --> Plan
+    
+    Plan -->|Handoff Option 1 (Recommended)| Analyze2["/tdd-analyze (Cross-Artifact Traceability Audit: PRD ↔ Spec ↔ Plan)"]
+    Plan -->|Handoff Option 2| Clarify3["/tdd-clarify (Interrogate Plan Execution Risks)"]
+    
+    Analyze2 --> Code["/tdd-write-code (Red-Green-Refactor TDD Engine)"]
+    Clarify3 --> Code
+```
+
+#### Text Diagram Representation (Human & AI Accessible):
+
+```text
+====================================================================================================
+                                  TDD-SPEC SDLC PIPELINE & QUALITY GATES
+====================================================================================================
+
+[ Phase 0: DISCOVERY ]
+    │
+    ▼
+┌──────────────────────┐
+│  /tdd-explore-ideas  │ ──▶ [ docs/discovery/ ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 1: PRODUCT REQUIREMENTS ]
+    │
+    ▼
+┌──────────────────────┐
+│       /tdd-prd       │ ──▶ [ docs/prd/ ] ──▶ ( Handoff ) ──▶ ┌──────────────────────┐
+└──────────────────────┘                                       │     /tdd-clarify     │
+                                                               │ (Interrogate PRD AC) │
+                                                               └──────────────────────┘
+                                                                           │
+                                                                           ▼
+[ Phase 2: SPECIFICATION & CONTRACTS ]
+    │
+    ▼
+┌──────────────────────┐
+│      /tdd-spec       │ ──▶ [ /spec/ & docs/adr/ ]
+└──────────────────────┘
+    │
+    ├──▶ [ Option 1 (Recommended) ] ──▶ ┌────────────────────────────────┐
+    │                                   │          /tdd-clarify          │
+    │                                   │ (Interrogate Seams/Assumptions)│
+    │                                   └────────────────────────────────┘
+    │                                                   │
+    └──▶ [ Option 2 (Blast Radius)] ──▶ ┌────────────────────────────────┐
+                                        │          /tdd-analyze          │
+                                        │  (Audit Blast Radius & Mocks)  │
+                                        └────────────────────────────────┘
+                                                        │
+                                                        ▼
+[ Phase 3: TRACER-BULLET PLANNING ]
+    │
+    ▼
+┌──────────────────────┐
+│   /tdd-plan-tasks    │ ──▶ [ /plan/ ]
+└──────────────────────┘
+    │
+    ├──▶ [ Option 1 (Recommended) ] ──▶ ┌────────────────────────────────┐
+    │                                   │          /tdd-analyze          │
+    │                                   │ (Audit Traceability: PRD↔Spec) │
+    │                                   └────────────────────────────────┘
+    │                                                   │
+    └──▶ [ Option 2 (Risk Check)  ] ──▶ ┌────────────────────────────────┐
+                                        │          /tdd-clarify          │
+                                        │ (Interrogate Execution Risks)  │
+                                        └────────────────────────────────┘
+                                                        │
+                                                        ▼
+[ Phase 4: RED-GREEN-REFACTOR CODING ]
+    │
+    ▼
+┌──────────────────────┐
+│   /tdd-write-code    │ ──▶ [ Passing Test Suite & Floor-Guard Enforced ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 5: 5-AXIS CODE & TEST REVIEW ]
+    │
+    ▼
+┌──────────────────────┐
+│   /tdd-code-review   │ ──▶ [ docs/review/ ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 6: LIVING DOCUMENTATION ]
+    │
+    ▼
+┌──────────────────────┐
+│  /tdd-generate-docs  │ ──▶ [ docs/ (Diátaxis Quad) ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 7: RETROSPECTIVE & MEMORY ]
+    │
+    ▼
+┌──────────────────────┐
+│      /tdd-retro      │ ──▶ [ memory.instructions.md & CONSTRAINTS.md ]
+└──────────────────────┘
+====================================================================================================
+```
+
+- **When to Use `/tdd-clarify` (Requirements & Testability Interrogation):**
+  - **Post-PRD:** Interrogates BDD Acceptance Criteria, edge cases, and untestable user story descriptions.
+  - **Post-Spec:** Interrogates interface contracts, DDL constraints, Pre-Agreed Test Seams, and surfaces `[ASSUMPTION]` tags.
+  - **Post-Plan:** Interrogates task execution risks, circular dependencies, and sizing bottlenecks.
+- **When to Use `/tdd-analyze` (Blast Radius & Traceability Matrix Audit):**
+  - **Post-Spec (Pre-Planning):** Audits codebase blast radius, breaking changes, and coupling traps on existing source code before planning tasks.
+  - **Post-Plan (Pre-Execution):** Audits 3-way consistency (PRD vs Spec vs Plan) to detect **Missing Coverage** and eliminate **Scope Creep / Orphaned Items** before writing code.
+
+---
+
 ## Clarification & Quality Gate Policy (Scoring Protocol)
 
 To prevent infinite loops during the Draft ➔ Audit ➔ Update cycle, all clarification and audit phases MUST follow this scoring protocol:

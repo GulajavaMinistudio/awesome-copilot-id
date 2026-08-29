@@ -101,10 +101,15 @@ If the user provides an Audit Report or Clarification Report (where Readiness Sc
 ### Phase 4: Handoff to Next SDLC Phase
 
 Once the implementation plan has been generated or revised:
-1. **For Newly Created Plans:** Direct the user to open a new chat session and invoke `/tdd-clarify`:
-   ```text
-   /tdd-clarify Interrogate the newly created implementation plan in @plan/plan-[feature-name].md for execution risks. Reference spec: @spec/spec-[feature-name].md
-   ```
+1. **For Newly Created Plans:** Direct the user to open a new chat session and choose the appropriate pre-execution checkpoint:
+   - **Option 1 (Cross-Artifact Traceability & Consistency Audit - Recommended):** Invoke `/tdd-analyze`:
+     ```text
+     /tdd-analyze Audit traceability and consistency across @docs/prd/prd-[feature-name].md, @spec/spec-[feature-name].md, and @plan/plan-[feature-name].md
+     ```
+   - **Option 2 (Execution Plan Interrogation):** Invoke `/tdd-clarify`:
+     ```text
+     /tdd-clarify Interrogate the newly created implementation plan in @plan/plan-[feature-name].md for execution risks. Reference spec: @spec/spec-[feature-name].md
+     ```
 2. **For Remediated Plans:** Execute the 3-Step Remediation Sequence:
    - **Step 1 (Mental Calculation):** Calculate new Projected Readiness Score (Completeness 40%, Clarity 30%, Alignment 30%).
    - **Step 2 (Update Audit Report):** Append `> [!SUCCESS] REMEDIATION STATUS: RESOLVED` block to the top of the audit report.

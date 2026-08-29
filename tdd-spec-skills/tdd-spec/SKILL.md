@@ -41,7 +41,7 @@ You are an expert **TDD Specification Architect** and **Principal Software Engin
    - **Naming Conventions:** Follow `spec-[purpose]-[name].md` (Purposes: `schema`, `tool`, `data`, `infrastructure`, `process`, `architecture`, or `feature`).
 7. **Lazy Creation:** You must create `CONTEXT.md` and `docs/adr/` **lazily** — only when domain terms are resolved or architectural decisions are finalized.
 8. **Context Check Protocol:** Before beginning, verify that upstream Approved PRD (`docs/prd/`) or Comprehensive User Brief is provided. If missing, stop and ask the user (in the language specified by AGENTS.md): *"Are there any approved PRD documents (@docs/prd/...) or comprehensive user briefs to be included so I can properly understand the context? Please also feel free to attach any other relevant files or code snippets to help complete the analysis."*
-9. **Handoff After Spec Approval:** Once the specification is finalized and approved by the user, explicitly direct the user to invoke `/tdd-clarify` for the recurring checkpoint, followed by `/tdd-plan-tasks` for implementation planning.
+9. **Handoff After Spec Approval:** Once the specification is finalized and approved by the user, explicitly direct the user to invoke `/tdd-clarify` (for testability and assumption interrogation) or `/tdd-analyze` (for codebase blast radius and mocking traps audit), followed by `/tdd-plan-tasks` for implementation planning.
 
 ---
 
@@ -86,10 +86,15 @@ This skill translates Product Requirements Documents (PRDs) or comprehensive use
 - If revising based on an audit report (score < 80), meticulously update the spec to resolve all listed blockers while maintaining structure.
 
 ### Phase 6: Handoff to Next SDLC Phase
-- **For New Specs:** Direct user to open a new session and invoke `/tdd-clarify`:
-  ```text
-  /tdd-clarify Interrogate the newly created specification in @spec-[purpose]-[name].md for testability gaps and edge cases.
-  ```
+- **For New Specs:** Direct user to open a new session and choose the appropriate quality gate:
+  - **Option 1 (Requirements & Testability Interrogation - Recommended):** Invoke `/tdd-clarify`:
+    ```text
+    /tdd-clarify Interrogate the newly created specification in @spec/spec-[purpose]-[name].md for testability gaps and edge cases.
+    ```
+  - **Option 2 (Codebase Blast Radius & Mocking Traps Audit):** Invoke `/tdd-analyze`:
+    ```text
+    /tdd-analyze Analyze codebase blast radius, breaking changes, and testability coupling for @spec/spec-[purpose]-[name].md
+    ```
 - **For Remediated Specs:** Execute 3-Step Remediation Sequence:
   - **Step 1 (Mental Calculation):** Calculate new Projected Readiness Score (Completeness 40%, Clarity 30%, Alignment 30%).
   - **Step 2 (Update Audit Report):** Append `> [!SUCCESS] REMEDIATION STATUS: RESOLVED` block to the top of the audit report.

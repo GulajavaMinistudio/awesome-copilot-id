@@ -26,16 +26,131 @@ An elite, highly disciplined skill package that unifies **Specification-Driven D
 
 ---
 
-## 🔄 The 9-Stage Core SDLC Lifecycle
+## 🔄 The Core SDLC Lifecycle & Quality Gate Routing
+
+```mermaid
+graph TD
+    Init["/tdd-init (Bootstrap Scaffolding)"] --> Map["/tdd-map-architecture (Map Topography)"]
+    Map --> Explore["/tdd-explore-ideas (Phase 0: Discovery)"]
+    Explore --> PRD["/tdd-prd (Phase 1: BDD PRD)"]
+    
+    PRD -->|Handoff| Clarify1["/tdd-clarify (Interrogate PRD Edge Cases)"]
+    Clarify1 --> Spec["/tdd-spec (Phase 2: Contract-First Blueprint)"]
+    
+    Spec -->|Option 1: Testability Check| Clarify2["/tdd-clarify (Interrogate Seams & Assumptions)"]
+    Spec -->|Option 2: Blast Radius Audit| Analyze1["/tdd-analyze (Audit Blast Radius & Coupling)"]
+    
+    Clarify2 --> Plan["/tdd-plan-tasks (Phase 3: Tracer-Bullet Plan)"]
+    Analyze1 --> Plan
+    
+    Plan -->|Option 1: Traceability Audit| Analyze2["/tdd-analyze (Audit PRD ↔ Spec ↔ Plan)"]
+    Plan -->|Option 2: Execution Risk Check| Clarify3["/tdd-clarify (Interrogate Task Dependencies)"]
+    
+    Analyze2 --> Code["/tdd-write-code (Phase 4: Red-Green-Refactor Engine)"]
+    Clarify3 --> Code
+    
+    Code --> Review["/tdd-code-review (Phase 5: 5-Axis Code & Test Audit)"]
+    Review --> Docs["/tdd-generate-docs (Phase 6: Diátaxis Living Docs)"]
+    Docs --> Retro["/tdd-retro (Phase 7: Retrospective & Memory Update)"]
+```
+
+#### Text Diagram Representation (Human & AI Accessible):
 
 ```text
-  DISCOVER        DEFINE           SPECIFY          PLAN           BUILD           VERIFY          SHIP & DOCS
- ┌─────────┐    ┌─────────┐     ┌───────────┐    ┌──────────┐   ┌───────────┐   ┌───────────┐   ┌─────────────┐
- │ Explore │───▶│ TDD PRD │────▶│ TDD Spec  │───▶│ TDD Plan │──▶│ TDD Write │──▶│ TDD Review│──▶│TDD Generate │
- │  Ideas  │    │  (BDD)  │     │  (Seams)  │    │ (Graph)  │   │   Code    │   │  (5-Axis) │   │    Docs     │
- └─────────┘    └─────────┘     └───────────┘    └──────────┘   └───────────┘   └───────────┘   └─────────────┘
-  /tdd-explore   /tdd-prd        /tdd-spec        /tdd-plan      /tdd-write-code /tdd-review     /tdd-docs
+====================================================================================================
+                                  TDD-SPEC SDLC PIPELINE & QUALITY GATES
+====================================================================================================
+
+[ Phase 0: DISCOVERY ]
+    │
+    ▼
+┌──────────────────────┐
+│  /tdd-explore-ideas  │ ──▶ [ docs/discovery/ ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 1: PRODUCT REQUIREMENTS ]
+    │
+    ▼
+┌──────────────────────┐
+│       /tdd-prd       │ ──▶ [ docs/prd/ ] ──▶ ( Handoff ) ──▶ ┌──────────────────────┐
+└──────────────────────┘                                       │     /tdd-clarify     │
+                                                               │ (Interrogate PRD AC) │
+                                                               └──────────────────────┘
+                                                                           │
+                                                                           ▼
+[ Phase 2: SPECIFICATION & CONTRACTS ]
+    │
+    ▼
+┌──────────────────────┐
+│      /tdd-spec       │ ──▶ [ /spec/ & docs/adr/ ]
+└──────────────────────┘
+    │
+    ├──▶ [ Option 1 (Recommended) ] ──▶ ┌────────────────────────────────┐
+    │                                   │          /tdd-clarify          │
+    │                                   │ (Interrogate Seams/Assumptions)│
+    │                                   └────────────────────────────────┘
+    │                                                   │
+    └──▶ [ Option 2 (Blast Radius)] ──▶ ┌────────────────────────────────┐
+                                        │          /tdd-analyze          │
+                                        │  (Audit Blast Radius & Mocks)  │
+                                        └────────────────────────────────┘
+                                                        │
+                                                        ▼
+[ Phase 3: TRACER-BULLET PLANNING ]
+    │
+    ▼
+┌──────────────────────┐
+│   /tdd-plan-tasks    │ ──▶ [ /plan/ ]
+└──────────────────────┘
+    │
+    ├──▶ [ Option 1 (Recommended) ] ──▶ ┌────────────────────────────────┐
+    │                                   │          /tdd-analyze          │
+    │                                   │ (Audit Traceability: PRD↔Spec) │
+    │                                   └────────────────────────────────┘
+    │                                                   │
+    └──▶ [ Option 2 (Risk Check)  ] ──▶ ┌────────────────────────────────┐
+                                        │          /tdd-clarify          │
+                                        │ (Interrogate Execution Risks)  │
+                                        └────────────────────────────────┘
+                                                        │
+                                                        ▼
+[ Phase 4: RED-GREEN-REFACTOR CODING ]
+    │
+    ▼
+┌──────────────────────┐
+│   /tdd-write-code    │ ──▶ [ Passing Test Suite & Floor-Guard Enforced ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 5: 5-AXIS CODE & TEST REVIEW ]
+    │
+    ▼
+┌──────────────────────┐
+│   /tdd-code-review   │ ──▶ [ docs/review/ ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 6: LIVING DOCUMENTATION ]
+    │
+    ▼
+┌──────────────────────┐
+│  /tdd-generate-docs  │ ──▶ [ docs/ (Diátaxis Quad) ]
+└──────────────────────┘
+    │
+    ▼
+[ Phase 7: RETROSPECTIVE & MEMORY ]
+    │
+    ▼
+┌──────────────────────┐
+│      /tdd-retro      │ ──▶ [ memory.instructions.md & CONSTRAINTS.md ]
+└──────────────────────┘
+====================================================================================================
 ```
+
+### 🎯 When to Use `/tdd-clarify` vs `/tdd-analyze`
+- **`/tdd-clarify` (The Doubt-Driven Interrogator):** Use after PRD, after Spec, or after Plan to resolve ambiguities, surface missing edge cases, and evaluate the **40/30/30 Readiness Score**.
+- **`/tdd-analyze` (The Blast Radius & Traceability Auditor):** Use after Spec to map affected code files and mocking traps, or after Plan to verify 100% testable coverage across PRD, Spec, and Plan before entering the Code phase.
 
 ---
 
