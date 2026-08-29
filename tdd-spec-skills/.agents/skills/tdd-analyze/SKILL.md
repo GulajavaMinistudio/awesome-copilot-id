@@ -85,6 +85,13 @@ For every failure, provide concrete remediation guidance (e.g. which specific se
 
 ---
 
+### 🧠 Proactive Memory Checkpoint Offer
+Before concluding this consistency audit session, you MUST proactively ask the user (in the language specified by AGENTS.md):
+> *"Would you like me to save this session's audit findings, readiness score, and traceability status to `memory.instructions.md` using the `memory-manager` skill before proceeding?"*
+If the user agrees, immediately execute `memory-manager` (Workflow 3: Write Mode) to append the session checkpoint.
+
+---
+
 ## Documentation Standards
 
 All agents MUST strictly adhere to the project documentation standards located in `standards/` before creating or updating any documentation artifact:

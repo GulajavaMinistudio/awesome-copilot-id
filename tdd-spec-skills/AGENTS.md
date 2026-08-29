@@ -104,7 +104,9 @@
 
 ## Documentation Standards
 
-All agents MUST strictly adhere to the project documentation standards before creating or updating any documentation artifact:
+All agents MUST strictly adhere to the project documentation standards located in `.agents/standards/` before creating or updating any documentation artifact:
+
+> **Standards folder discovery:** The active `standards/` directory is located at `.agents/standards/` (and `.agents/skills/standards/`).
 
 1. **Domain Glossary (`CONTEXT.md`):** All business terminology must follow the standardized format.
    - **Scope Detection:** Check for `CONTEXT-MAP.md` at root first. If it exists, follow the map to find the relevant context folder. If not, use root `CONTEXT.md`.

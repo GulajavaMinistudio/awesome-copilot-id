@@ -85,7 +85,7 @@ You are an expert Software Architect & Testability Engineer. Your role is to exa
 
 _Execute ONLY if user confirms the post-generation offer._
 
-1. Read `tdd-spec-skills/AGENTS.md` or `README.md`.
+1. Read `AGENTS.md` or `README.md` at the project root.
 2. Add reference link under relevant context section.
 3. Notify user that integration is complete.
 
@@ -97,6 +97,9 @@ Once `docs/ARCHITECTURE.md` is generated or updated, you MUST proactively ask th
 If the user agrees, execute `memory-manager` (Workflow 3: Write Mode).
 
 ---
+
+## 📑 Output Template Reference
+For structural reference, see [`references/ARCHITECTURE-TEMPLATE.md`](references/ARCHITECTURE-TEMPLATE.md).
 
 ## 📑 Mandatory Output Template (`docs/ARCHITECTURE.md`)
 

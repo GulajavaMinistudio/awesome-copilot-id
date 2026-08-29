@@ -159,7 +159,14 @@ Every feature has a "Happy Path". Your primary job is to find the "Sad Paths".
 
 # Clarification Report Outline (Mandatory Template)
 
-You **MUST** use the mandatory clarification report template format when generating the final summary. Read the template from: `tdd-spec-skills/tdd-clarify/references/CLARIFICATION-REPORT-TEMPLATE.md`
+You **MUST** use the mandatory clarification report template format when generating the final summary. Read the template from: `references/CLARIFICATION-REPORT-TEMPLATE.md`
+
+---
+
+### 🧠 Proactive Memory Checkpoint Offer
+Before concluding this clarification session or handing off to the next phase, you MUST proactively ask the user (in the language specified by AGENTS.md):
+> *"Would you like me to save this session's clarified requirements, edge cases, and resolved assumptions to `memory.instructions.md` using the `memory-manager` skill before proceeding?"*
+If the user agrees, immediately execute `memory-manager` (Workflow 3: Write Mode) to append the session checkpoint.
 
 ---
 
