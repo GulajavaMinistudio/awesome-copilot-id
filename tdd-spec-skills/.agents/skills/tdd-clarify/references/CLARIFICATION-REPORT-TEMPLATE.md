@@ -1,5 +1,5 @@
 # 🔍 TDD Clarification Report [Review Iteration {X}]
-
+<!-- markdownlint-disable -->
 **Target Document:** {Document Path, e.g. docs/prd/prd-user-auth.md or /spec/spec-feature-orders.md}  
 **Readiness Score:** {Score}/100  
 **Status:** {Good Enough (>= 80) / Below Threshold (< 80)}

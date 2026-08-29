@@ -1,7 +1,7 @@
 <!-- markdownlint-disable -->
-# AGENTS.md - TDD-Spec SDLC Architecture
+# AGENTS.md - [Your Application Name] (Please replace this title with your actual project context)
 
-> **Project Description:** An elite, Test-Driven Development (TDD) and Specification-Driven Development (SDD) multi-agent architecture. Combines the executable specification principles of GitHub Spec Kit, the constraint floors of Addy Osmani's Agent Skills, the domain modeling and vertical slicing of Matt Pocock's Skills, and the strict sequential SDLC framework of Awesome Copilot ID.
+> **Project Description:** [Please write a 1-3 sentence summary of what this project is about, its core domain, and its primary goals. This helps all agents understand the big picture context before diving into specifics.]
 
 ---
 
@@ -149,7 +149,7 @@ To prevent context loss, hallucinations, and enforce strict SDLC traceability, *
 
 | Command / Phase          | Mandatory Upstream Document(s)                                                |
 | ------------------------ | ----------------------------------------------------------------------------- |
-| `/tdd-init`              | Repository manifests / existing CONSTITUTION / CONSTRAINTS                     |
+| `/tdd-init`              | Repository manifests / existing CONSTITUTION / CONSTRAINTS                    |
 | `/tdd-map-architecture`  | Source code repository / test configuration                                   |
 | `/tdd-explore-ideas`     | User brief / Codebase context                                                 |
 | `/tdd-prd`               | Discovery Draft (`docs/discovery/`) OR existing PRD                           |
