@@ -73,8 +73,8 @@
                 <span id="active-lang-label"><i class="bi bi-globe me-1"></i> EN</span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end border-hairline shadow-sm" aria-labelledby="langDropdown">
-                <li><button class="dropdown-item lang-select-btn fw-medium py-2" data-lang="en">English (EN)</button></li>
-                <li><button class="dropdown-item lang-select-btn fw-medium py-2" data-lang="id">Bahasa Indonesia (ID)</button></li>
+                <li><button type="button" class="dropdown-item lang-select-btn fw-medium py-2" data-lang="en">English (EN)</button></li>
+                <li><button type="button" class="dropdown-item lang-select-btn fw-medium py-2" data-lang="id">Bahasa Indonesia (ID)</button></li>
               </ul>
             </div>
             <a href="#installation" class="btn btn-brand text-white py-2 px-3 fw-medium d-flex align-items-center" data-i18n="nav_cta" style="height: 38px;">
@@ -223,7 +223,7 @@
                 Pilih metode instalasi otomatis yang cepat atau lakukan instalasi manual sesuai dengan platform asisten AI yang Anda gunakan.
               </p>
               <div class="p-4 bg-surface-soft border-hairline" style="border-radius: 12px;">
-                <h4 class="h6 text-ink fw-bold mb-3" data-i18n="install_prereq_title">Prasyarat Platform</h4>
+                <h3 class="h6 text-ink fw-bold mb-3" data-i18n="install_prereq_title">Prasyarat Platform</h3>
                 <ul class="list-unstyled mb-0 d-flex flex-wrap gap-2">
                   <li><span class="badge bg-white text-ink border-hairline">Google Antigravity</span></li>
                   <li><span class="badge bg-white text-ink border-hairline">GitHub Copilot</span></li>
@@ -274,12 +274,12 @@
                         <p class="small text-muted mb-1" style="font-size: 12px;">1. Terminal:</p>
                         <div class="position-relative mb-2">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init</code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init">Copy</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <p class="small text-muted mb-1" style="font-size: 12px;">2. AI Chat:</p>
                         <div class="position-relative">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_sdlc_init">/sdlc-init setup this project</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sdlc_init" data-clipboard="/sdlc-init setup this project">Copy</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sdlc_init" data-clipboard="/sdlc-init setup this project" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -294,12 +294,12 @@
                         <p class="small text-muted mb-1" style="font-size: 12px;">1. Terminal:</p>
                         <div class="position-relative mb-2">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init</code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init">Copy</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <p class="small text-muted mb-1" style="font-size: 12px;">2. AI Chat:</p>
                         <div class="position-relative">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_tdd_init">/tdd-init setup this project</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_init" data-clipboard="/tdd-init setup this project">Copy</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_init" data-clipboard="/tdd-init setup this project" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -317,18 +317,18 @@
                   </p>
                   
                   <div class="mb-4">
-                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method1_linux">Linux / macOS (Bash/Zsh)</h5>
+                    <h4 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method1_linux">Linux / macOS (Bash/Zsh)</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink"><code>curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash</code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
 
                   <div>
-                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method1_win">Windows Terminal (PowerShell)</h5>
+                    <h4 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method1_win">Windows Terminal (PowerShell)</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink"><code>irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex</code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                   <div class="alert alert-info small py-2 px-3 mt-4 mb-0" data-i18n="install_general_warning">
@@ -343,7 +343,7 @@
                       <strong data-i18n="install_method2_step1">Clone repositori ini:</strong>
                       <div class="position-relative mt-2 mb-3">
                         <pre class="bg-surface-soft border-hairline text-ink"><code>git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git</code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </li>
                     <li class="mb-3">
@@ -356,7 +356,7 @@
                       <strong data-i18n="install_method2_step3">Salin file <code>AGENTS.md</code> ke root proyek:</strong>
                       <div class="position-relative mt-2 mb-3">
                         <pre class="bg-surface-soft border-hairline text-ink"><code>cp awesome-copilot-id/AGENTS.md ./</code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="cp awesome-copilot-id/AGENTS.md ./">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="cp awesome-copilot-id/AGENTS.md ./" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                       <p class="small text-muted-custom mt-1" data-i18n="install_method2_step3_desc">
                         <em>Penting:</em> Setelah disalin, buka <code>AGENTS.md</code> dan ubah:<br>1. Placeholder <code>[Your Application Name]</code> dengan nama proyek Anda.<br>2. Tambahkan <code>[Project Description]</code> yang singkat.<br>3. Sesuaikan preferensi <code>Language:</code> sesuai kebutuhan Anda.
@@ -395,7 +395,7 @@
                   <!-- Group 1: Strategy & Specs -->
                   <div class="px-3 py-2 bg-light border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_1">Phase 1-3: Strategy & Specs</div>
                   
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item active" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item active" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-explore-ideas</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 0</span>
@@ -403,7 +403,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_bea_role">Discovery Explorer (Phase 0)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-pm-tab" data-bs-toggle="list" href="#agent-pm" role="tab" aria-controls="agent-pm">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-pm-tab" data-bs-toggle="list" href="#agent-pm" role="tab" aria-controls="agent-pm">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-draft-prd</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 1</span>
@@ -411,7 +411,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_pm_role">Product Requirements (Phase 1)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-tab" data-bs-toggle="list" href="#agent-ca" role="tab" aria-controls="agent-ca">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-tab" data-bs-toggle="list" href="#agent-ca" role="tab" aria-controls="agent-ca">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-clarify-reqs</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Gate 1</span>
@@ -419,7 +419,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ca_role_1">Clarification Gatekeeper (Post-PRD)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-sa-tab" data-bs-toggle="list" href="#agent-sa" role="tab" aria-controls="agent-sa">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-sa-tab" data-bs-toggle="list" href="#agent-sa" role="tab" aria-controls="agent-sa">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-define-specs</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 2</span>
@@ -427,7 +427,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_sa_role">Technical Architect (Phase 2)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-acc-tab" data-bs-toggle="list" href="#agent-acc" role="tab" aria-controls="agent-acc">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-acc-tab" data-bs-toggle="list" href="#agent-acc" role="tab" aria-controls="agent-acc">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-audit-consistency</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Audit</span>
@@ -435,7 +435,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_acc_role">Traceability & Consistency Auditor</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-2-tab" data-bs-toggle="list" href="#agent-ca-2" role="tab" aria-controls="agent-ca-2">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-2-tab" data-bs-toggle="list" href="#agent-ca-2" role="tab" aria-controls="agent-ca-2">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-clarify-reqs</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Gate 2</span>
@@ -443,7 +443,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ca_role_2">Clarification Gatekeeper (Post-Spec)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-plan-tasks</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 3</span>
@@ -451,7 +451,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_pa_role">Implementation Planner (Phase 3)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-3-tab" data-bs-toggle="list" href="#agent-ca-3" role="tab" aria-controls="agent-ca-3">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-3-tab" data-bs-toggle="list" href="#agent-ca-3" role="tab" aria-controls="agent-ca-3">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-clarify-reqs</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Gate 3</span>
@@ -462,7 +462,7 @@
                   <!-- Group 2: Execution & Review -->
                   <div class="px-3 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_2">Phase 4: Execution & Review</div>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-write-code</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 4</span>
@@ -470,7 +470,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_gmd_role">Autonomous Developer (Phase 4)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ecr-tab" data-bs-toggle="list" href="#agent-ecr" role="tab" aria-controls="agent-ecr">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ecr-tab" data-bs-toggle="list" href="#agent-ecr" role="tab" aria-controls="agent-ecr">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-code-review</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Review</span>
@@ -478,7 +478,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ecr_role">5-Axis Code & Security Reviewer</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-bra-tab" data-bs-toggle="list" href="#agent-bra" role="tab" aria-controls="agent-bra">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-bra-tab" data-bs-toggle="list" href="#agent-bra" role="tab" aria-controls="agent-bra">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-bug-report</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">RCA</span>
@@ -489,7 +489,7 @@
                   <!-- Group 3: Documentation -->
                   <div class="px-3 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_3">Phase 5: Documentation</div>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-dda-tab" data-bs-toggle="list" href="#agent-dda" role="tab" aria-controls="agent-dda">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-dda-tab" data-bs-toggle="list" href="#agent-dda" role="tab" aria-controls="agent-dda">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-generate-docs</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 5</span>
@@ -500,7 +500,7 @@
                   <!-- Group 4: Supplementary -->
                   <div class="px-3 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_4">Supplementary (Bypass)</div>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-cj-tab" data-bs-toggle="list" href="#agent-cj" role="tab" aria-controls="agent-cj">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-cj-tab" data-bs-toggle="list" href="#agent-cj" role="tab" aria-controls="agent-cj">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/code-janitor</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Bypass</span>
@@ -508,7 +508,7 @@
                     <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_cj_role">Rapid Fixer & Refactor (Bypass)</div>
                   </button>
 
-                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-gl-tab" data-bs-toggle="list" href="#agent-gl" role="tab" aria-controls="agent-gl">
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-gl-tab" data-bs-toggle="list" href="#agent-gl" role="tab" aria-controls="agent-gl">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/guided-learning</span>
                       <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Mentor</span>
@@ -535,24 +535,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_bea_desc">
                       Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_bea_best">
                       Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bea_1">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -568,24 +568,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_pm_desc">
                       Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_pm_best">
                       Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pm_1">/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -601,24 +601,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ca_desc">
                       Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">
                       Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -634,24 +634,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_sa_desc">
                       Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_sa_best">
                       Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -667,24 +667,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_acc_desc">
                       Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_acc_best">
                       Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_acc_1">/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -700,24 +700,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ca_desc">
                       Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">
                       Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -733,24 +733,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_pa_desc">
                       Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_pa_best">
                       Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -766,24 +766,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ca_desc">
                       Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">
                       Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -799,24 +799,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_gmd_desc">
                       Agen developer otonom berkinerja tinggi yang menulis fitur, melakukan refaktorisasi bedah, dan menulis tes unit/widget yang kokoh.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_gmd_best">
                       Menulis kode fitur, merefaktor modul, memperbaiki bug, dan menjalankan tes langsung di ruang kerja.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_1">/sdlc-write-code execute task 1 from @cart-plan.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code execute task 1 from @cart-plan.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code execute task 1 from @cart-plan.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -832,24 +832,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ecr_desc">
                       Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan praktik terbaik keamanan, serta menghasilkan rencana refaktorisasi terstruktur.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_ecr_best">
                       Menjaga kualitas kode dan standar keamanan sebelum menggabungkan perubahan ke branch utama.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -865,24 +865,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_bra_desc">
                       Menganalisis laporan bug, melakukan Analisis Akar Penyebab (RCA), dan menghasilkan rencana perbaikan bug bedah dengan strategi rollback yang aman.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_bra_best">
                       Menyelesaikan bug kompleks di codebase tanpa menimbulkan efek samping atau regresi.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the crash report in @crash-log.txt</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the crash report in @crash-log.txt">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the crash report in @crash-log.txt" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -898,24 +898,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_dda_desc">
                       Spesialis dokumentasi teknis yang menulis panduan pengguna, panduan API, dan dokumen referensi yang jelas dengan kerangka kerja Diataxis.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_dda_best">
                       Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_dda_1">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -931,24 +931,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_cj_desc">
                       Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_cj_best">
                       Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -964,24 +964,24 @@
                   </div>
                   
                   <div class="mb-4">
-                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_gl_desc">
                       AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.
                     </p>
                   </div>
                   
                   <div class="agent-best-for-callout p-3 mb-4">
-                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
                     <p class="text-body-custom small mb-0" data-i18n="agent_gl_best">
                       Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.
                     </p>
                   </div>
                   
                   <div>
-                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
                     <div class="position-relative">
                       <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning" aria-label="Copy command to clipboard">Copy</button>
                     </div>
                   </div>
                 </div>
@@ -1009,13 +1009,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_bea_desc">Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_bea_best">Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_bea_1">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1035,13 +1035,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_pm_desc">Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_pm_best">Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_pm_1">/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1061,13 +1061,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1087,13 +1087,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_sa_desc">Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_sa_best">Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1113,13 +1113,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_acc_desc">Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_acc_best">Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_acc_1">/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1139,13 +1139,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_pa_desc">Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_pa_best">Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1165,13 +1165,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_gmd_desc">Agen developer otonom berkinerja tinggi yang menulis fitur, melakukan refaktorisasi bedah, dan menulis tes unit/widget yang kokoh.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_gmd_best">Menulis kode fitur, merefaktor modul, memperbaiki bug, dan menjalankan tes langsung di ruang kerja.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_gmd_1">/sdlc-write-code execute task 1 from @cart-plan.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code execute task 1 from @cart-plan.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code execute task 1 from @cart-plan.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1191,13 +1191,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_ecr_desc">Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan praktik terbaik keamanan, serta menghasilkan rencana refaktorisasi terstruktur.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_ecr_best">Menjaga kualitas kode dan standar keamanan sebelum menggabungkan perubahan ke branch utama.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1217,13 +1217,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_bra_desc">Menganalisis laporan bug, melakukan Analisis Akar Penyebab (RCA), dan menghasilkan rencana perbaikan bug bedah dengan strategi rollback yang aman.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_bra_best">Menyelesaikan bug kompleks di codebase tanpa menimbulkan efek samping atau regresi.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the crash report in @crash-log.txt</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the crash report in @crash-log.txt">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the crash report in @crash-log.txt" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1243,13 +1243,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_dda_desc">Spesialis dokumentasi teknis yang menulis panduan pengguna, panduan API, dan dokumen referensi yang jelas dengan kerangka kerja Diataxis.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_dda_best">Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_dda_1">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1269,13 +1269,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_cj_desc">Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_cj_best">Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1295,13 +1295,13 @@
                     <div class="accordion-body bg-light p-4">
                       <p class="text-body-custom small mb-3" data-i18n="agent_gl_desc">AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.</p>
                       <div class="agent-best-for-callout p-3 mb-3">
-                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_gl_best">Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.</p>
                       </div>
-                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1375,11 +1375,11 @@
 
           <!-- Category Filter Pills -->
           <div class="d-flex flex-wrap justify-content-center gap-2 mb-4 nav-pills-custom">
-            <button class="btn nav-link active tdd-filter-btn" data-filter="all" data-i18n="tdd_pill_all">All Skills (21)</button>
-            <button class="btn nav-link tdd-filter-btn" data-filter="gov" data-i18n="tdd_pill_gov">Governance & Discovery</button>
-            <button class="btn nav-link tdd-filter-btn" data-filter="spec" data-i18n="tdd_pill_spec">Specs & Quality Gates</button>
-            <button class="btn nav-link tdd-filter-btn" data-filter="exec" data-i18n="tdd_pill_exec">Execution & Review</button>
-            <button class="btn nav-link tdd-filter-btn" data-filter="util" data-i18n="tdd_pill_util">Utilities & Coaching</button>
+            <button type="button" class="btn nav-link active tdd-filter-btn" data-filter="all" data-i18n="tdd_pill_all">All Skills (21)</button>
+            <button type="button" class="btn nav-link tdd-filter-btn" data-filter="gov" data-i18n="tdd_pill_gov">Governance & Discovery</button>
+            <button type="button" class="btn nav-link tdd-filter-btn" data-filter="spec" data-i18n="tdd_pill_spec">Specs & Quality Gates</button>
+            <button type="button" class="btn nav-link tdd-filter-btn" data-filter="exec" data-i18n="tdd_pill_exec">Execution & Review</button>
+            <button type="button" class="btn nav-link tdd-filter-btn" data-filter="util" data-i18n="tdd_pill_util">Utilities & Coaching</button>
           </div>
 
           <!-- 21 Skills Cards Grid -->
@@ -1395,7 +1395,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_init_desc">Bootstraps and calibrates project governance and auto-maps existing codebases.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-init setup this project</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-init setup this project">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-init setup this project" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1411,7 +1411,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_map_desc">Scans directory topology, test runners, and public test seams into docs/ARCHITECTURE.md.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-map-architecture map codebase</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-map-architecture map codebase">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-map-architecture map codebase" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1427,7 +1427,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_explore_desc">5-Step Idea Assessment with measurable hypothesis test metrics.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-explore-ideas explore @brief.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-explore-ideas explore @brief.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-explore-ideas explore @brief.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1443,7 +1443,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_prd_desc">Authored BDD user stories with executable Given-When-Then acceptance scenarios.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-prd draft PRD from @discovery.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-prd draft PRD from @discovery.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-prd draft PRD from @discovery.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1459,7 +1459,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_clarify_desc">Doubt-Driven interrogator uncovering ambiguities with 40/30/30 Readiness Scoring.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-clarify interrogate @prd.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-clarify interrogate @prd.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-clarify interrogate @prd.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1475,7 +1475,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_analyze_desc">Pre-execution impact analysis mapping blast radius and mocking traps.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-analyze audit blast radius @spec.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-analyze audit blast radius @spec.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-analyze audit blast radius @spec.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1491,7 +1491,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_spec_desc">Technical blueprint with interface contracts and Pre-Agreed Test Seams.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-spec define spec from @prd.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-spec define spec from @prd.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-spec define spec from @prd.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1507,7 +1507,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_checklist_desc">Translates specifications into a Test-Case Inventory Matrix.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-checklist generate matrix @spec.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-checklist generate matrix @spec.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-checklist generate matrix @spec.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1523,7 +1523,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_plan_desc">Breaks specifications into vertical slices with explicit RED-GREEN-VERIFY steps.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-plan-tasks plan from @spec.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-plan-tasks plan from @spec.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-plan-tasks plan from @spec.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1539,7 +1539,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_write_desc">Strict Red-Green-Refactor implementation engine with Floor-Guard anti-cheat.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-write-code execute @plan.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-write-code execute @plan.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-write-code execute @plan.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1555,7 +1555,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_review_desc">5-Axis code & test review (Spec, Health, Security, Perf, Test Efficacy).</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-code-review review @spec.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-code-review review @spec.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-code-review review @spec.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1571,7 +1571,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_bug_desc">RCA with Prove-It Pattern: mandates writing a failing regression test first.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-bug-report diagnose @error.log</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-bug-report diagnose @error.log">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-bug-report diagnose @error.log" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1587,7 +1587,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_docs_desc">User documentation using passing test suites as Living Examples.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-generate-docs generate docs</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-generate-docs generate docs">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-generate-docs generate docs" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1603,7 +1603,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_retro_desc">Optimizes test suite run speeds, flakiness, and synchronizes memory.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-retro analyze sprint</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-retro analyze sprint">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-retro analyze sprint" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1619,7 +1619,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_ask_help_desc">Interactive AI project navigator diagnosing project phase and routing scenarios.</p>
                 <div class="position-relative">
                   <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-ask-help where are we now?</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-ask-help where are we now?">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-ask-help where are we now?" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1635,7 +1635,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_pair_desc">Interactive Socratic AI pair programming mentor guiding developers step-by-step.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-pair-coach guide me on @task-1.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-pair-coach guide me on @task-1.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-pair-coach guide me on @task-1.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1651,7 +1651,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_mutation_desc">Mutation testing runner auditing assertion efficacy (MSI >= 80%).</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-mutation-test audit @cart.spec.js</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-mutation-test audit @cart.spec.js">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-mutation-test audit @cart.spec.js" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1667,7 +1667,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_ci_desc">Configures CI/CD pipelines to mechanically enforce CONSTRAINTS.md floor-guards.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-configure-ci setup github actions</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-configure-ci setup github actions">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-configure-ci setup github actions" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1683,7 +1683,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_fixtures_desc">Generates type-safe test factories, seeders, and fixtures from spec models.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-generate-fixtures for @spec.md</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-generate-fixtures for @spec.md">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-generate-fixtures for @spec.md" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1699,7 +1699,7 @@
                 <p class="small text-body-custom mb-3" data-i18n="tdd_legacy_desc">Pins untested legacy code behavior with Golden Master characterization tests.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-refactor-legacy pin @legacy.js</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-refactor-legacy pin @legacy.js">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-refactor-legacy pin @legacy.js" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1715,7 +1715,7 @@
                 <p class="small text-body-custom mb-3">Persists session checkpoints and maintains knowledge in memory.instructions.md.</p>
                 <div class="position-relative">
                   <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>save session progress to memory</code></pre>
-                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="save session progress to memory">Copy</button>
+                  <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="save session progress to memory" aria-label="Copy command to clipboard">Copy</button>
                 </div>
               </div>
             </div>
@@ -1773,22 +1773,22 @@
                     <!-- Background Line for Stepper -->
                     <div class="position-absolute w-100 top-50 start-0 translate-middle-y d-none d-md-block" style="height: 2px; background-color: var(--colors-hairline); z-index: -1;"></div>
                     
-                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 active sdlc-step-btn" data-step="0">
+                    <button type="button" class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 active sdlc-step-btn" data-step="0">
                       <span class="badge bg-ink text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">0</span> <span data-i18n="step_label_0">Discovery</span>
                     </button>
-                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="1">
+                    <button type="button" class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="1">
                       <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">1</span> <span data-i18n="step_label_1">Requirements</span>
                     </button>
-                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="2">
+                    <button type="button" class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="2">
                       <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">2</span> <span data-i18n="step_label_2">Specification</span>
                     </button>
-                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="3">
+                    <button type="button" class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="3">
                       <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">3</span> <span data-i18n="step_label_3">Planning</span>
                     </button>
-                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="4">
+                    <button type="button" class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="4">
                       <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">4</span> <span data-i18n="step_label_4">Execution</span>
                     </button>
-                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="5">
+                    <button type="button" class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="5">
                       <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">5</span> <span data-i18n="step_label_5">Documentation</span>
                     </button>
                   </div>
@@ -1807,7 +1807,7 @@
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bea_2">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_2" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_2" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -1823,11 +1823,11 @@
                       </div>
                       <div class="position-relative mb-2">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pm_2">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_2" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_2" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -1843,11 +1843,11 @@
                       </div>
                       <div class="position-relative mb-2">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_sa_2">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_2" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_2" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_acc_3">/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -1863,7 +1863,7 @@
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pa_2">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_2" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_2" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -1879,11 +1879,11 @@
                       </div>
                       <div class="position-relative mb-2">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_2">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_2" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_2" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -1899,11 +1899,11 @@
                       </div>
                       <div class="position-relative mb-2">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_dda_2">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_2" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_2" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
-                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
@@ -1990,7 +1990,7 @@
                         </p>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="bypass_code_sample">/code-janitor Tolong perbaiki padding tombol checkout di @style.css agar konsisten.</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="bypass_code_sample" data-clipboard="/code-janitor Tolong perbaiki padding tombol checkout di @style.css agar konsisten.">Copy</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="bypass_code_sample" data-clipboard="/code-janitor Tolong perbaiki padding tombol checkout di @style.css agar konsisten." aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2007,7 +2007,7 @@
                         </p>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="bypass_tag_sample">[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="bypass_tag_sample" data-clipboard="[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html" aria-label="Copy SDLC bypass command">Copy</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="bypass_tag_sample" data-clipboard="[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html" aria-label="Copy SDLC bypass command">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2037,7 +2037,7 @@
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bea_3">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_3" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_3" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -2050,11 +2050,11 @@
                       <div class="d-flex flex-column gap-2">
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pm_3">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_3" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_3" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_3">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_3" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_3" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2068,11 +2068,11 @@
                       <div class="d-flex flex-column gap-2">
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_sa_3">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_3" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_3" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_acc_3">/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2085,7 +2085,7 @@
                       </div>
                       <div class="position-relative">
                         <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pa_3">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_3" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_3" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
 
@@ -2098,11 +2098,11 @@
                       <div class="d-flex flex-column gap-2">
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_3">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_3" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_3" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2116,11 +2116,11 @@
                       <div class="d-flex flex-column gap-2">
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_dda_3">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_3" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_3" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bra_3">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_3" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_3" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2177,11 +2177,11 @@
                         <div class="d-flex flex-column gap-2">
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0a">/tdd-map-architecture map codebase</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0a" data-clipboard="/tdd-map-architecture map codebase">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0a" data-clipboard="/tdd-map-architecture map codebase" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0b">/tdd-explore-ideas explore @brief.md with measurable hypotheses</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0b" data-clipboard="/tdd-explore-ideas explore @brief.md with measurable hypotheses">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0b" data-clipboard="/tdd-explore-ideas explore @brief.md with measurable hypotheses" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                         </div>
                       </div>
@@ -2200,11 +2200,11 @@
                         <div class="d-flex flex-column gap-2">
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1a">/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1a" data-clipboard="/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1a" data-clipboard="/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1b">/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1b" data-clipboard="/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1b" data-clipboard="/tdd-clarify interrogate @prd-cart.md for ambiguities (Score  aria-label="Copy command to clipboard">= 80)">Copy</button>
                           </div>
                         </div>
                       </div>
@@ -2223,15 +2223,15 @@
                         <div class="d-flex flex-column gap-2">
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2a">/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2a" data-clipboard="/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2a" data-clipboard="/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2b">/tdd-checklist generate test inventory matrix from @spec-cart.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2b" data-clipboard="/tdd-checklist generate test inventory matrix from @spec-cart.md">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2b" data-clipboard="/tdd-checklist generate test inventory matrix from @spec-cart.md" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2c">/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2c" data-clipboard="/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2c" data-clipboard="/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                         </div>
                       </div>
@@ -2249,7 +2249,7 @@
                         </div>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_3">/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_3" data-clipboard="/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_3" data-clipboard="/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2266,7 +2266,7 @@
                         </div>
                         <div class="position-relative">
                           <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_4">/tdd-write-code execute @plan-cart.md with strict Floor-Guards</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_4" data-clipboard="/tdd-write-code execute @plan-cart.md with strict Floor-Guards">Copy</button>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_4" data-clipboard="/tdd-write-code execute @plan-cart.md with strict Floor-Guards" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2284,11 +2284,11 @@
                         <div class="d-flex flex-column gap-2">
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5a">/tdd-code-review review cart service against 5-Axis Health Model</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5a" data-clipboard="/tdd-code-review review cart service against 5-Axis Health Model">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5a" data-clipboard="/tdd-code-review review cart service against 5-Axis Health Model" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                           <div class="position-relative">
                             <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5b">/tdd-bug-report diagnose @error.log using Prove-It failing test first</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5b" data-clipboard="/tdd-bug-report diagnose @error.log using Prove-It failing test first">Copy</button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5b" data-clipboard="/tdd-bug-report diagnose @error.log using Prove-It failing test first" aria-label="Copy command to clipboard">Copy</button>
                           </div>
                         </div>
                       </div>
@@ -2306,13 +2306,13 @@
                           <div class="col-md-6">
                             <div class="position-relative">
                               <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6a">/tdd-generate-docs generate Diataxis docs with passing test examples</span></code></pre>
-                              <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6a" data-clipboard="/tdd-generate-docs generate Diataxis docs with passing test examples">Copy</button>
+                              <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6a" data-clipboard="/tdd-generate-docs generate Diataxis docs with passing test examples" aria-label="Copy command to clipboard">Copy</button>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="position-relative">
                               <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6b">/tdd-retro analyze test runtime speed, flakiness, and update memory</span></code></pre>
-                              <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6b" data-clipboard="/tdd-retro analyze test runtime speed, flakiness, and update memory">Copy</button>
+                              <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6b" data-clipboard="/tdd-retro analyze test runtime speed, flakiness, and update memory" aria-label="Copy command to clipboard">Copy</button>
                             </div>
                           </div>
                         </div>
