@@ -13,6 +13,10 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -66,7 +70,7 @@
             <!-- Language Selector Dropdown -->
             <div class="dropdown">
               <button class="btn btn-sm btn-outline-ink dropdown-toggle px-3 d-flex align-items-center gap-1" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="height: 38px; border-radius: 8px;">
-                <span id="active-lang-label">🌐 EN</span>
+                <span id="active-lang-label"><i class="bi bi-globe me-1"></i> EN</span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end border-hairline shadow-sm" aria-labelledby="langDropdown">
                 <li><button class="dropdown-item lang-select-btn fw-medium py-2" data-lang="en">English (EN)</button></li>
@@ -134,61 +138,75 @@
           <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
               <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="overview_title">Overview</h2>
-              <p class="text-body-custom lead" data-i18n="overview_desc">
+              <p class="text-body-custom lead mb-0" data-i18n="overview_desc">
                 Awesome Copilot Indonesia adalah koleksi konfigurasi agen AI, skill, aturan, dan prompt kustom yang siap pakai untuk mempercepat siklus hidup pengembangan perangkat lunak (SDLC) Anda.
               </p>
             </div>
           </div>
-          <div class="row g-4 mt-2">
-            <div class="col-md-4">
-              <div class="py-4 px-4 feature-card bg-white border-hairline h-100" style="border-radius: 12px; transition: all 0.2s ease-in-out;">
-                <span class="fs-3 mb-3 d-block">🤖</span>
-                <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_agents_title">Custom Agents</h3>
+
+          <div class="row g-4">
+            <!-- Card 1: Custom Agents -->
+            <div class="col-lg-4 col-md-6">
+              <div class="p-4 feature-card bg-white border-hairline h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                <div class="d-inline-flex align-items-center justify-content-center bg-surface-soft border-hairline rounded-3 mb-3" style="width: 44px; height: 44px;">
+                  <i class="bi bi-robot text-primary fs-5"></i>
+                </div>
+                <h3 class="h5 text-ink fw-semibold mb-2" data-i18n="overview_agents_title">Custom Agents</h3>
                 <p class="text-body-custom small mb-0" data-i18n="overview_agents_desc">
                   Agen AI khusus untuk setiap fase pengembangan (PRD, Technical Specs, Strategic Planning, Coding, hingga Review).
                 </p>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="py-4 px-4 feature-card bg-white border-hairline h-100" style="border-radius: 12px; transition: all 0.2s ease-in-out;">
-                <span class="fs-3 mb-3 d-block">🤹</span>
-                <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_skills_title">Specialized Skills</h3>
+
+            <!-- Card 2: Specialized Skills -->
+            <div class="col-lg-4 col-md-6">
+              <div class="p-4 feature-card bg-white border-hairline h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                <div class="d-inline-flex align-items-center justify-content-center bg-surface-soft border-hairline rounded-3 mb-3" style="width: 44px; height: 44px;">
+                  <i class="bi bi-lightning-charge text-primary fs-5"></i>
+                </div>
+                <h3 class="h5 text-ink fw-semibold mb-2" data-i18n="overview_skills_title">Specialized Skills</h3>
                 <p class="text-body-custom small mb-0" data-i18n="overview_skills_desc">
                   Kemampuan khusus seperti Project Researcher untuk pemetaan arsitektur otomatis, Karpathy Guidelines, Ponytail lazy dev, TDD Implement, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.
                 </p>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="py-4 px-4 feature-card bg-white border-hairline h-100" style="border-radius: 12px; transition: all 0.2s ease-in-out;">
-                <span class="fs-3 mb-3 d-block">📝</span>
-                <h3 class="h5 text-ink fw-semibold mb-3" data-i18n="overview_rules_title">Rules & Instructions</h3>
+
+            <!-- Card 3: Rules & Instructions -->
+            <div class="col-lg-4 col-md-6">
+              <div class="p-4 feature-card bg-white border-hairline h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                <div class="d-inline-flex align-items-center justify-content-center bg-surface-soft border-hairline rounded-3 mb-3" style="width: 44px; height: 44px;">
+                  <i class="bi bi-file-earmark-check text-primary fs-5"></i>
+                </div>
+                <h3 class="h5 text-ink fw-semibold mb-2" data-i18n="overview_rules_title">Rules & Instructions</h3>
                 <p class="text-body-custom small mb-0" data-i18n="overview_rules_desc">
                   Panduan coding terbaik yang disesuaikan dengan bahasa pemrograman dan framework populer untuk menjaga kualitas kode Anda.
                 </p>
               </div>
             </div>
-          </div>
-          <div class="row g-4 mt-4 pt-4" style="border-top: 1px solid var(--colors-hairline-soft);">
-            <div class="col-md-6">
-              <div class="d-flex gap-3">
-                <span class="fs-4">🔑</span>
-                <div>
-                  <h4 class="h6 text-ink fw-semibold" data-i18n="overview_byok_title">BYOK Copilot Config</h4>
-                  <p class="text-body-custom small mb-0" data-i18n="overview_byok_desc">
-                    Template konfigurasi siap pakai untuk menggunakan API key Anda sendiri (OpenRouter, DeepSeek, dll) di VS Code Copilot Chat.
-                  </p>
+
+            <!-- Card 4: BYOK Copilot Config -->
+            <div class="col-lg-6 col-md-6">
+              <div class="p-4 feature-card bg-white border-hairline h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                <div class="d-inline-flex align-items-center justify-content-center bg-surface-soft border-hairline rounded-3 mb-3" style="width: 44px; height: 44px;">
+                  <i class="bi bi-key text-primary fs-5"></i>
                 </div>
+                <h3 class="h5 text-ink fw-semibold mb-2" data-i18n="overview_byok_title">BYOK Copilot Config</h3>
+                <p class="text-body-custom small mb-0" data-i18n="overview_byok_desc">
+                  Template konfigurasi siap pakai untuk menggunakan API key Anda sendiri (OpenRouter, DeepSeek, dll) di VS Code Copilot Chat.
+                </p>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="d-flex gap-3">
-                <span class="fs-4">🔌</span>
-                <div>
-                  <h4 class="h6 text-ink fw-semibold" data-i18n="overview_multi_title">Dukungan Multi-Platform</h4>
-                  <p class="text-body-custom small mb-0" data-i18n="overview_multi_desc">
-                    Konfigurasi siap pakai untuk Google Antigravity (`.agents`), Claude Code (`.claude`), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, dan Oh My Pi (`omp`).
-                  </p>
+
+            <!-- Card 5: Multi-Platform Support -->
+            <div class="col-lg-6 col-md-12">
+              <div class="p-4 feature-card bg-white border-hairline h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                <div class="d-inline-flex align-items-center justify-content-center bg-surface-soft border-hairline rounded-3 mb-3" style="width: 44px; height: 44px;">
+                  <i class="bi bi-cpu text-primary fs-5"></i>
                 </div>
+                <h3 class="h5 text-ink fw-semibold mb-2" data-i18n="overview_multi_title">Dukungan Multi-Platform</h3>
+                <p class="text-body-custom small mb-0" data-i18n="overview_multi_desc">
+                  Konfigurasi siap pakai untuk Google Antigravity (`.agents`), Claude Code (`.claude`), OpenCode, Copilot, CommandCode, ChatGPT Codex, Pi Dev, dan Oh My Pi (`omp`).
+                </p>
               </div>
             </div>
           </div>
@@ -1988,8 +2006,8 @@
                           Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
                         </p>
                         <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_3">[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_3" data-clipboard="[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html">Copy</button>
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="bypass_tag_sample">[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html</span></code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="bypass_tag_sample" data-clipboard="[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html" aria-label="Copy SDLC bypass command">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2356,47 +2374,9 @@
     </main>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-white" style="border-top: 1px solid var(--colors-hairline);">
-      <div class="container py-5">
-        <div class="row g-4">
-          <!-- Column 1: Platform -->
-          <div class="col-md-4">
-            <h5 class="text-ink fw-semibold mb-3" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="footer_col_platform">Platform Dukungan</h5>
-            <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
-              <li><a href="https://github.com/features/copilot" target="_blank" class="text-muted-custom text-decoration-none hover-link">GitHub Copilot</a></li>
-              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">Google Antigravity</a></li>
-              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">OpenCode Agent</a></li>
-              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">CommandCode</a></li>
-              <li><a href="#" class="text-muted-custom text-decoration-none hover-link">ChatGPT Codex</a></li>
-              <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview" target="_blank" class="text-muted-custom text-decoration-none hover-link">Claude Code</a></li>
-              <li><a href="https://pi.dev/" target="_blank" class="text-muted-custom text-decoration-none hover-link">Pi Dev Coding Agent</a></li>
-              <li><a href="https://omp.sh/" target="_blank" class="text-muted-custom text-decoration-none hover-link">Oh My Pi (omp)</a></li>
-            </ul>
-          </div>
-          <!-- Column 2: Agen Utama -->
-          <div class="col-md-4">
-            <h5 class="text-ink fw-semibold mb-3" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="footer_col_agents">Agen Utama</h5>
-            <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
-              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">/sdlc-draft-prd</a></li>
-              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">/sdlc-define-specs</a></li>
-              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">/sdlc-plan-tasks</a></li>
-              <li><a href="#agents" class="text-muted-custom text-decoration-none hover-link">/sdlc-write-code</a></li>
-            </ul>
-          </div>
-          <!-- Column 3: Repositori -->
-          <div class="col-md-4">
-            <h5 class="text-ink fw-semibold mb-3" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="footer_col_repo">Repositori</h5>
-            <ul class="list-unstyled d-flex flex-column gap-2" style="font-size: 14px;">
-              <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id" target="_blank" class="text-muted-custom text-decoration-none hover-link">GitHub Project</a></li>
-              <li><a href="#installation" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_guide">Panduan Instalasi</a></li>
-              <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id#-contributing" target="_blank" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_contrib">Pedoman Kontribusi</a></li>
-              <li><a href="https://github.com/GulajavaMinistudio/awesome-copilot-id/blob/main/LICENSE" target="_blank" class="text-muted-custom text-decoration-none hover-link" data-i18n="footer_license">Lisensi MIT</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Legal band -->
-        <div class="row pt-4 mt-4 align-items-center" style="border-top: 1px solid var(--colors-hairline-soft);">
+    <footer id="footer" class="bg-white py-4" style="border-top: 1px solid var(--colors-hairline);">
+      <div class="container">
+        <div class="row align-items-center">
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <span class="text-muted-custom small" data-i18n="footer_copyright">© 2026 Awesome Copilot Indonesia. Made with ❤️ by Indonesian Developers.</span>
           </div>
@@ -2411,6 +2391,9 @@
         </div>
       </div>
     </footer>
+
+    <!-- Accessibility Live Announcement Region -->
+    <div id="a11y-live-feedback" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 
     <!-- Scripts -->
     <script>
@@ -2438,7 +2421,7 @@
 
         navItems.forEach(item => {
           item.classList.remove('active');
-          if (item.getAttribute('href') === `#${currentSectionId}`) {
+          if (item.getAttribute('href') === '#' + currentSectionId) {
             item.classList.add('active');
           }
         });
@@ -2460,6 +2443,7 @@
           }
         });
       });
+
       // App Bar Scroll Effect
       window.addEventListener('scroll', function() {
         const appBar = document.querySelector('.app-bar');
@@ -2470,25 +2454,56 @@
         }
       });
 
-      // Copy to Clipboard interaction
+      // Copy to Clipboard interaction with a11y live feedback & fallback
       document.querySelectorAll('.copy-btn').forEach(button => {
         button.addEventListener('click', function() {
           const text = this.getAttribute('data-clipboard');
-          navigator.clipboard.writeText(text).then(() => {
+          const a11yFeedback = document.getElementById('a11y-live-feedback');
+          
+          const onCopySuccess = () => {
             const originalText = this.textContent;
             this.textContent = 'Copied!';
             this.classList.add('btn-success', 'text-white');
             this.classList.remove('btn-outline-secondary');
+            if (a11yFeedback) {
+              a11yFeedback.textContent = 'Copied command to clipboard: ' + text;
+            }
             setTimeout(() => {
               this.textContent = originalText;
               this.classList.remove('btn-success', 'text-white');
               this.classList.add('btn-outline-secondary');
+              if (a11yFeedback) {
+                a11yFeedback.textContent = '';
+              }
             }, 2000);
-          }).catch(err => {
-            console.error('Failed to copy text: ', err);
-          });
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(onCopySuccess).catch(() => {
+              fallbackCopy(text, onCopySuccess);
+            });
+          } else {
+            fallbackCopy(text, onCopySuccess);
+          }
         });
       });
+
+      function fallbackCopy(text, callback) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          if (callback) callback();
+        } catch (e) {
+          console.error('Fallback copy failed: ', e);
+        }
+        document.body.removeChild(textArea);
+      }
 
       // Tab switcher aesthetic adjustments
       const tabElList = document.querySelectorAll('.install-tab-btn');
@@ -2539,13 +2554,13 @@
         // Update active dropdown text
         const activeLangLabel = document.getElementById('active-lang-label');
         if (activeLangLabel) {
-          activeLangLabel.textContent = `🌐 ${lang.toUpperCase()}`;
+          activeLangLabel.innerHTML = '<i class="bi bi-globe me-1"></i> ' + lang.toUpperCase();
         }
 
         // Update footer label
         const footerLangLabel = document.getElementById('footer-lang-label');
         if (footerLangLabel) {
-          footerLangLabel.innerHTML = `<i class="bi bi-globe"></i> ${lang === 'en' ? 'English (EN)' : 'Bahasa Indonesia (ID)'}`;
+          footerLangLabel.innerHTML = '<i class="bi bi-globe"></i> ' + (lang === 'en' ? 'English (EN)' : 'Bahasa Indonesia (ID)');
         }
 
         // Translate all elements with data-i18n attribute
@@ -2564,8 +2579,6 @@
           }
         });
 
-        // Update clipboard attributes for translatable code samples
-        
         // Update clipboard attributes for translatable code samples
         document.querySelectorAll('[data-i18n-clipboard]').forEach(el => {
           const clipKey = el.getAttribute('data-i18n-clipboard');
@@ -2589,7 +2602,6 @@
         });
       });
 
-      
       // TDD-Spec Filter Pills Logic
       document.querySelectorAll('.tdd-filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {

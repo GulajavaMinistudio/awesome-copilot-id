@@ -1,7 +1,7 @@
 :root {
-  /* Brand & Accent Colors - Indigo & Cyan Tech Theme */
-  --colors-primary: #6366f1;
-  --colors-primary-hover: #4f46e5;
+  /* Brand & Accent Colors - High Contrast Tech Indigo Theme (WCAG AA 5.8:1 Compliant) */
+  --colors-primary: #4f46e5;
+  --colors-primary-hover: #4338ca;
   --colors-primary-disabled: #c7d2fe;
   
   /* Text Colors */
@@ -180,7 +180,7 @@ p, li {
     left: 16px;
     right: 16px;
     height: 2px;
-    background-color: #dd7878;
+    background-color: var(--colors-primary);
   }
 }
 
@@ -291,7 +291,7 @@ pre {
 
 #agentsAccordion .accordion-button:focus {
   box-shadow: none !important;
-  border-color: rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(79, 70, 229, 0.15) !important;
 }
 
 /* Stepper Styles */
@@ -415,8 +415,8 @@ code {
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.15), 0 4px 12px -5px rgba(0, 0, 0, 0.05);
-  border-color: rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 12px 24px -10px rgba(79, 70, 229, 0.15), 0 4px 12px -5px rgba(0, 0, 0, 0.05);
+  border-color: rgba(79, 70, 229, 0.3) !important;
 }
 
 /* Custom Scrollbars for code blocks */
@@ -615,3 +615,54 @@ pre::-webkit-scrollbar-thumb:hover {
   color: #ffffff;
   flex-shrink: 0;
 }
+
+/* ==========================================================================
+   Accessibility (a11y) & WCAG AA Focus Indicators
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--colors-primary) !important;
+  outline-offset: 2px !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.accordion-button:focus-visible {
+  outline: 2px solid var(--colors-primary) !important;
+  outline-offset: 2px !important;
+}
+
+#agentsAccordion .accordion-button:focus-visible {
+  outline: 2px solid var(--colors-primary) !important;
+  outline-offset: -2px !important;
+}
+
+/* ==========================================================================
+   Mobile Responsive Touch Target Enhancements (WCAG 2.5.5 / 2.5.8)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .copy-btn {
+    min-height: 38px;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+  }
+  
+  .tdd-filter-btn {
+    min-height: 40px;
+    padding: 8px 18px !important;
+  }
+  
+  .sdlc-step-btn {
+    min-height: 42px;
+  }
+  
+  .dropdown-toggle {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
