@@ -204,12 +204,62 @@ graph TD
 
 ## 🚀 Getting Started
 
-### 1. Establish Project Foundations
+### 1. Installation
+
+#### Method 1: Agentic Installation via `npx skills` (Recommended)
+Install the `tdd-init` bootstrapper skill using `npx skills`:
+
+```bash
+# Using GitHub Shorthand (Short & Recommended)
+npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init
+
+# Or using full GitHub URL
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/tdd-spec-skills/.agents/skills/tdd-init
+```
+
+Then in your AI Assistant chat window, run:
+
+```text
+/tdd-init setup this project
+```
+
+#### Method 2: Automated One-Liner
+Run the interactive installer and select **Option 2 (TDD-Spec SDLC Package)**:
+
+*   **Linux / macOS (Bash/Zsh):**
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash
+    ```
+*   **Windows Terminal (PowerShell):**
+    ```powershell
+    irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex
+    ```
+
+#### Method 3: Manual Installation
+Copy `tdd-spec-skills/.agents/` and `tdd-spec-skills/AGENTS.md` to your project root:
+
+```bash
+# Standard Platforms (Copilot, Antigravity, OpenCode, Codex, Pi, OMP)
+cp -r tdd-spec-skills/.agents ./
+cp tdd-spec-skills/AGENTS.md ./
+
+# Claude Code
+mkdir -p .claude && cp -a tdd-spec-skills/.agents/. .claude/
+cp tdd-spec-skills/AGENTS.md ./
+
+# Cursor
+mkdir -p .cursor && cp -a tdd-spec-skills/.agents/. .cursor/
+cp tdd-spec-skills/AGENTS.md ./
+```
+
+---
+
+### 2. Establish Project Foundations
 Run once per project or feature branch:
 1. Run `/tdd-init` to automatically generate `CONSTITUTION.md` and `CONSTRAINTS.md` tailored to your repository, or use [`CONSTITUTION-TEMPLATE.md`](.agents/standards/CONSTITUTION-TEMPLATE.md) and [`CONSTRAINTS-TEMPLATE.md`](.agents/standards/CONSTRAINTS-TEMPLATE.md).
 2. For legacy codebases, `/tdd-init` will automatically map the existing architecture into `docs/ARCHITECTURE.md`.
 
-### 2. Standard Standards Compliance
+### 3. Standards Compliance
 All agents operating within this package strictly discover and enforce:
 - **Domain Glossary (`CONTEXT.md` / `CONTEXT-MAP.md`):** Formatted per `.agents/standards/CONTEXT-FORMAT.md`.
 - **Architecture Decision Records (`docs/adr/`):** Formatted per `.agents/standards/ADR-FORMAT.md`.

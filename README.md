@@ -66,7 +66,10 @@ Choose from **Agentic (`npx skills`)**, **Automated Script**, or **Manual** inst
 
 #### Method 1: Agentic Installation via `npx skills` (Recommended for AI Agents)
 
-Install the bootstrapper skill using `npx skills` (works with Antigravity, Cursor, Claude Code, Copilot, etc.):
+Install the bootstrapper skill directly using the `npx skills` CLI into your project (works with Google Antigravity, Cursor, Claude Code, GitHub Copilot, OpenCode, Codex, Pi, and OMP):
+
+##### 📦 Option A: Standard SDLC Package (12 Phases)
+Installs the full 12-phase SDLC pipeline (`/sdlc-*`) with supplementary engineering skills:
 
 ```bash
 # Using GitHub Shorthand (Short & Recommended)
@@ -79,10 +82,29 @@ npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/mai
 Then in your AI Assistant chat window, run:
 
 ```text
-/sdlc-init initialize this project
+/sdlc-init setup this project
 ```
 
 The bootstrapper agent will autonomously download `AGENTS.md` and `.agents/` configuration, preserve existing memory files, merge global rules, and set up your project.
+
+##### 🧪 Option B: TDD-Spec SDLC Package (21 Skills)
+Installs the test-first engineering suite (`/tdd-*`) with Living Architecture Maps, Pre-Agreed Test Seams, and Floor-Guard anti-cheat enforcement:
+
+```bash
+# Using GitHub Shorthand (Short & Recommended)
+npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init
+
+# Or using full GitHub URL
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/tdd-spec-skills/.agents/skills/tdd-init
+```
+
+Then in your AI Assistant chat window, run:
+
+```text
+/tdd-init setup this project
+```
+
+The bootstrapper agent will initialize project governance (`CONSTITUTION.md`, `CONSTRAINTS.md`, `AGENTS.md`), auto-map the existing codebase architecture into `docs/ARCHITECTURE.md`, and configure all 21 TDD skills.
 
 ---
 
@@ -99,20 +121,27 @@ Run the following command in your terminal inside your project root directory:
     irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex
     ```
 
-The interactive script will download the repository, prompt you to choose your target platform, copy the `.agents/` configuration to the correct destination directory (`.agents/`, `.claude/`, or `.cursor/`), and safely handle existing configuration files (such as `memory.instructions.md` and `AGENTS.md`) by offering options to keep, replace, or merge them.
+The interactive script will download the repository, prompt you to choose your desired **SDLC Package** and target **Platform**, copy the configuration to the correct destination directory (`.agents/`, `.claude/`, or `.cursor/`), and safely handle existing configuration files (such as `memory.instructions.md` and `AGENTS.md`) by offering options to keep, replace, or merge them.
 
-The installer offers these options:
+The installer offers these package & platform choices:
 
-| Option | Platform(s)                                                                             | Destination Folder                 |
-| ------ | --------------------------------------------------------------------------------------- | ---------------------------------- |
-| **1**  | Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) | `.agents/`                         |
-| **2**  | Claude Code                                                                             | `.claude/`                         |
-| **3**  | Cursor                                                                                  | `.cursor/`                         |
-| **4**  | All Platforms (install to all three directories)                                        | `.agents/`, `.claude/`, `.cursor/` |
+**Step 1: SDLC Package Selection**
+| Option | Package | Description |
+| :---: | :--- | :--- |
+| **1** | **Standard SDLC Package** | 12-phase pipeline (`/sdlc-*`) with PRD bypass, planning, coding, and review |
+| **2** | **TDD-Spec SDLC Package** | 21 test-first skills (`/tdd-*`) with Pre-Agreed Seams, Floor-Guards, and `/tdd-ask-help` |
+
+**Step 2: Platform Selection**
+| Option | Platform(s) | Destination Folder |
+| :---: | :--- | :--- |
+| **1** | Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) | `.agents/` |
+| **2** | Claude Code | `.claude/` |
+| **3** | Cursor | `.cursor/` |
+| **4** | All Platforms (install to all three directories) | `.agents/`, `.claude/`, `.cursor/` |
 
 ---
 
-#### Method 2: Manual Installation
+#### Method 3: Manual Installation
 
 1. Clone this repository:
 
@@ -120,46 +149,42 @@ The installer offers these options:
    git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git
    ```
 
-2. **Choose your target platform and copy the `.agents/` directory**:
-   - For **Standard Platforms** (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP): Copy the `.agents` directory as-is to your project root.
-   - For **Claude Code**: Copy the *contents* of `.agents` into a `.claude` directory at your project root.
-   - For **Cursor**: Copy the *contents* of `.agents` into a `.cursor` directory at your project root.
+2. **Choose your desired SDLC Package and copy the configuration**:
 
+   **For Standard SDLC Package (`.agents/`):**
    ```bash
    # Standard Platforms: copy .agents/ directly
    cp -r awesome-copilot-id/.agents ./
+   cp awesome-copilot-id/AGENTS.md ./
 
    # Claude Code: copy contents of .agents/ into .claude/
    mkdir -p .claude && cp -a awesome-copilot-id/.agents/. .claude/
+   cp awesome-copilot-id/AGENTS.md ./
 
    # Cursor: copy contents of .agents/ into .cursor/
    mkdir -p .cursor && cp -a awesome-copilot-id/.agents/. .cursor/
-   ```
-
-   > [!IMPORTANT]
-   > The `.agents/` directory in this repository is the **Single Source of Truth**. All platform-specific directories (`.claude/`, `.cursor/`) receive an identical copy of its contents.
-
-3. **Mandatory Step**: Copy the `AGENTS.md` file to the root of your project. This file contains the core SDLC rules, directives, and interaction philosophy that all agents must follow to ensure consistency.
-
-   ```bash
    cp awesome-copilot-id/AGENTS.md ./
    ```
 
-   > [!IMPORTANT]
-   > After copying `AGENTS.md`, you **must** open it and update the first line (`# AGENTS.md - [Your Application Name]`) to match your actual project's context, as well as the `[Project Description]` placeholder (if present). This helps the AI agents understand the specific project they are working on. You can also adjust the language preferences in the `## Communication` section as needed.
-
-4. Example manual installation for specific skills:
-
+   **For TDD-Spec SDLC Package (`tdd-spec-skills/`):**
    ```bash
-   # Create directories
-   mkdir -p .agents/rules .agents/skills
+   # Standard Platforms: copy tdd-spec-skills/.agents/ directly
+   cp -r awesome-copilot-id/tdd-spec-skills/.agents ./
+   cp awesome-copilot-id/tdd-spec-skills/AGENTS.md ./
 
-   # Copy specific skills
-   cp -r awesome-copilot-id/.agents/skills/karpathy-guidelines .agents/skills/
-   cp -r awesome-copilot-id/.agents/skills/sdlc-write-code .agents/skills/
+   # Claude Code: copy contents of tdd-spec-skills/.agents/ into .claude/
+   mkdir -p .claude && cp -a awesome-copilot-id/tdd-spec-skills/.agents/. .claude/
+   cp awesome-copilot-id/tdd-spec-skills/AGENTS.md ./
+
+   # Cursor: copy contents of tdd-spec-skills/.agents/ into .cursor/
+   mkdir -p .cursor && cp -a awesome-copilot-id/tdd-spec-skills/.agents/. .cursor/
+   cp awesome-copilot-id/tdd-spec-skills/AGENTS.md ./
    ```
 
-5. Restart your IDE or AI assistant to apply the changes.
+   > [!IMPORTANT]
+   > After copying `AGENTS.md`, you **must** open it and update the first line (`# AGENTS.md - [Your Application Name]`) to match your actual project's context, as well as the `[Project Description]` placeholder (if present). You can also adjust the language preferences in the `## Communication` section as needed.
+
+3. Restart your IDE or AI assistant to apply the changes.
 
 > [!TIP]
 > You can also reference these files from a central location in your system and symlink them to your projects for easier management.
@@ -612,6 +637,65 @@ The **TDD-Spec SDLC Package** is a self-contained suite of **21 specialized skil
     └── /tdd-refactor-legacy ───────▶ [ Golden Master Characterization Tests ]
 ====================================================================================================
 ```
+
+### 🚀 Quickstart via `npx skills`
+
+Install the TDD-Spec bootstrapper directly into your project using the `npx skills` CLI:
+
+```bash
+# Using GitHub Shorthand (Recommended)
+npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init
+
+# Or using full GitHub URL
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/tdd-spec-skills/.agents/skills/tdd-init
+```
+
+Then in your AI Assistant chat window, run:
+
+```text
+/tdd-init setup this project
+```
+
+The bootstrapper will initialize project governance (`CONSTITUTION.md`, `CONSTRAINTS.md`, `AGENTS.md`), auto-map existing codebases into `docs/ARCHITECTURE.md`, and configure all 21 TDD skills.
+
+---
+
+### 📋 21 TDD-Spec Skills Directory
+
+#### 1. Primary SDLC Pipeline (10 Core Skills)
+| Command / Skill | Role / Persona | Core Output & Purpose |
+|---|---|---|
+| `/tdd-init` | **TDD Bootstrapper Architect** | Initializes project governance (`CONSTITUTION.md`, `CONSTRAINTS.md`, `AGENTS.md`) and maps architecture. |
+| `/tdd-map-architecture` | **TDD Architecture Mapper** | Audits codebase, testability matrix, CI, and test seams into `docs/ARCHITECTURE.md`. |
+| `/tdd-explore-ideas` | **TDD Idea Explorer** | 5-Step Idea Assessment (`Intake ➔ Research ➔ Define ➔ Shape ➔ Decide`) with measurable hypotheses. |
+| `/tdd-prd` | **TDD Product Manager** | User stories with executable **Given-When-Then (BDD)** acceptance scenarios. Manages `CONTEXT.md`. |
+| `/tdd-spec` | **TDD Specification Architect** | Technical blueprint with API contracts, data models, **Pre-Agreed Test Seams**, and ADRs. |
+| `/tdd-plan-tasks` | **TDD Task Planner** | Breaks spec into **Tracer-Bullet Vertical Slices** with explicit RED-GREEN-VERIFY task steps. |
+| `/tdd-write-code` | **TDD Code Engineer** | Strict Red-Green-Refactor execution engine with *Floor-Guard* anti-cheat enforcement. |
+| `/tdd-code-review` | **TDD Code & Test Reviewer** | **5-Axis Review** (Spec, Code Health, Security, Perf, Test Efficacy) + Anti-Tautological test audit. |
+| `/tdd-bug-report` | **TDD Bug Diagnostician** | RCA with the **"Prove-It" Pattern** (must write a failing regression test before fixing code). |
+| `/tdd-generate-docs` | **TDD Technical Writer** | Diátaxis-based user & developer documentation using passing test suites as **Living Examples**. |
+
+#### 2. Quality & Spec Extensions (3 Skills)
+| Command / Skill | Role / Persona | Purpose & TDD Integration |
+|---|---|---|
+| `/tdd-clarify` | **TDD Requirements Clarifier** | Doubt-Driven interrogation of PRD/Spec to identify missing edge cases and untestable constraints. |
+| `/tdd-analyze` | **TDD Codebase Analyst** | Deep pre-execution analysis to map architectural blast radius and detect mocking traps. |
+| `/tdd-checklist` | **TDD Checklist Generator** | Translates Specs into an exhaustive Test-Case Inventory matrix (Unit, Integration, E2E). |
+
+#### 3. Optional Utilities & Tooling (8 Skills)
+| Command / Skill | Role / Persona | Purpose & TDD Integration |
+|---|---|---|
+| `/tdd-ask-help` | **TDD SDLC Navigator** | Interactive AI guide diagnosing project phase, routing scenarios, and recommending next actions. |
+| `/tdd-generate-fixtures` | **TDD Fixture Architect** | Generates type-safe test factories and seeders conforming strictly to `CONTEXT.md` and `/spec/`. |
+| `/tdd-configure-ci` | **TDD CI Pipeline Architect** | Configures CI/CD pipelines (GitHub Actions/GitLab CI) to mechanically enforce `CONSTRAINTS.md` floor-guards. |
+| `/tdd-mutation-test` | **TDD Mutation Test Auditor** | Runs Mutation Testing (Stryker/Mutmut) to audit whether assertions actually catch code mutations. |
+| `/tdd-retro` | **TDD Retrospective Optimizer** | Analyzes test run speed, flakiness, and updates project memory/constraints post-sprint. |
+| `/tdd-refactor-legacy` | **TDD Legacy Modernizer** | Pins untested legacy code with Golden Master characterization tests before safe TDD refactoring. |
+| `/tdd-pair-coach` | **TDD Pair Programming Coach** | Interactive mentor guiding human developers step-by-step through the TDD Red-Green-Refactor cycle. |
+| `memory-manager` | **Context Persistence Engine** | Persists session checkpoints and maintains the permanent Knowledge Base in `memory.instructions.md`. |
+
+---
 
 ### 🌟 Key Highlights of TDD-Spec SDLC
 
