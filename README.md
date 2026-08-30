@@ -12,13 +12,20 @@ A curated collection of custom agents, skills, rules, and prompts for AI-assiste
 
 ## 📋 Overview
 
-This repository provides a comprehensive set of tools to enhance your AI-assisted development experience, including:
+This repository provides two complete, production-ready AI SDLC methodology packages designed for modern software engineering:
 
-- **🤖 Custom Agents**: Specialized AI agents for different development scenarios (PRD, Specification, Planning, Coding, Review).
-- **🤹 Skills**: Specialized capabilities paired with agents for advanced autonomous workflows.
-- **📝 Rules & Instructions**: Best practices and coding guidelines for various languages and frameworks.
+1. **📦 Standard SDLC Package (`.agents/` & root `AGENTS.md`):**
+   - Full 12-phase SDLC pipeline (`/sdlc-*`) inspired by GitHub Spec Kit.
+   - Heavy lifting PRD bypass, Tracer-Bullet task planning, and surgical code modifications.
+   - Rich supplementary skills (`code-janitor`, `omni-dev`, `ui-designer`, `guided-learning`, `fable-protocol`).
+
+2. **🧪 TDD-Spec SDLC Package ([`tdd-spec-skills/`](tdd-spec-skills/README.md) & `tdd-spec-skills/AGENTS.md`):**
+   - 21 specialized skills (`/tdd-*`) enforcing strict **Test-Driven Development (TDD)**, **Behavior-Driven Development (BDD)**, and **Contract-First Architecture**.
+   - Living Architecture Maps (`docs/ARCHITECTURE.md`), Pre-Agreed Test Seams, and Floor-Guard anti-cheat enforcement.
+   - Interactive project navigator and AI guide (`/tdd-ask-help`) inspired by `ask-matt`.
+
+- **🔌 Multi-Platform**: A Single Source of Truth architecture automatically installed to `.agents/` (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP), `.claude/` (Claude Code), or `.cursor/` (Cursor).
 - **🔑 BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
-- **🔌 Multi-Platform**: A single `.agents/` configuration that is automatically installed to the correct platform directory. Standard platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) use `.agents/`, Claude Code uses `.claude/`, and Cursor uses `.cursor/`.
 
 ## 📑 Table of Contents
 
@@ -26,9 +33,10 @@ This repository provides a comprehensive set of tools to enhance your AI-assiste
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Custom Agents](#-custom-agents-via-sdlc-slash-commands)
+- [Custom Agents (Standard SDLC)](#-custom-agents-via-sdlc-slash-commands)
 - [Skills](#-skills)
-- [Workflow & Methodology](#-workflow--methodology-spec-kit-inspired)
+- [Workflow & Methodology (Standard SDLC)](#-workflow--methodology-spec-kit-inspired)
+- [TDD-Spec SDLC Package (Test-First & Spec Kit)](#-tdd-spec-sdlc-package-test-first--spec-kit)
 - [Supplementary Skills](#-supplementary-skills)
 - [BYOK Copilot Config](#-byok-copilot-config)
 - [Advanced Customization Guide](#️-advanced-customization-guide)
@@ -556,6 +564,67 @@ graph TD
 ```
 
 
+
+## 🧪 TDD-Spec SDLC Package (Test-First & Spec Kit)
+
+> 📖 **Full Documentation:** For complete deep-dive documentation, ASCII maps, and individual skill specifications, visit [**`tdd-spec-skills/README.md`**](tdd-spec-skills/README.md).
+
+The **TDD-Spec SDLC Package** is a self-contained suite of **21 specialized skills** engineered for teams that require strict **Test-Driven Development (TDD)**, **Behavior-Driven Development (BDD)**, and **Contract-First Architecture**.
+
+```text
+====================================================================================================
+                        🧪 TDD-SPEC SDLC COMPLETE PIPELINE TOPOGRAPHY
+====================================================================================================
+[ Phase -1: BOOTSTRAP & GOVERNANCE ]
+    │   └─▶ /tdd-init ──────────────▶ [ CONSTITUTION.md & CONSTRAINTS.md ]
+    ▼
+[ Phase 0: ARCHITECTURE & DISCOVERY ]
+    │   ├─▶ /tdd-map-architecture ──▶ [ docs/ARCHITECTURE.md (Test Seams) ]
+    │   └─▶ /tdd-explore-ideas ─────▶ [ docs/discovery/ (5-Step Assessment) ]
+    ▼
+[ Phase 1: SPECIFICATION & PRD ]
+    │   ├─▶ /tdd-prd ───────────────▶ [ docs/prd/ (BDD Given-When-Then) ]
+    │   ├─▶ /tdd-clarify ───────────▶ [ Quality Gate: 40/30/30 Scoring ]
+    │   └─▶ /tdd-spec ──────────────▶ [ /spec/ (Pre-Agreed Test Seams & ADR) ]
+    ▼
+[ Phase 2: QUALITY GATES & PLANNING ]
+    │   ├─▶ /tdd-analyze ───────────▶ [ Blast Radius & Mocking Traps Audit ]
+    │   ├─▶ /tdd-checklist ─────────▶ [ tasks/ (Test-Case Inventory Matrix) ]
+    │   └─▶ /tdd-plan-tasks ────────▶ [ /plan/ (Tracer-Bullet Vertical Slices) ]
+    ▼
+[ Phase 3: TEST-FIRST EXECUTION ]
+    │   ├─▶ /tdd-write-code ────────▶ [ Red-Green-Refactor + Floor-Guard ]
+    │   └─▶ /tdd-pair-coach ────────▶ [ Socratic AI Pair Programming ]
+    ▼
+[ Phase 4: VERIFICATION & REMEDIATION ]
+    │   ├─▶ /tdd-code-review ───────▶ [ 5-Axis Review: Spec, Health, Sec, Perf, Test ]
+    │   └─▶ /tdd-bug-report ────────▶ [ Prove-It Pattern (Failing Test First) ]
+    ▼
+[ Phase 5: DOCUMENTATION & RETRO ]
+    │   ├─▶ /tdd-generate-docs ─────▶ [ docs/ (Diátaxis Living Examples) ]
+    │   └─▶ /tdd-retro ─────────────▶ [ Memory Sync & Test Speed Tuning ]
+    ▼
+[ ON-DEMAND UTILITIES ]
+    ├── /tdd-ask-help ──────────────▶ [ Interactive SDLC Navigator & Guide ]
+    ├── /tdd-configure-ci ──────────▶ [ CI Floor-Guard Pipeline Automation ]
+    ├── /tdd-mutation-test ─────────▶ [ Mutation Testing & MSI Assertion Audit ]
+    ├── /tdd-generate-fixtures ─────▶ [ Type-Safe Factories & Seeders ]
+    └── /tdd-refactor-legacy ───────▶ [ Golden Master Characterization Tests ]
+====================================================================================================
+```
+
+### 🌟 Key Highlights of TDD-Spec SDLC
+
+1. **🧭 Interactive SDLC Navigator (`/tdd-ask-help`):**
+   - Automatically inspects filesystem artifacts (`CONSTITUTION.md`, `docs/prd/`, `/spec/`, `/plan/`, test files) to diagnose your exact project phase.
+   - Provides ready-to-use prompt templates for new features, bug remediations, legacy refactors, and pair coaching.
+2. **🏛️ Living Architecture Map (`docs/ARCHITECTURE.md`):**
+   - Auto-mapped by `/tdd-init` or `/tdd-map-architecture` to record test seams, test runners, and framework realities.
+3. **🛡️ Floor-Guard Anti-Cheat & Prove-It Discipline:**
+   - Rejects `@ts-ignore`, skipped tests, or tautological assertions.
+   - Mandates failing automated regression tests before fixing any bug.
+
+---
 
 ## 🌟 Supplementary Skills
 
