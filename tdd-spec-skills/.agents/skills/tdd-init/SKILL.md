@@ -76,6 +76,8 @@ Present the summary table in chat (in the language specified by AGENTS.md), conf
 2. **For `CONSTRAINTS.md` Recalibrations:**
    - Surgically update numerical thresholds, test commands, or add new forbidden floor-guard patterns under `## 3. Floor-Guard Anti-Cheat Rules`.
    - Update the `> **Last Calibrated On:** [YYYY-MM-DD]` metadata tag.
+3. **For Architecture Map Synchronization (`docs/ARCHITECTURE.md`):**
+   - If the user directive or amendment introduces structural changes, new directory conventions, or altered test seams, automatically trigger or offer to update `docs/ARCHITECTURE.md` using the `/tdd-map-architecture` workflow.
 
 #### Step 3: Confirmation & Impact Summary
 Output a clear diff summary in chat (in the language specified by AGENTS.md):

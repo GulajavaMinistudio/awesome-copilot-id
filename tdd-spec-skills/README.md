@@ -156,10 +156,11 @@ graph TD
 
 ## 📋 Skills Directory & Slash Commands
 
-### 1. Primary SDLC Pipeline (Sequential / Core - 9 Skills)
+### 1. Primary SDLC Pipeline (Sequential / Core - 10 Skills)
 
 | Stage | Command / Skill | Role / Persona | Core Output & Purpose |
 |---|---|---|---|
+| **Bootstrap** | `/tdd-init` | **TDD Bootstrapper Architect** | Initializes project governance (`CONSTITUTION.md`, `CONSTRAINTS.md`, `AGENTS.md`) and auto-maps existing codebases. |
 | **0. Map** | `/tdd-map-architecture` | **TDD Architecture Mapper** | Audits codebase, testability matrix, CI, and test seams into `docs/ARCHITECTURE.md`. |
 | **1. Discover** | `/tdd-explore-ideas` | **TDD Idea Explorer** | 5-Step Idea Assessment (`Intake ➔ Research ➔ Define ➔ Shape ➔ Decide`) with hypothesis metrics. |
 | **2. Define** | `/tdd-prd` | **TDD Product Manager** | User stories with executable **Given-When-Then (BDD)** acceptance scenarios. Manages `CONTEXT.md`. |
@@ -182,7 +183,7 @@ graph TD
 
 ---
 
-### 3. Optional Utilities & Tooling (On-Demand Extensions - 6 Skills)
+### 3. Optional Utilities & Tooling (On-Demand Extensions - 7 Skills)
 
 | Command / Skill | Role / Persona | Purpose & TDD Integration |
 |---|---|---|
@@ -192,6 +193,7 @@ graph TD
 | `/tdd-retro` | **TDD Retrospective Optimizer** | Analyzes test run speed, flakiness, and updates project memory/constraints post-sprint. |
 | `/tdd-refactor-legacy` | **TDD Legacy Modernizer** | Pins untested legacy code with Golden Master characterization tests before safe TDD refactoring. |
 | `/tdd-pair-coach` | **TDD Pair Programming Coach** | Interactive mentor guiding human developers step-by-step through the TDD Red-Green-Refactor cycle. |
+| `memory-manager` | **Context Persistence Engine** | Persists session checkpoints and maintains the permanent Knowledge Base in `memory.instructions.md`. |
 
 ---
 
@@ -199,13 +201,13 @@ graph TD
 
 ### 1. Establish Project Foundations
 Run once per project or feature branch:
-1. Create `CONSTITUTION.md` using [`CONSTITUTION-TEMPLATE.md`](./CONSTITUTION-TEMPLATE.md) to define non-negotiable architectural principles.
-2. Create `CONSTRAINTS.md` using [`CONSTRAINTS-TEMPLATE.md`](./CONSTRAINTS-TEMPLATE.md) to establish numerical quality bars (coverage, linter, performance).
+1. Run `/tdd-init` to automatically generate `CONSTITUTION.md` and `CONSTRAINTS.md` tailored to your repository, or use [`CONSTITUTION-TEMPLATE.md`](.agents/standards/CONSTITUTION-TEMPLATE.md) and [`CONSTRAINTS-TEMPLATE.md`](.agents/standards/CONSTRAINTS-TEMPLATE.md).
+2. For legacy codebases, `/tdd-init` will automatically map the existing architecture into `docs/ARCHITECTURE.md`.
 
 ### 2. Standard Standards Compliance
 All agents operating within this package strictly discover and enforce:
-- **Domain Glossary (`CONTEXT.md` / `CONTEXT-MAP.md`):** Formatted per `./standards/CONTEXT-FORMAT.md`.
-- **Architecture Decision Records (`docs/adr/`):** Formatted per `./standards/ADR-FORMAT.md`.
+- **Domain Glossary (`CONTEXT.md` / `CONTEXT-MAP.md`):** Formatted per `.agents/standards/CONTEXT-FORMAT.md`.
+- **Architecture Decision Records (`docs/adr/`):** Formatted per `.agents/standards/ADR-FORMAT.md`.
 - **Quality Gates & Readiness Scores:** Weighted scoring (Completeness 40%, Clarity 30%, Alignment 30%) with a strict threshold of 80/100 to proceed.
 
 ---
