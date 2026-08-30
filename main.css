@@ -46,6 +46,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Themed Text Selection */
+::selection {
+  background-color: #c7d2fe;
+  color: var(--colors-ink);
+}
+
+/* Clean Minimal Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--colors-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--colors-border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--colors-muted);
+}
+
 /* Utility Text & BG Classes to override Bootstrap defaults */
 .text-ink {
   color: var(--colors-ink) !important;
@@ -414,9 +439,9 @@ code {
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px -10px rgba(79, 70, 229, 0.15), 0 4px 12px -5px rgba(0, 0, 0, 0.05);
-  border-color: rgba(79, 70, 229, 0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  border-color: var(--colors-border-strong) !important;
 }
 
 /* Custom Scrollbars for code blocks */
@@ -479,27 +504,17 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 .tdd-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -10px rgba(16, 185, 129, 0.2), 0 4px 12px -5px rgba(0, 0, 0, 0.05);
-  border-color: rgba(16, 185, 129, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  border-color: var(--colors-tdd-accent) !important;
 }
 
 .tdd-spotlight-box {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  background-color: var(--colors-canvas);
   border: 1px solid var(--colors-tdd-border);
   border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   position: relative;
-  overflow: hidden;
-}
-
-.tdd-spotlight-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--colors-tdd-accent);
 }
 
 .nav-pills-custom .nav-link {
@@ -577,8 +592,7 @@ pre::-webkit-scrollbar-thumb:hover {
 .agent-best-for-callout {
   background: var(--colors-surface-soft);
   border: 1px solid var(--colors-hairline);
-  border-left: 3px solid var(--colors-ink) !important;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 
