@@ -84,13 +84,44 @@ if [ ! -d "$SOURCE_CONTENT_DIR" ]; then
     exit 1
 fi
 
-# 4. Interactive menu for platform selection
-echo -e "\nSelect the AI Assistant platform you want to install in your project:"
+# 4. Interactive menu for SDLC package selection
+echo -e "\n${CYAN}Select the SDLC Methodology Package to install:${NC}"
+echo -e "1) ${GREEN}Standard SDLC Package${NC} -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
+echo -e "2) ${GREEN}TDD-Spec SDLC Package${NC} -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
+read -p "Enter your package choice (1-2, default: 1): " PKG_CHOICE < /dev/tty
+PKG_CHOICE=${PKG_CHOICE:-1}
+
+SRC_DIR=""
+SRC_AGENTS=""
+PACKAGE_NAME=""
+
+case $PKG_CHOICE in
+    1)
+        SRC_DIR="$SOURCE_CONTENT_DIR/.agents"
+        SRC_AGENTS="$SOURCE_CONTENT_DIR/AGENTS.md"
+        PACKAGE_NAME="Standard SDLC Package"
+        ;;
+    2)
+        SRC_DIR="$SOURCE_CONTENT_DIR/tdd-spec-skills/.agents"
+        SRC_AGENTS="$SOURCE_CONTENT_DIR/tdd-spec-skills/AGENTS.md"
+        PACKAGE_NAME="TDD-Spec SDLC Package"
+        ;;
+    *)
+        echo -e "${RED}Invalid choice. Process aborted.${NC}"
+        exit 1
+        ;;
+esac
+
+echo -e "Selected Package: ${GREEN}$PACKAGE_NAME${NC}"
+
+# 5. Interactive menu for platform selection
+echo -e "\n${CYAN}Select the AI Assistant platform you want to install in your project:${NC}"
 echo -e "1) ${GREEN}Standard Platforms${NC} (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) -> installs to .agents/"
 echo -e "2) ${GREEN}Claude Code${NC} -> installs to .claude/"
 echo -e "3) ${GREEN}Cursor${NC} -> installs to .cursor/"
 echo -e "4) ${GREEN}All Platforms${NC} (Install to .agents/, .claude/, and .cursor/)"
-read -p "Enter your choice (1-4): " CHOICE < /dev/tty
+read -p "Enter your platform choice (1-4, default: 1): " CHOICE < /dev/tty
+CHOICE=${CHOICE:-1}
 
 DEST_DIRS=()
 case $CHOICE in
@@ -101,8 +132,7 @@ case $CHOICE in
     *) echo -e "${RED}Invalid choice. Process aborted.${NC}"; exit 1 ;;
 esac
 
-# 5. Copy chosen platform configuration directories
-SRC_DIR="$SOURCE_CONTENT_DIR/.agents"
+# 6. Copy chosen platform configuration directories
 
 for dst_dir_name in "${DEST_DIRS[@]}"; do
     DST_DIR="$TARGET_PATH/$dst_dir_name"
@@ -182,8 +212,7 @@ for dst_dir_name in "${DEST_DIRS[@]}"; do
     fi
 done
 
-# 6. Copy AGENTS.md
-SRC_AGENTS="$SOURCE_CONTENT_DIR/AGENTS.md"
+# 7. Copy AGENTS.md
 DST_AGENTS="$TARGET_PATH/AGENTS.md"
 
 if [ -f "$SRC_AGENTS" ]; then
@@ -218,4 +247,9 @@ fi
 echo -e "\n${GREEN}[OK] Installation completed successfully!${NC}"
 echo -e "${YELLOW}[IMPORTANT]: Please review 'AGENTS.md' in your project to:"
 echo -e "1. Customize the project name on the first line so that AI agents can recognize your project context."
-echo -e "2. Change the language preference (default is Indonesian) to your preferred language if necessary.${NC}\n"
+echo -e "2. Change the language preference in the '## Communication' section if necessary.${NC}"
+if [ "$PKG_CHOICE" = "2" ]; then
+    echo -e "${CYAN}3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance.${NC}\n"
+else
+    echo -e "${CYAN}3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery.${NC}\n"
+fi

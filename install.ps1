@@ -47,16 +47,50 @@ try {
         exit 1
     }
 
-    # 4. Interactive menu for platform selection
+    # 4. Interactive menu for SDLC package selection
     Write-Host ""
-    Write-Host "Select the AI Assistant platform you want to install in your project:"
+    Write-Host "Select the SDLC Methodology Package to install:" -ForegroundColor Cyan
+    Write-Host "1) Standard SDLC Package -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
+    Write-Host "2) TDD-Spec SDLC Package -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
+    Write-Host ""
+    
+    $pkgChoice = Read-Host "Enter your package choice (1-2, default: 1)"
+    if ([string]::IsNullOrWhiteSpace($pkgChoice)) { $pkgChoice = "1" }
+    
+    $srcDir = ""
+    $srcAgents = ""
+    $packageName = ""
+    
+    switch ($pkgChoice) {
+        "1" {
+            $srcDir = Join-Path $sourceContentDir ".agents"
+            $srcAgents = Join-Path $sourceContentDir "AGENTS.md"
+            $packageName = "Standard SDLC Package"
+        }
+        "2" {
+            $srcDir = Join-Path (Join-Path $sourceContentDir "tdd-spec-skills") ".agents"
+            $srcAgents = Join-Path (Join-Path $sourceContentDir "tdd-spec-skills") "AGENTS.md"
+            $packageName = "TDD-Spec SDLC Package"
+        }
+        Default {
+            Write-Host "Invalid choice. Process aborted." -ForegroundColor Red
+            exit 1
+        }
+    }
+    
+    Write-Host "Selected Package: $packageName" -ForegroundColor Green
+
+    # 5. Interactive menu for platform selection
+    Write-Host ""
+    Write-Host "Select the AI Assistant platform you want to install in your project:" -ForegroundColor Cyan
     Write-Host "1) Standard Platforms (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP) -> installs to .agents/"
     Write-Host "2) Claude Code -> installs to .claude/"
     Write-Host "3) Cursor -> installs to .cursor/"
     Write-Host "4) All Platforms (Install to .agents/, .claude/, and .cursor/)"
     Write-Host ""
     
-    $choice = Read-Host "Enter your choice (1-4)"
+    $choice = Read-Host "Enter your platform choice (1-4, default: 1)"
+    if ([string]::IsNullOrWhiteSpace($choice)) { $choice = "1" }
     
     $destDirs = @()
     switch ($choice) {
@@ -70,8 +104,7 @@ try {
         }
     }
 
-    # 5. Copy chosen platform configuration directories
-    $srcDir = Join-Path $sourceContentDir ".agents"
+    # 6. Copy chosen platform configuration directories
     
     foreach ($dstDirName in $destDirs) {
         $dstDir = Join-Path $targetPath $dstDirName
@@ -138,13 +171,12 @@ try {
                 }
             }
         } else {
-            Write-Host "Error: Source folder '.agents' not found in source repository." -ForegroundColor Red
+            Write-Host "Error: Source folder '$srcDir' not found in source repository." -ForegroundColor Red
             exit 1
         }
     }
 
-    # 6. Copy AGENTS.md
-    $srcAgents = Join-Path $sourceContentDir "AGENTS.md"
+    # 7. Copy AGENTS.md
     $dstAgents = Join-Path $targetPath "AGENTS.md"
 
     if (Test-Path $srcAgents) {
@@ -187,11 +219,16 @@ try {
     Write-Host "[OK] Installation completed successfully!" -ForegroundColor Green
     Write-Host "[IMPORTANT]: Please review 'AGENTS.md' in your project to:" -ForegroundColor Yellow
     Write-Host "1. Customize the project name on the first line so that AI agents can recognize your project context." -ForegroundColor Yellow
-    Write-Host "2. Change the language preference (default is Indonesian) to your preferred language if necessary." -ForegroundColor Yellow
+    Write-Host "2. Change the language preference in the '## Communication' section if necessary." -ForegroundColor Yellow
+    if ($pkgChoice -eq "2") {
+        Write-Host "3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance." -ForegroundColor Cyan
+    } else {
+        Write-Host "3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery." -ForegroundColor Cyan
+    }
     Write-Host ""
 
 } finally {
-    # 7. Clean up temporary files
+    # 8. Clean up temporary files
     if (Test-Path $tempDir) {
         Write-Host "Cleaning up temporary files..." -ForegroundColor Cyan
         Remove-Item -Path $tempDir -Recurse -Force
