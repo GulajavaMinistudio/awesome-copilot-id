@@ -1320,7 +1320,7 @@
               <div class="tdd-spotlight-box p-4 p-md-5">
                 <div class="row align-items-center g-4">
                   <div class="col-lg-6">
-                    <span class="badge badge-tdd mb-3">Featured Navigator</span>
+                    <span class="badge badge-tdd mb-3" data-i18n="tdd_nav_spotlight_badge">Featured Navigator</span>
                     <h3 class="h4 text-ink fw-bold mb-3" data-i18n="tdd_nav_spotlight_title">
                       AI Guide & Interactive Navigator (/tdd-ask-help)
                     </h3>
@@ -1329,7 +1329,7 @@
                     </p>
                     <div class="d-flex flex-wrap gap-2">
                       <span class="tdd-command-tag">/tdd-ask-help</span>
-                      <span class="tdd-command-tag">/tdd-ask-help [pertanyaan Anda]</span>
+                      <span class="tdd-command-tag" data-i18n="tdd_nav_tag_query">/tdd-ask-help [pertanyaan Anda]</span>
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -1341,13 +1341,13 @@
                         <span class="text-muted-custom small" style="font-size: 11px;">tdd-navigator</span>
                       </div>
                       <pre class="bg-transparent border-0 p-0 m-0 text-light" style="font-size: 11px; line-height: 1.5;"><code><span class="text-muted-custom">Q:</span> <span class="text-warning" data-i18n="tdd_nav_example_q1">"Where is my project right now and what is next?"</span>
-<span class="text-success">Diagnosis:</span> Found approved PRD at docs/prd/auth.md
-<span class="text-info">👉 Next Step:</span> /tdd-spec
-<span class="text-muted-custom">Why:</span> Blueprint & Pre-Agreed Test Seams required before planning.
+<span class="text-success" data-i18n="tdd_nav_diag_label">Diagnosis:</span> <span data-i18n="tdd_nav_diag_1">Found approved PRD at docs/prd/auth.md</span>
+<span class="text-info"><span data-i18n="tdd_nav_next_label">Next Step:</span></span> /tdd-spec
+<span class="text-muted-custom" data-i18n="tdd_nav_why_label">Why:</span> <span data-i18n="tdd_nav_why_1">Blueprint & Pre-Agreed Test Seams required before planning.</span>
 
 <span class="text-muted-custom">Q:</span> <span class="text-warning" data-i18n="tdd_nav_example_q2">"Found 500 error on checkout coupon, how to fix?"</span>
-<span class="text-success">Diagnosis:</span> Functional bug in cart calculator.
-<span class="text-info">👉 Next Step:</span> /tdd-bug-report (Prove-It failing test first)</code></pre>
+<span class="text-success" data-i18n="tdd_nav_diag_label">Diagnosis:</span> <span data-i18n="tdd_nav_diag_2">Functional bug in cart calculator.</span>
+<span class="text-info"><span data-i18n="tdd_nav_next_label">Next Step:</span></span> <span data-i18n="tdd_nav_next_2">/tdd-bug-report (Prove-It failing test first)</span></code></pre>
                     </div>
                   </div>
                 </div>
@@ -1964,8 +1964,8 @@
                     <div class="col-md-6">
                       <div class="bg-white border-hairline p-4 h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
                         <div class="d-flex align-items-center mb-2">
-                          <span class="badge bg-ink text-white me-2">Opsi Rekomendasi</span>
-                          <h4 class="h6 fw-bold mb-0 text-ink">1. Gunakan /code-janitor</h4>
+                          <span class="badge bg-ink text-white me-2" data-i18n="bypass_badge_rec">Opsi Rekomendasi</span>
+                          <h4 class="h6 fw-bold mb-0 text-ink" data-i18n="bypass_opt_a_heading">1. Gunakan /code-janitor</h4>
                         </div>
                         <p class="small text-body-custom mb-3" data-i18n="bypass_desc2">
                           Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
@@ -1981,8 +1981,8 @@
                     <div class="col-md-6">
                       <div class="bg-white border-hairline p-4 h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
                         <div class="d-flex align-items-center mb-2">
-                          <span class="badge bg-secondary text-white me-2">Opsi Alternatif</span>
-                          <h4 class="h6 fw-bold mb-0 text-ink">2. Gunakan Tag [Bypass SDLC]</h4>
+                          <span class="badge bg-secondary text-white me-2" data-i18n="bypass_badge_alt">Opsi Alternatif</span>
+                          <h4 class="h6 fw-bold mb-0 text-ink" data-i18n="bypass_opt_b_heading">2. Gunakan Tag [Bypass SDLC]</h4>
                         </div>
                         <p class="small text-body-custom mb-3" data-i18n="bypass_desc2">
                           Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
@@ -2133,10 +2133,10 @@
                 <div class="col-lg-10 mx-auto">
                   <div class="p-3 rounded-3 d-flex align-items-center justify-content-between flex-wrap gap-3" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
                     <div class="d-flex align-items-center gap-2">
-                      <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 10px;">AI Guide</span>
-                      <span class="small text-ink fw-medium">Need real-time workflow navigation? Run <code class="bg-white px-2 py-1 rounded border-hairline font-monospace text-ink fw-bold">/tdd-ask-help</code> anytime to diagnose workspace artifacts.</span>
+                      <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 10px;" data-i18n="tdd_flow_nav_badge">AI Guide</span>
+                      <span class="small text-ink fw-medium" data-i18n="tdd_flow_nav_hint">Need real-time workflow navigation? Run <code class="bg-white px-2 py-1 rounded border-hairline font-monospace text-ink fw-bold">/tdd-ask-help</code> anytime to diagnose workspace artifacts.</span>
                     </div>
-                    <span class="badge badge-tdd" style="font-size: 11px;">Auto-Routing</span>
+                    <span class="badge badge-tdd" style="font-size: 11px;" data-i18n="tdd_flow_auto_badge">Auto-Routing</span>
                   </div>
                 </div>
               </div>

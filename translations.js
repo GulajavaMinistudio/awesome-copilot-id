@@ -126,6 +126,24 @@ window.translations = {
 
     // TDD Navigator (/tdd-ask-help) Spotlight
     tdd_nav_spotlight_title: "AI Guide & Interactive Navigator (/tdd-ask-help)",
+
+    tdd_nav_spotlight_badge: "Featured Navigator",
+    tdd_nav_tag_query: "/tdd-ask-help [your query]",
+    tdd_nav_diag_label: "Diagnosis:",
+    tdd_nav_diag_1: "Found approved PRD at docs/prd/auth.md",
+    tdd_nav_next_label: "Next Step:",
+    tdd_nav_why_label: "Why:",
+    tdd_nav_why_1: "Blueprint & Pre-Agreed Test Seams required before planning.",
+    tdd_nav_diag_2: "Functional bug in cart calculator.",
+    tdd_nav_next_2: "/tdd-bug-report (Prove-It failing test first)",
+    bypass_badge_rec: "Recommended Option",
+    bypass_badge_alt: "Alternative Option",
+    bypass_opt_a_heading: "1. Use /code-janitor (No Formal Docs)",
+    bypass_opt_b_heading: "2. Use [Bypass SDLC] Tag on Regular Agents",
+    tdd_flow_nav_badge: "AI Guide",
+    tdd_flow_nav_hint: 'Need real-time workflow navigation? Run <code class="bg-white px-2 py-1 rounded border-hairline font-monospace text-ink fw-bold">/tdd-ask-help</code> anytime to diagnose workspace artifacts.',
+    tdd_flow_auto_badge: "Auto-Routing",
+
     tdd_nav_spotlight_desc: "Never wonder what to do next. /tdd-ask-help scans your project workspace artifacts (CONSTITUTION, PRD, Specs, Plans, Tests) in real-time and recommends the exact next slash command with ready-to-use prompts.",
     tdd_nav_example_q1: "Where is my project right now and what is the next step?",
     tdd_nav_example_a1: "Scans workspace ➔ Detects approved PRD ➔ Recommends /tdd-spec with prompt template.",
@@ -510,6 +528,24 @@ window.translations = {
 
     // TDD Navigator (/tdd-ask-help) Spotlight
     tdd_nav_spotlight_title: "Pemandu AI & Navigator Interaktif (/tdd-ask-help)",
+
+    tdd_nav_spotlight_badge: "Navigator Unggulan",
+    tdd_nav_tag_query: "/tdd-ask-help [pertanyaan Anda]",
+    tdd_nav_diag_label: "Diagnosis:",
+    tdd_nav_diag_1: "Ditemukan PRD yang disetujui di docs/prd/auth.md",
+    tdd_nav_next_label: "Langkah Selanjutnya:",
+    tdd_nav_why_label: "Alasan:",
+    tdd_nav_why_1: "Cetak biru & Test Seams yang disepakati diperlukan sebelum perencanaan.",
+    tdd_nav_diag_2: "Bug fungsional pada kalkulator keranjang.",
+    tdd_nav_next_2: "/tdd-bug-report (Wajib tes gagal Prove-It terlebih dahulu)",
+    bypass_badge_rec: "Opsi Rekomendasi",
+    bypass_badge_alt: "Opsi Alternatif",
+    bypass_opt_a_heading: "1. Gunakan /code-janitor (Tanpa Dokumen Formal)",
+    bypass_opt_b_heading: "2. Gunakan Tag [Bypass SDLC] pada Agen Reguler",
+    tdd_flow_nav_badge: "Pemandu AI",
+    tdd_flow_nav_hint: 'Butuh navigasi alur kerja real-time? Jalankan <code class="bg-white px-2 py-1 rounded border-hairline font-monospace text-ink fw-bold">/tdd-ask-help</code> kapan saja untuk mendiagnosis artefak workspace.',
+    tdd_flow_auto_badge: "Auto-Routing",
+
     tdd_nav_spotlight_desc: "Tidak perlu bingung langkah apa selanjutnya. /tdd-ask-help memindai artefak proyek (CONSTITUTION, PRD, Specs, Plan, Tes) secara real-time dan merekomendasikan perintah slash yang tepat beserta template prompt siap pakai.",
     tdd_nav_example_q1: "Saya sudah sampai di fase mana dan apa langkah berikutnya?",
     tdd_nav_example_a1: "Memindai repositori ➔ Mendeteksi PRD disetujui ➔ Merekomendasikan /tdd-spec dengan prompt siap salin.",
