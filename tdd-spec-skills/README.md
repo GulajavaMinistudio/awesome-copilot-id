@@ -148,6 +148,10 @@ graph TD
 ====================================================================================================
 ```
 
+### 🧭 When to Use `/tdd-ask-help` (Interactive SDLC Navigation)
+- **Unsure what to do next?** Type `/tdd-ask-help` anytime. It automatically scans your repository artifacts to diagnose your active phase and recommends the exact next slash command with ready-to-use prompt templates.
+- **Have a specific problem?** Type `/tdd-ask-help <your question>` to find the exact on-ramp flow for bugs, legacy refactoring, new features, or CI quality gates.
+
 ### 🎯 When to Use `/tdd-clarify` vs `/tdd-analyze`
 - **`/tdd-clarify` (The Doubt-Driven Interrogator):** Use after PRD, after Spec, or after Plan to resolve ambiguities, surface missing edge cases, and evaluate the **40/30/30 Readiness Score**.
 - **`/tdd-analyze` (The Blast Radius & Traceability Auditor):** Use after Spec to map affected code files and mocking traps, or after Plan to verify 100% testable coverage across PRD, Spec, and Plan before entering the Code phase.
@@ -183,7 +187,7 @@ graph TD
 
 ---
 
-### 3. Optional Utilities & Tooling (On-Demand Extensions - 7 Skills)
+### 3. Optional Utilities & Tooling (On-Demand Extensions - 8 Skills)
 
 | Command / Skill | Role / Persona | Purpose & TDD Integration |
 |---|---|---|

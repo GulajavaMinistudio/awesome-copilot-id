@@ -376,6 +376,10 @@ graph TD
 ====================================================================================================
 ```
 
+- **When to Use `/tdd-ask-help` (Interactive SDLC Navigation & Scenario Routing):**
+  - **Phase Diagnosis:** Whenever the user is unsure about the current project status or what the next action is, it automatically scans workspace artifacts to identify the active phase.
+  - **Scenario Guidance:** Routes real-world scenarios (new features, unexpected bugs, legacy refactoring, interactive pair coaching, CI quality gates) to the exact recommended skill flow.
+  - **Skill Discovery:** Explains the purpose, input contracts, and output deliverables of any skill in the ecosystem.
 - **When to Use `/tdd-clarify` (Requirements & Testability Interrogation):**
   - **Post-PRD:** Interrogates BDD Acceptance Criteria, edge cases, and untestable user story descriptions.
   - **Post-Spec:** Interrogates interface contracts, DDL constraints, Pre-Agreed Test Seams, and surfaces `[ASSUMPTION]` tags.
