@@ -451,3 +451,82 @@ pre::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
 
+
+
+/* ==========================================================================
+   TDD-Spec SDLC Styling & Components
+   ========================================================================== */
+:root {
+  --colors-tdd-accent: #10b981;
+  --colors-tdd-accent-hover: #059669;
+  --colors-tdd-soft: #ecfdf5;
+  --colors-tdd-border: #a7f3d0;
+}
+
+.badge-tdd {
+  background-color: var(--colors-tdd-soft) !important;
+  color: #047857 !important;
+  border: 1px solid var(--colors-tdd-border) !important;
+  font-weight: 600;
+}
+
+.border-tdd {
+  border-color: var(--colors-tdd-border) !important;
+}
+
+.tdd-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease-in-out !important;
+}
+
+.tdd-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(16, 185, 129, 0.2), 0 4px 12px -5px rgba(0, 0, 0, 0.05);
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+.tdd-spotlight-box {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  border: 1px solid var(--colors-tdd-border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tdd-spotlight-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--colors-tdd-accent);
+}
+
+.nav-pills-custom .nav-link {
+  color: var(--colors-muted);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--colors-hairline);
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.nav-pills-custom .nav-link.active,
+.nav-pills-custom .nav-link:hover {
+  color: #ffffff !important;
+  background-color: var(--colors-ink) !important;
+  border-color: var(--colors-ink) !important;
+}
+
+.tdd-command-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--colors-ink);
+  background: var(--colors-surface-soft);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--colors-hairline);
+}

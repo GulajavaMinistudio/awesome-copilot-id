@@ -56,6 +56,9 @@
               <a class="nav-link nav-link-custom" href="#agents" data-i18n="nav_agents">Custom Agents</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#tdd-spec" data-i18n="nav_tdd_spec">TDD-Spec Kit</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link nav-link-custom" href="#examples" data-i18n="nav_examples">Contoh</a>
             </li>
           </ul>
@@ -197,7 +200,7 @@
           <div class="row g-5">
             <!-- Left side: Prerequisites & Introduction -->
             <div class="col-lg-4">
-              <h2 class="text-ink fw-bold mb-4" style="font-size: 28px;" data-i18n="install_title">🚀 Getting Started</h2>
+              <h2 class="text-ink fw-bold mb-4" style="font-size: 28px;" data-i18n="install_title">Getting Started</h2>
               <p class="text-body-custom mb-4" data-i18n="install_desc">
                 Pilih metode instalasi otomatis yang cepat atau lakukan instalasi manual sesuai dengan platform asisten AI yang Anda gunakan.
               </p>
@@ -221,8 +224,7 @@
               <ul class="nav nav-tabs border-0 mb-4" id="installTabs" role="tablist" style="border-bottom: 1px solid var(--colors-hairline) !important;">
                 <li class="nav-item" role="presentation">
                   <button class="nav-link active install-tab-btn px-0 pb-3 me-4 border-0 bg-transparent fw-semibold" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills-pane" type="button" role="tab" aria-controls="skills-pane" aria-selected="true" style="color: var(--colors-ink); border-bottom: 2px solid var(--colors-ink); margin-bottom: -1px;" data-i18n="install_method0_tab">
-                    Metode 1: Agentic (npx skills) 🌟
-                  </button>
+                    Metode 1: Agentic (npx skills) </button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link install-tab-btn px-0 pb-3 me-4 border-0 bg-transparent fw-semibold" id="automated-tab" data-bs-toggle="tab" data-bs-target="#automated-pane" type="button" role="tab" aria-controls="automated-pane" aria-selected="false" style="color: var(--colors-muted); border-bottom: 2px solid transparent;" data-i18n="install_method1_tab">
@@ -240,25 +242,52 @@
                 <!-- Agentic Skills Pane -->
                 <div class="tab-pane fade show active" id="skills-pane" role="tabpanel" aria-labelledby="skills-tab">
                   <p class="text-body-custom mb-3" data-i18n="install_method0_desc">
-                    Instal bootstrapper skill <code>sdlc-init</code> langsung menggunakan CLI <code>npx skills</code>:
+                    Instal bootstrapper skill langsung menggunakan CLI <code>npx skills</code>:
                   </p>
                   
-                  <div class="mb-4">
-                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method0_step1">1. Jalankan perintah di Terminal proyek Anda:</h5>
-                    <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init</code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init">Copy</button>
+                  <div class="row g-3 mb-3">
+                    <!-- Standard SDLC Option -->
+                    <div class="col-md-6">
+                      <div class="p-3 bg-surface-soft border-hairline h-100 rounded-3">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <span class="badge bg-primary text-white">Standard SDLC</span>
+                          <span class="small fw-semibold text-ink">12 Phases</span>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;">1. Terminal:</p>
+                        <div class="position-relative mb-2">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init">Copy</button>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;">2. AI Chat:</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_sdlc_init">/sdlc-init setup this project</span></code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sdlc_init" data-clipboard="/sdlc-init setup this project">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- TDD-Spec SDLC Option -->
+                    <div class="col-md-6">
+                      <div class="p-3 bg-surface-soft border-tdd h-100 rounded-3" style="background: #f0fdf4 !important;">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <span class="badge badge-tdd">TDD-Spec SDLC</span>
+                          <span class="small fw-semibold text-success">21 Skills</span>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;">1. Terminal:</p>
+                        <div class="position-relative mb-2">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init</code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init">Copy</button>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;">2. AI Chat:</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_tdd_init">/tdd-init setup this project</span></code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_init" data-clipboard="/tdd-init setup this project">Copy</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <h5 class="text-ink fw-semibold mb-2" style="font-size: 15px;" data-i18n="install_method0_step2">2. Jalankan perintah di obrolan Asisten AI Anda:</h5>
-                    <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_sdlc_init">/sdlc-init setup this project</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sdlc_init" data-clipboard="/sdlc-init setup this project">Copy</button>
-                    </div>
-                  </div>
-                  <div class="alert alert-info small py-2 px-3 mt-4 mb-0" data-i18n="install_skills_info">
+                  <div class="alert alert-info small py-2 px-3 mt-3 mb-0" data-i18n="install_skills_info">
                     <strong>Otonom & Aman:</strong> Agen AI akan mengunduh <code>AGENTS.md</code> dan folder <code>.agents/</code> secara otonom, menggabungkan aturan global, serta mengamankan catatan <code>memory.instructions.md</code> Anda secara otomatis.
                   </div>
                 </div>
@@ -397,7 +426,7 @@
                 <div class="tab-pane fade show active p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-bea" role="tabpanel" aria-labelledby="agent-bea-tab">
                   <div class="d-flex justify-content-between align-items-start mb-3">
                     <h3 class="text-ink fw-bold h4 mb-0">/sdlc-explore-ideas</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">brainstorming-explorer</span>
+                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-explore-ideas</span>
                   </div>
                   <p class="text-body-custom mb-4" data-i18n="agent_bea_desc">
                     Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
@@ -716,7 +745,7 @@
                   <div id="mob-collapse-bea" class="accordion-collapse collapse show" aria-labelledby="mob-heading-bea" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
                       <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">brainstorming-explorer</span>
+                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-explore-ideas</span>
                       </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_bea_desc">Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).</p>
                       <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
@@ -1073,6 +1102,416 @@
           </div>
         </div>
       </section>
+            <!-- TDD-Spec SDLC Package Section -->
+      <section id="tdd-spec" class="section-padding bg-surface-soft" style="border-bottom: 1px solid var(--colors-hairline);">
+        <div class="container py-md-4">
+          <!-- Section Title -->
+          <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+              <div class="badge badge-tdd py-2 px-3 mb-3 rounded-pill uppercase-tag" data-i18n="tdd_section_badge">
+                Test-Driven Development
+              </div>
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="tdd_section_title">
+                TDD-Spec SDLC Package (21 Specialized Skills)
+              </h2>
+              <p class="text-body-custom lead" data-i18n="tdd_section_desc">
+                A dedicated test-first engineering suite combining pure Test-Driven Development (TDD), Behavior-Driven Development (BDD), and Executable Specifications.
+              </p>
+            </div>
+          </div>
+
+          <!-- Spotlight Box: /tdd-ask-help -->
+          <div class="row mb-5">
+            <div class="col-12">
+              <div class="tdd-spotlight-box p-4 p-md-5">
+                <div class="row align-items-center g-4">
+                  <div class="col-lg-6">
+                    <span class="badge badge-tdd mb-3">Featured Navigator</span>
+                    <h3 class="h4 text-ink fw-bold mb-3" data-i18n="tdd_nav_spotlight_title">
+                      AI Guide & Interactive Navigator (/tdd-ask-help)
+                    </h3>
+                    <p class="text-body-custom mb-4" data-i18n="tdd_nav_spotlight_desc">
+                      Never wonder what to do next. /tdd-ask-help scans your project workspace artifacts in real-time and recommends the exact next slash command with ready-to-use prompts.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="tdd-command-tag">/tdd-ask-help</span>
+                      <span class="tdd-command-tag">/tdd-ask-help [pertanyaan Anda]</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="console-mockup border-hairline p-3" style="background: #0f172a; border-radius: 12px;">
+                      <div class="d-flex align-items-center mb-2">
+                        <span class="console-dot bg-danger me-1" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+                        <span class="console-dot bg-warning me-1" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+                        <span class="console-dot bg-success me-2" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+                        <span class="text-muted-custom small" style="font-size: 11px;">tdd-navigator</span>
+                      </div>
+                      <pre class="bg-transparent border-0 p-0 m-0 text-light" style="font-size: 11px; line-height: 1.5;"><code><span class="text-muted-custom">Q:</span> <span class="text-warning" data-i18n="tdd_nav_example_q1">"Where is my project right now and what is next?"</span>
+<span class="text-success">Diagnosis:</span> Found approved PRD at docs/prd/auth.md
+<span class="text-info">👉 Next Step:</span> /tdd-spec
+<span class="text-muted-custom">Why:</span> Blueprint & Pre-Agreed Test Seams required before planning.
+
+<span class="text-muted-custom">Q:</span> <span class="text-warning" data-i18n="tdd_nav_example_q2">"Found 500 error on checkout coupon, how to fix?"</span>
+<span class="text-success">Diagnosis:</span> Functional bug in cart calculator.
+<span class="text-info">👉 Next Step:</span> /tdd-bug-report (Prove-It failing test first)</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="d-flex flex-wrap justify-content-center gap-2 mb-4 nav-pills-custom">
+            <button class="btn nav-link active tdd-filter-btn" data-filter="all" data-i18n="tdd_pill_all">All Skills (21)</button>
+            <button class="btn nav-link tdd-filter-btn" data-filter="gov" data-i18n="tdd_pill_gov">Governance & Discovery</button>
+            <button class="btn nav-link tdd-filter-btn" data-filter="spec" data-i18n="tdd_pill_spec">Specs & Quality Gates</button>
+            <button class="btn nav-link tdd-filter-btn" data-filter="exec" data-i18n="tdd_pill_exec">Execution & Review</button>
+            <button class="btn nav-link tdd-filter-btn" data-filter="util" data-i18n="tdd_pill_util">Utilities & Coaching</button>
+          </div>
+
+          <!-- 21 Skills Cards Grid -->
+          <div class="row g-4" id="tddSkillsGrid">
+            <!-- 1. /tdd-init -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="gov">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-init</span>
+                  <span class="badge bg-light text-ink border-hairline small">Bootstrap</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">TDD Bootstrapper</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_init_desc">Bootstraps and calibrates project governance and auto-maps existing codebases.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-init setup this project</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-init setup this project">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. /tdd-map-architecture -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="gov">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-map-architecture</span>
+                  <span class="badge bg-light text-ink border-hairline small">Map</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Architecture Mapper</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_map_desc">Scans directory topology, test runners, and public test seams into docs/ARCHITECTURE.md.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-map-architecture map codebase</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-map-architecture map codebase">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. /tdd-explore-ideas -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="gov">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-explore-ideas</span>
+                  <span class="badge bg-light text-ink border-hairline small">Discovery</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Idea Explorer</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_explore_desc">5-Step Idea Assessment with measurable hypothesis test metrics.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-explore-ideas explore @brief.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-explore-ideas explore @brief.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. /tdd-prd -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="gov">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-prd</span>
+                  <span class="badge bg-light text-ink border-hairline small">PRD</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">TDD Product Manager</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_prd_desc">Authored BDD user stories with executable Given-When-Then acceptance scenarios.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-prd draft PRD from @discovery.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-prd draft PRD from @discovery.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. /tdd-clarify -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="spec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-clarify</span>
+                  <span class="badge badge-tdd small">Quality Gate</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Requirements Clarifier</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_clarify_desc">Doubt-Driven interrogator uncovering ambiguities with 40/30/30 Readiness Scoring.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-clarify interrogate @prd.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-clarify interrogate @prd.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. /tdd-analyze -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="spec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-analyze</span>
+                  <span class="badge badge-tdd small">Impact Audit</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Codebase Analyst</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_analyze_desc">Pre-execution impact analysis mapping blast radius and mocking traps.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-analyze audit blast radius @spec.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-analyze audit blast radius @spec.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. /tdd-spec -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="spec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-spec</span>
+                  <span class="badge bg-light text-ink border-hairline small">Blueprint</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Spec Architect</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_spec_desc">Technical blueprint with interface contracts and Pre-Agreed Test Seams.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-spec define spec from @prd.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-spec define spec from @prd.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. /tdd-checklist -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="spec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-checklist</span>
+                  <span class="badge bg-light text-ink border-hairline small">Matrix</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Checklist Generator</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_checklist_desc">Translates specifications into a Test-Case Inventory Matrix.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-checklist generate matrix @spec.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-checklist generate matrix @spec.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 9. /tdd-plan-tasks -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="spec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-plan-tasks</span>
+                  <span class="badge bg-light text-ink border-hairline small">Plan</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Tracer-Bullet Planner</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_plan_desc">Breaks specifications into vertical slices with explicit RED-GREEN-VERIFY steps.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-plan-tasks plan from @spec.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-plan-tasks plan from @spec.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10. /tdd-write-code -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="exec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-write-code</span>
+                  <span class="badge badge-tdd small">Execution</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">TDD Code Engine</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_write_desc">Strict Red-Green-Refactor implementation engine with Floor-Guard anti-cheat.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-write-code execute @plan.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-write-code execute @plan.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11. /tdd-code-review -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="exec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-code-review</span>
+                  <span class="badge bg-light text-ink border-hairline small">5-Axis</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">5-Axis Reviewer</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_review_desc">5-Axis code & test review (Spec, Health, Security, Perf, Test Efficacy).</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-code-review review @spec.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-code-review review @spec.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12. /tdd-bug-report -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="exec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-bug-report</span>
+                  <span class="badge badge-tdd small">Prove-It</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Prove-It Bug Diagnostician</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_bug_desc">RCA with Prove-It Pattern: mandates writing a failing regression test first.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-bug-report diagnose @error.log</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-bug-report diagnose @error.log">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 13. /tdd-generate-docs -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="exec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-generate-docs</span>
+                  <span class="badge bg-light text-ink border-hairline small">Diátaxis</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Diátaxis Docs Writer</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_docs_desc">User documentation using passing test suites as Living Examples.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-generate-docs generate docs</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-generate-docs generate docs">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 14. /tdd-retro -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="exec">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-retro</span>
+                  <span class="badge bg-light text-ink border-hairline small">Retro</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Retrospective Optimizer</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_retro_desc">Optimizes test suite run speeds, flakiness, and synchronizes memory.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-retro analyze sprint</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-retro analyze sprint">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 15. /tdd-ask-help -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-tdd tdd-card h-100 rounded-3" style="background: #f0fdf4 !important;">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-ask-help</span>
+                  <span class="badge badge-tdd small">Navigator</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">TDD SDLC Navigator</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_ask_help_desc">Interactive AI project navigator diagnosing project phase and routing scenarios.</p>
+                <div class="position-relative">
+                  <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-ask-help where are we now?</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-ask-help where are we now?">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 16. /tdd-pair-coach -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-pair-coach</span>
+                  <span class="badge bg-light text-ink border-hairline small">Coach</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Pair Coach</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_pair_desc">Interactive Socratic AI pair programming mentor guiding developers step-by-step.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-pair-coach guide me on @task-1.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-pair-coach guide me on @task-1.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 17. /tdd-mutation-test -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-mutation-test</span>
+                  <span class="badge bg-light text-ink border-hairline small">MSI Audit</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Mutation Auditor</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_mutation_desc">Mutation testing runner auditing assertion efficacy (MSI >= 80%).</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-mutation-test audit @cart.spec.js</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-mutation-test audit @cart.spec.js">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 18. /tdd-configure-ci -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-configure-ci</span>
+                  <span class="badge bg-light text-ink border-hairline small">CI Pipeline</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">CI Gatekeeper</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_ci_desc">Configures CI/CD pipelines to mechanically enforce CONSTRAINTS.md floor-guards.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-configure-ci setup github actions</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-configure-ci setup github actions">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 19. /tdd-generate-fixtures -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-generate-fixtures</span>
+                  <span class="badge bg-light text-ink border-hairline small">Fixtures</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Fixture Architect</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_fixtures_desc">Generates type-safe test factories, seeders, and fixtures from spec models.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-generate-fixtures for @spec.md</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-generate-fixtures for @spec.md">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 20. /tdd-refactor-legacy -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">/tdd-refactor-legacy</span>
+                  <span class="badge bg-light text-ink border-hairline small">Golden Master</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Legacy Modernizer</h4>
+                <p class="small text-body-custom mb-3" data-i18n="tdd_legacy_desc">Pins untested legacy code behavior with Golden Master characterization tests.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/tdd-refactor-legacy pin @legacy.js</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/tdd-refactor-legacy pin @legacy.js">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 21. memory-manager -->
+            <div class="col-md-6 col-lg-4 tdd-skill-card-col" data-category="util">
+              <div class="p-4 bg-white border-hairline tdd-card h-100 rounded-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="tdd-command-tag">memory-manager</span>
+                  <span class="badge bg-light text-ink border-hairline small">Memory</span>
+                </div>
+                <h4 class="h6 text-ink fw-bold mb-2">Context Persistence</h4>
+                <p class="small text-body-custom mb-3">Persists session checkpoints and maintains knowledge in memory.instructions.md.</p>
+                <div class="position-relative">
+                  <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>save session progress to memory</code></pre>
+                  <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="save session progress to memory">Copy</button>
+                </div>
+              </div>
+            </div>
+          
+                      </div>
+        </div>
+      </section>
+
       <!-- Example Usage Section -->
       <section id="examples" class="section-padding bg-canvas" style="border-bottom: 1px solid var(--colors-hairline);">
         <div class="container py-md-4">
@@ -1090,15 +1529,17 @@
             <div class="col-12 text-center">
               <div class="nav nav-pills justify-content-center gap-2 mb-4" id="useCaseTabs" role="tablist">
                 <button class="nav-link active usecase-pill-btn rounded-pill px-4 py-2" id="uc-sdlc-tab" data-bs-toggle="pill" data-bs-target="#uc-sdlc-pane" type="button" role="tab" aria-controls="uc-sdlc-pane" aria-selected="true" data-i18n="uc_tab_sdlc">
-                  🔄 End-to-End SDLC (@Mentions)
+                  End-to-End SDLC (@Mentions)
                 </button>
                 <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-bypass-tab" data-bs-toggle="pill" data-bs-target="#uc-bypass-pane" type="button" role="tab" aria-controls="uc-bypass-pane" aria-selected="false" data-i18n="uc_tab_bypass">
-                  🛠️ SDLC Bypass (Minor Fixes)
+                  SDLC Bypass (Minor Fixes)
                 </button>
                 <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-slash-tab" data-bs-toggle="pill" data-bs-target="#uc-slash-pane" type="button" role="tab" aria-controls="uc-slash-pane" aria-selected="false" data-i18n="uc_tab_slash">
-                  ⚡ Advanced (Slash Commands)
+                  Advanced (Slash Commands)
                 </button>
-                
+                <button class="nav-link usecase-pill-btn rounded-pill px-4 py-2" id="uc-tdd-tab" data-bs-toggle="pill" data-bs-target="#uc-tdd-pane" type="button" role="tab" aria-controls="uc-tdd-pane" aria-selected="false" data-i18n="uc_tab_tdd">
+                  TDD-Spec SDLC
+                </button>
               </div>
             </div>
           </div>
@@ -1303,7 +1744,7 @@
               <div class="row justify-content-center">
                 <div class="col-lg-8">
                   <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
-                    <h3 class="h5 text-ink fw-bold mb-3" data-i18n="bypass_title">🛠️ Bypass SDLC (Pekerjaan Minor)</h3>
+                    <h3 class="h5 text-ink fw-bold mb-3" data-i18n="bypass_title">Bypass SDLC (Pekerjaan Minor)</h3>
                     <p class="text-body-custom small mb-3" data-i18n="bypass_desc1">
                       Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati tahapan SDLC penuh menggunakan bendera penunjuk <code>[Bypass SDLC]</code>.
                     </p>
@@ -1324,7 +1765,7 @@
               <div class="row justify-content-center">
                 <div class="col-lg-10">
                   <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
-                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="slash_title">⚡ Alur Kerja Mandiri dengan Slash Commands</h3>
+                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="slash_title">Alur Kerja Mandiri dengan Slash Commands</h3>
                     <p class="text-body-custom small mb-4 text-center" data-i18n="slash_desc">
                       Di sebagian besar platform (seperti VS Code Copilot, Antigravity, OpenCode), Anda dapat memanggil keahlian (skill) agen secara langsung menggunakan perintah garis miring (slash commands) <code>/&lt;nama-skill&gt;</code>. Berikut alur lengkap penggunaan perintah slash untuk siklus hidup pengembangan fitur:
                     </p>
@@ -1338,8 +1779,8 @@
                           <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p0_title">Mengeksplorasi Codebase & Brainstorming</span>
                         </div>
                         <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_bea_3">/brainstorming-explorer explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_3" data-clipboard="/brainstorming-explorer explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_bea_3">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_3" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
                         </div>
                       </div>
 
@@ -1426,7 +1867,170 @@
               </div>
             </div>
 
+            <!-- Tab 4: TDD-Spec SDLC Workflow -->
+            <div class="tab-pane fade" id="uc-tdd-pane" role="tabpanel" aria-labelledby="uc-tdd-tab">
+              <div class="p-4 bg-light border-tdd" style="border-radius: 16px; background: #f0fdf4 !important;">
+                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                  <div>
+                    <span class="badge badge-tdd mb-2">Test-First & Executable Spec Kit</span>
+                    <h3 class="h5 text-ink fw-bold mb-1" data-i18n="tdd_flow_title">Full TDD-Spec SDLC Workflow</h3>
+                    <p class="text-body-custom small mb-0" data-i18n="tdd_flow_desc">A rigorous 7-phase lifecycle combining pure Test-Driven Development (TDD), Behavior-Driven Development (BDD), Pre-Agreed Test Seams, and Floor-Guard anti-cheat enforcement.</p>
+                  </div>
+                </div>
+
+                <div class="alert alert-success small py-2 px-3 mb-4 border-tdd">
+                  <div>
+                    <strong>Need real-time navigation?</strong> Run <code class="bg-white px-2 py-1 rounded text-ink fw-bold">/tdd-ask-help</code> anytime to diagnose project artifacts and get recommended next steps.
+                  </div>
+                </div>
+
+                <div class="row g-4">
+                  <!-- Phase 0: Discovery & Mapping -->
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">0</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p0_title">Phase 0: Architecture Mapping & Idea Discovery</h4>
                       </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p0_desc">Scans repository topography and evaluates initial ideas against measurable testable metrics.</p>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0a">/tdd-map-architecture map codebase</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0a" data-clipboard="/tdd-map-architecture map codebase">Copy</button>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0b">/tdd-explore-ideas explore @brief.md with measurable hypotheses</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0b" data-clipboard="/tdd-explore-ideas explore @brief.md with measurable hypotheses">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phase 1: BDD PRD & Clarification -->
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">1</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p1_title">Phase 1: BDD Requirements & Doubt-Driven Clarification</h4>
+                      </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p1_desc">Authors Given-When-Then user stories and interrogates assumptions until reaching Readiness Score >= 80.</p>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1a">/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1a" data-clipboard="/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md">Copy</button>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1b">/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1b" data-clipboard="/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phase 2: Specification & Test Seams -->
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">2</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p2_title">Phase 2: Contract Specifications, Test Seams & Impact Analysis</h4>
+                      </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p2_desc">Designs exact TypeScript/DDL interfaces, maps public test seams, generates test-case checklists, and audits blast radius.</p>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2a">/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2a" data-clipboard="/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md">Copy</button>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2b">/tdd-checklist generate test inventory matrix from @spec-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2b" data-clipboard="/tdd-checklist generate test inventory matrix from @spec-cart.md">Copy</button>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2c">/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2c" data-clipboard="/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phase 3: Tracer-Bullet Plan -->
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">3</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p3_title">Phase 3: Tracer-Bullet Implementation Planning</h4>
+                      </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p3_desc">Breaks specifications into vertical slices (DB to UI) with explicit RED-GREEN-VERIFY task sequences.</p>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_3">/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_3" data-clipboard="/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phase 4: Strict Red-Green-Refactor Execution -->
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">4</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p4_title">Phase 4: Strict Red-Green-Refactor Coding</h4>
+                      </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p4_desc">Autonomous execution strictly writing failing tests first, minimum code to pass, and refactoring cleanly.</p>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_4">/tdd-write-code execute @plan-cart.md with strict Floor-Guards</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_4" data-clipboard="/tdd-write-code execute @plan-cart.md with strict Floor-Guards">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phase 5: 5-Axis Quality Review & Prove-It Bug Fixing -->
+                  <div class="col-md-6">
+                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">5</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p5_title">Phase 5: Audit Kualitas 5-Axis & Remediasi Bug Prove-It</h4>
+                      </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p5_desc">Audit kode terhadap 5 sumbu kesehatan dan diagnosa bug dengan wajib menulis tes regresi gagal terlebih dahulu.</p>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5a">/tdd-code-review review cart service against 5-Axis Health Model</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5a" data-clipboard="/tdd-code-review review cart service against 5-Axis Health Model">Copy</button>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5b">/tdd-bug-report diagnose @error.log using Prove-It failing test first</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5b" data-clipboard="/tdd-bug-report diagnose @error.log using Prove-It failing test first">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phase 6: Living Docs & Sprint Retro -->
+                  <div class="col-12">
+                    <div class="p-3 bg-white border-hairline rounded-3">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-ink text-white rounded-circle">6</span>
+                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p6_title">Phase 6: Diátaxis Living Documentation & Sprint Retro</h4>
+                      </div>
+                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p6_desc">Generates living documentation grounded in passing tests and optimizes test suite speed and reliability.</p>
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6a">/tdd-generate-docs generate Diataxis docs with passing test examples</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6a" data-clipboard="/tdd-generate-docs generate Diataxis docs with passing test examples">Copy</button>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6b">/tdd-retro analyze test runtime speed, flakiness, and update memory</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6b" data-clipboard="/tdd-retro analyze test runtime speed, flakiness, and update memory">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -1662,6 +2266,23 @@
           e.preventDefault();
           const lang = this.getAttribute('data-lang');
           setLanguage(lang);
+        });
+      });
+
+      
+      // TDD-Spec Filter Pills Logic
+      document.querySelectorAll('.tdd-filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tdd-filter-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const filter = this.getAttribute('data-filter');
+          document.querySelectorAll('.tdd-skill-card-col').forEach(col => {
+            if (filter === 'all' || col.getAttribute('data-category') === filter) {
+              col.classList.remove('d-none');
+            } else {
+              col.classList.add('d-none');
+            }
+          });
         });
       });
 
