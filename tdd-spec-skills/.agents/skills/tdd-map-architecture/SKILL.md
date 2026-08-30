@@ -77,7 +77,7 @@ You are an expert Software Architect & Testability Engineer. Your role is to exa
 1. Check for existing `docs/ARCHITECTURE.md`. If it exists, read it and ask the user whether to fully regenerate or surgically update affected sections.
 2. Generate `docs/ARCHITECTURE.md` adhering strictly to the Mandatory Output Template below.
 3. **Post-Generation Offer:** Once created/updated, ask the user (in the language specified by AGENTS.md):
-   > *"The system architecture document has been successfully created in `docs/ARCHITECTURE.md`. Would you like me to add a reference link to this document in `README.md` or `AGENTS.md` so that other agents can easily discover and navigate it?"*
+   > _"The system architecture document has been successfully created in `docs/ARCHITECTURE.md`. Would you like me to add a reference link to this document in `README.md` or `AGENTS.md` so that other agents can easily discover and navigate it?"_
 
 ---
 
@@ -92,51 +92,64 @@ _Execute ONLY if user confirms the post-generation offer._
 ---
 
 ### 🧠 Proactive Memory Checkpoint Offer
+
 Once `docs/ARCHITECTURE.md` is generated or updated, you MUST proactively ask the user (in the language specified by AGENTS.md):
-> *"Would you like me to record the updated architecture map and test seams into `memory.instructions.md` using the `memory-manager` skill?"*
-If the user agrees, execute `memory-manager` (Workflow 3: Write Mode).
+
+> _"Would you like me to record the updated architecture map and test seams into `memory.instructions.md` using the `memory-manager` skill?"_
+> If the user agrees, execute `memory-manager` (Workflow 3: Write Mode).
 
 ---
 
 ## 📑 Output Template Reference
+
 For structural reference, see [`references/ARCHITECTURE-TEMPLATE.md`](references/ARCHITECTURE-TEMPLATE.md).
 
 ## 📑 Mandatory Output Template (`docs/ARCHITECTURE.md`)
 
-```markdown
+````markdown
 # System Architecture & Testability Map
 
 > **Generated on:** {YYYY-MM-DD}  
 > **Source-Driven Inspection:** Verified from repository configuration and test suites.
 
 ## 1. High-Level Overview
+
 {2-3 paragraphs explaining system purpose, domain scope, and primary architectural patterns (e.g., Clean Architecture, Hexagonal, Modular Monolith).}
 
 ## 2. Technology Stack & Toolchain Reality
+
 - **Runtime & Language:** {e.g., Node.js v20 / TypeScript 5.x}
 - **Test Runner & Frameworks:** {e.g., Vitest + Testing Library + MSW}
 - **Linter & Formatter:** {e.g., Biome / ESLint strict mode}
 - **CI/CD Workflows:** {e.g., GitHub Actions (.github/workflows/tdd-ci.yml)}
 
 ## 3. Directory Structure & Module Boundaries
+
 ```text
 src/
 ├── core/         # Pure domain entities & business logic (Zero external dependencies)
 ├── api/          # Public HTTP/gRPC interfaces & DTOs (Public test seams)
 └── infra/        # Database repositories & third-party network adapters
 ```
+````
 
 ## 4. Testability Matrix & Seam Catalog
-| Module / Layer | Primary Test Seam | Test Type | Mocking Strategy | Testability Score (1-5) |
-|---|---|---|---|---|
-| Domain Core | `DomainService.execute()` | Unit | Zero mocks (Pure state) | 5/5 |
-| API Endpoints | `app.request()` | Integration | In-memory DB / Testcontainers | 4/5 |
-| External Adapters | `PaymentGatewayAdapter` | Contract/E2E | Contract mocks / WireMock | 3/5 |
+
+| Module / Layer    | Primary Test Seam         | Test Type    | Mocking Strategy              | Testability Score (1-5) |
+| ----------------- | ------------------------- | ------------ | ----------------------------- | ----------------------- |
+| Domain Core       | `DomainService.execute()` | Unit         | Zero mocks (Pure state)       | 5/5                     |
+| API Endpoints     | `app.request()`           | Integration  | In-memory DB / Testcontainers | 4/5                     |
+| External Adapters | `PaymentGatewayAdapter`   | Contract/E2E | Contract mocks / WireMock     | 3/5                     |
 
 ## 5. Architectural Memory & Domain Context
+
 - **Domain Glossary:** Aligned with [`CONTEXT.md`](../CONTEXT.md)
 - **Key ADRs:** Reference to [`docs/adr/`](./adr/)
 
 ## 6. Recommendations for TDD Velocity
+
 {Bullet points highlighting concrete refactoring opportunities to improve test speed and decouple untestable modules.}
+
+```
+
 ```

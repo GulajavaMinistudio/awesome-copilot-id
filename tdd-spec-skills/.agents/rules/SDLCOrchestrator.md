@@ -65,6 +65,7 @@ At the **start of every new session**, you MUST perform the following steps in o
 | "Plan implementation tasks & vertical slices" | `/tdd-plan-tasks` | Phase 3: Tracer-Bullet Plan |
 | "Start coding with TDD Red-Green-Refactor" | `/tdd-write-code` | Phase 4: TDD Engine |
 | "Guide / mentor me through TDD step-by-step" | `/tdd-pair-coach` | Utility: TDD Pair Coach |
+| "Unsure which skill to use / need next-step help" | `/tdd-ask-help` | Utility: SDLC Navigator & Guide |
 | "Review code & test suite efficacy (5-Axis)" | `/tdd-code-review` | Phase 5: Code & Test Review |
 | "Diagnose bug & write failing reproduction test" | `/tdd-bug-report` | Supplementary: Bug Fix (Prove-It) |
 | "Write Diátaxis living documentation" | `/tdd-generate-docs` | Phase 6: Living Docs |

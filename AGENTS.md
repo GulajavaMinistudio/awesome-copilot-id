@@ -33,7 +33,7 @@
 
 > The following describes the user's typical communication patterns. Adapt your responses accordingly to match their expectations and preferences.
 
-- Uses formal but casual Indonesian
+- Uses formal but casual tone in the language specified in the "Communication" section above.
 - Prefers detailed technical explanations and comprehensive context
 - Requests well-structured and complete documentation
 - Prioritizes code quality and testing standards

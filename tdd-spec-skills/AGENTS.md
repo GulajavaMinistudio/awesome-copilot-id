@@ -42,7 +42,7 @@
 
 > The following describes the user's typical communication patterns. Adapt your responses accordingly to match their expectations and preferences.
 
-- Uses formal but casual Indonesian.
+- Uses formal but casual tone in the language specified in the "Communication" section above.
 - Prefers detailed technical explanations, clear architectural reasoning, and comprehensive context.
 - Requests well-structured, complete, and verifiable documentation.
 - Prioritizes code quality, zero-regressions, and strict testing standards.
@@ -73,7 +73,7 @@
 - **Vertical Slicing (Tracer Bullets)**: All Implementation Plans MUST be broken down into "Tracer Bullet" tickets (vertical slices from DB to UI that are independently demoable and verifiable). Horizontal slicing (layer-by-layer) is strictly prohibited.
 - **Documentation First**: Complete and structured documentation must exist before coding begins.
 - **Surgical Edit Mandate**: AI agents MUST prioritize targeted, surgical edits (modifying only specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
-- **English-Only Documentation & Code**: While conversational responses MUST be in Indonesian, all written code (variables, comments, commit messages) and all generated SDLC documentation (`docs/`, `/spec/`, `/plan/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
+- **English-Only Documentation & Code**: While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (`docs/`, `/spec/`, `/plan/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
 - **Custom Slash Commands Usage**: User triggers skills using slash commands according to each development phase:
   - `/tdd-init` for initializing the TDD-Spec SDLC architecture, AGENTS.md, CONSTITUTION.md, and CONSTRAINTS.md.
   - `/tdd-map-architecture` for System & Test Topography Mapping.
@@ -94,6 +94,7 @@
   - `/tdd-mutation-test` for mutation testing to audit test assertion strength.
   - `/tdd-retro` for session retrospectives, test suite speed optimization, and memory updates.
   - `/tdd-refactor-legacy` for golden-master characterization pinning of legacy code.
+  - `/tdd-ask-help` for interactive project phase diagnosis, scenario routing, and skill guidance.
   - `/tdd-pair-coach` for interactive AI pair programming guidance through TDD steps.
   - `memory-manager` for saving, restoring, and compacting context to/from `memory.instructions.md` across chat sessions.
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus.
@@ -169,6 +170,7 @@ To prevent context loss, hallucinations, and enforce strict SDLC traceability, *
 | `/tdd-retro`             | Session execution logs AND test run metrics                                   |
 | `/tdd-refactor-legacy`   | Untested legacy source code file                                              |
 | `/tdd-pair-coach`        | Implementation Plan ticket OR Spec requirement                                |
+| `/tdd-ask-help`          | User query OR current repository state (auto-detects phase)                   |
 
 *Note: Phase 0 (`/tdd-explore-ideas`) and surgical bug analysis (`/tdd-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
@@ -251,6 +253,10 @@ To prevent context loss, hallucinations, and enforce strict SDLC traceability, *
 17. **Utility: Pair Programming Coach (`/tdd-pair-coach`):**
     - **Goal:** Guide human developers step-by-step through the TDD cycle.
     - **Pushback Rule:** Refuses to write the code directly for the user.
+
+18. **Utility: SDLC Navigator & Interactive Guide (`/tdd-ask-help`):**
+    - **Goal:** Diagnose current project phase, recommend next actions, route scenarios, and explain skill purposes.
+    - **Pushback Rule:** Operates in read-only advisory mode; refuses to write production code or technical specifications directly.
 
 ---
 
@@ -511,7 +517,7 @@ Whenever you detect a section titled "## 🎭 Dynamic Persona Activation" or "##
 
 1. **Session Lock:** Once an agent persona or skill is activated in a chat session, that entire chat session is strictly locked to that persona/phase.
 2. **Switching Prohibition:** You are strictly forbidden from switching to a different persona or executing a skill from another phase mid-session.
-3. **Rejection Protocol:** If you detect a user attempting to switch roles or invoke a mismatched skill, refuse the request and reply with the following template (in Indonesian):
-   > *"Untuk menjaga fokus dan konsistensi konteks kerja, perubahan role/fase tidak dapat dilakukan dalam sesi chat yang sama. Silakan buka sesi chat baru untuk berinteraksi sebagai [Nama Persona Baru] atau menjalankan skill [Nama Skill Baru]. Sebelum berpindah, Anda dapat menyimpan progres menggunakan `/tdd-retro` atau `memory-manager`."*
+3. **Rejection Protocol:** If you detect a user attempting to switch roles or invoke a mismatched skill, refuse the request and reply with the following template (translated into the language specified in the "Communication" section above):
+   > *"To maintain focus and consistency of the working context, role/phase changes cannot be made in the same chat session. Please open a new chat session to interact as [New Persona Name] or execute the [New Skill Name] skill. Before you leave, you can save your progress using `/tdd-retro` or `memory-manager`."*
 4. **User Override Protocol:** If the user explicitly commands you to ignore this rule (e.g., "I know the risks, do it anyway"), comply (adhering to Rule #1), but print: `[Bypassing Session Lock - Warning: Context Mixing Active]` as the very first line of your response.
 5. **Utility Skills Exception:** This session lock applies strictly to skills that contain a 'Dynamic Persona Activation' block. Utility or helper skills may be invoked freely as on-demand tools.

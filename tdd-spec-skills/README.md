@@ -192,6 +192,7 @@ graph TD
 | `/tdd-mutation-test` | **TDD Mutation Test Auditor** | Runs Mutation Testing (Stryker/Mutmut) to audit whether assertions actually catch code mutations. |
 | `/tdd-retro` | **TDD Retrospective Optimizer** | Analyzes test run speed, flakiness, and updates project memory/constraints post-sprint. |
 | `/tdd-refactor-legacy` | **TDD Legacy Modernizer** | Pins untested legacy code with Golden Master characterization tests before safe TDD refactoring. |
+| `/tdd-ask-help` | **TDD SDLC Navigator** | Interactive AI guide diagnosing project phase, routing scenarios, and recommending next actions. |
 | `/tdd-pair-coach` | **TDD Pair Programming Coach** | Interactive mentor guiding human developers step-by-step through the TDD Red-Green-Refactor cycle. |
 | `memory-manager` | **Context Persistence Engine** | Persists session checkpoints and maintains the permanent Knowledge Base in `memory.instructions.md`. |
 

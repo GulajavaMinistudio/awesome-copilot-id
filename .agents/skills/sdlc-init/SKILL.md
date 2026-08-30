@@ -110,7 +110,7 @@ rm -rf "$temp_dir"
 Check that `AGENTS.md` and `.agents/rules/` exist in the root directory.
 
 ### Step 3: Onboarding
-Greet the user in Indonesian. 
+Greet the user in the language specified in `AGENTS.md`. 
 Explain that the SDLC architecture (`AGENTS.md` and the full `.agents` folder) has been successfully initialized. 
 Remind them to open `AGENTS.md` to customize their Project Name and Description on the first line. 
 Suggest they start their first phase by running `/sdlc-explore-ideas`.
