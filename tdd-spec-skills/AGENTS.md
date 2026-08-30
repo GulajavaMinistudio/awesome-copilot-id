@@ -75,7 +75,7 @@
 - **Surgical Edit Mandate**: AI agents MUST prioritize targeted, surgical edits (modifying only specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
 - **English-Only Documentation & Code**: While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (`docs/`, `/spec/`, `/plan/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
 - **Custom Slash Commands Usage**: User triggers skills using slash commands according to each development phase:
-  - `/tdd-init` for initializing the TDD-Spec SDLC architecture, AGENTS.md, CONSTITUTION.md, and CONSTRAINTS.md.
+  - `/tdd-init` for initializing, calibrating, and amending the TDD-Spec SDLC architecture, AGENTS.md, CONSTITUTION.md, and CONSTRAINTS.md.
   - `/tdd-map-architecture` for System & Test Topography Mapping.
   - `/tdd-explore-ideas` for Discovery & 5-Step Idea Assessment (Phase 0).
   - `/tdd-prd` for Product Requirements Document with BDD Acceptance Criteria.
