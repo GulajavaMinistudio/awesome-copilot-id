@@ -355,404 +355,648 @@
           </div>
         </div>
       </section>
-      <!-- Custom Agents Section -->
-      <section id="agents" class="section-padding bg-light" style="border-bottom: 1px solid var(--colors-hairline);">
+            <!-- Custom Agents Section -->
+      <section id="agents" class="section-padding bg-canvas" style="scroll-margin-top: 70px;">
         <div class="container py-md-4">
           <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="agents_title">🤖 Custom Agents</h2>
+              <div class="badge badge-accent py-2 px-3 mb-3 rounded-pill uppercase-tag" data-i18n="agents_badge">12 Specialized Agents</div>
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="agents_title">Custom Agents</h2>
               <p class="text-body-custom lead" data-i18n="agents_desc">
                 Gunakan agen AI kustom yang berspesialisasi dalam peran dan tugas tertentu dalam siklus pengembangan.
               </p>
             </div>
           </div>
-          <div class="row g-5 d-none d-lg-flex">
+
+          <div class="row g-4 g-lg-5 d-none d-lg-flex">
             <!-- Left side: Interactive Agent List -->
             <div class="col-lg-5">
-              <div class="list-group list-group-flush border-hairline bg-white" style="border-radius: 12px; overflow: hidden;" id="agentList" role="tablist">
-                <div class="px-4 py-2 bg-light border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_1">Phase 1-3: Strategy & Specs</div>
-                <button class="list-group-item list-group-item-action active border-0 py-3 px-4 fw-medium text-ink" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
-                  /sdlc-explore-ideas
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-pm-tab" data-bs-toggle="list" href="#agent-pm" role="tab" aria-controls="agent-pm">
-                  /sdlc-draft-prd
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ca-tab" data-bs-toggle="list" href="#agent-ca" role="tab" aria-controls="agent-ca">
-                  /sdlc-clarify-reqs
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-sa-tab" data-bs-toggle="list" href="#agent-sa" role="tab" aria-controls="agent-sa">
-                  /sdlc-define-specs
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-acc-tab" data-bs-toggle="list" href="#agent-acc" role="tab" aria-controls="agent-acc">
-                  /sdlc-audit-consistency
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ca-2-tab" data-bs-toggle="list" href="#agent-ca-2" role="tab" aria-controls="agent-ca-2">
-                  <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
-                  /sdlc-plan-tasks
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ca-3-tab" data-bs-toggle="list" href="#agent-ca-3" role="tab" aria-controls="agent-ca-3">
-                  <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
-                </button>
-                <div class="px-4 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_2">Phase 4: Execution & Review</div>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
-                  /sdlc-write-code
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-ecr-tab" data-bs-toggle="list" href="#agent-ecr" role="tab" aria-controls="agent-ecr">
-                  /sdlc-code-review
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-bra-tab" data-bs-toggle="list" href="#agent-bra" role="tab" aria-controls="agent-bra">
-                  /sdlc-bug-report
-                </button>
-                <div class="px-4 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_3">Phase 5: Documentation</div>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-dda-tab" data-bs-toggle="list" href="#agent-dda" role="tab" aria-controls="agent-dda">
-                  /sdlc-generate-docs
-                </button>
-                <div class="px-4 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_4">Supplementary (Bypass)</div>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-cj-tab" data-bs-toggle="list" href="#agent-cj" role="tab" aria-controls="agent-cj">
-                  /code-janitor
-                </button>
-                <button class="list-group-item list-group-item-action border-0 py-3 px-4 fw-medium text-ink" id="agent-gl-tab" data-bs-toggle="list" href="#agent-gl" role="tab" aria-controls="agent-gl">
-                  /guided-learning
-                </button>
+              <div class="sticky-agent-sidebar">
+                <div class="list-group list-group-flush border-hairline bg-white" style="border-radius: 14px; overflow: hidden;" id="agentList" role="tablist">
+                  
+                  <!-- Group 1: Strategy & Specs -->
+                  <div class="px-3 py-2 bg-light border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_1">Phase 1-3: Strategy & Specs</div>
+                  
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item active" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-explore-ideas</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 0</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_bea_role">Discovery Explorer (Phase 0)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-pm-tab" data-bs-toggle="list" href="#agent-pm" role="tab" aria-controls="agent-pm">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-draft-prd</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 1</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_pm_role">Product Requirements (Phase 1)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-tab" data-bs-toggle="list" href="#agent-ca" role="tab" aria-controls="agent-ca">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-clarify-reqs</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Gate 1</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ca_role_1">Clarification Gatekeeper (Post-PRD)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-sa-tab" data-bs-toggle="list" href="#agent-sa" role="tab" aria-controls="agent-sa">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-define-specs</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 2</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_sa_role">Technical Architect (Phase 2)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-acc-tab" data-bs-toggle="list" href="#agent-acc" role="tab" aria-controls="agent-acc">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-audit-consistency</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Audit</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_acc_role">Traceability & Consistency Auditor</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-2-tab" data-bs-toggle="list" href="#agent-ca-2" role="tab" aria-controls="agent-ca-2">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-clarify-reqs</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Gate 2</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ca_role_2">Clarification Gatekeeper (Post-Spec)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-pa-tab" data-bs-toggle="list" href="#agent-pa" role="tab" aria-controls="agent-pa">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-plan-tasks</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 3</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_pa_role">Implementation Planner (Phase 3)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ca-3-tab" data-bs-toggle="list" href="#agent-ca-3" role="tab" aria-controls="agent-ca-3">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-clarify-reqs</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Gate 3</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ca_role_3">Clarification Gatekeeper (Post-Plan)</div>
+                  </button>
+
+                  <!-- Group 2: Execution & Review -->
+                  <div class="px-3 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_2">Phase 4: Execution & Review</div>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-gmd-tab" data-bs-toggle="list" href="#agent-gmd" role="tab" aria-controls="agent-gmd">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-write-code</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 4</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_gmd_role">Autonomous Developer (Phase 4)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-ecr-tab" data-bs-toggle="list" href="#agent-ecr" role="tab" aria-controls="agent-ecr">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-code-review</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Review</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_ecr_role">5-Axis Code & Security Reviewer</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-bra-tab" data-bs-toggle="list" href="#agent-bra" role="tab" aria-controls="agent-bra">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-bug-report</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">RCA</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_bra_role">Root Cause & Bug Remediation</div>
+                  </button>
+
+                  <!-- Group 3: Documentation -->
+                  <div class="px-3 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_3">Phase 5: Documentation</div>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-dda-tab" data-bs-toggle="list" href="#agent-dda" role="tab" aria-controls="agent-dda">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-generate-docs</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Phase 5</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_dda_role">Diataxis Documentation (Phase 5)</div>
+                  </button>
+
+                  <!-- Group 4: Supplementary -->
+                  <div class="px-3 py-2 bg-light border-top-hairline border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_4">Supplementary (Bypass)</div>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-cj-tab" data-bs-toggle="list" href="#agent-cj" role="tab" aria-controls="agent-cj">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/code-janitor</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Bypass</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_cj_role">Rapid Fixer & Refactor (Bypass)</div>
+                  </button>
+
+                  <button class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-gl-tab" data-bs-toggle="list" href="#agent-gl" role="tab" aria-controls="agent-gl">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/guided-learning</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Mentor</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_gl_role">Interactive AI Mentor (Bypass)</div>
+                  </button>
+
+                </div>
               </div>
             </div>
             
-            <!-- Right side: Sticky Agent Details -->
+            <!-- Right side: Agent Details -->
             <div class="col-lg-7">
               <div class="tab-content" id="agentDetailsContent">
+                
                 <!-- BEA Detail -->
-                <div class="tab-pane fade show active p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-bea" role="tabpanel" aria-labelledby="agent-bea-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-explore-ideas</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-explore-ideas</span>
+                <div class="tab-pane fade show active p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-bea" role="tabpanel" aria-labelledby="agent-bea-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_bea_role">Discovery Explorer (Phase 0)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-explore-ideas</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Phase 0: Discovery</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_bea_desc">
-                    Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_bea_best">
-                    Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_bea_1">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_bea_desc">
+                      Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_bea_best">
+                      Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bea_1">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- PM Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-pm" role="tabpanel" aria-labelledby="agent-pm-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-draft-prd</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-draft-prd</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-pm" role="tabpanel" aria-labelledby="agent-pm-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_pm_role">Product Requirements (Phase 1)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-draft-prd</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Phase 1: PRD</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_pm_desc">
-                    Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_pm_best">
-                    Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_pm_1">/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_pm_desc">
+                      Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_pm_best">
+                      Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pm_1">/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
+                    </div>
                   </div>
                 </div>
 
-                <!-- CA Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ca" role="tabpanel" aria-labelledby="agent-ca-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-clarify-reqs</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-clarify-reqs</span>
+                <!-- CA Detail (Post-PRD) -->
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-ca" role="tabpanel" aria-labelledby="agent-ca-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_ca_role_1">Clarification Gatekeeper (Post-PRD)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-clarify-reqs</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Quality Gate 1</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_ca_desc">
-                    Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_ca_best">
-                    Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ca_desc">
+                      Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">
+                      Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- SA Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-sa" role="tabpanel" aria-labelledby="agent-sa-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-define-specs</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-define-specs</span>
-                  </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_sa_desc">
-                    Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_sa_best">
-                    Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="mb-3">
-                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_1">Opsi 1 (Standar):</p>
-                    <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-sa" role="tabpanel" aria-labelledby="agent-sa-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_sa_role">Technical Architect (Phase 2)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-define-specs</h3>
                     </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Phase 2: Spec</span>
                   </div>
-                  <div class="mb-3">
-                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_2">Opsi 2 (PRD Bypass):</p>
-                    <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_sa_1_bypass">/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1_bypass" data-clipboard="/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].">Copy</button>
-                    </div>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_sa_desc">
+                      Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).
+                    </p>
                   </div>
-                  <div class="mb-3">
-                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_3">Opsi 3 (Instruksi Langsung):</p>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_sa_best">
+                      Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                     <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_sa_1_direct">/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1_direct" data-clipboard="/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.">Copy</button>
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md">Copy</button>
                     </div>
                   </div>
                 </div>
 
                 <!-- ACC Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-acc" role="tabpanel" aria-labelledby="agent-acc-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-audit-consistency</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-audit-consistency</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-acc" role="tabpanel" aria-labelledby="agent-acc-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_acc_role">Traceability & Consistency Auditor</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-audit-consistency</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Audit & Quality Gate</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_acc_desc">
-                    Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_acc_best">
-                    Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_acc_1">/sdlc-audit-consistency verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_acc_desc">
+                      Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_acc_best">
+                      Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_acc_1">/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md">Copy</button>
+                    </div>
                   </div>
                 </div>
 
-                <!-- CA 2 Detail (Optional Clarification) -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ca-2" role="tabpanel" aria-labelledby="agent-ca-2-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-clarify-reqs</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-clarify-reqs</span>
+                <!-- CA Detail (Post-Spec) -->
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-ca-2" role="tabpanel" aria-labelledby="agent-ca-2-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_ca_role_2">Clarification Gatekeeper (Post-Spec)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-clarify-reqs</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Quality Gate 2</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_ca_desc">
-                    Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_ca_best">
-                    Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ca_desc">
+                      Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">
+                      Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- PA Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-pa" role="tabpanel" aria-labelledby="agent-pa-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-plan-tasks</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-plan-tasks</span>
-                  </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_pa_desc">
-                    Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_pa_best">
-                    Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="mb-3">
-                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_1">Opsi 1 (Standar):</p>
-                    <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-pa" role="tabpanel" aria-labelledby="agent-pa-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_pa_role">Implementation Planner (Phase 3)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-plan-tasks</h3>
                     </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Phase 3: Plan</span>
                   </div>
-                  <div class="mb-3">
-                    <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_2">Opsi 2 (Assumption Scanning):</p>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_pa_desc">
+                      Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_pa_best">
+                      Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                     <div class="position-relative">
-                      <pre class="bg-surface-soft border-hairline text-ink mb-2"><code><span data-i18n="prompt_pa_1_bypass">/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].</span></code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1_bypass" data-clipboard="/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].">Copy</button>
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md">Copy</button>
                     </div>
                   </div>
                 </div>
 
-                <!-- CA 3 Detail (Optional Clarification) -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ca-3" role="tabpanel" aria-labelledby="agent-ca-3-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-clarify-reqs</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-clarify-reqs</span>
+                <!-- CA Detail (Post-Plan) -->
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-ca-3" role="tabpanel" aria-labelledby="agent-ca-3-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_ca_role_3">Clarification Gatekeeper (Post-Plan)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-clarify-reqs</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Quality Gate 3</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_ca_desc">
-                    Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_ca_best">
-                    Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ca_desc">
+                      Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">
+                      Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- GMD Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-gmd" role="tabpanel" aria-labelledby="agent-gmd-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-write-code</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-write-code</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-gmd" role="tabpanel" aria-labelledby="agent-gmd-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_gmd_role">Autonomous Developer (Phase 4)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-write-code</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Phase 4: Execution</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_gmd_desc">
-                    Agen developer otonom tingkat tinggi untuk menulis kode, melakukan modifikasi bedah, dan menulis pengujian unit/integrasi secara ketat.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_gmd_best">
-                    Menulis kode fitur, memodifikasi file, memperbaiki error, dan menguji fungsionalitas secara langsung di workspace.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_gmd_1">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_gmd_desc">
+                      Agen developer otonom berkinerja tinggi yang menulis fitur, melakukan refaktorisasi bedah, dan menulis tes unit/widget yang kokoh.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_gmd_best">
+                      Menulis kode fitur, merefaktor modul, memperbaiki bug, dan menjalankan tes langsung di ruang kerja.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_1">/sdlc-write-code execute task 1 from @cart-plan.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code execute task 1 from @cart-plan.md">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- ECR Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-ecr" role="tabpanel" aria-labelledby="agent-ecr-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-code-review</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-code-review</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-ecr" role="tabpanel" aria-labelledby="agent-ecr-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_ecr_role">5-Axis Code & Security Reviewer</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-code-review</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Review & Security</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_ecr_desc">
-                    Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan aspek keamanan, serta memberikan rencana refaktorisasi.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_ecr_best">
-                    Menjaga standar kebersihan kode dan melakukan audit keamanan sebelum digabungkan (merge) ke branch utama.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_ecr_desc">
+                      Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan praktik terbaik keamanan, serta menghasilkan rencana refaktorisasi terstruktur.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_ecr_best">
+                      Menjaga kualitas kode dan standar keamanan sebelum menggabungkan perubahan ke branch utama.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- BRA Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-bra" role="tabpanel" aria-labelledby="agent-bra-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-bug-report</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-bug-report</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-bra" role="tabpanel" aria-labelledby="agent-bra-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_bra_role">Root Cause & Bug Remediation</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-bug-report</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">RCA Diagnosis</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_bra_desc">
-                    Menganalisis laporan bug, melacak akar penyebab masalah (RCA), dan menyusun rencana perbaikan bedah beserta strategi rollback yang aman.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_bra_best">
-                    Menyelesaikan masalah bug yang kompleks di codebase tanpa merusak bagian kode lainnya.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_bra_desc">
+                      Menganalisis laporan bug, melakukan Analisis Akar Penyebab (RCA), dan menghasilkan rencana perbaikan bug bedah dengan strategi rollback yang aman.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_bra_best">
+                      Menyelesaikan bug kompleks di codebase tanpa menimbulkan efek samping atau regresi.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the crash report in @crash-log.txt</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the crash report in @crash-log.txt">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- DDA Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-dda" role="tabpanel" aria-labelledby="agent-dda-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/sdlc-generate-docs</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">sdlc-generate-docs</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-dda" role="tabpanel" aria-labelledby="agent-dda-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_dda_role">Diataxis Documentation (Phase 5)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-generate-docs</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Phase 5: Docs</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_dda_desc">
-                    Penulis dokumentasi teknis profesional yang mengikuti kerangka kerja Diátaxis (Tutorial, Panduan, Referensi, Penjelasan).
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_dda_best">
-                    Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_dda_1">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_dda_desc">
+                      Spesialis dokumentasi teknis yang menulis panduan pengguna, panduan API, dan dokumen referensi yang jelas dengan kerangka kerja Diataxis.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_dda_best">
+                      Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_dda_1">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md">Copy</button>
+                    </div>
                   </div>
                 </div>
 
                 <!-- CJ Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-cj" role="tabpanel" aria-labelledby="agent-cj-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/code-janitor</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">code-janitor</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-cj" role="tabpanel" aria-labelledby="agent-cj-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_cj_role">Rapid Fixer & Refactor (Bypass)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/code-janitor</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Rapid Bypass</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_cj_desc">
-                    Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_cj_best">
-                    Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_cj_desc">
+                      Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_cj_best">
+                      Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
+                    </div>
                   </div>
                 </div>
+
                 <!-- GL Detail -->
-                <div class="tab-pane fade p-4 bg-white border-hairline" style="border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.04) 0 4px 12px;" id="agent-gl" role="tabpanel" aria-labelledby="agent-gl-tab">
-                  <div class="d-flex justify-content-between align-items-start mb-3">
-                    <h3 class="text-ink fw-bold h4 mb-0">/guided-learning</h3>
-                    <span class="badge bg-light text-ink border-hairline py-2 px-3 rounded-pill">guided-learning</span>
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-gl" role="tabpanel" aria-labelledby="agent-gl-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_gl_role">Interactive AI Mentor (Bypass)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/guided-learning</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">AI Mentor</span>
                   </div>
-                  <p class="text-body-custom mb-4" data-i18n="agent_gl_desc">
-                    AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                  <p class="text-body-custom small mb-4" data-i18n="agent_gl_best">
-                    Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.
-                  </p>
-                  <h5 class="text-ink fw-bold mb-2" style="font-size: 15px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                  <div class="position-relative">
-                    <pre class="bg-surface-soft border-hairline text-ink"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
-                    <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
+                  
+                  <div class="mb-4">
+                    <h5 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h5>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_gl_desc">
+                      AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h6 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_gl_best">
+                      Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h6 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
+                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
+                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
 
           <!-- Alternative Mobile Accordion Layout -->
-          <div class="row d-block d-lg-none mt-2">
+          <div class="row d-block d-lg-none mt-4">
             <div class="col-12">
-              <div class="accordion border-hairline bg-white" id="agentsAccordion" style="border-radius: 12px; overflow: hidden;">
+              <div class="accordion border-hairline bg-white" id="agentsAccordion" style="border-radius: 14px; overflow: hidden;">
+                
                 <!-- BEA Accordion Item -->
                 <div class="accordion-item border-0">
                   <h2 class="accordion-header" id="mob-heading-bea">
-                    <button class="accordion-button fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bea" aria-expanded="true" aria-controls="mob-collapse-bea">
-                      /sdlc-explore-ideas
+                    <button class="accordion-button fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bea" aria-expanded="true" aria-controls="mob-collapse-bea">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-explore-ideas</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_bea_role">Discovery Explorer (Phase 0)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-bea" class="accordion-collapse collapse show" aria-labelledby="mob-heading-bea" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-explore-ideas</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_bea_desc">Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_bea_best">Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_bea_best">Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.</p>
+                      </div>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_bea_1">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart</span></code></pre>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_bea_1">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart</span></code></pre>
                         <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_1" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart">Copy</button>
                       </div>
                     </div>
@@ -760,290 +1004,233 @@
                 </div>
 
                 <!-- PM Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-pm">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-pm" aria-expanded="false" aria-controls="mob-collapse-pm">
-                      /sdlc-draft-prd
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-pm" aria-expanded="false" aria-controls="mob-collapse-pm">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-draft-prd</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_pm_role">Product Requirements (Phase 1)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-pm" class="accordion-collapse collapse" aria-labelledby="mob-heading-pm" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-draft-prd</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_pm_desc">Menghasilkan Product Requirements Document (PRD) yang komprehensif, mencakup User Stories, alur pengguna, dan kriteria penerimaan.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_pm_best">Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_pm_best">Menulis dokumentasi kebutuhan bisnis dan fungsionalitas fitur baru sebelum spesifikasi teknis ditulis.</p>
+                      </div>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_pm_1">/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md</span></code></pre>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_pm_1">/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md</span></code></pre>
                         <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_1" data-clipboard="/sdlc-draft-prd create a PRD for the user authentication module based on @discovery-draft.md">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- CA Accordion Item -->
-                <div class="accordion-item border-0">
+                <!-- CA Accordion Item (Post-PRD) -->
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-ca">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca" aria-expanded="false" aria-controls="mob-collapse-ca">
-                      /sdlc-clarify-reqs
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca" aria-expanded="false" aria-controls="mob-collapse-ca">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-clarify-reqs</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_ca_role_1">Clarification Gatekeeper (Post-PRD)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-ca" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-clarify-reqs</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
+                      </div>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs check the requirements in @auth-prd.md and highlight potential edge cases">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- SA Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-sa">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-sa" aria-expanded="false" aria-controls="mob-collapse-sa">
-                      /sdlc-define-specs
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-sa" aria-expanded="false" aria-controls="mob-collapse-sa">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-define-specs</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_sa_role">Technical Architect (Phase 2)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-sa" class="accordion-collapse collapse" aria-labelledby="mob-heading-sa" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-define-specs</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_sa_desc">Membuat spesifikasi teknis detail (kontrak API, skema DB, model data) dan mendokumentasikan keputusan arsitektur penting (ADR).</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_sa_best">Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                      <div class="mb-3">
-                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_1">Opsi 1 (Standar):</p>
-                        <div class="position-relative">
-                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
-                        </div>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_sa_best">Merancang cetak biru teknis sistem yang terstruktur sebelum mulai menulis kode.</p>
                       </div>
-                      <div class="mb-3">
-                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_2">Opsi 2 (PRD Bypass):</p>
-                        <div class="position-relative">
-                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1_bypass">/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1_bypass" data-clipboard="/sdlc-define-specs design a technical specification based on @discovery-draft.md. Do heavy lifting to guess missing technical details and mark them as [ASSUMPTION].">Copy</button>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_sa_1_3">Opsi 3 (Instruksi Langsung):</p>
-                        <div class="position-relative">
-                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_sa_1_direct">/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1_direct" data-clipboard="/sdlc-define-specs design a technical specification for a real-time chat feature using React and Node.js. Do heavy lifting for any missing details.">Copy</button>
-                        </div>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_1" data-clipboard="/sdlc-define-specs create a technical specification for the cart checkout based on @cart-prd.md">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- ACC Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-acc">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-acc" aria-expanded="false" aria-controls="mob-collapse-acc">
-                      /sdlc-audit-consistency
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-acc" aria-expanded="false" aria-controls="mob-collapse-acc">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-audit-consistency</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_acc_role">Traceability & Consistency Auditor</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-acc" class="accordion-collapse collapse" aria-labelledby="mob-heading-acc" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-audit-consistency</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_acc_desc">Mengaudit konsistensi dan ketertelusuran dokumen (PRD vs Spec vs Plan) untuk mendeteksi hilangnya cakupan kebutuhan dan scope creep.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_acc_best">Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                      <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_acc_1">/sdlc-audit-consistency verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md covers all requirements in @prd-shopping-cart.md">Copy</button>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_acc_best">Memastikan alur SDLC konsisten dan tidak ada fitur yang terlupa atau melenceng dari rencana awal.</p>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- CA 2 Accordion Item (Optional) -->
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="mob-heading-ca-2">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca-2" aria-expanded="false" aria-controls="mob-collapse-ca-2">
-                      <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
-                    </button>
-                  </h2>
-                  <div id="mob-collapse-ca-2" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca-2" data-bs-parent="#agentsAccordion">
-                    <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-clarify-reqs</span>
-                      </div>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @spec-shopping-cart.md for any technical ambiguities">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_acc_1">/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_1" data-clipboard="/sdlc-audit-consistency check consistency between @cart-prd.md and @cart-spec.md">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- PA Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-pa">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-pa" aria-expanded="false" aria-controls="mob-collapse-pa">
-                      /sdlc-plan-tasks
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-pa" aria-expanded="false" aria-controls="mob-collapse-pa">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-plan-tasks</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_pa_role">Implementation Planner (Phase 3)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-pa" class="accordion-collapse collapse" aria-labelledby="mob-heading-pa" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-plan-tasks</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_pa_desc">Memecah Spesifikasi Teknis menjadi langkah-langkah implementasi strategis yang terstruktur dan dapat dieksekusi secara berurutan.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_pa_best">Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
-                      <div class="mb-3">
-                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_1">Opsi 1 (Standar):</p>
-                        <div class="position-relative">
-                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
-                        </div>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_pa_best">Menyusun jadwal tugas coding yang terperinci dan aman sebelum developer mulai menulis kode.</p>
                       </div>
-                      <div class="mb-3">
-                        <p class="mb-1 text-muted-custom small fw-medium" data-i18n="prompt_pa_1_2">Opsi 2 (Assumption Scanning):</p>
-                        <div class="position-relative">
-                          <pre class="bg-white border-hairline text-ink mb-2 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_pa_1_bypass">/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1_bypass" data-clipboard="/sdlc-plan-tasks create an implementation plan based on @spec-shopping-cart.md. Extract any [ASSUMPTION] tags into the Risks & Assumptions section and label related tasks as [High Risk].">Copy</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- CA 3 Accordion Item (Optional) -->
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="mob-heading-ca-3">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca-3" aria-expanded="false" aria-controls="mob-collapse-ca-3">
-                      <span data-i18n="agent_ca_2_tab">/sdlc-clarify-reqs (Opsional)</span>
-                    </button>
-                  </h2>
-                  <div id="mob-collapse-ca-3" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca-3" data-bs-parent="#agentsAccordion">
-                    <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-clarify-reqs</span>
-                      </div>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @plan-shopping-cart.md for hidden assumptions">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- GMD Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-gmd">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-gmd" aria-expanded="false" aria-controls="mob-collapse-gmd">
-                      /sdlc-write-code
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-gmd" aria-expanded="false" aria-controls="mob-collapse-gmd">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-write-code</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_gmd_role">Autonomous Developer (Phase 4)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-gmd" class="accordion-collapse collapse" aria-labelledby="mob-heading-gmd" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-write-code</span>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_gmd_desc">Agen developer otonom berkinerja tinggi yang menulis fitur, melakukan refaktorisasi bedah, dan menulis tes unit/widget yang kokoh.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_gmd_best">Menulis kode fitur, merefaktor modul, memperbaiki bug, dan menjalankan tes langsung di ruang kerja.</p>
                       </div>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_gmd_desc">Agen developer otonom tingkat tinggi untuk menulis kode, melakukan modifikasi bedah, dan menulis pengujian unit/integrasi secara ketat.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_gmd_best">Menulis kode fitur, memodifikasi file, memperbaiki error, dan menguji fungsionalitas secara langsung di workspace.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_gmd_1">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_gmd_1">/sdlc-write-code execute task 1 from @cart-plan.md</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_1" data-clipboard="/sdlc-write-code execute task 1 from @cart-plan.md">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- ECR Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-ecr">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ecr" aria-expanded="false" aria-controls="mob-collapse-ecr">
-                      /sdlc-code-review
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ecr" aria-expanded="false" aria-controls="mob-collapse-ecr">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-code-review</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_ecr_role">5-Axis Code & Security Reviewer</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-ecr" class="accordion-collapse collapse" aria-labelledby="mob-heading-ecr" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-code-review</span>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ecr_desc">Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan praktik terbaik keamanan, serta menghasilkan rencana refaktorisasi terstruktur.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_ecr_best">Menjaga kualitas kode dan standar keamanan sebelum menggabungkan perubahan ke branch utama.</p>
                       </div>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ecr_desc">Meninjau kualitas kode berdasarkan prinsip SOLID, Clean Code, dan aspek keamanan, serta memberikan rencana refaktorisasi.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_ecr_best">Menjaga standar kebersihan kode dan melakukan audit keamanan sebelum digabungkan (merge) ke branch utama.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review the recent changes in @cart.service.ts against SOLID principles">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- BRA Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-bra">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bra" aria-expanded="false" aria-controls="mob-collapse-bra">
-                      /sdlc-bug-report
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bra" aria-expanded="false" aria-controls="mob-collapse-bra">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-bug-report</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_bra_role">Root Cause & Bug Remediation</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-bra" class="accordion-collapse collapse" aria-labelledby="mob-heading-bra" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-bug-report</span>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_bra_desc">Menganalisis laporan bug, melakukan Analisis Akar Penyebab (RCA), dan menghasilkan rencana perbaikan bug bedah dengan strategi rollback yang aman.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_bra_best">Menyelesaikan bug kompleks di codebase tanpa menimbulkan efek samping atau regresi.</p>
                       </div>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_bra_desc">Menganalisis laporan bug, melacak akar penyebab masalah (RCA), dan menyusun rencana perbaikan bedah beserta strategi rollback yang aman.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_bra_best">Menyelesaikan masalah bug yang kompleks di codebase tanpa merusak bagian kode lainnya.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the crash report in @crash-log.txt</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the crash report in @crash-log.txt">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- DDA Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-dda">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-dda" aria-expanded="false" aria-controls="mob-collapse-dda">
-                      /sdlc-generate-docs
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-dda" aria-expanded="false" aria-controls="mob-collapse-dda">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-generate-docs</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_dda_role">Diataxis Documentation (Phase 5)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-dda" class="accordion-collapse collapse" aria-labelledby="mob-heading-dda" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">sdlc-generate-docs</span>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_dda_desc">Spesialis dokumentasi teknis yang menulis panduan pengguna, panduan API, dan dokumen referensi yang jelas dengan kerangka kerja Diataxis.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_dda_best">Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.</p>
                       </div>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_dda_desc">Penulis dokumentasi teknis profesional yang mengikuti kerangka kerja Diátaxis (Tutorial, Panduan, Referensi, Penjelasan).</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_dda_best">Menulis panduan pengguna, dokumentasi API, dan penjelasan sistem yang mudah dipahami.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_dda_1">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md</span></code></pre>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_dda_1">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md</span></code></pre>
                         <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_1" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md">Copy</button>
                       </div>
                     </div>
@@ -1051,23 +1238,25 @@
                 </div>
 
                 <!-- CJ Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-cj">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-cj" aria-expanded="false" aria-controls="mob-collapse-cj">
-                      /code-janitor
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-cj" aria-expanded="false" aria-controls="mob-collapse-cj">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/code-janitor</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_cj_role">Rapid Fixer & Refactor (Bypass)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-cj" class="accordion-collapse collapse" aria-labelledby="mob-heading-cj" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">code-janitor</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_cj_desc">Agen minimalis super cepat yang menggabungkan perencanaan mikro dan eksekusi dalam satu alur kerja untuk perbaikan ad-hoc dan refaktor kecil di luar proses SDLC yang ketat.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_cj_best">Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_cj_best">Perbaikan bug cepat, pembersihan kode, dan refactoring minor yang tidak membutuhkan dokumen PRD-Spec-Plan lengkap.</p>
+                      </div>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_cj_1">/code-janitor tolong refaktor fungsi calculateTotal di @cart.js agar lebih ringkas</span></code></pre>
                         <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_cj_1" data-clipboard="/code-janitor please refactor calculateTotal in @cart.js to be more concise">Copy</button>
                       </div>
                     </div>
@@ -1075,34 +1264,39 @@
                 </div>
 
                 <!-- GL Accordion Item -->
-                <div class="accordion-item border-0">
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-gl">
-                    <button class="accordion-button collapsed fw-semibold text-ink bg-white border-bottom-hairline" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-gl" aria-expanded="false" aria-controls="mob-collapse-gl">
-                      /guided-learning
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-gl" aria-expanded="false" aria-controls="mob-collapse-gl">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/guided-learning</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_gl_role">Interactive AI Mentor (Bypass)</span>
+                      </div>
                     </button>
                   </h2>
                   <div id="mob-collapse-gl" class="accordion-collapse collapse" aria-labelledby="mob-heading-gl" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-white text-ink border-hairline py-1 px-2 rounded-pill" style="font-size: 11px;">guided-learning</span>
-                      </div>
                       <p class="text-body-custom small mb-3" data-i18n="agent_gl_desc">AI-Guided Learning mentor. Memandu pengguna selangkah demi selangkah untuk membangun proyek atau mengimplementasikan rencana tanpa menulis kode secara langsung.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h5>
-                      <p class="text-body-custom small mb-3" data-i18n="agent_gl_best">Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.</p>
-                      <h5 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h5>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h6 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h6>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_gl_best">Digabungkan bersama /sdlc-write-code atau /code-janitor sebagai alternatif "Mentor Mode" agar pengguna dapat belajar mengetik kodenya sendiri.</p>
+                      </div>
+                      <h6 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h6>
                       <div class="position-relative">
-                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 12px;"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_gl_1">/sdlc-write-code implement @plan.md using guided-learning</span></code></pre>
                         <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gl_1" data-clipboard="/sdlc-write-code implement @plan.md using guided-learning">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
+
         </div>
       </section>
-            <!-- TDD-Spec SDLC Package Section -->
+
+      <!-- TDD-Spec SDLC Package Section -->
       <section id="tdd-spec" class="section-padding bg-surface-soft" style="border-bottom: 1px solid var(--colors-hairline);">
         <div class="container py-md-4">
           <!-- Section Title -->
@@ -1796,8 +1990,8 @@
                             <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_3" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
                           </div>
                           <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_ca_3">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_3" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
                           </div>
                         </div>
                       </div>

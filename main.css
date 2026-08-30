@@ -530,3 +530,53 @@ pre::-webkit-scrollbar-thumb:hover {
   border-radius: 6px;
   border: 1px solid var(--colors-hairline);
 }
+
+
+/* Polished Agent Persona Section */
+.sticky-agent-sidebar {
+  position: sticky;
+  top: 90px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+#agentList .agent-nav-item {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 3px solid transparent !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+  background-color: var(--colors-canvas) !important;
+}
+
+#agentList .agent-nav-item:hover {
+  background-color: var(--colors-surface-soft) !important;
+  padding-left: 1.25rem !important;
+}
+
+#agentList .agent-nav-item.active {
+  background-color: #f8fafc !important;
+  border-left: 3px solid var(--colors-ink) !important;
+}
+
+#agentList .agent-nav-item.active .agent-nav-cmd {
+  color: var(--colors-ink) !important;
+  font-weight: 700 !important;
+}
+
+#agentList .agent-nav-item.active .badge-phase {
+  background-color: var(--colors-ink) !important;
+  color: #ffffff !important;
+}
+
+.agent-detail-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.agent-best-for-callout {
+  background: var(--colors-surface-soft);
+  border: 1px solid var(--colors-hairline);
+  border-left: 3px solid var(--colors-ink) !important;
+  border-radius: 10px;
+}
