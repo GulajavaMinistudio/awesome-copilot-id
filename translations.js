@@ -233,6 +233,10 @@ window.translations = {
     
     // Examples & Stepper
     examples_title: "Workflow & Examples",
+
+    examples_badge: "Interactive Workflows",
+    tdd_flow_badge: "Test-First Engineering Suite",
+
     examples_desc: "Understand how the software development lifecycle (SDLC) is executed sequentially using a suite of AI agents.",
     stepper_title: "AI Agent SDLC Sequence",
     
@@ -613,6 +617,10 @@ window.translations = {
     
     // Examples & Stepper
     examples_title: "Alur Kerja & Contoh",
+
+    examples_badge: "Alur Kerja Interaktif",
+    tdd_flow_badge: "Rangkaian Rekayasa Test-First",
+
     examples_desc: "Pahami bagaimana siklus hidup pengembangan perangkat lunak (SDLC) dijalankan menggunakan rangkaian agen AI secara sekuensial.",
     stepper_title: "Sekuens Alur SDLC Agen AI",
     

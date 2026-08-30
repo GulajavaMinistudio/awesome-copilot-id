@@ -133,7 +133,7 @@
         <div class="container py-md-4">
           <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="overview_title">📋 Overview</h2>
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="overview_title">Overview</h2>
               <p class="text-body-custom lead" data-i18n="overview_desc">
                 Awesome Copilot Indonesia adalah koleksi konfigurasi agen AI, skill, aturan, dan prompt kustom yang siap pakai untuk mempercepat siklus hidup pengembangan perangkat lunak (SDLC) Anda.
               </p>
@@ -1707,11 +1707,13 @@
       </section>
 
       <!-- Example Usage Section -->
-      <section id="examples" class="section-padding bg-canvas" style="border-bottom: 1px solid var(--colors-hairline);">
+                        <!-- Workflow & Examples Section -->
+      <section id="examples" class="section-padding bg-canvas" style="border-bottom: 1px solid var(--colors-hairline); scroll-margin-top: 70px;">
         <div class="container py-md-4">
           <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="examples_title">💡 Alur Kerja & Contoh</h2>
+              <div class="badge badge-accent py-2 px-3 mb-3 rounded-pill uppercase-tag" data-i18n="examples_badge">Interactive Workflows</div>
+              <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="examples_title">Workflow & Examples</h2>
               <p class="text-body-custom lead" data-i18n="examples_desc">
                 Pahami bagaimana siklus hidup pengembangan perangkat lunak (SDLC) dijalankan menggunakan rangkaian agen AI secara sekuensial.
               </p>
@@ -1719,9 +1721,9 @@
           </div>
 
           <!-- Use Case Tab Pills -->
-          <div class="row mb-4">
+          <div class="row mb-5">
             <div class="col-12 text-center">
-              <div class="nav nav-pills justify-content-center gap-2 mb-4" id="useCaseTabs" role="tablist">
+              <div class="nav nav-pills justify-content-center gap-2" id="useCaseTabs" role="tablist">
                 <button class="nav-link active usecase-pill-btn rounded-pill px-4 py-2" id="uc-sdlc-tab" data-bs-toggle="pill" data-bs-target="#uc-sdlc-pane" type="button" role="tab" aria-controls="uc-sdlc-pane" aria-selected="true" data-i18n="uc_tab_sdlc">
                   End-to-End SDLC (@Mentions)
                 </button>
@@ -1740,194 +1742,207 @@
 
           <!-- Use Case Tab Content -->
           <div class="tab-content" id="useCaseTabsContent">
+            
             <!-- Tab 1: E2E SDLC (@Mentions) -->
             <div class="tab-pane fade show active" id="uc-sdlc-pane" role="tabpanel" aria-labelledby="uc-sdlc-tab">
               <!-- Interactive SDLC Stepper -->
               <div class="row mb-5">
-                <div class="col-12">
-                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
-                    <h3 class="h5 text-ink fw-bold mb-4 text-center" data-i18n="stepper_title">Sekuens Alur SDLC Agen AI</h3>
+                <div class="col-lg-10 mx-auto">
+                  <h3 class="h5 text-ink fw-bold mb-4 text-center" data-i18n="stepper_title">Sekuens Alur SDLC Agen AI</h3>
+                  
+                  <!-- Stepper Buttons -->
+                  <div class="d-flex justify-content-between align-items-center mb-4 position-relative flex-wrap gap-3" id="sdlc-stepper" style="z-index: 1;">
+                    <!-- Background Line for Stepper -->
+                    <div class="position-absolute w-100 top-50 start-0 translate-middle-y d-none d-md-block" style="height: 2px; background-color: var(--colors-hairline); z-index: -1;"></div>
                     
-                    <!-- Stepper Buttons -->
-                    <div class="d-flex justify-content-between align-items-center mb-4 position-relative flex-wrap gap-3" id="sdlc-stepper" style="z-index: 1;">
-                      <!-- Background Line for Stepper -->
-                      <div class="position-absolute w-100 top-50 start-0 translate-middle-y d-none d-md-block" style="height: 2px; background-color: var(--colors-hairline); z-index: -1;"></div>
-                      
-                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 active sdlc-step-btn" data-step="0">
-                        <span class="badge bg-ink text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">0</span> <span data-i18n="step_label_0">Discovery</span>
-                      </button>
-                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="1">
-                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">1</span> <span data-i18n="step_label_1">Requirements</span>
-                      </button>
-                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="2">
-                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">2</span> <span data-i18n="step_label_2">Specification</span>
-                      </button>
-                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="3">
-                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">3</span> <span data-i18n="step_label_3">Planning</span>
-                      </button>
-                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="4">
-                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">4</span> <span data-i18n="step_label_4">Execution</span>
-                      </button>
-                      <button class="btn btn-sm btn-light border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="5">
-                        <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">5</span> <span data-i18n="step_label_5">Documentation</span>
-                      </button>
+                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 active sdlc-step-btn" data-step="0">
+                      <span class="badge bg-ink text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">0</span> <span data-i18n="step_label_0">Discovery</span>
+                    </button>
+                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="1">
+                      <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">1</span> <span data-i18n="step_label_1">Requirements</span>
+                    </button>
+                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="2">
+                      <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">2</span> <span data-i18n="step_label_2">Specification</span>
+                    </button>
+                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="3">
+                      <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">3</span> <span data-i18n="step_label_3">Planning</span>
+                    </button>
+                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="4">
+                      <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">4</span> <span data-i18n="step_label_4">Execution</span>
+                    </button>
+                    <button class="btn btn-sm btn-white border-hairline rounded-pill px-3 py-2 sdlc-step-btn" data-step="5">
+                      <span class="badge bg-secondary text-white rounded-circle me-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;">5</span> <span data-i18n="step_label_5">Documentation</span>
+                    </button>
+                  </div>
+
+                  <!-- Stepper Content Panel (Single Card, no nesting) -->
+                  <div class="bg-white border-hairline p-4 p-md-5" style="border-radius: 16px; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);" id="sdlc-panels">
+                    <!-- Step 0 Panel -->
+                    <div class="sdlc-panel" id="panel-0">
+                      <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_0_title">Phase 0: Project Discovery (Penemuan Proyek)</h4>
+                      <p class="text-body-custom small mb-3" data-i18n="panel_0_desc">
+                        Eksplorasi kode yang ada, analisis arsitektur, dan buat draf penemuan proyek awal sebelum merancang PRD.
+                      </p>
+                      <div class="mb-3">
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-explore-ideas</span>
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_0_input">Business Brief / Ideas</span></span>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bea_2">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_2" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                      </div>
                     </div>
 
-                    <!-- Stepper Content Panels -->
-                    <div class="bg-white border-hairline p-4" style="border-radius: 12px;" id="sdlc-panels">
-                      <!-- Step 0 Panel -->
-                      <div class="sdlc-panel" id="panel-0">
-                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_0_title">Phase 0: Project Discovery (Penemuan Proyek)</h4>
-                        <p class="text-body-custom small mb-3" data-i18n="panel_0_desc">
-                          Eksplorasi kode yang ada, analisis arsitektur, dan buat draf penemuan proyek awal sebelum merancang PRD.
-                        </p>
-                        <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-explore-ideas</span>
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_0_input">Business Brief / Ideas</span></span>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code><span data-i18n="prompt_bea_2">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bea_2" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
-                        </div>
+                    <!-- Step 1 Panel (Hidden by default) -->
+                    <div class="sdlc-panel d-none" id="panel-1">
+                      <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_1_title">Phase 1: Requirements & Clarification (Kebutuhan & Klarifikasi)</h4>
+                      <p class="text-body-custom small mb-3" data-i18n="panel_1_desc">
+                        Buat PRD yang terperinci dan lakukan klarifikasi/interogasi mendalam untuk menghilangkan ambiguitas kebutuhan fitur.
+                      </p>
+                      <div class="mb-3">
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-draft-prd, /sdlc-clarify-reqs</span>
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_1_input">Project Discovery Draft</span></span>
                       </div>
-
-                      <!-- Step 1 Panel (Hidden by default) -->
-                      <div class="sdlc-panel d-none" id="panel-1">
-                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_1_title">Phase 1: Requirements & Clarification (Kebutuhan & Klarifikasi)</h4>
-                        <p class="text-body-custom small mb-3" data-i18n="panel_1_desc">
-                          Buat PRD yang terperinci dan lakukan klarifikasi/interogasi mendalam untuk menghilangkan ambiguitas kebutuhan fitur.
-                        </p>
-                        <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-draft-prd & /sdlc-clarify-reqs</span>
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_1_input">Discovery Draft</span></span>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code><span data-i18n="prompt_pm_2">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_2" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
-                        </div>
+                      <div class="position-relative mb-2">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pm_2">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pm_2" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
                       </div>
-
-                      <!-- Step 2 Panel (Hidden by default) -->
-                      <div class="sdlc-panel d-none" id="panel-2">
-                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_2_title">Phase 2: Technical Specification (Spesifikasi Teknis)</h4>
-                        <p class="text-body-custom small mb-3" data-i18n="panel_2_desc">
-                          Rancang arsitektur detail, buat skema data, definisikan API, dan catat keputusan arsitektur penting (ADR) serta pastikan ketertelusurannya dengan PRD.
-                        </p>
-                        <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-define-specs, /sdlc-audit-consistency, & /sdlc-clarify-reqs <span data-i18n="agent_ca_optional">(Opsional)</span></span>
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_2_input">Approved PRD</span></span>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code><span data-i18n="prompt_sa_1">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_1" data-i18n-clipboard="prompt_sa_2" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
-                        </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_1">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ca_1" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
                       </div>
+                    </div>
 
-                      <!-- Step 3 Panel (Hidden by default) -->
-                      <div class="sdlc-panel d-none" id="panel-3">
-                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_3_title">Phase 3: Implementation Planning (Rencana Implementasi)</h4>
-                        <p class="text-body-custom small mb-3" data-i18n="panel_3_desc">
-                          Pecah spesifikasi teknis menjadi langkah-langkah implementasi strategis dan buat checklist rencana coding yang aman.
-                        </p>
-                        <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-plan-tasks & /sdlc-clarify-reqs <span data-i18n="agent_ca_optional">(Opsional)</span></span>
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_3_input">Approved Spec</span></span>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_1" data-i18n-clipboard="prompt_pa_2" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
-                        </div>
+                    <!-- Step 2 Panel (Hidden by default) -->
+                    <div class="sdlc-panel d-none" id="panel-2">
+                      <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_2_title">Phase 2: Specification & Consistency Audit (Spesifikasi & Audit)</h4>
+                      <p class="text-body-custom small mb-3" data-i18n="panel_2_desc">
+                        Tulis rancangan teknis (API, Skema DB) dan audit ketertelusurannya terhadap PRD untuk mencegah scope creep.
+                      </p>
+                      <div class="mb-3">
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-define-specs, /sdlc-audit-consistency</span>
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_2_input">Approved PRD</span></span>
                       </div>
-
-                      <!-- Step 4 Panel (Hidden by default) -->
-                      <div class="sdlc-panel d-none" id="panel-4">
-                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_4_title">Phase 4: Execution & Review (Eksekusi Kode & Tinjauan)</h4>
-                        <p class="text-body-custom small mb-3" data-i18n="panel_4_desc">
-                          Tulis kode fitur secara bertahap dan teratur berdasarkan rencana yang disetujui, tambahkan pengujian unit, serta lakukan peninjauan kode.
-                        </p>
-                        <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-write-code & /sdlc-code-review</span>
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_4_input">Approved Plan</span></span>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code><span data-i18n="prompt_gmd_2">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_2" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass">Copy</button>
-                        </div>
+                      <div class="position-relative mb-2">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_sa_2">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sa_2" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
                       </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_acc_3">/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
 
-                      <!-- Step 5 Panel (Hidden by default) -->
-                      <div class="sdlc-panel d-none" id="panel-5">
-                        <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_5_title">Phase 5: User Documentation & Support (Dokumentasi Pengguna)</h4>
-                        <p class="text-body-custom small mb-3" data-i18n="panel_5_desc">
-                          Tulis dokumentasi teknis atau panduan pengguna yang ramah dan terstruktur mengikuti standar Diátaxis.
-                        </p>
-                        <div class="mb-3">
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-generate-docs</span>
-                          <span class="badge bg-light text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_5_input">Approved Spec / Source Code</span></span>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0"><code><span data-i18n="prompt_dda_2">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
-                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_2" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
-                        </div>
+                    <!-- Step 3 Panel (Hidden by default) -->
+                    <div class="sdlc-panel d-none" id="panel-3">
+                      <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_3_title">Phase 3: Implementation Planning (Perencanaan Implementasi)</h4>
+                      <p class="text-body-custom small mb-3" data-i18n="panel_3_desc">
+                        Pecah spesifikasi menjadi tiket vertikal (Tracer Bullets) yang dapat diuji secara independen.
+                      </p>
+                      <div class="mb-3">
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-plan-tasks</span>
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_3_input">Approved Technical Spec</span></span>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pa_2">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_pa_2" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
+
+                    <!-- Step 4 Panel (Hidden by default) -->
+                    <div class="sdlc-panel d-none" id="panel-4">
+                      <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_4_title">Phase 4: Execution & Review (Eksekusi & Review)</h4>
+                      <p class="text-body-custom small mb-3" data-i18n="panel_4_desc">
+                        Tulis kode secara presisi dan bedah, jalankan unit testing 100% lolos, dan lakukan review keamanan.
+                      </p>
+                      <div class="mb-3">
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-write-code, /sdlc-code-review</span>
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_4_input">Approved Plan</span></span>
+                      </div>
+                      <div class="position-relative mb-2">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_2">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_2" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md, and ensure all tests pass">Copy</button>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
+                      </div>
+                    </div>
+
+                    <!-- Step 5 Panel (Hidden by default) -->
+                    <div class="sdlc-panel d-none" id="panel-5">
+                      <h4 class="h6 text-ink fw-bold mb-2" data-i18n="panel_5_title">Phase 5: Documentation & RCA (Dokumentasi & RCA)</h4>
+                      <p class="text-body-custom small mb-3" data-i18n="panel_5_desc">
+                        Tulis dokumentasi terstruktur kerangka Diataxis dan lakukan RCA mendalam jika terjadi bug fungsional.
+                      </p>
+                      <div class="mb-3">
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2 me-2"><span data-i18n="step_label_agent">Agent:</span> /sdlc-generate-docs, /sdlc-bug-report</span>
+                        <span class="badge bg-surface-soft text-ink border-hairline py-1 px-2"><span data-i18n="step_label_input">Dokumen Input:</span> <span data-i18n="panel_5_input">PRD / Spec / Error Log</span></span>
+                      </div>
+                      <div class="position-relative mb-2">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_dda_2">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_dda_2" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bra_1">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
+                        <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_bra_1" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Context Injection guidelines (Full Width, Centered 8-col) -->
-              <div class="row">
-                <div class="col-lg-8 mx-auto">
-                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
-                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="protocol_title">📂 Protokol Injeksi Konteks</h3>
-                    <p class="text-body-custom small mb-4 text-center" data-i18n="protocol_desc">
-                      Untuk mencegah hilangnya konteks, halusinasi, dan untuk menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil agen. <strong>Anda juga sangat disarankan untuk menyertakan file atau potongan kode relevan lainnya untuk melengkapi analisis.</strong>
-                    </p>
-                    
-                    <div class="table-responsive bg-white">
-                      <table class="table text-start align-middle" style="font-size: 13px;">
-                        <thead>
-                          <tr>
-                            <th scope="col" data-i18n="protocol_th_agent">Agen / Fase</th>
-                            <th scope="col" data-i18n="protocol_th_doc">Dokumen Pendukung Wajib</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="fw-medium">/sdlc-draft-prd</td>
-                            <td data-i18n="protocol_pm_doc">Project Discovery Draft (atau PRD yang ada)</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-clarify-reqs</td>
-                            <td data-i18n="protocol_ca_doc">PRD, Spec, ATAU Plan (tergantung target)</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-define-specs</td>
-                            <td data-i18n="protocol_sa_doc">PRD yang telah disetujui</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-plan-tasks</td>
-                            <td data-i18n="protocol_pa_doc">Spesifikasi Teknis yang disetujui</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-write-code</td>
-                            <td data-i18n="protocol_gmd_doc">Rencana Implementasi ATAU Rencana Perbaikan Bug</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-code-review</td>
-                            <td data-i18n="protocol_ecr_doc">Spesifikasi Teknis DAN Rencana Implementasi</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-audit-consistency</td>
-                            <td data-i18n="protocol_acc_doc">PRD, Spec, DAN Plan</td>
-                          </tr>
-                          <tr>
-                            <td class="fw-medium">/sdlc-generate-docs</td>
-                            <td data-i18n="protocol_dda_doc">PRD, Spesifikasi Teknis, Rencana Implementasi, ATAU File Source Code Relevan</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+              <!-- Context Injection guidelines (Single Clean Table Container) -->
+              <div class="row mt-5 pt-3">
+                <div class="col-lg-10 mx-auto text-center">
+                  <h4 class="h5 text-ink fw-bold mb-3" data-i18n="protocol_title">Protokol Injeksi Konteks</h4>
+                  <p class="text-body-custom small mb-4" data-i18n="protocol_desc">
+                    Untuk mencegah hilangnya konteks, halusinasi, dan untuk menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil agen. <strong>Anda juga sangat disarankan untuk menyertakan file atau potongan kode relevan lainnya untuk melengkapi analisis.</strong>
+                  </p>
+                  
+                  <div class="table-responsive border-hairline rounded-3 bg-white" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                    <table class="table text-start align-middle mb-0" style="font-size: 13px;">
+                      <thead>
+                        <tr>
+                          <th scope="col" data-i18n="protocol_th_agent">Agen / Fase</th>
+                          <th scope="col" data-i18n="protocol_th_doc">Dokumen Pendukung Wajib</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-draft-prd</td>
+                          <td data-i18n="protocol_pm_doc">Project Discovery Draft (atau PRD yang ada)</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-clarify-reqs</td>
+                          <td data-i18n="protocol_ca_doc">PRD, Spec, ATAU Plan (tergantung target)</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-define-specs</td>
+                          <td data-i18n="protocol_sa_doc">PRD yang telah disetujui</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-plan-tasks</td>
+                          <td data-i18n="protocol_pa_doc">Spesifikasi Teknis yang disetujui</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-write-code</td>
+                          <td data-i18n="protocol_gmd_doc">Rencana Implementasi ATAU Rencana Perbaikan Bug</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-code-review</td>
+                          <td data-i18n="protocol_ecr_doc">Spesifikasi Teknis DAN Rencana Implementasi</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-audit-consistency</td>
+                          <td data-i18n="protocol_acc_doc">PRD, Spec, DAN Plan</td>
+                        </tr>
+                        <tr>
+                          <td class="fw-medium font-monospace">/sdlc-generate-docs</td>
+                          <td data-i18n="protocol_dda_doc">PRD, Spesifikasi Teknis, Rencana Implementasi, ATAU File Source Code Relevan</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -1936,123 +1951,158 @@
             <!-- Tab 2: SDLC Bypass (Minor Fixes) -->
             <div class="tab-pane fade" id="uc-bypass-pane" role="tabpanel" aria-labelledby="uc-bypass-tab">
               <div class="row justify-content-center">
-                <div class="col-lg-8">
-                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
-                    <h3 class="h5 text-ink fw-bold mb-3" data-i18n="bypass_title">Bypass SDLC (Pekerjaan Minor)</h3>
-                    <p class="text-body-custom small mb-3" data-i18n="bypass_desc1">
-                      Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati tahapan SDLC penuh menggunakan bendera penunjuk <code>[Bypass SDLC]</code>.
+                <div class="col-lg-10">
+                  <div class="text-center mb-4">
+                    <h3 class="h5 text-ink fw-bold mb-2" data-i18n="bypass_title">Bypass SDLC (Pekerjaan Minor)</h3>
+                    <p class="text-body-custom small mb-0" data-i18n="bypass_desc1">
+                      Untuk perbaikan kecil yang bersifat darurat (misal: mengganti teks, memperbaiki padding CSS, atau memperbaiki typo), Anda dapat melewati birokrasi SDLC penuh menggunakan perintah khusus <code>/code-janitor</code>.
                     </p>
-                    <p class="text-body-custom small mb-4" data-i18n="bypass_desc2">
-                      Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
-                    </p>
-                    <div class="position-relative">
-                      <pre class="bg-white border-hairline text-ink mb-0"><code id="bypass-code-block" data-i18n="bypass_code_sample">/sdlc-write-code [Bypass SDLC] Please fix the checkout button padding in @style.css for consistency.</code></pre>
-                      <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" id="bypass-copy-btn" data-clipboard="/sdlc-write-code [Bypass SDLC] Please fix the checkout button padding in @style.css for consistency.">Copy</button>
+                  </div>
+
+                  <div class="row g-4">
+                    <!-- Option A: Code Janitor -->
+                    <div class="col-md-6">
+                      <div class="bg-white border-hairline p-4 h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div class="d-flex align-items-center mb-2">
+                          <span class="badge bg-ink text-white me-2">Opsi Rekomendasi</span>
+                          <h4 class="h6 fw-bold mb-0 text-ink">1. Gunakan /code-janitor</h4>
+                        </div>
+                        <p class="small text-body-custom mb-3" data-i18n="bypass_desc2">
+                          Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
+                        </p>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="bypass_code_sample">/code-janitor Tolong perbaiki padding tombol checkout di @style.css agar konsisten.</span></code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="bypass_code_sample" data-clipboard="/code-janitor Tolong perbaiki padding tombol checkout di @style.css agar konsisten.">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Option B: Explicit Tag -->
+                    <div class="col-md-6">
+                      <div class="bg-white border-hairline p-4 h-100 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div class="d-flex align-items-center mb-2">
+                          <span class="badge bg-secondary text-white me-2">Opsi Alternatif</span>
+                          <h4 class="h6 fw-bold mb-0 text-ink">2. Gunakan Tag [Bypass SDLC]</h4>
+                        </div>
+                        <p class="small text-body-custom mb-3" data-i18n="bypass_desc2">
+                          Meskipun di-bypass, Anda tetap disarankan untuk melampirkan file yang akan dimodifikasi di dalam prompt obrolan Anda untuk memberikan konteks yang tepat.
+                        </p>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_3">[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html</span></code></pre>
+                          <button class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_gmd_3" data-clipboard="[Bypass SDLC] /sdlc-write-code perbaiki typo pada tombol submit di @header.html">Copy</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
 
-            <!-- Tab 3: Advanced (Slash Commands & Context Injection) -->
+            <!-- Tab 3: Advanced Slash Commands -->
             <div class="tab-pane fade" id="uc-slash-pane" role="tabpanel" aria-labelledby="uc-slash-tab">
               <div class="row justify-content-center">
                 <div class="col-lg-10">
-                  <div class="p-4 bg-light border-hairline" style="border-radius: 16px;">
-                    <h3 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="slash_title">Alur Kerja Mandiri dengan Slash Commands</h3>
-                    <p class="text-body-custom small mb-4 text-center" data-i18n="slash_desc">
-                      Di sebagian besar platform (seperti VS Code Copilot, Antigravity, OpenCode), Anda dapat memanggil keahlian (skill) agen secara langsung menggunakan perintah garis miring (slash commands) <code>/&lt;nama-skill&gt;</code>. Berikut alur lengkap penggunaan perintah slash untuk siklus hidup pengembangan fitur:
+                  <div class="text-center mb-4">
+                    <h3 class="h5 text-ink fw-bold mb-2" data-i18n="slash_title">Alur Kerja Mandiri dengan Slash Commands</h3>
+                    <p class="text-body-custom small mb-0" data-i18n="slash_desc">
+                      Eksekusi seluruh siklus SDLC langkah demi langkah secara efisien menggunakan perintah slash langsung di ruang kerja AI Anda.
                     </p>
-                    
-                    <!-- Copyable command timeline list -->
-                    <div class="d-flex flex-column gap-3">
-                      <!-- Phase 0 -->
-                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
-                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 0: Discovery</span>
-                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p0_title">Mengeksplorasi Codebase & Brainstorming</span>
+                  </div>
+                  
+                  <div class="d-flex flex-column gap-3">
+                    <!-- Phase 0 -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 0: Discovery</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p0_title">Mengeksplorasi Codebase & Brainstorming</span>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bea_3">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_3" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                      </div>
+                    </div>
+
+                    <!-- Phase 1 PRD -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 1: PRD & Clarification</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p1_title">Membuat PRD & Menginterogasi Ambiguitas</span>
+                      </div>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pm_3">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_3" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
                         </div>
                         <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_bea_3">/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bea_3" data-clipboard="/sdlc-explore-ideas explore the codebase and write a discovery draft for the new shopping cart feature based on @business-brief.md">Copy</button>
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ca_3">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_3" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
                         </div>
                       </div>
+                    </div>
 
-                      <!-- Phase 1 PRD -->
-                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
-                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 1: PRD & Clarification</span>
-                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p1_title">Membuat PRD & Mengklarifikasi Kebutuhan</span>
-                        </div>
-                        <div class="d-flex flex-column gap-2">
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_pm_3">/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pm_3" data-clipboard="/sdlc-draft-prd create a PRD for the shopping cart feature based on @discovery-draft.md">Copy</button>
-                          </div>
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs interrogate the new @prd-shopping-cart.md for missing edge cases">Copy</button>
-                          </div>
-                        </div>
+                    <!-- Phase 2 Spec -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 2: Spec & Consistency Audit</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p2_title">Menulis Spesifikasi Teknis & Audit Ketertelusuran</span>
                       </div>
-
-                      <!-- Phase 2 Spec -->
-                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
-                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 2: Specification & Audit</span>
-                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p2_title">Menyusun Spek Teknis & Memeriksa Konsistensi</span>
-                        </div>
-                        <div class="d-flex flex-column gap-2">
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_sa_3">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_3" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
-                          </div>
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_acc_3">/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Phase 3 Planning -->
-                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
-                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 3: Implementation Planning</span>
-                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p3_title">Menyusun Rencana Implementasi</span>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_sa_3">/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_sa_3" data-clipboard="/sdlc-define-specs design a technical specification based on @prd-shopping-cart.md">Copy</button>
                         </div>
                         <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_pa_3">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_3" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_acc_3">/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_acc_3" data-clipboard="/sdlc-audit-consistency verify that @spec-shopping-cart.md strictly follows @prd-shopping-cart.md">Copy</button>
                         </div>
                       </div>
+                    </div>
 
-                      <!-- Phase 4 Execution -->
-                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
-                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 4: Execution & Coding</span>
-                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p4_title">Menulis & Mengimplementasikan Kode</span>
-                        </div>
+                    <!-- Phase 3 Plan -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 3: Planning</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p3_title">Membuat Rencana Implementasi Bertahap</span>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_pa_3">/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md</span></code></pre>
+                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_3" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan based on @spec-shopping-cart.md">Copy</button>
+                      </div>
+                    </div>
+
+                    <!-- Phase 4 Code -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 4: Execution & Review</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p4_title">Menulis Kode Fitur & Code Review</span>
+                      </div>
+                      <div class="d-flex flex-column gap-2">
                         <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_gmd_3">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css</span></code></pre>
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_gmd_3">/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css</span></code></pre>
                           <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_gmd_3" data-clipboard="/sdlc-write-code implement the shopping cart based on @plan-shopping-cart.md. Target files are @cart.js and @style.css">Copy</button>
                         </div>
-                      </div>
-
-                      <!-- Phase 5 Documentation -->
-                      <div class="bg-white border-hairline p-3" style="border-radius: 12px;">
-                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
-                          <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 5: Documentation & Bug Fixes</span>
-                          <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p5_title">Menulis Dokumentasi & Memperbaiki Bug</span>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_ecr_1">/sdlc-code-review review my service layer and suggest refactoring</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ecr_1" data-clipboard="/sdlc-code-review review my service layer and suggest refactoring">Copy</button>
                         </div>
-                        <div class="d-flex flex-column gap-2">
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_dda_3">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_3" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
-                          </div>
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 py-2" style="font-size: 13px;"><code><span data-i18n="prompt_bra_3">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_3" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
-                          </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 5 Docs & Bug -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Phase 5: Docs & Bug Fixing</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_p5_title">Menulis Dokumentasi & Diagnosis Bug</span>
+                      </div>
+                      <div class="d-flex flex-column gap-2">
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_dda_3">/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_dda_3" data-clipboard="/sdlc-generate-docs write an API reference guide based on @spec-shopping-cart.md and @cart.js">Copy</button>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_bra_3">/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_bra_3" data-clipboard="/sdlc-bug-report analyze the bug report in @issue-123.md and propose a fix for @cart.js">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -2063,212 +2113,243 @@
 
             <!-- Tab 4: TDD-Spec SDLC Workflow -->
             <div class="tab-pane fade" id="uc-tdd-pane" role="tabpanel" aria-labelledby="uc-tdd-tab">
-              <div class="p-4 bg-light border-tdd" style="border-radius: 16px; background: #f0fdf4 !important;">
-                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
-                  <div>
-                    <span class="badge badge-tdd mb-2">Test-First & Executable Spec Kit</span>
-                    <h3 class="h5 text-ink fw-bold mb-1" data-i18n="tdd_flow_title">Full TDD-Spec SDLC Workflow</h3>
-                    <p class="text-body-custom small mb-0" data-i18n="tdd_flow_desc">A rigorous 7-phase lifecycle combining pure Test-Driven Development (TDD), Behavior-Driven Development (BDD), Pre-Agreed Test Seams, and Floor-Guard anti-cheat enforcement.</p>
-                  </div>
-                </div>
-
-                <div class="alert alert-success small py-2 px-3 mb-4 border-tdd">
-                  <div>
-                    <strong>Need real-time navigation?</strong> Run <code class="bg-white px-2 py-1 rounded text-ink fw-bold">/tdd-ask-help</code> anytime to diagnose project artifacts and get recommended next steps.
-                  </div>
-                </div>
-
-                <div class="row g-4">
-                  <!-- Phase 0: Discovery & Mapping -->
-                  <div class="col-md-6">
-                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">0</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p0_title">Phase 0: Architecture Mapping & Idea Discovery</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p0_desc">Scans repository topography and evaluates initial ideas against measurable testable metrics.</p>
-                      <div class="d-flex flex-column gap-2">
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0a">/tdd-map-architecture map codebase</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0a" data-clipboard="/tdd-map-architecture map codebase">Copy</button>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0b">/tdd-explore-ideas explore @brief.md with measurable hypotheses</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0b" data-clipboard="/tdd-explore-ideas explore @brief.md with measurable hypotheses">Copy</button>
-                        </div>
-                      </div>
+              
+              <!-- TDD Flow Header (Clean & Flat) -->
+              <div class="row mb-4">
+                <div class="col-lg-10 mx-auto">
+                  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge badge-tdd mb-2" data-i18n="tdd_flow_badge">Test-First Engineering Suite</span>
+                      <h3 class="h4 text-ink fw-bold mb-1" data-i18n="tdd_flow_title">Full TDD-Spec SDLC Workflow</h3>
+                      <p class="text-body-custom small mb-0" data-i18n="tdd_flow_desc">A rigorous 7-phase lifecycle combining pure Test-Driven Development (TDD), Behavior-Driven Development (BDD), Pre-Agreed Test Seams, and Floor-Guard anti-cheat enforcement.</p>
                     </div>
-                  </div>
-
-                  <!-- Phase 1: BDD PRD & Clarification -->
-                  <div class="col-md-6">
-                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">1</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p1_title">Phase 1: BDD Requirements & Doubt-Driven Clarification</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p1_desc">Authors Given-When-Then user stories and interrogates assumptions until reaching Readiness Score >= 80.</p>
-                      <div class="d-flex flex-column gap-2">
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1a">/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1a" data-clipboard="/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md">Copy</button>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1b">/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1b" data-clipboard="/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)">Copy</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Phase 2: Specification & Test Seams -->
-                  <div class="col-md-6">
-                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">2</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p2_title">Phase 2: Contract Specifications, Test Seams & Impact Analysis</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p2_desc">Designs exact TypeScript/DDL interfaces, maps public test seams, generates test-case checklists, and audits blast radius.</p>
-                      <div class="d-flex flex-column gap-2">
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2a">/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2a" data-clipboard="/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md">Copy</button>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2b">/tdd-checklist generate test inventory matrix from @spec-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2b" data-clipboard="/tdd-checklist generate test inventory matrix from @spec-cart.md">Copy</button>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2c">/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2c" data-clipboard="/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md">Copy</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Phase 3: Tracer-Bullet Plan -->
-                  <div class="col-md-6">
-                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">3</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p3_title">Phase 3: Tracer-Bullet Implementation Planning</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p3_desc">Breaks specifications into vertical slices (DB to UI) with explicit RED-GREEN-VERIFY task sequences.</p>
-                      <div class="position-relative">
-                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_3">/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_3" data-clipboard="/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence">Copy</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Phase 4: Strict Red-Green-Refactor Execution -->
-                  <div class="col-md-6">
-                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">4</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p4_title">Phase 4: Strict Red-Green-Refactor Coding</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p4_desc">Autonomous execution strictly writing failing tests first, minimum code to pass, and refactoring cleanly.</p>
-                      <div class="position-relative">
-                        <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_4">/tdd-write-code execute @plan-cart.md with strict Floor-Guards</span></code></pre>
-                        <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_4" data-clipboard="/tdd-write-code execute @plan-cart.md with strict Floor-Guards">Copy</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Phase 5: 5-Axis Quality Review & Prove-It Bug Fixing -->
-                  <div class="col-md-6">
-                    <div class="p-3 bg-white border-hairline h-100 rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">5</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p5_title">Phase 5: Audit Kualitas 5-Axis & Remediasi Bug Prove-It</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p5_desc">Audit kode terhadap 5 sumbu kesehatan dan diagnosa bug dengan wajib menulis tes regresi gagal terlebih dahulu.</p>
-                      <div class="d-flex flex-column gap-2">
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5a">/tdd-code-review review cart service against 5-Axis Health Model</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5a" data-clipboard="/tdd-code-review review cart service against 5-Axis Health Model">Copy</button>
-                        </div>
-                        <div class="position-relative">
-                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5b">/tdd-bug-report diagnose @error.log using Prove-It failing test first</span></code></pre>
-                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5b" data-clipboard="/tdd-bug-report diagnose @error.log using Prove-It failing test first">Copy</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Phase 6: Living Docs & Sprint Retro -->
-                  <div class="col-12">
-                    <div class="p-3 bg-white border-hairline rounded-3">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="badge bg-ink text-white rounded-circle">6</span>
-                        <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p6_title">Phase 6: Diátaxis Living Documentation & Sprint Retro</h4>
-                      </div>
-                      <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p6_desc">Generates living documentation grounded in passing tests and optimizes test suite speed and reliability.</p>
-                      <div class="row g-3">
-                        <div class="col-md-6">
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6a">/tdd-generate-docs generate Diataxis docs with passing test examples</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6a" data-clipboard="/tdd-generate-docs generate Diataxis docs with passing test examples">Copy</button>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="position-relative">
-                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6b">/tdd-retro analyze test runtime speed, flakiness, and update memory</span></code></pre>
-                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6b" data-clipboard="/tdd-retro analyze test runtime speed, flakiness, and update memory">Copy</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Context Injection guidelines for TDD-Spec SDLC -->
-                <div class="row mt-4">
-                  <div class="col-lg-10 mx-auto">
-                    <div class="p-4 bg-white border-hairline" style="border-radius: 16px;">
-                      <h4 class="h5 text-ink fw-bold mb-3 text-center" data-i18n="tdd_protocol_title">Protokol Injeksi Konteks (TDD-Spec)</h4>
-                      <p class="text-body-custom small mb-4 text-center" data-i18n="tdd_protocol_desc">
-                        Untuk mencegah hilangnya konteks, halusinasi, dan menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil skill TDD. <strong>Anda juga sangat disarankan untuk menyertakan log tes, kontrak antarmuka, atau error stack trace untuk melengkapi analisis.</strong>
-                      </p>
-                      
-                      <div class="table-responsive bg-white">
-                        <table class="table text-start align-middle" style="font-size: 13px;">
-                          <thead>
-                            <tr>
-                              <th scope="col" data-i18n="protocol_th_agent">Skill / Perintah</th>
-                              <th scope="col" data-i18n="protocol_th_doc">Dokumen Pendukung Wajib</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr><td class="fw-medium">/tdd-init</td><td data-i18n="tdd_proto_init">Manifest repositori / CONSTITUTION / CONSTRAINTS yang ada</td></tr>
-                            <tr><td class="fw-medium">/tdd-map-architecture</td><td data-i18n="tdd_proto_map">Basis kode sumber / konfigurasi test runner</td></tr>
-                            <tr><td class="fw-medium">/tdd-explore-ideas</td><td data-i18n="tdd_proto_explore">Brief pengguna / Konteks basis kode</td></tr>
-                            <tr><td class="fw-medium">/tdd-prd</td><td data-i18n="tdd_proto_prd">Draf Penemuan (docs/discovery/) ATAU PRD yang ada</td></tr>
-                            <tr><td class="fw-medium">/tdd-clarify</td><td data-i18n="tdd_proto_clarify">PRD, Spec, ATAU Plan (tergantung target)</td></tr>
-                            <tr><td class="fw-medium">/tdd-analyze</td><td data-i18n="tdd_proto_analyze">Spesifikasi Teknis ATAU Rencana Implementasi</td></tr>
-                            <tr><td class="fw-medium">/tdd-spec</td><td data-i18n="tdd_proto_spec">PRD yang disetujui, ATAU User Brief Komprehensif</td></tr>
-                            <tr><td class="fw-medium">/tdd-checklist</td><td data-i18n="tdd_proto_checklist">Spesifikasi Teknis yang disetujui ATAU Rencana Implementasi</td></tr>
-                            <tr><td class="fw-medium">/tdd-plan-tasks</td><td data-i18n="tdd_proto_plan">Spesifikasi Teknis yang disetujui (ATAU Plan yang ada)</td></tr>
-                            <tr><td class="fw-medium">/tdd-write-code</td><td data-i18n="tdd_proto_write">Rencana Implementasi ATAU Rencana Perbaikan Bug</td></tr>
-                            <tr><td class="fw-medium">/tdd-code-review</td><td data-i18n="tdd_proto_review">Spesifikasi Teknis DAN Rencana Implementasi</td></tr>
-                            <tr><td class="fw-medium">/tdd-bug-report</td><td data-i18n="tdd_proto_bug">Laporan Bug / Error log / Stack trace</td></tr>
-                            <tr><td class="fw-medium">/tdd-generate-docs</td><td data-i18n="tdd_proto_docs">Spec, Plan, DAN file tes yang lulus</td></tr>
-                            <tr><td class="fw-medium">/tdd-generate-fixtures</td><td data-i18n="tdd_proto_fixtures">Spesifikasi Teknis (/spec/) DAN CONTEXT.md</td></tr>
-                            <tr><td class="fw-medium">/tdd-configure-ci</td><td data-i18n="tdd_proto_ci">CONSTRAINTS.md DAN Konfigurasi repositori</td></tr>
-                            <tr><td class="fw-medium">/tdd-mutation-test</td><td data-i18n="tdd_proto_mutation">Test suite target DAN file kode implementasi</td></tr>
-                            <tr><td class="fw-medium">/tdd-retro</td><td data-i18n="tdd_proto_retro">Log eksekusi sesi DAN metrik durasi tes</td></tr>
-                            <tr><td class="fw-medium">/tdd-refactor-legacy</td><td data-i18n="tdd_proto_legacy">File kode legacy tanpa tes</td></tr>
-                            <tr><td class="fw-medium">/tdd-pair-coach</td><td data-i18n="tdd_proto_coach">Tiket Rencana Implementasi ATAU kebutuhan Spec</td></tr>
-                            <tr><td class="fw-medium">/tdd-ask-help</td><td data-i18n="tdd_proto_help">Pertanyaan pengguna ATAU kondisi repo (auto-deteksi fase)</td></tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">7-Phase Pure TDD</span>
                   </div>
                 </div>
               </div>
+
+              <!-- Navigator Highlight Box -->
+              <div class="row mb-4">
+                <div class="col-lg-10 mx-auto">
+                  <div class="p-3 rounded-3 d-flex align-items-center justify-content-between flex-wrap gap-3" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 10px;">AI Guide</span>
+                      <span class="small text-ink fw-medium">Need real-time workflow navigation? Run <code class="bg-white px-2 py-1 rounded border-hairline font-monospace text-ink fw-bold">/tdd-ask-help</code> anytime to diagnose workspace artifacts.</span>
+                    </div>
+                    <span class="badge badge-tdd" style="font-size: 11px;">Auto-Routing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 7-Phase Grid Cards (Flat row, no outer card wrapper) -->
+              <div class="row g-4 mb-5 justify-content-center">
+                <div class="col-lg-10">
+                  <div class="row g-4">
+                    
+                    <!-- Phase 0: Discovery & Mapping -->
+                    <div class="col-md-6">
+                      <div class="p-4 tdd-flow-card h-100 d-flex flex-column justify-content-between" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div>
+                          <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="tdd-flow-phase-badge">0</span>
+                            <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p0_title">Phase 0: Architecture Mapping & Idea Discovery</h4>
+                          </div>
+                          <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p0_desc">Scans repository topography and evaluates initial ideas against measurable testable metrics.</p>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0a">/tdd-map-architecture map codebase</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0a" data-clipboard="/tdd-map-architecture map codebase">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_0b">/tdd-explore-ideas explore @brief.md with measurable hypotheses</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_0b" data-clipboard="/tdd-explore-ideas explore @brief.md with measurable hypotheses">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 1: BDD PRD & Clarification -->
+                    <div class="col-md-6">
+                      <div class="p-4 tdd-flow-card h-100 d-flex flex-column justify-content-between" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div>
+                          <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="tdd-flow-phase-badge">1</span>
+                            <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p1_title">Phase 1: BDD Requirements & Doubt-Driven Clarification</h4>
+                          </div>
+                          <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p1_desc">Authors Given-When-Then user stories and interrogates assumptions until reaching Readiness Score >= 80.</p>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1a">/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1a" data-clipboard="/tdd-prd draft PRD with Given-When-Then scenarios from @discovery.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_1b">/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_1b" data-clipboard="/tdd-clarify interrogate @prd-cart.md for ambiguities (Score >= 80)">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 2: Specification & Test Seams -->
+                    <div class="col-md-6">
+                      <div class="p-4 tdd-flow-card h-100 d-flex flex-column justify-content-between" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div>
+                          <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="tdd-flow-phase-badge">2</span>
+                            <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p2_title">Phase 2: Contract Specifications, Test Seams & Impact Analysis</h4>
+                          </div>
+                          <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p2_desc">Designs exact TypeScript/DDL interfaces, maps public test seams, generates test-case checklists, and audits blast radius.</p>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2a">/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2a" data-clipboard="/tdd-spec define spec with Pre-Agreed Test Seams from @prd-cart.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2b">/tdd-checklist generate test inventory matrix from @spec-cart.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2b" data-clipboard="/tdd-checklist generate test inventory matrix from @spec-cart.md">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_2c">/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_2c" data-clipboard="/tdd-analyze audit blast radius and mocking boundaries @spec-cart.md">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 3: Tracer-Bullet Plan -->
+                    <div class="col-md-6">
+                      <div class="p-4 tdd-flow-card h-100 d-flex flex-column justify-content-between" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div>
+                          <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="tdd-flow-phase-badge">3</span>
+                            <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p3_title">Phase 3: Tracer-Bullet Implementation Planning</h4>
+                          </div>
+                          <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p3_desc">Breaks specifications into vertical slices (DB to UI) with explicit RED-GREEN-VERIFY task sequences.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_3">/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_3" data-clipboard="/tdd-plan-tasks plan vertical slices with RED-GREEN-VERIFY task sequence">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 4: Strict Red-Green-Refactor Execution -->
+                    <div class="col-md-6">
+                      <div class="p-4 tdd-flow-card h-100 d-flex flex-column justify-content-between" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div>
+                          <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="tdd-flow-phase-badge">4</span>
+                            <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p4_title">Phase 4: Strict Red-Green-Refactor Coding</h4>
+                          </div>
+                          <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p4_desc">Autonomous execution strictly writing failing tests first, minimum code to pass, and refactoring cleanly.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_4">/tdd-write-code execute @plan-cart.md with strict Floor-Guards</span></code></pre>
+                          <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_4" data-clipboard="/tdd-write-code execute @plan-cart.md with strict Floor-Guards">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 5: 5-Axis Quality Review & Prove-It Bug Fixing -->
+                    <div class="col-md-6">
+                      <div class="p-4 tdd-flow-card h-100 d-flex flex-column justify-content-between" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div>
+                          <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="tdd-flow-phase-badge">5</span>
+                            <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p5_title">Phase 5: Audit Kualitas 5-Axis & Remediasi Bug Prove-It</h4>
+                          </div>
+                          <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p5_desc">Audit kode terhadap 5 sumbu kesehatan dan diagnosa bug dengan wajib menulis tes regresi gagal terlebih dahulu.</p>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5a">/tdd-code-review review cart service against 5-Axis Health Model</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5a" data-clipboard="/tdd-code-review review cart service against 5-Axis Health Model">Copy</button>
+                          </div>
+                          <div class="position-relative">
+                            <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_5b">/tdd-bug-report diagnose @error.log using Prove-It failing test first</span></code></pre>
+                            <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_5b" data-clipboard="/tdd-bug-report diagnose @error.log using Prove-It failing test first">Copy</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Phase 6: Living Docs & Sprint Retro -->
+                    <div class="col-12">
+                      <div class="p-4 tdd-flow-card" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <span class="tdd-flow-phase-badge">6</span>
+                          <h4 class="h6 text-ink fw-bold mb-0" data-i18n="tdd_flow_p6_title">Phase 6: Diátaxis Living Documentation & Sprint Retro</h4>
+                        </div>
+                        <p class="small text-body-custom mb-3" data-i18n="tdd_flow_p6_desc">Generates living documentation grounded in passing tests and optimizes test suite speed and reliability.</p>
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <div class="position-relative">
+                              <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6a">/tdd-generate-docs generate Diataxis docs with passing test examples</span></code></pre>
+                              <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6a" data-clipboard="/tdd-generate-docs generate Diataxis docs with passing test examples">Copy</button>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="position-relative">
+                              <pre class="bg-surface-soft border-hairline text-ink mb-0 p-2 font-monospace" style="font-size: 11px;"><code><span data-i18n="prompt_tdd_flow_6b">/tdd-retro analyze test runtime speed, flakiness, and update memory</span></code></pre>
+                              <button class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_flow_6b" data-clipboard="/tdd-retro analyze test runtime speed, flakiness, and update memory">Copy</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- Context Injection guidelines for TDD-Spec SDLC (Single Flat Table Container) -->
+              <div class="row mt-5 pt-3">
+                <div class="col-lg-10 mx-auto text-center">
+                  <h4 class="h5 text-ink fw-bold mb-3" data-i18n="tdd_protocol_title">Protokol Injeksi Konteks (TDD-Spec)</h4>
+                  <p class="text-body-custom small mb-4" data-i18n="tdd_protocol_desc">
+                    Untuk mencegah hilangnya konteks, halusinasi, dan menegakkan keterlacakan SDLC yang ketat, Anda WAJIB melampirkan secara eksplisit, menyebutkan (misalnya menggunakan @filename), atau menyediakan dokumen hulu yang diperlukan dalam konteks prompt saat memanggil skill TDD. <strong>Anda juga sangat disarankan untuk menyertakan log tes, kontrak antarmuka, atau error stack trace untuk melengkapi analisis.</strong>
+                  </p>
+                  
+                  <div class="table-responsive border-hairline rounded-3 bg-white" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                    <table class="table text-start align-middle mb-0" style="font-size: 13px;">
+                      <thead>
+                        <tr>
+                          <th scope="col" data-i18n="protocol_th_agent">Skill / Perintah</th>
+                          <th scope="col" data-i18n="protocol_th_doc">Dokumen Pendukung Wajib</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td class="fw-medium font-monospace">/tdd-init</td><td data-i18n="tdd_proto_init">Manifest repositori / CONSTITUTION / CONSTRAINTS yang ada</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-map-architecture</td><td data-i18n="tdd_proto_map">Basis kode sumber / konfigurasi test runner</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-explore-ideas</td><td data-i18n="tdd_proto_explore">Brief pengguna / Konteks basis kode</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-prd</td><td data-i18n="tdd_proto_prd">Draf Penemuan (docs/discovery/) ATAU PRD yang ada</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-clarify</td><td data-i18n="tdd_proto_clarify">PRD, Spec, ATAU Plan (tergantung target)</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-analyze</td><td data-i18n="tdd_proto_analyze">Spesifikasi Teknis ATAU Rencana Implementasi</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-spec</td><td data-i18n="tdd_proto_spec">PRD yang disetujui, ATAU User Brief Komprehensif</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-checklist</td><td data-i18n="tdd_proto_checklist">Spesifikasi Teknis yang disetujui ATAU Rencana Implementasi</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-plan-tasks</td><td data-i18n="tdd_proto_plan">Spesifikasi Teknis yang disetujui (ATAU Plan yang ada)</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-write-code</td><td data-i18n="tdd_proto_write">Rencana Implementasi ATAU Rencana Perbaikan Bug</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-code-review</td><td data-i18n="tdd_proto_review">Spesifikasi Teknis DAN Rencana Implementasi</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-bug-report</td><td data-i18n="tdd_proto_bug">Laporan Bug / Error log / Stack trace</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-generate-docs</td><td data-i18n="tdd_proto_docs">Spec, Plan, DAN file tes yang lulus</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-generate-fixtures</td><td data-i18n="tdd_proto_fixtures">Spesifikasi Teknis (/spec/) DAN CONTEXT.md</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-configure-ci</td><td data-i18n="tdd_proto_ci">CONSTRAINTS.md DAN Konfigurasi repositori</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-mutation-test</td><td data-i18n="tdd_proto_mutation">Test suite target DAN file kode implementasi</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-retro</td><td data-i18n="tdd_proto_retro">Log eksekusi sesi DAN metrik durasi tes</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-refactor-legacy</td><td data-i18n="tdd_proto_legacy">File kode legacy tanpa tes</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-pair-coach</td><td data-i18n="tdd_proto_coach">Tiket Rencana Implementasi ATAU kebutuhan Spec</td></tr>
+                        <tr><td class="fw-medium font-monospace">/tdd-ask-help</td><td data-i18n="tdd_proto_help">Pertanyaan pengguna ATAU kondisi repo (auto-deteksi fase)</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
             </div>
+
           </div>
         </div>
       </section>

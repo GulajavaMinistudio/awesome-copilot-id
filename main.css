@@ -580,3 +580,38 @@ pre::-webkit-scrollbar-thumb:hover {
   border-left: 3px solid var(--colors-ink) !important;
   border-radius: 10px;
 }
+
+
+/* Polished TDD-Spec Flow & Examples */
+.tdd-flow-container {
+  background-color: #ffffff !important;
+  border: 1px solid var(--colors-hairline) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.tdd-flow-card {
+  background-color: #ffffff;
+  border: 1px solid var(--colors-hairline);
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tdd-flow-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.tdd-flow-phase-badge {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 50%;
+  background-color: var(--colors-ink);
+  color: #ffffff;
+  flex-shrink: 0;
+}
