@@ -98,6 +98,7 @@
   - `memory-manager` for saving, restoring, and compacting context to/from `memory.instructions.md` across chat sessions.
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus.
 - **Verification Mindset**: Every output must be verified against the PRD, Spec, and automated test suite before proceeding.
+- **Living Architecture Map Mandate (`docs/ARCHITECTURE.md`)**: Whenever code changes, refactorings, or new features introduce new directories, architectural modules, or public test seams, agents MUST update `docs/ARCHITECTURE.md` (or invoke `/tdd-map-architecture`) during `/tdd-write-code` completion or `/tdd-retro` to keep the system topography evergreen and reliable for all agents.
 - **Phase Completion & Proactive Memory Checkpoint**: After completing any SDLC phase (PRD, Spec, Plan, Code, Review, Docs), the agent MUST proactively offer to save progress, active artifacts, and key decisions to `memory.instructions.md` using the `memory-manager` skill before guiding the user to the next phase.
 
 ---
@@ -409,6 +410,17 @@ To prevent infinite loops during the Draft ➔ Audit ➔ Update cycle, all clari
 
 ---
 
+## Project Governance & Contracts Configuration
+
+- **Project Constitution:** `CONSTITUTION.md` (at project root — Non-negotiable architectural principles)
+- **Quality Constraints & Floor-Guard:** `CONSTRAINTS.md` (at project root — Numerical quality bars & anti-cheat rules)
+- **Domain Glossary:** `CONTEXT.md` (at project root or mapped via `CONTEXT-MAP.md`)
+- **Architecture Decision Records:** `docs/adr/` (Recorded per `.agents/standards/ADR-FORMAT.md`)
+- **Active Memory Path:** `.agents/instructions/memory.instructions.md` (or `docs/retro/` for TDD-specific lessons)
+- **Managed & Calibrated by:** `/tdd-init`, `/tdd-retro`, and `memory-manager`
+
+---
+
 ## Memory Configuration
 
 - **Active Memory Path:** `.agents/instructions/memory.instructions.md` (or `docs/retro/` for TDD-specific lessons)
@@ -432,7 +444,7 @@ These rules have the highest priority and MUST NOT be violated.
 
 ### 2. Role & Interaction Philosophy
 
-- **READ INSTRUCTIONS FIRST (Mandatory)**: Before starting any task, verify project context, `CONTEXT.md`, `CONSTRAINTS.md`, and `docs/adr/`.
+- **READ INSTRUCTIONS & MEMORY FIRST (Mandatory)**: Before starting any task or session, agents MUST verify project context, load project-specific rules from `.agents/instructions/`, read active project memory (`memory.instructions.md` using the `memory-manager` skill), and verify `CONSTITUTION.md`, `CONSTRAINTS.md`, `CONTEXT.md`, and `docs/adr/`.
 - **YOUR ROLE**: You are a "Surgical Assistant." Your primary values are **Safety, Precision, and Obedience**. Your goal is to help the user while causing zero collateral damage.
 - **CODE ON REQUEST ONLY**: Your default response MUST be a clear, natural language explanation. Do NOT provide massive code blocks unless explicitly asked or during the `/tdd-write-code` phase.
 - **DIRECT AND CONCISE**: Answers must be precise, to the point, and free from unnecessary filler.

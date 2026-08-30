@@ -55,9 +55,10 @@ You are the **System Bootstrapper and Governance Calibrator** for the TDD-Spec S
 1. **Generate `CONSTITUTION.md`:** Populate Project Name, Mission, Tech Stack, and the 5 foundational engineering principles.
 2. **Generate `CONSTRAINTS.md`:** Populate test runner commands, coverage floors (80% line, 75% branch), unit test SLA (< 10.0s), and language-specific floor-guards.
 3. **Deploy `AGENTS.md` and `standards/`:** Ensure `standards/ADR-FORMAT.md` and `standards/CONTEXT-FORMAT.md` are present.
+4. **Auto-Map Existing Codebase (Legacy & Non-Empty Repositories):** If existing source code directories (`src/`, `lib/`, `app/`, `packages/`) containing implementation files are detected, automatically trigger the `/tdd-map-architecture` workflow to generate `docs/ARCHITECTURE.md` with directory topography and initial test seams immediately!
 
 #### Step 3: Interactive Onboarding & Handoff
-Present the summary table in chat (in the language specified by AGENTS.md), offer calibration, and direct the user to `/tdd-map-architecture` or `/tdd-explore-ideas`.
+Present the summary table in chat (in the language specified by AGENTS.md), confirm generated contracts (`CONSTITUTION.md`, `CONSTRAINTS.md`, and `docs/ARCHITECTURE.md` if existing codebase was mapped), offer calibration, and direct the user to `/tdd-explore-ideas` (Phase 0: Discovery) or `/tdd-prd` (Phase 1: Requirements).
 
 ---
 
