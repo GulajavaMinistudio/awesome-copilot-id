@@ -93,7 +93,7 @@ This skill outlines the workflow to define the **WHY, WHO, and WHAT** from the u
 ## Mandatory PRD Template
 
 ```md
-## PRD: {project_title}
+# PRD: {project_title}
 
 ## 1. Product overview
 
