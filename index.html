@@ -166,7 +166,7 @@
                 </div>
                 <h3 class="h5 text-ink fw-semibold mb-2" data-i18n="overview_skills_title">Specialized Skills</h3>
                 <p class="text-body-custom small mb-0" data-i18n="overview_skills_desc">
-                  Kemampuan khusus seperti Project Researcher untuk pemetaan arsitektur otomatis, Karpathy Guidelines, Ponytail lazy dev, TDD Implement, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.
+                  Kemampuan khusus seperti Architecture Mapper (/sdlc-map-architecture), Karpathy Guidelines, Ponytail lazy dev, TDD Implement, dan Fable Protocol untuk eksekusi tugas otonom yang kompleks.
                 </p>
               </div>
             </div>
@@ -378,7 +378,7 @@
         <div class="container py-md-4">
           <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-              <div class="badge badge-accent py-2 px-3 mb-3 rounded-pill uppercase-tag" data-i18n="agents_badge">12 Specialized Agents</div>
+              <div class="badge badge-accent py-2 px-3 mb-3 rounded-pill uppercase-tag" data-i18n="agents_badge">13 Agen Spesialis</div>
               <h2 class="text-ink fw-bold mb-3" style="font-size: 28px;" data-i18n="agents_title">Custom Agents</h2>
               <p class="text-body-custom lead" data-i18n="agents_desc">
                 Gunakan agen AI kustom yang berspesialisasi dalam peran dan tugas tertentu dalam siklus pengembangan.
@@ -395,6 +395,14 @@
                   <!-- Group 1: Strategy & Specs -->
                   <div class="px-3 py-2 bg-light border-bottom-hairline fw-bold text-muted small" style="font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="agent_group_1">Phase 1-3: Strategy & Specs</div>
                   
+                  <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item" id="agent-map-tab" data-bs-toggle="list" href="#agent-map" role="tab" aria-controls="agent-map">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+                      <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-map-architecture</span>
+                      <span class="badge badge-phase bg-light text-muted border-hairline py-1 px-2 rounded-pill" style="font-size: 10px;">Pre-Phase</span>
+                    </div>
+                    <div class="small text-muted text-truncate agent-nav-role" style="font-size: 12px;" data-i18n="agent_map_role">Pemeta Arsitektur (Pre-Phase)</div>
+                  </button>
+
                   <button type="button" class="list-group-item list-group-item-action border-0 py-3 px-3 agent-nav-item active" id="agent-bea-tab" data-bs-toggle="list" href="#agent-bea" role="tab" aria-controls="agent-bea">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-1">
                       <span class="agent-nav-cmd font-monospace" style="font-size: 13px;">/sdlc-explore-ideas</span>
@@ -524,6 +532,39 @@
             <div class="col-lg-7">
               <div class="tab-content" id="agentDetailsContent">
                 
+                <!-- MAP Detail -->
+                <div class="tab-pane fade p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-map" role="tabpanel" aria-labelledby="agent-map-tab">
+                  <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
+                    <div>
+                      <span class="badge bg-light text-ink border-hairline py-1 px-2 rounded-pill small mb-2" data-i18n="agent_map_role">Pemeta Arsitektur (Pre-Phase)</span>
+                      <h3 class="text-ink fw-bold h4 mb-0 font-monospace">/sdlc-map-architecture</h3>
+                    </div>
+                    <span class="badge bg-ink text-white py-2 px-3 rounded-pill" style="font-size: 11px;">Pre-Phase: Architecture Mapping</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
+                    <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_map_desc">
+                      Memindai dan memetakan topologi repositori, struktur direktori, titik masuk, dan konfigurasi runtime ke dalam docs/ARCHITECTURE.md.
+                    </p>
+                  </div>
+                  
+                  <div class="agent-best-for-callout p-3 mb-4">
+                    <h4 class="text-ink fw-bold mb-1" style="font-size: 13px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h4>
+                    <p class="text-body-custom small mb-0" data-i18n="agent_map_best">
+                      Mendokumentasikan topologi sistem, memetakan basis kode baru/legacy, dan menjaga docs/ARCHITECTURE.md selalu mutakhir.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h4>
+                    <div class="position-relative">
+                      <pre class="bg-surface-soft border-hairline text-ink mb-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_map_1">/sdlc-map-architecture map repository architecture to docs/ARCHITECTURE.md</span></code></pre>
+                      <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-3 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_map_1" data-clipboard="/sdlc-map-architecture map repository architecture to docs/ARCHITECTURE.md" aria-label="Copy command to clipboard">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- BEA Detail -->
                 <div class="tab-pane fade show active p-4 p-md-5 bg-white border-hairline agent-detail-card" id="agent-bea" role="tabpanel" aria-labelledby="agent-bea-tab">
                   <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2 pb-3 border-bottom-hairline">
@@ -537,7 +578,7 @@
                   <div class="mb-4">
                     <h4 class="text-muted fw-bold mb-2" style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="agent_label_desc">Peran & Tanggung Jawab Utama:</h4>
                     <p class="text-body-custom" style="font-size: 15px; line-height: 1.6;" data-i18n="agent_bea_desc">
-                      Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
+                      Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, mengidentifikasi technical debt, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).
                     </p>
                   </div>
                   
@@ -995,8 +1036,34 @@
             <div class="col-12">
               <div class="accordion border-hairline bg-white" id="agentsAccordion" style="border-radius: 14px; overflow: hidden;">
                 
-                <!-- BEA Accordion Item -->
+                <!-- MAP Accordion Item -->
                 <div class="accordion-item border-0">
+                  <h2 class="accordion-header" id="mob-heading-map">
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-map" aria-expanded="false" aria-controls="mob-collapse-map">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-map-architecture</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_map_role">Pemeta Arsitektur (Pre-Phase)</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-map" class="accordion-collapse collapse" aria-labelledby="mob-heading-map" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <p class="text-body-custom small mb-3" data-i18n="agent_map_desc">Memindai dan memetakan topologi repositori, struktur direktori, titik masuk, dan konfigurasi runtime ke dalam docs/ARCHITECTURE.md.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_map_best">Mendokumentasikan topologi sistem, memetakan basis kode baru/legacy, dan menjaga docs/ARCHITECTURE.md selalu mutakhir.</p>
+                      </div>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_map_1">/sdlc-map-architecture map repository architecture to docs/ARCHITECTURE.md</span></code></pre>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_map_1" data-clipboard="/sdlc-map-architecture map repository architecture to docs/ARCHITECTURE.md" aria-label="Copy command to clipboard">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BEA Accordion Item -->
+                <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-bea">
                     <button class="accordion-button fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-bea" aria-expanded="true" aria-controls="mob-collapse-bea">
                       <div class="d-flex flex-column text-start">
@@ -1007,7 +1074,7 @@
                   </h2>
                   <div id="mob-collapse-bea" class="accordion-collapse collapse show" aria-labelledby="mob-heading-bea" data-bs-parent="#agentsAccordion">
                     <div class="accordion-body bg-light p-4">
-                      <p class="text-body-custom small mb-3" data-i18n="agent_bea_desc">Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, memetakan struktur repositori ke dalam ARCHITECTURE.md menggunakan skill Project Researcher, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).</p>
+                      <p class="text-body-custom small mb-3" data-i18n="agent_bea_desc">Mengeksplorasi basis kode secara sistematis, memberikan kritik arsitektur, mengidentifikasi technical debt, dan menghasilkan draft penemuan proyek awal (Phase 0 Discovery).</p>
                       <div class="agent-best-for-callout p-3 mb-3">
                         <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
                         <p class="text-body-custom small mb-0" data-i18n="agent_bea_best">Memahami proyek baru atau lama, menganalisis utang teknis, dan menghasilkan peta arsitektur sebelum merumuskan PRD.</p>
@@ -1928,6 +1995,10 @@
                       </thead>
                       <tbody>
                         <tr>
+                          <td class="fw-medium font-monospace">/sdlc-map-architecture</td>
+                          <td data-i18n="protocol_map_doc">Basis kode sumber / konfigurasi build</td>
+                        </tr>
+                        <tr>
                           <td class="fw-medium font-monospace">/sdlc-draft-prd</td>
                           <td data-i18n="protocol_pm_doc">Project Discovery Draft (atau PRD yang ada)</td>
                         </tr>
@@ -1962,6 +2033,9 @@
                       </tbody>
                     </table>
                   </div>
+                  <p class="text-muted small mt-2 mb-0" data-i18n="protocol_fasttrack_note">
+                    <strong>Opsi Jalur Cepat (Fast-Track):</strong> Untuk perbaikan minor, refaktorisasi, dan tugas ad-hoc, pemeriksaan dokumen wajib dapat di-fast-track. Agen secara proaktif menawarkan opsi ini agar Anda dapat melanjutkan tanpa seremonial lengkap SDLC.
+                  </p>
                 </div>
               </div>
             </div>
@@ -2029,6 +2103,18 @@
                   </div>
                   
                   <div class="d-flex flex-column gap-3">
+                    <!-- Pre-Phase: Architecture Mapping -->
+                    <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <span class="badge bg-ink text-white py-1 px-2 rounded-pill" style="font-size: 11px;">Pre-Phase: Architecture</span>
+                        <span class="text-muted small fw-medium" style="font-size: 12px;" data-i18n="slash_map_title">Memetakan Arsitektur & Topologi Basis Kode</span>
+                      </div>
+                      <div class="position-relative">
+                        <pre class="bg-surface-soft border-hairline text-ink mb-0 m-0 p-3" style="font-size: 12px; border-radius: 8px;"><code><span data-i18n="prompt_map_slash">/sdlc-map-architecture scan this repository and map architecture into docs/ARCHITECTURE.md</span></code></pre>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_map_slash" data-clipboard="/sdlc-map-architecture scan this repository and map architecture into docs/ARCHITECTURE.md" aria-label="Copy command to clipboard">Copy</button>
+                      </div>
+                    </div>
+
                     <!-- Phase 0 -->
                     <div class="bg-white border-hairline p-4 rounded-3" style="box-shadow: 0 4px 20px -2px rgba(0,0,0,0.04);">
                       <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
@@ -2363,6 +2449,9 @@
                       </tbody>
                     </table>
                   </div>
+                  <p class="text-muted small mt-2 mb-0" data-i18n="tdd_protocol_fasttrack_note">
+                    <strong>Opsi Jalur Cepat (Fast-Track):</strong> Untuk perbaikan minor, refaktorisasi, dan tugas ad-hoc, pemeriksaan dokumen wajib dapat di-fast-track tanpa seremonial penuh SDLC dengan tetap menjaga disiplin test-first.
+                  </p>
                 </div>
               </div>
 
