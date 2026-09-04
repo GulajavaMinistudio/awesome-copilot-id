@@ -5,8 +5,10 @@ last_updated: [YYYY-MM-DD]
 status: 'Active'
 ---
 
-# Architecture Documentation
 <!-- markdownlint-disable -->
+
+# Architecture Documentation
+
 ![Status: <status>](https://img.shields.io/badge/status-<status>-<status_color>)
 
 This document serves as the canonical architectural map of the repository. It outlines the design patterns, technical stack, directory structure, and module constraints to assist developers and AI agents in navigating and maintaining the codebase safely.
