@@ -1,3 +1,5 @@
+<!-- markdownlint-disable -->
+
 # 🔍 Consistency Audit Report [Review Iteration {X}]
 
 **Readiness Score:** {Score}/100
