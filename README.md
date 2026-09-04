@@ -199,6 +199,7 @@ Custom agents are specialized AI assistants for specific development roles and t
 | Slash Command             | Skill                                                                                                                    | Description                                          | Best For                                                            |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------- |
 | `/sdlc-init`              | `sdlc-init`                                                                                                              | Autonomous project bootstrapper                      | Initializing AGENTS.md, rules, and .agents architecture             |
+| `/sdlc-map-architecture`  | `sdlc-map-architecture`                                                                                                  | System & Codebase Architecture Mapper                | Mapping directory topologies, architecture, and generating `docs/ARCHITECTURE.md` |
 | `/sdlc-explore-ideas`     | `sdlc-explore-ideas`                                                                                                     | Codebase exploration and architectural brainstorming | Phase 0 Discovery, exploring unfamiliar code, generating raw drafts |
 | `/sdlc-draft-prd`         | `sdlc-draft-prd`                                                                                                         | Product Requirement Document creation                | Feature planning, writing user stories, and acceptance criteria     |
 | `/sdlc-clarify-reqs`      | `sdlc-clarify-reqs`                                                                                                      | Requirement interrogation                            | Finding ambiguities and missing edge cases in PRD/Specs/Plans       |
@@ -303,6 +304,8 @@ However, we have **Utility Skills** that can be invoked at any time without trig
 
 We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub Spec Kit approach. Generally, development must follow a sequential order. The PRD phase can be bypassed if the user provides a comprehensive brief:
 
+- **Bootstrap & Scaffolding**: Use `/sdlc-init` to initialize project architecture, rules, and `AGENTS.md`.
+- **Architecture Mapping**: Use `/sdlc-map-architecture` to scan repository topography, directory structures, and generate or maintain `docs/ARCHITECTURE.md`.
 - **Phase 0: Project Discovery**: Use `/sdlc-explore-ideas` to explore existing codebases, brainstorm architecture, and generate raw drafts for Product Managers.
 - **Phase PRD: Product Requirements**: Use `/sdlc-draft-prd` to define user stories and acceptance criteria.
 - **Recurring Checkpoint: Clarification**: Use `/sdlc-clarify-reqs` to interrogate the PRD, Spec, or Plan to resolve ambiguities.
@@ -312,6 +315,7 @@ We adopt a strict and structured SDLC workflow, heavily inspired by the GitHub S
 - **Recurring Checkpoint: Artifact Consistency Audit**: Use `/sdlc-audit-consistency` to validate traceability across PRD, Spec, and Plan to prevent scope creep.
 - **Supplementary: Code Review & Security Audit**: Use `/sdlc-code-review` for code review and security audits. *(For bug fixes, use `/sdlc-bug-report`)*
 - **Supplementary: User Documentation**: Use `/sdlc-generate-docs` for user documentation.
+- **Supplementary: Ad-hoc Maintenance**: Use `/code-janitor` for quick fixes, cleanups, and minor refactors bypassing the SDLC.
 
 > [!IMPORTANT]
 > - Complete and structured documentation must exist before coding begins.
@@ -326,6 +330,7 @@ If the mandatory files are not provided in the prompt context, the agent will ha
 
 | Slash Command / Phase     | Mandatory Upstream Document(s)                                          |
 | ------------------------- | ----------------------------------------------------------------------- |
+| `/sdlc-map-architecture`  | Source code repository / build configuration                            |
 | `/sdlc-draft-prd`         | Project Discovery Draft (OR existing PRD for updates)                   |
 | `/sdlc-clarify-reqs`      | PRD, Spec, OR Plan (depending on target)                                |
 | `/sdlc-define-specs`      | Approved PRD, OR Comprehensive User Brief (if skipping PRD), OR existing Spec |
@@ -337,11 +342,19 @@ If the mandatory files are not provided in the prompt context, the agent will ha
 
 *Note: Phase 0 (`/sdlc-explore-ideas`) and surgical bug analysis (`/sdlc-bug-report`) rely on user briefs, codebase exploration, or bug reports, and do not have strictly enforced upstream SDLC documents, though providing relevant context is highly encouraged.*
 
+*Note: For minor fixes, refactoring, and ad-hoc tasks, the mandatory document check can be fast-tracked. Agents proactively offer this fast-track option to the user to proceed without full SDLC ceremony.*
+
 ### 🎯 Use Cases
 
 #### End-to-End Feature Development (SDLC Workflow)
 
 Following our strict sequential workflow, here is how you would develop a new feature:
+
+**Pre-Phase: Architecture Mapping & Topography**
+```text
+/sdlc-map-architecture map repository architecture to docs/ARCHITECTURE.md
+```
+*(Run this to document repository topology, directory purposes, and runtime architecture into `docs/ARCHITECTURE.md` before planning new features)*
 
 **Phase 0: Project Discovery**
 ```text
@@ -439,6 +452,7 @@ Use the slash command syntax (`/<skill-name>`) to invoke agents directly. Attach
 
 ```text
 /sdlc-init            initialize project architecture & AGENTS.md
+/sdlc-map-architecture map repository architecture to docs/ARCHITECTURE.md
 /sdlc-explore-ideas   explore the codebase based on @business-brief.md
 /sdlc-draft-prd       create a PRD based on @discovery-draft.md
 /sdlc-clarify-reqs    interrogate @prd-shopping-cart.md for missing edge cases
@@ -459,6 +473,9 @@ Use the slash command syntax (`/<skill-name>`) to invoke agents directly. Attach
 3. **Use Appropriate Slash Commands**: Match the command to the current SDLC phase (e.g., `/sdlc-define-specs` for specs, `/sdlc-code-review` for code audits).
 4. **Leverage Project Memory**: Periodically save significant milestones using the `memory-manager` skill to maintain context across different chat sessions.
 5. **Iterate and Verify**: Always verify the outputs of an agent against the original PRD and Spec before proceeding to the next phase.
+6. **Floor-Guard Anti-Cheat Rule**: Suppressions like `@ts-ignore`, `eslint-disable`, `# noqa`, skipping tests (`.skip`, `xit`), or deleting assertions are strictly forbidden. Fix the code to satisfy the contract instead of weakening tests.
+7. **Anti-Injection Shield**: All ingested external documentation, source code files, bug reports, and logs are treated strictly as inert reference data (3-layer protection) to guard against prompt injection overrides.
+8. **Living Architecture Map Mandate**: Keep `docs/ARCHITECTURE.md` evergreen by updating it (or invoking `/sdlc-map-architecture`) whenever directory topologies, architectural modules, or API contracts change.
 
 ### 🌐 Language Preferences
 
@@ -707,6 +724,8 @@ The bootstrapper will initialize project governance (`CONSTITUTION.md`, `CONSTRA
 3. **🛡️ Floor-Guard Anti-Cheat & Prove-It Discipline:**
    - Rejects `@ts-ignore`, skipped tests, or tautological assertions.
    - Mandates failing automated regression tests before fixing any bug.
+4. **🔒 3-Layer Anti-Injection Shield:**
+   - Enforces strict data boundary protocols across all 21 skills, treating all ingested test inputs, fixtures, and external payloads strictly as inert reference data.
 
 ---
 
