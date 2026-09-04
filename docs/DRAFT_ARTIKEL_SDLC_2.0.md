@@ -20,18 +20,16 @@ Masalah fundamental dari AI coding saat ini adalah “halusinasi asumtif”. Saa
 
 Pendekatan Spec Kit menyelesaikan masalah ini dengan mencabut kebebasan AI untuk menebak. Kita memisahkan siklus hidup pengembangan ke dalam serangkaian dokumen statis berbasis teks biasa (Markdown), dan mewajibkan persetujuan (approval) di setiap titik transisinya. Alurnya menjadi sangat linier, disiplin, dan deterministik:
 
-**PRD ➡️ INTEROGASI ➡️ SPEC ➡️ VALIDASI ➡️ PLAN ➡️ KODE ➡️ DOKUMENTASI**
+**DISCOVERY ➡️ PRD ➡️ INTEROGASI ➡️ SPEC ➡️ KONSISTENSI ➡️ PLAN ➡️ KODE ➡️ DOKUMENTASI**
 
-Kita memecah beban kerja ini kepada serangkaian *slash commands* yang mewakili agen spesialis. Setiap *skill* dipersenjatai dengan protokol “Zero Assumption” — jika mereka bingung, instruksinya ambigu, atau konteksnya kurang, mereka dilarang keras berasumsi dan wajib berhenti untuk bertanya kepada Anda (Pushback/Refuse).
+Kita memecah beban kerja ini kepada serangkaian *skills* spesialis yang dieksekusi melalui **Slash Commands (`/`)**. Setiap perintah dipersenjatai dengan protokol “Zero Assumption” — jika mereka bingung, instruksinya ambigu, atau konteksnya kurang, mereka dilarang keras berasumsi dan wajib berhenti untuk bertanya kepada Anda (Pushback/Refuse).
 
-### Lebih dari Sekadar Agent: Ekosistem Multi-Platform
-Dalam pembaruan terbaru, repositori Awesome Copilot ID tidak hanya berisi Custom Agents untuk diajak mengobrol, melainkan sebuah ekosistem utuh berbasis eksekusi skill yang terdiri dari:
+### Lebih dari Sekadar Agen: Ekosistem Multi-Platform (Single Source of Truth)
+Dalam pembaruan terbaru, repositori Awesome Copilot ID tidak lagi memerlukan duplikasi folder terpisah untuk tiap editor AI. Kita mengadopsi arsitektur **Single Source of Truth**:
 
-- **Agents & Skills (Slash Commands):** “Otak” spesialis AI yang dipanggil dengan format `/slash-command` untuk menjalankan alur kerja (SOP) spesifik secara berurutan.
-- **Guardrails (Instructions / Rules):** File markdown global (seperti `AGENTS.md`) yang memaksa standar coding dan arsitektur yang ketat di seluruh proyek.
-- **Otomatisasi (Prompts):** Perintah jalan pintas untuk mengeksekusi tugas berulang secara instan tanpa perlu mengetik prompt panjang.
-
-*Catatan: Seluruh ekosistem ini sekarang bersifat multi-platform. Semua komponen di atas siap digunakan secara native untuk GitHub Copilot, OpenCode, CommandCode, dan Google Antigravity.*
+- **Struktur Terpusat (`.agents/`):** Seluruh *skills*, SOP, instruksi spesialis, dan persona AI disimpan di direktori `.agents/skills/`.
+- **Aturan Induk (`AGENTS.md`):** Satu file *rulebook* global di *root* proyek yang menjadi pedoman standar coding, arsitektur, dan bahasa bagi semua agen AI.
+- **Dukungan 9 Platform Sekaligus:** Seluruh ekosistem ini sekarang bersifat multi-platform dan siap digunakan secara native untuk **GitHub Copilot**, **Google Antigravity**, **OpenCode**, **CommandCode**, **ChatGPT Codex**, **Pi Dev Coding Agent** (`pi.dev`), **Oh My Pi** (`omp.sh`), **Claude Code** (via `.claude/`), dan **Cursor** (via `.cursor/`).
 
 ---
 
@@ -57,53 +55,63 @@ Semuanya dimulai dari masalah bisnis. Kesalahan fatal developer adalah langsung 
 Sebuah PRD sering kali masih menyimpan celah logika yang tak terlihat. Di sinilah `/sdlc-clarify-reqs` masuk mengambil peran sebagai *Devil's Advocate*. Alih-alih menyetujui segalanya, perintah ini akan memicu AI untuk "menyerang" dokumen Anda dengan pertanyaan ekstrem (interogasi). *Bagaimana jika pengguna kehilangan koneksi internet saat fungsi ini dipanggil? Apa yang terjadi pada antrean data jika API pihak ketiga mengalami timeout?* Agen ini memaksa Anda menambal semua *edge cases* (kasus tepi) sebelum kode apa pun ditulis.
 
 **Mengadopsi Protokol “Grill Me”**
-Seringkali, saat AI disuruh menganalisis dokumen, ia akan memberondong kita dengan daftar 10 pertanyaan terbuka yang melelahkan secara kognitif (Machine Gun Questioning). Dengan protokol *Grill Me*, kita memaksa agen untuk mematuhi dua aturan ketat:
+Seringkali, saat AI disuruh menganalisis dokumen, ia akan memberondong kita dengan daftar 10 pertanyaan terbuka yang melelahkan secara kognitif (*Machine Gun Questioning*). Dengan protokol *Grill Me*, kita memaksa agen untuk mematuhi dua aturan ketat:
 1. **Bertanya Satu Per Satu:** AI hanya boleh menanyakan satu ambiguitas dalam satu waktu.
-2. **Do the Heavy Lifting:** AI diwajibkan memberikan opsi teknis yang konkret berdasarkan analisis codebase (Misal: Opsi A atau Opsi B).
+2. **Do the Heavy Lifting:** AI diwajibkan memberikan opsi teknis yang konkret berdasarkan analisis codebase (Misal: "Opsi A: Retry 3x di background, Opsi B: Tampilkan tombol Try Again ke user. Saya merekomendasikan opsi A").
 
-Ini mengubah AI menjadi rekan *brainstorming* proaktif, dan semua keputusan krusial akan dibekukan menjadi Architecture Decision Record (ADR).
+Semua keputusan krusial (terutama yang *hard-to-reverse*) dari sesi ini akan otomatis dibekukan menjadi dokumen **Architecture Decision Record (ADR)**.
+
+> [!TIP]
+> **Quality Gate: Readiness Score (40/30/30)**
+> Untuk mencegah siklus perdebatan dokumen tanpa akhir (*infinite clarification loop*), agen audit menggunakan formula skor kesiapan: **Kelengkapan (40%)**, **Kejelasan (30%)**, dan **Keselarasan (30%)**. Dokumen hanya dinyatakan resmi layak lanjut ke fase berikutnya jika mencapai skor $\ge 80/100$.
 
 ### Fase 3: Terjemahan Teknis Arsitektur (`/sdlc-define-specs`)
-Setelah logika bisnis dipastikan kedap air, kita serahkan dokumen `prd.md` ke `/sdlc-define-specs`. Agen ini adalah jembatannya. Ia membaca PRD, menelusuri basis kode yang ada, dan merumuskan dokumen kontrak teknis di direktori `/spec/`. Dokumen ini mendefinisikan *interface*, kontrak data (skema JSON/tipe data statis), dan menegakkan aturan Clean Architecture. Sebagai fitur unggulan (*Mandatory Upstream Documents*), agen ini akan otomatis menolak bekerja (*pushback*) jika Anda tidak memberikan konteks PRD sebelumnya.
+Setelah logika bisnis dipastikan kedap air, kita serahkan dokumen `prd.md` ke `/sdlc-define-specs`. Agen ini adalah jembatannya. Ia membaca PRD, menelusuri basis kode yang ada, dan merumuskan dokumen kontrak teknis di direktori `/spec/`. Dokumen ini mendefinisikan *interface*, kontrak data (skema JSON/tipe data statis), dan menegakkan aturan Clean Architecture.
+
+Sebagai bagian dari **Mandatory Upstream Documents Protocol**, agen ini akan otomatis menolak bekerja (*pushback*) jika Anda tidak melampirkan konteks PRD atau dokumen hulu sebelumnya!
+
+*(Catatan Efisiensi: Jika Anda memilih jalan pintas "PRD Bypass", agen Spec akan melakukan Heavy Lifting dengan menebak detail teknis yang belum ada dan menandainya dengan tag `[ASSUMPTION]` agar dapat diuji di fase berikutnya).*
 
 ### Fase 4: Pengecekan Konsistensi Silang (`/sdlc-audit-consistency`)
-Ini adalah pos pemeriksaan keamanan. Sebelum rencana eksekusi final dikunci, `/sdlc-audit-consistency` akan mengaudit dokumen `/spec/` dan menyandingkannya dengan `prd.md`. Tugas utamanya adalah validasi *traceability* (keterlacakan). Ia memastikan tidak ada satu pun requirements bisnis yang tertinggal dari spesifikasi teknis, dan sebaliknya, tidak ada fitur "siluman" yang ditambahkan ke dalam spek.
+Ini adalah pos pemeriksaan keamanan. Sebelum rencana eksekusi final dikunci, `/sdlc-audit-consistency` akan mengaudit dokumen `/spec/` dan menyandingkannya dengan `prd.md`. Tugas utamanya adalah validasi *traceability* (keterlacakan). Ia memastikan tidak ada satu pun requirements bisnis yang tertinggal dari spesifikasi teknis, dan sebaliknya, tidak ada fitur "siluman" yang ditambahkan ke dalam spek tanpa pernah diminta oleh PRD.
 
 ### Fase 5: Rencana Eksekusi Bertahap (`/sdlc-plan-tasks`)
-Dokumen `/spec/` yang sudah divalidasi kemudian dieksekusi dengan `/sdlc-plan-tasks`. Tugas spesialis ini adalah memecah spesifikasi arsitektur menjadi tugas-tugas atomik berkonsep *Tracer Bullets* (vertical slicing) di dalam direktori `/plan/`. Di setiap akhir tabel implementasi pada dokumen Markdown, agen ini akan menyisipkan perintah verifikasi yang mewajibkan kode lulus tes dan approval dari pengguna.
+Dokumen `/spec/` yang sudah divalidasi kemudian dieksekusi dengan `/sdlc-plan-tasks`. Tugas spesialis ini adalah memecah spesifikasi arsitektur menjadi tugas-tugas atomik berkonsep **Tracer Bullets (Vertical Slicing)** di dalam direktori `/plan/`.
 
-### Fase 6: Eksekusi Kode (`/sdlc-write-code`)
-Kini, panggung diserahkan kepada eksekutor utama kita menggunakan perintah `/sdlc-write-code`. Berbekal *Karpathy Guidelines*, perintah ini mengeksekusi agen layaknya mesin presisi tingkat tinggi. Karena semua beban kognitif (arsitektur, perancangan, validasi) telah diurus oleh dokumen `/plan/`, agen ini bisa fokus 100% pada penulisan kode (*Surgical Changes* & *Simplicity First*). 
+Alih-alih memotong kode secara horizontal (*layer-by-layer* yang sulit diuji), *tracer bullets* memotong dari database, logika bisnis, hingga UI dalam irisan vertikal tipis yang bisa langsung didemokan dan diverifikasi. Di setiap akhir tabel implementasi pada dokumen Markdown, agen ini menyisipkan rem pengaman: perintah **VERIFY** (wajib lulus unit/integration test) dan **APPROVAL** (AI wajib berhenti total dan menunggu lampu hijau dari Anda).
 
-*(Bypass Jalur Cepat: Jika Anda hanya ingin memperbaiki typo, bug kecil, atau minor refactor tanpa harus melewati semua birokrasi Fase 1-5 di atas, Anda dapat langsung memanggil **`/code-janitor`**. Ini adalah utilitas khusus untuk mengeksekusi perubahan secara kilat dan presisi di luar prosedur standar SDLC).*
+### Fase 6: Eksekusi Kode Presisi (`/sdlc-write-code`)
+Kini, panggung diserahkan kepada eksekutor utama kita menggunakan perintah `/sdlc-write-code`. Berbekal **Karpathy Guidelines**, perintah ini mengeksekusi agen layaknya mesin presisi tingkat tinggi. Karena semua beban kognitif (arsitektur, perancangan, validasi) telah diurus oleh dokumen `/plan/`, agen ini bisa fokus 100% pada penulisan kode (*Surgical Changes* & *Simplicity First*).
+
+> [!IMPORTANT]
+> **Jalur Cepat (Escape Hatch): `/code-janitor`**
+> Bagaimana jika Anda hanya ingin memperbaiki *typo*, mengubah padding CSS, atau *minor refactor* satu fungsi? Menjalankan siklus penuh PRD ➔ Spec ➔ Plan tentu terlalu berlebihan.
+> Untuk kebutuhan ad-hoc seperti ini, Anda dapat langsung memanggil **`/code-janitor`**. Utilitas ini memadukan perencanaan mikro dan eksekusi instan dalam satu tarikan napas, melewati birokrasi dokumen SDLC standar namun tetap menjaga kerapian kode tanpa komplikasi.
 
 ### Fase 7: Quality Assurance & Remediasi Cerdas
-Kode yang ditulis, sebaik apa pun, tetap butuh pengawasan:
-- **`/sdlc-code-review`**: Skill ini membedah *Pull Request* atau *commit* lokal Anda. Ia menganalisis pelanggaran *Clean Code* dan mengaudit celah keamanan (OWASP Top 10) untuk menghasilkan rencana refactoring.
-- **`/sdlc-bug-report`**: Saat sistem mengalami masalah, agen ini menolak tebak-tebakan. Ia meminta *stack trace*, menganalisis *root cause*, dan membuat rencana perbaikan dengan filosofi Test-Driven Bug Fixing (TDBF).
+Kode yang ditulis, sebaik apa pun, tetap butuh pengawasan independen:
+- **`/sdlc-code-review`**: Skill ini membedah *Pull Request* atau *commit* lokal Anda. Ia menganalisis pelanggaran *Clean Code* dan mengaudit celah keamanan (OWASP Top 10) untuk menghasilkan rencana refactoring formal.
+- **`/sdlc-bug-report`**: Saat sistem mengalami masalah, agen ini menolak tebak-tebakan (*Detective Protocol*). Ia meminta *stack trace*, menganalisis *root cause*, dan menerapkan filosofi **Test-Driven Bug Fixing (TDBF)** dengan *Prove-It Pattern*: wajib menulis test yang GAGAL mereproduksi bug terlebih dahulu sebelum menyentuh kode aplikasi, dilengkapi prosedur *rollback*.
 
 ### Fase 8: Dokumentasi Standar Industri (`/sdlc-generate-docs`)
-Dokumentasi yang buruk sama bahayanya dengan kode yang buruk. Agen pamungkas ini mengadopsi standar global Diátaxis Framework. Saat dipanggil, ia akan bertanya dan memastikan dokumen ditujukan dengan tepat sebagai Tutorial, How-To, Reference, atau Explanation, menjamin dokumentasi proyek Anda rapi dan profesional.
+Dokumentasi yang buruk sama bahayanya dengan kode yang buruk. Agen pamungkas ini mengadopsi standar global **Diátaxis Framework**. Sebelum menulis satu kata pun, ia akan mengklasifikasikan dokumen ke dalam 4 kuadran: **Tutorial** (pembelajaran langkah demi langkah), **How-To** (resep solusi masalah), **Reference** (spesifikasi faktual API), atau **Explanation** (penjelasan konsep arsitektur).
+
+*(Tips Tambahan: Anda juga dapat memanggil **`/sdlc-map-architecture`** kapan pun untuk memindai struktur direktori proyek secara otomatis dan membekukannya menjadi peta topografi hidup di `docs/ARCHITECTURE.md`).*
 
 ---
 
 ## Memilih “Otak” yang Tepat: Strategi Model AI (Thinking vs. Execution)
 
-Satu kesalahan yang sering dilakukan oleh developer saat menggunakan orkestrasi AI adalah menggunakan model (LLM) yang sama untuk setiap tugas. Padahal, Software Engineering membutuhkan dua jenis kecerdasan yang berbeda: **Logika Mendalam (Thinking/Reasoning)** dan **Tindakan Cepat (Execution/Coding)**.
+Satu kesalahan yang sering dilakukan oleh developer saat menggunakan orkestrasi AI adalah menggunakan model (LLM) yang sama untuk setiap tugas. Padahal, rekayasa perangkat lunak membutuhkan dua jenis kecerdasan yang berbeda: **Logika Mendalam (Thinking/Reasoning)** dan **Tindakan Cepat (Execution/Coding)**.
 
-Agar workflow di atas berjalan optimal, Anda harus memasangkan *slash command* dengan model AI yang tepat.
+Agar workflow di atas berjalan optimal, Anda disarankan memasangkan *slash command* dengan model AI yang tepat:
 
-**1. Model “Pemikir” (Thinking & Reasoning Models)**
-Model-model ini memiliki kemampuan penalaran tingkat tinggi, sangat teliti, dan unggul dalam merangkai arsitektur serta mendeteksi cacat logika. 
-*Rekomendasi Model:* Gemini Pro / Advanced, Claude Opus, GPT High / Extra High, atau varian analitik seperti DeepSeek Pro / Qwen Max.
-*Kecocokan Slash Command:* `/sdlc-draft-prd`, `/sdlc-clarify-reqs`, `/sdlc-define-specs`, `/sdlc-plan-tasks`, `/sdlc-code-review`.
+| Kategori Model | Karakteristik & Rekomendasi Model | Kecocokan Slash Command |
+| :--- | :--- | :--- |
+| **1. Model “Pemikir”<br/>*(Thinking & Reasoning)*** | Memiliki parameter besar, kemampuan penalaran mendalam (*deep reasoning*), sangat teliti mendeteksi cacat logika arsitektur.<br/><br/>**Rekomendasi:**<br/>• Claude 3.7 Sonnet (*Thinking Mode*) / Claude 3.5 Sonnet<br/>• Gemini 2.5 Pro / Gemini 1.5 Pro<br/>• OpenAI o3-mini / GPT-4o<br/>• DeepSeek R1 | • `/sdlc-draft-prd`<br/>• `/sdlc-clarify-reqs`<br/>• `/sdlc-define-specs`<br/>• `/sdlc-plan-tasks`<br/>• `/sdlc-code-review` |
+| **2. Model “Eksekutor”<br/>*(Action & Coding)*** | Latensi sangat rendah, gesit (*agile*), konteks raksasa, dioptimalkan secara khusus (*fine-tuned*) untuk sintaks pemrograman, eksekusi terminal, dan modifikasi file bedah.<br/><br/>**Rekomendasi:**<br/>• Claude 3.7 / 3.5 Sonnet (*Standard Coding*)<br/>• Gemini 2.5 Flash / Gemini 2.0 Flash<br/>• DeepSeek V3 / Qwen 2.5 Coder | • `/sdlc-write-code`<br/>• `/code-janitor`<br/>• `/sdlc-audit-consistency`<br/>• `/sdlc-generate-docs`<br/>• `/sdlc-map-architecture` |
 
-**2. Model “Eksekutor” (Action & Coding Models)**
-Model ini sangat tangkas (agile), memiliki latency rendah, dan dilatih khusus (fine-tuned) untuk memahami sintaks pemrograman dan eksekusi instruksi dari terminal.
-*Rekomendasi Model:* Claude Sonnet (raja coding interaktif), Gemini Flash (cepat dengan context window raksasa), DeepSeek Flash, Qwen.
-*Kecocokan Slash Command:* `/sdlc-write-code`, `/code-janitor`, `/sdlc-generate-docs`, `/sdlc-audit-consistency`.
-
-Dengan memisahkan model berdasarkan spesialisasinya, Anda tidak hanya meningkatkan kualitas produk akhir, namun juga mengoptimalkan kecepatan workflow dan menghemat biaya API.
+Dengan memisahkan model berdasarkan spesialisasinya, Anda tidak hanya meningkatkan kualitas produk akhir, namun juga mengoptimalkan kecepatan workflow dan menghemat biaya API secara drastis.
 
 ---
 
@@ -111,35 +119,95 @@ Dengan memisahkan model berdasarkan spesialisasinya, Anda tidak hanya meningkatk
 
 <placeholder gambar panel komik kucing ilustrasi setiap agent yang berjalan - WAJIB DIUPDATE textnya jadi /slash-command>
 
-Bagi Anda yang menyukai alur kerja minimalis namun bertenaga ekstrem, pendekatan SDLC ini terasa sangat magis jika diintegrasikan dengan tools yang tepat. Anda bisa menggunakan editor teks di satu monitor untuk menulis PRD secara asinkron, dan di layar sebelahnya Anda memanggil *slash commands* ini melalui terminal.
+Bagi Anda yang menyukai alur kerja minimalis namun bertenaga ekstrem, pendekatan SDLC ini terasa sangat magis jika diintegrasikan dengan tools yang tepat.
 
-### Cara Memasang Custom Agents (Slash Commands) ke Proyek Anda
+Bayangkan setup berikut:
+- Di monitor sebelah kiri, Anda membuka **Google Antigravity** atau **VS Code** sebagai teks editor utama untuk membaca dan menyunting ide-ide PRD, Spec, dan Plan secara asinkron.
+- Di monitor sebelah kanan, Anda menjalankan terminal **OpenCode** atau **CommandCode** sebagai mesin eksekutor agen.
 
-Jika Anda menggunakan VS Code dengan ekstensi GitHub Copilot Chat, OpenCode, atau Google Antigravity, mengintegrasikan ekosistem *Awesome Copilot ID* sangatlah mudah:
+Saat Anda menyimpan dokumen di editor, agen di terminal dapat membaca perubahan file Markdown tersebut secara *real-time* dan langsung mengeksekusi langkah berikutnya. Semuanya saling berkomunikasi melalui satu *single source of truth*: **kontrak teks Markdown**. Bersih, deterministik, dan Anda memegang kendali 100%.
 
-<placeholder gambar konfigurasi di GitHub Copilot VS Code - Update tampilan tree bila berbeda>
+---
 
-1. Buka *root directory* proyek Anda.
-2. Unduh atau salin struktur folder `.agents/` dari repositori [Awesome Copilot ID](https://github.com/GulajavaMinistudio/awesome-copilot-id). Pastikan Anda menyalin folder `skills/` yang mencakup semua *slash commands* beserta file `SKILL.md`-nya (misalnya direktori `sdlc-clarify-reqs/SKILL.md`, `sdlc-define-specs/SKILL.md`, dll).
-3. Salin file *rulebook* `AGENTS.md` dari repositori ke dalam *root directory* proyek Anda. Sesuaikan isi `AGENTS.md` agar selaras dengan konteks bahasa dan *stack* proyek yang sedang Anda kerjakan.
-4. Hubungkan file-file *guardrails* ini dengan sistem AI *Workspace* Anda. (Misal: menaruhnya di folder `.github/copilot-instructions.md` untuk GitHub Copilot).
+## 3 Cara Mudah Memasang Ekosistem ke Proyek Anda
 
-<placeholder gambar tampilan Google Antigravity editor>
-<placeholder gambar konfigurasi agent di Google Antigravity>
-<placeholder gambar menjalankan Opencode di Terminal>
-<placeholder gambar pemilihan agen di Opencode>
-<placeholder gambar agen Antigravity dan Opencode berjalan bersamaan>
+Anda tidak perlu lagi menyalin file satu per satu ke banyak folder. Repositori Awesome Copilot Indonesia kini menyediakan 3 metode instalasi yang sangat fleksibel:
 
-Setelah terpasang, Anda tinggal mengetikkan *slash command* langsung di kolom *chat* (contoh: `/sdlc-clarify-reqs tolong interogasi prd.md ini`). Sistem AI secara otomatis akan mematuhi protokol “Zero Assumption” dan *SOP* yang tertulis di dalam `SKILL.md` bersangkutan.
+<placeholder gambar: Terminal saat menjalankan instalasi via npx skills atau install script>
 
-<placeholder gambar Agent siap dipanggil di CommandCode CLI>
+### Metode 1: Agentic Installation via `npx skills` (Paling Direkomendasikan! 🚀)
+Jika Anda menggunakan editor berbasis agen modern (seperti Google Antigravity, Cursor, Claude Code, atau GitHub Copilot), Anda cukup mengunduh *bootstrapper* resmi menggunakan CLI `skills`:
+
+```bash
+npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init
+```
+
+Setelah terpasang, buka kolom *chat* AI Anda dan jalankan perintah:
+
+```text
+/sdlc-init setup this project
+```
+
+Secara otonom, agen *bootstrapper* akan mengunduh seluruh arsitektur `.agents/`, mengonfigurasi `AGENTS.md`, menyelaraskan aturan bahasa proyek, dan menyiapkan seluruh *slash commands* untuk Anda. Sangat elegan!
+
+---
+
+### Metode 2: Skrip Otomatis Satu Baris (One-Liner Script)
+Buka terminal di *root directory* proyek Anda dan jalankan perintah berikut:
+
+- **Linux / macOS (Bash/Zsh):**
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.sh | bash
+  ```
+- **Windows Terminal (PowerShell):**
+  ```powershell
+  irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex
+  ```
+
+Skrip interaktif ini akan menanyakan paket yang Anda inginkan (Standar SDLC atau TDD-Spec) dan otomatis memetakan file ke direktori target yang sesuai (`.agents/`, `.claude/`, atau `.cursor/`).
+
+---
+
+### Metode 3: Manual Copy (Single Source of Truth)
+Bagi Anda yang lebih suka menyalin secara manual:
+1. *Clone* repositori: `git clone https://github.com/GulajavaMinistudio/awesome-copilot-id.git`
+2. Salin folder `.agents/` dan file `AGENTS.md` langsung ke *root directory* proyek Anda. *(Untuk Claude Code salin isi `.agents/` ke `.claude/`, dan untuk Cursor ke `.cursor/`)*.
+3. Buka file `AGENTS.md` dan sesuaikan nama proyek serta preferensi bahasa komunikasi di dalamnya.
+
+Selesai! Sekarang Anda dapat langsung mengetikkan perintah di chat seperti:
+```text
+/sdlc-clarify-reqs tolong interogasi dokumen @prd.md ini
+/sdlc-write-code implementasikan fitur keranjang belanja berdasarkan @plan.md
+```
+
+---
+
+## Fitur Ekosistem Unggulan Lainnya
+
+Selain 12 fase SDLC standar di atas, repositori Awesome Copilot ID terus berkembang dengan fitur-fitur mutakhir yang sayang untuk dilewatkan:
+
+### 1. 🧪 TDD-Spec SDLC Package (21 Skills untuk Penganut Test-First)
+Bagi tim yang menerapkan standar rekayasa perangkat lunak ultra-ketat, repositori ini menyediakan paket kembar: **TDD-Spec SDLC** (tersedia di direktori `tdd-spec-skills/`). Paket ini memuat 21 *skills* spesialis (`/tdd-*`) yang menegakkan:
+- **Red-Green-Refactor Murni:** Menolak menulis kode sebelum unit test yang gagal ditulis terlebih dahulu (*Floor-Guard anti-cheat*).
+- **Living Architecture Maps (`docs/ARCHITECTURE.md`):** Pemetaan *test seams* dan struktur aplikasi secara otomatis.
+- **Navigator Proyek Interaktif (`/tdd-ask-help`):** AI pemandu yang mendeteksi artefak proyek Anda dan memandu langkah berikutnya secara sokratik.
+
+### 2. 🔑 BYOK (Bring Your Own Key) Copilot Config
+Ingin menggunakan model AI murah atau gratis seperti DeepSeek V3/R1, Qwen, atau OpenRouter di dalam GitHub Copilot VS Code tanpa langganan mahal?
+Repositori ini menyediakan template siap pakai di folder `byok-copilot-config/` (`chatLanguageModels.json`). Anda cukup memasukkan API Key pribadi Anda untuk membuka deretan model LLM kustom langsung di dalam Copilot Chat!
+
+---
 
 ## Kesimpulan
 
+Membangun perangkat lunak di era AI generatif bukan tentang menyerahkan seluruh kemudi kepada mesin, melainkan tentang **membangun batasan (*guardrails*) yang cerdas**.
+
 <placeholder gambar Ilustrasi Alur SDLC dengan Spec Kit dan AI Workflow (diagram kompleks) - WAJIB DIUPDATE label agen dari @ menjadi /slash-command>
 
-Membangun perangkat lunak di era AI generatif bukan tentang menyerahkan seluruh kemudi kepada mesin, melainkan tentang membangun batasan (guardrails) yang cerdas. Dengan memecah siklus hidup pengembangan ke dalam orkestra perintah spesifik, mengawalnya dengan dokumen statis, dan menugaskan model AI (*Thinking vs. Execution*) pada tempat yang seharusnya, kita memastikan kecepatan pengkodean tidak pernah mengorbankan kualitas produk dan integritas arsitektur.
+Dengan memecah siklus hidup pengembangan ke dalam orkestra perintah spesifik, mengawalnya dengan dokumen teks statis melalui metodologi Github Spec Kit, dan menugaskan model AI (*Thinking vs. Execution*) pada tempat yang tepat, kita memastikan kecepatan penulisan kode tidak pernah mengorbankan kualitas produk dan integritas arsitektur.
 
-Tertarik mencoba dan membangun ulang cara Anda memproduksi kode? Silakan pelajari, gunakan, dan *fork* ekosistem ini secara bebas dari repositori resminya di: **github.com/GulajavaMinistudio/awesome-copilot-id**
+Tertarik mencoba dan membangun ulang cara Anda memproduksi kode? Silakan pelajari, gunakan, dan *fork* ekosistem ini secara bebas dari repositori resminya:
 
-Mari ubah paradigma kita dalam menulis perangkat lunak. *Happy Vibe Coding!*
+👉 **[GitHub: GulajavaMinistudio/awesome-copilot-id](https://github.com/GulajavaMinistudio/awesome-copilot-id)**
+
+Mari ubah paradigma kita dalam menulis perangkat lunak. Jika ada pertanyaan, jangan ragu untuk meninggalkan pesan di kolom komentar. *Happy Vibe Coding!* 🚀🚀🚀
