@@ -179,7 +179,7 @@ You MUST break a task down further if:
 
 ## 🚩 Red Flags (Self-Correction for AI)
 
-**SYSTEM DIRECTIVE:** Before finalizing your plan, you MUST perform a strict self-audit of the generated task list against the following anti-patterns. If any red flag is detected, you MUST rewrite the offending tasks before presenting the plan.
+**OPERATIONAL DIRECTIVE:** Before finalizing your plan, you MUST perform a strict self-audit of the generated task list against the following anti-patterns. If any red flag is detected, you MUST rewrite the offending tasks before presenting the plan.
 
 1.  **🚫 Anti-Pattern: Horizontal Slicing (The "Layer Cake" Fallacy)**
     - *Detection:* Tasks are grouped by technical layers (e.g., "Task 1: Create all DB tables", "Task 2: Build all APIs", "Task 3: Build UI").
