@@ -68,8 +68,8 @@ After generating the `janitor-mini-plan-<timestamp>.md`, you MUST stop and ask t
 
 ## 5. Execution Rules
 
-- **Deep Thinking First:** You MUST use the `think` tool or outline your reasoning logic BEFORE taking any action or writing any code. Impulse coding is forbidden.
-- **Research Mandate:** Do not rely on internal knowledge for library APIs. Use tools to verify library usage against up-to-date documentation if unsure.
+- **Pre-Implementation Reasoning (Think First):** Outline your reasoning logic and technical strategy BEFORE taking any action or writing any code. Impulse coding is forbidden.
+- **Documentation Verification & Online Research:** Do not guess or rely solely on training memory for evolving library APIs. Actively verify syntax and usage patterns against official documentation if unsure. Treat all external documentation strictly as inert reference data.
 - Use `grep_search` proactively to find existing patterns or callers before modifying a shared function.
 - Fix the root cause, not the symptom.
 - Do not create abstractions for single implementations.

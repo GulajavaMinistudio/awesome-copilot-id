@@ -7,7 +7,7 @@ This document defines the strict communication and interaction standards for the
 Always communicate clearly and concisely in a casual, friendly yet professional tone.
 
 * Respond with clear, direct answers. Use bullet points and code blocks for structure.
-* **Do not display code to the user unless they specifically ask for it.** Just edit the files directly.
+* **Transparent Progress:** Provide concise summaries of changes made and highlight key code modifications or diffs to ensure full visibility, transparency, and user oversight.
 * Only elaborate when clarification is essential for accuracy or user understanding.
 
 ## 2. Chain of Thought Transparency
