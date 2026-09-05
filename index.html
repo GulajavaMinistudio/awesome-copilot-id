@@ -271,12 +271,12 @@
                           <span class="badge bg-primary text-white">Standard SDLC</span>
                           <span class="small fw-semibold text-ink">12 Phases</span>
                         </div>
-                        <p class="small text-muted mb-1" style="font-size: 12px;">1. Terminal:</p>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step1">1. Terminal:</p>
                         <div class="position-relative mb-2">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init</code></pre>
                           <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/.agents/skills/sdlc-init" aria-label="Copy command to clipboard">Copy</button>
                         </div>
-                        <p class="small text-muted mb-1" style="font-size: 12px;">2. AI Chat:</p>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step2">2. AI Chat:</p>
                         <div class="position-relative">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_sdlc_init">/sdlc-init setup this project</span></code></pre>
                           <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_sdlc_init" data-clipboard="/sdlc-init setup this project" aria-label="Copy command to clipboard">Copy</button>
@@ -291,12 +291,12 @@
                           <span class="badge badge-tdd">TDD-Spec SDLC</span>
                           <span class="small fw-semibold text-success">21 Skills</span>
                         </div>
-                        <p class="small text-muted mb-1" style="font-size: 12px;">1. Terminal:</p>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step1">1. Terminal:</p>
                         <div class="position-relative mb-2">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init</code></pre>
                           <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/tdd-spec-skills/.agents/skills/tdd-init" aria-label="Copy command to clipboard">Copy</button>
                         </div>
-                        <p class="small text-muted mb-1" style="font-size: 12px;">2. AI Chat:</p>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step2">2. AI Chat:</p>
                         <div class="position-relative">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_tdd_init">/tdd-init setup this project</span></code></pre>
                           <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_tdd_init" data-clipboard="/tdd-init setup this project" aria-label="Copy command to clipboard">Copy</button>
@@ -1192,6 +1192,32 @@
                   </div>
                 </div>
 
+                <!-- CA-2 Accordion Item (Post-Spec) -->
+                <div class="accordion-item border-top-hairline">
+                  <h2 class="accordion-header" id="mob-heading-ca-2">
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca-2" aria-expanded="false" aria-controls="mob-collapse-ca-2">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-clarify-reqs</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_ca_role_2">Clarification Gatekeeper (Post-Spec)</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-ca-2" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca-2" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
+                      </div>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_ca_spec_plan">/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md</span></code></pre>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_spec_plan" data-clipboard="/sdlc-clarify-reqs check if there are missing technical constraints in @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- PA Accordion Item -->
                 <div class="accordion-item border-top-hairline">
                   <h2 class="accordion-header" id="mob-heading-pa">
@@ -1213,6 +1239,32 @@
                       <div class="position-relative">
                         <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_pa_1">/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md</span></code></pre>
                         <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_pa_1" data-clipboard="/sdlc-plan-tasks create a step-by-step implementation plan for @cart-spec.md" aria-label="Copy command to clipboard">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CA-3 Accordion Item (Post-Plan) -->
+                <div class="accordion-item border-top-hairline">
+                  <h2 class="accordion-header" id="mob-heading-ca-3">
+                    <button class="accordion-button collapsed fw-bold text-ink" type="button" data-bs-toggle="collapse" data-bs-target="#mob-collapse-ca-3" aria-expanded="false" aria-controls="mob-collapse-ca-3">
+                      <div class="d-flex flex-column text-start">
+                        <span class="font-monospace">/sdlc-clarify-reqs</span>
+                        <span class="small text-muted fw-normal" style="font-size: 11px;" data-i18n="agent_ca_role_3">Clarification Gatekeeper (Post-Plan)</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="mob-collapse-ca-3" class="accordion-collapse collapse" aria-labelledby="mob-heading-ca-3" data-bs-parent="#agentsAccordion">
+                    <div class="accordion-body bg-light p-4">
+                      <p class="text-body-custom small mb-3" data-i18n="agent_ca_desc">Melakukan interogasi terhadap PRD, Spesifikasi Teknis, atau Rencana Implementasi untuk menemukan ambiguitas, asumsi tersembunyi, dan edge-case yang terlewat.</p>
+                      <div class="agent-best-for-callout p-3 mb-3">
+                        <h3 class="text-ink fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_best">Paling Cocok Untuk:</h3>
+                        <p class="text-body-custom small mb-0" data-i18n="agent_ca_best">Pengecekan kualitas kebutuhan sebelum melangkah ke spesifikasi teknis atau penulisan kode.</p>
+                      </div>
+                      <h3 class="text-muted fw-bold mb-1" style="font-size: 12px;" data-i18n="agent_label_prompt">Contoh Prompt Penggunaan:</h3>
+                      <div class="position-relative">
+                        <pre class="bg-white border-hairline text-ink mb-0 p-2" style="font-size: 11px;"><code><span data-i18n="prompt_ca_plan">/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies</span></code></pre>
+                        <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0; padding: 2px 8px; font-size: 11px;" data-i18n-clipboard="prompt_ca_plan" data-clipboard="/sdlc-clarify-reqs verify if @cart-plan.md is missing rollback strategies" aria-label="Copy command to clipboard">Copy</button>
                       </div>
                     </div>
                   </div>
