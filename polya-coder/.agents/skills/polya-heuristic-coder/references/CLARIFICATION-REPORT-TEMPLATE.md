@@ -9,11 +9,11 @@
 
 ## 📊 Score Breakdown (Quality Gate Rubric)
 
-- **Completeness (max 40 pts):** `{Score}` / 40  
+- **Completeness (40%):** `{Score}` / 40  
   *Rationale:* {Are Unknown, Data, Condition, and all Clean Architecture seams explicitly documented?}
-- **Clarity (max 30 pts):** `{Score}` / 30  
+- **Clarity (30%):** `{Score}` / 30  
   *Rationale:* {Is fuzzy language eliminated? Are contracts strictly typed with no ambiguous terms?}
-- **Alignment (max 30 pts):** `{Score}` / 30  
+- **Alignment (30%):** `{Score}` / 30  
   *Rationale:* {Does vocabulary strictly match `CONTEXT.md`? Are architectural decisions compliant with `docs/adr/`?}
 - **Critical Flaw Veto:** `{Triggered / None}`  
   *(Note: If triggered, maximum allowable score is capped at 79 regardless of weighted points).*

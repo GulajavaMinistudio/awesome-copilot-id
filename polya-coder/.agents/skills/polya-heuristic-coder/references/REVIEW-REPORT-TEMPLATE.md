@@ -32,6 +32,26 @@
 - [ ] Currency values strictly typed (integer cents vs floating point dollars).
 - [ ] Enums bounded with exhaustive switch matching (no unhandled default leaks).
 
+### 2.3 Inductive Invariant Verification (Pólya, p. 114)
+- [ ] Base Case 0: Empty collection / initial state handled gracefully.
+- [ ] Base Case 1: Single element input behaves deterministically.
+- [ ] Inductive Step ($n \to n+1$): Iterations, batch pagination, and state transitions preserve all domain invariants.
+
+### 2.4 All Data & Whole Condition Audit (Pólya, p. 33)
+- [ ] All Data Check: Zero silently dropped query params or unparsed payload attributes.
+- [ ] Whole Condition Check: All SLA limits, business constraints, and security invariants verified.
+
+### 2.5 Indirect Proof Audit (Reductio ad Absurdum - Pólya, p. 162–171)
+- [ ] Fail-Fast Contradiction: Negative test cases explicitly verify that illegal states (unauthorized caller, expired session, corrupted payload) cannot persist and are rejected immediately.
+- [ ] Typed Domain Rejection: Negative execution paths produce typed domain errors rather than unhandled 500 crashes or silent fallbacks.
+
+### 2.6 Symmetry & Round-Trip Invariant Audit (Pólya, p. 199–200)
+- [ ] Reversible Operations: Invertible operations satisfy round-trip equality (e.g., `deserialize(serialize(x)) === x`, `decrypt(encrypt(x)) === x`).
+- [ ] Resource Lifecycle Symmetry: Every allocation or subscription has a matching guaranteed deallocation or teardown (`open/close`, `acquire/release`, `subscribe/unsubscribe`).
+
+### 2.7 Variation of the Problem & Boundary Audit (Pólya, p. 209–214)
+- [ ] Domain Variation: Test cases vary inputs across extreme ranges (empty states, negative values, max boundary limits, unicode strings, fuzz data) rather than relying exclusively on static happy-path examples.
+
 ---
 
 ## 3. Clean Code & Boy Scout Rule Verification
@@ -49,3 +69,37 @@
 
 1. `[file_path:line]` - [Specific refactoring required]
 2. `[file_path:line]` - [Missing boundary test to add]
+
+---
+
+## 5. Pólya's Two Golden Questions (Looking Back & Knowledge Promotion)
+
+*Pólya Heuristic: Can you use the result? Can you use the method? (Pólya, 1945, p. 61)*
+
+- **Can you use the result?**
+  - [Reusable Artifacts]: {List exported DTOs, domain models, or public ports ready for reuse in other modules, or "None"}
+- **Can you use the method?**
+  - [Promoted Pattern]: {Describe any novel architectural pattern, testing harness, or refactoring technique discovered}
+  - [Memory Promotion]: {Recommend adding this method to `memory.instructions.md` Knowledge Base via `/memory-manager`, or "None"}
+
+---
+
+## 6. Can You See It at a Glance? (Holistic Perception - Pólya, p. 59–61)
+
+*Pólya Heuristic: Can you see the whole solution at a glance? Compress the implementation into a 30-second mental model.*
+
+```text
+[Component / Client]
+       │
+       ▼ (Request DTO)
+[Interface Adapter / Controller]
+       │
+       ▼ (Use Case Interactor)
+[Domain Entity / Invariant Check]
+       │
+       ▼ (Port / Repository)
+[Infrastructure / DB / External Service]
+```
+
+- **At-a-Glance Summary:** [1-2 sentences capturing the entire data flow and primary invariant]
+- **Visual Diagram Validated:** [Yes / No - Can a new developer understand the topology without reading the full diff?]

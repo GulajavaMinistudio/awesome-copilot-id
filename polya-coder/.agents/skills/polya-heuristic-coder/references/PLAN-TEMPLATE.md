@@ -54,8 +54,8 @@ Every task must fit into one focused session. AI agents work most reliably on XS
 ### Implementation Phase 1: Land — Minimal End-to-End Tracer Bullet
 *Goal: Implement the minimal, fully-functional vertical slice connecting DB to UI with zero mocks.*
 
-| Task     | Description                                                                                        | Ref ID  | AC Ref | Dep      |  Files  | Completed | Date  |
-| :------- | :------------------------------------------------------------------------------------------------- | :------ | :----- | :------- | :-----: | :-------: | :---: |
+| Task | Description | Ref ID | AC Ref | Dep | Files | Completed | Date |
+| :--- | :--- | :--- | :--- | :--- | :---: | :---: | :---: |
 | TASK-001 | User Registration Slice [Domain User Entity + RegisterUseCase + API Route + Register Form UI]      | REQ-001 | AC-001 | -        | 3-5 (M) |    [ ]    |       |
 | TASK-00X | **VERIFY:** Execute end-to-end integration test for Tracer Bullet (`npm test` / integration suite) | -       | -      | TASK-001 |    -    |    [ ]    |       |
 | TASK-00Y | **APPROVAL:** 🛑 Stop and wait for explicit user confirmation to proceed to Phase 2                 | -       | -      | -        |    -    |    [ ]    |       |
@@ -63,11 +63,12 @@ Every task must fit into one focused session. AI agents work most reliably on XS
 ### Implementation Phase 2: Expand — Robustness, Edge Cases & Invariants
 *Goal: Expand the baseline with error handling, validations, caching, and edge-case guards.*
 
-| Task     | Description                                                                                       | Ref ID  | AC Ref | Dep      |  Files  | Completed | Date  |
-| :------- | :------------------------------------------------------------------------------------------------ | :------ | :----- | :------- | :-----: | :-------: | :---: |
+| Task | Description | Ref ID | AC Ref | Dep | Files | Completed | Date |
+| :--- | :--- | :--- | :--- | :--- | :---: | :---: | :---: |
 | TASK-002 | Duplicate Email & Rate Limiting Slice [Domain Invariant + Throttling Middleware + UI Error Toast] | REQ-002 | AC-002 | TASK-001 | 2-3 (S) |    [ ]    |       |
 | TASK-003 | Session Persistence & Auto-Login Slice [Token Generator + LocalStorage Adapter + Auth Guard]      | REQ-003 | AC-003 | TASK-001 | 3-4 (M) |    [ ]    |       |
-| TASK-00X | **VERIFY:** Run full test suite including extreme boundary conditions and regression suite        | -       | -      | TASK-003 |    -    |    [ ]    |       |
+| TASK-004 | Boundary Variation & Fuzz Property Slice [Negative numbers, empty collections, unicode, overflow]  | REQ-002 | AC-002 | TASK-003 | 1-2 (S) |    [ ]    |       |
+| TASK-00X | **VERIFY:** Run full test suite including extreme boundary conditions and regression suite        | -       | -      | TASK-004 |    -    |    [ ]    |       |
 | TASK-00Y | **APPROVAL:** 🛑 Stop and wait for explicit user confirmation to declare plan complete             | -       | -      | -        |    -    |    [ ]    |       |
 
 ---
@@ -83,13 +84,16 @@ Every task must fit into one focused session. AI agents work most reliably on XS
 
 ---
 
-## 5. Symmetry & Architectural Invariants
+## 5. Symmetry, Invariants & Problem Variation (Pólya, p. 199–214)
 
-- **Symmetric Operations:**
+- **Symmetric Operations & Round-Trip Invertibility ($f^{-1}(f(x)) = x$):**
   - `subscribe` $\leftrightarrow$ `unsubscribe`
   - `acquireLock` $\leftrightarrow$ `releaseLock`
   - `serialize` $\leftrightarrow$ `deserialize`
   - `open` $\leftrightarrow$ `close`
+  - `encrypt` $\leftrightarrow$ `decrypt`
+- **Variation of the Problem (Property-Based & Fuzz Exploration):**
+  - *Domain Variations:* [Plan property tests that vary input scale, empty states, negative bounds, and random permutations]
 - **SOLID Checks at Blueprint Stage:**
   - *Single Responsibility (SRP):* Does each modified file have only one reason to change?
   - *Dependency Inversion (DIP):* Do use cases depend only on abstract ports/interfaces?

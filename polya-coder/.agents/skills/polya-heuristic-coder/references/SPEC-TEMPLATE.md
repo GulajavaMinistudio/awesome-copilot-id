@@ -30,10 +30,17 @@ tags: ["polya", "spec", "clean-architecture"]
 - **CON-001 (Performance / SLA):** [e.g., Response time < 200ms, memory bound < 512MB]
 - **CON-002 (Security & Invariants):** [e.g., Role-based authorization, session timeout, idempotency key]
 
-### 1.4 Condition Sanity Check
+### 1.4 Condition Sanity Check & Completeness Audit (Pólya, p. 7, 33)
 - **Is the condition sufficient to determine the unknown?** [Yes / No - Explain]
 - **Is it insufficient?** [Flag any missing inputs or undefined states]
 - **Is it redundant or contradictory?** [Surface conflicting requirements]
+- **Did you use ALL the data?** [Verify every input parameter, query field, and payload attribute is accounted for]
+- **Did you use the WHOLE condition?** [Verify every constraint, SLA limit, and security invariant is explicitly mapped]
+
+### 1.5 Indirect Proof & Negative Invariant Analysis (Pólya, p. 162–171)
+*Assume the negation of the invariant (Reductio ad Absurdum) to verify defensive barriers:*
+- **Negative Hypothesis (Assume Violation):** [e.g., What if an unauthenticated caller invokes this endpoint, or session expires mid-flight?]
+- **Contradiction & Safe Rejection:** [Prove how the system rejects invalid states with typed domain errors, prevents corrupt state persistence, and fails fast]
 
 ---
 
@@ -60,9 +67,11 @@ tags: ["polya", "spec", "clean-architecture"]
 
 ---
 
-## 4. Setting Up Equations (Requirements to Contracts)
+## 4. Setting Up Equations & Expressive Notation (Pólya, p. 134–141)
 
-*Splitting natural language requirements clause-by-clause into formal structures:*
+*Splitting natural language requirements clause-by-clause into formal structures and making invalid states unrepresentable via Type-Driven Design:*
+
+- **Type-Driven Domain Invariants:** [Identify Value Objects, Discriminated Unions / Sealed Classes, Branded Types, or Enums that guarantee invalid states cannot compile]
 
 ### 4.1 Data Transfer Objects (DTOs) & Interfaces
 ```typescript

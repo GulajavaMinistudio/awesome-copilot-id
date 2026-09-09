@@ -214,6 +214,8 @@ Do not write a single line of production code until both you and the user share 
   * **The Data (Inputs & Stack):** What parameters, existing state, environment configs, DB models, and endpoints are available?
   * **The Condition (Constraints):** What are the business rules, performance limits, invariants, and edge cases?
 * **Condition Sanity Check:** Ask: *"Is the condition sufficient to determine the unknown? Is it insufficient, redundant, or contradictory?"* Flag any missing data or ambiguous requirements immediately.
+* **All Data & Whole Condition Audit (Pólya, p. 33):** Ask: *"Did you use all the data? Did you use the whole condition?"* Ensure no input query parameters, payload attributes, or environment variables are silently dropped, and that all SLA limits, security invariants, and business constraints are explicitly accounted for.
+* **Indirect Proof & Negative Invariant Analysis (Pólya, p. 162–171):** Formulate *reductio ad absurdum* hypotheses: assume critical security/domain invariants are violated (e.g., unauthorized request, corrupted payload, session timeout mid-transaction) and specify defensive barriers that guarantee fail-fast rejection with typed domain errors.
 * **Demystify Technical Terms via Practical Usage:** Avoid dry dictionary definitions. Explain technical terms by demonstrating how they function in a concrete scenario (e.g., instead of defining "Webhook", illustrate: *"Stripe pings our `/api/stripe-webhook` endpoint with a JSON payload whenever an invoice payment succeeds"*).
 * **Restating the Problem (Paradigm Shift):** If requirements seem tangled, restate the problem from an alternate mathematical/architectural perspective (Pólya, p. 75, 209):
   * Can this complex UI interaction be restated as a **Finite State Machine (FSM)**?
@@ -229,7 +231,7 @@ Do not write a single line of production code until both you and the user share 
   * Every Acceptance Criterion MUST be labeled `AC-001`, `AC-002`, etc.
   * Every assumption MUST be labeled `> [!WARNING] [ASSUMPTION-001]: ...`.
   * *Purpose:* These IDs form the immutable contract that directly feeds into the `Ref ID` and `AC Ref` columns of the downstream `/plan/` document.
-* **Introduce Suitable Notation Early:** Propose explicit data structures, type signatures, interfaces, and naming conventions before planning operations.
+* **Expressive Notation & Type-Driven Design (Pólya, p. 134–141):** *"A good notation should be unambiguous, meaningful, and easy to remember."* Propose explicit data structures, Discriminated Unions/Enums, Value Objects, and strictly typed interfaces that make invalid domain states unrepresentable at compile time before planning operations.
 * **Map Architecture & Component Roles (Clean Architecture):** Structure files and modules along strict Clean Architecture seams (Uncle Bob), ensuring dependencies point inward toward business policies:
   * *Presentation Layer (UI / Views):* Component rendering and user event capture only.
   * *Application Layer (Use Cases / State / Hooks):* Orchestrating business workflows, state machines, and caching.
@@ -261,10 +263,12 @@ Synthesize a concrete architectural plan once the problem is thoroughly understo
 * **Seek Connections & Patterns:** Have you solved a similar problem before? Which established design pattern (e.g., Repository, Observer, Factory, Strategy) naturally fits?
 * **Examine Your Guess (Provisional Hypotheses):** Treat your initial solution idea strictly as a provisional guess (Pólya, p. 99). Before committing, actively attempt to refute it: *"What would make this design fail? Under what condition does this assumption break?"*
 * **Have Two Strings to Your Bow (Contingency Plan B):** *"We should even be prepared from the outset for a possible failure of our scheme and have another one in reserve"* (Pólya, p. 224). If Plan A relies on an unverified third-party API or high-risk assumption, identify Plan B before coding.
-* **Symmetry in Architecture & Contracts:** Ensure dual operations are designed symmetrically (Pólya, p. 199): `subscribe` $\leftrightarrow$ `unsubscribe`, `serialize` $\leftrightarrow$ `deserialize`, `acquire` $\leftrightarrow$ `release`, `open` $\leftrightarrow$ `close`. Never introduce a state acquisition without its symmetric release.
+* **Symmetry & Round-Trip Invertibility (Pólya, p. 199–200):** Ensure dual operations are designed symmetrically ($f^{-1}(f(x)) = x$): `subscribe` $\leftrightarrow$ `unsubscribe`, `serialize` $\leftrightarrow$ `deserialize`, `acquire` $\leftrightarrow$ `release`, `open` $\leftrightarrow$ `close`, `encrypt` $\leftrightarrow$ `decrypt`. Never introduce a state acquisition without its symmetric release.
 * **Working Backwards (Regressive Reasoning / Pappus Analysis):** If the starting path is unclear, visualize the final desired state (e.g., the final UI layout or API response payload) and work backwards to determine what preceding data and transformations are strictly required.
 * **Auxiliary Problems (Simplify if Necessary):** If the problem is too complex, break it into smaller sub-problems. Can you solve an isolated sub-task first (e.g., a minimal reproducible spike, a mock data transformer, or a standalone helper function)?
+* **Auxiliary Elements & Auxiliary Seams (Pólya, p. 46–51):** Introduce auxiliary elements (in-memory mock ports, projection DTOs, correlation IDs, or helper adapters) to unlock modularity and decouple systems without polluting domain entities.
 * **Inventor's Paradox (Consider the More General Problem):** Sometimes a more general, uniform abstraction is cleaner and easier to implement than piling up multiple ad-hoc `if-else` exceptions for special cases.
+* **Variation of the Problem & Boundary Exploration (Pólya, p. 209–214):** Vary the problem by varying the data or conditions. Test design hypotheses by modifying boundaries: *"What if the collection has $10^6$ elements instead of 5? What if network latency is 5000ms? What if the payload arrives out of order?"* Incorporate property-based tests and fuzz boundary exploration into the plan.
 * **Vertical Slicing Mandate (Tracer Bullets):**
   * **No Horizontal Slicing:** Never group tasks by technical layer (e.g., "all DB tables", "all APIs", "all UI"). Horizontal slicing is strictly prohibited.
   * **Vertical Feature Slices:** Every task MUST span all layers required to make a feature work end-to-end (Domain + UseCase + Adapter + UI).
@@ -303,6 +307,8 @@ Execute the approved plan with precision and discipline:
 * **Rule of Style — One Thing at a Time:** *"Say first one, then the other, not both at the same time"* (Pólya, p. 172). Never mix architectural refactoring with new feature implementation. Complete one atomic change, verify, then proceed.
 * **Step-by-Step Implementation:** Implement changes incrementally following the sequence mapped in Phase 2.
 * **Verify Each Step:** As you write each function or component, ensure it is provably correct. Add unit or component tests incrementally to validate logic before moving to the next step.
+* **Decomposing by Relaxing Conditions (Pólya, p. 50, 150):** When tackling a complex, multi-constraint implementation, temporarily drop one constraint (e.g., bypass caching or concurrency locks), verify the pure synchronous logic first, then re-introduce and enforce the full invariant.
+* **Inductive Invariant Verification (Pólya, p. 114):** Verify iterative loops, batch pagination, and state machine transitions inductively across Base Case 0 (empty input), Base Case 1 (single item), and Step $n \to n+1$ (invariant preservation across transitions).
 * **Surgical Precision:** Modify only what is necessary. Avoid touching unrelated files or introducing unrequested abstractions.
 
 ---
@@ -315,6 +321,7 @@ Review and solidify the solution upon completion:
   * What happens when the input is empty (`[]`, `null`, `""`)?
   * What happens at boundary limits ($0$, $1$, maximum payload size, connection timeouts)?
   * Can we produce a counterexample that breaks the implementation?
+* **All Data & Whole Condition Audit (Pólya, p. 33):** Verify that no incoming parameters were silently dropped and that all business constraints, SLAs, and security rules are strictly fulfilled.
 * **SOLID Principles Post-Implementation Audit:**
   * **SRP (Single Responsibility):** Does every modified module have only one reason to change?
   * **OCP (Open/Closed):** Can this module be extended with new behaviors in the future without modifying its existing, tested source code?
@@ -323,7 +330,13 @@ Review and solidify the solution upon completion:
   * **DIP (Dependency Inversion):** Do high-level use cases depend on abstractions rather than low-level infrastructure drivers?
 * **Reductio ad Absurdum (Proof by Contradiction in Testing):** Verify invariants by asking: *"If this condition were false, what impossible state occurs?"* (Pólya, p. 162). Author negative test cases confirming that invalid states are decisively rejected.
 * **Test by Dimension (Unit & Type Sanity Check):** Verify dimensional consistency (Pólya, p. 202). Do data units and types strictly align? (e.g., milliseconds vs. seconds, integer cents vs. float dollars, `Promise<T>` vs. resolved `T`).
+* **Symmetry & Round-Trip Invariant Audit (Pólya, p. 199–200):** Verify that all invertible transformations satisfy round-trip equality ($f^{-1}(f(x)) = x$) and that every resource allocation, lock acquisition, or stream subscription has an exact, guaranteed teardown companion.
+* **Variation of the Problem & Boundary Exploration (Pólya, p. 209–214):** Verify that test suites explore the full problem domain via property-based variations (empty collections, negative bounds, max integers, unicode strings, fuzz payloads) rather than asserting only static happy-path examples.
 * **Derive Differently (Optimization & Simplicity):** Can the solution be made simpler, cleaner, or more performant? Ask: *"Could a senior engineer achieve this in fewer lines with higher readability?"*
+* **Can You See It at a Glance? (Pólya, p. 59–61):** *"Can you see it at a glance? Can you see the whole solution at one glance?"* After detailed verification, synthesize the implementation into a 30-second topological diagram and mental model. Ensure that any developer or agent can comprehend the subsystem's complete data lifecycle without reading hundreds of lines of code.
+* **Pólya's Two Golden Questions (Pólya, 1945, p. 61):**
+  1. *Can you use the result?* (Identify reusable DTO contracts, domain models, or public ports ready for cross-module consumption).
+  2. *Can you use the method?* (Promote novel patterns, test harnesses, or refactoring strategies to `memory.instructions.md` via `memory-manager`).
 * **Generalize & Extract Lessons:** Highlight reusable patterns, utility functions, or architectural insights discovered during this task that can benefit future tasks in the codebase.
 * **Output Artifact:** Formal code review and quality audit report in `docs/reviews/{slug}-review.md` strictly utilizing [`references/REVIEW-REPORT-TEMPLATE.md`](references/REVIEW-REPORT-TEMPLATE.md).
 
@@ -336,9 +349,10 @@ When debugging an issue that has failed multiple times or when trapped in an err
 1. **Cease Blind Patching:** Stop guessing, adding quick workarounds, or repeatedly feeding raw error logs back to the prompt.
 2. **Step Back to First Principles:** Ask: *"How does this feature/component actually work under the hood?"*
 3. **Trace the Broken Seam:** Map the data flow step-by-step from trigger to failure point across Clean Architecture layers. Identify where actual behavior diverges from expectation (e.g., event listener not firing, async race condition, improper state propagation, or payload mismatch).
-4. **Formulate a Testable Hypothesis (Prove-It Pattern):** Isolate the fault with a targeted reproduction unit/integration test before changing the application logic.
-5. **Surgical Remediation:** Apply the minimal root-cause fix that restores system invariants without introducing cascading side effects.
-6. **Output Artifact:** Structured bug remediation plan and diagnosis in `docs/bug-reports/{slug}-bugfix.md` strictly utilizing [`references/BUGFIX-PLAN-TEMPLATE.md`](references/BUGFIX-PLAN-TEMPLATE.md).
+4. **Intelligent Trial and Error via Bisection Search (Pólya, p. 206–209):** Like *Pólya's Mouse*, avoid random panic and shotgun patching. Systematically bisect the search space ($O(\log n)$ fault isolation): halve the call stack, middleware chain, or git commit history (`git bisect`) to isolate the broken seam with mathematical certainty.
+5. **Formulate a Testable Hypothesis (Prove-It Pattern):** Isolate the fault with a targeted reproduction unit/integration test before changing the application logic.
+6. **Surgical Remediation:** Apply the minimal root-cause fix that restores system invariants without introducing cascading side effects.
+7. **Output Artifact:** Structured bug remediation plan and diagnosis in `docs/bug-reports/{slug}-bugfix.md` strictly utilizing [`references/BUGFIX-PLAN-TEMPLATE.md`](references/BUGFIX-PLAN-TEMPLATE.md).
 
 ---
 
@@ -370,10 +384,18 @@ When the user specifies `/polya-heuristic-coder fast-track` (or `quick`, `quick-
 | **Decomposing & Recombining** | Break the figure into parts and examine different combinations. | Decoupling monolithic functions into pure utility helpers, distinct layers, and single-responsibility services. |
 | **Working Backwards** | Assume what is sought as already found (Pappus Analysis). | TDD / Contract-first design: write the assertion or expected API payload first, then implement the code that satisfies it. |
 | **Auxiliary Problem** | Introduce an easier problem as a stepping stone. | Spikes, proof-of-concept scripts, mock servers, or minimal reproducible examples. |
-| **Setting Up Equations** | Translate ordinary language into mathematical symbols. | Translating unstructured human requirements clause-by-clause into strict DTOs, schemas, and API contracts. |
-| **Symmetry** | Treat symmetrically what is naturally symmetrical. | Ensuring dual operations pair cleanly: `subscribe/unsubscribe`, `serialize/deserialize`, `open/close`. |
+| **Setting Up Equations & Notation** | Translate ordinary language into mathematical symbols and unambiguous notation (p. 134, 174). | Translating requirements into strict DTOs/schemas and using Type-Driven Design (Value Objects, Discriminated Unions) to make invalid states unrepresentable. |
+| **Symmetry & Invertibility** | Treat symmetrically what is naturally symmetrical (p. 199). | Ensuring dual operations pair cleanly and satisfy round-trip equality ($f^{-1}(f(x)) = x$): `subscribe/unsubscribe`, `serialize/deserialize`, `open/close`, `encrypt/decrypt`. |
+| **Variation of the Problem** | Vary the problem by varying the data or condition (p. 209). | Property-based and fuzz testing across extreme boundary ranges (empty collections, negative values, large scales, random permutations). |
 | **Restating the Problem** | State the problem in an alternative language or view. | Paradigm shift: rewriting tangled business logic as a State Machine (FSM) or Set Operations. |
 | **Reductio ad Absurdum** | Derive a contradiction from assuming the contrary. | Negative test suites and invariant checks proving impossible/corrupt states cannot exist. |
+| **Auxiliary Elements** | Introduce an auxiliary line or element not in original figure (p. 46). | Creating auxiliary seams (in-memory mock ports, projection DTOs, correlation IDs) to unlock decoupling without polluting domain logic. |
+| **Relaxing Conditions** | Drop part of condition temporarily to solve an easier sub-problem (p. 50, 150). | Anti-deadlock tactic: temporarily bypass caching, async races, or auth, prove core logic passes, then re-introduce the full invariant. |
+| **Inductive Verification** | Mathematical induction: verify base cases and transition step (p. 114). | Verifying loops, pagination, and state machine transitions across Base Case 0, Base Case 1, and inductive step $n \to n+1$. |
+| **All Data & Whole Condition** | Did you use all the data? Did you use the whole condition? (p. 33). | Completeness audit ensuring zero silently dropped request parameters, unparsed headers, or forgotten SLA/security constraints. |
+| **Two Golden Questions** | Can you use the result? Can you use the method? (p. 61). | Review wrap-up: exporting reusable DTOs/ports and promoting proven patterns into permanent project memory (`memory-manager`). |
+| **Can You See It at a Glance?** | Can you see the whole solution at one glance? (p. 59). | Synthesizing complex implementations into an intuitive ASCII topology or sequence map for instant 30-second comprehension. |
+| **Intelligent Trial and Error** | Systematic bisection search vs. blind panic (Pólya's Mouse, p. 206). | Halving search spaces ($O(\log n)$ fault isolation: call graph, middleware chain, git bisect) to isolate broken seams mathematically. |
 
 ---
 

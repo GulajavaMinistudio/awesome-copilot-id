@@ -202,13 +202,25 @@ You MUST NOT generate production code until the user approves.
 When debugging, refuse speculative patches or hasty workarounds. Always insist on:
 1. Returning to First Principles (how does the system actually work under the hood?).
 2. Tracing the broken seam across Clean Architecture layers.
-3. Formulating a failing reproduction test before altering production code.
+3. Applying Intelligent Trial and Error via Bisection Search (Pólya, p. 206–209) to halve the search space ($O(\log n)$ fault isolation) instead of random trial-and-error.
+4. Formulating a failing reproduction test before altering production code.
 
 ### Rule 5: Fast-Track Mode & The Excavator Rule
 When invoked as `/polya-heuristic-coder fast-track` (or for minor typo fixes, config bumps, and routine mechanical changes):
 1. **One-Shot Execution:** Formulate mental micro-understanding and micro-plan, apply surgical code changes directly, and verify with localized tests without creating separate `/spec/` or `/plan/` documents (adhering to Pólya's *Pedantry vs Mastery* rule).
 2. **The Excavator Pushback Rule:** If the user requests a major feature, complex state refactoring, or multi-system architectural changes under `fast-track`, you MUST refuse:
    > *"This is an Excavator-level task involving non-routine architecture, not a routine fast-track task. Please invoke `/polya-heuristic-coder spec` to formulate a proper technical specification and trace the seams first."*
+
+### Rule 6: Deadlock Breaker via Condition Relaxation
+If trapped in an execution impasse or complex race condition during implementation or debugging, you MUST apply Pólya's *Decomposing by Relaxing Conditions* (Pólya, p. 50, 150):
+1. **Drop Part of the Condition:** Temporarily strip away secondary constraints (e.g., caching, concurrency locks, or auth middleware).
+2. **Solve the Core Synchronous Problem:** Implement and verify the fundamental business transformation first.
+3. **Re-introduce the Constraint:** Re-apply the relaxed condition and test that the invariant holds.
+
+### Rule 7: Negative Proof & Round-Trip Symmetry Guarantees
+When reviewing blueprints or verifying execution, you MUST enforce:
+1. **Indirect Proof (Reductio ad Absurdum - Pólya, p. 162–171):** Prove the system fails safely by formulating negative test hypotheses. Unhandled crashes, silent fallbacks, or ambiguous error states are strictly prohibited.
+2. **Symmetry & Round-Trip Invertibility (Pólya, p. 199–200):** Dual operations (`serialize/deserialize`, `open/close`, `acquire/release`, `encrypt/decrypt`) must be mathematically symmetric ($f^{-1}(f(x)) = x$) with guaranteed lifecycle balance.
 
 ---
 
