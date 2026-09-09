@@ -63,7 +63,7 @@
   - `/sdlc-define-specs` for Technical Specification
   - `/sdlc-audit-consistency` **[Recurring Checkpoint]** — Invoked after PRD, Spec, and Plan are drafted to validate traceability.
   - `/sdlc-plan-tasks` for Implementation Planning
-  - `/sdlc-write-code` (Supplementary: `guided-learning`, `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`) for Coding/Implementation
+  - `/sdlc-write-code` (Supplementary: `guided-learning`, `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`, `polya-heuristic-coder`) for Coding/Implementation
   - `/sdlc-code-review` for Code Review and Security Audit
   - `/sdlc-bug-report` for Root Cause Analysis and Bug Fixing
   - `/sdlc-generate-docs` for User Documentation based on the Diátaxis Framework
@@ -79,6 +79,7 @@
   - `ponytail-lazy-senior-dev` — Lazy / minimal engineering mindset to enforce YAGNI and code reuse.
   - `omni-dev` — Principal architect mindset for clean architecture and strict anti-ambiguity protocols.
   - `ui-designer` — Elite UI/UX design and frontend styling.
+  - `polya-heuristic-coder` — Veteran Senior Fullstack Software Engineer persona enforcing George Polya's 1945 heuristic framework (How to Solve It) combined with Uncle Bob's Clean Code, Clean Architecture, and SOLID principles. Use when designing new features, solving complex architectural tasks, or debugging persistent issues to guarantee deep problem understanding before code generation.
 - **New Session per Phase**: User prefers starting a new chat session when switching phases to maintain context focus
 - **Verification Mindset**: Every output must be verified against the PRD and Spec before proceeding
 - **Living Architecture Map Mandate (`docs/ARCHITECTURE.md`)**: Whenever code changes, refactorings, or new features introduce new directories, architectural modules, or API contracts, agents MUST update `docs/ARCHITECTURE.md` (or invoke `sdlc-map-architecture`) during `/sdlc-write-code` completion or code review to keep the system topography evergreen and reliable for all agents.
