@@ -88,7 +88,8 @@ fi
 echo -e "\n${CYAN}Select the SDLC Methodology Package to install:${NC}"
 echo -e "1) ${GREEN}Standard SDLC Package${NC} -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
 echo -e "2) ${GREEN}TDD-Spec SDLC Package${NC} -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
-read -p "Enter your package choice (1-2, default: 1): " PKG_CHOICE < /dev/tty
+echo -e "3) ${GREEN}Polya-Coder Heuristic Package${NC} -> Veteran Principal Engineer, Pólya 1945 Heuristics, Clean Architecture & SOLID (/polya-heuristic-coder)"
+read -p "Enter your package choice (1-3, default: 1): " PKG_CHOICE < /dev/tty
 PKG_CHOICE=${PKG_CHOICE:-1}
 
 SRC_DIR=""
@@ -105,6 +106,11 @@ case $PKG_CHOICE in
         SRC_DIR="$SOURCE_CONTENT_DIR/tdd-spec-skills/.agents"
         SRC_AGENTS="$SOURCE_CONTENT_DIR/tdd-spec-skills/AGENTS.md"
         PACKAGE_NAME="TDD-Spec SDLC Package"
+        ;;
+    3)
+        SRC_DIR="$SOURCE_CONTENT_DIR/polya-coder/.agents"
+        SRC_AGENTS="$SOURCE_CONTENT_DIR/polya-coder/AGENTS.md"
+        PACKAGE_NAME="Polya-Coder Heuristic Package"
         ;;
     *)
         echo -e "${RED}Invalid choice. Process aborted.${NC}"

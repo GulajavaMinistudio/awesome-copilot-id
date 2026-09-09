@@ -52,9 +52,10 @@ try {
     Write-Host "Select the SDLC Methodology Package to install:" -ForegroundColor Cyan
     Write-Host "1) Standard SDLC Package -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
     Write-Host "2) TDD-Spec SDLC Package -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
+    Write-Host "3) Polya-Coder Heuristic Package -> Veteran Principal Engineer, Pólya 1945 Heuristics, Clean Architecture & SOLID (/polya-heuristic-coder)"
     Write-Host ""
     
-    $pkgChoice = Read-Host "Enter your package choice (1-2, default: 1)"
+    $pkgChoice = Read-Host "Enter your package choice (1-3, default: 1)"
     if ([string]::IsNullOrWhiteSpace($pkgChoice)) { $pkgChoice = "1" }
     
     $srcDir = ""
@@ -71,6 +72,11 @@ try {
             $srcDir = Join-Path (Join-Path $sourceContentDir "tdd-spec-skills") ".agents"
             $srcAgents = Join-Path (Join-Path $sourceContentDir "tdd-spec-skills") "AGENTS.md"
             $packageName = "TDD-Spec SDLC Package"
+        }
+        "3" {
+            $srcDir = Join-Path (Join-Path $sourceContentDir "polya-coder") ".agents"
+            $srcAgents = Join-Path (Join-Path $sourceContentDir "polya-coder") "AGENTS.md"
+            $packageName = "Polya-Coder Heuristic Package"
         }
         Default {
             Write-Host "Invalid choice. Process aborted." -ForegroundColor Red
