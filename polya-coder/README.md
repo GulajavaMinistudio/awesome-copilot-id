@@ -68,6 +68,7 @@ Specify the phase directly along with instructions and file attachments:
 | **`plan`** | Phase 2: Planning | *Working Backwards*, *Auxiliary Problems*, *Land & Expand (Tracer Bullets)*, Plan B, and **The Pause Rule**. | Approved `/spec/` |
 | **`implement`** | Phase 3: Execution | Code execution with *Clean Code*, single-responsibility small functions, and *Boy Scout Rule* compliance. | Approved `/plan/` |
 | **`review`** | Phase 4: Review | Audit 5 SOLID principles (SRP, OCP, LSP, ISP, DIP), boundary specialization testing, and data type dimensions. | Source code + Spec |
+| **`docs`** | Phase 6: Documentation | Author user/developer documentation based on the 4 Diátaxis quadrants (Tutorials, How-To, Reference, Explanation). | Spec / Plan / Source code |
 | **`fix`** | Phase 5: Bug Remediation | Cease *blind patching*, return to *First Principles*, trace *broken seam*, and formulate reproduction test. | Error log / Stack trace |
 | **`fast-track`** | Bypass: Fast-Track | Routine problems, one-shot surgical fixes, and minor refactors (*Pedantry vs Mastery*). | None / Code snippet |
 | **`map`** | Utility: Architecture | Traverse directory structure, map Clean Architecture seams, and generate `docs/ARCHITECTURE.md`. | Repository root |
@@ -81,7 +82,7 @@ At the conclusion of every phase, the agent executes a structured 4-step wrap-up
 
 ---
 
-## 🔄 The 5-Phase SDLC Lifecycle
+## 🔄 The Complete SDLC Lifecycle
 
 ```mermaid
 graph TD
@@ -91,7 +92,7 @@ graph TD
     Clarify2 --> Pause{🛑 The Pause Rule Gate}
     Pause -->|User Approves| Implement["/polya-heuristic-coder implement (Phase 3: Clean Code Execution)"]
     Implement --> Review["/polya-heuristic-coder review (Phase 4: SOLID & Dimension Audit)"]
-    
+    Review -->|Verified & Approved| Docs["/polya-heuristic-coder docs (Phase 6: Technical Documentation)"]
     Review -->|Defect / Failure Found| BugFix["/polya-heuristic-coder fix (Phase 5: First-Principles Remediation)"]
     BugFix --> Implement
 ```
@@ -100,7 +101,7 @@ graph TD
 
 ```text
 ====================================================================================================
-                         POLYA-CODER 5-PHASE + CLARIFY CHECKPOINT PIPELINE
+               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW ➔ DOCS
 ====================================================================================================
 
 [ Phase 1: SPECIFICATION ] (Pólya Phase 1: Understand the Problem)
@@ -143,20 +144,15 @@ graph TD
       ▼
 [ Phase 4: REVIEW & AUDIT ] (Pólya Phase 4: Looking Back)
       │
+      ├───────────────────────────────┐
+      │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
+      ▼                               ▼
+┌───────────────────────────────┐   ┌───────────────────────────────┐
+│ /polya-heuristic-coder docs   │   │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam )
+└───────────────────────────────┘   └───────────────────────────────┘
+      │ [docs/{tutorials,how-to,reference,explanation}/]
       ▼
-┌───────────────────────────────┐
-│ /polya-heuristic-coder review │ ──▶ [ docs/reviews/ ] ──▶ ( Specialization, SOLID Audit, Test by Dimension )
-└───────────────────────────────┘
-      │
-      ▲
-      │ (If Defects / Invariant Violations Emerge)
-      │
-[ Phase 5: BUG REMEDIATION ] (Debugging Heuristic: Problems to Prove)
-      │
-      ▼
-┌───────────────────────────────┐
-│ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam, Reductio ad Absurdum )
-└───────────────────────────────┘
+[ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
 ```
 
 ---
@@ -215,6 +211,7 @@ polya-coder/
 │   │       │   ├── BUGFIX-PLAN-TEMPLATE.md
 │   │       │   ├── CLARIFICATION-REPORT-TEMPLATE.md
 │   │       │   ├── DISCOVERY-DRAFT-TEMPLATE.md
+│   │       │   ├── DOCS-TEMPLATE.md
 │   │       │   ├── PLAN-TEMPLATE.md
 │   │       │   ├── REVIEW-REPORT-TEMPLATE.md
 │   │       │   └── SPEC-TEMPLATE.md
@@ -263,6 +260,11 @@ polya-coder/
 ### Phase 4: Code Review & Quality Audit
 ```text
 /polya-heuristic-coder review @spec/checkout-spec.md @plan/checkout-plan.md Audit the checkout implementation against SOLID principles, boundary specialization, and dimensional consistency.
+```
+
+### Phase 6: Technical Documentation (Diátaxis)
+```text
+/polya-heuristic-coder docs @spec/checkout-spec.md Author a How-To guide and Reference documentation for the new checkout flow adhering strictly to the Diátaxis framework.
 ```
 
 ### Phase 5: Bug Remediation (First Principles)

@@ -546,6 +546,84 @@ pre::-webkit-scrollbar-thumb:hover {
   border: 1px solid var(--colors-hairline);
 }
 
+/* ==========================================================================
+   Pólya Heuristic Coder Styling & Components
+   ========================================================================== */
+:root {
+  --colors-polya-accent: #6366f1;
+  --colors-polya-accent-hover: #4f46e5;
+  --colors-polya-soft: #eef2ff;
+  --colors-polya-border: #c7d2fe;
+  --colors-polya-text: #4338ca;
+}
+
+.badge-polya {
+  background-color: var(--colors-polya-soft) !important;
+  color: var(--colors-polya-text) !important;
+  border: 1px solid var(--colors-polya-border) !important;
+  font-weight: 600;
+}
+
+.border-polya {
+  border-color: var(--colors-polya-border) !important;
+}
+
+.polya-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease-in-out !important;
+}
+
+.polya-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.08);
+  border-color: var(--colors-polya-accent) !important;
+}
+
+.polya-spotlight-box {
+  background-color: var(--colors-canvas);
+  border: 1px solid var(--colors-polya-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.05);
+  position: relative;
+}
+
+.polya-command-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--colors-ink);
+  background: var(--colors-surface-soft);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--colors-hairline);
+}
+
+.polya-flow-card {
+  background-color: #ffffff;
+  border: 1px solid var(--colors-hairline);
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.polya-flow-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.06);
+  border-color: var(--colors-polya-border);
+}
+
+.polya-step-badge {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  background-color: var(--colors-polya-accent);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
 
 /* Polished Agent Persona Section */
 .sticky-agent-sidebar {

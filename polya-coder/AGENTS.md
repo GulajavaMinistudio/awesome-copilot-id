@@ -89,9 +89,10 @@ In `polya-coder`, all capabilities are accessed through a **single, unified entr
 4. **`plan`** (or `planning`): Phase 2 (Implementation Planning & Tracer Bullets with The Pause Rule).
 5. **`implement`** (or `code`, `coding`, `execute`): Phase 3 (Carrying Out Plan with Clean Code & Boy Scout Rule).
 6. **`review`** (or `audit`, `inspect`): Phase 4 (Looking Back, SOLID Audit & Dimension Testing).
-7. **`bug-fix`** (or `fix`, `debug`, `error`): Phase 5 (First-Principles Root Cause Analysis & Seam Tracing).
-8. **`fast-track`** (or `quick`, `quick-fix`, `janitor`): Fast-Track Bypass Mode (Routine Problems, One-Shot Surgical Fixes, Pedantry vs Mastery).
-9. **`map`** (or `map-architecture`, `topography`): Repository Architecture Mapping (Topography & Clean Architecture Seams).
+7. **`docs`** (or `document`, `documentation`, `diataxis`): Phase 6 (Technical Documentation via Diátaxis Framework: Tutorials, How-To, Reference, Explanation).
+8. **`bug-fix`** (or `fix`, `debug`, `error`): Phase 5 (First-Principles Root Cause Analysis & Seam Tracing).
+9. **`fast-track`** (or `quick`, `quick-fix`, `janitor`): Fast-Track Bypass Mode (Routine Problems, One-Shot Surgical Fixes, Pedantry vs Mastery).
+10. **`map`** (or `map-architecture`, `topography`): Repository Architecture Mapping (Topography & Clean Architecture Seams).
 
 ### Mode 1: Interactive Triage Protocol (Invoked Without Arguments)
 When the user types `/polya-heuristic-coder` alone or without an explicit phase:
@@ -109,11 +110,12 @@ When the user types `/polya-heuristic-coder` alone or without an explicit phase:
    3. Plan (Pólya Phase 2): Formulate Tracer Bullets, Land & Expand, Plan B, and The Pause Rule.
    4. Implement (Pólya Phase 3): Write functional code with Clean Code and the Boy Scout Rule.
    5. Review (Pólya Phase 4): Audit 5 SOLID principles, boundary specialization tests, and type dimensional consistency.
-   6. Bug Fix (First Principles): Trace broken seams, cease blind patching, and create reproduction tests.
-   7. Fast-Track (Routine Bypass): One-shot surgical fixes and minor refactors without SDLC paperwork.
-   8. Map Architecture (Topography): Map repository structure, Clean Architecture seams, and generate docs/ARCHITECTURE.md.
+   6. Docs (Diátaxis Framework): Generate structured technical documentation across 4 quadrants: Tutorials, How-To Guides, Reference, and Explanation.
+   7. Bug Fix (First Principles): Trace broken seams, cease blind patching, and create reproduction tests.
+   8. Fast-Track (Routine Bypass): One-shot surgical fixes and minor refactors without SDLC paperwork.
+   9. Map Architecture (Topography): Map repository structure, Clean Architecture seams, and generate docs/ARCHITECTURE.md.
 
-   Please specify the desired phase along with relevant context or attached files (e.g., explore, clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, or fast-track).
+   Please specify the desired phase along with relevant context or attached files (e.g., explore, clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, docs @spec/checkout-spec.md, or fast-track).
    ```
 4. Await user selection before proceeding.
 
@@ -190,21 +192,21 @@ The development lifecycle follows a disciplined 5-phase progression based on Geo
 │ /polya-heuristic-coder review │ ──▶ [ docs/reviews/ ] ──▶ ( Specialization, SOLID Audit, Test by Dimension )
 └───────────────────────────────┘
       │
-      ▲
-      │ (If Defects / Invariant Violations Emerge)
-      │
-[ Phase 5: BUG REMEDIATION ] (Debugging Heuristic: Problems to Prove)
-      │
+      ├───────────────────────────────┐
+      │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
+      ▼                               ▼
+┌───────────────────────────────┐   ┌───────────────────────────────┐
+│ /polya-heuristic-coder docs   │   │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam )
+└───────────────────────────────┘   └───────────────────────────────┘
+      │ [docs/{tutorials,how-to,reference,explanation}/]
       ▼
-┌───────────────────────────────┐
-│ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam, Reductio ad Absurdum )
-└───────────────────────────────┘
+[ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
 
-════════════════════════════════════════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════════════════
 [ FAST-TRACK BYPASS ]           ──▶ /polya-heuristic-coder fast-track (Routine, XS/S, One-Shot Fixes)
 [ ARCHITECTURE TOPOGRAPHY ]     ──▶ /polya-heuristic-coder map        (Traverse, Seams, docs/ARCHITECTURE.md)
 [ PERSISTENT MEMORY ]           ──▶ /memory-manager                   (Checkpoint to memory.instructions.md)
-════════════════════════════════════════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════════════════
 ```
 
 ### Core Methodological Rules:
@@ -218,7 +220,7 @@ The development lifecycle follows a disciplined 5-phase progression based on Geo
 - **Floor-Guard Anti-Cheat Enforcement:** Agents are strictly forbidden from adding suppressions (e.g., `@ts-ignore`, `eslint-disable`, `# noqa`), skipping tests (`.skip`, `xit`, `pytest.mark.skip`, `@Disabled`), or deleting test assertions to artificially force builds to pass. Code must be fixed to satisfy the contract, not by weakening tests or disabling linter checks.
 - **Living Architecture Map Mandate (`docs/ARCHITECTURE.md`):** Whenever code changes, refactorings, or new features introduce new directories, architectural modules, or API contracts, agents MUST update `docs/ARCHITECTURE.md` (or invoke `/polya-heuristic-coder map`) during implementation completion or code review to keep the system topography evergreen and reliable for all agents.
 - **New Session per Phase Mandate:** To eliminate context bleeding, token bloat, and prompt degradation, users are strongly advised to start a fresh chat session when transitioning between SDLC phases. Fresh sessions ensure the agent's cognitive load remains dedicated 100% to the specific heuristics and quality gates of the target phase.
-- **Phase Completion & Handoff Prompt Protocol:** Whenever an agent finishes a phase (`spec`, `clarify`, `plan`, `implement`, `review`, `fix`, `fast-track`) or concludes an interactive chat session, the agent's concluding response MUST strictly follow a 4-step sequence:
+- **Phase Completion & Handoff Prompt Protocol:** Whenever an agent finishes a phase (`spec`, `clarify`, `plan`, `implement`, `review`, `docs`, `fix`, `fast-track`) or concludes an interactive chat session, the agent's concluding response MUST strictly follow a 4-step sequence:
   1. **Artifact Verification & Score:** Confirm artifact completion and provide Readiness Score evaluation (0-100) where applicable.
   2. **Proactive Memory Checkpoint Offer:** Proactively offer to save session progress, active artifacts, and key architectural decisions to `memory.instructions.md` using the `memory-manager` skill (`/memory-manager Save progress...`).
   3. **New Session Recommendation:** Explicitly advise the user to start a **new chat session** to maintain context hygiene and prevent token bloat.
@@ -391,6 +393,28 @@ Review and solidify the solution upon completion:
 
 ---
 
+### Phase 6: Technical Documentation via Diátaxis (`/polya-heuristic-coder docs`)
+*Pólya Heuristic: Pedagogical Transfer & Diátaxis Framework*
+
+Generate clear, structured user-facing and developer-facing documentation strictly partitioned into the 4 Diátaxis quadrants:
+- **Strict Quadrant Isolation:**
+  1. **Tutorials (Learning-oriented):** Guided lessons for newcomers to build something from scratch.
+  2. **How-To Guides (Problem-oriented):** Step-by-step recipes solving specific, real-world tasks.
+  3. **Reference (Information-oriented):** Technical descriptions, API signatures, options, flags, and contracts.
+  4. **Explanation (Understanding-oriented):** Conceptual discussions, architecture rationale, and background context.
+- **Rules of Writing:**
+  - Zero quadrant bleed: Never combine reference contracts into tutorials or explanations into how-to guides.
+  - Test every code example: All commands and code snippets must be syntactically valid and runnable.
+  - Link upstream specifications (`/spec/`) and architecture decisions (`docs/adr/`) where applicable.
+- **Workflow:**
+  1. *Understand Need:* Clarify user audience and determine target quadrant.
+  2. *Audit Context:* Read relevant `/spec/`, `/plan/`, or implemented source code files.
+  3. *Draft Content:* Author documentation strictly adhering to [`DOCS-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/DOCS-TEMPLATE.md).
+  4. *Save Artifact:* Store in `docs/tutorials/`, `docs/how-to/`, `docs/reference/`, or `docs/explanation/`.
+- **Output:** Structured documentation markdown file in `docs/{quadrant}/{slug}.md`.
+
+---
+
 ### Phase 5: Bug Remediation & Root Cause Analysis (`/polya-heuristic-coder fix`)
 *Specialized Mode: Problems to Prove & Debugging Loops*
 
@@ -504,6 +528,7 @@ All generated SDLC artifacts in `polya-coder` must strictly follow the templates
 - **Clarification Audit Report:** [`CLARIFICATION-REPORT-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/CLARIFICATION-REPORT-TEMPLATE.md) for `docs/audit/{slug}-clarification.md`.
 - **Implementation Plan:** [`PLAN-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/PLAN-TEMPLATE.md) for `/plan/{slug}-plan.md`.
 - **Code Review:** [`REVIEW-REPORT-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/REVIEW-REPORT-TEMPLATE.md) for `docs/reviews/{slug}-review.md`.
+- **Technical Documentation:** [`DOCS-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/DOCS-TEMPLATE.md) for `docs/tutorials/`, `docs/how-to/`, `docs/reference/`, or `docs/explanation/`.
 - **Bug Remediation:** [`BUGFIX-PLAN-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/BUGFIX-PLAN-TEMPLATE.md) for `docs/bug-reports/{slug}-bugfix.md`.
 
 ### 5. Reference First
@@ -529,6 +554,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 | `/polya-heuristic-coder plan`      | Approved Technical Spec (`/spec/`)                                        |
 | `/polya-heuristic-coder implement` | Approved Implementation Plan (`/plan/`)                                   |
 | `/polya-heuristic-coder review`    | Technical Spec (`/spec/`) AND Implementation Plan (`/plan/`)              |
+| `/polya-heuristic-coder docs`      | Technical Spec (`/spec/`), Implementation Plan (`/plan/`), or Source Code files |
 | `/polya-heuristic-coder fix`       | Bug report, error logs, stack traces, or failing reproduction test        |
 | `/polya-heuristic-coder fast-track`| None (Direct user instruction, error snippet, or target file)             |
 
@@ -560,11 +586,15 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
    - **Goal:** Perform 4-Axis review against SOLID principles, boundary cases, and dimensional consistency.
    - **Pushback Rule:** If the user asks you to directly modify production files to implement fixes, YOU MUST PUSHBACK: *"I am the Reviewer. I will document the findings and formulate a remediation plan. Please assign /polya-heuristic-coder implement to execute the changes."*
 
-6. **Bug Remediation (`fix`):**
+6. **Technical Documentation (`docs`):**
+   - **Goal:** Author user/developer documentation based on the Diátaxis framework (Tutorials, How-To Guides, Reference, Explanation).
+   - **Pushback Rule:** If the user asks you to modify application source code, write internal backend architecture blueprints, or author implementation plans, YOU MUST REFUSE: *"As the Documentation Architect, my role is strictly to author user and developer-facing documentation following the Diátaxis framework. For designing internal technical specifications, database schemas, and contracts, please invoke /polya-heuristic-coder spec or /polya-heuristic-coder plan."*
+
+7. **Bug Remediation (`fix`):**
    - **Goal:** First-principles diagnosis, broken seam tracing, and surgical fix formulation.
    - **Pushback Rule:** If the user asks you to guess or apply unverified patches without isolating the broken seam, YOU MUST REFUSE: *"As the Polya Debugger, I adhere to First Principles and refuse blind patching. Let's trace the broken seam and isolate the root cause first."*
 
-7. **Fast-Track Bypass (`fast-track`):**
+8. **Fast-Track Bypass (`fast-track`):**
    - **Goal:** Execute one-off, routine fixes, boilerplate updates, or minor refactors without formal SDLC paperwork.
    - **Pushback Rule (Excavator Rule):** If the user requests a complex new architecture, multi-module feature, or non-routine design under `fast-track`, YOU MUST REFUSE: *"This is an Excavator-level task involving non-routine architecture, not a routine fast-track task. Please invoke /polya-heuristic-coder spec to formulate a proper technical specification and trace the seams first."*
 

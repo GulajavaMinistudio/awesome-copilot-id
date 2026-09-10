@@ -128,20 +128,21 @@ When a user describes what they want to do, use this routing map to direct them 
       ▼
 [ Phase 4: REVIEW & AUDIT ] (Pólya Phase 4: Looking Back)
       │
+      │
       ▼
 ┌───────────────────────────────┐
 │ /polya-heuristic-coder review │ ──▶ [ docs/reviews/ ] ──▶ ( Specialization, SOLID Audit, Test by Dimension )
 └───────────────────────────────┘
       │
-      ▲
-      │ (If Defects / Invariant Violations Emerge)
-      │
-[ Phase 5: BUG REMEDIATION ] (Debugging Heuristic: Problems to Prove)
-      │
+      ├───────────────────────────────┐
+      │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
+      ▼                               ▼
+┌───────────────────────────────┐   ┌───────────────────────────────┐
+│ /polya-heuristic-coder docs   │   │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam )
+└───────────────────────────────┘   └───────────────────────────────┘
+      │ [docs/{tutorials,how-to,reference,explanation}/]
       ▼
-┌───────────────────────────────┐
-│ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam, Reductio ad Absurdum )
-└───────────────────────────────┘
+[ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
 
 ════════════════════════════════════════════════════════════════════════════════════════════════════
 [ FAST-TRACK BYPASS ]           ──▶ /polya-heuristic-coder fast-track (Routine, XS/S, One-Shot Fixes)
@@ -162,6 +163,7 @@ When a user describes what they want to do, use this routing map to direct them 
 | "Let's start coding" / "Implement vertical slice 1" | `/polya-heuristic-coder implement` | **Phase 3: Implement** (Clean Code, Single Responsibility, Boy Scout Rule) |
 | "Review this code" / "Audit against SOLID principles" | `/polya-heuristic-coder review` | **Phase 4: Review** (Looking Back, Boundary Specialization, Dimension Testing) |
 | "There is a bug" / "Fix this error" / "Why is this failing?" | `/polya-heuristic-coder fix` | **Phase 5: Bug Fix** (First Principles, Trace Broken Seam, Prove-It Pattern) |
+| "Write documentation" / "API docs" / "How-to guide" / "Tutorial" | `/polya-heuristic-coder docs` | **Phase 6: Technical Documentation** (Diátaxis Framework: Tutorials, How-To, Reference, Explanation) |
 | "Quick fix" / "Minor tweak" / "Fix typo" / "Fast track" | `/polya-heuristic-coder fast-track` | **Bypass Mode: Fast-Track** (Routine Problems, One-Shot Surgical Edits, XS/S sizing) |
 | "Map the project architecture" / "Show system structure" | `/polya-heuristic-coder map` | **Utility:** Architecture Topography Mapping |
 | "Save progress" / "Restore context" | `/memory-manager` | **Utility:** Project Memory Management |
@@ -200,6 +202,10 @@ When the user's intent is ambiguous, follow this decision tree:
 
 6. **Is the code implemented and ready for verification?**
    - Yes → Route to `/polya-heuristic-coder review` (SOLID audit, boundary specialization).
+   - No → Continue ↓
+
+7. **Is the feature implemented, verified, and ready for user or developer documentation?**
+   - Yes → Route to `/polya-heuristic-coder docs` (Diátaxis Framework).
 
 ---
 
@@ -240,6 +246,10 @@ If trapped in an execution impasse or complex race condition during implementati
 When reviewing blueprints or verifying execution, you MUST enforce:
 1. **Indirect Proof (Reductio ad Absurdum - Pólya, p. 162–171):** Prove the system fails safely by formulating negative test hypotheses. Unhandled crashes, silent fallbacks, or ambiguous error states are strictly prohibited.
 2. **Symmetry & Round-Trip Invertibility (Pólya, p. 199–200):** Dual operations (`serialize/deserialize`, `open/close`, `acquire/release`, `encrypt/decrypt`) must be mathematically symmetric ($f^{-1}(f(x)) = x$) with guaranteed lifecycle balance.
+
+### Rule 8: Documentation Boundary (User/Developer Facing Only)
+During `/polya-heuristic-coder docs`, strictly author user-facing and developer-facing documentation conforming to Diátaxis quadrants. If the user asks to write internal backend database schemas or design new API contracts, YOU MUST REFUSE:
+> *"As the Documentation Architect, I author User/Developer-Facing Documentation based on the Diátaxis framework. For designing internal technical specifications, database schemas, and contracts, please invoke `/polya-heuristic-coder spec`."*
 
 ---
 

@@ -12,7 +12,7 @@ A curated collection of custom agents, skills, rules, and prompts for AI-assiste
 
 ## 📋 Overview
 
-This repository provides two complete, production-ready AI SDLC methodology packages designed for modern software engineering:
+This repository provides three complete, production-ready AI SDLC methodology packages designed for modern software engineering:
 
 1. **📦 Standard SDLC Package (`.agents/` & root `AGENTS.md`):**
    - Full 12-phase SDLC pipeline (`/sdlc-*`) inspired by GitHub Spec Kit.
@@ -23,6 +23,11 @@ This repository provides two complete, production-ready AI SDLC methodology pack
    - 21 specialized skills (`/tdd-*`) enforcing strict **Test-Driven Development (TDD)**, **Behavior-Driven Development (BDD)**, and **Contract-First Architecture**.
    - Living Architecture Maps (`docs/ARCHITECTURE.md`), Pre-Agreed Test Seams, and Floor-Guard anti-cheat enforcement.
    - Interactive project navigator and AI guide (`/tdd-ask-help`) inspired by `ask-matt`.
+
+3. **📐 Pólya Heuristic Coder Package ([`polya-coder/`](polya-coder/README.md) & `polya-coder/AGENTS.md`):**
+   - Single unified command (`/polya-heuristic-coder`) merging George Pólya's 1945 mathematical heuristic framework (*How to Solve It*) with Uncle Bob's Clean Architecture, Clean Code, and SOLID principles.
+   - Full lifecycle: Discovery (`explore`), Spec (`spec`), Clarification (`clarify`), Planning (`plan`), The Pause Rule Gate, Implementation (`implement`), Review (`review`), Documentation (`docs`), First-Principles Bug Remediation (`fix`), Fast-Track Bypass (`fast-track`), and Architecture Topography (`map`).
+   - Integrated with `memory-manager` for persistent context retention across sessions.
 
 - **🔌 Multi-Platform**: A Single Source of Truth architecture automatically installed to `.agents/` (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP), `.claude/` (Claude Code), or `.cursor/` (Cursor).
 - **🔑 BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
@@ -37,6 +42,7 @@ This repository provides two complete, production-ready AI SDLC methodology pack
 - [Skills](#-skills)
 - [Workflow & Methodology (Standard SDLC)](#-workflow--methodology-spec-kit-inspired)
 - [TDD-Spec SDLC Package (Test-First & Spec Kit)](#-tdd-spec-sdlc-package-test-first--spec-kit)
+- [Pólya Heuristic Coder Package (Mathematical Problem-Solving & Clean Architecture)](#-pólya-heuristic-coder-package-mathematical-problem-solving--clean-architecture)
 - [Supplementary Skills](#-supplementary-skills)
 - [BYOK Copilot Config](#-byok-copilot-config)
 - [Advanced Customization Guide](#️-advanced-customization-guide)
@@ -106,6 +112,25 @@ Then in your AI Assistant chat window, run:
 
 The bootstrapper agent will initialize project governance (`CONSTITUTION.md`, `CONSTRAINTS.md`, `AGENTS.md`), auto-map the existing codebase architecture into `docs/ARCHITECTURE.md`, and configure all 21 TDD skills.
 
+##### 📐 Option C: Pólya Heuristic Coder Package (Unified Heuristic Engine)
+Installs the mathematical problem-solving & Clean Architecture engineering suite (`/polya-heuristic-coder`):
+
+```bash
+# Using GitHub Shorthand (Short & Recommended)
+npx skills add GulajavaMinistudio/awesome-copilot-id/polya-coder/.agents/skills/polya-heuristic-coder
+
+# Or using full GitHub URL
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/polya-coder/.agents/skills/polya-heuristic-coder
+```
+
+Then in your AI Assistant chat window, simply run:
+
+```text
+/polya-heuristic-coder
+```
+
+The Veteran Principal Engineer will greet you with an interactive triage menu to guide you across Discovery, Specification, Clarification, Planning, Clean Code Implementation, Review, and Bug Remediation.
+
 ---
 
 #### Method 2: Automated Installation (One-Liner)
@@ -130,6 +155,7 @@ The installer offers these package & platform choices:
 | :---: | :--- | :--- |
 | **1** | **Standard SDLC Package** | 12-phase pipeline (`/sdlc-*`) with PRD bypass, planning, coding, and review |
 | **2** | **TDD-Spec SDLC Package** | 21 test-first skills (`/tdd-*`) with Pre-Agreed Seams, Floor-Guards, and `/tdd-ask-help` |
+| **3** | **Pólya Heuristic Coder Package** | Unified command (`/polya-heuristic-coder`) merging Pólya's 1945 heuristics with Clean Architecture |
 
 **Step 2: Platform Selection**
 | Option | Platform(s) | Destination Folder |
@@ -179,6 +205,21 @@ The installer offers these package & platform choices:
    # Cursor: copy contents of tdd-spec-skills/.agents/ into .cursor/
    mkdir -p .cursor && cp -a awesome-copilot-id/tdd-spec-skills/.agents/. .cursor/
    cp awesome-copilot-id/tdd-spec-skills/AGENTS.md ./
+   ```
+
+   **For Pólya Heuristic Coder Package (`polya-coder/`):**
+   ```bash
+   # Standard Platforms: copy polya-coder/.agents/ directly
+   cp -r awesome-copilot-id/polya-coder/.agents ./
+   cp awesome-copilot-id/polya-coder/AGENTS.md ./
+
+   # Claude Code: copy contents of polya-coder/.agents/ into .claude/
+   mkdir -p .claude && cp -a awesome-copilot-id/polya-coder/.agents/. .claude/
+   cp awesome-copilot-id/polya-coder/AGENTS.md ./
+
+   # Cursor: copy contents of polya-coder/.agents/ into .cursor/
+   mkdir -p .cursor && cp -a awesome-copilot-id/polya-coder/.agents/. .cursor/
+   cp awesome-copilot-id/polya-coder/AGENTS.md ./
    ```
 
    > [!IMPORTANT]
@@ -264,7 +305,7 @@ These skills can be invoked by any agent at any time without triggering a sessio
 | **grilling**                 | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                            |
 | **guided-learning**          | AI-Guided Learning mentor. Guides the user step-by-step to build a project or implement a plan without writing the code for them.|
 | **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption           |
-| **polya-heuristic-coder**    | Veteran Senior Fullstack Software Engineer persona enforcing George Pólya's 1945 heuristic framework and Uncle Bob's Clean Architecture & SOLID |
+| **polya-heuristic-coder**    | Veteran Senior Fullstack Software Engineer persona enforcing George Pólya's 1945 heuristic framework and Uncle Bob's Clean Architecture & SOLID. Complete lifecycle engine with unified command (`/polya-heuristic-coder`) covering Discovery, Spec, Plan, Clean Code, Review, First-Principles Fix, and Architecture Topography. |
 
 ### Agent and Skill Configuration File Structure
 
@@ -727,6 +768,112 @@ The bootstrapper will initialize project governance (`CONSTITUTION.md`, `CONSTRA
    - Mandates failing automated regression tests before fixing any bug.
 4. **🔒 3-Layer Anti-Injection Shield:**
    - Enforces strict data boundary protocols across all 21 skills, treating all ingested test inputs, fixtures, and external payloads strictly as inert reference data.
+
+---
+
+## 📐 Pólya Heuristic Coder Package (Mathematical Problem-Solving & Clean Architecture)
+
+> 📖 **Full Documentation:** For complete deep-dive documentation, heuristic dictionary, templates, and setup guide, visit [**`polya-coder/README.md`**](polya-coder/README.md).
+
+The **Pólya Heuristic Coder Package** is an elite, highly disciplined software engineering kit designed for AI coding agents and human developers. It merges the legendary mathematical problem-solving heuristics of **George Pólya** (*How to Solve It*, 1945) with the industry-defining **Clean Architecture, Clean Code, and SOLID principles** of **Robert C. "Uncle Bob" Martin** into a single unified slash command: `/polya-heuristic-coder`.
+
+```text
+====================================================================================================
+               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
+====================================================================================================
+
+[ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder explore│ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
+└───────────────────────────────┘
+      │
+      ▼
+[ Phase 1: SPECIFICATION ] (Pólya Phase 1: Understand the Problem)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder spec   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+└───────────────────────────────┘
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder clarify│ ──▶ [ docs/audit/ ] ──▶ ( Interrogate Assumptions, Grill-Me A/B, Readiness Score )
+└───────────────────────────────┘
+      │
+      ▼
+[ Phase 2: PLANNING ] (Pólya Phase 2: Devising a Plan)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder plan   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+└───────────────────────────────┘
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder clarify│ ──▶ ( Optional Plan Interrogation & Stress-Test )
+└───────────────────────────────┘
+      │
+      ▼
+🛑 MANDATORY GATE: THE PAUSE RULE
+(Halt execution! Await explicit user confirmation before writing functional code)
+      │
+      ▼ [Approved]
+[ Phase 3: IMPLEMENTATION ] (Pólya Phase 3: Carrying Out the Plan)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder implement ──▶ ( Clean Code, Respice Finem, Boy Scout Rule, Surgical Edits )
+└───────────────────────────────┘
+      │
+      ▼
+[ Phase 4: REVIEW & AUDIT ] (Pólya Phase 4: Looking Back)
+      │
+      ├───────────────────────────────┐
+      │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
+      ▼                               ▼
+┌───────────────────────────────┐   ┌───────────────────────────────┐
+│ /polya-heuristic-coder docs   │   │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam )
+└───────────────────────────────┘   └───────────────────────────────┘
+      │ [docs/{tutorials,how-to,reference,explanation}/]
+      ▼
+[ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
+
+════════════════════════════════════════════════════════════════════════════
+[ FAST-TRACK BYPASS ]           ──▶ /polya-heuristic-coder fast-track (Routine, XS/S, One-Shot Fixes)
+[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /polya-heuristic-coder map        (Traverse, Seams, docs/ARCHITECTURE.md)
+[ PERSISTENT MEMORY ]           ──▶ /memory-manager                   (Checkpoint to memory.instructions.md)
+════════════════════════════════════════════════════════════════════════════
+```
+
+### 📋 Unified Command Sub-Phases
+
+| Command Sub-Phase | SDLC Phase | Pólya Heuristic & Clean Architecture Focus | Output Document |
+| :--- | :--- | :--- | :--- |
+| `/polya-heuristic-coder explore` | **Phase 0: Discovery** | *Getting Acquainted* (p. 33), architectural critique, candidate trade-offs (*The Inventor's Paradox*), and feasibility spikes. | `docs/discovery/{slug}-discovery.md` |
+| `/polya-heuristic-coder spec` | **Phase 1: Spec** | *Understanding the Problem*: Deconstruct *Unknown, Data, Condition*, *Setting Up Equations* (DTOs), and Clean Architecture seams. | `/spec/{slug}-spec.md` + `docs/adr/` |
+| `/polya-heuristic-coder clarify` | **Checkpoint: Clarify** | Socratic interrogation of `[ASSUMPTION]` tags, Grill-Me protocol (A/B options), and weighted Readiness Score (0-100). | `docs/audit/{slug}-clarification.md` |
+| `/polya-heuristic-coder plan` | **Phase 2: Plan** | *Devising a Plan*: *Working Backwards*, Land & Expand (Tracer Bullets), Contingency Plan B, and **The Pause Rule**. | `/plan/{slug}-plan.md` |
+| `/polya-heuristic-coder implement` | **Phase 3: Implement** | *Carrying Out the Plan*: Clean Code execution, single-responsibility small functions, and *Boy Scout Rule* compliance. | Source code + Unit/Integration tests |
+| `/polya-heuristic-coder review` | **Phase 4: Review** | *Looking Back* (p. 61): 5 SOLID principles audit, boundary specialization ($0, \infty$), and *Test by Dimension*. | `docs/reviews/{slug}-review.md` |
+| `/polya-heuristic-coder docs` | **Phase 6: Documentation** | *Pedagogical Transfer & Diátaxis Framework*: author structured documentation partitioned into Tutorials, How-To Guides, Reference, and Explanation. | `docs/{quadrant}/{slug}.md` |
+| `/polya-heuristic-coder fix` | **Phase 5: Bug Fix** | *Problems to Prove*: Cease blind patching, return to First Principles, trace broken seams, and bisection search ($O(\log n)$). | `docs/bug-reports/{slug}-bugfix.md` |
+| `/polya-heuristic-coder fast-track`| **Bypass: Fast-Track** | *Pedantry vs Mastery* (p. 148): Routine, XS/S sizing ($\le 2$ files) surgical fixes without SDLC paperwork (*The Excavator Rule*). | Surgical file edits |
+| `/polya-heuristic-coder map` | **Utility: Architecture** | *Draw a Figure* (p. 99): Traverse directory topography, map Clean Architecture seams, and generate C4/ASCII system map. | `docs/ARCHITECTURE.md` |
+
+### 🌟 Key Highlights of Pólya Heuristic Coder
+
+1. **🛑 The Mandatory Pause Rule:**
+   - Strict gate between planning and execution. The agent is strictly forbidden from writing production code until the user explicitly reviews and approves the vertical slice plan.
+2. **🎯 Land & Expand Vertical Slices (Tracer Bullets):**
+   - Every plan is decomposed into vertical slices connecting DB to UI that are independently demoable and verifiable. Layer-by-layer horizontal slicing is prohibited.
+3. **🩺 First-Principles Bug Remediation:**
+   - Rejects blind patching, guesswork, or feeding raw stack traces in loops. Systematically bisects the search space to isolate the broken seam, formulate a failing reproduction test, and apply a surgical root-cause fix.
+4. **🧠 Pólya's Mathematical Heuristic Arsenal:**
+   - Incorporates over 20 mathematical principles from George Pólya's 1945 treatise: *The Inventor's Paradox* (p. 121), *Subconscious Incubation* (p. 197), *Specialization & Limiting Cases* ($0, \infty$), *Test by Dimension*, *Round-Trip Symmetry*, and *Reductio ad Absurdum*.
+5. **🛡️ Context Hygiene & New Session Mandate:**
+   - Enforces single-persona session isolation. Whenever a phase finishes, the agent executes a structured 4-step handoff (Artifact verification, memory checkpoint offer, fresh session recommendation, and ready-to-copy handoff prompt) to prevent context bleeding and token degradation.
 
 ---
 
