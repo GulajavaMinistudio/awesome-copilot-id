@@ -88,6 +88,7 @@ window.translations = {
   "install_method0_std_label": "Standard SDLC Package (12 Phases)",
   "install_method0_step1": "1. Terminal:",
   "install_method0_step2": "2. AI Chat:",
+  "install_method0_step3": "3. AI Chat (usage):",
   "install_method0_tab": "Method 1: Agentic (npx skills) ",
   "install_method0_tdd_label": "TDD-Spec SDLC Package (21 Skills)",
   "install_method1_desc": "Run a single one-liner command in your terminal at your project's root directory:",
@@ -398,7 +399,6 @@ window.translations = {
   "polya_spotlight_badge": "Unified Triage Engine",
   "polya_spotlight_desc": "A single master entrypoint that auto-detects existing repository topography, identifies project state, and routes you through George Pólya's 4 stages with surgical precision.",
   "polya_spotlight_title": "Interactive Problem-Solving Triage (/polya-heuristic-coder)",
-  "prompt_polya_init": "/polya-heuristic-coder",
   "uc_tab_polya": "Pólya Heuristic Coder"
 },
   id: {
@@ -490,6 +490,7 @@ window.translations = {
   "install_method0_std_label": "Standard SDLC Package (12 Fase)",
   "install_method0_step1": "1. Terminal:",
   "install_method0_step2": "2. Chat AI:",
+  "install_method0_step3": "3. Chat AI (penggunaan):",
   "install_method0_tab": "Metode 1: Agentic (npx skills) ",
   "install_method0_tdd_label": "TDD-Spec SDLC Package (21 Skills)",
   "install_method1_desc": "Jalankan satu perintah (one-liner) di terminal pada direktori root proyek Anda:",
@@ -800,7 +801,6 @@ window.translations = {
   "polya_spotlight_badge": "Mesin Triage Tunggal",
   "polya_spotlight_desc": "Satu gerbang masuk utama yang mendeteksi topografi repositori secara otomatis, membaca status proyek, dan memandu Anda melewati 4 tahap Pólya dengan presisi bedah.",
   "polya_spotlight_title": "Triage Pemecahan Masalah Interaktif (/polya-heuristic-coder)",
-  "prompt_polya_init": "/polya-heuristic-coder",
   "uc_tab_polya": "Pólya Heuristic Coder"
 }
 };

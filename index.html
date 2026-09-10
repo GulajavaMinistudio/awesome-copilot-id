@@ -320,9 +320,15 @@
                           <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/polya-coder/.agents/skills/polya-init" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                         <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step2">2. AI Chat:</p>
+                        <!-- NOTE: hardcoded to avoid buggy prompt_polya_init i18n override (translations.js duplicate). Step 2 must stay /polya-init scaffolding. -->
+                        <div class="position-relative mb-2">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code>/polya-init setup this project</code></pre>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/polya-init setup this project" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step3">3. AI Chat (usage):</p>
                         <div class="position-relative">
-                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code><span data-i18n="prompt_polya_init">/polya-init setup this project</span></code></pre>
-                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-i18n-clipboard="prompt_polya_init" data-clipboard="/polya-init setup this project" aria-label="Copy command to clipboard">Copy</button>
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code>/polya-heuristic-coder</code></pre>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/polya-heuristic-coder" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
