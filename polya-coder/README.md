@@ -55,7 +55,7 @@ When invoked as a bare command without arguments:
 ```text
 /polya-heuristic-coder
 ```
-The agent acts as a **Socratic Mentor** (Senior Principal Engineer), displaying an interactive 5-phase menu, and inquiring which phase to run and what context files are available.
+The agent acts as a **Socratic Mentor** (Senior Principal Engineer), displaying an interactive 5-phase menu, and inquiring which phase to run and what context files are available. When the invoking message carries clear intent signals (phase-like wording, attached files such as `@spec/...`, or matching workspace state), the agent first proposes the single most-likely phase with brief reasoning and asks for binary confirmation; the full menu remains as fallback. No phase executes without explicit user confirmation.
 
 ### 2. Mode 2: Direct Phase Execution (With Phase Keyword)
 Specify the phase directly along with instructions and file attachments:
@@ -233,6 +233,7 @@ polya-coder/
 ```text
 /polya-heuristic-coder
 ```
+When the message carries clear intent signals with attached context, the agent leads with a single proposed phase to confirm instead of only showing the menu. Nothing runs until you confirm.
 
 ### Phase 0: Problem Discovery & Exploration
 ```text

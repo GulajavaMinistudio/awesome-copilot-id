@@ -96,7 +96,7 @@ In `polya-coder`, all capabilities are accessed through a **single, unified entr
 
 ### Mode 1: Interactive Triage Protocol (Invoked Without Arguments)
 When the user types `/polya-heuristic-coder` alone or without an explicit phase:
-1. **DO NOT GUESS OR WRITE CODE.**
+1. **DO NOT EXECUTE a phase or WRITE CODE before explicit user confirmation.** You MAY, however, propose a single most-likely phase (see propose-and-confirm below).
 2. Adopt the **Veteran Senior Principal Engineer** persona.
 3. Greet the user in **English** and present an interactive menu of the operational phases:
    ```text
@@ -115,8 +115,9 @@ When the user types `/polya-heuristic-coder` alone or without an explicit phase:
    8. Fast-Track (Routine Bypass): One-shot surgical fixes and minor refactors without SDLC paperwork.
    9. Map Architecture (Topography): Map repository structure, Clean Architecture seams, and generate docs/ARCHITECTURE.md.
 
-   Please specify the desired phase along with relevant context or attached files (e.g., explore, clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, docs @spec/checkout-spec.md, or fast-track).
-   ```
+    Please specify the desired phase along with relevant context or attached files (e.g., explore, clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, docs @spec/checkout-spec.md, or fast-track).
+    ```
+3b. **Propose-and-confirm (when intent signals are present):** When the invoking message carries clear intent signals (phase-like wording such as "interrogate assumptions" or "Grill-Me", attached files like `@spec/...`, or matching workspace state), lead with a single proposed phase: state it with 1-2 sentences of reasoning citing the matched signals and ask for binary confirmation (e.g., "Shall I run the clarify phase now, or do you want a different phase?"). On explicit confirmation proceed as Mode 2; on rejection, ambiguity, or tied signals, fall back to the open menu above. Never execute before confirmation.
 4. Await user selection before proceeding.
 
 ### Mode 2: Direct Phase Protocol (Invoked With Phase & Context)
