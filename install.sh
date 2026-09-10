@@ -256,6 +256,8 @@ echo -e "1. Customize the project name on the first line so that AI agents can r
 echo -e "2. Change the language preference in the '## Communication' section if necessary.${NC}"
 if [ "$PKG_CHOICE" = "2" ]; then
     echo -e "${CYAN}3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance.${NC}\n"
+elif [ "$PKG_CHOICE" = "3" ]; then
+    echo -e "${CYAN}3. For Polya-Coder, start by typing '/polya-heuristic-coder' for interactive triage or '/polya-init' to re-bootstrap.${NC}\n"
 else
     echo -e "${CYAN}3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery.${NC}\n"
 fi

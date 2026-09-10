@@ -204,17 +204,19 @@ polya-coder/
 │   ├── skills/
 │   │   ├── memory-manager/
 │   │   │   └── SKILL.md
-│   │   └── polya-heuristic-coder/
-│   │       ├── references/
-│   │       │   ├── ARCHITECTURE-MAPPING-WORKFLOW.md
-│   │       │   ├── ARCHITECTURE-TEMPLATE.md
-│   │       │   ├── BUGFIX-PLAN-TEMPLATE.md
-│   │       │   ├── CLARIFICATION-REPORT-TEMPLATE.md
-│   │       │   ├── DISCOVERY-DRAFT-TEMPLATE.md
-│   │       │   ├── DOCS-TEMPLATE.md
-│   │       │   ├── PLAN-TEMPLATE.md
-│   │       │   ├── REVIEW-REPORT-TEMPLATE.md
-│   │       │   └── SPEC-TEMPLATE.md
+│   │   ├── polya-heuristic-coder/
+│   │   │   ├── references/
+│   │   │   │   ├── ARCHITECTURE-MAPPING-WORKFLOW.md
+│   │   │   │   ├── ARCHITECTURE-TEMPLATE.md
+│   │   │   │   ├── BUGFIX-PLAN-TEMPLATE.md
+│   │   │   │   ├── CLARIFICATION-REPORT-TEMPLATE.md
+│   │   │   │   ├── DISCOVERY-DRAFT-TEMPLATE.md
+│   │   │   │   ├── DOCS-TEMPLATE.md
+│   │   │   │   ├── PLAN-TEMPLATE.md
+│   │   │   │   ├── REVIEW-REPORT-TEMPLATE.md
+│   │   │   │   └── SPEC-TEMPLATE.md
+│   │   │   └── SKILL.md
+│   │   └── polya-init/
 │   │       └── SKILL.md
 │   └── standards/
 │       ├── ADR-FORMAT.md

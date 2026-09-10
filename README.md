@@ -117,13 +117,19 @@ Installs the mathematical problem-solving & Clean Architecture engineering suite
 
 ```bash
 # Using GitHub Shorthand (Short & Recommended)
-npx skills add GulajavaMinistudio/awesome-copilot-id/polya-coder/.agents/skills/polya-heuristic-coder
+npx skills add GulajavaMinistudio/awesome-copilot-id/polya-coder/.agents/skills/polya-init
 
 # Or using full GitHub URL
-npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/polya-coder/.agents/skills/polya-heuristic-coder
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/polya-coder/.agents/skills/polya-init
 ```
 
-Then in your AI Assistant chat window, simply run:
+Then in your AI Assistant chat window, run:
+
+```text
+/polya-init setup this project
+```
+
+The bootstrapper agent will initialize project governance (`AGENTS.md`) and the SDLC rules. After initialization, you can invoke the Veteran Principal Engineer by running:
 
 ```text
 /polya-heuristic-coder

@@ -130,6 +130,7 @@ When the user specifies a phase (e.g., `/polya-heuristic-coder plan @spec/checko
 ## Workflow & Methodology (The Polya-Clean SDLC)
 
 - **Base Persona Activation**: At the start of a new session (before any specific phase is determined), the user interacts with the **Polya Orchestrator** (the Base Persona) defined in `.agents/rules/PolyaOrchestrator.md`. The orchestrator acts as a Socratic router and heuristic guide to route the user to the correct Polya phase, classify problems (Find vs Prove), and enforce The Pause Rule.
+- **Bootstrapper Skill (`/polya-init`)**: When initializing or scaffolding the Polya Coder architecture (`AGENTS.md`, `.agents/`) in a fresh workspace, the user can run `/polya-init setup this project` to autonomously pull and configure the full toolkit without manual copy-pasting.
 - **Rules File Precedence**: Agents MUST read and internalize the base rules from `.agents/rules/PolyaOrchestrator.md` upon session initialization.
 
 The development lifecycle follows a disciplined 5-phase progression based on George Pólya's heuristic framework combined with Uncle Bob's Clean Architecture:

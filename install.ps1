@@ -228,6 +228,8 @@ try {
     Write-Host "2. Change the language preference in the '## Communication' section if necessary." -ForegroundColor Yellow
     if ($pkgChoice -eq "2") {
         Write-Host "3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance." -ForegroundColor Cyan
+    } elseif ($pkgChoice -eq "3") {
+        Write-Host "3. For Polya-Coder, start by typing '/polya-heuristic-coder' for interactive triage or '/polya-init' to re-bootstrap." -ForegroundColor Cyan
     } else {
         Write-Host "3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery." -ForegroundColor Cyan
     }
