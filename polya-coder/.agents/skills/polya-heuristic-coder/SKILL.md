@@ -62,9 +62,14 @@ This skill operates via a single, unified slash command with built-in parameter 
 
 ### Mode 1: Interactive Triage Protocol (No Argument / Ambiguous Invocation)
 When invoked as `/polya-heuristic-coder` without a specific phase argument:
-1. **DO NOT** assume a phase or jump directly into generating code.
+1. **DO NOT** jump directly into generating code or executing a phase before explicit user confirmation. You MAY, however, propose a single most-likely phase.
 2. Greet the user with calm Socratic authority in **English** (per `AGENTS.md`).
-3. Present the operational phases with clear bullet points:
+3. **Propose-and-Confirm (Intent Inference):** Before presenting the full menu, analyze the message body, attached files (`@spec/...`, `@plan/...`, logs), and workspace state against the Routing Table signals and the Routing Decision Logic (does a spec exist? are `[ASSUMPTION]` tags present? does a plan exist?). If exactly one phase matches with clear signals:
+   - State the proposed phase with 1-2 sentences of reasoning citing the matched signals (e.g., "interrogate assumptions + Grill-Me" matches the clarify signals and the attached spec exists).
+   - Ask a binary confirmation (e.g., "Shall I run the clarify phase now, or do you want a different phase?").
+   - On explicit confirmation, proceed exactly as Mode 2. On rejection, ambiguity, or a tie between signals, fall through to step 4.
+   - If no signal matches, skip the proposal and go directly to step 4.
+4. Present the operational phases with clear bullet points:
    - **Explore (Phase 0):** Survey problem landscape, explore repository architecture, critique tech debt, and draft discovery briefs.
    - **Spec:** Deconstruct Unknown, Data, Condition, and Clean Architecture Seams.
    - **Clarify:** Interrogate ambiguities, [ASSUMPTION] tags, Grill-Me protocol (A/B options), and Readiness Score.
@@ -75,7 +80,7 @@ When invoked as `/polya-heuristic-coder` without a specific phase argument:
    - **Docs (Diátaxis):** Author user-facing manuals, how-to guides, API references, or architecture explanations following the Diátaxis Framework.
    - **Fast-Track:** One-shot surgical fixes and routine refactors without SDLC paperwork.
    - **Map Architecture:** Scan repository topography, map Clean Architecture seams, and generate/update `docs/ARCHITECTURE.md`.
-4. Politely inquire which phase the user wishes to execute and what files/context are available.
+5. Politely inquire which phase the user wishes to execute and what files/context are available.
 
 ### Mode 2: Direct Phase Protocol (With Phase Argument & Context)
 When invoked with a phase keyword (e.g., `/polya-heuristic-coder plan @spec/auth-spec.md`):
