@@ -77,9 +77,17 @@ When a user describes what they want to do, use this routing map to direct them 
 
 ```text
 ====================================================================================================
-                         POLYA-CODER 5-PHASE + CLARIFY CHECKPOINT PIPELINE
+               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
 ====================================================================================================
 
+[ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder explore│ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
+└───────────────────────────────┘
+      │
+      ▼
 [ Phase 1: SPECIFICATION ] (Pólya Phase 1: Understand the Problem)
       │
       ▼
@@ -134,12 +142,19 @@ When a user describes what they want to do, use this routing map to direct them 
 ┌───────────────────────────────┐
 │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam, Reductio ad Absurdum )
 └───────────────────────────────┘
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+[ FAST-TRACK BYPASS ]           ──▶ /polya-heuristic-coder fast-track (Routine, XS/S, One-Shot Fixes)
+[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /polya-heuristic-coder map        (Traverse, Seams, docs/ARCHITECTURE.md)
+[ PERSISTENT MEMORY ]           ──▶ /memory-manager                   (Checkpoint to memory.instructions.md)
+════════════════════════════════════════════════════════════════════════════════════════════════════
 ```
 
 ### Routing Table
 
 | User Intent / Signal | Recommended Command | Phase & Focus |
 | :--- | :--- | :--- |
+| "I have an idea" / "Explore codebase" / "Brainstorm" / "Critique tech debt" | `/polya-heuristic-coder explore` | **Phase 0: Discovery** (Getting Acquainted, Topography Critique, Trade-Offs, Spikes) |
 | "I want to build a new feature" / "Let's define requirements" | `/polya-heuristic-coder spec` | **Phase 1: Spec** (Deconstruct Unknown, Data, Condition, Clean Architecture Seams) |
 | "Design the API contracts and data models" | `/polya-heuristic-coder spec` | **Phase 1: Spec** (*Setting Up Equations* to DTOs) |
 | "Clarify requirements" / "Check assumptions" / "Grill me" / "Audit ambiguity" | `/polya-heuristic-coder clarify` | **Checkpoint: Clarify** (Condition Sanity Check, Grill-Me A/B, Readiness Score) |
@@ -148,7 +163,7 @@ When a user describes what they want to do, use this routing map to direct them 
 | "Review this code" / "Audit against SOLID principles" | `/polya-heuristic-coder review` | **Phase 4: Review** (Looking Back, Boundary Specialization, Dimension Testing) |
 | "There is a bug" / "Fix this error" / "Why is this failing?" | `/polya-heuristic-coder fix` | **Phase 5: Bug Fix** (First Principles, Trace Broken Seam, Prove-It Pattern) |
 | "Quick fix" / "Minor tweak" / "Fix typo" / "Fast track" | `/polya-heuristic-coder fast-track` | **Bypass Mode: Fast-Track** (Routine Problems, One-Shot Surgical Edits, XS/S sizing) |
-| "Map the project architecture" / "Show system structure" | `/sdlc-map-architecture` | **Utility:** Architecture Topography Mapping |
+| "Map the project architecture" / "Show system structure" | `/polya-heuristic-coder map` | **Utility:** Architecture Topography Mapping |
 | "Save progress" / "Restore context" | `/memory-manager` | **Utility:** Project Memory Management |
 
 ### Routing Decision Logic
@@ -157,6 +172,10 @@ When the user's intent is ambiguous, follow this decision tree:
 
 0. **Is this a Minor, Routine Task or Ad-hoc Fix? (Routine Problem, XS/S, <= 2 files)**
    - Yes → Route to `/polya-heuristic-coder fast-track` (One-Shot execution, Pedantry vs Mastery).
+   - No → Continue ↓
+
+0.1. **Is the user exploring an ambiguous idea, evaluating tech debt, or brainstorming?**
+   - Yes → Route to `/polya-heuristic-coder explore` (Phase 0 Discovery Draft).
    - No → Continue ↓
 
 1. **Is this a Bug or Failing State? (Problem to Prove)**
@@ -229,7 +248,7 @@ When reviewing blueprints or verifying execution, you MUST enforce:
 | Skill | Purpose | When to Suggest |
 | :--- | :--- | :--- |
 | `memory-manager` | Save/restore session context to/from `memory.instructions.md` | At session start, session wrap-up, and major phase milestones |
-| `sdlc-map-architecture` | Map repository architecture into `docs/ARCHITECTURE.md` | When exploring a new codebase or adding new architectural modules |
+| `/polya-heuristic-coder map` | Map repository architecture into `docs/ARCHITECTURE.md` | When exploring a new codebase or adding new architectural modules |
 
 ---
 

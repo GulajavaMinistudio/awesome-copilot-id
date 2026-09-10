@@ -83,13 +83,15 @@ In `polya-coder`, all capabilities are accessed through a **single, unified entr
 ```
 
 ### Phase Dispatching Keywords:
-1. **`spec`** (or `specification`): Phase 1 (Problem Understanding & Clean Architecture Seams).
-2. **`clarify`** (or `clarification`, `interrogate`, `query`): Recurring Checkpoint (Condition Sanity Check, Assumptions & Ambiguity Interrogation, Grill-Me Protocol, Readiness Score 0-100).
-3. **`plan`** (or `planning`): Phase 2 (Implementation Planning & Tracer Bullets with The Pause Rule).
-4. **`implement`** (or `code`, `coding`, `execute`): Phase 3 (Carrying Out Plan with Clean Code & Boy Scout Rule).
-5. **`review`** (or `audit`, `inspect`): Phase 4 (Looking Back, SOLID Audit & Dimension Testing).
-6. **`bug-fix`** (or `fix`, `debug`, `error`): Phase 5 (First-Principles Root Cause Analysis & Seam Tracing).
-7. **`fast-track`** (or `quick`, `quick-fix`, `janitor`): Fast-Track Bypass Mode (Routine Problems, One-Shot Surgical Fixes, Pedantry vs Mastery).
+1. **`explore`** (or `discovery`, `brainstorm`, `phase-0`): Phase 0 (Problem Discovery, Codebase Exploration & Architectural Ideation).
+2. **`spec`** (or `specification`): Phase 1 (Problem Understanding & Clean Architecture Seams).
+3. **`clarify`** (or `clarification`, `interrogate`, `query`): Recurring Checkpoint (Condition Sanity Check, Assumptions & Ambiguity Interrogation, Grill-Me Protocol, Readiness Score 0-100).
+4. **`plan`** (or `planning`): Phase 2 (Implementation Planning & Tracer Bullets with The Pause Rule).
+5. **`implement`** (or `code`, `coding`, `execute`): Phase 3 (Carrying Out Plan with Clean Code & Boy Scout Rule).
+6. **`review`** (or `audit`, `inspect`): Phase 4 (Looking Back, SOLID Audit & Dimension Testing).
+7. **`bug-fix`** (or `fix`, `debug`, `error`): Phase 5 (First-Principles Root Cause Analysis & Seam Tracing).
+8. **`fast-track`** (or `quick`, `quick-fix`, `janitor`): Fast-Track Bypass Mode (Routine Problems, One-Shot Surgical Fixes, Pedantry vs Mastery).
+9. **`map`** (or `map-architecture`, `topography`): Repository Architecture Mapping (Topography & Clean Architecture Seams).
 
 ### Mode 1: Interactive Triage Protocol (Invoked Without Arguments)
 When the user types `/polya-heuristic-coder` alone or without an explicit phase:
@@ -101,6 +103,7 @@ When the user types `/polya-heuristic-coder` alone or without an explicit phase:
    using George Pólya's heuristic methodology and Clean Architecture / SOLID principles.
 
    Which phase would you like to execute?
+   0. Explore (Phase 0): Survey problem landscape, explore repository architecture, critique tech debt, and draft discovery briefs.
    1. Spec (Pólya Phase 1): Deconstruct Unknown, Data, Condition, DTO contracts, and Clean Architecture Seams.
    2. Clarify (Interrogation Checkpoint): Interrogate ambiguities, [ASSUMPTION] tags, Grill-Me protocol (A/B options), and Readiness Score.
    3. Plan (Pólya Phase 2): Formulate Tracer Bullets, Land & Expand, Plan B, and The Pause Rule.
@@ -108,8 +111,9 @@ When the user types `/polya-heuristic-coder` alone or without an explicit phase:
    5. Review (Pólya Phase 4): Audit 5 SOLID principles, boundary specialization tests, and type dimensional consistency.
    6. Bug Fix (First Principles): Trace broken seams, cease blind patching, and create reproduction tests.
    7. Fast-Track (Routine Bypass): One-shot surgical fixes and minor refactors without SDLC paperwork.
+   8. Map Architecture (Topography): Map repository structure, Clean Architecture seams, and generate docs/ARCHITECTURE.md.
 
-   Please specify the desired phase along with relevant context or attached files (e.g., clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, or fast-track).
+   Please specify the desired phase along with relevant context or attached files (e.g., explore, clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, or fast-track).
    ```
 4. Await user selection before proceeding.
 
@@ -130,9 +134,17 @@ The development lifecycle follows a disciplined 5-phase progression based on Geo
 
 ```text
 ====================================================================================================
-                         POLYA-CODER 5-PHASE + CLARIFY CHECKPOINT PIPELINE
+               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
 ====================================================================================================
 
+[ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /polya-heuristic-coder explore│ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
+└───────────────────────────────┘
+      │
+      ▼
 [ Phase 1: SPECIFICATION ] (Pólya Phase 1: Understand the Problem)
       │
       ▼
@@ -187,6 +199,12 @@ The development lifecycle follows a disciplined 5-phase progression based on Geo
 ┌───────────────────────────────┐
 │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam, Reductio ad Absurdum )
 └───────────────────────────────┘
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+[ FAST-TRACK BYPASS ]           ──▶ /polya-heuristic-coder fast-track (Routine, XS/S, One-Shot Fixes)
+[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /polya-heuristic-coder map        (Traverse, Seams, docs/ARCHITECTURE.md)
+[ PERSISTENT MEMORY ]           ──▶ /memory-manager                   (Checkpoint to memory.instructions.md)
+════════════════════════════════════════════════════════════════════════════════════════════════════
 ```
 
 ### Core Methodological Rules:
@@ -198,7 +216,7 @@ The development lifecycle follows a disciplined 5-phase progression based on Geo
   - **Micro level (per change):** Every individual code generation or modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
   - **Macro level (per phase):** The entire test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase.
 - **Floor-Guard Anti-Cheat Enforcement:** Agents are strictly forbidden from adding suppressions (e.g., `@ts-ignore`, `eslint-disable`, `# noqa`), skipping tests (`.skip`, `xit`, `pytest.mark.skip`, `@Disabled`), or deleting test assertions to artificially force builds to pass. Code must be fixed to satisfy the contract, not by weakening tests or disabling linter checks.
-- **Living Architecture Map Mandate (`docs/ARCHITECTURE.md`):** Whenever code changes, refactorings, or new features introduce new directories, architectural modules, or API contracts, agents MUST update `docs/ARCHITECTURE.md` (or invoke `/sdlc-map-architecture`) during implementation completion or code review to keep the system topography evergreen and reliable for all agents.
+- **Living Architecture Map Mandate (`docs/ARCHITECTURE.md`):** Whenever code changes, refactorings, or new features introduce new directories, architectural modules, or API contracts, agents MUST update `docs/ARCHITECTURE.md` (or invoke `/polya-heuristic-coder map`) during implementation completion or code review to keep the system topography evergreen and reliable for all agents.
 - **New Session per Phase Mandate:** To eliminate context bleeding, token bloat, and prompt degradation, users are strongly advised to start a fresh chat session when transitioning between SDLC phases. Fresh sessions ensure the agent's cognitive load remains dedicated 100% to the specific heuristics and quality gates of the target phase.
 - **Phase Completion & Handoff Prompt Protocol:** Whenever an agent finishes a phase (`spec`, `clarify`, `plan`, `implement`, `review`, `fix`, `fast-track`) or concludes an interactive chat session, the agent's concluding response MUST strictly follow a 4-step sequence:
   1. **Artifact Verification & Score:** Confirm artifact completion and provide Readiness Score evaluation (0-100) where applicable.
@@ -224,7 +242,20 @@ Before diving into analysis, classify the task across two dimensions (Pólya, p.
 
 ---
 
-## The 5 Operational Phases
+## The Operational Phases
+
+### Phase 0: Problem Discovery & Exploration (`/polya-heuristic-coder explore`)
+*Pólya Phase 0: Getting Acquainted with the Problem (Familiarity and Conception, p. 33)*
+
+Before writing formal specifications or defining rigid contracts:
+- **Explore Problem Landscape:** Understand the broader business opportunity, user pain points, and strategic purpose.
+- **Topography Analysis & Tech Debt Critique:** Survey existing directories, modules, dependencies, and architectural seams. Identify debt and seam vulnerabilities.
+- **Analogy & Prior Art:** Search for analogous problems already solved within the codebase or wider industry (*"Do you know a related problem?"*).
+- **Evaluate Candidate Architectures (The Inventor's Paradox, p. 121):** Formulate 2-3 candidate solution architectures (Minimal, Target, Comprehensive). Assess whether designing a more general, decoupled abstraction provides a cleaner solution than adding narrow, fragile edge-case patches.
+- **Technical Feasibility Spikes:** Identify critical unknowns and execute minimal proof-of-concept tests to de-risk high-uncertainty areas.
+- **Output Artifact:** Structured Project Discovery Draft at `docs/discovery/{slug}-discovery.md` adhering strictly to [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/DISCOVERY-DRAFT-TEMPLATE.md). Once approved, route to `/polya-heuristic-coder spec @docs/discovery/{slug}-discovery.md`.
+
+---
 
 ### Phase 1: Specification (`/polya-heuristic-coder spec`)
 *Pólya Phase 1: Understanding the Problem (Getting Acquainted)*
@@ -395,7 +426,7 @@ High-speed execution mode for one-off tasks, ad-hoc bug fixes, and minor refacto
 
 Skills located in `.agents/skills/` that can be invoked across multiple phases:
 - `memory-manager` — For saving, restoring, and compacting working session context to/from `memory.instructions.md`.
-- `sdlc-map-architecture` — For mapping repository architecture, directory structures, and generating `docs/ARCHITECTURE.md`.
+- `/polya-heuristic-coder map` (or `sdlc-map-architecture`) — For mapping repository architecture, directory structures, Clean Architecture seams, and generating `docs/ARCHITECTURE.md`.
 
 ---
 
@@ -468,6 +499,7 @@ ADRs live in `docs/adr/` and serve as the project's permanent architectural memo
 
 ### 4. Mandatory Artifact Templates (`references/`)
 All generated SDLC artifacts in `polya-coder` must strictly follow the templates located in `.agents/skills/polya-heuristic-coder/references/`:
+- **Discovery Draft:** [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/DISCOVERY-DRAFT-TEMPLATE.md) for `docs/discovery/{slug}-discovery.md`.
 - **Specification:** [`SPEC-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/SPEC-TEMPLATE.md) for `/spec/{slug}-spec.md`.
 - **Clarification Audit Report:** [`CLARIFICATION-REPORT-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/CLARIFICATION-REPORT-TEMPLATE.md) for `docs/audit/{slug}-clarification.md`.
 - **Implementation Plan:** [`PLAN-TEMPLATE.md`](.agents/skills/polya-heuristic-coder/references/PLAN-TEMPLATE.md) for `/plan/{slug}-plan.md`.
@@ -491,6 +523,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 
 | Command Invocation                 | Mandatory Upstream Document(s)                                            |
 | :--------------------------------- | :------------------------------------------------------------------------ |
+| `/polya-heuristic-coder explore`   | User problem statement, raw idea, or target directory/module             |
 | `/polya-heuristic-coder spec`      | User brief, problem description, or discovery notes                       |
 | `/polya-heuristic-coder clarify`   | Target Specification (`/spec/`), Implementation Plan (`/plan/`), or Brief |
 | `/polya-heuristic-coder plan`      | Approved Technical Spec (`/spec/`)                                        |
@@ -502,6 +535,10 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 *Note: For minor fixes, refactoring, and ad-hoc tasks, the mandatory document check can be fast-tracked upon user confirmation.*
 
 ### Strict Pushback Rules per Phase:
+
+0. **Problem Discovery (`explore`):**
+   - **Goal:** Frame the business problem, survey architecture, critique tech debt, and evaluate feasibility spikes.
+   - **Pushback Rule:** If the user asks for functional code or formal JSON schemas/DB migration files, YOU MUST REFUSE: *"As the Polya Discovery Explorer, my focus is on exploring the problem landscape, assessing architectural options, and evaluating feasibility. Formal schemas and code belong to the Specification/Implementation phase. Let's complete the Discovery Draft first."* Once approved, direct the user to invoke `/polya-heuristic-coder spec`.
 
 1. **Specification (`spec`):**
    - **Goal:** Define problem mental model, Unknown/Data/Condition, DTO contracts, Clean Architecture seams.
@@ -652,7 +689,7 @@ Whenever you detect a section titled "## 🎭 Dynamic Persona Activation" or whe
 3. **Rejection Protocol:** If you detect a user attempting to switch roles or invoke a mismatched skill, you MUST refuse the request and reply with the following template (in the language specified by AGENTS.md):
    > *"To maintain focus and consistency of the working context, role/phase changes cannot be made in the same chat session. Please open a new chat session to interact as [New Persona Name] or to execute the [New Skill Name] skill. Before you leave, don't forget to save your progress in this session using the `memory-manager` skill."*
 4. **User Override Protocol:** If the user explicitly insists and commands you to override this rule (e.g., "I know the risks, do it anyway"), you MUST comply (adhering to Rule #1). However, you MUST print: `[Session Override Active - Warning: Context Mixing Active]` as the very first line of your response.
-5. **Utility Skills Exception:** This session lock only applies to skills that contain a 'Dynamic Persona Activation' block. Utility or helper skills (such as `memory-manager` and `sdlc-map-architecture`) may be invoked freely in any session without triggering a session lock violation.
+5. **Utility Skills Exception:** This session lock only applies to skills that contain a 'Dynamic Persona Activation' block. Utility or helper skills (such as `memory-manager` and `/polya-heuristic-coder map`) may be invoked freely in any session without triggering a session lock violation.
 
 ---
 

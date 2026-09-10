@@ -62,13 +62,15 @@ Specify the phase directly along with instructions and file attachments:
 
 | Phase Keyword | SDLC Phase | Description & Heuristic Focus | Upstream Document |
 | :--- | :--- | :--- | :--- |
-| **`spec`** | Phase 1: Specification | Deconstruct *Unknown, Data, Condition*, *Setting Up Equations*, and map *Clean Architecture Seams*. | Brief / Notes |
+| **`explore`** | Phase 0: Discovery | Problem framing, repository topography critique, architectural trade-offs (*The Inventor's Paradox*), and feasibility spikes. | Brief / Problem idea |
+| **`spec`** | Phase 1: Specification | Deconstruct *Unknown, Data, Condition*, *Setting Up Equations*, and map *Clean Architecture Seams*. | Discovery Draft / Notes |
 | **`clarify`** | Checkpoint: Clarification | Interrogate ambiguities, `[ASSUMPTION]` tags, *Condition Sanity Check*, Grill-Me protocol (A/B options), and *Readiness Score*. | Target `/spec/` / `/plan/` |
 | **`plan`** | Phase 2: Planning | *Working Backwards*, *Auxiliary Problems*, *Land & Expand (Tracer Bullets)*, Plan B, and **The Pause Rule**. | Approved `/spec/` |
 | **`implement`** | Phase 3: Execution | Code execution with *Clean Code*, single-responsibility small functions, and *Boy Scout Rule* compliance. | Approved `/plan/` |
 | **`review`** | Phase 4: Review | Audit 5 SOLID principles (SRP, OCP, LSP, ISP, DIP), boundary specialization testing, and data type dimensions. | Source code + Spec |
 | **`fix`** | Phase 5: Bug Remediation | Cease *blind patching*, return to *First Principles*, trace *broken seam*, and formulate reproduction test. | Error log / Stack trace |
 | **`fast-track`** | Bypass: Fast-Track | Routine problems, one-shot surgical fixes, and minor refactors (*Pedantry vs Mastery*). | None / Code snippet |
+| **`map`** | Utility: Architecture | Traverse directory structure, map Clean Architecture seams, and generate `docs/ARCHITECTURE.md`. | Repository root |
 
 ### 3. Mode 3: Phase Completion & New Session Handoffs
 At the conclusion of every phase, the agent executes a structured 4-step wrap-up:
@@ -188,7 +190,7 @@ graph TD
 ## 🛠️ Cross-Cutting Utility Skills
 
 - **`memory-manager`:** Manages the persistent project memory file (`memory.instructions.md`). Ensures cross-session context retention, knowledge base updates, and checkpoint compaction.
-- **`sdlc-map-architecture`:** Maps repository topology, directory purposes, and Clean Architecture seams into `docs/ARCHITECTURE.md`.
+- **`/polya-heuristic-coder map` (or `sdlc-map-architecture`):** Maps repository topology, directory purposes, and Clean Architecture seams into `docs/ARCHITECTURE.md`.
 
 ---
 
@@ -208,8 +210,11 @@ polya-coder/
 │   │   │   └── SKILL.md
 │   │   └── polya-heuristic-coder/
 │   │       ├── references/
+│   │       │   ├── ARCHITECTURE-MAPPING-WORKFLOW.md
+│   │       │   ├── ARCHITECTURE-TEMPLATE.md
 │   │       │   ├── BUGFIX-PLAN-TEMPLATE.md
 │   │       │   ├── CLARIFICATION-REPORT-TEMPLATE.md
+│   │       │   ├── DISCOVERY-DRAFT-TEMPLATE.md
 │   │       │   ├── PLAN-TEMPLATE.md
 │   │       │   ├── REVIEW-REPORT-TEMPLATE.md
 │   │       │   └── SPEC-TEMPLATE.md
@@ -228,6 +233,11 @@ polya-coder/
 ### Interactive Menu (Interactive Triage / No Arguments)
 ```text
 /polya-heuristic-coder
+```
+
+### Phase 0: Problem Discovery & Exploration
+```text
+/polya-heuristic-coder explore Survey the problem space for multi-region webhook processing. Critique existing repository topography, identify tech debt, evaluate architectural trade-offs using the Inventor's Paradox, and generate docs/discovery/webhook-discovery.md.
 ```
 
 ### Phase 1: Technical Specification
@@ -263,6 +273,11 @@ polya-coder/
 ### Fast-Track: Routine One-Shot Bypass
 ```text
 /polya-heuristic-coder fast-track Fix typo in authorization header and bump retry count to 3 in config.
+```
+
+### Architecture Topography Mapping
+```text
+/polya-heuristic-coder map Scan repository structure, identify Clean Architecture seams, synthesize topological figure, and generate docs/ARCHITECTURE.md.
 ```
 
 ### Context & Memory Checkpoint

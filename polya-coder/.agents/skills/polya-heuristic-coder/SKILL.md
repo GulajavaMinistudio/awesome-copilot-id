@@ -49,6 +49,7 @@ This skill operates via a single, unified slash command with built-in parameter 
 ```
 
 ### Phase Keywords & Aliases:
+- **`explore` / `discovery` / `brainstorm` / `phase-0`:** Activates **Phase 0: Problem Discovery & Exploration**. Explores problem landscape, analyzes repository topography, critiques tech debt, evaluates candidate architectures, and formulates `docs/discovery/{slug}-discovery.md`.
 - **`spec` / `specification`:** Activates **Phase 1: Understanding the Problem**. Deconstructs Unknown, Data, Condition, maps Clean Architecture seams, and creates `/spec/{slug}-spec.md`.
 - **`clarify` / `clarification` / `interrogate` / `query`:** Activates **Clarification Checkpoint (Condition Sanity Check & Grill-Me Protocol)**. Interrogates ambiguities, `[ASSUMPTION]` tags, calculates Readiness Score (0-100), and outputs `docs/audit/{slug}-clarification.md`.
 - **`plan` / `planning`:** Activates **Phase 2: Devising a Plan**. Synthesizes Land & Expand vertical slices (Tracer Bullets), Contingency Plan B, and enforces **The Pause Rule**. Creates `/plan/{slug}-plan.md`.
@@ -56,12 +57,14 @@ This skill operates via a single, unified slash command with built-in parameter 
 - **`review` / `audit` / `inspect`:** Activates **Phase 4: Looking Back**. Audits 5 SOLID principles, Specialization edge cases, and Test by Dimension. Creates `docs/reviews/{slug}-review.md`.
 - **`bug-fix` / `fix` / `debug` / `error`:** Activates **Phase 5: Bug Remediation (Problems to Prove)**. Ceases blind patching, returns to First Principles, traces the broken seam, and formulates a reproduction test before fixing. Creates `docs/bug-reports/{slug}-bugfix.md`.
 - **`fast-track` / `quick` / `quick-fix` / `janitor`:** Activates **Fast-Track Bypass Mode (Routine Problems & One-Shot Surgical Fixes)**. Solves mechanical, trivial, or routine problems in a single fluid motion without requiring separate `/spec/` or `/plan/` documents (enforcing *Pedantry vs Mastery* and *The Excavator Rule*).
+- **`map` / `map-architecture` / `topography`:** Activates **Repository Architecture Mapping (Topography & Clean Architecture Seams)**. Traverses directories, maps Clean Architecture layers, synthesizes Pólya's topological figure, and generates or updates `docs/ARCHITECTURE.md`. Follows [`references/ARCHITECTURE-MAPPING-WORKFLOW.md`](references/ARCHITECTURE-MAPPING-WORKFLOW.md) and [`references/ARCHITECTURE-TEMPLATE.md`](references/ARCHITECTURE-TEMPLATE.md).
 
 ### Mode 1: Interactive Triage Protocol (No Argument / Ambiguous Invocation)
 When invoked as `/polya-heuristic-coder` without a specific phase argument:
 1. **DO NOT** assume a phase or jump directly into generating code.
 2. Greet the user with calm Socratic authority in **English** (per `AGENTS.md`).
 3. Present the operational phases with clear bullet points:
+   - **Explore (Phase 0):** Survey problem landscape, explore repository architecture, critique tech debt, and draft discovery briefs.
    - **Spec:** Deconstruct Unknown, Data, Condition, and Clean Architecture Seams.
    - **Clarify:** Interrogate ambiguities, [ASSUMPTION] tags, Grill-Me protocol (A/B options), and Readiness Score.
    - **Plan:** Formulate Tracer Bullets, Land & Expand, Plan B, and The Pause Rule.
@@ -69,6 +72,7 @@ When invoked as `/polya-heuristic-coder` without a specific phase argument:
    - **Review:** Audit 5 SOLID principles, boundary specialization testing, and data type dimensions.
    - **Bug Fix:** First principles diagnosis, broken seam tracing, and reproduction testing.
    - **Fast-Track:** One-shot surgical fixes and routine refactors without SDLC paperwork.
+   - **Map Architecture:** Scan repository topography, map Clean Architecture seams, and generate/update `docs/ARCHITECTURE.md`.
 4. Politely inquire which phase the user wishes to execute and what files/context are available.
 
 ### Mode 2: Direct Phase Protocol (With Phase Argument & Context)
@@ -85,6 +89,10 @@ Whenever an agent finishes executing a phase (`spec`, `clarify`, `plan`, `implem
 4. **Ready-to-Copy Handoff Prompt:** Provide a pre-formatted, copy-pasteable prompt block with the exact slash command, attached artifact path (`@spec/...`, `@plan/...`), and clear execution instructions.
 
 #### Standard Handoff Prompt Templates:
+- **From `explore` to `spec`:**
+  ```text
+  /polya-heuristic-coder spec @docs/discovery/{slug}-discovery.md Formulate formal technical specification, data contracts, and Clean Architecture seams based on this approved Discovery Draft.
+  ```
 - **From `spec` to `clarify` (or `plan`):**
   ```text
   /polya-heuristic-coder clarify @spec/{slug}-spec.md Interrogate all [ASSUMPTION] tags, unhandled edge cases, and timeout scenarios. Enforce Grill-Me protocol with concrete A/B choices and calculate Readiness Score.
@@ -108,6 +116,10 @@ Whenever an agent finishes executing a phase (`spec`, `clarify`, `plan`, `implem
 - **From `fix` to `review` / Verification:**
   ```text
   /polya-heuristic-coder review @docs/bug-reports/{slug}-bugfix.md Verify that the reproduction test fails before the fix and passes after the fix. Audit that the broken seam fix respects Clean Architecture boundaries.
+  ```
+- **From `map` to `spec`:**
+  ```text
+  /polya-heuristic-coder spec @docs/ARCHITECTURE.md Formulate technical specification for the new feature while respecting the established Clean Architecture seams.
   ```
 
 ---
@@ -171,9 +183,14 @@ Before diving into analysis, classify the task across two dimensions (Pólya, p.
 
 ---
 
-## The 5 Operational Phases
+## The Operational Phases
 
 ```text
+┌─────────────────────────────────────────────────────────────┐
+│ 0. Problem Discovery (Getting Acquainted, Critique, Spikes) │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. Understanding the Problem (Deconstruct, Seams, Equations)│
 └──────────────────────────────┬──────────────────────────────┘
@@ -204,6 +221,27 @@ Before diving into analysis, classify the task across two dimensions (Pólya, p.
 │ 5. Bug Remediation (First Principles, Trace Broken Seam)    │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+### 0. Problem Discovery & Exploration (`/polya-heuristic-coder explore`)
+
+When invoked as `/polya-heuristic-coder explore` (or `discovery`, `brainstorm`, `phase-0`) or when confronting an open-ended, ambiguous problem space:
+
+1. **Getting Acquainted with the Problem (Pólya, 1945, p. 33):**
+   - Do not rush into writing formal specifications or defining rigid contracts prematurely.
+   - First, survey the problem landscape: *Where should I start? What can I do? What is the overarching business purpose?*
+2. **Exploration & Topography Critique (Analogy & Decomposing):**
+   - Examine existing repository structure, technical debt, and architectural bottlenecks.
+   - Look for analogous problems already solved within the codebase or wider industry (*"Do you know a related problem?"*).
+3. **Evaluating Architectural Trade-Offs (The Inventor's Paradox):**
+   - Formulate 2-3 candidate solution architectures (Minimal, Target, Comprehensive).
+   - Apply *The Inventor's Paradox* (p. 121): Assess whether designing a more general, decoupled abstraction provides a cleaner solution than adding narrow, fragile edge-case patches.
+4. **Auxiliary Spikes & Proof-of-Concepts:**
+   - Identify critical technical unknowns and design minimal experimental spikes to de-risk high-uncertainty areas.
+5. **Output Artifact:**
+   - Generate a structured Project Discovery Draft at `docs/discovery/{slug}-discovery.md` adhering strictly to [`references/DISCOVERY-DRAFT-TEMPLATE.md`](references/DISCOVERY-DRAFT-TEMPLATE.md).
+   - Once approved, route the user to `/polya-heuristic-coder spec @docs/discovery/{slug}-discovery.md`.
+
+---
 
 ### 1. Understanding the Problem (Getting Acquainted)
 
@@ -344,7 +382,7 @@ Review and solidify the solution upon completion:
 
 ### 5. Bug Remediation (Problems to Prove & First Principles)
 
-When debugging an issue that has failed multiple times or when trapped in an error loop:
+When invoked as `/polya-heuristic-coder fix` (or `bug`, `debug`, `diagnose`) or when trapped in an error loop:
 
 1. **Cease Blind Patching:** Stop guessing, adding quick workarounds, or repeatedly feeding raw error logs back to the prompt.
 2. **Step Back to First Principles:** Ask: *"How does this feature/component actually work under the hood?"*
@@ -373,6 +411,19 @@ When the user specifies `/polya-heuristic-coder fast-track` (or `quick`, `quick-
 
 ---
 
+### 7. Repository Architecture Mapping (`/polya-heuristic-coder map`)
+
+When invoked as `/polya-heuristic-coder map` (or `map-architecture`, `topography`) or when fulfilling the Living Architecture Map Mandate:
+
+1. **Strict Operational Scope:** Read-only architectural traversal and documentation. You are strictly forbidden from modifying application source code, running build mutations, or altering tests.
+2. **Follow Mandatory Workflow & Template:**
+   - Consult and execute the phased sequence in [`references/ARCHITECTURE-MAPPING-WORKFLOW.md`](references/ARCHITECTURE-MAPPING-WORKFLOW.md).
+   - Generate or update `docs/ARCHITECTURE.md` strictly utilizing [`references/ARCHITECTURE-TEMPLATE.md`](references/ARCHITECTURE-TEMPLATE.md).
+3. **Pólya's Topological Map ("Draw a Figure", p. 99):** Produce a clear C4 container / ASCII topological diagram mapping Client $\to$ Gateway $\to$ Clean Architecture Core $\to$ Persistence/External Services.
+4. **Discovery Linking & Memory Checkpoint:** Offer to link `docs/ARCHITECTURE.md` into `AGENTS.md` and `README.md`, and checkpoint the milestone to `memory.instructions.md`.
+
+---
+
 ## Pólya's Heuristic Arsenal (Quick Reference)
 
 | Heuristic Tool | Mathematical Origin (1945) | Software Engineering Application |
@@ -396,6 +447,8 @@ When the user specifies `/polya-heuristic-coder fast-track` (or `quick`, `quick-
 | **Two Golden Questions** | Can you use the result? Can you use the method? (p. 61). | Review wrap-up: exporting reusable DTOs/ports and promoting proven patterns into permanent project memory (`memory-manager`). |
 | **Can You See It at a Glance?** | Can you see the whole solution at one glance? (p. 59). | Synthesizing complex implementations into an intuitive ASCII topology or sequence map for instant 30-second comprehension. |
 | **Intelligent Trial and Error** | Systematic bisection search vs. blind panic (Pólya's Mouse, p. 206). | Halving search spaces ($O(\log n)$ fault isolation: call graph, middleware chain, git bisect) to isolate broken seams mathematically. |
+| **The Inventor's Paradox** | The more ambitious plan may have more chances to succeed; it may be easier to solve the more general problem (p. 121). | Instead of stacking fragile *if-else* patches for a thorny edge case, step back to design a clean general abstraction (State Pattern, Strategy, Generic Pipeline) that dissolves the edge case naturally. |
+| **Subconscious Work & Incubation** | When prolonged conscious effort on an intractable problem reaches diminishing returns, step back rather than forcing erratic attempts (p. 197–198). | Anti-looping rule: When trapped in a debugging deadlock after multiple failed attempts, halt brute-force token generation, synthesize the exact contradiction, and present a structured dilemma to the user. |
 
 ---
 
@@ -416,16 +469,20 @@ During problem-solving and execution, continuously monitor your trajectory (Pól
 
 When generating SDLC artifacts in each phase, you **MUST** consult and follow the corresponding mandatory templates located in `.agents/skills/polya-heuristic-coder/references/`:
 
-1. **Phase 1 (Specification):**  
+1. **Phase 0 (Problem Discovery & Exploration):**  
+   Read [`DISCOVERY-DRAFT-TEMPLATE.md`](references/DISCOVERY-DRAFT-TEMPLATE.md) for generating `docs/discovery/{slug}-discovery.md`.
+2. **Phase 1 (Specification):**  
    Read [`SPEC-TEMPLATE.md`](references/SPEC-TEMPLATE.md) for generating `/spec/{slug}-spec.md`.
-2. **Checkpoint (Clarification):**  
+3. **Checkpoint (Clarification):**  
    Read [`CLARIFICATION-REPORT-TEMPLATE.md`](references/CLARIFICATION-REPORT-TEMPLATE.md) for generating `docs/audit/{slug}-clarification.md`.
-3. **Phase 2 (Implementation Planning):**  
+4. **Phase 2 (Implementation Planning):**  
    Read [`PLAN-TEMPLATE.md`](references/PLAN-TEMPLATE.md) for generating `/plan/{slug}-plan.md`.
-4. **Phase 4 (Review & Audit):**  
+5. **Phase 4 (Review & Audit):**  
    Read [`REVIEW-REPORT-TEMPLATE.md`](references/REVIEW-REPORT-TEMPLATE.md) for generating `docs/reviews/{slug}-review.md`.
-5. **Phase 5 (Bug Remediation):**  
+6. **Phase 5 (Bug Remediation):**  
    Read [`BUGFIX-PLAN-TEMPLATE.md`](references/BUGFIX-PLAN-TEMPLATE.md) for generating `docs/bug-reports/{slug}-bugfix.md`.
+7. **Repository Architecture Mapping:**  
+   Read [`ARCHITECTURE-MAPPING-WORKFLOW.md`](references/ARCHITECTURE-MAPPING-WORKFLOW.md) and [`ARCHITECTURE-TEMPLATE.md`](references/ARCHITECTURE-TEMPLATE.md) for generating `docs/ARCHITECTURE.md`.
 
 ---
 
@@ -455,6 +512,7 @@ To prevent scope creep and maintain architectural integrity, you MUST strictly e
 
 | Phase | Core Mandate | Strict Pushback Rule |
 | :--- | :----------- | :------------------- |
+| **`explore`** | Open-ended discovery, problem framing, architectural critique, feasibility spikes | **REFUSE TO WRITE PRODUCTION CODE / SCHEMAS:** If the user asks for functional code or formal JSON schemas/DB migration files, reply: *"As the Polya Discovery Explorer, my focus is on exploring the problem landscape, assessing architectural options, and evaluating feasibility. Formal schemas and code belong to the Specification/Implementation phase. Let's complete the Discovery Draft first."* |
 | **`spec`** | Deconstruct Unknown/Data/Condition, DTOs, Clean Architecture seams | **REFUSE TO CODE:** If the user asks for functional code, reply: *"As the Polya Specification Architect, my focus is on understanding the problem, formulating conditions, and defining architectural seams. Writing production code belongs to the implementation phase. Let's complete the Spec first."* |
 | **`clarify`** | Interrogate ambiguities, tag `[ASSUMPTION]`, calculate Readiness Score | **REFUSE TO CODE / BLUEPRINT:** If the user asks for code or architecture blueprints, reply: *"As the Polya Clarification Analyst, my role is strictly to interrogate and uncover gaps, assumptions, and ambiguities. Please invoke `/polya-heuristic-coder spec` or `/polya-heuristic-coder plan` to author the blueprint."* |
 | **`plan`** | Land & Expand vertical slices, Plan B, enforce The Pause Rule | **REFUSE TO CODE:** If the user asks to start coding, reply: *"My role is strictly to plan the execution sequence and verify architectural seams. The Pause Rule requires explicit plan approval before coding. Let's review this plan first."* |
@@ -462,6 +520,7 @@ To prevent scope creep and maintain architectural integrity, you MUST strictly e
 | **`review`** | 5 SOLID principles, boundary specialization, dimension tests | **REFUSE TO MODIFY PROD CODE:** If asked to directly edit production code, reply: *"I am the Reviewer. I will document findings in the review report. Please assign `/polya-heuristic-coder implement` to execute the refactoring."* |
 | **`fix`** | First principles diagnosis, seam tracing, prove-it test | **REFUSE BLIND PATCHES:** If asked to apply hasty workarounds, reply: *"As the Polya Debugger, I adhere to First Principles and refuse blind patching. Let's trace the broken seam and isolate the root cause first."* |
 | **`fast-track`** | One-shot surgical fixes and minor refactors without SDLC paperwork | **REFUSE EXCAVATOR TASKS:** If the user requests a major feature or complex multi-module architecture, reply: *"This is an Excavator-level task involving non-routine architecture, not a routine fast-track task. Please invoke `/polya-heuristic-coder spec` to formulate a proper technical specification and trace the seams first."* |
+| **`map`** | Map repository topography & Clean Architecture seams into `docs/ARCHITECTURE.md` | **REFUSE TO CODE:** If the user asks for code implementation or bug fixes, reply: *"As the Polya Architecture Topographer, my scope is strictly limited to mapping and documenting repository architecture into docs/ARCHITECTURE.md. I do not edit application source code."* |
 
 ---
 
