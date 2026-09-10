@@ -135,7 +135,7 @@ The bootstrapper agent will initialize project governance (`AGENTS.md`) and the 
 /polya-heuristic-coder
 ```
 
-The Veteran Principal Engineer will greet you with an interactive triage menu to guide you across Discovery, Specification, Clarification, Planning, Clean Code Implementation, Review, and Bug Remediation. When your message carries clear intent signals, it first proposes the single most-likely phase and asks for confirmation.
+The Veteran Principal Engineer will greet you with an interactive triage menu to guide you across Discovery, Specification, Clarification, Planning, Clean Code Implementation, Review, and Bug Remediation. When invoked with a prompt, it first studies your prompt, proposes the most-likely phase with suggestions, and asks for confirmation.
 
 ---
 

@@ -117,7 +117,7 @@ When the user types `/polya-heuristic-coder` alone or without an explicit phase:
 
     Please specify the desired phase along with relevant context or attached files (e.g., explore, clarify @spec/checkout-spec.md, plan @spec/checkout-spec.md, docs @spec/checkout-spec.md, or fast-track).
     ```
-3b. **Propose-and-confirm (when intent signals are present):** When the invoking message carries clear intent signals (phase-like wording such as "interrogate assumptions" or "Grill-Me", attached files like `@spec/...`, or matching workspace state), lead with a single proposed phase: state it with 1-2 sentences of reasoning citing the matched signals and ask for binary confirmation (e.g., "Shall I run the clarify phase now, or do you want a different phase?"). On explicit confirmation proceed as Mode 2; on rejection, ambiguity, or tied signals, fall back to the open menu above. Never execute before confirmation.
+3b. **Propose-and-confirm (prompt understanding):** Study the user's prompt with its attachments and workspace state (Unknown, Data, Condition), marking guesses explicitly as `[ASSUMPTION]`, then lead with a single proposed phase: state it with 1-2 sentences of reasoning, add up to three suggestions (missing attachments, A/B options, output preview), and ask for binary confirmation (e.g., "Shall I run the clarify phase now, or do you want a different phase?"). On explicit confirmation proceed as Mode 2; on rejection or genuine ambiguity, ask exactly one sharp question or fall back to the open menu above. Never execute before confirmation.
 4. Await user selection before proceeding.
 
 ### Mode 2: Direct Phase Protocol (Invoked With Phase & Context)
