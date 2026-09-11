@@ -93,6 +93,11 @@ export interface ExampleResponseDTO {
 
 ## 5. Clean Architecture Seams & Component Boundaries
 
+> [!NOTE]
+> **Architectural Pragmatism Check:** Declare project architectural scope:
+> - **Enterprise Core Domain:** Enforce full 4-layer directory segregation (`domain/`, `usecases/`, `adapters/`, `frameworks/`) with strict ports & DTOs.
+> - **Standalone Script / Auxiliary CLI / Spike:** Defer heavy multi-layer ceremony. Focus on Clean Code micro-principles (SRP, pure functions, clear naming) in a self-contained, modular file structure.
+
 ```text
 Entities (Domain Layer)
    └── Pure business logic, value objects, and domain invariants

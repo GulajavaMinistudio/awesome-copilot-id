@@ -35,6 +35,10 @@
 *Pólya Heuristic: Decomposing and Recombining (p. 75) & Analogy (p. 37). Examine existing components, critique architectural debt, and look for analogous solutions.*
 
 ### 3.1 Existing Topography Analysis
+
+> [!NOTE]
+> **Greenfield Projects:** If the repository is currently empty, skip existing code critique and utilize this section to propose the initial Clean Architecture folder topography and technology stack scaffold.
+
 - **Relevant Directories & Modules:**
   - `[path/to/module]`: [Current responsibility and implementation pattern]
   - `[path/to/models]`: [Current data structures and storage representations]

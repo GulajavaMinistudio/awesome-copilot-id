@@ -135,7 +135,7 @@ The bootstrapper agent will initialize project governance (`AGENTS.md`) and the 
 /polya-heuristic-coder
 ```
 
-The Veteran Principal Engineer will greet you with an interactive triage menu to guide you across Discovery, Specification, Clarification, Planning, Clean Code Implementation, Review, and Bug Remediation. When invoked with a prompt, it first studies your prompt, proposes the most-likely phase with suggestions, and asks for confirmation.
+The Veteran Principal Engineer supports both **explicit phase dispatching** (e.g., `/polya-heuristic-coder spec ...`) and **natural free-form task briefs** (e.g., `/polya-heuristic-coder fix checkout race condition with redis`). It autonomously inspects your codebase across Clean Architecture seams, renders a **Pólya Triage Card**, and auto-routes to the optimal phase while strictly enforcing The Pause Rule.
 
 ---
 

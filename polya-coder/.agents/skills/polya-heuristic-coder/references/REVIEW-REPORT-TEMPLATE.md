@@ -59,6 +59,7 @@
 - **Intention-Revealing Names:** Are variables, functions, and classes named after what they mean, avoiding abbreviations or misleading names?
 - **Small Functions:** Are functions concise, focused on one thing, and operating at a single level of abstraction?
 - **Boy Scout Rule:** Was the code left cleaner than it was found?
+- **Architectural Pragmatism & Scope Check:** Verified that architectural ceremony fits the problem scale (zero forced 4-layer over-engineering on single-file scripts/CLI tools; strict Clean Architecture preserved on core business domain modules).
 - **Zero Suppression Anti-Cheat:** Verified zero `@ts-ignore`, `eslint-disable`, `# noqa`, or skipped tests.
 
 ---

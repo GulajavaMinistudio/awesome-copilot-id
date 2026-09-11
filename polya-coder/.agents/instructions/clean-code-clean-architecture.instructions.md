@@ -77,6 +77,19 @@ _Code must be readable by humans, not just machines._
 
 For every code generation request, you must:
 
-1.  **Prioritize Interfaces/DTOs:** Define the boundaries first before writing implementation.
-2.  **Enforce Layers:** Ensure no infrastructure code leaks into business logic.
+1.  **Assess Problem Scale & Prioritize Interfaces/DTOs:** Determine if the task is an enterprise core domain or a pragmatic standalone tool. Define boundaries and contracts appropriately before writing implementation.
+2.  **Enforce Layers:** Ensure no infrastructure code leaks into business logic for core domain features.
 3.  **Refactor:** Suggest splitting large functions or renaming unclear variables immediately.
+
+---
+
+## 6. Architectural Pragmatism & Scope Proportionality
+
+_Pragmatism over Dogmatism. Fit architectural ceremony to the problem scale (Pedantry vs. Mastery)._
+
+### Proportionality Rules
+
+- **Standalone Scripts & Auxiliary Tools:** For single-file automation scripts, database seeders/migrations, or lightweight CLI utilities, DO NOT force an artificial 4-layer directory structure (`domain/`, `usecases/`, `adapters/`, etc.) with 10 interfaces. Emphasize **Clean Code micro-principles** (Single Responsibility, intention-revealing names, small pure functions, testability) in a clean, self-contained module.
+- **Spikes & Prototypes (Phase 0):** Spikes and proof-of-concepts should be lean and disposable. Clearly mark them with `// SPIKE: prototype code` and defer heavy port/adapter abstractions until domain invariants stabilize in Phase 1/Phase 2.
+- **Enterprise & Core Domain (Phase 1, 2, & 3):** When implementing core business domain features, long-lived services, and public APIs, full layer segregation (Entities, Use Cases, Ports, Adapters, DTOs) is mandatory and non-negotiable.
+- **YAGNI Defense:** Never introduce speculative abstractions, intermediate interfaces with only one foreseeable implementation, or over-layered indirection unless required by boundary isolation or testability.

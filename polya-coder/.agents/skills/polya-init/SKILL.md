@@ -148,10 +148,14 @@ Check that the following foundational files exist in the root and configuration 
 2. Confirm that the **Pólya Heuristic Coder Architecture** (`AGENTS.md` and the `.agents/` suite) has been successfully initialized.
 3. Remind them to open `AGENTS.md` to verify and customize the **Project Name** and **Domain Mission** on the first line.
 4. **Auto-Map Existing Codebase (Legacy & Non-Empty Repositories):** If existing source code directories (`src/`, `lib/`, `app/`, `packages/`) containing implementation files are detected, inform the user and recommend running `/polya-heuristic-coder map` to generate `docs/ARCHITECTURE.md` mapping system topography and Clean Architecture seams.
-5. Guide them to start their workflow:
-   - Run `/polya-heuristic-coder` (without arguments) to open the interactive 5-phase Socratic Triage Menu.
-   - Run `/polya-heuristic-coder explore` to survey the problem landscape (Phase 0).
-   - Run `/polya-heuristic-coder spec` to understand requirements and map seams (Phase 1).
+5. Guide them to start their workflow with maximum flexibility:
+   - **Option A (Direct Phase Command):**
+     - Run `/polya-heuristic-coder explore` to survey the problem landscape (Phase 0).
+     - Run `/polya-heuristic-coder spec` to understand requirements and map seams (Phase 1).
+     - Run `/polya-heuristic-coder plan`, `code`, `fix`, or `map` for downstream phases.
+   - **Option B (Natural Intent / Brief - Recommended for open-ended tasks):**
+     - Run `/polya-heuristic-coder [your idea, bug description, or task in natural language]` — Pólya will autonomously conduct codebase reconnaissance, classify the intent, and output an interactive **Pólya Triage Card**.
+   - **Interactive Menu:** Run `/polya-heuristic-coder` (bare command) to answer the 3-question Socratic Triage Diagnostic and pick a recommended route.
 
 ---
 

@@ -38,24 +38,41 @@ An elite, highly disciplined software engineering kit designed for AI coding age
 3. **The Pause Rule (Mandatory Gate):** Always pause between planning and implementation. The agent must present the architectural plan and data flow and obtain explicit user confirmation before writing code.
 4. **Land and Expand (Tracer Bullets):** Implement the minimal end-to-end vertical slice first (*Land*). Secure the baseline before adding advanced capabilities (*Expand*).
 5. **Clean Code & Boy Scout Rule:** Small, focused functions doing one thing only. Self-documenting code with intention-revealing names. Leave every file cleaner than you found it.
-6. **First-Principles Debugging:** Cease blind patching. Trace the broken seam across architectural layers and isolate the root cause before touching functional code.
+6. **First-Principles Debugging & Circuit-Breaker:** Cease blind patching. Trace the broken seam across architectural layers and isolate the root cause before touching functional code. Trigger an immediate hard-stop if 2–3 fix attempts fail.
+7. **Architectural Pragmatism (Pedantry vs. Mastery):** Fit architectural ceremony to the problem scale. Enforce strict 4-layer decoupling for enterprise core domains, but avoid over-engineering standalone scripts, migrations, or lightweight utilities with artificial layer overhead.
 
 ---
 
 ## 🎯 Unified Command & Interactive Router
 
-`polya-coder` utilizes a **single unified slash command** for the entire lifecycle:
+`polya-coder` utilizes a **single unified slash command** supporting explicit phase routing, natural intent auto-detection, and interactive triage:
 
 ```text
-/polya-heuristic-coder [phase] [instruction] [@context-file]
+# Syntax Option A: Direct Phase Invocation
+/polya-heuristic-coder [phase] [instruction] [@context-file (optional)]
+
+# Syntax Option B: Full User Intent / Task Description / Brief (Auto-Scanned & Auto-Routed)
+/polya-heuristic-coder [full user intent / task description / brief] [@context-file (optional)]
 ```
 
-### 1. Mode 1: Interactive Triage (Without Arguments)
-When invoked as a bare command without arguments:
+### 1. Mode 1: Autonomous Intent Analysis & Routing (Natural Prompts or Bare Invocation)
+When invoked with a full user intent, task description, or feature brief without explicit phase keywords (or as bare `/polya-heuristic-coder`):
+- **Autonomous Codebase Reconnaissance:** If context files are omitted, the agent does not halt or blindly ask for files; it autonomously inspects the workspace, topography, and Clean Architecture seams first.
+- **Auto-Routing Decision:** Deconstructs Unknown, Data, and Condition, mapping intent to the optimal phase (`explore`, `spec`, `clarify`, `plan`, `implement`, `review`, `fix`, `docs`, `fast-track`, `map`).
+- **Execution Protocol & The Pólya Triage Card:** For clear intent, renders a **Pólya Triage Card**, announces discovered seams, and executes the phase immediately. For ambiguous intents, proposes the best-matching phase. Always enforces **The Pause Rule**.
+- **Bare Invocation (Socratic Quick-Diagnostic):** When invoked as bare `/polya-heuristic-coder` without arguments, renders the standardized interactive triage card:
+
 ```text
-/polya-heuristic-coder
+┌─ 🧭 Pólya Socratic Triage Quick-Diagnostic ───────────────────────────────────
+│ • Question 1 (Core Goal)     : What is the primary symptom or outcome desired?
+│ • Question 2 (Problem Nature): Is this greenfield, refactoring, or an elusive bug?
+│ • Question 3 (Constraints)   : Are there API contracts, tests, or SLAs to satisfy?
+├───────────────────────────────────────────────────────────────────────────────
+│ 💡 How to Respond:
+│   [Option A] Type a phase keyword (explore, spec, plan, code, fix, map)
+│   [Option B] Answer the 3 questions directly in your own natural language
+└───────────────────────────────────────────────────────────────────────────────
 ```
-The agent acts as a **Socratic Mentor** (Senior Principal Engineer), displaying an interactive 5-phase menu, and inquiring which phase to run and what context files are available. When invoked with a prompt, the agent first studies the prompt and its attachments (Unknown, Data, Condition), marks guesses as `[ASSUMPTION]`, then proposes the single best-matching phase with brief reasoning, up to three suggestions, and a binary confirmation; the full menu remains as fallback. No phase executes without explicit user confirmation.
 
 ### 2. Mode 2: Direct Phase Execution (With Phase Keyword)
 Specify the phase directly along with instructions and file attachments:
@@ -68,8 +85,8 @@ Specify the phase directly along with instructions and file attachments:
 | **`plan`** | Phase 2: Planning | *Working Backwards*, *Auxiliary Problems*, *Land & Expand (Tracer Bullets)*, Plan B, and **The Pause Rule**. | Approved `/spec/` |
 | **`implement`** | Phase 3: Execution | Code execution with *Clean Code*, single-responsibility small functions, and *Boy Scout Rule* compliance. | Approved `/plan/` |
 | **`review`** | Phase 4: Review | Audit 5 SOLID principles (SRP, OCP, LSP, ISP, DIP), boundary specialization testing, and data type dimensions. | Source code + Spec |
-| **`docs`** | Phase 6: Documentation | Author user/developer documentation based on the 4 Diátaxis quadrants (Tutorials, How-To, Reference, Explanation). | Spec / Plan / Source code |
 | **`fix`** | Phase 5: Bug Remediation | Cease *blind patching*, return to *First Principles*, trace *broken seam*, and formulate reproduction test. | Error log / Stack trace |
+| **`docs`** | Phase 6: Documentation | Author user/developer documentation based on the 4 Diátaxis quadrants (Tutorials, How-To, Reference, Explanation). | Spec / Plan / Source code |
 | **`fast-track`** | Bypass: Fast-Track | Routine problems, one-shot surgical fixes, and minor refactors (*Pedantry vs Mastery*). | None / Code snippet |
 | **`map`** | Utility: Architecture | Traverse directory structure, map Clean Architecture seams, and generate `docs/ARCHITECTURE.md`. | Repository root |
 
@@ -79,6 +96,24 @@ At the conclusion of every phase, the agent executes a structured 4-step wrap-up
 2. Offers a memory checkpoint via `/memory-manager`.
 3. Strongly advises opening a **new chat session** to prevent context bleeding and token bloat.
 4. Generates a **ready-to-copy handoff prompt** for the next phase with attached upstream documents.
+
+---
+
+## ⚡ Fast-Track vs. Full SDLC Decision Matrix
+
+To prevent both over-engineering on simple fixes (*Pedantry*) and under-engineering on critical domain boundaries, consult this decision matrix before choosing your execution mode:
+
+| Dimension / Criteria | 🚀 Fast-Track Bypass Mode (`fast-track`) | 🏛️ Full Pólya SDLC Pipeline (`explore` ➔ `spec` ➔ `plan` ➔ `implement`) |
+| :--- | :--- | :--- |
+| **Problem Nature** | **Routine Problem:** Direct pattern substitution, well-understood fix, zero architectural ambiguity. | **Non-Routine Problem:** Novel feature, complex domain logic, concurrency, state management, or cross-cutting seam. |
+| **Task Sizing** | **XS / S** (1 – 2 files impacted). | **M / L** (3 – 8 files organized into vertical tracer bullets). |
+| **Architectural Boundary** | Localized logic or UI tweak. Zero new public APIs, DTOs, or database schema migrations. | Introduces new API contracts, entities, use cases, database tables, or third-party adapters. |
+| **Documentation Ceremony** | **Zero Paperwork:** Mental micro-understanding and micro-plan; executes in a single fluid motion. | **Full SDLC Artifacts:** Structured `/spec/`, `/plan/`, and `docs/reviews/` required before and after coding. |
+| **Mandatory Pushback Rule** | **The Excavator Rule:** Reject multi-module features or architectural changes under `fast-track`. | **The Pause Rule:** Strictly forbid functional code generation until plan is approved by the user. |
+| **Example Scenarios** | Typo fix, adding a single validated field to existing form, dependency bump, self-contained CSS fix. | New checkout workflow, OAuth2 authentication provider, payment webhook reconciliation, order state machine. |
+
+> [!TIP]
+> **Quick Rule of Thumb:** If you can implement and verify the change within 5 minutes without altering database schema or public contracts, use `fast-track`. Otherwise, let Pólya guide you through Phase 1 (`spec`) and Phase 2 (`plan`).
 
 ---
 
@@ -94,7 +129,9 @@ graph TD
     Implement --> Review["/polya-heuristic-coder review (Phase 4: SOLID & Dimension Audit)"]
     Review -->|Verified & Approved| Docs["/polya-heuristic-coder docs (Phase 6: Technical Documentation)"]
     Review -->|Defect / Failure Found| BugFix["/polya-heuristic-coder fix (Phase 5: First-Principles Remediation)"]
-    BugFix --> Implement
+    BugFix --> Breaker{🛑 Circuit-Breaker Gate}
+    Breaker -->|Isolated Root Cause| Implement
+    Breaker -->|Persistent Failure >= 2-3| Spec
 ```
 
 #### ASCII Flow Representation:
@@ -183,10 +220,11 @@ graph TD
 
 ---
 
-## 🛠️ Cross-Cutting Utility Skills
+## 🛠️ Cross-Cutting Utility Skills & References
 
 - **`memory-manager`:** Manages the persistent project memory file (`memory.instructions.md`). Ensures cross-session context retention, knowledge base updates, and checkpoint compaction.
 - **`/polya-heuristic-coder map` (or `sdlc-map-architecture`):** Maps repository topology, directory purposes, and Clean Architecture seams into `docs/ARCHITECTURE.md`.
+- **🌟 End-to-End Walkthrough Reference:** [`references/END-TO-END-WALKTHROUGH.md`](.agents/skills/polya-heuristic-coder/references/END-TO-END-WALKTHROUGH.md) — Comprehensive 6-stage golden reference implementation (Idempotent Webhook Processing Engine with Redis Distributed Lock) demonstrating every template, seam, and rule in action.
 
 ---
 
@@ -212,6 +250,7 @@ polya-coder/
 │   │   │   │   ├── CLARIFICATION-REPORT-TEMPLATE.md
 │   │   │   │   ├── DISCOVERY-DRAFT-TEMPLATE.md
 │   │   │   │   ├── DOCS-TEMPLATE.md
+│   │   │   │   ├── END-TO-END-WALKTHROUGH.md
 │   │   │   │   ├── PLAN-TEMPLATE.md
 │   │   │   │   ├── REVIEW-REPORT-TEMPLATE.md
 │   │   │   │   └── SPEC-TEMPLATE.md
@@ -233,7 +272,29 @@ polya-coder/
 ```text
 /polya-heuristic-coder
 ```
-When invoked with a prompt, the agent studies the prompt, proposes a single phase with suggestions to confirm, and only then shows the menu as fallback. Nothing runs until you confirm.
+When invoked as a bare command without arguments, the agent greets you as a Socratic Mentor and presents the triage menu.
+
+### 🌟 Natural Brief & Task Invocations (Option B: Auto-Scanned & Auto-Routed)
+You can express your task in natural language without remembering phase names. The agent autonomously recons your codebase, renders a **Pólya Triage Card**, and auto-routes to the optimal phase:
+
+```text
+# Feature Design & Architecture (Auto-routed to Phase 1: spec)
+/polya-heuristic-coder we need to design a multi-tenant authentication system using JWT with redis token rotation
+
+# Bug Investigation & Root Cause Analysis (Auto-routed to Phase 5: fix)
+/polya-heuristic-coder race condition occurs when two concurrent checkout requests process the last inventory item
+
+# Greenfield Architecture Exploration (Auto-routed to Phase 0: explore)
+/polya-heuristic-coder explore candidate tech stacks and architectural trade-offs for high-throughput webhook ingestion
+
+# Routine Cleanup & Minor Tweak (Auto-routed to fast-track)
+/polya-heuristic-coder fix typo in auth error message and bump redis connection timeout to 5000ms
+
+# User & Developer Documentation (Auto-routed to Phase 6: docs)
+/polya-heuristic-coder write an end-to-end how-to guide for integrating our payment webhook
+```
+
+### Direct Phase Invocations (Option A: Explicit Phase Keyword)
 
 ### Phase 0: Problem Discovery & Exploration
 ```text
@@ -265,14 +326,14 @@ When invoked with a prompt, the agent studies the prompt, proposes a single phas
 /polya-heuristic-coder review @spec/checkout-spec.md @plan/checkout-plan.md Audit the checkout implementation against SOLID principles, boundary specialization, and dimensional consistency.
 ```
 
-### Phase 6: Technical Documentation (Diátaxis)
-```text
-/polya-heuristic-coder docs @spec/checkout-spec.md Author a How-To guide and Reference documentation for the new checkout flow adhering strictly to the Diátaxis framework.
-```
-
 ### Phase 5: Bug Remediation (First Principles)
 ```text
 /polya-heuristic-coder fix Here is the failing checkout race condition log. Cease blind patching, return to first principles, trace the broken seam, and isolate the root cause with a reproduction test.
+```
+
+### Phase 6: Technical Documentation (Diátaxis)
+```text
+/polya-heuristic-coder docs @spec/checkout-spec.md Author a How-To guide and Reference documentation for the new checkout flow adhering strictly to the Diátaxis framework.
 ```
 
 ### Fast-Track: Routine One-Shot Bypass

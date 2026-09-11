@@ -73,7 +73,18 @@ tags: ["polya", "bug-fix", "first-principles", "problems-to-prove"]
 
 ---
 
-## 5. Rollback Strategy
+## 5. Circuit-Breaker & Incubation Contingency (Anti-Looping)
+
+- **Retry Budget:** Maximum 2–3 failed reproduction or fix attempts before triggering hard-stop.
+- **Circuit-Breaker Trigger Criteria:** If test reproduction fails to isolate the broken seam, or a patch introduces cascading failures across $\ge 2$ adjacent modules.
+- **Contradiction / Dilemma Log (Populate only if Circuit-Breaker triggers):**
+  - *Flawed Assumption:* [What underlying hypothesis proved false at runtime?]
+  - *Observed Invariant Violation:* [What is the exact divergence between theoretical expectation and runtime data?]
+  - *Decompose & Recombine Escalation:* [Step back to Phase 1 (Understanding the Problem), formulate 2-3 alternate hypotheses, or request missing telemetry from user]
+
+---
+
+## 6. Rollback Strategy
 
 1. Revert fix commits: `git revert HEAD`
 2. Restore previous database state if migrations were applied.
