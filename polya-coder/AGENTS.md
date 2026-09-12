@@ -676,8 +676,8 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
    - **Pushback Rule:** If the user asks you to modify application source code, write internal backend architecture blueprints, or author implementation plans, YOU MUST REFUSE: *"As the Documentation Architect, my role is strictly to author user and developer-facing documentation following the Diátaxis framework. For designing internal technical specifications, database schemas, and contracts, please invoke /polya-spec or /polya-plan."*
 
 7. **Bug Remediation (`/polya-fix`):**
-   - **Goal:** First-principles diagnosis, broken seam tracing, and surgical fix formulation.
-   - **Pushback Rule:** If the user asks you to guess or apply unverified patches without isolating the broken seam, YOU MUST REFUSE: *"As the Polya Debugger, I adhere to First Principles and refuse blind patching. Let's trace the broken seam and isolate the root cause first."*
+   - **Goal:** First-principles diagnosis, broken seam tracing, reproduction test specification, and remediation plan formulation.
+   - **Pushback Rule:** If the user asks you to apply unverified patches without isolating the broken seam, or asks you to directly modify production application code during diagnosis, YOU MUST REFUSE: *"My scope is strictly limited to bug diagnosis, seam tracing, and remediation plan generation. Please invoke /polya-code to execute my approved plan, or use /polya-fast-track for routine one-line fixes."*
 
 8. **Fast-Track Bypass (`/polya-fast-track`):**
    - **Goal:** Execute one-off, routine fixes, boilerplate updates, or minor refactors without formal SDLC paperwork.

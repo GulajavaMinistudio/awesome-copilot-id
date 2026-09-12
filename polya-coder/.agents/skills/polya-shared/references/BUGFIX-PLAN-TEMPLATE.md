@@ -19,6 +19,11 @@ tags: ["polya", "bug-fix", "first-principles", "problems-to-prove"]
 - **The Hypothesis:** [Root cause explanation derived from First Principles]
 - **Contradiction / Minimal Counterexample:** [The exact input, state, or concurrency race that produces the failure]
 
+### 1.1 Remediation Requirements & Constraints
+- **REQ-001:** The fix must resolve [Specific Issue / broken invariant].
+- **CON-001:** The fix must not break existing public API contracts or domain entities.
+- **CON-002:** Backward compatibility must be preserved with zero collateral side effects.
+
 ---
 
 ## 2. Tracing the Broken Seam
@@ -48,21 +53,21 @@ tags: ["polya", "bug-fix", "first-principles", "problems-to-prove"]
 ### Phase 1: Test Writing (Isolate & Prove the Failure)
 *Goal: Formulate a targeted reproduction test that fails for the exact root cause.*
 
-| Task ID  | Description                                               | Files Impacted | Completed |
-| :------- | :-------------------------------------------------------- | :------------- | :-------: |
-| TASK-101 | Write targeted reproduction unit/integration test         | `tests/...`    |    [ ]    |
-| TASK-10X | **VERIFY:** Run test. Test MUST FAIL with expected error. | `tests/...`    |    [ ]    |
-| TASK-10Y | **APPROVAL:** 🛑 Stop and confirm reproduction with user   | Gate           |    [ ]    |
+| Task ID  | Description                                               | Ref ID  | Files Impacted | Completed |
+| :------- | :-------------------------------------------------------- | :------ | :------------- | :-------: |
+| TASK-101 | Write targeted reproduction unit/integration test         | REQ-001 | `tests/...`    |    [ ]    |
+| TASK-10X | **VERIFY:** Run test. Test MUST FAIL with expected error. | -       | `tests/...`    |    [ ]    |
+| TASK-10Y | **APPROVAL:** 🛑 Stop and confirm reproduction with user   | -       | Gate           |    [ ]    |
 
 ### Phase 2: Surgical Root Cause Remediation
 *Goal: Apply the minimal fix that restores system invariants without cascading changes.*
 
-| Task ID  | Description                                                        | Files Impacted | Completed |
-| :------- | :----------------------------------------------------------------- | :------------- | :-------: |
-| TASK-201 | Apply minimal root-cause fix at the broken seam                    | `src/...`      |    [ ]    |
-| TASK-202 | Clean up adjacent code per Boy Scout Rule (no new abstractions)    | `src/...`      |    [ ]    |
-| TASK-20X | **VERIFY:** Run Phase 1 test (MUST PASS) and run entire test suite | `tests/...`    |    [ ]    |
-| TASK-20Y | **APPROVAL:** 🛑 Stop and request user review of fix                | Gate           |    [ ]    |
+| Task ID  | Description                                                        | Ref ID  | Files Impacted | Completed |
+| :------- | :----------------------------------------------------------------- | :------ | :------------- | :-------: |
+| TASK-201 | Apply minimal root-cause fix at the broken seam                    | REQ-001 | `src/...`      |    [ ]    |
+| TASK-202 | Clean up adjacent code per Boy Scout Rule (no new abstractions)    | CON-001 | `src/...`      |    [ ]    |
+| TASK-20X | **VERIFY:** Run Phase 1 test (MUST PASS) and run entire test suite | -       | `tests/...`    |    [ ]    |
+| TASK-20Y | **APPROVAL:** 🛑 Stop and request user review of fix                | -       | Gate           |    [ ]    |
 
 ---
 
@@ -88,3 +93,14 @@ tags: ["polya", "bug-fix", "first-principles", "problems-to-prove"]
 
 1. Revert fix commits: `git revert HEAD`
 2. Restore previous database state if migrations were applied.
+
+---
+
+## 7. Handoff Action to Execution Agent (`/polya-code`)
+
+Copy and run this command to execute this bugfix plan via the execution agent:
+```text
+/polya-code @docs/bug-reports/{slug}-bugfix.md Execute the approved bug remediation plan and restore system invariants.
+```
+
+*(Note: If this is an XS routine fix, it may be executed in `/polya-fast-track` mode without full phase ceremony upon user confirmation).*
