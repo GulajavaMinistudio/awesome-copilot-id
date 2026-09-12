@@ -59,10 +59,10 @@ tags: ["polya", "spec", "clean-architecture"]
 
 *All provisional guesses or unverified assumptions made during drafting:*
 
-- `> [!WARNING]`  
-  **[ASSUMPTION-001]:** [Description of assumption made to avoid blocking]  
-  *Risk / Trade-off:* [Downstream risk if this assumption proves false]  
-  *Proposed Verification:* [How to verify with user or tests]
+> [!WARNING] [ASSUMPTION-001]: [Description of assumption made to avoid blocking]  
+> *Risk / Trade-off:* [Downstream risk if this assumption proves false]  
+> *Proposed Verification:* [How to verify with user or tests]
+
 - **[CLARIFICATION-001]:** [Open question regarding ambiguous requirement]
 
 ---

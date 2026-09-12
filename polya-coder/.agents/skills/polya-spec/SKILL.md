@@ -34,7 +34,7 @@ Before writing any technical details, explicitly deconstruct:
 ### 2. Setting Up Equations & Formal Notation (Pólya, p. 134, 174)
 * Translate ordinary language requirements into unambiguous DTO contracts, schemas, and typed data models.
 * Use **Type-Driven Design** (Value Objects, Discriminated Unions, branded types) to make invalid domain states unrepresentable.
-* Explicitly state assumptions using formal tags: `[ASSUMPTION-XXX: Description]`.
+* Explicitly state assumptions using formal sequential alert tags: `> [!WARNING] [ASSUMPTION-001]: [Description and default boundary]`.
 
 ### 3. Clean Architecture Seams & Component Boundaries
 * **Layer Segregation:**

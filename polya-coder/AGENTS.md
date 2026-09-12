@@ -229,6 +229,7 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
 ```
 
 ### Core Methodological Rules:
+- **Traceability Contract & Numbered Assumption Tagging:** Requirements, constraints, and acceptance criteria must use strict, sequential identifiers (`REQ-001`, `CON-001`, `AC-001`). All provisional decisions, unverified assumptions, or inferred defaults MUST be tagged explicitly using the standardized GitHub alert format: `> [!WARNING] [ASSUMPTION-001]: [Description of assumption, downstream risk, and default boundary]`. Downstream implementation plans in `/plan/` must extract every `[ASSUMPTION-XXX]` into its "Risks & Assumptions" section with concrete mitigation strategies, and map all tasks 1:1 back to `Ref ID` and `AC Ref`. Orphaned tasks are strictly prohibited.
 - **Vertical Slicing (Tracer Bullets):** All Implementation Plans MUST be broken down into "Tracer Bullet" tickets (vertical slices from DB to UI that are independently demoable and verifiable). Horizontal slicing (layer-by-layer) is strictly prohibited.
 - **Documentation First:** Complete and structured documentation must exist before coding begins.
 - **Surgical Edit Mandate:** AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
@@ -293,6 +294,7 @@ Do not write a single line of production code until both you and the user share 
 - **Restating the Problem (Paradigm Shift):** If requirements seem tangled, restate the problem from an alternate mathematical/architectural perspective (FSM, Set Operations, Event Stream Pipeline).
 - **Draw a Figure (Topological Representation):** Provide an ASCII block diagram, state chart, or sequence map.
 - **Setting Up Equations & Expressive Notation (Pólya, p. 134–141, 174):** Split requirements clause-by-clause into formal contracts and use Type-Driven Design (Value Objects, Discriminated Unions) to make invalid states unrepresentable. Leave zero requirements unmapped.
+- **Numbered Assumption Tagging:** If technical details, edge case behaviors, or integrations are missing or underspecified, tag every provisional decision explicitly using GitHub alerts: `> [!WARNING] [ASSUMPTION-001]: [Description of assumption and default boundary]`. Never bury assumptions in unstructured paragraphs.
 - **Map Architecture & Component Roles (Clean Architecture Seams):** Structure boundaries according to Robert C. Martin's Clean Architecture:
   - *Entities (Domain Layer):* Pure, framework-agnostic business rules and schemas.
   - *Use Cases (Application Layer):* Orchestrating business workflows and state.
@@ -306,7 +308,7 @@ Do not write a single line of production code until both you and the user share 
 *Pólya Heuristic: Condition Sanity Check & Rigorous Ambiguity Interrogation*
 
 Act as a Socratic Requirements Interrogator to stress-test specifications, plans, or user briefs before proceeding deeper into the pipeline:
-- **Interrogate Assumptions & Unknowns (Highest Priority):** Immediately search the target document for `[ASSUMPTION]` tags or unverified constraints. You MUST target these first.
+- **Interrogate Assumptions & Unknowns (Highest Priority):** Immediately search the target document for sequential `> [!WARNING] [ASSUMPTION-XXX]` tags or unverified constraints. You MUST target these first.
 - **Condition Sanity Check:** Interrogate whether stated conditions are sufficient, insufficient, redundant, or contradictory (Pólya, p. 7).
 - **The "Grill Me" Interrogation Protocol:**
   - *One Question at a Time:* Never overwhelm the user with a barrage of questions. Ask exactly ONE sharp, focused question per interaction.
@@ -341,7 +343,7 @@ Synthesize a concrete architectural plan once the problem is thoroughly understo
   - **Strict Spec-Plan Traceability Bridge:**
     - Every functional task in `/plan/` MUST link to an exact Spec requirement via `Ref ID` (`REQ-001`, `CON-001`) and `AC Ref` (`AC-001`).
     - The Plan frontmatter MUST point to `spec_ref: "spec/{slug}-spec.md"`.
-    - All `[ASSUMPTION]` tags from the Spec MUST be extracted into the Plan's "Risks & Assumptions" section with concrete mitigation actions.
+    - All `> [!WARNING] [ASSUMPTION-XXX]` tags from the Spec MUST be extracted into the Plan's "Risks & Assumptions" section with concrete mitigation actions.
     - Zero Orphaned Tasks: No task may be added to a plan unless it traces back to an approved Spec requirement or architectural invariant.
 - **Land and Expand Strategy (Tracer Bullets):** Define the minimal vertical slice that works end-to-end first. Secure the baseline (*Land*) before adding advanced capabilities (*Expand*).
 - **Enforce SOLID at the Blueprint Stage:** Verify SRP, OCP, LSP, ISP, and DIP across all planned components.
