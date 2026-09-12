@@ -83,7 +83,18 @@
 - **Selected Architectural Path:** [Option B - State clearly why this approach is selected]
 - **High-Impact Decisions (ADR Candidate):** [Identify if an Architecture Decision Record is required under Triple-Gate rules]
 - **Domain Vocabulary Candidates (`CONTEXT.md`):** [List newly identified domain terms to register]
-- **Handoff Action:**
-  ```text
-  /polya-spec @docs/discovery/{slug}-discovery.md Formulate formal technical specification, data contracts, and Clean Architecture seams based on this approved Discovery Draft.
-  ```
+
+### 6.1 Specification Readiness Checklist (for `/polya-spec`)
+- [ ] **The Unknown:** Primary target outcome and system completion states are clearly defined.
+- [ ] **The Data:** Input payloads, query parameters, DB models, and third-party integrations are identified.
+- [ ] **The Condition:** High-level invariants, SLAs, idempotency, and throughput bounds are documented.
+- [ ] **Clean Architecture Seams:** Layer responsibilities (Domain, Use Case, Adapter, Infra) are outlined.
+- [ ] **Risks & Spikes:** Remaining technical unknowns are either spiked or documented for assumption tagging.
+
+### 6.2 Direct Handoff Action to `/polya-spec`
+Copy and run this command in your chat session to initiate technical specification:
+```text
+/polya-spec @docs/discovery/{slug}-discovery.md Formulate formal technical specification, DTO contracts, and Clean Architecture seams based on this approved Discovery Draft.
+```
+
+*(Note: If product management user stories are required prior to specification, this draft can alternatively be routed to `/sdlc-draft-prd @docs/discovery/{slug}-discovery.md`)*

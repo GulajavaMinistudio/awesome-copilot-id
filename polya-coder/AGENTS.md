@@ -634,7 +634,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 | Command Invocation  | Mandatory Upstream Document(s)                                                  |
 | :------------------ | :------------------------------------------------------------------------------ |
 | `/polya-explore`    | User problem statement, raw idea, or target directory/module                   |
-| `/polya-spec`       | User brief, problem description, or discovery notes                             |
+| `/polya-spec`       | Project Discovery Draft (`docs/discovery/`), Approved PRD, or User Brief        |
 | `/polya-clarify`    | Target Specification (`/spec/`), Implementation Plan (`/plan/`), or Brief       |
 | `/polya-plan`       | Approved Technical Spec (`/spec/`)                                              |
 | `/polya-code`       | Approved Implementation Plan (`/plan/`)                                         |
