@@ -1,6 +1,6 @@
 ---
 name: polya-review
-description: "Phase 4 of the Pólya Heuristic Coder: Looking Back, 5 SOLID Principles Audit, Boundary Specialization, Test by Dimension, 30s Visual Topology, and Two Golden Questions (docs/reviews/{slug}-review.md)."
+description: "Phase 4 of the Pólya Heuristic Coder: Looking Back, 5 SOLID Principles Audit, Boundary Specialization, Defensive Security Audit, Test by Dimension, 30s Visual Topology, and Two Golden Questions (docs/reviews/{slug}-review.md)."
 license: MIT
 ---
 
@@ -41,19 +41,26 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Qual
 ### 4. Symmetry & Round-Trip Invertibility (Pólya, p. 199–200)
 * Verify that dual operations pair cleanly and satisfy round-trip equality ($f^{-1}(f(x)) = x$): `subscribe/unsubscribe`, `serialize/deserialize`, `open/close`, `acquire/release`.
 
-### 5. Can You See It at a Glance? (Pólya, p. 59–61)
+### 5. Defensive Security & Invariant Audit
+* **OWASP Top 10 Essentials:** Audit against SQL/NoSQL injection, Broken Object Level Authorization (BOLA/IDOR), Server-Side Request Forgery (SSRF), Cross-Site Scripting (XSS), and Broken Authentication.
+* **Input Validation & Sanitization at Boundary Seams:** Ensure all external inputs are strictly schema-validated and sanitized at Interface Adapters before passing to domain use cases.
+* **Zero Hardcoded Secrets & Credential Exposure:** Verify zero API keys, private tokens, passwords, or certificates exist in source code, commit history, or test fixtures.
+* **Safe Deserialization & Mass Assignment Guard:** Ensure incoming request payloads cannot overwrite unpermitted entity fields or execute arbitrary code during deserialization.
+* **Principle of Least Privilege & Authorization Invariants:** Verify that all data mutations and sensitive queries enforce tenant/user authorization checks at the use case interactor boundary.
+
+### 6. Can You See It at a Glance? (Pólya, p. 59–61)
 * *"Can you see the whole solution at one glance?"*
 * Synthesize the implementation into an intuitive 30-second topological ASCII diagram or sequence map.
 
-### 6. Pólya's Two Golden Questions (Pólya, 1945, p. 61)
+### 7. Pólya's Two Golden Questions (Pólya, 1945, p. 61)
 1. **Can you use the result?** Identify reusable DTO contracts, domain models, or public ports ready for cross-module reuse.
 2. **Can you use the method?** Promote novel patterns, test harnesses, or refactoring strategies to `memory.instructions.md` via `/memory-manager`.
 
-### 7. Standard Output Artifact
+### 8. Standard Output Artifact
 Persist the review report in `docs/reviews/{slug}-review.md` strictly utilizing the template:
 👉 [`../polya-shared/references/REVIEW-REPORT-TEMPLATE.md`](../polya-shared/references/REVIEW-REPORT-TEMPLATE.md)
 
-### 8. Phase Completion Wrap-Up
+### 9. Phase Completion Wrap-Up
 1. Present the audit report to the user.
 2. Direct the user to next steps:
    - If verified & approved:

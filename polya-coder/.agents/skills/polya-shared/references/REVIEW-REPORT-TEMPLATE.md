@@ -64,7 +64,19 @@
 
 ---
 
-## 4. Remediation Action Items
+## 4. Defensive Security & Invariant Audit
+
+| Security Vector | Assessment & Verification Criteria | Status | Notes / Findings |
+| :--- | :--- | :---: | :--- |
+| **Injection & Sanitization** | SQL/NoSQL queries parameterized; shell/HTML outputs sanitized at boundary adapters | [PASS / FAIL] | {Details} |
+| **Authentication & Authorization** | BOLA/IDOR prevented; RBAC/tenant isolation enforced on every mutating use case | [PASS / FAIL] | {Details} |
+| **Zero Secret Exposure** | Zero hardcoded API keys, JWT secrets, passwords, or private certificates in code/tests | [PASS / FAIL] | {Details} |
+| **Payload & Deserialization Guard** | Mass assignment prohibited; payload size bounded; safe deserialization enforced | [PASS / FAIL] | {Details} |
+| **DoS & Resource Exhaustion** | Rate limits, pagination caps, and timeout cancellation guards present on all I/O | [PASS / FAIL] | {Details} |
+
+---
+
+## 5. Remediation Action Items
 
 *Required surgical adjustments before declaring implementation complete:*
 
@@ -73,7 +85,7 @@
 
 ---
 
-## 5. Pólya's Two Golden Questions (Looking Back & Knowledge Promotion)
+## 6. Pólya's Two Golden Questions (Looking Back & Knowledge Promotion)
 
 *Pólya Heuristic: Can you use the result? Can you use the method? (Pólya, 1945, p. 61)*
 
@@ -85,7 +97,7 @@
 
 ---
 
-## 6. Can You See It at a Glance? (Holistic Perception - Pólya, p. 59–61)
+## 7. Can You See It at a Glance? (Holistic Perception - Pólya, p. 59–61)
 
 *Pólya Heuristic: Can you see the whole solution at a glance? Compress the implementation into a 30-second mental model.*
 

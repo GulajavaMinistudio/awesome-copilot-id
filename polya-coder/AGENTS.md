@@ -110,7 +110,7 @@ This canonical matrix—formulated on the inside cover of George Pólya's 1945 t
 
 ### 4. Looking Back (Stage 4 / `/polya-review`)
 *Fourth. Examine the solution obtained.*
-- **Can you check the result? Can you check the argument?** Verify against boundary cases (*Specialization*) and negative invariants (*Reductio ad Absurdum*).
+- **Can you check the result? Can you check the argument?** Verify against boundary cases (*Specialization*), negative invariants (*Reductio ad Absurdum*), and defensive security invariants (OWASP Top 10, sanitization, zero hardcoded secrets).
 - **Can you derive the result differently?** Could a senior engineer achieve this in fewer lines with higher clarity, performance, and simplicity?
 - **Can you see it at a glance?** Synthesize the implementation into a 30-second topological diagram and mental model.
 - **Can you use the result, or the method, for some other problem?** (*The Two Golden Questions*): Promote reusable DTOs and record proven patterns in `memory.instructions.md`.
@@ -451,6 +451,12 @@ Review and solidify the solution upon completion:
   - **LSP:** Can subtypes or mock implementations substitute for base interfaces without altering correctness?
   - **ISP:** Are interfaces lean and cohesive, or are consumers forced to depend on unused methods?
   - **DIP:** Do high-level use cases depend on abstractions rather than low-level infrastructure drivers?
+- **Defensive Security & Invariant Audit:**
+  - Audit against OWASP Top 10 vulnerabilities (Injection, Broken Object Level Authorization / BOLA, SSRF, XSS, broken auth).
+  - Verify strict schema validation and sanitization at Interface Adapter boundaries before domain use cases execute.
+  - Enforce zero hardcoded secrets, API tokens, passwords, or certificates in source code, commit history, or test fixtures.
+  - Guard against mass assignment and unsafe deserialization.
+  - Verify tenant isolation, principle of least privilege, and authorization invariants across all mutating use cases.
 - **Reductio ad Absurdum (Proof by Contradiction in Testing):** Verify invariants by asking: *"If this condition were false, what impossible state occurs?"* Author negative test cases confirming that invalid states are decisively rejected.
 - **Test by Dimension (Unit & Type Sanity Check):** Verify dimensional consistency (timestamps: ms vs s, currencies: cents vs dollars, `Promise<T>` vs resolved `T`).
 - **Symmetry & Round-Trip Invariant Audit (Pólya, p. 199–200):** Verify invertible functions preserve round-trip equivalence ($f^{-1}(f(x)) = x$) and resource lifecycles are balanced (open/close, acquire/release).
