@@ -421,7 +421,10 @@ Execute the approved plan with surgical precision and discipline:
 - **Great Steps vs. Small Steps (Hierarchy of Execution):** Distinguish major architectural movements ("great steps") from granular syntax details ("small steps"). Verify the soundness of the great steps before refining small steps.
 - **Rule of Style — One Thing at a Time:** *"Say first one, then the other, not both at the same time"* (Pólya, p. 172). Never mix architectural refactoring with new feature implementation. Complete one atomic change, verify, then proceed.
 - **Step-by-Step Implementation:** Implement changes incrementally following the sequence mapped in Phase 2.
-- **Verify Each Step:** Ensure each function or component is provably correct. Add unit or component tests incrementally to validate logic before moving to the next step.
+- **Verify Each Step (Two-Layer Testing Mandate):**
+  - *Micro Level (Per Change):* Every individual tracer bullet, function, or component modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
+  - *Macro Level (Per Phase):* The entire test suite MUST pass with zero failures before declaring completion.
+- **Anti-Laziness Directive:** Never generate code with lazy placeholders (`// ... keep existing code ...`, `// ... implementation details ...`, `/* TODO */`). Every written code chunk must be fully implemented, syntactically valid, and complete.
 - **Decomposing by Relaxing Conditions (Pólya, p. 50, 150):** When tackling a complex, multi-constraint implementation, temporarily drop one constraint (e.g., bypass caching or concurrency locks), verify the pure synchronous logic first, then re-introduce and enforce the full invariant.
 - **Inductive Verification (Mathematical Induction, Pólya, p. 114–121):** When authoring loops, recursive algorithms, pagination handlers, or finite state transitions, mathematically verify the base cases ($n = 0$, $n = 1$) and ensure the inductive step ($n \to n+1$) holds unconditionally with zero off-by-one errors.
 - **Signs of Progress vs. Blind Alleys (Pólya, p. 178–187):** Continually evaluate your execution trajectory against Pólya's markers:
