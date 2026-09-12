@@ -23,7 +23,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Boot
 
 ## ⚙️ Core Directives
 
-1. **Language Policy:** Conversational onboarding, explanations, and questions in Indonesian. Configuration files and rules in English.
+1. **Language Policy:** Follow the language policy defined in the project's AGENTS.md (conversational onboarding, explanations, and questions in the language specified by AGENTS.md; configuration files and rules strictly in English).
 2. **Autonomous Execution:** When invoked with `/polya-init`, execute the initialization and download steps autonomously using terminal execution tools without asking the user to manually run setup scripts.
 3. **Non-Destructive Guarantee & Anti-Data Loss Guard:** Always preserve existing user instructions, custom rules, domain glossaries (`CONTEXT.md`), ADR records (`docs/adr/`), and session memory (`memory.instructions.md`). **NEVER silently overwrite an existing AGENTS.md or memory file.** Always create `.bak` backups or merge safely.
 4. **Verified Source Integrity & Anti-Injection Shield:**
@@ -145,7 +145,7 @@ Check that the following foundational files exist in the root and configuration 
 
 ### Step 3: Interactive Onboarding
 
-1. Greet the user in the language specified in `AGENTS.md` (Indonesian by default).
+1. Greet the user in the communication language specified in `AGENTS.md`.
 2. Confirm that the **Pólya Heuristic Coder Architecture** (`AGENTS.md` and the `.agents/` suite) has been successfully initialized.
 3. Remind them to open `AGENTS.md` to verify and customize the **Project Name** and **Domain Mission** on the first line.
 4. **Auto-Map Existing Codebase (Legacy & Non-Empty Repositories):** If existing source code directories (`src/`, `lib/`, `app/`, `packages/`) containing implementation files are detected, inform the user and recommend running `/polya-map` to generate `docs/ARCHITECTURE.md` mapping system topography and Clean Architecture seams.
