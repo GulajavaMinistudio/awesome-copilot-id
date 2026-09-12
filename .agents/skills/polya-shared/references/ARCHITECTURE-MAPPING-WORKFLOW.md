@@ -1,4 +1,4 @@
-# Repository Architecture Mapping Workflow (`/polya-heuristic-coder map`)
+# Repository Architecture Mapping Workflow (`/polya-map`)
 <!-- markdownlint-disable -->
 
 This document defines the formal, step-by-step procedure for scanning, analyzing, and documenting repository architecture into `docs/ARCHITECTURE.md` adhering to Robert C. Martin's Clean Architecture and George Pólya's topological visualization heuristics (*How to Solve It*, p. 59, 99).

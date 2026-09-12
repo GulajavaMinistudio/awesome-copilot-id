@@ -15,10 +15,10 @@
 ## Stage 1: Natural User Brief & Autonomous Triage (Option B)
 
 ### 1.1 User Prompt (Natural Intent Invocation)
-The user invokes `polya-heuristic-coder` using **Option B** without manual file attachments:
+The user invokes `/polya-spec` using **Option B** without manual file attachments:
 
 ```text
-/polya-heuristic-coder we want to build an idempotent payment webhook processing engine safe from duplicate events using redis distributed lock. Please design the architecture.
+/polya-spec we want to build an idempotent payment webhook processing engine safe from duplicate events using redis distributed lock. Please design the architecture.
 ```
 
 ### 1.2 Autonomous Codebase Reconnaissance (Behind the Scenes)
@@ -130,7 +130,7 @@ Frameworks & Drivers
 
 ## Stage 3: Recurring Checkpoint — Clarification (`docs/audit/webhook-clarification.md`)
 
-The user triggers `/polya-heuristic-coder clarify @spec/webhook-idempotency-spec.md`. The agent acts as a Socratic interrogator using the **Grill-Me Protocol**:
+The user triggers `/polya-clarify @spec/webhook-idempotency-spec.md`. The agent acts as a Socratic interrogator using the **Grill-Me Protocol**:
 
 ### 3.1 The "Grill Me" Interrogation Dialogue
 > **Agent:** *"I analyzed your specification. [ASSUMPTION-001] declares that Redis is available for distributed locking. However, what should happen if Redis encounters a connection timeout during lock acquisition?*

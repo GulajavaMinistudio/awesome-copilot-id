@@ -52,7 +52,7 @@ try {
     Write-Host "Select the SDLC Methodology Package to install:" -ForegroundColor Cyan
     Write-Host "1) Standard SDLC Package -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
     Write-Host "2) TDD-Spec SDLC Package -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
-    Write-Host "3) Polya-Coder Heuristic Package -> Veteran Principal Engineer, Pólya 1945 Heuristics, Clean Architecture & SOLID (/polya-heuristic-coder)"
+    Write-Host "3) Polya-Coder Heuristic Package -> Veteran Principal Engineer, Pólya 1945 Heuristics, Clean Architecture & SOLID (/polya-router)"
     Write-Host ""
     
     $pkgChoice = Read-Host "Enter your package choice (1-3, default: 1)"
@@ -229,7 +229,7 @@ try {
     if ($pkgChoice -eq "2") {
         Write-Host "3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance." -ForegroundColor Cyan
     } elseif ($pkgChoice -eq "3") {
-        Write-Host "3. For Polya-Coder, start by typing '/polya-heuristic-coder' for interactive triage or '/polya-init' to re-bootstrap." -ForegroundColor Cyan
+        Write-Host "3. For Polya-Coder, start by typing '/polya-router' for interactive triage or '/polya-init' to re-bootstrap." -ForegroundColor Cyan
     } else {
         Write-Host "3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery." -ForegroundColor Cyan
     }

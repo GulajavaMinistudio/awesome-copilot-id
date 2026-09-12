@@ -1,6 +1,6 @@
 # 📚 Technical Documentation Templates (Diátaxis Framework)
 <!-- markdownlint-disable -->
-This file contains the canonical templates for generating technical documentation within the **Pólya Heuristic Coder** engineering suite (`/polya-heuristic-coder docs`).
+This file contains the canonical templates for generating technical documentation within the **Pólya Heuristic Coder** engineering suite (`/polya-docs`).
 
 All documentation generated in this phase MUST adhere strictly to the **Diátaxis Framework** (<https://diataxis.fr/>). Every document must serve **one single purpose** and belong to exactly one quadrant. **Never mix quadrants in a single document.**
 

@@ -85,5 +85,5 @@
 - **Domain Vocabulary Candidates (`CONTEXT.md`):** [List newly identified domain terms to register]
 - **Handoff Action:**
   ```text
-  /polya-heuristic-coder spec @docs/discovery/{slug}-discovery.md Formulate formal technical specification, data contracts, and Clean Architecture seams based on this approved Discovery Draft.
+  /polya-spec @docs/discovery/{slug}-discovery.md Formulate formal technical specification, data contracts, and Clean Architecture seams based on this approved Discovery Draft.
   ```

@@ -25,8 +25,8 @@ This repository provides three complete, production-ready AI SDLC methodology pa
    - Interactive project navigator and AI guide (`/tdd-ask-help`) inspired by `ask-matt`.
 
 3. **📐 Pólya Heuristic Coder Package ([`polya-coder/`](polya-coder/README.md) & `polya-coder/AGENTS.md`):**
-   - Single unified command (`/polya-heuristic-coder`) merging George Pólya's 1945 mathematical heuristic framework (*How to Solve It*) with Uncle Bob's Clean Architecture, Clean Code, and SOLID principles.
-   - Full lifecycle: Discovery (`explore`), Spec (`spec`), Clarification (`clarify`), Planning (`plan`), The Pause Rule Gate, Implementation (`implement`), Review (`review`), Documentation (`docs`), First-Principles Bug Remediation (`fix`), Fast-Track Bypass (`fast-track`), and Architecture Topography (`map`).
+   - Hub & Spoke modular skills (`/polya-explore`, `/polya-spec`, `/polya-clarify`, `/polya-plan`, `/polya-code`, `/polya-review`, `/polya-docs`, `/polya-fix`, `/polya-fast-track`, `/polya-map`) and autonomous triage (`/polya-router`) merging George Pólya's 1945 mathematical heuristic framework (*How to Solve It*) with Uncle Bob's Clean Architecture, Clean Code, and SOLID principles.
+   - Full lifecycle: Discovery (`/polya-explore`), Spec (`/polya-spec`), Clarification (`/polya-clarify`), Planning (`/polya-plan`), The Pause Rule Gate, Implementation (`/polya-code`), Review (`/polya-review`), Documentation (`/polya-docs`), First-Principles Bug Remediation (`/polya-fix`), Fast-Track Bypass (`/polya-fast-track`), and Architecture Topography (`/polya-map`).
    - Integrated with `memory-manager` for persistent context retention across sessions.
 
 - **🔌 Multi-Platform**: A Single Source of Truth architecture automatically installed to `.agents/` (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP), `.claude/` (Claude Code), or `.cursor/` (Cursor).
@@ -112,8 +112,8 @@ Then in your AI Assistant chat window, run:
 
 The bootstrapper agent will initialize project governance (`CONSTITUTION.md`, `CONSTRAINTS.md`, `AGENTS.md`), auto-map the existing codebase architecture into `docs/ARCHITECTURE.md`, and configure all 21 TDD skills.
 
-##### 📐 Option C: Pólya Heuristic Coder Package (Unified Heuristic Engine)
-Installs the mathematical problem-solving & Clean Architecture engineering suite (`/polya-heuristic-coder`):
+##### 📐 Option C: Pólya Heuristic Coder Package (Modular Heuristic Engine)
+Installs the mathematical problem-solving & Clean Architecture engineering suite (`/polya-router` & sub-skills):
 
 ```bash
 # Using GitHub Shorthand (Short & Recommended)
@@ -132,10 +132,10 @@ Then in your AI Assistant chat window, run:
 The bootstrapper agent will initialize project governance (`AGENTS.md`) and the SDLC rules. After initialization, you can invoke the Veteran Principal Engineer by running:
 
 ```text
-/polya-heuristic-coder
+/polya-router
 ```
 
-The Veteran Principal Engineer supports both **explicit phase dispatching** (e.g., `/polya-heuristic-coder spec ...`) and **natural free-form task briefs** (e.g., `/polya-heuristic-coder fix checkout race condition with redis`). It autonomously inspects your codebase across Clean Architecture seams, renders a **Pólya Triage Card**, and auto-routes to the optimal phase while strictly enforcing The Pause Rule.
+The Veteran Principal Engineer supports both **explicit modular sub-skills** (e.g., `/polya-spec`, `/polya-plan`, `/polya-code`) and **natural free-form task briefs** via `/polya-router` (e.g., `/polya-router fix checkout race condition with redis`). It autonomously inspects your codebase across Clean Architecture seams, renders a **Pólya Triage Card**, and auto-routes to the optimal phase while strictly enforcing The Pause Rule.
 
 ---
 
@@ -161,7 +161,7 @@ The installer offers these package & platform choices:
 | :---: | :--- | :--- |
 | **1** | **Standard SDLC Package** | 12-phase pipeline (`/sdlc-*`) with PRD bypass, planning, coding, and review |
 | **2** | **TDD-Spec SDLC Package** | 21 test-first skills (`/tdd-*`) with Pre-Agreed Seams, Floor-Guards, and `/tdd-ask-help` |
-| **3** | **Pólya Heuristic Coder Package** | Unified command (`/polya-heuristic-coder`) merging Pólya's 1945 heuristics with Clean Architecture |
+| **3** | **Pólya Heuristic Coder Package** | Hub & Spoke modular skills (`/polya-*`) and `/polya-router` merging Pólya's heuristics with Clean Architecture |
 
 **Step 2: Platform Selection**
 | Option | Platform(s) | Destination Folder |
@@ -253,7 +253,7 @@ Custom agents are specialized AI assistants for specific development roles and t
 | `/sdlc-define-specs`      | `sdlc-define-specs`                                                                                                      | Technical specification creation                     | Writing detailed, machine-readable tech specs                       |
 | `/sdlc-audit-consistency` | `sdlc-audit-consistency`                                                                                                 | Consistency & traceability audit                     | Validating PRD vs Spec vs Plan to prevent scope creep               |
 | `/sdlc-plan-tasks`        | `sdlc-plan-tasks`                                                                                                        | Strategic planning & architecture                    | Generating formal, structured implementation plans                  |
-| `/sdlc-write-code`        | `sdlc-write-code` (supp: `guided-learning`, `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`, `polya-heuristic-coder`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
+| `/sdlc-write-code`        | `sdlc-write-code` (supp: `guided-learning`, `karpathy-guidelines`, `tdd-implement`, `omni-dev`, `ui-designer`, `fable-protocol`, `ponytail-lazy-senior-dev`, `polya-code`) | God-Tier Autonomous Engineer                         | Coding, implementation, and surgical modifications                  |
 | `/sdlc-code-review`       | `sdlc-code-review`                                                                                                       | Code review and security audit                       | Clean Code/SOLID audits and refactoring plans                       |
 | `/sdlc-bug-report`        | `sdlc-bug-report`                                                                                                        | Bug analysis and fixing                              | Root cause analysis and structured bug-fix plans                    |
 | `/sdlc-generate-docs`     | `sdlc-generate-docs`                                                                                                     | Technical documentation specialist                   | Writing tutorials, how-to guides, and reference docs                |
@@ -311,7 +311,7 @@ These skills can be invoked by any agent at any time without triggering a sessio
 | **grilling**                 | Interrogates the user relentlessly about a plan or design to stress-test architecture before building                            |
 | **guided-learning**          | AI-Guided Learning mentor. Guides the user step-by-step to build a project or implement a plan without writing the code for them.|
 | **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption           |
-| **polya-heuristic-coder**    | Veteran Senior Fullstack Software Engineer persona enforcing George Pólya's 1945 heuristic framework and Uncle Bob's Clean Architecture & SOLID. Complete lifecycle engine with unified command (`/polya-heuristic-coder`) covering Discovery, Spec, Plan, Clean Code, Review, First-Principles Fix, and Architecture Topography. |
+| **polya-router** (and `polya-*`) | Veteran Senior Fullstack Software Engineer persona enforcing George Pólya's 1945 heuristic framework and Uncle Bob's Clean Architecture & SOLID. Modular sub-skills (`/polya-explore`, `/polya-spec`, `/polya-clarify`, `/polya-plan`, `/polya-code`, `/polya-review`, `/polya-fix`, `/polya-docs`, `/polya-fast-track`, `/polya-map`) routed via `/polya-router`. |
 
 ### Agent and Skill Configuration File Structure
 
@@ -781,18 +781,18 @@ The bootstrapper will initialize project governance (`CONSTITUTION.md`, `CONSTRA
 
 > 📖 **Full Documentation:** For complete deep-dive documentation, heuristic dictionary, templates, and setup guide, visit [**`polya-coder/README.md`**](polya-coder/README.md).
 
-The **Pólya Heuristic Coder Package** is an elite, highly disciplined software engineering kit designed for AI coding agents and human developers. It merges the legendary mathematical problem-solving heuristics of **George Pólya** (*How to Solve It*, 1945) with the industry-defining **Clean Architecture, Clean Code, and SOLID principles** of **Robert C. "Uncle Bob" Martin** into a single unified slash command: `/polya-heuristic-coder`.
+The **Pólya Heuristic Coder Package** is an elite, highly disciplined software engineering kit designed for AI coding agents and human developers. It merges the legendary mathematical problem-solving heuristics of **George Pólya** (*How to Solve It*, 1945) with the industry-defining **Clean Architecture, Clean Code, and SOLID principles** of **Robert C. "Uncle Bob" Martin** into a modern modular Hub & Spoke architecture routed via `/polya-router` or invoked directly via dedicated slash commands (`/polya-explore`, `/polya-spec`, `/polya-plan`, `/polya-code`, etc.).
 
 ```text
 ====================================================================================================
-               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
+               POLYA-CODER MODULAR PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
 ====================================================================================================
 
 [ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-heuristic-coder explore│ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
+│ /polya-explore                │ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
 └───────────────────────────────┘
       │
       ▼
@@ -800,12 +800,12 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-heuristic-coder spec   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+│ /polya-spec                   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
 └───────────────────────────────┘
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-heuristic-coder clarify│ ──▶ [ docs/audit/ ] ──▶ ( Interrogate Assumptions, Grill-Me A/B, Readiness Score )
+│ /polya-clarify                │ ──▶ [ docs/audit/ ] ──▶ ( Interrogate Assumptions, Grill-Me A/B, Readiness Score )
 └───────────────────────────────┘
       │
       ▼
@@ -813,12 +813,12 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-heuristic-coder plan   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+│ /polya-plan                   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
 └───────────────────────────────┘
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-heuristic-coder clarify│ ──▶ ( Optional Plan Interrogation & Stress-Test )
+│ /polya-clarify                │ ──▶ ( Optional Plan Interrogation & Stress-Test )
 └───────────────────────────────┘
       │
       ▼
@@ -830,7 +830,7 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-heuristic-coder implement ──▶ ( Clean Code, Respice Finem, Boy Scout Rule, Surgical Edits )
+│ /polya-code                   │ ──▶ ( Clean Code, Respice Finem, Boy Scout Rule, Surgical Edits )
 └───────────────────────────────┘
       │
       ▼
@@ -840,33 +840,35 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
       │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
       ▼                               ▼
 ┌───────────────────────────────┐   ┌───────────────────────────────┐
-│ /polya-heuristic-coder docs   │   │ /polya-heuristic-coder fix    │ ──▶ ( First Principles, Trace Broken Seam )
+│ /polya-docs                   │   │ /polya-fix                    │ ──▶ ( First Principles, Trace Broken Seam )
 └───────────────────────────────┘   └───────────────────────────────┘
       │ [docs/{tutorials,how-to,reference,explanation}/]
       ▼
 [ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
 
 ════════════════════════════════════════════════════════════════════════════
-[ FAST-TRACK BYPASS ]           ──▶ /polya-heuristic-coder fast-track (Routine, XS/S, One-Shot Fixes)
-[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /polya-heuristic-coder map        (Traverse, Seams, docs/ARCHITECTURE.md)
-[ PERSISTENT MEMORY ]           ──▶ /memory-manager                   (Checkpoint to memory.instructions.md)
+[ CENTRAL ROUTER ]              ──▶ /polya-router     (Autonomous phase router & diagnostic hub)
+[ FAST-TRACK BYPASS ]           ──▶ /polya-fast-track (Routine, XS/S, One-Shot Fixes)
+[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /polya-map        (Traverse, Seams, docs/ARCHITECTURE.md)
+[ PERSISTENT MEMORY ]           ──▶ /memory-manager   (Checkpoint to memory.instructions.md)
 ════════════════════════════════════════════════════════════════════════════
 ```
 
-### 📋 Unified Command Sub-Phases
+### 📋 Modular Sub-Skills
 
-| Command Sub-Phase | SDLC Phase | Pólya Heuristic & Clean Architecture Focus | Output Document |
-| :--- | :--- | :--- | :--- |
-| `/polya-heuristic-coder explore` | **Phase 0: Discovery** | *Getting Acquainted* (p. 33), architectural critique, candidate trade-offs (*The Inventor's Paradox*), and feasibility spikes. | `docs/discovery/{slug}-discovery.md` |
-| `/polya-heuristic-coder spec` | **Phase 1: Spec** | *Understanding the Problem*: Deconstruct *Unknown, Data, Condition*, *Setting Up Equations* (DTOs), and Clean Architecture seams. | `/spec/{slug}-spec.md` + `docs/adr/` |
-| `/polya-heuristic-coder clarify` | **Checkpoint: Clarify** | Socratic interrogation of `[ASSUMPTION]` tags, Grill-Me protocol (A/B options), and weighted Readiness Score (0-100). | `docs/audit/{slug}-clarification.md` |
-| `/polya-heuristic-coder plan` | **Phase 2: Plan** | *Devising a Plan*: *Working Backwards*, Land & Expand (Tracer Bullets), Contingency Plan B, and **The Pause Rule**. | `/plan/{slug}-plan.md` |
-| `/polya-heuristic-coder implement` | **Phase 3: Implement** | *Carrying Out the Plan*: Clean Code execution, single-responsibility small functions, and *Boy Scout Rule* compliance. | Source code + Unit/Integration tests |
-| `/polya-heuristic-coder review` | **Phase 4: Review** | *Looking Back* (p. 61): 5 SOLID principles audit, boundary specialization ($0, \infty$), and *Test by Dimension*. | `docs/reviews/{slug}-review.md` |
-| `/polya-heuristic-coder docs` | **Phase 6: Documentation** | *Pedagogical Transfer & Diátaxis Framework*: author structured documentation partitioned into Tutorials, How-To Guides, Reference, and Explanation. | `docs/{quadrant}/{slug}.md` |
-| `/polya-heuristic-coder fix` | **Phase 5: Bug Fix** | *Problems to Prove*: Cease blind patching, return to First Principles, trace broken seams, and bisection search ($O(\log n)$). | `docs/bug-reports/{slug}-bugfix.md` |
-| `/polya-heuristic-coder fast-track`| **Bypass: Fast-Track** | *Pedantry vs Mastery* (p. 148): Routine, XS/S sizing ($\le 2$ files) surgical fixes without SDLC paperwork (*The Excavator Rule*). | Surgical file edits |
-| `/polya-heuristic-coder map` | **Utility: Architecture** | *Draw a Figure* (p. 99): Traverse directory topography, map Clean Architecture seams, and generate C4/ASCII system map. | `docs/ARCHITECTURE.md` |
+| Slash Command | Skill Directory | SDLC Phase | Pólya Heuristic & Clean Architecture Focus | Output Document |
+| :--- | :--- | :--- | :--- | :--- |
+| `/polya-router` | `polya-router` | **Phase Router** | Intelligent phase router & diagnostic dispatcher directing user to the right `/polya-*` command. | Routing & Status Guidance |
+| `/polya-explore` | `polya-explore` | **Phase 0: Discovery** | *Getting Acquainted* (p. 33), architectural critique, candidate trade-offs (*The Inventor's Paradox*), and feasibility spikes. | `docs/discovery/{slug}-discovery.md` |
+| `/polya-spec` | `polya-spec` | **Phase 1: Spec** | *Understanding the Problem*: Deconstruct *Unknown, Data, Condition*, *Setting Up Equations* (DTOs), and Clean Architecture seams. | `/spec/{slug}-spec.md` + `docs/adr/` |
+| `/polya-clarify` | `polya-clarify` | **Checkpoint: Clarify** | Socratic interrogation of `[ASSUMPTION]` tags, Grill-Me protocol (A/B options), and weighted Readiness Score (0-100). | `docs/audit/{slug}-clarification.md` |
+| `/polya-plan` | `polya-plan` | **Phase 2: Plan** | *Devising a Plan*: *Working Backwards*, Land & Expand (Tracer Bullets), Contingency Plan B, and **The Pause Rule**. | `/plan/{slug}-plan.md` |
+| `/polya-code` | `polya-code` | **Phase 3: Implement** | *Carrying Out the Plan*: Clean Code execution, single-responsibility small functions, and *Boy Scout Rule* compliance. | Source code + Unit/Integration tests |
+| `/polya-review` | `polya-review` | **Phase 4: Review** | *Looking Back* (p. 61): 5 SOLID principles audit, boundary specialization ($0, \infty$), and *Test by Dimension*. | `docs/reviews/{slug}-review.md` |
+| `/polya-docs` | `polya-docs` | **Phase 6: Documentation** | *Pedagogical Transfer & Diátaxis Framework*: author structured documentation partitioned into Tutorials, How-To Guides, Reference, and Explanation. | `docs/{quadrant}/{slug}.md` |
+| `/polya-fix` | `polya-fix` | **Phase 5: Bug Fix** | *Problems to Prove*: Cease blind patching, return to First Principles, trace broken seams, and bisection search ($O(\log n)$). | `docs/bug-reports/{slug}-bugfix.md` |
+| `/polya-fast-track` | `polya-fast-track` | **Bypass: Fast-Track** | *Pedantry vs Mastery* (p. 148): Routine, XS/S sizing ($\le 2$ files) surgical fixes without SDLC paperwork (*The Excavator Rule*). | Surgical file edits |
+| `/polya-map` | `polya-map` | **Utility: Architecture** | *Draw a Figure* (p. 99): Traverse directory topography, map Clean Architecture seams, and generate C4/ASCII system map. | `docs/ARCHITECTURE.md` |
 
 ### 🌟 Key Highlights of Pólya Heuristic Coder
 
