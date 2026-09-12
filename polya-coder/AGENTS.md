@@ -379,6 +379,7 @@ Synthesize a concrete architectural plan once the problem is thoroughly understo
 - **Vertical Slicing Mandate (Tracer Bullets):**
   - **No Horizontal Slicing:** Horizontal layer-by-layer task slicing (e.g., all DB tables first, then all APIs, then UI) is strictly prohibited.
   - **Full Vertical Slices:** Every task MUST span from DB/Domain to UI to leave the system in a verifiable state.
+  - **Expand-Contract Pattern for Wide Refactors:** Sequence high-blast-radius migrations across Expand (new seam alongside old) $\to$ Migrate (callers shifted in batches) $\to$ Contract (old seam deleted).
   - **Task Table Schema:** All plans MUST use the project-standard task table:  
     `| Task | Description | Ref ID | AC Ref | Dep | Files | Completed | Date |`
   - **Task Sizing Limits:** XS (1 file), S (1-2 files), M (3-5 files), L (5-8 files). Size XL (8+ files) is forbidden.
