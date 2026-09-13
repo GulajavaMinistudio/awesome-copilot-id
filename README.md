@@ -657,6 +657,10 @@ graph TD
 
 ## 🧪 TDD-Spec SDLC Package (Test-First & Spec Kit)
 
+<p align="center">
+  <img src="hero-cat-agent2-tdd.jpg" alt="TDD-Spec SDLC Package" width="700">
+</p>
+
 > 📖 **Full Documentation:** For complete deep-dive documentation, ASCII maps, and individual skill specifications, visit [**`tdd-spec-skills/README.md`**](tdd-spec-skills/README.md).
 
 The **TDD-Spec SDLC Package** is a self-contained suite of **21 specialized skills** engineered for teams that require strict **Test-Driven Development (TDD)**, **Behavior-Driven Development (BDD)**, and **Contract-First Architecture**.
@@ -778,6 +782,10 @@ The bootstrapper will initialize project governance (`CONSTITUTION.md`, `CONSTRA
 ---
 
 ## 📐 Pólya Heuristic Coder Package (Mathematical Problem-Solving & Clean Architecture)
+
+<p align="center">
+  <img src="hero-cat-agent2-polya.jpg" alt="Pólya Heuristic Coder Package" width="700">
+</p>
 
 > 📖 **Full Documentation:** For complete deep-dive documentation, heuristic dictionary, templates, and setup guide, visit [**`polya-coder/README.md`**](polya-coder/README.md).
 
