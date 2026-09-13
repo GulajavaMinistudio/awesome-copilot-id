@@ -28,7 +28,7 @@ Kita memecah beban kerja ini kepada serangkaian *skills* spesialis yang diekseku
 Dalam pembaruan terbaru, repositori Awesome Copilot ID tidak lagi memerlukan duplikasi folder terpisah untuk tiap editor AI. Kita mengadopsi arsitektur **Single Source of Truth**:
 
 - **Struktur Terpusat (`.agents/`):** Seluruh *skills*, SOP, instruksi spesialis, dan persona AI disimpan di direktori `.agents/skills/`.
-- **Aturan Induk (`AGENTS.md`):** Satu file *rulebook* global di *root* proyek yang menjadi pedoman standar coding, arsitektur, dan bahasa bagi semua agen AI.
+- **Aturan Induk (`AGENTS.md`):** Satu file *rulebook* global di *root* proyek yang menjadi pedoman standar coding, arsitektur, dan kebijakan bahasa (komunikasi percakapan ramah dalam Bahasa Indonesia, sementara kode teknis, komentar, commit, dan dokumen spesifikasi tetap dalam Bahasa Inggris standar industri).
 - **Dukungan 9 Platform Sekaligus:** Seluruh ekosistem ini sekarang bersifat multi-platform dan siap digunakan secara native untuk **GitHub Copilot**, **Google Antigravity**, **OpenCode**, **CommandCode**, **ChatGPT Codex**, **Pi Dev Coding Agent** (`pi.dev`), **Oh My Pi** (`omp.sh`), **Claude Code** (via `.claude/`), dan **Cursor** (via `.cursor/`).
 
 ---
@@ -164,7 +164,7 @@ Buka terminal di *root directory* proyek Anda dan jalankan perintah berikut:
   irm https://raw.githubusercontent.com/GulajavaMinistudio/awesome-copilot-id/main/install.ps1 | iex
   ```
 
-Skrip interaktif ini akan menanyakan paket yang Anda inginkan (Standar SDLC atau TDD-Spec) dan otomatis memetakan file ke direktori target yang sesuai (`.agents/`, `.claude/`, atau `.cursor/`).
+Skrip interaktif ini akan menanyakan paket yang Anda inginkan (Standar SDLC, TDD-Spec, atau Pólya Heuristic Coder) dan otomatis memetakan file ke direktori target yang sesuai (`.agents/`, `.claude/`, atau `.cursor/`).
 
 ---
 
@@ -195,6 +195,12 @@ Bagi tim yang menerapkan standar rekayasa perangkat lunak ultra-ketat, repositor
 ### 2. 🔑 BYOK (Bring Your Own Key) Copilot Config
 Ingin menggunakan model AI murah atau gratis seperti DeepSeek V3/R1, Qwen, atau OpenRouter di dalam GitHub Copilot VS Code tanpa langganan mahal?
 Repositori ini menyediakan template siap pakai di folder `byok-copilot-config/` (`chatLanguageModels.json`). Anda cukup memasukkan API Key pribadi Anda untuk membuka deretan model LLM kustom langsung di dalam Copilot Chat!
+
+### 3. 📐 Pólya Heuristic Coder Package (Heuristik Matematika & Clean Architecture)
+Bagi masalah logika atau arsitektur yang kompleks, repositori ini kini menyediakan paket metodologi ketiga: **Pólya Heuristic Coder** (di direktori `polya-coder/`). Terinspirasi dari karya legendaris George Pólya (1945, *How to Solve It*) yang disinergikan dengan Clean Architecture Uncle Bob:
+- **Triase Otonom (`/polya-router`):** Menganalisis *problem brief*, memetakan *seams* arsitektur, dan merutekan tugas ke fase heuristik yang tepat.
+- **Hub & Spoke Modular Skills:** Dilengkapi sub-skills terstruktur (`/polya-explore`, `/polya-spec`, `/polya-plan`, `/polya-code`, `/polya-review`, `/polya-fix`, hingga `/polya-fast-track`).
+- **The Pause Rule:** Menegakkan pos pemeriksaan ketat di mana AI dilarang menulis kode sebelum pemahaman masalah dan rencana arsitektur disetujui secara sadar.
 
 ---
 
