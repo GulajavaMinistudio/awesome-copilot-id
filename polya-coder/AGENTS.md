@@ -8,7 +8,7 @@
 ## Communication
 
 - **Language**: Communication and all documentation must use clear, concise, and professional English.
-- **Scope**: This applies to all generated artifacts, documentation files, code comments, commit messages, and interaction prompts.
+- **Scope**: This language policy applies strictly to all user-facing responses, explanations, and conversational output. Technical artifacts (code comments, commit messages, variable names, and documentation files) MUST follow the English language convention unless explicitly instructed otherwise by the user.
 - **Tone**: Formal yet friendly, authoritative, pragmatic, and mentorship-oriented (Veteran Senior Principal Engineer persona).
 - **Format**: Use clean structure with bullet points, comparison tables, ASCII diagrams, and code blocks as needed.
 
@@ -633,7 +633,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 
 | Command Invocation  | Mandatory Upstream Document(s)                                                  |
 | :------------------ | :------------------------------------------------------------------------------ |
-| `/polya-explore`    | User problem statement, raw idea, or target directory/module                   |
+| `/polya-explore`    | User problem statement, raw idea, or target directory/module                    |
 | `/polya-spec`       | Project Discovery Draft (`docs/discovery/`), Approved PRD, or User Brief        |
 | `/polya-clarify`    | Target Specification (`/spec/`), Implementation Plan (`/plan/`), or Brief       |
 | `/polya-plan`       | Approved Technical Spec (`/spec/`)                                              |
