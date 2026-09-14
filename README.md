@@ -808,7 +808,7 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-spec                   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+│ /polya-spec                   │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
 └───────────────────────────────┘
       │
       ▼
@@ -821,7 +821,7 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-plan                   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+│ /polya-plan                   │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
 └───────────────────────────────┘
       │
       ▼
@@ -868,9 +868,9 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
 | :--- | :--- | :--- | :--- | :--- |
 | `/polya-router` | `polya-router` | **Phase Router** | Intelligent phase router & diagnostic dispatcher directing user to the right `/polya-*` command. | Routing & Status Guidance |
 | `/polya-explore` | `polya-explore` | **Phase 0: Discovery** | *Getting Acquainted* (p. 33), architectural critique, candidate trade-offs (*The Inventor's Paradox*), and feasibility spikes. | `docs/discovery/{slug}-discovery.md` |
-| `/polya-spec` | `polya-spec` | **Phase 1: Spec** | *Understanding the Problem*: Deconstruct *Unknown, Data, Condition*, *Setting Up Equations* (DTOs), and Clean Architecture seams. | `/spec/{slug}-spec.md` + `docs/adr/` |
+| `/polya-spec` | `polya-spec` | **Phase 1: Spec** | *Understanding the Problem*: Deconstruct *Unknown, Data, Condition*, *Setting Up Equations* (DTOs), and Clean Architecture seams. | `docs/spec/{slug}-spec.md` + `docs/adr/` |
 | `/polya-clarify` | `polya-clarify` | **Checkpoint: Clarify** | Socratic interrogation of `[ASSUMPTION]` tags, Grill-Me protocol (A/B options), and weighted Readiness Score (0-100). | `docs/audit/{slug}-clarification.md` |
-| `/polya-plan` | `polya-plan` | **Phase 2: Plan** | *Devising a Plan*: *Working Backwards*, Land & Expand (Tracer Bullets), Contingency Plan B, and **The Pause Rule**. | `/plan/{slug}-plan.md` |
+| `/polya-plan` | `polya-plan` | **Phase 2: Plan** | *Devising a Plan*: *Working Backwards*, Land & Expand (Tracer Bullets), Contingency Plan B, and **The Pause Rule**. | `docs/plan/{slug}-plan.md` |
 | `/polya-code` | `polya-code` | **Phase 3: Implement** | *Carrying Out the Plan*: Clean Code execution, single-responsibility small functions, and *Boy Scout Rule* compliance. | Source code + Unit/Integration tests |
 | `/polya-review` | `polya-review` | **Phase 4: Review** | *Looking Back* (p. 61): 5 SOLID principles audit, boundary specialization ($0, \infty$), and *Test by Dimension*. | `docs/reviews/{slug}-review.md` |
 | `/polya-docs` | `polya-docs` | **Phase 6: Documentation** | *Pedagogical Transfer & Diátaxis Framework*: author structured documentation partitioned into Tutorials, How-To Guides, Reference, and Explanation. | `docs/{quadrant}/{slug}.md` |
