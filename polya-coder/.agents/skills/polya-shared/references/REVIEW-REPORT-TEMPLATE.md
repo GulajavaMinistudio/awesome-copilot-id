@@ -1,8 +1,8 @@
 # 🔍 Code Review & Quality Audit: [Feature / PR Name]
 
 **Reviewed Target:** `[Commit / Branch / File List]`  
-**Specification Ref:** `spec/[slug]-spec.md`  
-**Plan Ref:** `plan/[slug]-plan.md`  
+**Specification Ref:** `docs/spec/{slug}-spec.md`  
+**Plan Ref:** `docs/plan/{slug}-plan.md`  
 **Review Status:** **{Approved / Remediation Required}**  
 
 ---

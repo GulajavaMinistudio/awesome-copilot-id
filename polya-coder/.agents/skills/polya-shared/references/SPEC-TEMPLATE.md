@@ -23,7 +23,7 @@ tags: ["polya", "spec", "clean-architecture"]
 
 ### 1.3 The Condition (Requirements, Constraints & Invariants)
 
-*Every requirement and constraint MUST be assigned a unique ID for 100% bidirectional traceability with Implementation Plans (`/plan/`):*
+*Every requirement and constraint MUST be assigned a unique ID for 100% bidirectional traceability with Implementation Plans (`docs/plan/`):*
 
 - **REQ-001:** [Core functional capability required to satisfy the Unknown]
 - **REQ-002:** [Secondary functional capability or business transaction rule]
@@ -118,7 +118,7 @@ Frameworks & Drivers (DB, Web Server, UI Runtimes)
 
 ## 6. Acceptance Criteria (Given-When-Then)
 
-*Every Acceptance Criterion must have a unique ID that pairs with corresponding REQ IDs for verification in `/plan/`:*
+*Every Acceptance Criterion must have a unique ID that pairs with corresponding REQ IDs for verification in `docs/plan/`:*
 
 - **AC-001 (Happy Path for REQ-001):**  
   *Given* [pre-conditions and initial state],  

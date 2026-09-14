@@ -51,12 +51,12 @@ An elite, highly disciplined software engineering kit designed for AI coding age
 # Dedicated Modular Sub-Skill Commands
 /polya-explore [instruction] [@context-file (optional)]
 /polya-spec [instruction] [@context-file (optional)]
-/polya-clarify [@spec/... or @plan/...]
-/polya-plan [@spec/...]
-/polya-code [@plan/...]
-/polya-review [@spec/... @plan/...]
+/polya-clarify [@docs/spec/... or @docs/plan/...]
+/polya-plan [@docs/spec/...]
+/polya-code [@docs/plan/...]
+/polya-review [@docs/spec/... @docs/plan/...]
 /polya-fix [error log or repro test]
-/polya-docs [@spec/... or @plan/...]
+/polya-docs [@docs/spec/... or @docs/plan/...]
 /polya-fast-track [routine task or quick fix]
 /polya-map [repository path (optional)]
 
@@ -89,9 +89,9 @@ When invoked with a full user intent, task description, or feature brief without
 | :--- | :--- | :--- | :--- |
 | **`/polya-explore`** | Phase 0: Discovery | Problem framing, repository topography critique, architectural trade-offs (*The Inventor's Paradox*), and feasibility spikes. | Brief / Problem idea |
 | **`/polya-spec`** | Phase 1: Specification | Deconstruct *Unknown, Data, Condition*, *Setting Up Equations*, and map *Clean Architecture Seams*. | Discovery Draft / Notes |
-| **`/polya-clarify`** | Checkpoint: Clarification | Interrogate ambiguities, `[ASSUMPTION]` tags, *Condition Sanity Check*, Grill-Me protocol (A/B options), and *Readiness Score*. | Target `/spec/` / `/plan/` |
-| **`/polya-plan`** | Phase 2: Planning | *Working Backwards*, *Auxiliary Problems*, *Land & Expand (Tracer Bullets)*, Plan B, and **The Pause Rule**. | Approved `/spec/` |
-| **`/polya-code`** | Phase 3: Execution | Code execution with *Clean Code*, single-responsibility small functions, and *Boy Scout Rule* compliance. | Approved `/plan/` |
+| **`/polya-clarify`** | Checkpoint: Clarification | Interrogate ambiguities, `[ASSUMPTION]` tags, *Condition Sanity Check*, Grill-Me protocol (A/B options), and *Readiness Score*. | Target `docs/spec/` / `docs/plan/` |
+| **`/polya-plan`** | Phase 2: Planning | *Working Backwards*, *Auxiliary Problems*, *Land & Expand (Tracer Bullets)*, Plan B, and **The Pause Rule**. | Approved `docs/spec/` |
+| **`/polya-code`** | Phase 3: Execution | Code execution with *Clean Code*, single-responsibility small functions, and *Boy Scout Rule* compliance. | Approved `docs/plan/` |
 | **`/polya-review`** | Phase 4: Review | Audit 5 SOLID principles (SRP, OCP, LSP, ISP, DIP), boundary specialization testing, and data type dimensions. | Source code + Spec |
 | **`/polya-fix`** | Phase 5: Bug Remediation | Cease *blind patching*, return to *First Principles*, trace *broken seam*, and formulate reproduction test. | Error log / Stack trace |
 | **`/polya-docs`** | Phase 6: Documentation | Author user/developer documentation based on the 4 Diátaxis quadrants (Tutorials, How-To, Reference, Explanation). | Spec / Plan / Source code |
@@ -117,7 +117,7 @@ To prevent both over-engineering on simple fixes (*Pedantry*) and under-engineer
 | **Problem Nature** | **Routine Problem:** Direct pattern substitution, well-understood fix, zero architectural ambiguity. | **Non-Routine Problem:** Novel feature, complex domain logic, concurrency, state management, or cross-cutting seam. |
 | **Task Sizing** | **XS / S** (1 – 2 files impacted). | **M / L** (3 – 8 files organized into vertical tracer bullets). |
 | **Architectural Boundary** | Localized logic or UI tweak. Zero new public APIs, DTOs, or database schema migrations. | Introduces new API contracts, entities, use cases, database tables, or third-party adapters. |
-| **Documentation Ceremony** | **Zero Paperwork:** Mental micro-understanding and micro-plan; executes in a single fluid motion. | **Full SDLC Artifacts:** Structured `/spec/`, `/plan/`, and `docs/reviews/` required before and after coding. |
+| **Documentation Ceremony** | **Zero Paperwork:** Mental micro-understanding and micro-plan; executes in a single fluid motion. | **Full SDLC Artifacts:** Structured `docs/spec/`, `docs/plan/`, and `docs/reviews/` required before and after coding. |
 | **Mandatory Pushback Rule** | **The Excavator Rule:** Reject multi-module features or architectural changes under `fast-track`. | **The Pause Rule:** Strictly forbid functional code generation until plan is approved by the user. |
 | **Example Scenarios** | Typo fix, adding a single validated field to existing form, dependency bump, self-contained CSS fix. | New checkout workflow, OAuth2 authentication provider, payment webhook reconciliation, order state machine. |
 
@@ -154,7 +154,7 @@ graph TD
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-spec                   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+│ /polya-spec                   │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
 └───────────────────────────────┘
       │
       ▼
@@ -167,7 +167,7 @@ graph TD
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-plan                   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+│ /polya-plan                   │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
 └───────────────────────────────┘
       │
       ▼
@@ -334,27 +334,27 @@ You can express your task in natural language without remembering phase names. T
 
 ### Phase 1: Technical Specification
 ```text
-/polya-spec Please analyze requirements for the new payment checkout flow. Deconstruct the Unknown, Data, and Condition, map Clean Architecture seams, and generate /spec/checkout-spec.md.
+/polya-spec Please analyze requirements for the new payment checkout flow. Deconstruct the Unknown, Data, and Condition, map Clean Architecture seams, and generate docs/spec/checkout-spec.md.
 ```
 
 ### Checkpoint: Clarification & Ambiguity Interrogation
 ```text
-/polya-clarify @spec/checkout-spec.md Interrogate all [ASSUMPTION] tags, unhandled edge cases, and timeout scenarios. Enforce Grill-Me protocol with concrete A/B choices and calculate Readiness Score.
+/polya-clarify @docs/spec/checkout-spec.md Interrogate all [ASSUMPTION] tags, unhandled edge cases, and timeout scenarios. Enforce Grill-Me protocol with concrete A/B choices and calculate Readiness Score.
 ```
 
 ### Phase 2: Implementation Planning
 ```text
-/polya-plan @spec/checkout-spec.md Create a tracer-bullet implementation plan with Land-and-Expand vertical slices and contingency Plan B. Stop at the Pause Rule.
+/polya-plan @docs/spec/checkout-spec.md Create a tracer-bullet implementation plan with Land-and-Expand vertical slices and contingency Plan B. Stop at the Pause Rule.
 ```
 
 ### Phase 3: Implementation
 ```text
-/polya-code @plan/checkout-plan.md Execute vertical slice 1. Enforce Uncle Bob's Clean Code, small functions, intention-revealing names, and the Boy Scout Rule.
+/polya-code @docs/plan/checkout-plan.md Execute vertical slice 1. Enforce Uncle Bob's Clean Code, small functions, intention-revealing names, and the Boy Scout Rule.
 ```
 
 ### Phase 4: Code Review & Quality Audit
 ```text
-/polya-review @spec/checkout-spec.md @plan/checkout-plan.md Audit the checkout implementation against SOLID principles, boundary specialization, and dimensional consistency.
+/polya-review @docs/spec/checkout-spec.md @docs/plan/checkout-plan.md Audit the checkout implementation against SOLID principles, boundary specialization, and dimensional consistency.
 ```
 
 ### Phase 5: Bug Remediation (First Principles)
@@ -364,7 +364,7 @@ You can express your task in natural language without remembering phase names. T
 
 ### Phase 6: Technical Documentation (Diátaxis)
 ```text
-/polya-docs @spec/checkout-spec.md Author a How-To guide and Reference documentation for the new checkout flow adhering strictly to the Diátaxis framework.
+/polya-docs @docs/spec/checkout-spec.md Author a How-To guide and Reference documentation for the new checkout flow adhering strictly to the Diátaxis framework.
 ```
 
 ### Fast-Track: Routine One-Shot Bypass

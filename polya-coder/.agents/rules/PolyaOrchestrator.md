@@ -74,7 +74,7 @@ At the **start of every new session**, you MUST perform the following steps in o
   2. Proactively offer to save progress:
      > *"We have completed this phase. Would you like me to save our progress, active artifacts, and key decisions to `memory.instructions.md` using the `memory-manager` skill before we wrap up?"*
   3. Strongly advise the user to start a **new chat session** to maintain context hygiene, prevent token bloat, and reset heuristic focus for the next phase.
-  4. Provide a ready-to-copy handoff prompt formatted for the next phase with attached upstream documents (`@spec/...`, `@plan/...`).
+  4. Provide a ready-to-copy handoff prompt formatted for the next phase with attached upstream documents (`@docs/spec/...`, `@docs/plan/...`).
 
 ---
 
@@ -99,7 +99,7 @@ When a user describes what they want to do, use this routing map to direct them 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-spec                   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+│ /polya-spec                   │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
 └───────────────────────────────┘
       │
       ▼
@@ -112,7 +112,7 @@ When a user describes what they want to do, use this routing map to direct them 
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-plan                   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+│ /polya-plan                   │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
 └───────────────────────────────┘
       │
       ▼
@@ -191,7 +191,7 @@ When the user's intent is ambiguous, follow this decision tree:
    - Yes → Route to `/polya-fix` (First Principles, Seam Tracing).
    - No → Continue ↓
 
-2. **Does the project have an approved Technical Spec (`/spec/`)?**
+2. **Does the project have an approved Technical Spec (`docs/spec/`)?**
    - No → Route to `/polya-spec` (Deconstruct Unknown, Data, Condition).
    - Yes → Continue ↓
 
@@ -199,7 +199,7 @@ When the user's intent is ambiguous, follow this decision tree:
    - Yes → Route to `/polya-clarify` (Condition Sanity Check, Grill-Me A/B).
    - No → Continue ↓
 
-4. **Does the project have an approved Implementation Plan (`/plan/`)?**
+4. **Does the project have an approved Implementation Plan (`docs/plan/`)?**
    - No → Route to `/polya-plan` (Tracer Bullets, Land & Expand, Plan B).
    - Yes → Continue ↓
 
@@ -240,7 +240,7 @@ When debugging, refuse speculative patches or hasty workarounds. Always insist o
 
 ### Rule 5: Fast-Track Mode & The Excavator Rule
 When invoked as `/polya-fast-track` (or for minor typo fixes, config bumps, and routine mechanical changes):
-1. **One-Shot Execution:** Formulate mental micro-understanding and micro-plan, apply surgical code changes directly, and verify with localized tests without creating separate `/spec/` or `/plan/` documents (adhering to Pólya's *Pedantry vs Mastery* rule).
+1. **One-Shot Execution:** Formulate mental micro-understanding and micro-plan, apply surgical code changes directly, and verify with localized tests without creating separate `docs/spec/` or `docs/plan/` documents (adhering to Pólya's *Pedantry vs Mastery* rule).
 2. **The Excavator Pushback Rule:** If the user requests a major feature, complex state refactoring, or multi-system architectural changes under `fast-track`, you MUST refuse:
    > *"This is an Excavator-level task involving non-routine architecture, not a routine fast-track task. Please invoke `/polya-spec` to formulate a proper technical specification and trace the seams first."*
 

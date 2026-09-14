@@ -180,7 +180,7 @@ When invoked via `/polya-router` or with a full user intent, task description, o
    - **Strict Execution Guardrail:** Natural prompt routing **NEVER** bypasses **The Pause Rule**. Prompts like *"build me feature X"* route to `/polya-spec` or `/polya-plan`, never directly to code implementation.
 
 ### Mode 2: Direct Sub-Skill Invocation (Direct Slash Command)
-When the user specifies a modular command (e.g., `/polya-plan @spec/checkout-spec.md`):
+When the user specifies a modular command (e.g., `/polya-plan @docs/spec/checkout-spec.md`):
 1. Immediately acknowledge the sub-skill.
 2. Validate required upstream documents. If context files are omitted, run Autonomous Codebase Reconnaissance to discover related specifications or code files before prompting the user.
 3. Execute strictly within the heuristic boundaries of that phase.
@@ -212,7 +212,7 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-spec                   │ ──▶ [ /spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+│ /polya-spec                   │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
 └───────────────────────────────┘
       │
       ▼
@@ -225,7 +225,7 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
       │
       ▼
 ┌───────────────────────────────┐
-│ /polya-plan                   │ ──▶ [ /plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+│ /polya-plan                   │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
 └───────────────────────────────┘
       │
       ▼
@@ -271,11 +271,11 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
 ```
 
 ### Core Methodological Rules:
-- **Traceability Contract & Numbered Assumption Tagging:** Requirements, constraints, and acceptance criteria must use strict, sequential identifiers (`REQ-001`, `CON-001`, `AC-001`). All provisional decisions, unverified assumptions, or inferred defaults MUST be tagged explicitly using the standardized GitHub alert format: `> [!WARNING] [ASSUMPTION-001]: [Description of assumption, downstream risk, and default boundary]`. Downstream implementation plans in `/plan/` must extract every `[ASSUMPTION-XXX]` into its "Risks & Assumptions" section with concrete mitigation strategies, and map all tasks 1:1 back to `Ref ID` and `AC Ref`. Orphaned tasks are strictly prohibited.
+- **Traceability Contract & Numbered Assumption Tagging:** Requirements, constraints, and acceptance criteria must use strict, sequential identifiers (`REQ-001`, `CON-001`, `AC-001`). All provisional decisions, unverified assumptions, or inferred defaults MUST be tagged explicitly using the standardized GitHub alert format: `> [!WARNING] [ASSUMPTION-001]: [Description of assumption, downstream risk, and default boundary]`. Downstream implementation plans in `docs/plan/` must extract every `[ASSUMPTION-XXX]` into its "Risks & Assumptions" section with concrete mitigation strategies, and map all tasks 1:1 back to `Ref ID` and `AC Ref`. Orphaned tasks are strictly prohibited.
 - **Vertical Slicing (Tracer Bullets):** All Implementation Plans MUST be broken down into "Tracer Bullet" tickets (vertical slices from DB to UI that are independently demoable and verifiable). Horizontal slicing (layer-by-layer) is strictly prohibited.
 - **Documentation First:** Complete and structured documentation must exist before coding begins.
 - **Surgical Edit Mandate:** AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
-- **English-Only Documentation & Code:** While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (`/spec/`, `/plan/`, `docs/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
+- **English-Only Documentation & Code:** While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (`docs/spec/`, `docs/plan/`, `docs/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
 - **Testing Policy (Two-Layer Mandate):** Testing is mandatory at two levels:
   - **Micro level (per change):** Every individual code generation or modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
   - **Macro level (per phase):** The entire test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase.
@@ -286,7 +286,7 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
   1. **Artifact Verification & Score:** Confirm artifact completion and provide Readiness Score evaluation (0-100) where applicable.
   2. **Proactive Memory Checkpoint Offer:** Proactively offer to save session progress, active artifacts, and key architectural decisions to `memory.instructions.md` using the `memory-manager` skill (`/memory-manager Save progress...`).
   3. **New Session Recommendation:** Explicitly advise the user to start a **new chat session** to maintain context hygiene and prevent token bloat.
-  4. **Ready-to-Copy Handoff Prompt:** Provide a pre-formatted code block containing the exact slash command, the generated upstream file reference (`@spec/...`, `@plan/...`), and focused instructions for the next session.
+  4. **Ready-to-Copy Handoff Prompt:** Provide a pre-formatted code block containing the exact slash command, the generated upstream file reference (`@docs/spec/...`, `@docs/plan/...`), and focused instructions for the next session.
 
 ---
 
@@ -317,7 +317,7 @@ Before writing formal specifications or defining rigid contracts:
 - **Analogy & Prior Art:** Search for analogous problems already solved within the codebase or wider industry (*"Do you know a related problem?"*).
 - **Evaluate Candidate Architectures (The Inventor's Paradox, p. 121):** Formulate 2-3 candidate solution architectures (Minimal, Target, Comprehensive). Assess whether designing a more general, decoupled abstraction provides a cleaner solution than adding narrow, fragile edge-case patches.
 - **Technical Feasibility Spikes:** Identify critical unknowns and execute minimal proof-of-concept tests to de-risk high-uncertainty areas.
-- **Output Artifact:** Structured Project Discovery Draft at `docs/discovery/{slug}-discovery.md` adhering strictly to [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/polya-shared/references/DISCOVERY-DRAFT-TEMPLATE.md). Once approved, route to `/polya-spec @docs/discovery/{slug}-discovery.md`.
+- **Output Artifact:** Structured Project Discovery Draft (**EXACTLY ONE** file) at `docs/discovery/{slug}-discovery.md` adhering strictly to [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/polya-shared/references/DISCOVERY-DRAFT-TEMPLATE.md) (zero shadow copies in root `docs/`). Once approved, route to `/polya-spec @docs/discovery/{slug}-discovery.md`.
 
 ---
 
@@ -342,7 +342,7 @@ Do not write a single line of production code until both you and the user share 
   - *Use Cases (Application Layer):* Orchestrating business workflows and state.
   - *Interface Adapters (Controllers, Gateways, Presenters):* Converting data between use cases and external formats.
   - *Frameworks & Drivers (DB, Web, Devices):* External tools and libraries.
-- **Output:** Structured technical blueprint in `/spec/{slug}-spec.md` and ADRs in `docs/adr/` when applicable.
+- **Output:** Structured technical blueprint (**EXACTLY ONE** file) in `docs/spec/{slug}-spec.md` (never split into modular catalogs or mirrored under legacy naming) and ADRs in `docs/adr/` when applicable.
 
 ---
 
@@ -384,14 +384,14 @@ Synthesize a concrete architectural plan once the problem is thoroughly understo
     `| Task | Description | Ref ID | AC Ref | Dep | Files | Completed | Date |`
   - **Task Sizing Limits:** XS (1 file), S (1-2 files), M (3-5 files), L (5-8 files). Size XL (8+ files) is forbidden.
   - **Strict Spec-Plan Traceability Bridge:**
-    - Every functional task in `/plan/` MUST link to an exact Spec requirement via `Ref ID` (`REQ-001`, `CON-001`) and `AC Ref` (`AC-001`).
-    - The Plan frontmatter MUST point to `spec_ref: "spec/{slug}-spec.md"`.
+    - Every functional task in `docs/plan/` MUST link to an exact Spec requirement via `Ref ID` (`REQ-001`, `CON-001`) and `AC Ref` (`AC-001`).
+    - The Plan frontmatter MUST point to `spec_ref: "docs/spec/{slug}-spec.md"`.
     - All `> [!WARNING] [ASSUMPTION-XXX]` tags from the Spec MUST be extracted into the Plan's "Risks & Assumptions" section with concrete mitigation actions.
     - Zero Orphaned Tasks: No task may be added to a plan unless it traces back to an approved Spec requirement or architectural invariant.
 - **Land and Expand Strategy (Tracer Bullets):** Define the minimal vertical slice that works end-to-end first. Secure the baseline (*Land*) before adding advanced capabilities (*Expand*).
 - **Enforce SOLID at the Blueprint Stage:** Verify SRP, OCP, LSP, ISP, and DIP across all planned components.
 - **Visualize Data Flow:** Provide a clear sequence table or text flow diagram illustrating the data lifecycle.
-- **Output:** Actionable phased task plan in `/plan/{slug}-plan.md` using `.agents/skills/polya-shared/references/PLAN-TEMPLATE.md`.
+- **Output:** Actionable phased task plan (**EXACTLY ONE** file) in `docs/plan/{slug}-plan.md` using `.agents/skills/polya-shared/references/PLAN-TEMPLATE.md` (never create duplicate version-suffixed plan files).
 
 ---
 
@@ -502,10 +502,10 @@ Generate clear, structured user-facing and developer-facing documentation strict
 - **Rules of Writing:**
   - Zero quadrant bleed: Never combine reference contracts into tutorials or explanations into how-to guides.
   - Test every code example: All commands and code snippets must be syntactically valid and runnable.
-  - Link upstream specifications (`/spec/`) and architecture decisions (`docs/adr/`) where applicable.
+  - Link upstream specifications (`docs/spec/`) and architecture decisions (`docs/adr/`) where applicable.
 - **Workflow:**
   1. *Understand Need:* Clarify user audience and determine target quadrant.
-  2. *Audit Context:* Read relevant `/spec/`, `/plan/`, or implemented source code files.
+  2. *Audit Context:* Read relevant `docs/spec/`, `docs/plan/`, or implemented source code files.
   3. *Draft Content:* Author documentation strictly adhering to [`DOCS-TEMPLATE.md`](.agents/skills/polya-shared/references/DOCS-TEMPLATE.md).
   4. *Save Artifact:* Store in `docs/tutorials/`, `docs/how-to/`, `docs/reference/`, or `docs/explanation/`.
 - **Output:** Structured documentation markdown file in `docs/{quadrant}/{slug}.md`.
@@ -521,7 +521,7 @@ High-speed execution mode for one-off tasks, ad-hoc bug fixes, and minor refacto
 - **The Excavator Pushback Rule:** If the user requests a major feature, complex state refactor, or multi-system architectural change under `fast-track`, YOU MUST REFUSE:
   > *"This is an Excavator-level task involving non-routine architecture, not a routine fast-track task. Please invoke `/polya-spec` to formulate a proper technical specification and trace the seams first."*
 - **The "One-Shot" Workflow:**
-  1. *Micro-Understanding (Mental):* Identify Unknown, Data, and Condition without creating a separate `/spec/` file.
+  1. *Micro-Understanding (Mental):* Identify Unknown, Data, and Condition without creating a separate `docs/spec/` file.
   2. *Micro-Plan (Mental):* Formulate surgical edit steps and check edge cases.
   3. *Surgical Execution:* Modify code directly with Clean Code discipline, small functions, and Boy Scout Rule.
   4. *Micro-Verification:* Run localized tests or verify syntax to ensure zero regressions.
@@ -608,15 +608,21 @@ ADRs live in `docs/adr/` and serve as the project's permanent architectural memo
 All generated SDLC artifacts and heuristic problem-solving in `polya-coder` must strictly adhere to the templates and reference guides located in `.agents/skills/polya-shared/references/`:
 - **Pólya Mathematical Heuristic Arsenal:** [`POLYA-HEURISTIC-ARSENAL.md`](.agents/skills/polya-shared/references/POLYA-HEURISTIC-ARSENAL.md) mapping George Pólya's 21 foundational mathematical heuristics (*How to Solve It*, 1945) to Clean Architecture and systems design.
 - **Discovery Draft:** [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/polya-shared/references/DISCOVERY-DRAFT-TEMPLATE.md) for `docs/discovery/{slug}-discovery.md`.
-- **Specification:** [`SPEC-TEMPLATE.md`](.agents/skills/polya-shared/references/SPEC-TEMPLATE.md) for `/spec/{slug}-spec.md`.
+- **Specification:** [`SPEC-TEMPLATE.md`](.agents/skills/polya-shared/references/SPEC-TEMPLATE.md) for `docs/spec/{slug}-spec.md`.
 - **Clarification Audit Report:** [`CLARIFICATION-REPORT-TEMPLATE.md`](.agents/skills/polya-shared/references/CLARIFICATION-REPORT-TEMPLATE.md) for `docs/audit/{slug}-clarification.md`.
-- **Implementation Plan:** [`PLAN-TEMPLATE.md`](.agents/skills/polya-shared/references/PLAN-TEMPLATE.md) for `/plan/{slug}-plan.md`.
+- **Implementation Plan:** [`PLAN-TEMPLATE.md`](.agents/skills/polya-shared/references/PLAN-TEMPLATE.md) for `docs/plan/{slug}-plan.md`.
 - **Code Review:** [`REVIEW-REPORT-TEMPLATE.md`](.agents/skills/polya-shared/references/REVIEW-REPORT-TEMPLATE.md) for `docs/reviews/{slug}-review.md`.
 - **Technical Documentation:** [`DOCS-TEMPLATE.md`](.agents/skills/polya-shared/references/DOCS-TEMPLATE.md) for `docs/tutorials/`, `docs/how-to/`, `docs/reference/`, or `docs/explanation/`.
 - **Bug Remediation:** [`BUGFIX-PLAN-TEMPLATE.md`](.agents/skills/polya-shared/references/BUGFIX-PLAN-TEMPLATE.md) for `docs/bug-reports/{slug}-bugfix.md`.
 - **Architecture Topography Map:** [`ARCHITECTURE-TEMPLATE.md`](.agents/skills/polya-shared/references/ARCHITECTURE-TEMPLATE.md) and [`ARCHITECTURE-MAPPING-WORKFLOW.md`](.agents/skills/polya-shared/references/ARCHITECTURE-MAPPING-WORKFLOW.md) for `docs/ARCHITECTURE.md`.
 
-### 5. Reference First
+### 5. Strict Single-File Output Invariant (Zero Shadow Copies Mandate)
+All Pólya SDLC phases operate under an uncompromising single-file output invariant:
+- **Canonical Single File:** Each phase invocation MUST generate **EXACTLY ONE** canonical markdown artifact at its designated location (`docs/discovery/{slug}-discovery.md`, `docs/spec/{slug}-spec.md`, or `docs/plan/{slug}-plan.md`).
+- **Zero Shadow Copies:** Agents are strictly forbidden from creating duplicate, mirror, backup, or split files across alternative directories (e.g., NEVER write to root `docs/` with legacy timestamp naming `docs/discovery-draft-*.md`, and NEVER generate duplicate `plan-*-v1.0.md` or split `spec-index.md` files).
+- **Inert Downstream Targeting:** All downstream handoffs (`/polya-spec`, `/polya-plan`, `/polya-code`, `/polya-review`) strictly ingest these canonical paths.
+
+### 6. Reference First
 Prioritize consistency with these standards over any other formatting assumption.
 
 ---
@@ -635,11 +641,11 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 | :------------------ | :------------------------------------------------------------------------------ |
 | `/polya-explore`    | User problem statement, raw idea, or target directory/module                    |
 | `/polya-spec`       | Project Discovery Draft (`docs/discovery/`), Approved PRD, or User Brief        |
-| `/polya-clarify`    | Target Specification (`/spec/`), Implementation Plan (`/plan/`), or Brief       |
-| `/polya-plan`       | Approved Technical Spec (`/spec/`)                                              |
-| `/polya-code`       | Approved Implementation Plan (`/plan/`)                                         |
-| `/polya-review`     | Technical Spec (`/spec/`) AND Implementation Plan (`/plan/`)                    |
-| `/polya-docs`       | Technical Spec (`/spec/`), Implementation Plan (`/plan/`), or Source Code files |
+| `/polya-clarify`    | Target Specification (`docs/spec/`), Implementation Plan (`docs/plan/`), or Brief |
+| `/polya-plan`       | Approved Technical Spec (`docs/spec/`)                                          |
+| `/polya-code`       | Approved Implementation Plan (`docs/plan/`)                                     |
+| `/polya-review`     | Technical Spec (`docs/spec/`) AND Implementation Plan (`docs/plan/`)                |
+| `/polya-docs`       | Technical Spec (`docs/spec/`), Implementation Plan (`docs/plan/`), or Source Code files |
 | `/polya-fix`        | Bug report, error logs, stack traces, or failing reproduction test              |
 | `/polya-fast-track` | None (Direct user instruction, error snippet, or target file)                   |
 
@@ -664,7 +670,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
    - **Pushback Rule:** If the user asks you to start coding or skip to implementation, YOU MUST REFUSE: *"My role is strictly to plan the execution sequence and verify architectural seams. The Pause Rule requires explicit plan approval before coding. Let's review this plan first."* Once approved, direct the user to invoke `/polya-code`.
 
 4. **Execution & Coding (`/polya-code`):**
-   - **Goal:** Implement code strictly based on approved `/spec/` and `/plan/` using Clean Code and Boy Scout Rule.
+   - **Goal:** Implement code strictly based on approved `docs/spec/` and `docs/plan/` using Clean Code and Boy Scout Rule.
    - **Pushback Rule:** If the user requests a massive new feature not found in Spec/Plan, YOU MUST PUSHBACK: *"This request deviates from the approved Specification and Plan. Should we adjust the scope, or invoke /polya-spec to update the blueprint first?"*
 
 5. **Code Review & Audit (`/polya-review`):**
@@ -689,7 +695,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 
 To prevent infinite loops during the Draft ➔ Audit ➔ Update cycle, all specification and planning documents MUST follow this scoring protocol:
 
-- **Readiness Score (0-100):** Every Specification (`/spec/`) and Implementation Plan (`/plan/`) generated or reviewed under the Polya SDLC workflow MUST explicitly evaluate readiness and assign a Readiness Score from 0 to 100 based on the following weighted criteria. *(Note: The point values below are benchmark anchors. You MUST assign dynamic intermediate integer scores (e.g., 35/40, 22/30) that accurately reflect the quality within each maximum bound):*
+- **Readiness Score (0-100):** Every Specification (`docs/spec/`) and Implementation Plan (`docs/plan/`) generated or reviewed under the Polya SDLC workflow MUST explicitly evaluate readiness and assign a Readiness Score from 0 to 100 based on the following weighted criteria. *(Note: The point values below are benchmark anchors. You MUST assign dynamic intermediate integer scores (e.g., 35/40, 22/30) that accurately reflect the quality within each maximum bound):*
   - **Completeness (40%):** Are Unknown, Data, Condition, and all Clean Architecture seams explicitly defined?
     - *40/40:* All main features, edge cases, error handling, DTO contracts, and architectural seams are explicitly documented.
     - *20/40:* Core features exist, but edge cases, boundary invariants, or error handling are missing.

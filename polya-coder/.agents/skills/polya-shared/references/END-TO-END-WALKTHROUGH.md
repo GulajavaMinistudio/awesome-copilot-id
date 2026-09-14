@@ -46,7 +46,7 @@ The agent announces discovered seams and presents the formal Technical Specifica
 
 ---
 
-## Stage 2: Phase 1 — Specification (`spec/webhook-idempotency-spec.md`)
+## Stage 2: Phase 1 — Specification (`docs/spec/webhook-idempotency-spec.md`)
 
 The agent drafts the formal specification adhering strictly to [`SPEC-TEMPLATE.md`](SPEC-TEMPLATE.md):
 
@@ -130,7 +130,7 @@ Frameworks & Drivers
 
 ## Stage 3: Recurring Checkpoint — Clarification (`docs/audit/webhook-clarification.md`)
 
-The user triggers `/polya-clarify @spec/webhook-idempotency-spec.md`. The agent acts as a Socratic interrogator using the **Grill-Me Protocol**:
+The user triggers `/polya-clarify @docs/spec/webhook-idempotency-spec.md`. The agent acts as a Socratic interrogator using the **Grill-Me Protocol**:
 
 ### 3.1 The "Grill Me" Interrogation Dialogue
 > **Agent:** *"I analyzed your specification. [ASSUMPTION-001] declares that Redis is available for distributed locking. However, what should happen if Redis encounters a connection timeout during lock acquisition?*
@@ -153,7 +153,7 @@ TOTAL READINESS SCORE: 94 / 100 [READY TO PROCEED]
 
 ---
 
-## Stage 4: Phase 2 — Implementation Planning (`plan/webhook-idempotency-plan.md`)
+## Stage 4: Phase 2 — Implementation Planning (`docs/plan/webhook-idempotency-plan.md`)
 
 The agent breaks down the specification into **Vertical Feature Slices (Tracer Bullets)**:
 
@@ -247,8 +247,8 @@ The agent audits the final implementation against SOLID principles and boundary 
 | Step | Pólya Principle | Uncle Bob Standard | Produced Artifact |
 | :--- | :--- | :--- | :--- |
 | **Stage 1** | Getting Acquainted | Architecture Seams | `Pólya Triage Card` |
-| **Stage 2** | Understand the Problem | The Dependency Rule & DTOs | `/spec/{slug}-spec.md` |
+| **Stage 2** | Understand the Problem | The Dependency Rule & DTOs | `docs/spec/{slug}-spec.md` |
 | **Stage 3** | Condition Sanity Check | Anti-Ambiguity Protocol | `docs/audit/{slug}-clarification.md` |
-| **Stage 4** | Devising a Plan | Tracer Bullets & Plan B | `/plan/{slug}-plan.md` |
+| **Stage 4** | Devising a Plan | Tracer Bullets & Plan B | `docs/plan/{slug}-plan.md` |
 | **Stage 5** | Carrying Out the Plan | Boy Scout Rule & Floor-Guard | Atomic Git Commits |
 | **Stage 6** | Looking Back | SOLID & Dimension Audit | `docs/reviews/{slug}-review.md` |

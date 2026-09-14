@@ -37,9 +37,9 @@ Every document MUST serve **one single purpose** and belong to exactly one quadr
 ### 3. The 4-Step Documentation Workflow
 1. **Phase 1 (Audit & Clarify):** Analyze user intent, identify target audience, and select exactly one quadrant.
 2. **Phase 2 (Design & Outline):** Present a bulleted outline tailored to the selected quadrant. Await user confirmation before drafting full prose.
-3. **Phase 3 (Drafting & Seam Verification):** Inspect verified source code, spec (`/spec/`), and test files to guarantee 100% technical truth.
+3. **Phase 3 (Drafting & Seam Verification):** Inspect verified source code, spec (`docs/spec/`), and test files to guarantee 100% technical truth.
 4. **Phase 4 (Persist Output):** Save the document strictly utilizing [`../polya-shared/references/DOCS-TEMPLATE.md`](../polya-shared/references/DOCS-TEMPLATE.md) in the relevant quadrant directory.
 
 ### 4. Phase Completion Wrap-Up
 1. Present the completed documentation file.
-2. Verify all links to code symbols, specifications (`/spec/`), and ADRs (`docs/adr/`) resolve correctly.
+2. Verify all links to code symbols, specifications (`docs/spec/`), and ADRs (`docs/adr/`) resolve correctly.

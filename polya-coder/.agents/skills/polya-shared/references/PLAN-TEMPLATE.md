@@ -4,7 +4,7 @@ version: "1.0.0"
 date_created: "[YYYY-MM-DD]"
 last_updated: "[YYYY-MM-DD]"
 status: "Planned" # Planned | In Progress | Completed | Paused
-spec_ref: "spec/[slug]-spec.md"
+spec_ref: "docs/spec/{slug}-spec.md"
 tags: ["polya", "plan", "tracer-bullets", "vertical-slicing", "clean-architecture"]
 ---
 <!-- markdownlint-disable -->
