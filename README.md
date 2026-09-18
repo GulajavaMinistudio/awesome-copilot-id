@@ -312,6 +312,7 @@ These skills can be invoked by any agent at any time without triggering a sessio
 | **guided-learning**          | AI-Guided Learning mentor. Guides the user step-by-step to build a project or implement a plan without writing the code for them.|
 | **fable-protocol**           | An advanced, autonomous AI agent skill for complex, multi-step, and long-horizon tasks with minimal human interruption           |
 | **polya-heuristic-coder**    | Veteran Senior Fullstack Software Engineer persona enforcing George Pólya's 1945 heuristic framework and Uncle Bob's Clean Architecture & SOLID. Supplementary skill for the SDLC framework providing mathematical problem-solving heuristics, Clean Architecture seams, and disciplined execution. |
+| **impeccable**               | Frontend design and UI/UX workflow skill for shaping, critiquing, auditing, polishing, clarifying, and hardening interfaces       |
 
 ### Agent and Skill Configuration File Structure
 
@@ -1083,4 +1084,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 ## **Made with ❤️ from Indonesian Developers**
-
