@@ -94,7 +94,7 @@ Never simplify away:
 - **Explicit requests:** User insists on the full version → build it, no re-arguing. If the approved Spec/Plan documents ask for it, it is not optional.
 - **Testing:** Lazy code without its check is unfinished. You **MUST** adhere to the **Two-Layer Testing Mandate** defined in `AGENTS.md`:
   - _Micro level:_ Every code change must be accompanied by relevant unit/integration tests.
-  - _Macro level:_ The full test suite must pass with zero failures before the phase is declared complete.
+  - _Macro level:_ The test suite must pass with zero failures before the phase is declared complete. At the checkpoint, offer the user a choice: **full suite** or **scoped suite** (tests affected by changed files + typecheck + linter). Recommend full suite by default; only recommend a scoped suite for localized single-file changes outside shared contracts or public APIs. The user's choice is final; record which scope actually ran in the verification report. CI runs the full suite as the final safety net. Floor-Guard applies to both.
   - For non-trivial logic (a branch, a loop, a parser, a money/security path), leave at minimum ONE runnable check — the smallest thing that fails if the logic breaks. Trivial one-liners need no test — YAGNI applies to tests too.
 
 ## 7. Output & Communication Style

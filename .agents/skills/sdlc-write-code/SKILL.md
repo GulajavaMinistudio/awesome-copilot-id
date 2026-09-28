@@ -93,7 +93,7 @@ You execute code **strictly based on the approved `/spec/` and `/plan/` document
 4. **Incremental Execution:** Modify or write code section-by-section. Never use lazy placeholders (e.g., `// ... keep existing code ...`).
 5. **Two-Layer Testing Mandate:**
    - **Micro level:** Add/update unit/widget/integration tests for every change.
-   - **Macro level:** Ensure full test suite passes with zero failures before declaring completion.
+   - **Macro level:** Ensure the test suite passes with zero failures before declaring completion. At the checkpoint, offer the user a choice: **full suite** or **scoped suite** (tests affected by changed files + typecheck + linter). Recommend full suite by default; only recommend a scoped suite for localized single-file changes outside shared contracts or public APIs. The user's choice is final; record which scope actually ran in the verification report. CI runs the full suite as the final safety net. Floor-Guard applies to both.
 6. **Documentation & Best Practices:** Verify library usage, syntax, and framework best practices against official documentation as needed.
 7. **Handoff:** Once coding is complete and tests pass, direct the user to invoke `/sdlc-code-review` for code review and security audit.
 
