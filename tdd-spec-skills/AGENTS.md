@@ -61,12 +61,15 @@
 - **Strict TDD Mandate (Red-Green-Refactor)**:
   - **RED (Test First):** Functional production code is NEVER written without first having an automated test that fails for the expected reason at a pre-agreed public seam.
   - **GREEN (Minimal Code):** Write the simplest, most minimal code necessary to make the test pass.
-  - **VERIFY (Quality Gate):** Execute the focused test, full test suite, strict typecheck, and linter. Ensure 0 regressions.
+  - **VERIFY (Quality Gate):** Execute the focused test, then offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — run the chosen scope, strict typecheck, and linter. Ensure 0 regressions.
   - **COMMIT (Atomic Save):** Save changes with an atomic commit message.
   - **REFACTOR (Deferred):** Perform minor cleanup only; architectural refactoring is deferred to the review phase.
 - **Testing Policy (Two-Layer Mandate)**: Testing is mandatory at two levels:
   - **Micro level (per change):** Every individual code generation or modification MUST be accompanied by relevant unit/widget/integration tests added incrementally.
-  - **Macro level (per phase):** The entire test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase.
+  - **Macro level (per phase):** The test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase. At every macro checkpoint (end of a fix, slice, or phase), the agent MUST offer the user an explicit scope choice before running tests:
+    - **Full suite** — the entire test suite.
+    - **Scoped suite** — only the tests affected by the changed/edited files (dependency-based selection such as `--onlyChanged`, `--affected`, or import-graph mapping), plus type checker and linter.
+    Before asking, the agent MUST state a risk-based recommendation: **full suite is the recommended default**; a scoped suite may only be recommended for localized single-file changes that do not touch shared contracts, cross-module dependencies, or public APIs. The user's choice is authoritative and overrides the recommendation. Zero failures applies to whichever scope runs, and the verification report MUST record the scope and test count actually executed (e.g., `Scoped suite: 14/1523 tests — full suite not executed`). CI MUST run the full suite as the final safety net before merge. Floor-Guard rules apply unchanged to both scopes.
 - **Floor-Guard Anti-Cheat Enforcement (`CONSTRAINTS.md`)**: Agents are strictly forbidden from adding suppressions (`@ts-ignore`, `eslint-disable`, `# noqa`), skipping tests (`.skip`, `xit`), or deleting assertions to artificially pass builds.
 - **No Skip Phases**: Generally, no phase may be skipped. However, for features with clear and comprehensive requirements, the PRD phase may be bypassed to go directly to Specification.
 - **PRD Bypass & Heavy Lifting Synergy**: When bypassing the PRD, the Spec Agent is expected to perform "Heavy Lifting" by guessing missing technical details and marking them with `[ASSUMPTION]` tags. Downstream agents (like the Plan Agent) MUST NOT block on these tags, but instead extract them into a "Risks & Assumptions" section. The Clarification Agent (`/tdd-clarify`) is strictly tasked with targeting and interrogating these extracted assumptions as its highest priority.

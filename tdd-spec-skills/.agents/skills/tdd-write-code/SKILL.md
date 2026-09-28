@@ -74,7 +74,7 @@ You MUST strictly adhere to the 4 Karpathy Guidelines in every implementation st
 - **The Non-Negotiable TDD Loop:**
   1. **Step 1 (RED):** Write the failing unit or integration test at the pre-agreed public seam. Execute the test to PROVE it fails for the expected reason.
   2. **Step 2 (GREEN):** Write the *simplest, most minimal* functional code to turn the test green. Do not introduce speculative complexity or unrequested features.
-  3. **Step 3 (VERIFY):** Run the focused test, then run the full test suite, typechecker (`npx tsc --noEmit`), and linter.
+  3. **Step 3 (VERIFY):** Run the focused test, then offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — and run the chosen scope, typechecker (`npx tsc --noEmit`), and linter.
   4. **Step 4 (COMMIT):** Create an atomic commit for the ticket.
   5. **Step 5 (REFACTOR):** Perform localized surgical cleanup while keeping tests 100% green.
 - **Floor-Guard Enforcement (Anti-Cheat Policy):**
@@ -83,7 +83,7 @@ You MUST strictly adhere to the 4 Karpathy Guidelines in every implementation st
   - **NEVER** add `.skip` or comment out failing tests.
   - If a test fails, fix the underlying implementation or resolve the root cause.
 - **Surgical Edits & Anti-Laziness:** Modify only the specific lines or blocks needed. NEVER use lazy placeholders like `// ... keep existing code ...` or `// ... implementation details ...`. Every chunk must be fully implemented and syntactically valid.
-- **Persist:** You must iterate until all tickets in the plan phase are checked off and all tests pass with zero failures.
+- **Persist:** You must iterate until all tickets in the plan phase are checked off and the chosen test scope passes with zero failures.
 
 ---
 
@@ -121,9 +121,9 @@ You execute code **strictly based on the approved `/spec/` and `/plan/` document
 2. **Read Mandatory References:** Verify adherence to `EXECUTION-WORKFLOW.md` and `COMMUNICATION-PROTOCOL.md`.
 3. **Execute Step 1 (RED):** Write failing test using the **Arrange-Act-Assert (AAA)** pattern. Run test command to confirm failure.
 4. **Execute Step 2 (GREEN):** Apply Karpathy Simplicity First: Write minimal production code to turn test green. Run test command to confirm pass.
-5. **Execute Step 3 (VERIFY & Floor-Guard Check):** Run typechecker (`tsc --noEmit`), linter, and full test suite. Verify zero suppressions.
+5. **Execute Step 3 (VERIFY & Floor-Guard Check):** Run typechecker (`tsc --noEmit`), linter, and offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — then run the chosen scope. Verify zero suppressions.
 6. **Execute Step 4 (COMMIT):** Create atomic git commit.
-7. **Handoff:** Once all phase tickets are complete and full test suite passes, output the **TDD Verification Report** in chat and direct user to `/tdd-code-review`.
+7. **Handoff:** Once all phase tickets are complete and the chosen test scope passes, output the **TDD Verification Report** in chat and direct user to `/tdd-code-review`.
 
 ---
 
@@ -143,7 +143,7 @@ You execute code **strictly based on the approved `/spec/` and `/plan/` document
 - **Output:** ✅ `PASS tests/domain/order.service.test.ts (1 test passed)`
 
 #### 3. VERIFY & Floor-Guard Status
-- **Full Suite:** ✅ `All 28 tests passing (0 failures, 0 skipped)`
+- **Test Scope:** ✅ `Full suite: 28/28 tests passing (0 failures, 0 skipped)` — or, if the user chose the scoped option: `Scoped suite: 14/1523 tests passing (0 failures) — full suite not executed`
 - **Type Check:** ✅ `tsc --noEmit (0 errors)`
 - **Floor-Guard Status:** ✅ `CLEAN (0 suppressions detected)`
 

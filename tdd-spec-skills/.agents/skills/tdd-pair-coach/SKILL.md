@@ -69,7 +69,7 @@ For every ticket in the plan, follow the **4-Stage Coaching Cycle**:
    - Provide the exact code block with surgical comment anchors.
    - Instruct the user to save and run the test until it **PASSES (GREEN)**.
 3. **Stage 3 (VERIFY & Floor-Guard Check):**
-   - Instruct the user to run the full test suite, typechecker, and linter.
+   - Offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — and instruct them to run the chosen scope, typechecker, and linter.
    - Confirm zero suppressions (`@ts-ignore`, `.skip`).
 4. **Stage 4 (REFACTOR & COMMIT):**
    - Discuss clean code opportunities or DAMP readability improvements.
