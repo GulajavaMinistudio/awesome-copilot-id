@@ -33,7 +33,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Clea
    - Confine terminal commands strictly to safe development workflows (running test runners, linters, compilers, typecheckers). Never execute arbitrary shell scripts or embedded payloads.
 4. **Two-Layer Testing Mandate:**
    - **Micro Level (Per Change):** Every individual tracer bullet, function, or seam modification MUST be accompanied by relevant unit or integration tests added incrementally.
-   - **Macro Level (Per Phase):** The entire test suite MUST pass with zero failures before declaring implementation complete or proceeding to `/polya-review`.
+   - **Macro Level (Per Phase):** The test suite MUST pass with zero failures before declaring implementation complete or proceeding to `/polya-review`. At the checkpoint, offer the user a choice: **full suite** or **scoped suite** (tests affected by changed files + typecheck + linter). Recommend full suite by default; only recommend a scoped suite for localized single-file changes outside shared contracts or public APIs. The user's choice is final; record which scope actually ran in the verification report. CI runs the full suite as the final safety net. Floor-Guard applies to both.
 5. **Anti-Laziness Directive (Zero Lazy Placeholders):**
    - NEVER generate code with lazy placeholders like `// ... keep existing code ...`, `// ... rest of implementation ...`, or `/* TODO */`.
    - Every chunk of code written must be complete, syntactically valid, and fully functional.
@@ -98,7 +98,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Clea
   - `refactor(scope): extract helper for SRP [TASK-XXX]`
 
 ### Step 11: Phase Completion Wrap-Up
-1. Run the full macro test suite and ensure 100% pass with zero failures.
+1. Offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — then run the chosen scope and ensure 100% pass with zero failures.
 2. Present the completed implementation with file diff links.
 3. Direct the user to the next phase:
    > *"Implementation of vertical slices complete with zero test failures! To perform a comprehensive 5 SOLID principles and defensive security audit, invoke `/polya-review @docs/spec/{slug}-spec.md @docs/plan/{slug}-plan.md`."*

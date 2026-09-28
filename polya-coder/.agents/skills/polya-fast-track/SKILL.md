@@ -35,7 +35,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Fast
    - If a mini-plan or target file already exists, check its content and ask the user for confirmation first before modifying or replacing it.
 5. **Two-Layer Testing Mandate (Mandatory):**
    - **Micro Level (Per Change):** Ensure every code modification is accompanied by a runnable self-check, assertion, or localized micro-test.
-   - **Macro Level (Per Fix):** The full project test suite MUST pass with zero failures before declaring the fix complete. A quick fix is invalid if it breaks the main build.
+   - **Macro Level (Per Fix):** The test suite MUST pass with zero failures before declaring the fix complete. A quick fix is invalid if it breaks the main build. At the checkpoint, offer the user a choice: **full suite** or **scoped suite** (tests affected by changed files + typecheck + linter). Recommend full suite by default; only recommend a scoped suite for localized single-file changes outside shared contracts or public APIs. The user's choice is final; record which scope actually ran in the verification report. CI runs the full suite as the final safety net. Floor-Guard applies to both.
 6. **Anti-Laziness Directive (Zero Lazy Placeholders):**
    - NEVER generate code with lazy placeholders like `// ... keep existing code ...`, `// ... implementation details ...`, or `/* TODO */`.
    - Every chunk of code written must be complete, syntactically valid, and fully functional.
@@ -127,7 +127,7 @@ tags: ["fast-track", "mini-plan", "polya", "pedantry-vs-mastery"]
 - [ ] Task 1: [Targeted surgical modification in specific file]
 - [ ] Task 2: [Micro-test or assertion addition]
 - [ ] Task 3: Run micro-test (MUST PASS)
-- [ ] Task 4: Run full macro test suite (MUST PASS with 0 failures)
+- [ ] Task 4: Offer scope choice (full suite / scoped suite), run the chosen scope (MUST PASS with 0 failures)
 ```
 
 > [!CRITICAL]
@@ -162,7 +162,7 @@ Before writing any code, stop at the first rung that holds:
    - If a deliberate shortcut is taken, tag it with `// ponytail: <ceiling>, <upgrade path>`.
 4. **Two-Layer Verification & Specialization (Pólya, p. 190):**
    - **Micro Level:** Run localized self-check, assertion, or micro-test. Apply **Test by Specialization** (p. 190) on limiting cases ($0$, $1$, $\text{null}$, empty collections, boundary edges).
-   - **Macro Level:** Run full macro test suite to guarantee zero build failures and zero regressions.
+   - **Macro Level:** Offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — then run the chosen scope to guarantee zero build failures and zero regressions.
 5. **Fault Recovery via Intelligent Trial and Error (Pólya's Mouse, p. 206–209):**
    - If micro-verification fails, DO NOT panic or inject random trial-and-error edits (*blind panic*).
    - Apply systematic bisection search to isolate the failing invariant, re-examine assumptions, and adjust surgically.
@@ -198,7 +198,7 @@ A Pólya Fast-Track Fixer strictly avoids the following anti-patterns:
 ## 🏁 Phase Completion & Proactive Memory Checkpoint
 
 1. Summarize the completed change concisely in chat with file diff links.
-2. Confirm that the macro build and test suite pass green.
+2. Confirm that the macro build passes and the chosen test scope (full or scoped) is green.
 3. Proactively ask the user:
    > *"Would you like me to record this fix, key decisions, and lessons learned into `memory.instructions.md` using the `memory-manager` skill?"*
 
