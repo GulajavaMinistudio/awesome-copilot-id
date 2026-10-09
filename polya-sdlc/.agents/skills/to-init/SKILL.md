@@ -137,9 +137,7 @@ Check that the following foundational files exist in the root and configuration 
 - `AGENTS.md` (project governance and heuristic rules)
 - `.agents/rules/PolyaOrchestrator.md` (Socratic mentor and orchestrator rule)
 - `.agents/skills/to-shared/` (shared templates and Pólya heuristic arsenal)
-- `.agents/skills/to-ask-help/` to `.agents/skills/to-map/` (modular sub-skills)
-- `.agents/skills/to-prd/` (optional product requirements skill)
-- `.agents/skills/to-memory/` (session memory manager)
+- `.agents/skills/to-*` (14 modular sub-skills: `to-ask-help`, `to-explore`, `to-prd`, `to-spec`, `to-clarify`, `to-plan`, `to-code`, `to-review`, `to-fix`, `to-docs`, `to-quick-fix`, `to-map`, `to-memory`, `to-init`)
 - `.agents/standards/` (`ADR-FORMAT.md`, `CONTEXT-FORMAT.md`)
 
 ---
