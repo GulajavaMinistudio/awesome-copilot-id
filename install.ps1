@@ -53,9 +53,10 @@ try {
     Write-Host "1) Standard SDLC Package -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
     Write-Host "2) TDD-Spec SDLC Package -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
     Write-Host "3) Polya-Coder Heuristic Package -> Veteran Principal Engineer, Pólya 1945 Heuristics, Clean Architecture & SOLID (/polya-router)"
+    Write-Host "4) Polya-SDLC Package -> Streamlined Pólya Heuristic Suite (/to-* skills, /to-ask-help, /to-prd)"
     Write-Host ""
     
-    $pkgChoice = Read-Host "Enter your package choice (1-3, default: 1)"
+    $pkgChoice = Read-Host "Enter your package choice (1-4, default: 1)"
     if ([string]::IsNullOrWhiteSpace($pkgChoice)) { $pkgChoice = "1" }
     
     $srcDir = ""
@@ -77,6 +78,11 @@ try {
             $srcDir = Join-Path (Join-Path $sourceContentDir "polya-coder") ".agents"
             $srcAgents = Join-Path (Join-Path $sourceContentDir "polya-coder") "AGENTS.md"
             $packageName = "Polya-Coder Heuristic Package"
+        }
+        "4" {
+            $srcDir = Join-Path (Join-Path $sourceContentDir "polya-sdlc") ".agents"
+            $srcAgents = Join-Path (Join-Path $sourceContentDir "polya-sdlc") "AGENTS.md"
+            $packageName = "Polya-SDLC Package"
         }
         Default {
             Write-Host "Invalid choice. Process aborted." -ForegroundColor Red
@@ -230,6 +236,8 @@ try {
         Write-Host "3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance." -ForegroundColor Cyan
     } elseif ($pkgChoice -eq "3") {
         Write-Host "3. For Polya-Coder, start by typing '/polya-router' for interactive triage or '/polya-init' to re-bootstrap." -ForegroundColor Cyan
+    } elseif ($pkgChoice -eq "4") {
+        Write-Host "3. For Polya-SDLC, start by typing '/to-ask-help' for interactive triage or '/to-explore' to begin discovery." -ForegroundColor Cyan
     } else {
         Write-Host "3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery." -ForegroundColor Cyan
     }

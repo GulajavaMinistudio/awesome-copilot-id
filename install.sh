@@ -89,7 +89,8 @@ echo -e "\n${CYAN}Select the SDLC Methodology Package to install:${NC}"
 echo -e "1) ${GREEN}Standard SDLC Package${NC} -> 12-Phase Full SDLC Pipeline (/sdlc-*), Code Janitor, Omni-Dev, UI Designer"
 echo -e "2) ${GREEN}TDD-Spec SDLC Package${NC} -> Strict Test-First & Executable Spec Kit (21 /tdd-* skills, Seams Matrix, Floor-Guard)"
 echo -e "3) ${GREEN}Polya-Coder Heuristic Package${NC} -> Veteran Principal Engineer, Pólya 1945 Heuristics, Clean Architecture & SOLID (/polya-router)"
-read -p "Enter your package choice (1-3, default: 1): " PKG_CHOICE < /dev/tty
+echo -e "4) ${GREEN}Polya-SDLC Package${NC} -> Streamlined Pólya Heuristic Suite (/to-* skills, /to-ask-help, /to-prd)"
+read -p "Enter your package choice (1-4, default: 1): " PKG_CHOICE < /dev/tty
 PKG_CHOICE=${PKG_CHOICE:-1}
 
 SRC_DIR=""
@@ -111,6 +112,11 @@ case $PKG_CHOICE in
         SRC_DIR="$SOURCE_CONTENT_DIR/polya-coder/.agents"
         SRC_AGENTS="$SOURCE_CONTENT_DIR/polya-coder/AGENTS.md"
         PACKAGE_NAME="Polya-Coder Heuristic Package"
+        ;;
+    4)
+        SRC_DIR="$SOURCE_CONTENT_DIR/polya-sdlc/.agents"
+        SRC_AGENTS="$SOURCE_CONTENT_DIR/polya-sdlc/AGENTS.md"
+        PACKAGE_NAME="Polya-SDLC Package"
         ;;
     *)
         echo -e "${RED}Invalid choice. Process aborted.${NC}"
@@ -258,6 +264,8 @@ if [ "$PKG_CHOICE" = "2" ]; then
     echo -e "${CYAN}3. For TDD-Spec SDLC, start by typing '/tdd-init' (to bootstrap constitution/constraints) or '/tdd-ask-help' for guidance.${NC}\n"
 elif [ "$PKG_CHOICE" = "3" ]; then
     echo -e "${CYAN}3. For Polya-Coder, start by typing '/polya-router' for interactive triage or '/polya-init' to re-bootstrap.${NC}\n"
+elif [ "$PKG_CHOICE" = "4" ]; then
+    echo -e "${CYAN}3. For Polya-SDLC, start by typing '/to-ask-help' for interactive triage or '/to-explore' to begin discovery.${NC}\n"
 else
     echo -e "${CYAN}3. For Standard SDLC, start by typing '/sdlc-explore-ideas' to begin discovery.${NC}\n"
 fi

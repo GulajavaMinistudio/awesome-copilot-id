@@ -12,7 +12,7 @@ A curated collection of custom agents, skills, rules, and prompts for AI-assiste
 
 ## 📋 Overview
 
-This repository provides three complete, production-ready AI SDLC methodology packages designed for modern software engineering:
+This repository provides four complete, production-ready AI SDLC methodology packages designed for modern software engineering:
 
 1. **📦 Standard SDLC Package (`.agents/` & root `AGENTS.md`):**
    - Full 12-phase SDLC pipeline (`/sdlc-*`) inspired by GitHub Spec Kit.
@@ -29,6 +29,11 @@ This repository provides three complete, production-ready AI SDLC methodology pa
    - Full lifecycle: Discovery (`/polya-explore`), Spec (`/polya-spec`), Clarification (`/polya-clarify`), Planning (`/polya-plan`), The Pause Rule Gate, Implementation (`/polya-code`), Review (`/polya-review`), Documentation (`/polya-docs`), First-Principles Bug Remediation (`/polya-fix`), Fast-Track Bypass (`/polya-fast-track`), and Architecture Topography (`/polya-map`).
    - Integrated with `memory-manager` for persistent context retention across sessions.
 
+4. **⚡ Pólya SDLC Package ([`polya-sdlc/`](polya-sdlc/README.md) & `polya-sdlc/AGENTS.md`):**
+   - 14 streamlined modular skills with the action-oriented `/to-*` prefix (`/to-explore`, `/to-prd`, `/to-spec`, `/to-clarify`, `/to-plan`, `/to-code`, `/to-review`, `/to-fix`, `/to-docs`, `/to-quick-fix`, `/to-map`, `/to-memory`, `/to-init`).
+   - Integrated Autonomous Hub & Socratic Diagnostic (`/to-ask-help`) and optional Business PRD phase (`/to-prd`).
+   - Enforces Clean Architecture seams, The Pause Rule Gate, First-Principles bug remediation, and dedicated session context retention (`/to-memory`).
+
 - **🔌 Multi-Platform**: A Single Source of Truth architecture automatically installed to `.agents/` (GitHub Copilot, Antigravity, OpenCode, CommandCode, Codex, Pi, OMP), `.claude/` (Claude Code), or `.cursor/` (Cursor).
 - **🔑 BYOK Copilot Config**: Ready-to-use `chatLanguageModels.json` template for bringing your own API keys to VS Code Copilot chat.
 
@@ -43,6 +48,7 @@ This repository provides three complete, production-ready AI SDLC methodology pa
 - [Workflow & Methodology (Standard SDLC)](#-workflow--methodology-spec-kit-inspired)
 - [TDD-Spec SDLC Package (Test-First & Spec Kit)](#-tdd-spec-sdlc-package-test-first--spec-kit)
 - [Pólya Heuristic Coder Package (Mathematical Problem-Solving & Clean Architecture)](#-pólya-heuristic-coder-package-mathematical-problem-solving--clean-architecture)
+- [Pólya SDLC Package (Streamlined Heuristic Suite)](#-pólya-sdlc-package-streamlined-heuristic-suite)
 - [Supplementary Skills](#-supplementary-skills)
 - [BYOK Copilot Config](#-byok-copilot-config)
 - [Advanced Customization Guide](#️-advanced-customization-guide)
@@ -137,6 +143,31 @@ The bootstrapper agent will initialize project governance (`AGENTS.md`) and the 
 
 The Veteran Principal Engineer supports both **explicit modular sub-skills** (e.g., `/polya-spec`, `/polya-plan`, `/polya-code`) and **natural free-form task briefs** via `/polya-router` (e.g., `/polya-router fix checkout race condition with redis`). It autonomously inspects your codebase across Clean Architecture seams, renders a **Pólya Triage Card**, and auto-routes to the optimal phase while strictly enforcing The Pause Rule.
 
+##### ⚡ Option D: Pólya SDLC Package (Streamlined Heuristic Suite)
+Installs the 14-skill streamlined SDLC engineering suite with action-oriented `/to-*` commands:
+
+```bash
+# Using GitHub Shorthand (Short & Recommended)
+npx skills add GulajavaMinistudio/awesome-copilot-id/polya-sdlc/.agents/skills/to-init
+
+# Or using full GitHub URL
+npx skills add https://github.com/GulajavaMinistudio/awesome-copilot-id/tree/main/polya-sdlc/.agents/skills/to-init
+```
+
+Then in your AI Assistant chat window, run:
+
+```text
+/to-init setup this project
+```
+
+The bootstrapper agent will initialize project governance (`AGENTS.md`) and the `.agents/` SDLC suite. After initialization, you can start with the Socratic navigator:
+
+```text
+/to-ask-help
+```
+
+Or invoke dedicated modular commands directly (e.g., `/to-explore`, `/to-prd`, `/to-spec`, `/to-plan`, `/to-code`, `/to-review`, `/to-fix`, `/to-docs`, `/to-quick-fix`).
+
 ---
 
 #### Method 2: Automated Installation (One-Liner)
@@ -162,6 +193,7 @@ The installer offers these package & platform choices:
 | **1** | **Standard SDLC Package** | 12-phase pipeline (`/sdlc-*`) with PRD bypass, planning, coding, and review |
 | **2** | **TDD-Spec SDLC Package** | 21 test-first skills (`/tdd-*`) with Pre-Agreed Seams, Floor-Guards, and `/tdd-ask-help` |
 | **3** | **Pólya Heuristic Coder Package** | Hub & Spoke modular skills (`/polya-*`) and `/polya-router` merging Pólya's heuristics with Clean Architecture |
+| **4** | **Pólya SDLC Package** | 14 streamlined modular skills (`/to-*`), router `/to-ask-help`, optional `/to-prd`, and session memory `/to-memory` |
 
 **Step 2: Platform Selection**
 | Option | Platform(s) | Destination Folder |
@@ -226,6 +258,21 @@ The installer offers these package & platform choices:
    # Cursor: copy contents of polya-coder/.agents/ into .cursor/
    mkdir -p .cursor && cp -a awesome-copilot-id/polya-coder/.agents/. .cursor/
    cp awesome-copilot-id/polya-coder/AGENTS.md ./
+   ```
+
+   **For Pólya SDLC Package (`polya-sdlc/`):**
+   ```bash
+   # Standard Platforms: copy polya-sdlc/.agents/ directly
+   cp -r awesome-copilot-id/polya-sdlc/.agents ./
+   cp awesome-copilot-id/polya-sdlc/AGENTS.md ./
+
+   # Claude Code: copy contents of polya-sdlc/.agents/ into .claude/
+   mkdir -p .claude && cp -a awesome-copilot-id/polya-sdlc/.agents/. .claude/
+   cp awesome-copilot-id/polya-sdlc/AGENTS.md ./
+
+   # Cursor: copy contents of polya-sdlc/.agents/ into .cursor/
+   mkdir -p .cursor && cp -a awesome-copilot-id/polya-sdlc/.agents/. .cursor/
+   cp awesome-copilot-id/polya-sdlc/AGENTS.md ./
    ```
 
    > [!IMPORTANT]
@@ -890,6 +937,126 @@ The **Pólya Heuristic Coder Package** is an elite, highly disciplined software 
    - Incorporates over 20 mathematical principles from George Pólya's 1945 treatise: *The Inventor's Paradox* (p. 121), *Subconscious Incubation* (p. 197), *Specialization & Limiting Cases* ($0, \infty$), *Test by Dimension*, *Round-Trip Symmetry*, and *Reductio ad Absurdum*.
 5. **🛡️ Context Hygiene & New Session Mandate:**
    - Enforces single-persona session isolation. Whenever a phase finishes, the agent executes a structured 4-step handoff (Artifact verification, memory checkpoint offer, fresh session recommendation, and ready-to-copy handoff prompt) to prevent context bleeding and token degradation.
+
+---
+
+## ⚡ Pólya SDLC Package (Streamlined Heuristic Suite)
+
+> 📖 **Full Documentation:** For complete deep-dive documentation, heuristic dictionary, templates, and setup guide, visit [**`polya-sdlc/README.md`**](polya-sdlc/README.md) and [**`polya-sdlc/AGENTS.md`**](polya-sdlc/AGENTS.md).
+
+The **Pólya SDLC Package** (`polya-sdlc/`) is the modern, streamlined evolution of the Pólya Heuristic suite specially tailored for high-velocity, production SDLC environments. It refines the modular Hub & Spoke architecture into action-oriented `/to-*` commands, introduces an autonomous Socratic Navigator (`/to-ask-help`), adds an optional business requirements phase (`/to-prd`), and features native session memory management (`/to-memory`).
+
+```text
+====================================================================================================
+               POLYA-SDLC COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW ➔ DOCS
+====================================================================================================
+
+[ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /to-explore                   │ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
+└───────────────────────────────┘
+      │
+      ├─────────────────────────────────────────────────┐
+      │ (Path A: Optional Business Requirements)       │ (Path B: Direct Technical Architecture)
+      ▼                                                 │
+┌───────────────────────────────┐                       │
+│ /to-prd                       │ ──▶ [ docs/prd/ ]     │
+└───────────────────────────────┘                       │
+      │                                                 │
+      └─────────────────────────┬───────────────────────┘
+                                │
+                                ▼
+[ Phase 1: SPECIFICATION ] (Pólya Phase 1: Understand the Problem)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /to-spec                      │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
+└───────────────────────────────┘
+      │
+      ▼
+┌───────────────────────────────┐
+│ /to-clarify                   │ ──▶ [ docs/audit/ ] ──▶ ( Interrogate Assumptions, Grill-Me A/B, Readiness Score )
+└───────────────────────────────┘
+      │
+      ▼
+[ Phase 2: PLANNING ] (Pólya Phase 2: Devising a Plan)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /to-plan                      │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
+└───────────────────────────────┘
+      │
+      ▼
+┌───────────────────────────────┐
+│ /to-clarify                   │ ──▶ ( Optional Plan Interrogation & Stress-Test )
+└───────────────────────────────┘
+      │
+      ▼
+🛑 MANDATORY GATE: THE PAUSE RULE
+(Halt execution! Await explicit user confirmation before writing functional code)
+      │
+      ▼ [Approved]
+[ Phase 3: IMPLEMENTATION ] (Pólya Phase 3: Carrying Out the Plan)
+      │
+      ▼
+┌───────────────────────────────┐
+│ /to-code                      │ ──▶ ( Clean Code, Respice Finem, Boy Scout Rule, Surgical Edits )
+└───────────────────────────────┘
+      │
+      ▼
+[ Phase 4: REVIEW & AUDIT ] (Pólya Phase 4: Looking Back)
+      │
+      ├───────────────────────────────┐
+      │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
+      ▼                               ▼
+┌───────────────────────────────┐   ┌───────────────────────────────┐
+│ /to-docs                      │   │ /to-fix                       │ ──▶ ( First Principles, Trace Broken Seam )
+└───────────────────────────────┘   └───────────────────────────────┘
+      │ [docs/{tutorials,how-to,reference,explanation}/]
+      ▼
+[ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
+
+════════════════════════════════════════════════════════════════════════════
+[ AUTONOMOUS HUB / TRIAGE ]     ──▶ /to-ask-help   (Autonomous intent reconnaissance & diagnostic)
+[ FAST-TRACK BYPASS ]           ──▶ /to-quick-fix  (Routine, XS/S, One-Shot Fixes)
+[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /to-map        (Traverse, Seams, docs/ARCHITECTURE.md)
+[ PERSISTENT MEMORY ]           ──▶ /to-memory     (Checkpoint to memory.instructions.md)
+[ PROJECT BOOTSTRAPPER ]        ──▶ /to-init       (Scaffold AGENTS.md & .agents/ suite)
+════════════════════════════════════════════════════════════════════════════
+```
+
+### 📋 Modular Sub-Skills (`/to-*`)
+
+| Slash Command | Skill Directory | SDLC Phase | Description & Pólya Heuristic Focus | Output Document |
+| :--- | :--- | :--- | :--- | :--- |
+| **`/to-ask-help`** | `to-ask-help` | **Hub & Triage** | Autonomous codebase reconnaissance, intent classification, and Socratic 3-question diagnostic. | Triage Card & Routing Guidance |
+| **`/to-explore`** | `to-explore` | **Phase 0: Discovery** | Problem framing, repository topography critique, architectural trade-offs (*Inventor's Paradox*), and spikes. | `docs/discovery/{slug}-discovery.md` |
+| **`/to-prd`** | `to-prd` | **Phase 0.5: PRD** | Business problem framing, SMART user stories, and acceptance boundaries (*Optional branch*). | `docs/prd/{slug}-prd.md` |
+| **`/to-spec`** | `to-spec` | **Phase 1: Spec** | Deconstruct *Unknown, Data, Condition*, *Setting Up Equations* (DTOs), and map Clean Architecture seams. | `docs/spec/{slug}-spec.md` + `docs/adr/` |
+| **`/to-clarify`** | `to-clarify` | **Checkpoint: Clarify** | Interrogate ambiguities, `[ASSUMPTION]` tags, Condition Sanity Check, Grill-Me protocol, and Readiness Score. | `docs/audit/{slug}-clarification.md` |
+| **`/to-plan`** | `to-plan` | **Phase 2: Plan** | *Working Backwards*, *Auxiliary Problems*, Land & Expand (Tracer Bullets), Plan B, and **The Pause Rule**. | `docs/plan/{slug}-plan.md` |
+| **`/to-code`** | `to-code` | **Phase 3: Implement** | Clean Code execution, single-responsibility small functions, and *Boy Scout Rule* compliance. | Source code + Unit/Integration tests |
+| **`/to-review`** | `to-review` | **Phase 4: Review** | Audit 5 SOLID principles (SRP, OCP, LSP, ISP, DIP), boundary specialization, and test by dimension. | `docs/reviews/{slug}-review.md` |
+| **`/to-fix`** | `to-fix` | **Phase 5: Bug Fix** | Cease blind patching, return to First Principles, trace broken seams, and formulate reproduction test. | `docs/bug-reports/{slug}-bugfix.md` |
+| **`/to-docs`** | `to-docs` | **Phase 6: Documentation** | Author structured documentation based on the 4 Diátaxis quadrants (Tutorials, How-To, Reference, Explanation). | `docs/{quadrant}/{slug}.md` |
+| **`/to-quick-fix`** | `to-quick-fix` | **Bypass: Fast-Track** | Routine problems, one-shot surgical fixes, and minor refactors (*Pedantry vs Mastery*, *The Excavator Rule*). | Surgical file edits |
+| **`/to-map`** | `to-map` | **Utility: Architecture** | Traverse directory structure, map Clean Architecture seams, and generate `docs/ARCHITECTURE.md`. | `docs/ARCHITECTURE.md` |
+| **`/to-memory`** | `to-memory` | **Utility: Memory** | Read, write, and compact session context to/from `memory.instructions.md`. | `memory.instructions.md` |
+| **`/to-init`** | `to-init` | **Utility: Bootstrapper** | Autonomous setup and architecture bootstrapper for project governance. | `AGENTS.md` + `.agents/` |
+
+### 🌟 Key Highlights & Differentiators
+
+1. **🧭 Socratic Quick-Diagnostic (`/to-ask-help`):**
+   - Bare command `/to-ask-help` renders a 3-question diagnostic card (Core Goal, Problem Nature, Constraints) to quickly match tasks to the right SDLC phase.
+   - Natural language briefs (e.g., `/to-ask-help fix race condition in checkout`) trigger autonomous codebase reconnaissance across Clean Architecture seams.
+2. **🔀 Flexible PRD Branching (`/to-prd` vs Direct Spec):**
+   - After `/to-explore`, choose **Path A** (`/to-prd`) when deep business requirements and user stories are needed, or **Path B** (`/to-spec`) for direct architectural modeling.
+3. **⚡ Fast-Track vs Full SDLC Precision (`/to-quick-fix`):**
+   - Solves routine XS/S tasks ($\le 2$ files) in a single fluid motion while strictly enforcing **The Excavator Rule** to prevent architectural shortcuts.
+4. **🧠 Dedicated Session Memory Retention (`/to-memory`):**
+   - Integrated memory checkpoint workflow keeping project context, active artifacts, and key decisions durable across AI chat sessions.
 
 ---
 
