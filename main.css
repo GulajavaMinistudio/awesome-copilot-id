@@ -624,6 +624,59 @@ pre::-webkit-scrollbar-thumb:hover {
   flex-shrink: 0;
 }
 
+/* Pólya Edition Switcher Pills */
+.polya-edition-tab-btn {
+  background-color: var(--colors-canvas) !important;
+  color: var(--colors-muted) !important;
+  border: 1px solid var(--colors-hairline) !important;
+  border-radius: 9999px !important;
+  padding: 0.6rem 1.5rem !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.polya-edition-tab-btn:hover {
+  color: var(--colors-ink) !important;
+  border-color: var(--colors-polya-border) !important;
+}
+
+.polya-edition-tab-btn.active {
+  background-color: var(--colors-polya-soft) !important;
+  color: var(--colors-polya-text) !important;
+  border-color: var(--colors-polya-accent) !important;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Pólya SDLC Specific Theme */
+.badge-polya-sdlc {
+  background-color: #faf5ff !important;
+  color: #7e22ce !important;
+  border: 1px solid #d8b4fe !important;
+  font-weight: 600;
+}
+
+.border-polya-sdlc {
+  border-color: #d8b4fe !important;
+}
+
+.polya-sdlc-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease-in-out !important;
+}
+
+.polya-sdlc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(147, 51, 234, 0.1);
+  border-color: #a855f7 !important;
+}
+
+.polya-sdlc-spotlight-box {
+  background-color: var(--colors-canvas);
+  border: 1px solid #d8b4fe;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(147, 51, 234, 0.08);
+  position: relative;
+}
 
 /* Polished Agent Persona Section */
 .sticky-agent-sidebar {

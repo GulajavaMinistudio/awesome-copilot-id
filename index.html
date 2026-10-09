@@ -268,7 +268,7 @@
                   
                   <div class="row g-3 mb-3">
                     <!-- Standard SDLC Option -->
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-3 col-md-6">
                       <div class="p-3 bg-surface-soft border-hairline h-100 rounded-3">
                         <div class="d-flex align-items-center gap-2 mb-2">
                           <span class="badge bg-primary text-white">Standard SDLC</span>
@@ -288,7 +288,7 @@
                     </div>
 
                     <!-- TDD-Spec SDLC Option -->
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-3 col-md-6">
                       <div class="p-3 bg-surface-soft border-tdd h-100 rounded-3" style="background: #f0fdf4 !important;">
                         <div class="d-flex align-items-center gap-2 mb-2">
                           <span class="badge badge-tdd">TDD-Spec SDLC</span>
@@ -308,7 +308,7 @@
                     </div>
 
                     <!-- Pólya Heuristic Coder Option -->
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-xl-3 col-md-6">
                       <div class="p-3 bg-surface-soft border-polya h-100 rounded-3" style="background: #f5f3ff !important;">
                         <div class="d-flex align-items-center gap-2 mb-2">
                           <span class="badge badge-polya" data-i18n="install_method0_polya_label">Pólya Heuristic Coder</span>
@@ -329,6 +329,31 @@
                         <div class="position-relative">
                           <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code>/polya-router</code></pre>
                           <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/polya-router" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Pólya SDLC Suite Option -->
+                    <div class="col-xl-3 col-md-6">
+                      <div class="p-3 bg-surface-soft border-polya-sdlc h-100 rounded-3" style="background: #faf5ff !important;">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <span class="badge badge-polya-sdlc" data-i18n="install_polya_sdlc_title">Pólya SDLC Suite</span>
+                          <span class="small fw-semibold" style="color: #7e22ce;">14 Skills</span>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step1">1. Terminal:</p>
+                        <div class="position-relative mb-2">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>npx skills add GulajavaMinistudio/awesome-copilot-id/polya-sdlc/.agents/skills/to-init</code></pre>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="npx skills add GulajavaMinistudio/awesome-copilot-id/polya-sdlc/.agents/skills/to-init" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step2">2. AI Chat:</p>
+                        <div class="position-relative mb-2">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code>/to-init setup this project</code></pre>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-init setup this project" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                        <p class="small text-muted mb-1" style="font-size: 12px;" data-i18n="install_method0_step3">3. AI Chat (usage):</p>
+                        <div class="position-relative">
+                          <pre class="bg-white border-hairline text-ink p-2 mb-0" style="font-size: 12px;"><code>/to-ask-help</code></pre>
+                          <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-ask-help" aria-label="Copy command to clipboard">Copy</button>
                         </div>
                       </div>
                     </div>
@@ -1892,6 +1917,427 @@
             </div>
           </div>
 
+          <!-- Pólya Edition Switcher Tabs (Pólya SDLC vs Pólya Classic) -->
+          <div class="row mb-5">
+            <div class="col-12 text-center">
+              <div class="nav nav-pills justify-content-center gap-2" id="polyaEditionTabs" role="tablist">
+                <button class="nav-link active polya-edition-tab-btn rounded-pill px-4 py-2" id="polya-sdlc-tab" data-bs-toggle="pill" data-bs-target="#polya-sdlc-pane" type="button" role="tab" aria-controls="polya-sdlc-pane" aria-selected="true">
+                  <span data-i18n="polya_tab_sdlc">Pólya SDLC Edition (/to-*)</span>
+                  <span class="badge badge-polya-sdlc ms-2" data-i18n="polya_tab_sdlc_badge">Recommended for SDLC</span>
+                </button>
+                <button class="nav-link polya-edition-tab-btn rounded-pill px-4 py-2" id="polya-classic-tab" data-bs-toggle="pill" data-bs-target="#polya-classic-pane" type="button" role="tab" aria-controls="polya-classic-pane" aria-selected="false">
+                  <span data-i18n="polya_tab_classic">Pólya Coder Classic (/polya-*)</span>
+                  <span class="badge bg-secondary ms-2" data-i18n="polya_tab_classic_badge">Classic Modular</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="tab-content" id="polyaEditionTabsContent">
+            <!-- Pane 1: Pólya SDLC Edition (/to-*) -->
+            <div class="tab-pane fade show active" id="polya-sdlc-pane" role="tabpanel" aria-labelledby="polya-sdlc-tab">
+
+              <!-- Info Banner: About Pólya SDLC Edition -->
+              <div class="alert alert-light border-hairline mb-5 p-4 rounded-3" style="background: #faf5ff !important; border-color: #d8b4fe !important;">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="badge-polya-sdlc p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; flex-shrink: 0;">
+                    <i class="bi bi-info-circle-fill"></i>
+                  </div>
+                  <div>
+                    <h5 class="h6 fw-bold mb-1" style="color: #6b21a8;" data-i18n="polya_sdlc_banner_title">Tentang Pólya Edisi SDLC</h5>
+                    <p class="small mb-0" style="color: #581c87; line-height: 1.6;" data-i18n="polya_sdlc_banner_desc">
+                      Pólya SDLC adalah varian mandiri yang dioptimalkan khusus untuk alur SDLC lengkap dengan alias perintah berbahasa Indonesia (/to-*). Dilengkapi pembuat inisialisasi proyek sendiri (to-init), router utama (/to-ask-help), dan penegakan Clean Architecture ketat di setiap 4 tahap pemecahan masalah George Pólya.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Spotlight Box: /to-ask-help -->
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="polya-sdlc-spotlight-box p-4 p-md-5">
+                    <div class="row align-items-center g-4">
+                      <div class="col-lg-6">
+                        <span class="badge badge-polya-sdlc mb-3" data-i18n="polya_sdlc_spotlight_badge">Master SDLC Router</span>
+                        <h3 class="h4 text-ink fw-bold mb-3" data-i18n="polya_sdlc_spotlight_title">
+                          Master SDLC Navigator (/to-ask-help)
+                        </h3>
+                        <p class="text-body-custom mb-4" data-i18n="polya_sdlc_spotlight_desc">
+                          Unified interactive router for the Pólya SDLC workflow. It analyzes project context, diagnoses current phase, and recommends the exact /to-* slash command to run next.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2">
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-ask-help</span>
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-init</span>
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-explore</span>
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-prd</span>
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-spec</span>
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-plan</span>
+                          <span class="polya-command-tag" style="background: #faf5ff; border-color: #d8b4fe; color: #7e22ce;">/to-code</span>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="console-mockup p-4" style="border: 1px solid #d8b4fe;">
+                          <div class="d-flex align-items-center mb-3">
+                            <span class="console-dot bg-danger me-1" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+                            <span class="console-dot bg-warning me-1" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+                            <span class="console-dot bg-success me-2" style="width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+                            <span class="text-muted-custom small" style="font-size: 11px;">polya-sdlc-engine</span>
+                          </div>
+                          <pre class="bg-transparent border-0 p-0 m-0 text-light" style="font-size: 11px; line-height: 1.5;"><code><span class="text-muted-custom">Prompt:</span> <span class="text-warning" data-i18n="polya_sdlc_console_q">"I need to implement multi-tenant authentication."</span>
+<span class="text-info" data-i18n="polya_console_diag_label">Analysis:</span> <span data-i18n="polya_sdlc_console_diag">Greenfield domain boundary; requires PRD and specification first.</span>
+<span class="text-success"><span data-i18n="polya_console_stage_label">Pólya Stage:</span></span> <span data-i18n="polya_sdlc_console_stage">Stage 1 (Understand Problem) -> /to-prd</span>
+<span class="text-danger"><span data-i18n="polya_console_gate_label">Quality Gate:</span></span> <span data-i18n="polya_sdlc_console_gate">Pause Rule enforced: Plan approval mandatory before coding.</span></code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4 Pólya Pillars / Stages & 14 Action Cards for SDLC -->
+              <div class="row g-4 mb-5">
+                <!-- Stage 1: Understand the Problem -->
+                <div class="col-12">
+                  <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom-hairline">
+                    <span class="polya-step-badge" style="background-color: #9333ea;">1</span>
+                    <div>
+                      <h4 class="h5 text-ink fw-bold mb-0" data-i18n="polya_pillar_1_title">Stage 1: Understand the Problem</h4>
+                      <p class="small text-muted mb-0" data-i18n="polya_pillar_1_desc">Analyze unknowns, verify condition data, explore existing codebase topography, and author definitive specifications with ambiguity elimination.</p>
+                    </div>
+                  </div>
+                  <div class="row g-3">
+                    <!-- Action 1: to-ask-help -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-ask-help</span>
+                            <span class="badge bg-light text-ink border-hairline small">Triage</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_ask_help_title">Triage: Master SDLC Navigator</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_ask_help_desc">Master interactive router that diagnoses project phase, analyzes current artifacts, and suggests the next /to-* step.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-ask-help</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-ask-help" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 2: to-init -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-init</span>
+                            <span class="badge bg-light text-ink border-hairline small">Setup</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_init_title">Setup: Pólya SDLC Scaffolding</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_init_desc">Interactive project initializer that sets up directory structures, AGENTS.md, rules, and skills for Pólya SDLC.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-init setup this project</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-init setup this project" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 3: to-explore -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-explore</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 0</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_explore_title">Phase 0: Discovery & Topography</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_explore_desc">Phase 0 discovery and exploration. Analyzes requirements, critiques architecture, and prepares project discovery draft.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-explore @brief.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-explore @brief.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 4: to-prd -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-prd</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 1</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_prd_title">Phase 1: Product Requirements</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_prd_desc">Drafts structured Product Requirements Document (PRD) with user stories, acceptance criteria, and metric definitions.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-prd @docs/discovery.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-prd @docs/discovery.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 5: to-spec -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-spec</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 2</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_spec_title">Phase 2: Technical Specification</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_spec_desc">Defines technical specification with data contracts, architecture seams, API designs, and DB schemas.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-spec @docs/prd/checkout-prd.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-spec @docs/prd/checkout-prd.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 6: to-clarify -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-clarify</span>
+                            <span class="badge bg-light text-ink border-hairline small">Checkpoint</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_clarify_title">Checkpoint: Clarification & Audit</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_clarify_desc">Interrogates PRD, Spec, or Plan to expose ambiguities, edge cases, hidden assumptions, and calculate readiness score.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-clarify @docs/spec/checkout-spec.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-clarify @docs/spec/checkout-spec.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 2: Devise a Plan -->
+                <div class="col-12 mt-4">
+                  <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom-hairline">
+                    <span class="polya-step-badge" style="background-color: #9333ea;">2</span>
+                    <div>
+                      <h4 class="h5 text-ink fw-bold mb-0" data-i18n="polya_pillar_2_title">Stage 2: Devise a Plan (The Pause Rule)</h4>
+                      <p class="small text-muted mb-0" data-i18n="polya_pillar_2_desc">Conceive a step-by-step strategy, slice into vertical tracer bullets, and enforce the mandatory Pause Rule to ensure user approval before execution.</p>
+                    </div>
+                  </div>
+                  <div class="row g-3">
+                    <!-- Action 7: to-plan -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-plan</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 3</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_plan_title">Phase 3: Tracer-Bullet Planning</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_plan_desc">Creates actionable vertical-slice implementation plans (Tracer Bullets) strictly derived from technical specs.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-plan @docs/spec/checkout-spec.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-plan @docs/spec/checkout-spec.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 8: to-map -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-map</span>
+                            <span class="badge bg-light text-ink border-hairline small">Topography</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_map_title">Topography: Living Architecture Map</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_map_desc">Maps repository architecture topography, module boundaries, and keeps docs/ARCHITECTURE.md evergreen.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-map scan repository topography</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-map scan repository topography" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 9: to-memory -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-memory</span>
+                            <span class="badge bg-light text-ink border-hairline small">Context</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_memory_title">Context: Persistent Memory Manager</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_memory_desc">Persistent memory manager that records session progress, context, and decisions to memory.instructions.md.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-memory save active session context</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-memory save active session context" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 3: Carry Out the Plan -->
+                <div class="col-12 mt-4">
+                  <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom-hairline">
+                    <span class="polya-step-badge" style="background-color: #9333ea;">3</span>
+                    <div>
+                      <h4 class="h5 text-ink fw-bold mb-0" data-i18n="polya_pillar_3_title">Stage 3: Carry Out the Plan</h4>
+                      <p class="small text-muted mb-0" data-i18n="polya_pillar_3_desc">Implement code incrementally with Micro-TDD discipline, maintaining single-responsibility and dependency inversion at every commit.</p>
+                    </div>
+                  </div>
+                  <div class="row g-3">
+                    <!-- Action 10: to-code -->
+                    <div class="col-md-6">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-code</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 4</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_code_title">Phase 4: Clean Micro-TDD Coding</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_code_desc">Senior software engineer executing vertical slices with Micro-TDD discipline, Pause Rules, and zero test suppression.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-code implement @docs/plan/checkout-plan.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-code implement @docs/plan/checkout-plan.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 11: to-quick-fix -->
+                    <div class="col-md-6">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-quick-fix</span>
+                            <span class="badge bg-light text-ink border-hairline small">Fast-Track</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_quick_fix_title">Fast-Track: Surgical Fixer (Janitor)</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_quick_fix_desc">Fast-track code fixer combining planning and execution for minor bug fixes, cleanups, and ad-hoc adjustments.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-quick-fix fix null pointer in OrderService.ts</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-quick-fix fix null pointer in OrderService.ts" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage 4: Look Back -->
+                <div class="col-12 mt-4">
+                  <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom-hairline">
+                    <span class="polya-step-badge" style="background-color: #9333ea;">4</span>
+                    <div>
+                      <h4 class="h5 text-ink fw-bold mb-0" data-i18n="polya_pillar_4_title">Stage 4: Look Back (Review & Refactor)</h4>
+                      <p class="small text-muted mb-0" data-i18n="polya_pillar_4_desc">Examine the result obtained, verify clean architecture integrity, conduct surgical root-cause analysis on bugs, and map living topography.</p>
+                    </div>
+                  </div>
+                  <div class="row g-3">
+                    <!-- Action 12: to-review -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-review</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 5</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_review_title">Phase 5: Clean Code & SOLID Review</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_review_desc">Rigorous code review against SOLID, Clean Architecture, and technical spec compliance with actionable remediation.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-review @docs/spec/checkout-spec.md @docs/plan/checkout-plan.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-review @docs/spec/checkout-spec.md @docs/plan/checkout-plan.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 13: to-docs -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-docs</span>
+                            <span class="badge bg-light text-ink border-hairline small">Phase 6</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_docs_title">Phase 6: Technical Documentation (Diátaxis)</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_docs_desc">Generates user and technical documentation structured under the Diátaxis framework (tutorials, how-to, reference, explanation).</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-docs generate diataxis docs for checkout module</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-docs generate diataxis docs for checkout module" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Action 14: to-fix -->
+                    <div class="col-md-4">
+                      <div class="p-4 bg-white border-hairline polya-card polya-sdlc-card h-100 rounded-3 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="polya-command-tag">/to-fix</span>
+                            <span class="badge bg-light text-ink border-hairline small">Remediation</span>
+                          </div>
+                          <h5 class="h6 text-ink fw-bold mb-2" data-i18n="polya_card_to_fix_title">Remediation: Surgical Bug RCA</h5>
+                          <p class="small text-body-custom mb-3" data-i18n="polya_card_to_fix_desc">Performs surgical root-cause analysis (RCA) on bug reports, failure traces, and drafts phased remediation plans.</p>
+                        </div>
+                        <div class="position-relative">
+                          <pre class="bg-surface-soft border-hairline text-ink p-2 mb-0" style="font-size: 11px;"><code>/to-fix analyze @bug-report.md</code></pre>
+                          <button type="button" class="btn btn-xs btn-outline-secondary position-absolute top-50 translate-middle-y me-2 copy-btn" style="right: 0;" data-clipboard="/to-fix analyze @bug-report.md" aria-label="Copy command to clipboard">Copy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Context Injection Protocol Table for Pólya SDLC Edition -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="p-4 p-md-5 bg-white border-hairline rounded-3" style="box-shadow: 0 4px 20px -2px rgba(147, 51, 234, 0.05); border-color: #d8b4fe !important;">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                      <span class="badge badge-polya-sdlc" style="font-size: 11px;">Context Governance</span>
+                      <h4 class="h5 text-ink fw-bold mb-0" data-i18n="polya_protocol_sdlc_title">Context Injection Protocol (Pólya SDLC Edition)</h4>
+                    </div>
+                    <p class="text-body-custom small mb-4" data-i18n="polya_protocol_sdlc_desc">
+                      To prevent context loss, hallucinations, and to enforce strict traceability, you MUST attach or reference mandatory upstream documents in prompt context when invoking /to-* commands.
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-hover align-middle mb-0" style="font-size: 13px;">
+                        <thead class="table-light">
+                          <tr>
+                            <th style="width: 35%;">Action / Sub-Command</th>
+                            <th style="width: 65%;">Mandatory Upstream Document(s)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td class="fw-medium font-monospace">/to-ask-help</td><td data-i18n="polya_proto_sdlc_ask_help">User Brief / Feature request / Question</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-init</td><td data-i18n="polya_proto_sdlc_init">Empty or existing repository root</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-explore</td><td data-i18n="polya_proto_explore">Source code repository / Build configs</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-prd</td><td data-i18n="polya_proto_sdlc_prd">Project Discovery Draft OR feature brief</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-spec</td><td data-i18n="polya_proto_sdlc_spec">Approved PRD OR comprehensive feature brief</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-clarify</td><td data-i18n="polya_proto_clarify">Discovery Draft, Spec, OR Implementation Plan</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-plan</td><td data-i18n="polya_proto_plan">Approved Technical Specification</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-map</td><td data-i18n="polya_proto_map">Source code repository / build configuration</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-memory</td><td data-i18n="polya_proto_sdlc_memory">Active session context / project status</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-code</td><td data-i18n="polya_proto_implement">Approved Implementation Plan with Pause Rule clearance</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-quick-fix</td><td data-i18n="polya_proto_fasttrack">Specific source code file(s) to modify</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-review</td><td data-i18n="polya_proto_review">Technical Spec AND Implementation Plan</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-docs</td><td data-i18n="polya_proto_docs">Technical Spec, Implementation Plan, OR Source Code files</td></tr>
+                          <tr><td class="fw-medium font-monospace">/to-fix</td><td data-i18n="polya_proto_fix">Bug report, error log, OR failing test trace</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="text-muted small mt-3 mb-0" data-i18n="polya_protocol_sdlc_fasttrack_note">
+                      *Note: For minor fixes and rapid refactoring, use /to-quick-fix to fast-track without full formal SDLC ceremony while maintaining surgical code quality.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- End Pane 1: Pólya SDLC Edition -->
+
+            <!-- Pane 2: Pólya Coder Classic (/polya-*) -->
+            <div class="tab-pane fade" id="polya-classic-pane" role="tabpanel" aria-labelledby="polya-classic-tab">
+
           <!-- Spotlight Box: /polya-router -->
           <div class="row mb-5">
             <div class="col-12">
@@ -2197,6 +2643,11 @@
               </div>
             </div>
           </div>
+
+            </div>
+            <!-- End Pane 2: Pólya Coder Classic -->
+          </div>
+          <!-- End Tab Content Container -->
 
         </div>
       </section>
