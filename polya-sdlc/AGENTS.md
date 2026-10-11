@@ -198,14 +198,14 @@ When the user specifies a modular command (e.g., `/to-plan @docs/spec/checkout-s
 ## Workflow & Methodology (The Polya-Clean SDLC)
 
 - **Base Persona Activation**: At the start of a new session (before any specific phase is determined), the user interacts with the **Polya Orchestrator** (the Base Persona) defined in `.agents/rules/PolyaOrchestrator.md`. The orchestrator acts as a Socratic router and heuristic guide to route the user to the correct Polya phase, classify problems (Find vs Prove), and enforce The Pause Rule.
-- **Bootstrapper Skill (`/to-init`)**: When initializing or scaffolding the Polya Coder architecture (`AGENTS.md`, `.agents/`) in a fresh workspace, the user can run `/to-init setup this project` to autonomously pull and configure the full toolkit without manual copy-pasting.
+- **Bootstrapper Skill (`/to-init`)**: When initializing or scaffolding the Polya Coder SDLC architecture (`AGENTS.md`, `.agents/`) in a fresh workspace, the user can run `/to-init setup this project` to autonomously pull and configure the full toolkit without manual copy-pasting.
 - **Rules File Precedence**: Agents MUST read and internalize the base rules from `.agents/rules/PolyaOrchestrator.md` upon session initialization.
 
 The development lifecycle follows a disciplined 6-phase progression based on George Pólya's heuristic framework combined with Uncle Bob's Clean Architecture:
 
 ```text
 ====================================================================================================
-               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
+               POLYA-SDLC COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
 ====================================================================================================
 
 [ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
@@ -636,7 +636,7 @@ ADRs live in `docs/adr/` and serve as the project's permanent architectural memo
 - **Single Responsibility (SRP):** Classes and functions must do one thing only and have only one reason to change.
 
 ### 4. Mandatory Artifact Templates & Heuristic References (`references/`)
-All generated SDLC artifacts and heuristic problem-solving in `polya-coder` must strictly adhere to the templates and reference guides located in `.agents/skills/to-shared/references/`:
+All generated SDLC artifacts and heuristic problem-solving in `polya-sdlc` must strictly adhere to the templates and reference guides located in `.agents/skills/to-shared/references/`:
 - **Pólya Mathematical Heuristic Arsenal:** [`POLYA-HEURISTIC-ARSENAL.md`](.agents/skills/to-shared/references/POLYA-HEURISTIC-ARSENAL.md) mapping George Pólya's 21 foundational mathematical heuristics (*How to Solve It*, 1945) to Clean Architecture and systems design.
 - **Discovery Draft:** [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/to-shared/references/DISCOVERY-DRAFT-TEMPLATE.md) for `docs/discovery/{slug}-discovery.md`.
 - **Product Requirements Document:** [`PRD-TEMPLATE.md`](.agents/skills/to-shared/references/PRD-TEMPLATE.md) for `docs/prd/{slug}-prd.md`.
@@ -669,18 +669,18 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 
 ### Mandatory Context Injection Protocol
 
-| Command Invocation  | Mandatory Upstream Document(s)                                                  |
-| :------------------ | :------------------------------------------------------------------------------ |
-| `/to-explore`       | User problem statement, raw idea, or target directory/module                    |
-| `/to-prd`           | Project Discovery Draft (`docs/discovery/`), or Comprehensive User Brief        |
-| `/to-spec`          | Approved PRD (`docs/prd/`), Project Discovery Draft (`docs/discovery/`), or User Brief |
-| `/to-clarify`       | Target Specification (`docs/spec/`), Implementation Plan (`docs/plan/`), or Brief |
-| `/to-plan`          | Approved Technical Spec (`docs/spec/`)                                          |
-| `/to-code`          | Approved Implementation Plan (`docs/plan/`)                                     |
-| `/to-review`        | Technical Spec (`docs/spec/`) AND Implementation Plan (`docs/plan/`)                |
-| `/to-docs`          | Technical Spec (`docs/spec/`), Implementation Plan (`docs/plan/`), or Source Code files |
-| `/to-fix`           | Bug report, error logs, stack traces, or failing reproduction test              |
-| `/to-quick-fix`     | None (Direct user instruction, error snippet, or target file)                   |
+| Command Invocation | Mandatory Upstream Document(s)                                                          |
+| :----------------- | :-------------------------------------------------------------------------------------- |
+| `/to-explore`      | User problem statement, raw idea, or target directory/module                            |
+| `/to-prd`          | Project Discovery Draft (`docs/discovery/`), or Comprehensive User Brief                |
+| `/to-spec`         | Approved PRD (`docs/prd/`), Project Discovery Draft (`docs/discovery/`), or User Brief  |
+| `/to-clarify`      | Target Specification (`docs/spec/`), Implementation Plan (`docs/plan/`), or Brief       |
+| `/to-plan`         | Approved Technical Spec (`docs/spec/`)                                                  |
+| `/to-code`         | Approved Implementation Plan (`docs/plan/`)                                             |
+| `/to-review`       | Technical Spec (`docs/spec/`) AND Implementation Plan (`docs/plan/`)                    |
+| `/to-docs`         | Technical Spec (`docs/spec/`), Implementation Plan (`docs/plan/`), or Source Code files |
+| `/to-fix`          | Bug report, error logs, stack traces, or failing reproduction test                      |
+| `/to-quick-fix`    | None (Direct user instruction, error snippet, or target file)                           |
 
 *Note: For minor fixes, refactoring, and ad-hoc tasks, the mandatory document check can be fast-tracked upon user confirmation.*
 

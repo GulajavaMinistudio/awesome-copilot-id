@@ -1,7 +1,7 @@
 <!-- markdownlint-disable -->
 # 🚀 End-to-End Walkthrough: Idempotent Webhook Processing Engine
 
-> **Document Purpose:** A complete, realistic reference walkthrough demonstrating George Pólya's 4-stage heuristic problem-solving framework paired with Robert C. Martin's Clean Architecture. Use this document as a concrete golden blueprint for how human engineers and AI agents should interact across every phase of `polya-coder`.
+> **Document Purpose:** A complete, realistic reference walkthrough demonstrating George Pólya's 4-stage heuristic problem-solving framework paired with Robert C. Martin's Clean Architecture. Use this document as a concrete golden blueprint for how human engineers and AI agents should interact across every phase of `polya-sdlc`.
 
 ---
 
@@ -165,24 +165,24 @@ The agent breaks down the specification into **Vertical Feature Slices (Tracer B
 ### Phase 1: Land — Minimal In-Memory Vertical Slice (Tracer Bullet)
 *Goal: Implement the core idempotency state machine from Domain to HTTP Controller.*
 
-| Task | Description | Ref ID | AC Ref | Dep | Files | Completed |
-| :--- | :--- | :--- | :--- | :--- | :---: | :---: |
-| TASK-001 | Implement IdempotentEvent domain entity & state transitions | REQ-001 | AC-001 | - | 1 (XS) | [ ] |
-| TASK-002 | Implement ProcessPaymentWebhookUseCase with in-memory lock port | REQ-001 | AC-001 | TASK-001 | 2 (S) | [ ] |
-| TASK-003 | Author E2E integration test proving duplicate replay is rejected | REQ-001 | AC-002 | TASK-002 | 1 (XS) | [ ] |
-| TASK-00X | **VERIFY:** Run `npm test tests/integration/webhook.test.ts` (MUST PASS) | - | - | TASK-003 | - | [ ] |
-| TASK-00Y | **APPROVAL:** 🛑 Stop and wait for user confirmation before Phase 2 | Gate | - | - | - | [ ] |
+| Task     | Description                                                              | Ref ID  | AC Ref | Dep      | Files  | Completed |
+| :------- | :----------------------------------------------------------------------- | :------ | :----- | :------- | :----: | :-------: |
+| TASK-001 | Implement IdempotentEvent domain entity & state transitions              | REQ-001 | AC-001 | -        | 1 (XS) |    [ ]    |
+| TASK-002 | Implement ProcessPaymentWebhookUseCase with in-memory lock port          | REQ-001 | AC-001 | TASK-001 | 2 (S)  |    [ ]    |
+| TASK-003 | Author E2E integration test proving duplicate replay is rejected         | REQ-001 | AC-002 | TASK-002 | 1 (XS) |    [ ]    |
+| TASK-00X | **VERIFY:** Run `npm test tests/integration/webhook.test.ts` (MUST PASS) | -       | -      | TASK-003 |   -    |    [ ]    |
+| TASK-00Y | **APPROVAL:** 🛑 Stop and wait for user confirmation before Phase 2       | Gate    | -      | -        |   -    |    [ ]    |
 
 ### Phase 2: Expand — Redis Distributed Lock & Postgres Fallback Seam
 *Goal: Wire production infrastructure adapters (Redis Redlock + DB Fallback).*
 
-| Task | Description | Ref ID | AC Ref | Dep | Files | Completed |
-| :--- | :--- | :--- | :--- | :--- | :---: | :---: |
-| TASK-004 | Implement RedisDistributedLockAdapter implementing IdempotencyLockPort | REQ-002 | AC-001 | TASK-002 | 2 (S) | [ ] |
-| TASK-005 | Implement PostgresRowLockFallback on Redis connection timeout | CON-001 | AC-002 | TASK-004 | 2 (S) | [ ] |
-| TASK-006 | Add boundary variation tests (100 concurrent duplicate requests fuzz test) | CON-002 | AC-002 | TASK-005 | 1 (XS) | [ ] |
-| TASK-00X | **VERIFY:** Run full test suite including concurrency benchmarks | - | - | TASK-006 | - | [ ] |
-| TASK-00Y | **APPROVAL:** 🛑 Stop and wait for user review to declare complete | Gate | - | - | - | [ ] |
+| Task     | Description                                                                | Ref ID  | AC Ref | Dep      | Files  | Completed |
+| :------- | :------------------------------------------------------------------------- | :------ | :----- | :------- | :----: | :-------: |
+| TASK-004 | Implement RedisDistributedLockAdapter implementing IdempotencyLockPort     | REQ-002 | AC-001 | TASK-002 | 2 (S)  |    [ ]    |
+| TASK-005 | Implement PostgresRowLockFallback on Redis connection timeout              | CON-001 | AC-002 | TASK-004 | 2 (S)  |    [ ]    |
+| TASK-006 | Add boundary variation tests (100 concurrent duplicate requests fuzz test) | CON-002 | AC-002 | TASK-005 | 1 (XS) |    [ ]    |
+| TASK-00X | **VERIFY:** Run full test suite including concurrency benchmarks           | -       | -      | TASK-006 |   -    |    [ ]    |
+| TASK-00Y | **APPROVAL:** 🛑 Stop and wait for user review to declare complete          | Gate    | -      | -        |   -    |    [ ]    |
 
 ## 2. Contingency Plan B (Have Two Strings to Your Bow)
 - **Primary Strategy (Plan A):** Redis distributed lock via Redlock algorithm.
@@ -244,11 +244,11 @@ The agent audits the final implementation against SOLID principles and boundary 
 
 ## 🎯 Summary Checklist
 
-| Step | Pólya Principle | Uncle Bob Standard | Produced Artifact |
-| :--- | :--- | :--- | :--- |
-| **Stage 1** | Getting Acquainted | Architecture Seams | `Pólya Triage Card` |
-| **Stage 2** | Understand the Problem | The Dependency Rule & DTOs | `docs/spec/{slug}-spec.md` |
-| **Stage 3** | Condition Sanity Check | Anti-Ambiguity Protocol | `docs/audit/{slug}-clarification.md` |
-| **Stage 4** | Devising a Plan | Tracer Bullets & Plan B | `docs/plan/{slug}-plan.md` |
-| **Stage 5** | Carrying Out the Plan | Boy Scout Rule & Floor-Guard | Atomic Git Commits |
-| **Stage 6** | Looking Back | SOLID & Dimension Audit | `docs/reviews/{slug}-review.md` |
+| Step        | Pólya Principle        | Uncle Bob Standard           | Produced Artifact                    |
+| :---------- | :--------------------- | :--------------------------- | :----------------------------------- |
+| **Stage 1** | Getting Acquainted     | Architecture Seams           | `Pólya Triage Card`                  |
+| **Stage 2** | Understand the Problem | The Dependency Rule & DTOs   | `docs/spec/{slug}-spec.md`           |
+| **Stage 3** | Condition Sanity Check | Anti-Ambiguity Protocol      | `docs/audit/{slug}-clarification.md` |
+| **Stage 4** | Devising a Plan        | Tracer Bullets & Plan B      | `docs/plan/{slug}-plan.md`           |
+| **Stage 5** | Carrying Out the Plan  | Boy Scout Rule & Floor-Guard | Atomic Git Commits                   |
+| **Stage 6** | Looking Back           | SOLID & Dimension Audit      | `docs/reviews/{slug}-review.md`      |
