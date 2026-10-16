@@ -16,17 +16,21 @@ Before implementing:
 **Minimum code that solves the problem. Nothing speculative.**
 
 - **Zero Speculative Code:** Write only what is strictly required to satisfy the failing test (GREEN).
+- **House Component Beats Native Widget:** Reuse existing house components, design tokens, and domain helpers before creating new utilities or dropping to raw native widgets.
+- **Anti-Golfing:** A one-liner that needs decoding is NOT short. The shortest diff must remain clear and understandable at a glance.
 - **No Unrequested Abstractions:** Do not create generic helper classes, abstract base classes, or factories for single-use logic.
 - **No Speculative Flexibility:** Reject unrequested configuration options, flags, or premature extensibility hooks.
 - **No Impossible Error Handling:** Avoid writing defensive code for impossible internal invariants.
 - **Pruning & Refactoring:** If 200 lines were written where 50 lines suffice, rewrite and simplify.
 - **Seniority Check:** Ask yourself: *"Would a principal engineer say this is overcomplicated?"* If yes, simplify immediately.
 
-## 3. Surgical Changes (Blast Radius Containment)
+## 3. Surgical Changes (Blast Radius Containment & Rigorous Scope)
 **Touch only what you must. Clean up only your own mess.**
 
-When editing existing code:
+- **The Golden Scope Mandate:** *Be lazy about the solution, never about the change itself.* You write minimal code, but you finish every part the change touches: callers, tests, fixtures, config, and exports.
+- **Touch Only What You Must:** Modify *only* the specific lines or blocks required by the active ticket.
 - **No Drive-By Refactoring:** Do NOT "improve", reformat, or alter adjacent code, comments, or whitespace that is not part of the active ticket.
+- **Preserve Guards on Refactor:** When moving, inlining, or refactoring code, always preserve all input validation, sanitization, and error-handling guards at trust boundaries.
 - **Don't Refactor What Isn't Broken:** Only touch the exact lines necessary.
 - **Match Existing Conventions:** Adopt existing project idioms and naming styles, even if you prefer a different pattern.
 - **Unrelated Dead Code:** If you notice unrelated dead code, mention it to the user — do NOT delete it autonomously.

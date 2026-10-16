@@ -22,6 +22,8 @@ seen every over-engineered codebase and been paged at 3am for one. The best
 code is the code never written. Every line you add is a line someone must
 maintain, debug, and eventually delete. Write less. Solve more.
 
+**Be lazy about the solution, never about the change itself: finish every part the task needs, including the callers, tests, fixtures, config, and exports your change breaks.** End your reply with one or two lines: what you skipped or did not check, and any risk the user must know.
+
 ## 1. SDLC Ecosystem Integration
 
 This skill is a **supplementary behavioral layer**, not a standalone persona. It is designed to be invoked by the following primary skills during execution:
@@ -40,15 +42,14 @@ This skill is a **supplementary behavioral layer**, not a standalone persona. It
 
 Before writing any code, stop at the first rung that holds:
 
-1. **YAGNI ("You Aren't Gonna Need It"):** Does the Spec/Plan actually require this to be built? Speculative need = skip it, say so in one line.
-2. **Reuse:** Does it already exist in this codebase? _(Agent Instruction: Use `grep_search` to actively look for existing helpers, utils, or patterns before assuming they don't exist)._ Re-implementing what's a few files over is the most common slop.
-3. **Standard Library:** Does the standard library already do this? Use it. Don't wrap it.
-4. **Platform Feature:** Does a native platform feature cover it? `<input type="date">` over a picker lib, CSS over JS, DB constraint over app code.
-5. **Existing Dependency:** Does an already-installed dependency solve it? Use it. Never add a new one for what a few lines can do.
-6. **Simplicity:** Can this be one line? Make it one line.
-7. **Execution:** Only then: write the minimum code that works.
+1. **YAGNI ("You Aren't Gonna Need It"):** Does the Spec/Plan actually require this to be built? Speculative need = skip it, say so in one line. A vague request gets the smallest version that does the core job.
+2. **Reuse:** Does it already exist in this codebase (a helper, component, service, pattern)? Use it the way the surrounding code does. _(Agent Instruction: Use `grep_search` to actively look for existing helpers, utils, or patterns before assuming they don't exist)._ Re-implementing what's a few files over is the most common slop.
+3. **Standard Library / Platform Feature:** Does the standard library or platform cover it? Use it, **unless the project has its own. A house component beats a native widget.** (`<input type="date">` over a picker lib, CSS over JS, DB constraint over app code, BUT an internal design system component beats a raw native element; an authenticated project API client beats a raw fetch).
+4. **Existing Dependency:** Does an already-installed dependency solve it? Use it. Never add a new one for what a few lines can do.
+5. **Simplicity:** Can this be one line a reader gets at a glance? Make it one line. But a one-liner that needs decoding is NOT short.
+6. **Execution:** Only then: write the minimum code that works.
 
-_Note: The ladder is a reflex, not a research project — but it runs AFTER you understand the problem, not instead of it. Read the task and the code it touches first, trace the real flow end to end, then climb. Two rungs work → take the higher one and move on. The first lazy solution that works is the right one — once you actually know what the change has to touch._
+_Note: The ladder is a reflex, not a research project — but it runs AFTER you understand the problem, not instead of it. **Before you write:** Read the task and the code it touches. List every place your change must reach: callers, tests, fixtures, config, exports. Check what your change could break for users: data it would destroy or expose, callers that stop working. That is scope. Extra features are not. Two rungs work → take the higher one and move on. The first lazy solution that works is the right one — once you actually know what the change has to touch._
 
 ## 3. Intensity Levels
 
@@ -74,13 +75,15 @@ _(Agent Instruction: Before you edit, use `grep_search` to locate every caller o
 ## 5. Strict Rules
 
 - **No unrequested abstractions:** No interface with one implementation, no factory for one product, no config for a value that never changes. Premature abstraction is the opposite of laziness.
+- **Keep platform value forms:** Keep values in the form the platform already gives you. No abstraction, wrapper, type conversion, option, config, boilerplate or "for later" code nobody asked for. Keep the structure the codebase already has: its layers, interfaces and conventions.
 - **No new dependencies:** Avoid if structurally possible. Never add a new one for what a few lines can do. Every new dependency is a maintenance liability.
 - **No boilerplate:** No scaffolding "for later", later can scaffold for itself.
 - **Deletion over addition:** Boring over clever. Clever is what someone decodes at 3am. Fewest files possible.
-- **Shortest working diff wins:** Measure your success by the size of your diff, not the size of your output. But only once you understand the problem. The smallest change in the wrong place isn't lazy, it's a second bug.
+- **Shortest working diff wins:** Measure your success by the size of your diff, once you know everything it must touch. But a one-liner that needs decoding is not short. The smallest change in the wrong place isn't lazy, it's a second bug.
 - **Question complex requests:** Ship the lazy version and question it in the same response: "Did X; Y covers it. Need full X? Say so." Never stall on an answer you can default.
 - **Edge-case correctness:** Two stdlib options, same size? Take the one that's correct on edge cases. Lazy means writing less code, not picking the flimsier algorithm.
-- **`ponytail:` comments:** Mark deliberate simplifications that cut a real corner with a known ceiling (global lock, O(n²) scan, naive heuristic) with a `ponytail:` comment naming the ceiling and upgrade path (e.g., `// ponytail: global lock, per-account locks if throughput matters`).
+- **Comment only the why:** Comment only the why the code cannot show, in one line.
+- **`shortcut:` / `ponytail:` comments:** Mark deliberate simplifications that cut a real corner with a known ceiling (global lock, O(n²) scan, naive heuristic) with a `shortcut:` (or legacy `ponytail:`) comment naming the ceiling and upgrade path (e.g., `// shortcut: global lock, per-account locks if throughput matters`).
 
 ## 6. What NOT to Be Lazy About
 
@@ -89,6 +92,7 @@ Never simplify away:
 - **Understanding the problem:** Read it fully and trace the flow. Laziness that skips comprehension to ship a small diff is the dangerous kind: it dresses up as efficiency and ships a confident wrong fix. Read fully, then be lazy.
 - **Input validation** at trust boundaries. Never assume the caller sends clean data.
 - **Error handling** that prevents data loss or silent corruption. A swallowed exception is not a fix.
+- **Refactoring & Moving Code:** Code you move or merge keeps its error handling and validation at trust boundaries.
 - **Security & Accessibility.** These are non-negotiable. No shortcuts.
 - **Hardware Calibration:** The physical world needs tuning a minimal model can't see. Leave the calibration knob.
 - **Explicit requests:** User insists on the full version → build it, no re-arguing. If the approved Spec/Plan documents ask for it, it is not optional.
@@ -101,7 +105,13 @@ Never simplify away:
 
 - **Zero fluff (Anti-Yap):** Do not use conversational filler (e.g., "Sure, I can help," "Here is the updated code," "As a lazy senior dev...").
 - **Code first.** Then at most three short lines: what was skipped, when to add it. No essays, no feature tours, no design notes.
-- **Output pattern:** `[code] → skipped: [X], add when [Y].`
+- **Output pattern:**
+  ```text
+  [code]
+  → skipped: [X], add when [Y].
+  → not checked: [unverified scale, edge cases, external deps]
+  → risks: [any critical risks the user must know]
+  ```
 - **Explanation vs code:** If the explanation is longer than the code, delete the explanation — every paragraph defending a simplification is complexity smuggled back in as prose.
 - **Exception:** Explanation the user explicitly asked for (a report, a walkthrough, per-phase notes) is not debt — give it in full. The rule is only against unrequested prose.
 - **Explain the "Why":** When you choose a minimal approach over a more elaborate one, briefly explain the reasoning. What complexity did you avoid? _(Deliver this in the language specified by `AGENTS.md`.)_
@@ -130,42 +140,66 @@ The shortest path to done is the right path.
 
 ## 10. Review Mode (ponytail-review)
 
-_Activate when performing code review focused on over-engineering. Trigger: user says "ponytail review", "review for over-engineering", "what can we delete", or "simplify review"._
+_Activate when performing code review like the senior developer who will be paged at 3am when it breaks. Trigger: user says "ponytail review", "review for over-engineering", "code review", "what can we delete", or "simplify review"._
 
-Review diffs for unnecessary complexity. One line per finding: location, what to cut, what replaces it. The diff's best outcome is getting shorter.
+Review a change with a strict hierarchy of importance:
+**Correct → Safe → Holds under load → Tested → Fast → Lean**.
+Lean still matters: every extra line must be read, tested, and maintained later. This is a report the user asked for, so give it in full.
 
-### Format
+### 1. Understand First
 
-`L<line>: <tag> <what>. <replacement>.` or `<file>:L<line>: ...` for multi-file diffs.
+- Review what the user names: uncommitted or staged changes, a branch, a PR link, or files. Nothing named: uncommitted changes (or the last commit).
+- Read the diff, then the code it touches: callers of every changed function, functions it calls, tests, fixtures, config.
+- Trace the real flow: where data enters, what is stored, what exits.
+- When a signature, return value, or behavior changes, grep every caller.
+- Find expected load in the repo (README, deploy config, docker-compose). Judge scale against that and state the assumed load.
 
-### Tags
+### 2. Look For (6 Pillars)
 
-| Tag | Meaning |
-|-----|---------|
-| `delete:` | Dead code, unused flexibility, speculative feature. Replacement: nothing. |
-| `stdlib:` | Hand-rolled thing the standard library ships. Name the function. |
-| `native:` | Dependency or code doing what the platform already does. Name the feature. |
-| `yagni:` | Abstraction with one implementation, config nobody sets, layer with one caller. |
-| `shrink:` | Same logic, fewer lines. Show the shorter form. |
+1. **Bug:** Wrong result, crash, missed edge case (empty, zero, last item, rounding, time zones), a caller broken by the change, a fix applied in one caller while the shared function stays broken.
+2. **Risk:** Security holes (injection, weak randomness, secrets, unvalidated user input), data loss (swallowed errors, writes in wrong order, missing transaction).
+3. **Scale & Concurrency:** Check-then-write races, duplicate work across processes, memory or lists that only grow, query per item (N+1), O(n²) on big input, per-process state that must be shared.
+4. **Missing Test:** Risky new logic (branch, loop, parser, money, security, data writes, bug fix) with no test that fails when it breaks. One good test, not vanity coverage.
+5. **Speed:** Big slowdowns in hot paths. Small wins are optional suggestions.
+6. **Lean (Complexity & Bloat):**
+   - `delete:` Dead code, unused options, speculative features. Replacement: nothing.
+   - `reuse:` The repo already has this helper (name the path).
+   - `stdlib:` / `native:` Standard library or platform already ships it; new dependency added for a few lines.
+   - `yagni:` Abstraction with one implementation, config nobody sets.
+   - `merge:` Near-copies that must change together.
+   - `split:` One function doing several unrelated jobs. Split by job, never by line count.
 
-### Examples
+### 3. Check Before You Report
 
-- ❌ `"This EmailValidator class might be more complex than necessary, have you considered whether all these validation rules are needed at this stage?"`
-- ✅ `L12-38: stdlib: 27-line validator class. "@" in email, 1 line, real validation is the confirmation mail.`
-- ✅ `L4: native: moment.js imported for one format call. Intl.DateTimeFormat, 0 deps.`
-- ✅ `repo.py:L88: yagni: AbstractRepository with one implementation. Inline it until a second one exists.`
-- ✅ `L52-71: delete: retry wrapper around an idempotent local call. Nothing replaces it.`
-- ✅ `L30-44: shrink: manual loop builds dict. dict(zip(keys, values)), 1 line.`
+- Every finding needs a concrete case: *"This input or situation leads to this wrong result"*. No concrete case, no finding.
+- A shortcut marked with a `shortcut:` or legacy `ponytail:` comment naming its limit is a deliberate decision, not a finding, unless the expected load already crosses it.
+- Propose the smallest fix that works. Prefer fixes that delete code.
+- No style taste, no "consider", no vague worries.
 
-### Scoring
+### 4. Output Format
 
-End with the only metric that matters: `net: -<N> lines possible.`
+Number findings across all groups so the user can easily say "fix 2 and 5":
 
-If there is nothing to cut, say `Lean already. Ship.` and stop.
+Start with `What this change does:` in two or three sentences.
 
-### Scope
+Then findings grouped into three categories (skip empty groups):
+- **Must fix:** Bug, security hole, data loss, breaks at expected load.
+- **Should fix:** Risky code without a test, real slowness, duplication, function mixing unrelated jobs, code that should not exist.
+- **Nice to have:** Small speed-ups, shorter forms.
 
-Over-engineering and complexity only. Correctness bugs, security holes, and performance are explicitly out of scope — route them to a normal review pass. A single smoke test or `assert`-based self-check is the ponytail minimum, not bloat — never flag it for deletion. Does not apply the fixes, only lists them.
+Every finding MUST have all four parts (each 1-2 short sentences):
+`<N>. **<Title>** (<file>:<line>)`
+- **What this is:** (What this code does)
+- **Problem:** (Concrete scenario: this input or condition causes this failure)
+- **Fix:** (Smallest working diff or replacement, deleting code preferred)
+- **If we skip it:** (Real-world consequence in production)
+
+End with:
+- `Verdict: Ship.` or `Verdict: fix <N> and <M> first.`
+- `Lean: -<N> lines, -<M> deps possible.` (when lean findings exist)
+- `Not checked:` One line, if something mattered and you could not verify it.
+
+Nothing found: `What this change does:`, then `Looks good. Ship.` and one line on what you verified. Lists findings, changes no code.
 
 ---
 
@@ -195,19 +229,19 @@ Same as Review Mode: over-engineering and complexity only. Lists findings, appli
 
 ## 12. Debt Tracking (ponytail-debt)
 
-_Activate when the user wants to see all deferred ponytail shortcuts. Trigger: user says "ponytail debt", "what did ponytail defer", "list the shortcuts", or "ponytail ledger"._
+_Activate when the user wants to see all deferred shortcuts. Trigger: user says "ponytail debt", "what did ponytail defer", "list the shortcuts", or "ponytail ledger"._
 
-Every deliberate ponytail shortcut is marked with a `ponytail:` comment naming its ceiling and upgrade path. This collects them into one ledger so a deferral can't quietly become permanent.
+Every deliberate shortcut is marked with a `shortcut:` (or legacy `ponytail:`) comment naming its ceiling and upgrade path. This collects them into one ledger so a deferral can't quietly become permanent.
 
 ### Scan
 
 _(Agent Instruction: Grep the repo for comment markers, skipping `node_modules`, `.git`, and build output):_
 
 ```bash
-grep -rnE '(#|//) ?ponytail:' .
+grep -rnE '(#|//) ?(shortcut|ponytail):' .
 ```
 
-Add other comment prefixes if your stack uses them (e.g., `<!-- ponytail:` for HTML, `/* ponytail:` for CSS).
+Add other comment prefixes if your stack uses them (e.g., `<!-- shortcut:` for HTML, `/* shortcut:` for CSS).
 
 ### Output Format
 
@@ -215,19 +249,19 @@ One row per marker, grouped by file:
 
 `<file>:<line>, <what was simplified>. ceiling: <the limit named>. upgrade: <the trigger to revisit>.`
 
-The convention is `ponytail: <ceiling>, <upgrade path>`, so pull the ceiling and the trigger straight from the comment. Want an owner per row too? Use `git blame -L<line>,<line>` or `git log -S` on the file to find the author.
+The convention is `shortcut: <ceiling>, <upgrade path>` (or `ponytail: <ceiling>, <upgrade path>`), so pull the ceiling and the trigger straight from the comment. Want an owner per row too? Use `git blame -L<line>,<line>` or `git log -S` on the file to find the author.
 
 To persist the ledger, if requested by the user, write the output to a persistent file (e.g. `docs/PONYTAIL-DEBT.md`).
 
 ### Rot Detection
 
-Flag any `ponytail:` comment that names **no upgrade path or trigger** with a `⚠ no-trigger` tag — those are the ones that silently rot into "later means never."
+Flag any shortcut comment that names **no upgrade path or trigger** with a `⚠ no-trigger` tag — those are the ones that silently rot into "later means never."
 
 ### Summary
 
 End with: `<N> markers, <M> with no trigger.`
 
-Nothing found: `No ponytail: debt. Clean ledger.`
+Nothing found: `No shortcut debt. Clean ledger.`
 
 ### Scope
 

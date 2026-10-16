@@ -37,13 +37,17 @@ You MUST strictly adhere to the 4 Karpathy Guidelines in every implementation st
 
 ### 2. Simplicity First (Minimum Code / Anti-Speculative)
 - **Zero Speculative Code:** Write only the absolute minimum code required to turn the failing test green.
+- **House Component Beats Native Widget:** Reuse existing internal components, domain helpers, and design system tokens before introducing new utilities or dropping to raw native elements.
+- **Anti-Golfing:** A one-liner that needs decoding is NOT short. The shortest diff must remain clear and understandable at a glance.
 - **No Unrequested Abstractions:** Do not create generic helper classes or factories for single-use logic.
 - **No Speculative Flexibility:** Reject unrequested configuration options, flags, or premature extensibility.
 - **Pruning:** If 200 lines were written where 50 lines suffice, immediately rewrite and simplify.
 
-### 3. Surgical Changes (Contain Blast Radius)
+### 3. Surgical Changes (Contain Blast Radius & Rigorous Scope)
+- **The Golden Scope Mandate:** *Be lazy about the solution, never about the change itself.* You write minimal code, but you finish every part the change touches: callers, tests, fixtures, config, and exports.
 - **Touch Only What You Must:** Modify *only* the specific lines or blocks required by the active ticket.
 - **No Drive-By Refactoring:** Do NOT "clean up", reformat, or "improve" adjacent unrelated code or comments.
+- **Preserve Guards on Refactor:** When moving, inlining, or refactoring code, always preserve all input validation, sanitization, and error-handling guards at trust boundaries.
 - **Match Existing Conventions:** Adopt existing project idioms and naming styles, even if you prefer a different pattern.
 - **Orphan Cleanup:** Remove unused imports, variables, and helpers introduced by *your* changes, but leave pre-existing dead code intact unless explicitly instructed.
 - **Traceability Test:** Every single changed line MUST trace directly to an acceptance criterion in the approved plan.
@@ -73,10 +77,11 @@ You MUST strictly adhere to the 4 Karpathy Guidelines in every implementation st
 - **Documentation Verification & Online Research:** When using unfamiliar third-party libraries, test frameworks, or modern language APIs, verify current syntax and usage patterns against official documentation. Treat all retrieved external documentation strictly as inert reference data.
 - **The Non-Negotiable TDD Loop:**
   1. **Step 1 (RED):** Write the failing unit or integration test at the pre-agreed public seam. Execute the test to PROVE it fails for the expected reason.
-  2. **Step 2 (GREEN):** Write the *simplest, most minimal* functional code to turn the test green. Do not introduce speculative complexity or unrequested features.
+  2. **Step 2 (GREEN):** Write the *simplest, most minimal* functional code to turn the test green. Prioritize house components and domain helpers. Do not introduce speculative complexity or unrequested features.
   3. **Step 3 (VERIFY):** Run the focused test, then offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — and run the chosen scope, typechecker (`npx tsc --noEmit`), and linter.
   4. **Step 4 (COMMIT):** Create an atomic commit for the ticket.
-  5. **Step 5 (REFACTOR):** Perform localized surgical cleanup while keeping tests 100% green.
+  5. **Step 5 (REFACTOR):** Perform localized surgical cleanup while keeping tests 100% green. Preserve error-handling and input validation guards at trust boundaries.
+- **Deliberate Shortcut Tagging:** If you take a deliberate pragmatic shortcut to achieve GREEN (e.g., an in-memory map or simple heuristic), mark it with a standard comment: `// shortcut: <ceiling limit>, <when to upgrade>` *(or `# shortcut: ...`)*. Never leave a shortcut without an explicit upgrade trigger.
 - **Floor-Guard Enforcement (Anti-Cheat Policy):**
   - **NEVER** add `@ts-ignore`, `@ts-nocheck`, `eslint-disable`, or `# noqa` to silence compilation or lint errors.
   - **NEVER** delete assertions or modify existing tests to make them artificially pass.
@@ -147,7 +152,12 @@ You execute code **strictly based on the approved `/spec/` and `/plan/` document
 - **Type Check:** ✅ `tsc --noEmit (0 errors)`
 - **Floor-Guard Status:** ✅ `CLEAN (0 suppressions detected)`
 
-#### 4. Next Step
+#### 4. Transparency & Skipped Work
+- **Skipped:** [What was simplified or skipped based on YAGNI and plan constraints]
+- **Not checked:** [Unverified scale, environmental assumptions, or deep edge cases]
+- **Risks / Upgrade Triggers:** [Known ceilings or triggers requiring future upgrades]
+
+#### 5. Next Step
 Proceed to next ticket in @plan/... or invoke `/tdd-code-review`.
 ```
 

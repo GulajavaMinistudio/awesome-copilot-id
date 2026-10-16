@@ -37,16 +37,22 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Clea
 5. **Anti-Laziness Directive (Zero Lazy Placeholders):**
    - NEVER generate code with lazy placeholders like `// ... keep existing code ...`, `// ... rest of implementation ...`, or `/* TODO */`.
    - Every chunk of code written must be complete, syntactically valid, and fully functional.
-6. **🛡️ Surgical Precision & Edit Mandate:**
+6. **🛡️ Surgical Precision & Edit Mandate (Blast Radius Containment):**
+   - **The Golden Scope Mandate:** *Be lazy about the solution, never about the change itself.* Write minimal code, but completely finish every part the change touches: callers, test fixtures, config entries, and exports.
    - Prioritize targeted, surgical edits (modifying only specific lines or blocks) rather than replacing entire files.
    - Full file replacements are strictly prohibited unless creating a new file from scratch.
    - Preserve existing comments, docstrings, formatting, and unrelated logic intact.
+   - **Preserve Guards on Refactor:** When moving, inlining, or refactoring code for Single Responsibility, always preserve all input validation, sanitization, and error-handling guards at trust boundaries.
 7. **🛡️ Floor-Guard Anti-Cheat Enforcement:**
    - Agents are strictly forbidden from:
      - Adding suppressions (`@ts-ignore`, `@ts-nocheck`, `eslint-disable`, `# noqa`).
      - Skipping tests (`.skip()`, `xit()`, `pytest.mark.skip`, `@Disabled`).
      - Deleting or weakening test assertions to artificially force builds to pass.
    - Code must be fixed to satisfy the contract, not by weakening verification.
+8. **Deliberate Shortcut Tagging (`shortcut:` via Relaxing Conditions, p. 50, 150):**
+   - When taking a deliberate pragmatic shortcut that cuts a corner with a known ceiling (e.g., an in-memory map, linear scan, or simple heuristic), mark it with a standard comment naming the ceiling and upgrade path:
+     `// shortcut: <ceiling limit>, <when to upgrade>` *(or `# shortcut: ...`)*.
+   - Never leave a shortcut without an explicit upgrade trigger.
 
 ---
 
@@ -61,7 +67,9 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Clea
 1. **Single Responsibility (SRP):** Functions must be small, focused, and do only one thing. Extract helper functions for multi-step workflows.
 2. **Intention-Revealing Names:** Use unambiguous, domain-driven names for all variables, functions, and classes. Zero cryptic abbreviations (`d`, `tmp`, `val`).
 3. **Pure State Transformations:** Minimize mutable state and unexpected side effects. Keep business computations deterministic.
-4. **The Boy Scout Rule:** Leave every file you edit cleaner than you found it, without performing unrequested out-of-scope refactorings.
+4. **House Component Beats Native Widget:** Reuse existing internal components, domain helpers, and design system tokens before introducing new utilities or dropping to raw native elements.
+5. **Anti-Golfing:** A one-liner that needs decoding is NOT short. The shortest diff must remain clear and understandable at a glance.
+6. **The Boy Scout Rule:** Leave every file you edit cleaner than you found it, without performing unrequested out-of-scope refactorings.
 
 ### Step 3: Respice Finem / Anchor on the Unknown (Pólya, 1945, p. 123)
 - *"Look at the end. Remember your aim. Do not forget your goal."*
@@ -99,7 +107,11 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Clea
 
 ### Step 11: Phase Completion Wrap-Up
 1. Offer the user a scope choice — **full suite** (recommended by default) or **scoped suite** (tests affected by the changed files) — then run the chosen scope and ensure 100% pass with zero failures.
-2. Present the completed implementation with file diff links.
+2. Present the completed implementation with file diff links and structured transparency reporting:
+   - **Verification:** Scope executed, test counts, linter, and typechecker status.
+   - **Skipped:** What was simplified, deferred, or skipped based on YAGNI and plan boundaries.
+   - **Not checked:** Unverified scale thresholds, environment assumptions, or deep edge cases.
+   - **Risks / Upgrade Triggers:** Known ceilings or triggers requiring future upgrades.
 3. Direct the user to the next phase:
    > *"Implementation of vertical slices complete with zero test failures! To perform a comprehensive 5 SOLID principles and defensive security audit, invoke `/to-review @docs/spec/{slug}-spec.md @docs/plan/{slug}-plan.md`."*
 

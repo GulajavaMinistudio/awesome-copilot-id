@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(npx markdownlint-cli PRODUCT.md 2 >& 1)",
+      "Shell(npx markdownlint PRODUCT.md 2 >& 1)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

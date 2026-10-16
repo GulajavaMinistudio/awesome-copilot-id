@@ -78,10 +78,26 @@
 
 ## 5. Remediation Action Items
 
-*Required surgical adjustments before declaring implementation complete:*
+*Required surgical adjustments before declaring implementation complete. Apply standardized Lean Action Tags:*
 
-1. `[file_path:line]` - [Specific refactoring required]
-2. `[file_path:line]` - [Missing boundary test to add]
+| Action Tag | Trigger Condition | Remediation Guideline |
+| :--- | :--- | :--- |
+| `delete:` | Dead code, speculative features, unused wrappers | Delete immediately. Best code is no code. |
+| `reuse:` | Re-invented helper or wheel | Replace with existing house domain helper or utility. |
+| `stdlib:` | Hand-rolled logic available in standard library | Replace with built-in standard library methods. |
+| `native:` | Complex wrapper around native UI widget/API | Use standard platform widget/API directly. |
+| `yagni:` | Speculative flexibility, unused config parameters | Strip unused options/parameters down to current requirement. |
+| `shrink:` | Over-engineered, over-nested algorithm | Flatten and simplify to straightforward linear logic. |
+| `merge:` | Duplicated logic across multiple near-identical functions | Consolidate into a single parameterized function. |
+| `split:` | Single function handling multiple distinct responsibilities | Extract helper for SRP at natural cohesion seam. |
+
+### Findings (4-Part Structure)
+
+1. **`[file_path:line]` - `[action_tag]` [Brief Title]**
+   - **What this is:** [Exact construct, e.g., custom date formatter function]
+   - **Problem:** [Hand-rolled date formatting duplicating stdlib Intl.DateTimeFormat]
+   - **Fix:** [`stdlib:` Replace with native Intl.DateTimeFormat]
+   - **If we skip it:** [Maintenance overhead, potential timezone edge case bugs]
 
 ---
 
@@ -116,3 +132,16 @@
 
 - **At-a-Glance Summary:** [1-2 sentences capturing the entire data flow and primary invariant]
 - **Visual Diagram Validated:** [Yes / No - Can a new developer understand the topology without reading the full diff?]
+
+---
+
+## 8. Lean Scoreboard & Transparency
+
+### 8.1 Lean Scoreboard
+- **Lines Deleted:** [count or 0]
+- **Helpers Reused:** [count or 0]
+- **Net Diff Impact:** [-X lines / +Y lines]
+
+### 8.2 Scope Limitations & Transparency
+- **Not checked:** [Unverified environments, scale thresholds, or edge cases outside current scope]
+- **Residual Risks / Upgrade Triggers:** [Known capacity ceilings, deliberate shortcuts, or future upgrade milestones]

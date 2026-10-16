@@ -54,9 +54,10 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Firs
 2. **Step Back to First Principles:**
    - Ask: *"How does this feature/component actually work under the hood?"*
    - Map the expected lifecycle: ingress request $\to$ parsing $\to$ domain validation $\to$ use case logic $\to$ external I/O adapter $\to$ database transaction.
-3. **Trace the Broken Seam:**
+3. **Trace the Broken Seam & Caller Grep Mandate:**
    - Trace data flow step-by-step from trigger to failure point across Clean Architecture layers.
    - Locate the exact broken seam: async race condition, state desynchronization, unhandled null edge case, contract leak, or missing transaction release.
+   - **Caller Grep Mandate:** If the broken seam touches a shared function, utility, or port adapter, **always grep for all callers** across the codebase first. Determine whether the defect is in the caller or the shared contract. **Fix the root cause once in the shared code** rather than patching individual callers, preventing sibling callers from remaining broken.
 4. **Intelligent Trial & Error via Bisection Search (Pólya's Mouse, p. 206–209):**
    - Avoid blind panic and random edits.
    - Systematically bisect the search space ($O(\log n)$ fault isolation):
@@ -72,7 +73,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Firs
 
 ### Phase 3: Surgical Remediation Strategy & Invariant Restoration
 
-1. **Minimal Root-Cause Fix:** Formulate the exact, minimal code modification that restores the broken invariant without introducing collateral side effects or speculative abstractions.
+1. **Minimal Root-Cause Fix & Golden Scope Mandate:** Formulate the exact, minimal code modification that restores the broken invariant without introducing collateral side effects or speculative abstractions. Strictly adhere to: *be lazy about the solution, never about the scope of the change itself*. Account for all callers, test fixtures, config entries, and exported symbols.
 2. **Target TDD Green:** Verify that the proposed remediation logic deterministically satisfies the reproduction test, turning it from Red to Green.
 3. **The Boy Scout Rule:** Enforce leaving the surrounding code seam cleaner, safer, and better documented than you found it, without performing unrequested out-of-scope refactorings.
 

@@ -45,6 +45,11 @@ tags: ["polya", "bug-fix", "first-principles", "problems-to-prove"]
 - **Exact Broken Seam Location:** `[file_path:line_number]`
 - **Root Cause Category:** [Data Race / Unbounded Condition / State Desynchronization / Type Boundary Leak]
 - **Bisection Search Protocol (Pólya, p. 206–209):** [Explain how the search space was halved via binary bisection (e.g., git bisect, call stack bisection, middleware payload logging) to eliminate blind trial-and-error]
+- **Caller Grep & Blast Radius Inspection:**
+  - [ ] Grepped all callers across codebase (`grep_search`)
+  - [ ] Root cause addressed in shared code (no orphaned sibling callers)
+  - [ ] Checked test fixtures & configs
+  - [ ] Verified zero orphaned exports
 
 ---
 

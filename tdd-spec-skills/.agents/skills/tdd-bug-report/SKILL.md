@@ -75,13 +75,14 @@ As defined in `AGENTS.md`, you must enforce strict operational boundaries:
 ## ⚙️ Phase 1: Diagnostic Workflow
 
 1. **Information Gathering & Simulation:** Read and understand the symptoms. Reproduce the bug if possible, or simulate the scenario by tracing the code logic using search and read tools.
-2. **Root Cause Identification:** Pinpoint the exact file, function, and logic error causing the issue.
-3. **Determine Minimal Fix:** Formulate a solution that fixes the root cause with the least amount of code changes. Consider edge cases and potential regressions.
+2. **Caller Grep & Root Cause Identification:** Pinpoint the exact file, function, and logic error causing the issue. If the bug touches a shared function, component, or utility, **always grep for all callers** across the codebase first. Determine whether the bug is in the caller or the shared contract. **Fix the root cause once in the shared code** rather than patching symptoms in individual callers, preventing sibling callers from remaining broken.
+3. **Determine Minimal Fix & Scope Check:** Formulate a solution that fixes the root cause with the least amount of code changes, strictly adhering to the Golden Scope Mandate: *be lazy about the solution, never about the scope of the change itself*. Account for all callers, test fixtures, config entries, and exported symbols.
 4. **Present Findings:** Output your diagnosis in the chat using the following structured format:
    - **Issue Summary:** A brief restatement of the bug.
    - **Root Cause:** Detailed technical explanation of why the bug occurs with specific files and line numbers.
+   - **Caller Blast Radius:** Result of grepping callers of the affected function or contract.
    - **Prove-It Test Case:** The exact automated test that reproduces this failure.
-   - **Remediation Strategy:** Minimal surgical fix proposal.
+   - **Remediation Strategy:** Minimal surgical fix proposal in shared code.
 5. **Discuss Strategy:** Ensure the user agrees with your diagnosis and proposed fix before moving to Phase 2.
 
 ---
@@ -188,11 +189,13 @@ tags: ["bug-fix", "remediation", "patch", "tdd"]
 
 - **DEP-001**: Dependency 1
 
-## 5. Files Affected
+## 5. Files Affected & Blast Radius
 
-[List all files that will be modified to fix this bug.]
+[List all files that will be modified to fix this bug, ensuring the fix addresses the root cause in shared code while completely accounting for callers, test fixtures, config, and exports.]
 
-- **FILE-001**: Description of file 1
+- **FILE-001**: Description of root cause file (shared code / core logic)
+- **FILE-002**: Description of callers or test fixtures affected
+- **BLAST-CHECK**: [x] Grepped all callers | [x] Checked test fixtures | [x] No orphaned exports/config
 
 ## 6. Testing Strategy & Edge Cases
 

@@ -98,20 +98,20 @@ Every finding from any axis MUST be labeled with one of the following severity l
 
 ---
 
-## Structural Remedies
+## Structural Remedies (Ponytail Lean Heuristics)
 
-When you identify an architectural issue, do not just flag it — propose a concrete remedy. Match the problem pattern to one of the following remedies:
+When you identify an architectural issue, do not just flag it — propose a concrete remedy. Match the problem pattern to one of the following remedies and lean tags:
 
-| Problem Pattern                                                                    | Remedy                                                                                                                                                                 |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Long `if/else if` chain or `switch` on type                                        | Replace with a typed dispatch map (dictionary/object) or a polymorphic strategy. The caller selects a handler by key, not by conditional.                              |
-| Two branches doing almost the same thing                                           | Collapse: extract the shared logic into one function. Pass the differing parts as parameters or use a simple flag only if the paths are truly just one decision apart. |
-| A function that both orchestrates a workflow AND contains business logic           | Separate: the orchestrator should only call other functions; all business rules should be extracted into their own focused functions.                                  |
-| Feature-specific logic living inside a shared utility module                       | Move: the shared module should only contain generic, reusable logic. Feature logic belongs in the feature's own module.                                                |
-| A utility function being reimplemented when one already exists in the codebase     | Reuse: search the codebase for the canonical implementation and call it. Do not add a duplicate.                                                                       |
-| Unclear data shapes passed as generic objects or maps                              | Make type boundaries explicit: define a dedicated type/struct/interface for the shape. Use it at every callsite for clarity and safety.                                |
-| A wrapper class or function that only delegates to another without adding behavior | Delete: the pass-through wrapper adds indirection without value. Call the underlying function directly.                                                                |
-| A single large file or function that handles too many responsibilities             | Extract helpers / split: create new files or modules for each distinct responsibility. Use the change-splitting strategies below to keep the PR reviewable.            |
+| Lean Tag | Problem Pattern | Remedy |
+| :--- | :--- | :--- |
+| `delete:` | Dead code, commented-out blocks, unused options, speculative features | Delete completely. Replacement: nothing. |
+| `reuse:` | A utility/helper function being reimplemented when one already exists in the codebase | Reuse: search the codebase (`grep_search`) for canonical implementation and call it. |
+| `stdlib:` | Hand-rolled logic that standard library or runtime already ships | Replace with standard library function (e.g., `Array.prototype.flat()`, `structuredClone()`, `Math.min/max`). |
+| `native:` | External dependency imported for simple operations that platform natively handles | Replace with native platform API (e.g., `Intl.DateTimeFormat`, `<input type="date">`, CSS layout). |
+| `yagni:` | Single-implementation interfaces, factories for one product, wrappers with one caller | Inline directly into callsite until a second implementation emerges. |
+| `shrink:` | Verbose imperative loop or boilerplate logic doing simple data transformation | Compress logic into idiomatic, readable standard functions (`map`, `filter`, `reduce`). |
+| `merge:` | Two branches or near-copy functions doing almost the same thing | Collapse: extract shared logic into one function; pass differing parameters. |
+| `split:` | A single large function doing multiple unrelated responsibilities | Separate by responsibility (orchestration vs domain calculation), never by arbitrary line count. |
 
 ---
 
