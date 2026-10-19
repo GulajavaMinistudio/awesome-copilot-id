@@ -48,9 +48,10 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Arch
    - Read `README.md` to understand system purpose, primary goals, and setup instructions.
    - Read `CONTEXT.md` (or traverse `CONTEXT-MAP.md`) to extract ubiquitous domain terminology.
    - Read `memory.instructions.md` and `docs/adr/` to absorb prior architectural decisions.
-2. **Configuration & Dependency Audit:**
-   - Read root manifest and tooling configurations (`package.json`, `tsconfig.json`, `Cargo.toml`, `go.mod`, `docker-compose.yml`, etc.).
+2. **Configuration, Dependency & Mechanical Constraint Audit:**
+   - Read root manifest and tooling configurations (`package.json`, `tsconfig.json`, `Cargo.toml`, `go.mod`, `docker-compose.yml`, `.eslintrc*`, `vitest.config.*`, `jest.config.*`, `.github/workflows/*`, etc.).
    - Identify primary languages, frameworks, persistence engines, and external SaaS integrations.
+   - **Extract Mechanical Verification Commands & Ratchets (for Section 8):** Discover the exact commands for `check:fast` (`< 5s` typecheck + lint), `check:task` (`< 30s` scoped tests + typecheck + lint), and `check:full` (full suite + build + audit), along with any configured coverage thresholds, bundle budgets, or complexity limits.
 3. **Monorepo Detection:**
    - Check for multiple workspaces (`pnpm-workspace.yaml`, `lerna.json`, `packages/`, `apps/`, `crates/`).
    - If detected, isolate and map each package boundary independently.
@@ -76,7 +77,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Arch
    - Construct a clear, readable ASCII or Mermaid diagram representing the high-level system topology (Client ──▶ Gateway ──▶ Core Layers ──▶ Persistence/External Services).
    - Ensure the diagram provides **"At-a-Glance Perception"** (Pólya, p. 59–61), allowing a new engineer or agent to comprehend the entire data flow in 30 seconds.
 2. **Interim Summary Presentation:**
-   - Present a concise, structured overview of discovered layers, tech stack, and entry points in chat.
+   - Present a concise, structured overview of discovered layers, tech stack, entry points, and the 3-tier verification commands (`check:fast`, `check:task`, `check:full`) in chat.
    - Request explicit confirmation before writing the formal document.
 
 ### Phase 4: Formal Document Generation & Discovery Linking
@@ -85,7 +86,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Arch
    - Ensure `docs/` directory exists.
    - Generate or update the document adhering strictly to:
      👉 [`../to-shared/references/ARCHITECTURE-TEMPLATE.md`](../to-shared/references/ARCHITECTURE-TEMPLATE.md)
-   - Populate all sections with real, discovered data (zero placeholder text).
+   - Populate all sections — including **Section 8 (Mechanical Quality Constraints, Verification Commands & Ratchets)** and **Section 9 (Architectural Health & Known Seams)** — with real, discovered repository data (zero placeholder text).
 2. **Post-Generation Discovery Offer:**
    - Proactively ask the user:
      > *"The project architecture document has been successfully created at `docs/ARCHITECTURE.md`. Would you like me to add a reference link to this document inside `AGENTS.md` and `README.md` so other agents and developers can easily discover it?"*

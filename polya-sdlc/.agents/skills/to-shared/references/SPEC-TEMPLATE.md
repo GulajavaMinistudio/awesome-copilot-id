@@ -4,6 +4,7 @@ version: "1.0.0"
 date_created: "[YYYY-MM-DD]"
 last_updated: "[YYYY-MM-DD]"
 status: "Draft" # Draft | Approved | Deprecated
+prd_ref: "docs/prd/{slug}-prd.md" # Optional: populate when derived from an approved PRD
 tags: ["polya", "spec", "clean-architecture"]
 ---
 <!-- markdownlint-disable-->
@@ -15,20 +16,21 @@ tags: ["polya", "spec", "clean-architecture"]
 ### 1.1 The Unknown (Goal & Desired State)
 - What exactly are we trying to calculate, transform, persist, or render?
 - What constitutes a successful and complete solution from the user and system perspective?
+- **Explicit Non-Goals (Out of Scope):** [Carry over Non-Goals from PRD/Discovery so downstream plans never re-introduce them]
 
-### 1.2 The Data (Inputs, State & Environmental Context)
+### 1.2 The Data (Inputs, State & Source-Grounded Context)
 - What data inputs, query parameters, or payloads are provided?
-- What existing database models, entities, or external APIs are involved?
+- What existing database models, entities, or external APIs are involved? *(Cite existing codebase files as `[VERIFIED: file_path:line]`)*
 - What state machine transitions or session contexts are active?
 
 ### 1.3 The Condition (Requirements, Constraints & Invariants)
 
-*Every requirement and constraint MUST be assigned a unique ID for 100% bidirectional traceability with Implementation Plans (`docs/plan/`):*
+*Every requirement and constraint MUST be assigned a unique ID for 100% bidirectional traceability with PRDs (`docs/prd/`) and Implementation Plans (`docs/plan/`):*
 
-- **REQ-001:** [Core functional capability required to satisfy the Unknown]
-- **REQ-002:** [Secondary functional capability or business transaction rule]
-- **CON-001 (Performance / SLA):** [e.g., Response time < 200ms, memory bound < 512MB]
-- **CON-002 (Security & Invariants):** [e.g., Role-based authorization, session timeout, idempotency key]
+- **REQ-001 `[PRD Ref: US-01 / FR-01]`:** [Core functional capability required to satisfy the Unknown]
+- **REQ-002 `[PRD Ref: US-02 / FR-02]`:** [Secondary functional capability or business transaction rule]
+- **CON-001 (Performance / SLA & Quality Ratchets):** [e.g., Response time < 200ms, memory bound < 512MB, `docs/ARCHITECTURE.md` Section 8 ratchets]
+- **CON-002 (Security & Invariants):** [e.g., Role-based authorization, session timeout, idempotency key, SSRF/path guards]
 
 ### 1.4 Condition Sanity Check & Completeness Audit (Pólya, p. 7, 33)
 - **Is the condition sufficient to determine the unknown?** [Yes / No - Explain]
@@ -86,8 +88,23 @@ export interface ExampleResponseDTO {
 }
 ```
 
-### 4.2 Database Schema / Persistence Models
-[Table structures, indexes, foreign keys, or document schemas]
+### 4.2 Database Schema / Persistence Models & Migration Strategy
+- **Schema / Indexes:** [Table structures, composite indexes, foreign keys, or document schemas]
+- **Backward Compatibility (Expand-Migrate-Contract):** [How schema/API changes remain zero-downtime and reversible]
+
+### 4.3 API Error Contract, Idempotency & 5 UI States Matrix
+- **Error Contract (RFC 7807 / Typed Domain Errors):** [Exact error codes, HTTP status mappings, and retryability flags]
+- **Idempotency & Pagination:** [Idempotency key mechanism for mutations; cursor/limit bounds for collections]
+- **5 UI States Matrix (If UI/Frontend Applicable):**
+  - **Loading:** [Skeleton / spinner behavior & threshold]
+  - **Empty:** [Zero-data state message & primary CTA]
+  - **Error:** [User-facing recovery action & retry capability]
+  - **Partial:** [Paginated / degraded / partial-load behavior]
+  - **Populated:** [Ideal rendered state & keyboard/ARIA accessibility invariants]
+
+### 4.4 Observability, Telemetry & SLIs (RED / USE Metrics)
+- **Structured Logging:** [Key domain events logged with correlation IDs and zero PII/secrets]
+- **Metrics & Alerts:** [Rate, Errors, Duration (RED) or Utilization, Saturation, Errors (USE) signals]
 
 ---
 

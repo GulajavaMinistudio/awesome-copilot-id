@@ -4,9 +4,31 @@
 **Specification Ref:** `docs/spec/{slug}-spec.md`  
 **Plan Ref:** `docs/plan/{slug}-plan.md`  
 **Review Status:** **{Approved / Remediation Required}**  
+**Release Readiness Verdict:** **{GO | NO-GO}**  
 
 ---
 <!-- markdownlint-disable-->
+
+## 0. Pre-Review Verification Gates (Mutation Check & Epistemic Doubt)
+
+### 0.1 Verify the Tests First (Mutation Check by Experiment)
+- **Target Mutated Seam:** `[file_path:line]` — `{Brief description of temporary 1-line logic/condition inversion}`
+- **Observed Test Outcome:** `[CAUGHT (Test Failed as Expected) / ESCAPED (False-Green Suite — Blocker!)]`
+- **Reversion Confirmed:** `[Yes — Working tree restored clean]`
+
+### 0.2 Adversarial Doubt Cycle (Pólya's "Examine Your Guess")
+- **Tautological / Vacuous Assertions Checked:** `[PASS / FAIL]` — `{Details}`
+- **Unverified Runtime Seams / Happy-Path Bias Checked:** `[PASS / FAIL]` — `{Details}`
+
+### 0.3 5-Move Floor-Guard & Quality Ratchet Diff Audit
+- **Move 1 (Deleted/Weakened Assertions):** `[0 Violations / FAIL]`
+- **Move 2 (Skipped Tests — `.skip`, `xit`, `@Disabled`):** `[0 Violations / FAIL]`
+- **Move 3 (Unapproved Linter/Type Suppressions):** `[0 Violations / Approved in ARCHITECTURE.md §8.4 / FAIL]`
+- **Move 4 (Loosened Compiler/Linter Configs):** `[0 Violations / FAIL]`
+- **Move 5 (Lowered Quality Ratchets — Coverage, Bundle, CWV, Complexity):** `[0 Violations / Ratchets Ratcheted Up / FAIL]`
+- **Verification Scope Executed:** `[check:full / Scoped Suite: X/Y tests passed, 0 warnings]`
+
+---
 
 ## 1. Uncle Bob's 5 SOLID Principles Audit
 
@@ -60,7 +82,7 @@
 - **Small Functions:** Are functions concise, focused on one thing, and operating at a single level of abstraction?
 - **Boy Scout Rule:** Was the code left cleaner than it was found?
 - **Architectural Pragmatism & Scope Check:** Verified that architectural ceremony fits the problem scale (zero forced 4-layer over-engineering on single-file scripts/CLI tools; strict Clean Architecture preserved on core business domain modules).
-- **Zero Suppression Anti-Cheat:** Verified zero `@ts-ignore`, `eslint-disable`, `# noqa`, or skipped tests.
+- **Zero Suppression Anti-Cheat:** Verified zero unapproved `@ts-ignore`, `eslint-disable`, `# noqa`, or skipped tests.
 
 ---
 
@@ -73,10 +95,22 @@
 | **Zero Secret Exposure** | Zero hardcoded API keys, JWT secrets, passwords, or private certificates in code/tests | [PASS / FAIL] | {Details} |
 | **Payload & Deserialization Guard** | Mass assignment prohibited; payload size bounded; safe deserialization enforced | [PASS / FAIL] | {Details} |
 | **DoS & Resource Exhaustion** | Rate limits, pagination caps, and timeout cancellation guards present on all I/O | [PASS / FAIL] | {Details} |
+| **SSRF & Outbound URL Guards** | User-influenced URLs parsed & allowlisted; private/loopback/cloud metadata IPs (`169.254.169.254`) blocked | [PASS / FAIL / N/A] | {Details} |
+| **Destructive File/Path Guards** | File deletions/writes resolve `realpath`, enforce non-empty root prefix, and reject `..` traversal | [PASS / FAIL / N/A] | {Details} |
+| **Supply-Chain & Lockfile Hygiene** | Dependencies pinned in lockfile; zero unapproved/typosquatted packages or unpinned CI actions | [PASS / FAIL] | {Details} |
+| **LLM / Agentic Input Guards** | Untrusted data isolated from system prompts; LLM outputs schema-validated before execution | [PASS / FAIL / N/A] | {Details} |
 
 ---
 
-## 5. Remediation Action Items
+## 5. Database, Caching & Performance Audit (Keep-or-Revert Gate)
+
+- **Query & Index Verification (`EXPLAIN ANALYZE`):** `[Verified / N/A]` — `{Zero N+1 loops, unbounded scans, or missing composite indexes}`
+- **Cache Invalidation & Stampede Protection:** `[Verified / N/A]` — `{Explicit TTL, deterministic invalidation on write, single-flight/jitter protection}`
+- **Performance Attempt Ledger (Keep-or-Revert Rule):** `[Verified / N/A]` — `{Any complexity-adding optimization includes before/after benchmark evidence; unverified micro-optimizations reverted}`
+
+---
+
+## 6. Remediation Action Items
 
 *Required surgical adjustments before declaring implementation complete. Apply standardized Lean Action Tags:*
 
@@ -101,7 +135,7 @@
 
 ---
 
-## 6. Pólya's Two Golden Questions (Looking Back & Knowledge Promotion)
+## 7. Pólya's Two Golden Questions (Looking Back & Knowledge Promotion)
 
 *Pólya Heuristic: Can you use the result? Can you use the method? (Pólya, 1945, p. 61)*
 
@@ -113,7 +147,7 @@
 
 ---
 
-## 7. Can You See It at a Glance? (Holistic Perception - Pólya, p. 59–61)
+## 8. Can You See It at a Glance? (Holistic Perception - Pólya, p. 59–61)
 
 *Pólya Heuristic: Can you see the whole solution at a glance? Compress the implementation into a 30-second mental model.*
 
@@ -135,13 +169,21 @@
 
 ---
 
-## 8. Lean Scoreboard & Transparency
+## 9. Lean Scoreboard, Transparency & Release Readiness Gate
 
-### 8.1 Lean Scoreboard
+### 9.1 Lean Scoreboard
 - **Lines Deleted:** [count or 0]
 - **Helpers Reused:** [count or 0]
 - **Net Diff Impact:** [-X lines / +Y lines]
 
-### 8.2 Scope Limitations & Transparency
+### 9.2 Scope Limitations & Transparency
 - **Not checked:** [Unverified environments, scale thresholds, or edge cases outside current scope]
 - **Residual Risks / Upgrade Triggers:** [Known capacity ceilings, deliberate shortcuts, or future upgrade milestones]
+
+### 9.3 Release & Launch Readiness Gate (`GO | NO-GO`)
+- **Release Decision:** **`{GO | NO-GO}`**
+- **Backward Compatibility & Migration Safety:** `[Verified Expand-Migrate-Contract / N/A]`
+- **Timed Rollback Plan (`< 15 Minutes`):**
+  1. **Revert Trigger:** `{Exact error rate, latency spike, or healthcheck failure that triggers rollback}`
+  2. **Rollback Command / Action:** `{git revert <sha> / feature-flag toggle / reversible migration step}`
+  3. **Post-Rollback Verification:** `{Smoke check confirming system recovery}`

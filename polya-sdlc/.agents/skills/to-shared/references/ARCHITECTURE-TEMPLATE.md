@@ -163,8 +163,43 @@ Frameworks & Drivers (DB, Web Server, UI Runtimes)
 
 ---
 
-## 8. Architectural Health & Known Seams
+## 8. Mechanical Quality Constraints, Verification Commands & Ratchets
+
+*Inspired by Constraint-Driven Development: Quality bars are enforced mechanically via speed-tiered commands, non-regressing ratchets, and Floor-Guard anti-tampering rules.*
+
+### 8.1 The Immutable Quality Floor (Zero Setup, Always Enforced)
+- **Zero Suppressions:** No `@ts-ignore`, `@ts-nocheck`, `@ts-expect-error`, `eslint-disable`, `# noqa`, `# type: ignore`, `istanbul ignore`, `nosemgrep`, `Stryker disable`, or `gitleaks:allow`.
+- **Zero Test Weakening:** No `.skip`, `xit`, `pytest.mark.skip`, `@Disabled`, deleted failing tests, or stripped assertions.
+- **Zero Unimplemented Stubs:** No `throw new Error("Not implemented")`, `TODO` placeholders in completed slices, or silent empty `catch {}` blocks.
+- **Zero Secrets in VCS:** Every commit must pass secret scanning (`gitleaks detect --redact --no-banner`).
+- **Zero Bar-Lowering:** Agents MUST NEVER lower numeric thresholds, coverage floors, or ratchets in this file or in tool configurations.
+
+### 8.2 Speed-Tiered Verification Commands (`check:fast`, `check:task`, `check:full`)
+| Tier | Target Latency | When Executed | Exact CLI Command(s) |
+| :--- | :--- | :--- | :--- |
+| **`check:fast`** | `< 5s` | Every file edit (Micro level) | `[e.g., pnpm tsc --noEmit && pnpm eslint . --max-warnings=0 && gitleaks detect --redact --no-banner]` |
+| **`check:task`** | `< 90s` | End of each Vertical Tracer Bullet | `[e.g., pnpm check:fast && pnpm vitest related --run]` |
+| **`check:full`** | `< 5m` | Macro Phase Checkpoint / `/to-review` / CI | `[e.g., pnpm check:fast && pnpm test:coverage && pnpm build]` |
+
+### 8.3 Non-Regressing Quality Ratchets (Measure & Hold)
+*For legacy or evolving metrics not yet at 100% target, today's measured baseline is locked as a floor. Metrics may only improve (ratchet up), never regress:*
+| Metric / Dimension | Current Ratchet Floor | Required Direction | Checked By |
+| :--- | :--- | :--- | :--- |
+| **Line / Branch Test Coverage** | `[e.g., 72.5%]` | Must not fall (`>= Floor`) | `[e.g., pnpm test:coverage]` |
+| **Main Bundle Size (gzipped)** | `[e.g., 185 KB]` | Must not grow (`<= Ceiling`) | `[e.g., pnpm size-limit]` |
+| **Legacy Type / Lint Warnings** | `[e.g., 0]` | Must not grow (`<= Ceiling`) | `[e.g., pnpm tsc --noEmit]` |
+
+### 8.4 Approved Rule Exceptions (Time-Bounded)
+*Any rare exception to the Quality Floor requires explicit human approval and an expiration date (default 90 days):*
+| ID | Rule / Check Bypassed | File Path & Line | Technical Rationale | Approved By | Expires On |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `EX-001` | `[None]` | `[N/A]` | `[No active exceptions]` | `[N/A]` | `[YYYY-MM-DD]` |
+
+---
+
+## 9. Architectural Health & Known Seams
 
 - **Primary Seams:** [List public extension points, plugins, or adapter interfaces ready for extension]
 - **Technical Debt / Hotspots:** [Document tightly-coupled modules or legacy areas requiring caution]
 - **Recent Architecture Decisions:** [Link to relevant records in `docs/adr/`]
+

@@ -48,8 +48,9 @@ Every task must fit into one focused session. AI agents work most reliably on XS
 
 ## 3. Phased Implementation Sequence (Vertical Tracer Bullets)
 
-> **EXECUTION DIRECTIVE FOR AI AGENTS:**  
-> Execute phase by phase. Run the specific testing/verification task at the end of each phase. After verification passes, **YOU MUST STOP AND WAIT** for user approval before moving to the next phase.
+> **EXECUTION DIRECTIVE FOR AI AGENTS (`/to-code` & `/to-code auto`):**  
+> - **Interactive Mode (`/to-code`):** Execute ticket by ticket. Run `check:task` (from `docs/ARCHITECTURE.md` §8.2) after each slice, then pause for user confirmation at each `APPROVAL` gate.  
+> - **Autonomous Mode (`/to-code auto`):** Advance automatically through verified green tickets (`check:task` passing) until all phases complete or one of the **4 Circuit Breakers** triggers (*Ambiguous Spec*, *3x Verification Failure*, *Ratchet Regression*, or *Untracked Dependency/Architecture Change*).
 
 ### Implementation Phase 1: Land — Minimal End-to-End Tracer Bullet
 *Goal: Implement the minimal, fully-functional vertical slice connecting DB to UI with zero mocks.*
@@ -57,8 +58,8 @@ Every task must fit into one focused session. AI agents work most reliably on XS
 | Task | Description | Ref ID | AC Ref | Dep | Files | Completed | Date |
 | :--- | :--- | :--- | :--- | :--- | :---: | :---: | :---: |
 | TASK-001 | User Registration Slice [Domain User Entity + RegisterUseCase + API Route + Register Form UI]      | REQ-001 | AC-001 | -        | 3-5 (M) |    [ ]    |       |
-| TASK-00X | **VERIFY:** Execute end-to-end integration test for Tracer Bullet (`npm test` / integration suite) | -       | -      | TASK-001 |    -    |    [ ]    |       |
-| TASK-00Y | **APPROVAL:** 🛑 Stop and wait for explicit user confirmation to proceed to Phase 2                 | -       | -      | -        |    -    |    [ ]    |       |
+| TASK-00X | **VERIFY (`check:task`):** Execute scoped slice test + typecheck + lint (`docs/ARCHITECTURE.md` §8.2) | -       | -      | TASK-001 |    -    |    [ ]    |       |
+| TASK-00Y | **APPROVAL:** 🛑 Stop and wait for explicit user confirmation to proceed to Phase 2 (unless `/to-code auto`) | -       | -      | -        |    -    |    [ ]    |       |
 
 ### Implementation Phase 2: Expand — Robustness, Edge Cases & Invariants
 *Goal: Expand the baseline with error handling, validations, caching, and edge-case guards.*
@@ -68,7 +69,7 @@ Every task must fit into one focused session. AI agents work most reliably on XS
 | TASK-002 | Duplicate Email & Rate Limiting Slice [Domain Invariant + Throttling Middleware + UI Error Toast] | REQ-002 | AC-002 | TASK-001 | 2-3 (S) |    [ ]    |       |
 | TASK-003 | Session Persistence & Auto-Login Slice [Token Generator + LocalStorage Adapter + Auth Guard]      | REQ-003 | AC-003 | TASK-001 | 3-4 (M) |    [ ]    |       |
 | TASK-004 | Boundary Variation & Fuzz Property Slice [Negative numbers, empty collections, unicode, overflow]  | REQ-002 | AC-002 | TASK-003 | 1-2 (S) |    [ ]    |       |
-| TASK-00X | **VERIFY:** Run full test suite including extreme boundary conditions and regression suite        | -       | -      | TASK-004 |    -    |    [ ]    |       |
+| TASK-00X | **VERIFY (`check:full`):** Run full verification suite & quality ratchets (`docs/ARCHITECTURE.md` §8.2–8.3) | -       | -      | TASK-004 |    -    |    [ ]    |       |
 | TASK-00Y | **APPROVAL:** 🛑 Stop and wait for explicit user confirmation to declare plan complete             | -       | -      | -        |    -    |    [ ]    |       |
 
 ---

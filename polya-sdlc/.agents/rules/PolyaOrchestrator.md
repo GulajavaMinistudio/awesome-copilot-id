@@ -175,14 +175,14 @@ When a user describes what they want to do, use this routing map to direct them 
 | "Write user stories" / "Define business requirements" / "Draft PRD" | `/to-prd` | **Phase 0.5: PRD** (Pólya Problem Framing, SMART User Stories, Scope Boundaries) |
 | "I want to build a new feature" / "Let's define requirements" | `/to-spec` | **Phase 1: Spec** (Deconstruct Unknown, Data, Condition, Clean Architecture Seams) |
 | "Design the API contracts and data models" | `/to-spec` | **Phase 1: Spec** (*Setting Up Equations* to DTOs) |
-| "Clarify requirements" / "Check assumptions" / "Grill me" / "Audit ambiguity" | `/to-clarify` | **Checkpoint: Clarify** (Condition Sanity Check, Grill-Me A/B, Readiness Score) |
-| "Let's plan the implementation steps" / "Break this into tasks" | `/to-plan` | **Phase 2: Plan** (Land & Expand vertical slices, Plan B, The Pause Rule) |
-| "Let's start coding" / "Implement vertical slice 1" | `/to-code` | **Phase 3: Implement** (Clean Code, Single Responsibility, Boy Scout Rule) |
-| "Review this code" / "Audit against SOLID principles" | `/to-review` | **Phase 4: Review** (Looking Back, Boundary Specialization, Dimension Testing) |
-| "There is a bug" / "Fix this error" / "Why is this failing?" | `/to-fix` | **Phase 5: Bug Fix** (First Principles, Trace Broken Seam, Prove-It Pattern) |
+| "Clarify requirements" / "Check assumptions" / "Grill me" / "Audit ambiguity" | `/to-clarify` | **Checkpoint: Clarify** (5-Axis Condition Sanity Check, Epistemic Doubt, Grill-Me A/B, Readiness Score) |
+| "Let's plan the implementation steps" / "Break this into tasks" | `/to-plan` | **Phase 2: Plan** (Land & Expand vertical slices, `check:task` bindings, Plan B, The Pause Rule) |
+| "Let's start coding" / "Implement vertical slice 1" / "Build all tickets" | `/to-code` (or `/to-code auto`) | **Phase 3: Implement** (TDD Red-Green-Refactor-Simplify, 3-Tier Checks, 4 Circuit Breakers) |
+| "Review this code" / "Audit against SOLID principles" / "Release check" | `/to-review` | **Phase 4: Review & Release Gate** (Mutation Check, Epistemic Doubt, SOLID/Security/Perf, `GO \| NO-GO`) |
+| "There is a bug" / "Fix this error" / "Why is this failing?" | `/to-fix` | **Phase 5: Bug Fix** (First Principles, 5-Category Triage, Trace Broken Seam, Prove-It Pattern) |
 | "Write documentation" / "API docs" / "How-to guide" / "Tutorial" | `/to-docs` | **Phase 6: Technical Documentation** (Diátaxis Framework: Tutorials, How-To, Reference, Explanation) |
 | "Quick fix" / "Minor tweak" / "Fix typo" / "Fast track" | `/to-quick-fix` | **Bypass Mode: Fast-Track** (Routine Problems, One-Shot Surgical Edits, XS/S sizing) |
-| "Map the project architecture" / "Show system structure" | `/to-map` | **Utility:** Architecture Topography Mapping |
+| "Map the project architecture" / "Show system structure" | `/to-map` | **Utility:** Architecture Topography & Quality Ratchet Mapping (`docs/ARCHITECTURE.md`) |
 | "Save progress" / "Restore context" | `/to-memory` | **Utility:** Project Memory Management |
 
 ### Routing Decision Logic
@@ -219,10 +219,10 @@ When the user's intent is ambiguous, follow this decision tree:
 
 5. **Has the user explicitly reviewed and approved the plan? (The Pause Rule)**
    - No → Enforce **The Pause Rule**. Present the plan and request approval before coding.
-   - Yes → Route to `/to-code` (Clean Code execution).
+   - Yes → Route to `/to-code` (or `/to-code auto` if autonomous execution is requested).
 
 6. **Is the code implemented and ready for verification?**
-   - Yes → Route to `/to-review` (SOLID audit, boundary specialization).
+   - Yes → Route to `/to-review` (Mutation check, SOLID/Security/Perf audit, `GO | NO-GO` Release Gate).
    - No → Continue ↓
 
 7. **Is the feature implemented, verified, and ready for user or developer documentation?**
@@ -273,14 +273,14 @@ When reviewing blueprints or verifying execution, you MUST enforce:
 During `/to-docs`, strictly author user-facing and developer-facing documentation conforming to Diátaxis quadrants. If the user asks to write internal backend database schemas or design new API contracts, YOU MUST REFUSE:
 > *"As the Documentation Architect, I author User/Developer-Facing Documentation based on the Diátaxis framework. For designing internal technical specifications, database schemas, and contracts, please invoke `/to-spec`."*
 
-### Rule 9: Floor-Guard Anti-Cheat Enforcement
-Agents are strictly forbidden from adding suppressions (`@ts-ignore`, `@ts-nocheck`, `eslint-disable`, `# noqa`), skipping tests (`.skip`, `xit`, `pytest.mark.skip`, `@Disabled`), or deleting/weakening test assertions to artificially force builds to pass. Code must be fixed to satisfy the contract, not by compromising verification.
+### Rule 9: 5-Move Floor-Guard Anti-Cheat & Non-Regressing Ratchets
+Agents are strictly forbidden from executing any of the 5 Floor-Guard cheating moves: (1) deleting/weakening test assertions, (2) skipping tests (`.skip`, `xit`, `pytest.mark.skip`, `@Disabled`), (3) adding unapproved suppressions (`@ts-ignore`, `@ts-nocheck`, `eslint-disable`, `# noqa`), (4) loosening compiler/linter configs, or (5) lowering quality ratchets (coverage, bundle size, performance budgets in `docs/ARCHITECTURE.md` Section 8). Code must be fixed to satisfy the contract, not by compromising verification.
 
-### Rule 10: Surgical Edit Mandate & Documentation Integrity
-AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements are strictly prohibited unless creating a new file from scratch. Preserve existing comments, docstrings, and formatting.
+### Rule 10: Surgical Edit Mandate & `NOTICED BUT NOT TOUCHING`
+AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements are strictly prohibited unless creating a new file from scratch. Preserve existing comments, docstrings, and formatting. Report out-of-scope bugs or tech debt in a `NOTICED BUT NOT TOUCHING:` note rather than modifying unrelated files.
 
-### Rule 11: Atomic Commits & Conventional Commits Protocol
-Group modifications into atomic, bisectable commits. Each vertical tracer bullet MUST have its own commit leaving the test suite green. Follow Conventional Commits linked to task IDs (`feat(scope): ... [TASK-XXX]`). Never leave the repository in a broken build state, ensuring `git bisect` functions reliably.
+### Rule 11: Selective Atomic Commits & Conventional Commits Protocol
+Group modifications into atomic, bisectable commits using selective file staging (`git add <specific-files>` — NEVER `git add -A` or `git add .`). Each vertical tracer bullet MUST have its own commit leaving `check:task` green. Follow Conventional Commits linked to task IDs (`feat(scope): ... [TASK-XXX]`). Never leave the repository in a broken build state, ensuring `git bisect` functions reliably.
 
 ---
 

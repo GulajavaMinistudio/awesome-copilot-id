@@ -83,9 +83,10 @@ Organize the implementation sequence into structured, incrementally deliverable 
 
 ### Step 6: Plan File Authoring & Traceability Bridge
 1. Author the plan file in **EXACTLY ONE** file strictly at `docs/plan/{slug}-plan.md` utilizing [`../to-shared/references/PLAN-TEMPLATE.md`](../to-shared/references/PLAN-TEMPLATE.md).
-2. **Traceability Bridge:**
+2. **Traceability & Mechanical Verification Bridge:**
    - Every functional task MUST have a `Ref ID` matching `REQ-XXX` or `CON-XXX` from the Spec.
    - Every functional task MUST have an `AC Ref` matching `AC-XXX` from the Spec.
+   - Bind `VERIFY` checkpoints to the project's speed-tiered verification commands defined in `docs/ARCHITECTURE.md` Section 8.2 (`check:task` for individual slices, `check:full` for phase completion).
    - Frontmatter MUST specify `spec_ref: "docs/spec/{slug}-spec.md"`.
    - Section 6 MUST extract all `[ASSUMPTION-XXX]` tags into concrete risk mitigations.
    - Zero Orphaned Tasks allowed.
@@ -102,7 +103,7 @@ Upon generating the plan file, **YOU MUST EXPLICITLY HALT**:
 
 ### Step 8: Post-Audit Remediation Protocol (Clarification / Audit Revision)
 
-If the plan receives an Audit Report or Clarification Report (e.g., from `/to-clarify` with a Readiness Score $< 80$):
+If the plan receives an Audit Report or Clarification Report (e.g., from `/to-clarify` at `docs/audit/{slug}-clarification.md` with a Readiness Score $< 80$):
 1. **Target Gaps:** Surgically update the plan to resolve all listed blockers, missing coverage, or ambiguous dependencies. Maintain existing structure and numbering.
 2. **Projected Score Calculation:** Calculate the new Projected Readiness Score based on the standard rubrics (Completeness 40%, Clarity 30%, Alignment 30%).
 3. **Update Audit Report Status:** Prepend a `Remediation Status` block to the top of the audit report file:
@@ -123,8 +124,10 @@ Once the implementation plan is finalized:
 2. **Direct to Next SDLC Checkpoint:**
    - **Recommended Path (Quality Gate):** Direct the user to interrogate the plan with `/to-clarify` in a new session:
      > *"Plan generated! To stress-test assumptions and calculate the plan's Readiness Score, invoke `/to-clarify @docs/plan/{slug}-plan.md`."*
-   - **Execution Path (If Spec is fully clarified & verified):**
-     > *"Plan approved! To execute the tracer bullets with Clean Code and atomic commits, invoke `/to-code @docs/plan/{slug}-plan.md`."*
+   - **Execution Path (Interactive Mode — Default):**
+     > *"Plan approved! To execute the tracer bullets interactively ticket-by-ticket, invoke `/to-code @docs/plan/{slug}-plan.md`."*
+   - **Execution Path (Autonomous Mode — With 4 Circuit Breakers):**
+     > *"Or, to execute verified green tickets autonomously with 4 automatic safety circuit breakers, invoke `/to-code auto @docs/plan/{slug}-plan.md`."*
 
 ---
 
@@ -152,6 +155,16 @@ Before presenting the plan to the user, you MUST self-audit against these red fl
 2. **🚫 Bloated Tasks (XL):** Estimated file impact $\ge 8$ files $\to$ Decompose into Size S or M slices.
 3. **🚫 Vague Acceptance Criteria:** Using subjective verbs like "implement" or "make clean" $\to$ Rewrite as strict testable boolean assertions.
 4. **🚫 Mechanical Chore Descriptions:** Listing internal boilerplate chores rather than user/API deliverable behavior $\to$ Focus on end-to-end capability.
-5. **🚫 Missing Verification Checkpoints:** Phases lacking explicit `VERIFY` and `APPROVAL` tasks $\to$ Add test command and pause gate.
+5. **🚫 Missing Verification Checkpoints:** Phases lacking explicit `VERIFY` and `APPROVAL` tasks $\to$ Add `check:task` / `check:full` test commands and pause gate.
 6. **🚫 Inverted Dependencies:** Downstream consumers scheduled before foundational ports/entities $\to$ Order bottom-up.
 7. **🚫 Requirement Drift / Scope Creep:** Tasks introducing features absent from the approved Spec $\to$ Remove unrequested tasks; strictly link every task to `Ref ID`.
+
+---
+
+## 🚫 Common Rationalizations & Red Flags (Anti-Shortcut Table)
+
+| Rationalization ("Agent Excuse") | Why It Fails | Strict Counter-Mandate |
+| :--- | :--- | :--- |
+| *"It's cleaner to build all DB migrations in Phase 1, all Use Cases in Phase 2, and all UI in Phase 3."* | Horizontal slicing leaves the system un-runnable and un-testable end-to-end until the final phase, hiding integration mismatches. | Strictly enforce **Vertical Tracer Bullets**: Phase 1 (`Land`) must connect Domain $\to$ Use Case $\to$ Adapter $\to$ UI/API for the core happy path. |
+| *"This Spec is simple, so I'll go ahead and write the implementation code right after generating the Plan."* | Violates **The Pause Rule** and strips the user of architectural control before code mutation begins. | **HALT** immediately after writing `docs/plan/{slug}-plan.md` and wait for explicit user approval. |
+| *"I'll group these 10 files into one big `TASK-001` so the table is shorter."* | XL tasks ($\ge 8$ files) exceed agent working memory during `/to-code`, causing partial implementations and broken tests. | Split any task touching $\ge 8$ files into smaller, independently testable Size S or M vertical slices. |

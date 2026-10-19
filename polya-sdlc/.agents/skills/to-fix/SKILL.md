@@ -46,19 +46,26 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Firs
 
 ## ⚙️ Operational Workflow
 
-### Phase 1: First-Principles Investigation & Seam Tracing
+### Phase 1: First-Principles Investigation, Working Tree Hygiene & Seam Tracing
 
-1. **Cease Blind Patching (Problems to Prove, Pólya, 1945, p. 154):**
+1. **Working Tree Hygiene & Recent Diff Check (Pre-Flight):**
+   - Before forming complex theories, inspect `git status` and `git diff` (or recent commits via `git log -n 5`) to see if uncommitted local edits or a recent change directly introduced the regression.
+2. **Cease Blind Patching & Classify Failure Category (Problems to Prove, Pólya, 1945, p. 154):**
    - A bug is a mathematical theorem to prove: you must isolate why the system diverged from its invariant before designing a fix.
-   - Reject speculative shotgun edits across multiple files.
-2. **Step Back to First Principles:**
+   - Classify the failure into one of **5 Root-Cause Categories**:
+     1. *Syntax / Compile / Type Mismatch*
+     2. *Contract / Schema / Serialization Drift*
+     3. *State Desynchronization / Async Concurrency Race*
+     4. *Environment / Config / Dependency Version Skew*
+     5. *Domain Logic / Boundary Condition Violation ($0, 1, \text{null}$, empty)*
+3. **Step Back to First Principles & Runtime Telemetry:**
    - Ask: *"How does this feature/component actually work under the hood?"*
    - Map the expected lifecycle: ingress request $\to$ parsing $\to$ domain validation $\to$ use case logic $\to$ external I/O adapter $\to$ database transaction.
-3. **Trace the Broken Seam & Caller Grep Mandate:**
-   - Trace data flow step-by-step from trigger to failure point across Clean Architecture layers.
-   - Locate the exact broken seam: async race condition, state desynchronization, unhandled null edge case, contract leak, or missing transaction release.
+   - For UI/frontend bugs, inspect runtime console errors, uncaught promise rejections, and network payload/status mismatches rather than guessing from static markup.
+4. **Trace the Broken Seam & Caller Grep Mandate:**
+   - Trace data flow step-by-step from trigger to failure point across Clean Architecture layers (`[VERIFIED: file:line]`).
    - **Caller Grep Mandate:** If the broken seam touches a shared function, utility, or port adapter, **always grep for all callers** across the codebase first. Determine whether the defect is in the caller or the shared contract. **Fix the root cause once in the shared code** rather than patching individual callers, preventing sibling callers from remaining broken.
-4. **Intelligent Trial & Error via Bisection Search (Pólya's Mouse, p. 206–209):**
+5. **Intelligent Trial & Error via Bisection Search (Pólya's Mouse, p. 206–209):**
    - Avoid blind panic and random edits.
    - Systematically bisect the search space ($O(\log n)$ fault isolation):
      - Halve the call stack or middleware chain.
@@ -80,7 +87,7 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Firs
 ### Phase 4: Incubation & Circuit-Breaker Rule (Pólya, p. 75, 197–198)
 
 - **Hard-Stop Budget:** If **2–3 consecutive fix attempts fail reproduction** or tests continue to break:
-  - **TRIGGER IMMEDIATE CIRCUIT-BREAKER:** Halt execution immediately.
+  - **TRIGGER IMMEDIATE CIRCUIT-BREAKER:** Halt execution immediately and revert failed trial edits so the working tree remains clean.
   - Author a structured **Contradiction / Dilemma Report** in chat:
     1. *Flawed Assumption:* What mental model or hypothesis proved false?
     2. *Observed Invariant Violation:* Exact divergence between theory and runtime telemetry.
@@ -92,8 +99,8 @@ When diagnosis and surgical strategy are confirmed, author a formal, phased Bug 
 👉 [`../to-shared/references/BUGFIX-PLAN-TEMPLATE.md`](../to-shared/references/BUGFIX-PLAN-TEMPLATE.md)
 
 Enforce:
-- **Phase 1: Test Writing:** Failing reproduction test (TDD Red) with `VERIFY` and `APPROVAL` gates.
-- **Phase 2: Minimal Root-Cause Remediation:** Surgical code fix restoring invariant with `VERIFY` and `APPROVAL` gates.
+- **Phase 1: Test Writing:** Failing reproduction test (TDD Red) with `VERIFY` (`check:task`) and `APPROVAL` gates.
+- **Phase 2: Minimal Root-Cause Remediation:** Surgical code fix restoring invariant with `VERIFY` (`check:task` & `check:full`) and `APPROVAL` gates.
 - **Rollback Strategy:** Explicit steps (`git revert`, state restoration) in case of regression.
 
 ### Phase 6: Phase Completion & Handoff to `/to-code`
@@ -105,3 +112,13 @@ Enforce:
    /to-code @docs/bug-reports/{slug}-bugfix.md Execute the approved bug remediation plan and restore system invariants.
    ```
 4. *(Note: For minor, mechanical one-line fixes where the user explicitly requests immediate patching without formal plan documentation, offer the `/to-quick-fix` option).*
+
+---
+
+## 🚫 Common Rationalizations & Red Flags (Anti-Shortcut Table)
+
+| Rationalization ("Agent Excuse") | Why It Fails | Strict Counter-Mandate |
+| :--- | :--- | :--- |
+| *"I think I see the bug, let me quickly edit the file and see if it works."* | Shotgun patching without a failing reproduction test leaves you unable to prove the bug existed or prevent its regression. | Follow the **Prove-It Pattern**: isolate the root cause, specify the failing reproduction test (TDD Red) first, and generate `docs/bug-reports/{slug}-bugfix.md`. |
+| *"Attempt #3 failed, let me try a 4th and 5th tweak on top of the previous edits."* | Stacking failed guesses pollutes the working tree and compounds secondary bugs. | Respect the **3-Strike Incubation Circuit-Breaker**: revert failed attempts, halt, and present a Contradiction / Dilemma Report. |
+| *"I'll just add a null-check in this one caller instead of checking why the shared helper returned null."* | Leaves every other caller of that shared helper vulnerable to the exact same crash. | Execute the **Caller Grep Mandate** (`grep_search`) and fix the broken contract at the root seam. |

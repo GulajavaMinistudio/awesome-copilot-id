@@ -1,6 +1,7 @@
 # 🔍 Clarification Report [Review Iteration {X}]
 
-**Target Document:** `[{slug}-spec.md / {slug}-plan.md]`  
+**Target Document:** `[docs/prd/{slug}-prd.md | docs/spec/{slug}-spec.md | docs/plan/{slug}-plan.md]`  
+**Canonical Output Path:** `docs/audit/{slug}-clarification.md`  
 **Readiness Score:** **{Score} / 100**  
 **Status:** **{Ready to Proceed (Score >= 80) / Refine Required (Score < 80)}**  
 
@@ -10,13 +11,25 @@
 ## 📊 Score Breakdown (Quality Gate Rubric)
 
 - **Completeness (40%):** `{Score}` / 40  
-  *Rationale:* {Are Unknown, Data, Condition, and all Clean Architecture seams explicitly documented?}
+  *Rationale:* {Are Unknown, Data, Condition, 5 UI States (if applicable), and all Clean Architecture seams explicitly documented?}
 - **Clarity (30%):** `{Score}` / 30  
-  *Rationale:* {Is fuzzy language eliminated? Are contracts strictly typed with no ambiguous terms?}
+  *Rationale:* {Is fuzzy language eliminated? Are contracts strictly typed with zero unverified assumptions or tautological ACs?}
 - **Alignment (30%):** `{Score}` / 30  
-  *Rationale:* {Does vocabulary strictly match `CONTEXT.md`? Are architectural decisions compliant with `docs/adr/`?}
+  *Rationale:* {Does vocabulary strictly match `CONTEXT.md`? Are architectural decisions compliant with `docs/adr/` and `docs/ARCHITECTURE.md`?}
 - **Critical Flaw Veto:** `{Triggered / None}`  
   *(Note: If triggered, maximum allowable score is capped at 79 regardless of weighted points).*
+
+---
+
+## 🧭 5-Axis Structured Interrogation & Epistemic Doubt Matrix
+
+| Interrogation Axis | Coverage & Epistemic Verification | Status |
+| :--- | :--- | :---: |
+| **1. Goal & Premise Doubt (*Examine Your Guess*)** | Are root business/technical premises valid and free of contradiction? | `[VERIFIED / GAP]` |
+| **2. User Flows & 5 UI States** | Are `Loading`, `Empty`, `Error`, `Partial`, and `Populated` states specified (when UI/API applies)? | `[VERIFIED / GAP / N/A]` |
+| **3. Edge Cases & Failure Modes (*Sad Paths*)** | Are timeouts, retries, idempotency, partial failures, and rollback paths defined? | `[VERIFIED / GAP]` |
+| **4. Technical Seams & Quality Ratchets** | Do contracts respect Clean Architecture seams and `docs/ARCHITECTURE.md` Section 8 ratchets? | `[VERIFIED / GAP]` |
+| **5. Scope Boundaries & Non-Goals** | Are explicit Non-Goals and blast-radius boundaries locked to prevent scope creep? | `[VERIFIED / GAP]` |
 
 ---
 
@@ -24,8 +37,8 @@
 
 *Ambiguities, contradictions, or missing conditions that must be addressed:*
 
-- **Condition / Requirement:** "{Quote exact text from document}"
-  - **The Flaw:** {Explain why this condition is insufficient, redundant, or contradictory}
+- **Condition / Requirement:** "{Quote exact text or `[ASSUMPTION-XXX]` tag from document}"
+  - **The Flaw:** {Explain why this condition is insufficient, redundant, tautological, or contradictory}
   - **Architectural Impact:** {Why this would cause rework or bugs during implementation}
 
 ---
