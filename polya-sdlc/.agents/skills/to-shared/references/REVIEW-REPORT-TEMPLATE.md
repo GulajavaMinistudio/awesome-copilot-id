@@ -14,7 +14,7 @@
 ### 0.1 Verify the Tests First (Mutation Check by Experiment)
 - **Target Mutated Seam:** `[file_path:line]` — `{Brief description of temporary 1-line logic/condition inversion}`
 - **Observed Test Outcome:** `[CAUGHT (Test Failed as Expected) / ESCAPED (False-Green Suite — Blocker!)]`
-- **Reversion Confirmed:** `[Yes — Working tree restored clean]`
+- **Isolation / Reversion Confirmed:** `[Yes — Executed in isolated git worktree or static audit; main working tree untouched]`
 
 ### 0.2 Adversarial Doubt Cycle (Pólya's "Examine Your Guess")
 - **Tautological / Vacuous Assertions Checked:** `[PASS / FAIL]` — `{Details}`
@@ -26,7 +26,15 @@
 - **Move 3 (Unapproved Linter/Type Suppressions):** `[0 Violations / Approved in ARCHITECTURE.md §8.4 / FAIL]`
 - **Move 4 (Loosened Compiler/Linter Configs):** `[0 Violations / FAIL]`
 - **Move 5 (Lowered Quality Ratchets — Coverage, Bundle, CWV, Complexity):** `[0 Violations / Ratchets Ratcheted Up / FAIL]`
-- **Verification Scope Executed:** `[check:full / Scoped Suite: X/Y tests passed, 0 warnings]`
+- **Verification Scope Executed:** `[check:full / Scoped Suite: X/Y tests passed, 0 warnings / GATE_ONLY]`
+
+### 0.4 Runtime Evidence Ledger & AC Surface Conformance
+*Anti-Fabrication Rule: No evidence = No `MET ✅`. Static file reading never counts as runtime execution. Unapplied DB migrations on disk must be marked `SPECCED BUT NOT APPLIED ⚠️`.*
+
+| AC / Surface ID | Target Surface (Route / Component / Migration / CLI) | Conformance Status (`MET ✅` \| `SPECCED BUT MISSING 🚫` \| `SPECCED BUT NOT APPLIED ⚠️` \| `BLOCKED ⚠️`) | Concrete Execution Evidence (Command, HTTP Status, DB Check, or Blocker Reason) |
+| :--- | :--- | :---: | :--- |
+| `AC-001` | `[e.g., POST /api/v1/orders]` | `MET ✅` | `[e.g., vitest order.test.ts (4 passed) + 201 Created smoke check]` |
+| `AC-002` | `[e.g., 0004_add_orders_idx.sql]` | `MET ✅` | `[e.g., Migration applied to local DB; \d orders confirmed index]` |
 
 ---
 
@@ -119,7 +127,7 @@
 | `delete:` | Dead code, speculative features, unused wrappers | Delete immediately. Best code is no code. |
 | `reuse:` | Re-invented helper or wheel | Replace with existing house domain helper or utility. |
 | `stdlib:` | Hand-rolled logic available in standard library | Replace with built-in standard library methods. |
-| `native:` | Complex wrapper around native UI widget/API | Use standard platform widget/API directly. |
+| `native:` | Complex one-off wrapper around native platform API (excluding project design-system / house components) | Reuse project house component first; otherwise use standard platform widget/API directly. |
 | `yagni:` | Speculative flexibility, unused config parameters | Strip unused options/parameters down to current requirement. |
 | `shrink:` | Over-engineered, over-nested algorithm | Flatten and simplify to straightforward linear logic. |
 | `merge:` | Duplicated logic across multiple near-identical functions | Consolidate into a single parameterized function. |

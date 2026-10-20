@@ -103,7 +103,7 @@ Upon generating the plan file, **YOU MUST EXPLICITLY HALT**:
 
 ### Step 8: Post-Audit Remediation Protocol (Clarification / Audit Revision)
 
-If the plan receives an Audit Report or Clarification Report (e.g., from `/to-clarify` at `docs/audit/{slug}-clarification.md` with a Readiness Score $< 80$):
+If the plan receives an Audit Report or Clarification Report (e.g., from `/to-clarify` at `docs/audit/{slug}-plan-clarification.md` with a Readiness Score $< 80$):
 1. **Target Gaps:** Surgically update the plan to resolve all listed blockers, missing coverage, or ambiguous dependencies. Maintain existing structure and numbering.
 2. **Projected Score Calculation:** Calculate the new Projected Readiness Score based on the standard rubrics (Completeness 40%, Clarity 30%, Alignment 30%).
 3. **Update Audit Report Status:** Prepend a `Remediation Status` block to the top of the audit report file:

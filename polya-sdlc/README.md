@@ -303,7 +303,6 @@ polya-sdlc/
 │   │   │   └── SKILL.md
 │   │   ├── to-shared/
 │   │   │   └── references/
-│   │   │       ├── ARCHITECTURE-MAPPING-WORKFLOW.md
 │   │   │       ├── ARCHITECTURE-TEMPLATE.md
 │   │   │       ├── BUGFIX-PLAN-TEMPLATE.md
 │   │   │       ├── CLARIFICATION-REPORT-TEMPLATE.md
@@ -314,7 +313,9 @@ polya-sdlc/
 │   │   │       ├── POLYA-HEURISTIC-ARSENAL.md
 │   │   │       ├── PRD-TEMPLATE.md
 │   │   │       ├── REVIEW-REPORT-TEMPLATE.md
-│   │   │       └── SPEC-TEMPLATE.md
+│   │   │       ├── SPEC-TEMPLATE.md
+│   │   │       ├── TEST-WRITING-GUIDE.md
+│   │   │       └── UI-ENGINEERING-GUIDE.md
 │   │   └── to-spec/
 │   │       └── SKILL.md
 │   └── standards/

@@ -61,8 +61,8 @@ You **MUST NOT**:
 At the **start of every new session**, you MUST perform the following steps in order:
 
 1. **Read `AGENTS.md`** at the project root to load all global rules, persona mandates, and workflow definitions.
-2. **Read instruction files** from `.agents/instructions/` (`clean-code-clean-architecture.instructions.md`, `markdown.instructions.md`, and `memory.instructions.md`).
-3. **Offer to load memory:** Proactively ask the user:
+2. **Read core instruction files** from `.agents/instructions/` (`clean-code-clean-architecture.instructions.md` and `markdown.instructions.md`).
+3. **Check & offer to load project memory:** Check if `.agents/instructions/memory.instructions.md` contains prior session checkpoints, and proactively ask the user:
    > *"Would you like me to read the project memory from the previous session using the `/to-memory` skill to restore context?"*
 4. **Identify the current phase & task:** Based on memory context or user input, classify the problem (Problem to Find vs Problem to Prove) and guide the user to the appropriate phase.
 
@@ -80,92 +80,7 @@ At the **start of every new session**, you MUST perform the following steps in o
 
 ## 🗺️ Polya Heuristic Phase Routing Map
 
-When a user describes what they want to do, use this routing map to direct them to the correct modular `/to-*` sub-skill:
-
-```text
-====================================================================================================
-               POLYA-CODER COMPLETE PIPELINE: DISCOVERY ➔ SPEC ➔ PLAN ➔ CODE ➔ REVIEW
-====================================================================================================
-
-[ Phase 0: DISCOVERY & EXPLORATION ] (Pólya Phase 0: Getting Acquainted)
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-explore                   │ ──▶ [ docs/discovery/ ] ──▶ ( Topography Critique, Trade-Offs, Spikes )
-└───────────────────────────────┘
-      │
-      ├─────────────────────────────────────────────────┐
-      │ (Path A: Optional Business Requirements)       │ (Path B: Direct Technical Architecture)
-      ▼                                                 │
-┌───────────────────────────────┐                       │
-│ /to-prd                       │ ──▶ [ docs/prd/ ]     │
-└───────────────────────────────┘                       │
-      │                                                 │
-      └─────────────────────────┬───────────────────────┘
-                                │
-                                ▼
-[ Phase 1: SPECIFICATION ] (Pólya Phase 1: Understand the Problem)
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-spec                      │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
-└───────────────────────────────┘
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-clarify                   │ ──▶ [ docs/audit/ ] ──▶ ( Interrogate Assumptions, Grill-Me A/B, Readiness Score )
-└───────────────────────────────┘
-      │
-      ▼
-[ Phase 2: PLANNING ] (Pólya Phase 2: Devising a Plan)
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-plan                      │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
-└───────────────────────────────┘
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-clarify                   │ ──▶ ( Optional Plan Interrogation & Stress-Test )
-└───────────────────────────────┘
-      │
-      ▼
-🛑 MANDATORY GATE: THE PAUSE RULE
-(Halt execution! Await explicit user confirmation before writing functional code)
-      │
-      ▼ [Approved]
-[ Phase 3: IMPLEMENTATION ] (Pólya Phase 3: Carrying Out the Plan)
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-code                      │ ──▶ ( Clean Code, Respice Finem, Boy Scout Rule, Surgical Edits )
-└───────────────────────────────┘
-      │
-      ▼
-[ Phase 4: REVIEW & AUDIT ] (Pólya Phase 4: Looking Back)
-      │
-      │
-      ▼
-┌───────────────────────────────┐
-│ /to-review                    │ ──▶ [ docs/reviews/ ] ──▶ ( Specialization, SOLID Audit, Test by Dimension )
-└───────────────────────────────┘
-      │
-      ├───────────────────────────────┐
-      │ (If Verified & Approved)      │ (If Defects / Invariant Violations Emerge)
-      ▼                               ▼
-┌───────────────────────────────┐   ┌───────────────────────────────┐
-│ /to-docs                      │   │ /to-fix                       │ ──▶ ( First Principles, Trace Broken Seam )
-└───────────────────────────────┘   └───────────────────────────────┘
-      │ [docs/{tutorials,how-to,reference,explanation}/]
-      ▼
-[ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
-
-════════════════════════════════════════════════════════════════════════════════════════════════════
-[ FAST-TRACK BYPASS ]           ──▶ /to-quick-fix     (Routine, XS/S, One-Shot Fixes)
-[ ARCHITECTURE TOPOGRAPHY ]     ──▶ /to-map           (Traverse, Seams, docs/ARCHITECTURE.md)
-[ PERSISTENT MEMORY ]           ──▶ /to-memory        (Checkpoint to memory.instructions.md)
-════════════════════════════════════════════════════════════════════════════════════════════════════
-```
+When a user describes what they want to do, use the canonical pipeline defined in `AGENTS.md` (`Phase 0: /to-explore` ➔ `Phase 0.5: /to-prd` ➔ `Phase 1: /to-spec` ➔ `/to-clarify` ➔ `Phase 2: /to-plan` ➔ `🛑 The Pause Rule` ➔ `Phase 3: /to-code` ➔ `Phase 4: /to-review` ➔ `Phase 5: /to-fix` / `Phase 6: /to-docs`) and this routing table to direct them to the correct modular `/to-*` sub-skill:
 
 ### Routing Table
 
@@ -284,33 +199,20 @@ Group modifications into atomic, bisectable commits using selective file staging
 
 ---
 
-## 🔧 Utility Skills (Always Available)
+## 🔧 Utility Skills (Always Available — Session-Lock Exempt)
 
 | Skill | Purpose | When to Suggest |
 | :--- | :--- | :--- |
 | `/to-memory` | Save/restore session context to/from `memory.instructions.md` | At session start, session wrap-up, and major phase milestones |
 | `/to-map` | Map repository architecture into `docs/ARCHITECTURE.md` | When exploring a new codebase or adding new architectural modules |
+| `/to-init` | Initialize or update Pólya SDLC scaffolding (`AGENTS.md`, `.agents/`) | When bootstrapping a fresh or existing repository |
+| `/to-ask-help` | Socratic triage navigator and autonomous intent router | When the user provides an open brief or asks where to start |
 
 ---
 
 ## 📚 Documentation Standards
 
-All agents MUST strictly adhere to the project documentation standards located in `.agents/standards/`:
-
-1. **Domain Glossary (`CONTEXT.md`):**
-   - Defines ubiquitous business terminology to prevent jargon ambiguity.
-   - **Strict Syntax:** Format rejected synonyms strictly as `_Avoid_: {Synonym 1}, {Synonym 2}`.
-   - **Lazy Creation:** Only created when the first business term is explicitly resolved.
-   - **No Implementation Details:** It is a domain glossary, not a code scratchpad.
-
-2. **Architecture Decision Records (`docs/adr/`):**
-   - Stored as `docs/adr/NNNN-slug.md` to capture architectural memory.
-   - **Triple-Gate Validation:** Verify all 3 criteria before authoring: (1) Hard to reverse, (2) Surprising without context, (3) Real trade-off.
-   - **Terminology Compliance:** Must strictly use the canonical vocabulary defined in `CONTEXT.md`.
-   - **Structure:** Context (problem & constraints), Decision (what was chosen), Consequences (trade-offs accepted).
-
-3. **Clean Code & Clean Architecture (`clean-code-clean-architecture.instructions.md`):**
-   - Strictly enforce The Dependency Rule (dependencies point inward).
-   - Use Data Transfer Objects (DTOs) across boundaries; never leak raw Entities to outer layers.
-   - Small, single-responsibility functions (SRP) and Boy Scout Rule.
-   - **Architectural Pragmatism:** Fit ceremony to problem scale. Do not force 4-layer directory overhead onto standalone scripts, migrations, or lightweight CLI tools.
+All agents MUST strictly adhere to the canonical standards defined in `AGENTS.md` and `.agents/standards/`:
+1. **Domain Glossary (`CONTEXT.md`):** Follow `.agents/standards/CONTEXT-FORMAT.md` (lazy creation, opinionated `_Avoid_: {Synonym}` format, zero implementation details).
+2. **Architecture Decision Records (`docs/adr/NNNN-slug.md`):** Follow `.agents/standards/ADR-FORMAT.md` (Triple-Gate validation: hard to reverse, surprising without context, real trade-off).
+3. **Clean Code & Clean Architecture (`.agents/instructions/clean-code-clean-architecture.instructions.md`):** Enforce The Dependency Rule, boundary DTOs, SRP, Boy Scout Rule, and architectural proportionality.

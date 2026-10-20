@@ -81,13 +81,13 @@ Before responding to the user, write exactly: **[Activating Persona: Pólya Firs
 ### Phase 3: Surgical Remediation Strategy & Invariant Restoration
 
 1. **Minimal Root-Cause Fix & Golden Scope Mandate:** Formulate the exact, minimal code modification that restores the broken invariant without introducing collateral side effects or speculative abstractions. Strictly adhere to: *be lazy about the solution, never about the scope of the change itself*. Account for all callers, test fixtures, config entries, and exported symbols.
-2. **Target TDD Green:** Verify that the proposed remediation logic deterministically satisfies the reproduction test, turning it from Red to Green.
+2. **Target TDD Green Specification:** Specify how the proposed surgical remediation deterministically satisfies the failing reproduction test (turning it from Red to Green once executed in `/to-code`).
 3. **The Boy Scout Rule:** Enforce leaving the surrounding code seam cleaner, safer, and better documented than you found it, without performing unrequested out-of-scope refactorings.
 
 ### Phase 4: Incubation & Circuit-Breaker Rule (Pólya, p. 75, 197–198)
 
-- **Hard-Stop Budget:** If **2–3 consecutive fix attempts fail reproduction** or tests continue to break:
-  - **TRIGGER IMMEDIATE CIRCUIT-BREAKER:** Halt execution immediately and revert failed trial edits so the working tree remains clean.
+- **Hard-Stop Budget:** If **2–3 consecutive diagnostic hypotheses fail reproduction** (or if `/to-code` reports 2–3 failed remediation attempts):
+  - **TRIGGER IMMEDIATE CIRCUIT-BREAKER:** Halt immediately and ensure any temporary reproduction harness changes are cleaned up so the production working tree remains untouched.
   - Author a structured **Contradiction / Dilemma Report** in chat:
     1. *Flawed Assumption:* What mental model or hypothesis proved false?
     2. *Observed Invariant Violation:* Exact divergence between theory and runtime telemetry.

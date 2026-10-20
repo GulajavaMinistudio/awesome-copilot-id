@@ -1,7 +1,7 @@
 # 🔍 Clarification Report [Review Iteration {X}]
 
 **Target Document:** `[docs/prd/{slug}-prd.md | docs/spec/{slug}-spec.md | docs/plan/{slug}-plan.md]`  
-**Canonical Output Path:** `docs/audit/{slug}-clarification.md`  
+**Canonical Output Path:** `docs/audit/{slug}-{prd|spec|plan}-clarification.md`  
 **Readiness Score:** **{Score} / 100**  
 **Status:** **{Ready to Proceed (Score >= 80) / Refine Required (Score < 80)}**  
 

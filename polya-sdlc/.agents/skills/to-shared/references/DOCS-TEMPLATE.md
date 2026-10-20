@@ -8,12 +8,16 @@ All documentation generated in this phase MUST adhere strictly to the **Diátaxi
 
 ## 🧭 Quadrant Selector & Directory Structure
 
-| Quadrant            | Purpose                               | Orientation            | Target Directory    | File Naming             |
-| :------------------ | :------------------------------------ | :--------------------- | :------------------ | :---------------------- |
-| **1. Tutorial**     | Learning by doing                     | Learning-oriented      | `docs/tutorials/`   | `{slug}-tutorial.md`    |
-| **2. How-To Guide** | Solving a specific task               | Task-oriented          | `docs/how-to/`      | `{slug}-guide.md`       |
-| **3. Reference**    | Technical description of machinery    | Information-oriented   | `docs/reference/`   | `{slug}-reference.md`   |
-| **4. Explanation**  | Deep understanding & design rationale | Understanding-oriented | `docs/explanation/` | `{slug}-explanation.md` |
+| Quadrant / Artifact | Purpose                               | Orientation            | Target Directory    | File Naming                      |
+| :------------------ | :------------------------------------ | :--------------------- | :------------------ | :------------------------------- |
+| **1. Tutorial**     | Learning by doing                     | Learning-oriented      | `docs/tutorials/`   | `{slug}-tutorial.md`             |
+| **2. How-To Guide** | Solving a specific task               | Task-oriented          | `docs/how-to/`      | `{slug}-guide.md`                |
+| **3. Reference**    | Technical description of machinery    | Information-oriented   | `docs/reference/`   | `{slug}-reference.md`            |
+| **4. Explanation**  | Deep understanding & design rationale | Understanding-oriented | `docs/explanation/` | `{slug}-explanation.md`          |
+| **5. PR Summary**   | Pull Request review & release context | Delivery-oriented      | `docs/releases/`    | `{slug}-pr.md` *(or inline)*     |
+| **6. Changelog**    | Chronological Keep-a-Changelog record | Delivery-oriented      | Root                | `CHANGELOG.md`                   |
+| **7. Release Note** | User/Developer version announcement   | Delivery-oriented      | `docs/releases/`    | `{version}-release-notes.md`     |
+| **8. Postmortem**   | Blameless incident & root-cause audit | Reliability-oriented   | `docs/postmortems/` | `{slug}-postmortem.md`           |
 
 ---
 
@@ -342,7 +346,109 @@ audience: "[Software Architects, Senior Engineers, Team Leads]"
 ---
 
 ## Related Documents
-- [Architecture Map](../../docs/ARCHITECTURE.md)
-- [Relevant ADR](../../docs/adr/0001-order-seam-architecture.md)
+- [Architecture Map](../ARCHITECTURE.md)
+- [Relevant ADR](../adr/0001-order-seam-architecture.md)
 - [API Reference](../reference/{slug}-reference.md)
+```
+
+---
+
+## Template 5: 🔀 Pull Request (PR) Description
+
+```markdown
+## Summary (What & Why)
+- **Problem / Goal:** [1-2 sentences linking to `docs/spec/{slug}-spec.md` and `REQ-XXX`]
+- **Solution:** [Concise summary of architectural seam changes]
+
+## Key Changes by Seam
+- **Domain / Use Cases:** [e.g., Added `CancelOrderUseCase` enforcing state invariants]
+- **Adapters / Infrastructure:** [e.g., Added `POST /api/v1/orders/:id/cancel` and migration `0004`]
+- **UI / Presentation:** [e.g., Added confirmation dialog with loading/error states]
+
+## Verification & Runtime Evidence
+- [x] `check:fast` (Typecheck, Linter, Secret Scan): `PASS`
+- [x] `check:task` / `check:full`: `[X/Y tests passed]`
+- [x] Runtime / Browser / Migration Verification: `[Evidence summary]`
+
+## Breaking Changes & Rollback Plan
+- **Breaking Changes:** `[None / List migration steps]`
+- **Rollback Plan:** `[e.g., Toggle feature flag <flag_name> (< 1m) or git revert <sha>]`
+```
+
+---
+
+## Template 6: 📋 Changelog Entry (`CHANGELOG.md` — Keep a Changelog)
+
+```markdown
+## [Unreleased] / [vX.Y.Z] - YYYY-MM-DD
+
+### Added
+- [New capability or endpoint grounded in verified git commits (`REQ-XXX`)]
+
+### Changed
+- [Behavior, contract, or performance improvement]
+
+### Fixed
+- [Bug fix with root-cause summary (`docs/bug-reports/{slug}-bugfix.md`)]
+
+### Security
+- [Vulnerability remediation or hardening guard]
+```
+
+---
+
+## Template 7: 🚀 Release Notes (`docs/releases/{version}-release-notes.md`)
+
+```markdown
+# Release Notes — {version} ({YYYY-MM-DD})
+
+## Highlights
+[1-2 paragraph overview of the most impactful improvements for users/integrators.]
+
+## What's New
+- **[Feature Name]:** [Clear benefit and link to Guide/Reference]
+
+## Upgrade & Migration Guide
+1. **Database Migrations:** `[Commands required, or "None"]`
+2. **Environment / Config Changes:** `[New env vars or flags, or "None"]`
+3. **Breaking Contract Changes:** `[Before -> After migration snippet, or "None"]`
+
+## Bug Fixes & Stability
+- [Concise list of resolved issues]
+```
+
+---
+
+## Template 8: 🧯 Blameless Incident Postmortem (`docs/postmortems/{slug}-postmortem.md`)
+
+```markdown
+# Incident Postmortem: [Incident Title]
+
+**Date:** `YYYY-MM-DD`  
+**Severity:** `[SEV-1 / SEV-2 / SEV-3]`  
+**Status:** `[Resolved / Action Items Open]`  
+**Bug Report Ref:** `docs/bug-reports/{slug}-bugfix.md`
+
+## 1. Executive Summary & Impact
+- **User / Business Impact:** [Who was affected, for how long, and what failed]
+- **Duration:** `HH:MM UTC` to `HH:MM UTC` (`X minutes`)
+
+## 2. Timeline (UTC)
+- `HH:MM` — [Triggering event / deployment / traffic spike]
+- `HH:MM` — [Alert fired / anomaly detected]
+- `HH:MM` — [Mitigation / rollback executed]
+- `HH:MM` — [Full recovery verified]
+
+## 3. Root Cause & Broken Seam Analysis (First Principles)
+- **Broken Seam:** `[file:line]` — [Why the invariant failed across Clean Architecture boundaries]
+- **Contributing Factors:** [Why existing tests/guards missed the condition]
+
+## 4. What Went Well vs. What Went Poorly
+- **Went Well:** [Fast detection, clean feature-flag rollback, etc.]
+- **Went Poorly:** [Missing boundary test, alert threshold too high, etc.]
+
+## 5. Preventive Action Items
+| Action ID | Preventive Seam / Test | Owner | Priority | Verification |
+| :--- | :--- | :--- | :---: | :--- |
+| `ACT-001` | [e.g., Add regression test for concurrent webhook lock expiry] | `[Owner]` | `P0` | `[Test / PR link]` |
 ```

@@ -44,14 +44,29 @@ $$\text{Correct} \to \text{Safe} \to \text{Holds under load} \to \text{Tested} \
 
 ### 0.5 Verify the Tests First (Mutation Check by Experiment)
 Before trusting a green test suite, audit the tests themselves:
-* **Mutation Check by Experiment:** Pick one key logical condition added or modified by the change (e.g., invert `!`, swap `&&` and `||`, or shift `<` to `<=`), run the relevant test, verify that the test **FAILS (turns RED)**, and immediately restore the production code. If the test suite stays **GREEN** while the logic is broken, flag a **Critical / Required** finding for missing test coverage.
+* **Mutation Check by Experiment (Worktree-Isolated or Static):** Never mutate production source files in place on the active working tree. Either run the mutation check inside a disposable isolated `git worktree add <tmp>` (inverting `!`, swapping `&&`/`||`, or shifting `<` to `<=`, confirming the relevant test **FAILS / turns RED**, and immediately removing the temporary worktree) or perform a static assertion-strength audit verifying that test assertions directly check the modified condition. If tests would stay **GREEN** while the logic is inverted, flag a **Critical / Required** finding for missing test coverage.
 * **Boundary-Only Mocking Check:** Ensure tests prefer real implementations or fakes over heavy mocking, and never mock the internal unit under test.
 
-### 0.6 Adversarial Doubt Cycle (Pólya's *"Examine Your Guess"*, p. 199)
-For changes touching high-risk or irreversible **One-Way Doors** (authentication, authorization, payments, concurrency locks, destructive migrations, or public APIs):
-1. **CLAIM & EXTRACT:** Isolate the `ARTIFACT` (diff/module) and `CONTRACT` (invariants from `docs/spec/`) **without passing the author's reasoning or justification**.
-2. **DOUBT (Fresh-Context Adversarial Subagent):** Invoke an isolated read-only subagent prompted to *disprove* rather than validate: *"Find what will break in production. Assume the author was overconfident. Do not validate or praise."* (In interactive sessions, optionally offer a sandboxed read-only cross-model second opinion).
+### 0.6 Adversarial Doubt Cycle & Isolated Subagent Review (Pólya's *"Examine Your Guess"*, p. 199)
+To eliminate same-session confirmation bias and keep full diff/file reading out of the primary orchestrator context:
+1. **CLAIM & EXTRACT:** Isolate the `ARTIFACT` (diff/modified files) and `CONTRACT` (invariants and Acceptance Criteria from `docs/spec/`) **without passing the author's reasoning or justification**.
+2. **DOUBT (Default Isolated Read-Only Subagent & Contrasting Model Family):** By default, delegate the code review pass to an isolated read-only subagent (using a contrasting model family when supported by the client environment) prompted to *disprove* rather than validate: *"Find what will break in production. Assume the author was overconfident. Do not validate or praise."* This is mandatory for high-risk **One-Way Doors** (authentication, authorization, payments, concurrency locks, destructive migrations, or public APIs) and recommended for all multi-file diffs.
 3. **RECONCILE & STOP:** Classify findings into *Contract Misread*, *Valid + Actionable*, *Valid Trade-off*, or *Noise*. Cap at **3 cycles** and watch for **Doubt Theater** (dismissing all substantive adversarial findings as noise).
+
+### 0.7 Runtime Evidence Gate, Refactor Diffing & Surface Conformance Taxonomy
+Static code reading alone is never sufficient to mark an Acceptance Criterion or runtime surface as verified:
+* **4 Anti-Fabrication Rules (Mandatory Evidence Ledger):**
+  1. **No Evidence = No `PASS`:** Every `PASS` / `MET` claim MUST cite concrete execution output (test runner output, HTTP status + payload, CLI stdout/stderr, DB query result, or browser console/DOM state).
+  2. **Never Executed = Never `PASS`:** Code inspected only statically by reading source files MUST NOT be marked `PASS` for runtime/behavioral verification.
+  3. **Unusable Tool = `BLOCKED`:** If a required verification tool (e.g., local DB, browser MCP, external sandbox, or test runner) is unavailable, record the check as `BLOCKED ⚠️` with the exact blocker reason — never silently downgrade to `PASS`.
+  4. **Explicit Blocked Ledger:** List all unexercised surfaces and unverified scale assumptions under the report's **Blocked / Not Checked** section.
+* **4-State AC & Surface Conformance Taxonomy:** Evaluate every Acceptance Criterion (`AC-XXX`), route, and schema migration using one of four explicit states:
+  - `MET ✅`: Implemented, wired end-to-end, and verified with runtime/test execution evidence.
+  - `SPECCED BUT MISSING 🚫`: Required by `docs/spec/{slug}-spec.md` (or defined in backend/domain) but missing, unwired, or unreachable on the target surface.
+  - `SPECCED BUT NOT APPLIED ⚠️`: Schema migration file or config exists on disk, but has **not** been applied and verified against the live local/test database schema.
+  - `BLOCKED ⚠️`: Cannot be executed in the current environment (tool/service unavailable); requires human or CI verification.
+* **Before/After Worktree Diffing for Behavior-Preserving Refactors:** When reviewing a pure refactoring task that claims zero behavioral change, compare representative outputs/snapshots before (`git worktree` at base commit) vs. after (`HEAD`) to confirm 100% behavioral parity.
+* **`GATE_ONLY` Project Support:** Respect repositories documented in `docs/ARCHITECTURE.md` as `GATE_ONLY` (verified via compiler, typechecker, linter, and runtime smoke checks without a unit test runner) without issuing false-positive `NO-GO` verdicts for missing unit test frameworks.
 
 ### 1. The 5 SOLID Principles, Floor-Guard Diff & Lean Audit
 * **SRP (Single Responsibility):** Does every modified module have only one reason to change?

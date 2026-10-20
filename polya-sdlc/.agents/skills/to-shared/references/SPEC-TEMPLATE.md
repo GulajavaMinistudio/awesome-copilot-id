@@ -147,6 +147,15 @@ Frameworks & Drivers (DB, Web Server, UI Runtimes)
   *When* [action executed],  
   *Then* [graceful validation error returned without throwing 500].
 
+### 6.1 Value Sourcing & Positive Input Coverage Table
+
+*Every value that the feature produces, computes, persists, or displays in `AC-001..N` MUST have an explicit named source (zero unstated derivations):*
+
+| Required Output / Computed / Displayed Value | AC Ref | Named Source (`Input DTO` / `DB Column [file:line]` / `Derivation Formula` / `Config`) | Boundary / Edge Variation (`Timezone` / `Locale` / `Currency` / `Tenant` / `Null`) |
+| :--- | :---: | :--- | :--- |
+| `[e.g., invoiceTotalInCents]` | `AC-001` | `Derived: sum(lineItems.amountInCents) - discountInCents + taxInCents` | `0 items, negative discount guard, integer cents rounding` |
+| `[e.g., billingTimezone]` | `AC-001` | `DB Column: organizations.timezone [VERIFIED: schema.prisma:42]` | `UTC vs. Asia/Jakarta (+07:00) day-boundary rollover` |
+
 ---
 
 ## 7. Testing Strategy & Dimensional Bounds

@@ -52,8 +52,8 @@ _Code must be readable by humans, not just machines._
 
 ### Error Handling & Comments
 
-- **Exceptions > Return Codes:** Use Exceptions for error handling instead of returning error codes/flags to keep the caller code clean.
-- **No Null:** Avoid passing `null` to functions or returning `null`. Use Optionals, Maybes, or Null Object Patterns.
+- **Idiomatic Error Handling (Match Codebase Convention First):** Match the repository's established, language-idiomatic error-handling pattern (`Result<T, E>` / explicit error return tuples in Go, Rust, or functional TypeScript; typed Domain Exceptions in OOP services). Never introduce a second competing error-handling pattern into an existing module, and never return raw untyped error flags or swallow errors silently.
+- **Explicit Optionality (No Unchecked `null`):** Avoid passing raw `null` into functions or returning ambiguous `null` where absent values are unexpected. Use the language's idiomatic optionality construct (`Option<T>`, `Maybe<T>`, explicit TypeScript union `T | undefined`, empty collections `[]`, or Null Object Pattern) consistent with the surrounding codebase.
 - **Comments:** Comments should explain "Why", not "What". If the code needs a comment to explain _what_ it does, refactor the code instead.
 
 ---

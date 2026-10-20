@@ -154,10 +154,10 @@ Use this workflow to persist progress after a significant milestone.
 - **Current SDLC Phase:** [e.g., Phase 1: Spec / Clarify Checkpoint / Phase 2: Plan / Phase 3: Implement / Phase 4: Review / Phase 5: Bug Fix]
 - **Active Artifacts:**
   - `[docs/spec/{slug}-spec.md]` — Status: ✅ Finalized (Readiness Score: [XX]/100)
-  - `[docs/audit/[slug]-clarification.md]` — Status: ✅ Finalized (Readiness Score: [XX]/100)
+  - `[docs/audit/{slug}-{prd|spec|plan}-clarification.md]` — Status: ✅ Finalized (Readiness Score: [XX]/100)
   - `[docs/plan/{slug}-plan.md]` — Status: 🔄 In Progress
-  - `[docs/reviews/[slug]-review.md]` — Status: ⏳ Pending
-  - `[docs/bug-reports/[slug]-bugfix.md]` — Status: ⏳ Pending
+  - `[docs/reviews/{slug}-review.md]` — Status: ⏳ Pending
+  - `[docs/bug-reports/{slug}-bugfix.md]` — Status: ⏳ Pending
 - **Achieved Milestones:**
   - [Concise description of what was accomplished]
   - [Another achievement, if any]

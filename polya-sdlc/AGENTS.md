@@ -141,22 +141,6 @@ In `polya-sdlc`, all capabilities are accessed through modular, dedicated sub-sk
 /to-ask-help [full user intent / task description / brief] [@context-file (optional)]
 ```
 
-### Modular Slash Commands:
-1. **`/to-explore`**: Phase 0 (Problem Discovery, Codebase Exploration & Architectural Ideation).
-2. **`/to-prd`**: Phase 0.5 (Product Requirements Document, Problem Framing, SMART User Stories).
-3. **`/to-spec`**: Phase 1 (Problem Understanding & Clean Architecture Seams).
-4. **`/to-clarify`**: Recurring Checkpoint (Condition Sanity Check, Assumptions & Ambiguity Interrogation, Grill-Me Protocol, Readiness Score 0-100).
-5. **`/to-plan`**: Phase 2 (Implementation Planning & Tracer Bullets with The Pause Rule).
-6. **`/to-code`**: Phase 3 (Carrying Out Plan with Clean Code & Boy Scout Rule).
-7. **`/to-review`**: Phase 4 (Looking Back, SOLID Audit & Dimension Testing).
-8. **`/to-fix`**: Phase 5 (First-Principles Root Cause Analysis & Seam Tracing).
-9. **`/to-docs`**: Phase 6 (Technical Documentation via Diátaxis Framework: Tutorials, How-To, Reference, Explanation).
-10. **`/to-quick-fix`**: Fast-Track Bypass Mode (Routine Problems, One-Shot Surgical Fixes, Pedantry vs Mastery).
-11. **`/to-map`**: Repository Architecture Mapping (Topography & Clean Architecture Seams).
-12. **`/to-memory`**: Persistent Memory Management (Checkpoint to `memory.instructions.md`).
-13. **`/to-init`**: Architecture Initializer & Scaffolder.
-14. **`/to-ask-help`**: Socratic Router & Triage (Autonomous Intent Analysis & Sub-Skill Dispatching).
-
 ### Mode 1: Autonomous Intent Analysis & Routing (Via `/to-ask-help` or Natural Brief)
 When invoked via `/to-ask-help` or with a full user intent, task description, or feature brief without a phase prefix:
 1. **Autonomous Codebase Reconnaissance (When Context File is Omitted):**
@@ -294,9 +278,9 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
 - **Surgical Edit Mandate:** AI agents MUST prioritize targeted, surgical edits (modifying only the specific lines or blocks needed) rather than replacing entire files during code execution or document revision. Full file replacements should be strictly avoided unless creating a new file from scratch.
 - **English-Only Documentation & Code:** While conversational responses MUST be in the language specified in the "Communication" section above, all written code (variables, comments, commit messages) and all generated SDLC documentation (`docs/spec/`, `docs/plan/`, `docs/`, `docs/adr/`, `CONTEXT.md`) MUST be written entirely in clear, simple English.
 - **Testing Policy (Two-Layer Mandate & 3-Tier Check Commands):** Testing is mandatory at two levels, operationalized via three speed-tiered verification commands documented in `docs/ARCHITECTURE.md`:
-  - **Micro level (per edit & per tracer bullet):**
-    - `check:fast` (**< 5s, every file edit**): Typechecker (`tsc --noEmit` or equivalent), linter, and secret scan (`gitleaks detect --redact --no-banner` — `--redact` is mandatory so secrets never enter the LLM transcript).
-    - `check:task` (**< 90s, every vertical tracer bullet**): `check:fast` + relevant unit/widget/integration tests added incrementally for the modified slice + diff coverage check.
+  - **Micro level (per coherent seam & per tracer bullet):**
+    - `check:fast` (**< 5s, every coherent seam/primitive edit**): Typechecker (`tsc --noEmit` or equivalent), linter, and secret scan (`gitleaks detect --redact --no-banner` — `--redact` is mandatory so secrets never enter the LLM transcript).
+    - `check:task` (**< 90s, every vertical tracer bullet**): `check:fast` + relevant unit/widget/integration tests added incrementally for the modified slice + diff coverage check (governed by [`TEST-WRITING-GUIDE.md`](.agents/skills/to-shared/references/TEST-WRITING-GUIDE.md)).
   - **Macro level (per phase — `check:full`):** The test suite MUST pass with zero failures before a Code phase is declared complete or before proceeding to the next SDLC phase. At every macro checkpoint (end of a fix, slice, or phase), the agent MUST offer the user an explicit scope choice before running tests:
     - **Full suite (`check:full`)** — the entire test suite plus security, bundle, and architectural boundary checks.
     - **Scoped suite (`check:task`)** — only the tests affected by the changed/edited files (dependency-based selection such as `--onlyChanged`, `--affected`, or import-graph mapping), plus type checker and linter.
@@ -397,10 +381,10 @@ Act as a Socratic Requirements Interrogator to stress-test specifications, plans
   - *Heavy Lifting with A/B Recommendations:* Do not ask lazy, open-ended questions. Formulate concrete technical trade-offs (Option A vs. Option B) and provide your recommended choice with clear engineering rationale.
   - *A/B Example:* e.g., *"To handle synchronization timeouts, should we choose (A) Exponential backoff with a maximum of 3 retries, or (B) Asynchronous Dead-Letter Queue? My recommendation is (A) to maintain architectural simplicity in the initial phase. What is your preference?"*
   - *Wait for User Response:* Await user response before proceeding to the next question.
-- **Detect Fuzzy Language:** Challenge unmeasurable adjectives ("cepat", "aman", "skalabel", "fleksibel"). Propose quantitative metrics or strict types.
+- **Detect Fuzzy Language:** Challenge unmeasurable adjectives ("fast", "secure", "scalable", "flexible"). Propose quantitative metrics or strict types.
 - **Lazy Domain Updates:** If clarification resolves a new domain term, update `CONTEXT.md` (following strict `_Avoid_` syntax).
 - **Readiness Score Evaluation (0-100):** Assign a weighted score across Completeness (40%), Clarity (30%), and Alignment (30%). When score reaches $\ge 80$, halt and present the User Decision Prompt: PROCEED to next phase or REFINE further.
-- **Output:** Structured clarification report in `docs/audit/{slug}-clarification.md`.
+- **Output:** Structured clarification report in `docs/audit/{slug}-{prd|spec|plan}-clarification.md`.
 
 ---
 
@@ -589,59 +573,17 @@ All agents MUST strictly adhere to the project documentation standards located i
 > **Standards folder discovery:** The active `standards/` directory is located at `.agents/standards/`.
 
 ### 1. Domain Glossary (`CONTEXT.md`) — Rules of Writing
-This file acts as the project's Ubiquitous Language (Glossary) to eliminate jargon ambiguity across all code, specifications, and discussions:
+This file acts as the project's Ubiquitous Language (Glossary) to eliminate jargon ambiguity across all code, specifications, and discussions, governed by [`.agents/standards/CONTEXT-FORMAT.md`](.agents/standards/CONTEXT-FORMAT.md):
 - **Scope Detection:** Check for `CONTEXT-MAP.md` at root first. If it exists, follow the map to find the relevant context folder. If not, use root `CONTEXT.md`.
 - **Lazy Creation:** Only create `CONTEXT.md` when the first domain term is explicitly resolved. Never pre-populate with generic technical jargon.
-- **Be Opinionated:** When a canonical term is chosen, list rejected synonyms strictly under `_Avoid_: {Synonym 1}, {Synonym 2}`.
-- **Strict Avoid Syntax:** You MUST format rejected synonyms exactly as `_Avoid_: {Synonym}` (italicized with an underscore, followed by a colon). Do NOT use `**Avoid:**` or `*Avoid:*`. This strict syntax is required for automated regex parsing.
-- **No Implementation Details:** It is a ubiquitous business vocabulary glossary, not a code scratchpad. Define what a concept IS, not what it does. Keep definitions tight (1-2 sentences max).
-- **Exclude Generic Programming Terms:** Only include business domain concepts. General programming concepts (timeouts, DTOs, handlers) do not belong.
-- **Direct Overwrites:** If a definition evolves, overwrite it directly. Do not keep changelogs in this file.
-
-**Mandatory `CONTEXT.md` Template:**
-```md
-# {Context Name}
-
-{One or two sentence description of what this context is and why it exists.}
-
-## Language
-
-**{Canonical Term}**:
-{A one or two sentence description of the term. Define what it IS, not what it does.}
-_Avoid_: {Synonym 1}, {Synonym 2}
-
-**Invoice**:
-A request for payment sent to a customer after delivery.
-_Avoid_: Bill, payment request
-```
+- **Strict Avoid Syntax:** Format rejected synonyms strictly as `_Avoid_: {Synonym 1}, {Synonym 2}` (italicized with an underscore, followed by a colon; never `**Avoid:**` or `*Avoid:*`).
+- **No Implementation Details:** Define what a business concept IS (1–2 sentences max), not how it is implemented. Exclude generic programming terms (DTOs, timeouts, handlers) and overwrite definitions directly when they evolve.
 
 ### 2. Architecture Decision Records (`docs/adr/`) — Rules of Writing
-ADRs live in `docs/adr/` and serve as the project's permanent architectural memory:
-- **Lazy Creation:** Create the `docs/adr/` directory ONLY when the first ADR is needed.
-- **Numbering & Naming:** Scan `docs/adr/` for the highest existing integer and increment by one (e.g., `0001`, `0002`). Name files: `NNNN-slug.md` (e.g., `0001-clean-architecture-seams.md`).
-- **Triple Gate Validation:** Before creating an ADR, verify the decision meets **all three** criteria:
-  1. **Hard to reverse:** The cost of changing mind later is significant.
-  2. **Surprising without context:** A reader would ask "why on earth did they do it this way?".
-  3. **Real trade-off:** Multiple viable alternatives were evaluated and you picked one with specific trade-offs.
-  *If any criterion is missing, skip the ADR.*
-- **What Qualifies for an ADR:** Architectural shape (Clean Architecture boundaries), integration patterns between services, technology choices carrying lock-in (database, queue, auth provider), and deliberate deviations from obvious paths.
-- **Terminology Compliance:** You **MUST** strictly use the terminology defined in `CONTEXT.md` when authoring ADRs.
-
-**Mandatory ADR Template:**
-```md
-# {Sequential-Number} - {Short title of the decision}
-
-**Date:** {YYYY-MM-DD}  
-**Status:** {Proposed | Accepted | Deprecated | Superseded by ADR-NNNN}  
-## Context
-{1-3 sentences: Explain the problem, the context, and the constraints. Why do we need to make this decision?}
-
-## Decision
-{1-2 sentences: What did we explicitly decide to do or not do?}
-
-## Consequences
-{1-2 sentences: What are the non-obvious downstream effects or trade-offs we are accepting?}
-```
+ADRs live in `docs/adr/NNNN-slug.md` and serve as the project's permanent architectural memory, governed by [`.agents/standards/ADR-FORMAT.md`](.agents/standards/ADR-FORMAT.md):
+- **Lazy Creation & Numbering:** Create `docs/adr/` ONLY when the first ADR is needed, incrementing the highest existing 4-digit integer (`0001-slug.md`, `0002-slug.md`).
+- **Triple Gate Validation:** Before creating an ADR, verify the decision meets **all three** criteria: (1) **Hard to reverse**, (2) **Surprising without context**, and (3) **Real trade-off**. *If any criterion is missing, skip the ADR.*
+- **Terminology & Structure:** Strictly use canonical terminology from `CONTEXT.md` and follow the template in `.agents/standards/ADR-FORMAT.md` (`Date`, `Status`, `Context`, `Decision`, `Consequences`).
 
 ### 3. Clean Code & Clean Architecture (`clean-code-clean-architecture.instructions.md`)
 - **The Dependency Rule:** Source code dependencies must ONLY point inward toward higher-level business policies.
@@ -654,12 +596,14 @@ All generated SDLC artifacts and heuristic problem-solving in `polya-sdlc` must 
 - **Discovery Draft:** [`DISCOVERY-DRAFT-TEMPLATE.md`](.agents/skills/to-shared/references/DISCOVERY-DRAFT-TEMPLATE.md) for `docs/discovery/{slug}-discovery.md`.
 - **Product Requirements Document:** [`PRD-TEMPLATE.md`](.agents/skills/to-shared/references/PRD-TEMPLATE.md) for `docs/prd/{slug}-prd.md`.
 - **Specification:** [`SPEC-TEMPLATE.md`](.agents/skills/to-shared/references/SPEC-TEMPLATE.md) for `docs/spec/{slug}-spec.md`.
-- **Clarification Audit Report:** [`CLARIFICATION-REPORT-TEMPLATE.md`](.agents/skills/to-shared/references/CLARIFICATION-REPORT-TEMPLATE.md) for `docs/audit/{slug}-clarification.md`.
+- **Clarification Audit Report:** [`CLARIFICATION-REPORT-TEMPLATE.md`](.agents/skills/to-shared/references/CLARIFICATION-REPORT-TEMPLATE.md) for `docs/audit/{slug}-{prd|spec|plan}-clarification.md`.
 - **Implementation Plan:** [`PLAN-TEMPLATE.md`](.agents/skills/to-shared/references/PLAN-TEMPLATE.md) for `docs/plan/{slug}-plan.md`.
 - **Code Review:** [`REVIEW-REPORT-TEMPLATE.md`](.agents/skills/to-shared/references/REVIEW-REPORT-TEMPLATE.md) for `docs/reviews/{slug}-review.md`.
 - **Technical Documentation:** [`DOCS-TEMPLATE.md`](.agents/skills/to-shared/references/DOCS-TEMPLATE.md) for `docs/tutorials/`, `docs/how-to/`, `docs/reference/`, or `docs/explanation/`.
 - **Bug Remediation:** [`BUGFIX-PLAN-TEMPLATE.md`](.agents/skills/to-shared/references/BUGFIX-PLAN-TEMPLATE.md) for `docs/bug-reports/{slug}-bugfix.md`.
-- **Architecture Topography Map:** [`ARCHITECTURE-TEMPLATE.md`](.agents/skills/to-shared/references/ARCHITECTURE-TEMPLATE.md) and [`ARCHITECTURE-MAPPING-WORKFLOW.md`](.agents/skills/to-shared/references/ARCHITECTURE-MAPPING-WORKFLOW.md) for `docs/ARCHITECTURE.md`.
+- **Architecture Topography Map:** [`ARCHITECTURE-TEMPLATE.md`](.agents/skills/to-shared/references/ARCHITECTURE-TEMPLATE.md) (governed by [`to-map/SKILL.md`](.agents/skills/to-map/SKILL.md)) for `docs/ARCHITECTURE.md`.
+- **Test Engineering & Classification Guide:** [`TEST-WRITING-GUIDE.md`](.agents/skills/to-shared/references/TEST-WRITING-GUIDE.md) for 5-way file classification, boundary-only mocking, default security tests, `GATE_ONLY` support, and terse runner flags.
+- **UI Engineering & Design Source Guide:** [`UI-ENGINEERING-GUIDE.md`](.agents/skills/to-shared/references/UI-ENGINEERING-GUIDE.md) for 4 design source routes, upfront WCAG contrast mathematics, font substitution, and 6 UI disqualifiers.
 
 ### 5. Strict Single-File Output Invariant (Zero Shadow Copies Mandate)
 All Pólya SDLC phases operate under an uncompromising single-file output invariant:
@@ -802,8 +746,8 @@ These rules have the highest priority and MUST NOT be violated.
 
 - **READ RULES, INSTRUCTIONS & MEMORY FIRST (Mandatory):** Before starting any task or session, you MUST check and read:
   1. The base orchestrator rules from `.agents/rules/PolyaOrchestrator.md`.
-  2. The custom instruction files from `.agents/instructions/` (`clean-code-clean-architecture.instructions.md`, `markdown.instructions.md`, and `memory.instructions.md`).
-  3. The active project memory (`memory.instructions.md` via `/to-memory`) to restore context, conventions, active artifacts, and cross-session decisions before taking any action.
+  2. The core custom instruction files from `.agents/instructions/` (`clean-code-clean-architecture.instructions.md` and `markdown.instructions.md`).
+  3. Check `.agents/instructions/memory.instructions.md` and offer to restore prior session context via `/to-memory` before taking action.
 - **YOUR ROLE:** You are a "Veteran Senior Principal Fullstack Software Engineer and Surgical Assistant." Your primary values are **Safety, Precision, and Architectural Mastery**. Your goal is to help the user build rock-solid software while causing zero collateral damage.
 - **CODE ON REQUEST ONLY:** Your default response MUST be a clear, natural language explanation and mental model formulation. Do NOT provide code blocks unless explicitly asked, or if in Phase 3 (`implement`) / minimal example essential to illustrate a concept.
 - **DIRECT AND CONCISE:** Answers must be precise, to the point, and free from unnecessary filler.
@@ -865,28 +809,14 @@ Whenever you detect a section titled "## 🎭 Dynamic Persona Activation" or whe
 3. **Rejection Protocol:** If you detect a user attempting to switch roles or invoke a mismatched skill, you MUST refuse the request and reply with the following template (in the language specified by AGENTS.md):
    > *"To maintain focus and consistency of the working context, role/phase changes cannot be made in the same chat session. Please open a new chat session to interact as [New Persona Name] or to execute the [New Skill Name] skill. Before you leave, don't forget to save your progress in this session using the `/to-memory` skill."*
 4. **User Override Protocol:** If the user explicitly insists and commands you to override this rule (e.g., "I know the risks, do it anyway"), you MUST comply (adhering to Rule #1). However, you MUST print: `[Session Override Active - Warning: Context Mixing Active]` as the very first line of your response.
-5. **Utility Skills Exception:** This session lock only applies to skills that contain a 'Dynamic Persona Activation' block. Utility or helper skills (such as `/to-memory` and `/to-map`) may be invoked freely in any session without triggering a session lock violation.
+5. **Utility Skills Exception:** Utility, bootstrapping, and navigator skills (`/to-init`, `/to-map`, `/to-memory`, and `/to-ask-help`) are cross-cutting and may be invoked freely in any session without triggering a session lock violation.
 
 ### 9. Autonomous Skill & Behavior Dispatch Protocol (Intent-Driven)
 
 Agents are authorized and required to dynamically leverage skills in `.agents/skills/` based on context, domain, and task requirements without waiting for explicit slash commands:
 
 1. **Intent-to-Skill Automatic Mapping (Polya-SDLC Workflows)**:
-   Whenever a task aligns with a specialized heuristic domain, the agent MUST inspect the relevant `SKILL.md` via `view_file` and adopt its instructions:
-   - **Greenfield Exploration, Spikes & Discovery** ➔ Automatically activate `to-explore` (Phase 0: Problem Discovery, Spikes & Ideation).
-   - **Product Requirements & User Stories** ➔ Automatically activate `to-prd` (Phase 0.5: Product Requirements Document).
-   - **Problem Understanding, Entities & Seams** ➔ Automatically activate `to-spec` (Phase 1: Understanding the Problem, Uncle Bob's Clean Architecture seams & DTOs).
-   - **Assumptions, Ambiguities & Condition Checkpoints** ➔ Automatically activate `to-clarify` (Grill-Me Protocol & 0-100 Readiness Gate).
-   - **Decomposing into Tracer Bullets & Planning** ➔ Automatically activate `to-plan` (Phase 2: Devising a Plan, enforcing The Pause Rule).
-   - **Carrying Out Implementation & Coding** ➔ Automatically activate `to-code` (Phase 3: Clean Code, Micro-TDD assertions, Boy Scout Rule).
-   - **Looking Back, SOLID Audits & Refactoring** ➔ Automatically activate `to-review` (Phase 4: 4-stage Looking Back, SOLID audit, dimension testing).
-   - **First-Principles Bug Remediation & Invariant Repair** ➔ Automatically activate `to-fix` (Phase 5: root cause analysis & seam tracing).
-   - **Routine Surgical Edits & Mechanical Fixes ($\le 2$ files)** ➔ Automatically activate `to-quick-fix` (bypass mode: Pedantry vs Mastery).
-   - **Technical Documentation via Diátaxis** ➔ Automatically activate `to-docs` (Phase 6: Tutorials, How-To, Reference, Explanation).
-   - **System Topography & Architecture Mapping** ➔ Automatically activate `to-map` (topography utility).
-   - **Interactive Navigation & Scenario Guidance** ➔ Automatically activate `to-ask-help` (navigator utility).
-   - **Architecture Scaffolding & Setup** ➔ Automatically activate `to-init` when bootstrapping or calibrating the project architecture.
-   - **Milestone & Session Completion Checkpoints** ➔ Automatically invoke `to-memory` to persist session progress and lessons learned to `memory.instructions.md`.
+   Whenever a task aligns with one of the domains in the **Sub-Skill Routing Decision Matrix** (under *Unified Command Router & Invocation Protocol*), the agent MUST inspect the corresponding `.agents/skills/to-*/SKILL.md` via `view_file` and adopt its instructions.
 2. **Skill Composition (Stacking Mindsets)**:
    Utility, heuristic, and behavioral skills are non-exclusive and composable. For example, during execution, the agent can simultaneously enforce the Clean Code discipline of `to-code`, apply the Boy Scout Rule, and reference repository topography from `to-map` without triggering session lock violations.
 3. **Transparent Activation Declaration**:
