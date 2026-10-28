@@ -52,10 +52,11 @@ Formulate the mental model:
 | Open-ended ideation, greenfield exploration, tech debt critique, spikes | **`/to-explore`** | Phase 0: Discovery & Feasibility |
 | Business requirements, user stories, personas, SMART acceptance criteria | **`/to-prd`** | Optional Phase 0.5: Product Requirements |
 | New feature, API contract, DB schema, Clean Architecture seams, DTOs | **`/to-spec`** | Phase 1: Technical Specification |
-| Interrogating ambiguities, validating assumptions, Grill-Me A/B options | **`/to-clarify`** | Checkpoint: Condition Sanity & Readiness Gate |
+| Socratic design interview, turn-by-turn sparring, A/B trade-off choices | **`/to-grill-me`** | Sparring: Socratic Stress-Testing & Decisions |
+| Formal condition sanity check, assumption audit, readiness score (0-100) | **`/to-clarify`** | Checkpoint: Condition Sanity & Readiness Gate |
 | Task decomposition, Land & Expand vertical slices, Plan B | **`/to-plan`** | Phase 2: Implementation Planning |
 | Clean code execution, small functions, Boy Scout Rule, commits | **`/to-code`** | Phase 3: Clean Code Execution |
-| 5 SOLID principles audit, boundary specialization, dimension testing | **`/to-review`** | Phase 4: Quality & SOLID Audit |
+| Risk-tiered PR/diff review (`Quick/Standard/Deep`), 5 SOLID principles, 14-vector security audit, `[Important]/[Nit]/[Pre-existing]`, release gate | **`/to-review`** | Phase 4: Quality, SOLID & Security Audit |
 | Root cause analysis, bisection search, failing reproduction test | **`/to-fix`** | Phase 5: First-Principles Bug Remediation |
 | User guides, API references, How-To guides, architecture explanations | **`/to-docs`** | Phase 6: Diátaxis Technical Documentation |
 | Routine fix, typo, config bump, boilerplate CRUD field ($\le 2$ files) | **`/to-quick-fix`** | Bypass: Routine One-Shot Surgical Edits |

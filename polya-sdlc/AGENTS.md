@@ -126,7 +126,8 @@ In `polya-sdlc`, all capabilities are accessed through modular, dedicated sub-sk
 /to-explore    → Phase 0: Problem Discovery, Spikes & Ideation
 /to-prd        → Phase 0.5: Product Requirements Document (Optional)
 /to-spec       → Phase 1: Understanding the Problem, Seams & DTOs
-/to-clarify    → Checkpoint: Grill-Me Protocol & Readiness Gate
+/to-grill-me   → Sparring: Turn-by-Turn Socratic Design Interview & Stress-Test
+/to-clarify    → Checkpoint: Condition Sanity Check & Readiness Gate (0-100)
 /to-plan       → Phase 2: Tracer Bullets & The Pause Rule
 /to-code       → Phase 3: Clean Code Implementation & Boy Scout Rule
 /to-review     → Phase 4: Looking Back & SOLID Audit
@@ -155,7 +156,8 @@ When invoked via `/to-ask-help` or with a full user intent, task description, or
    - Open-ended / Greenfield $\rightarrow$ `/to-explore` (Phase 0)
    - Business requirements / User stories $\rightarrow$ `/to-prd` (Phase 0.5)
    - New feature / Schema / API $\rightarrow$ `/to-spec` (Phase 1)
-   - Ambiguity / Assumption checks $\rightarrow$ `/to-clarify` (Checkpoint)
+   - Interactive Socratic sparring / A/B trade-offs $\rightarrow$ `/to-grill-me` (Sparring Partner)
+   - Ambiguity / Assumption audit & readiness score $\rightarrow$ `/to-clarify` (Checkpoint Gate)
    - Approved spec decomposition $\rightarrow$ `/to-plan` (Phase 2)
    - Clean code execution $\rightarrow$ `/to-code` (Phase 3)
    - Quality / SOLID audit $\rightarrow$ `/to-review` (Phase 4)
@@ -216,12 +218,16 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
 │ /to-spec                      │ ──▶ [ docs/spec/ & docs/adr/ ] ──▶ ( Sanity Check & Equation Mapping )
 └───────────────────────────────┘
       │
-      ▼
-┌───────────────────────────────┐
-│ /to-clarify                   │ ──▶ [ docs/audit/ ] ──▶ ( Interrogate Assumptions, Grill-Me A/B, Readiness Score )
-└───────────────────────────────┘
-      │
-      ▼
+      ├─────────────────────────────────────────────────┐
+      │ (Turn-by-turn design sparring)                  │ (Formal condition sanity check)
+      ▼                                                 ▼
+┌───────────────────────────────┐               ┌───────────────────────────────┐
+│ /to-grill-me                  │               │ /to-clarify                   │ ──▶ [ docs/audit/ ]
+└───────────────────────────────┘               └───────────────────────────────┘
+      │ (Decisions Log & ADRs)                          │ (Readiness Score >= 80)
+      └─────────────────────────┬───────────────────────┘
+                                │
+                                ▼
 [ Phase 2: PLANNING ] (Pólya Phase 2: Devising a Plan)
       │
       ▼
@@ -229,12 +235,16 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
 │ /to-plan                      │ ──▶ [ docs/plan/ ] ──▶ ( Land & Expand / Tracer Bullets )
 └───────────────────────────────┘
       │
-      ▼
-┌───────────────────────────────┐
-│ /to-clarify                   │ ──▶ ( Optional Plan Interrogation & Stress-Test )
-└───────────────────────────────┘
-      │
-      ▼
+      ├─────────────────────────────────────────────────┐
+      │ (Plan Stress-Testing & Plan B)                  │ (Plan Readiness Gate)
+      ▼                                                 ▼
+┌───────────────────────────────┐               ┌───────────────────────────────┐
+│ /to-grill-me                  │               │ /to-clarify                   │
+└───────────────────────────────┘               └───────────────────────────────┘
+      │                                                 │
+      └─────────────────────────┬───────────────────────┘
+                                │
+                                ▼
 🛑 MANDATORY GATE: THE PAUSE RULE
 (Halt execution! Await explicit user confirmation before writing functional code)
       │
@@ -265,6 +275,7 @@ The development lifecycle follows a disciplined 6-phase progression based on Geo
 [ Phase 6: TECHNICAL DOCUMENTATION ] (Pedagogical Transfer & Diátaxis Framework)
 
 ════════════════════════════════════════════════════════════════════════════
+[ SOCRATIC SPARRING ]          ──▶ /to-grill-me      (Turn-by-Turn Design Interview & Stress-Test)
 [ FAST-TRACK BYPASS ]           ──▶ /to-quick-fix     (Routine, XS/S, One-Shot Fixes)
 [ ARCHITECTURE TOPOGRAPHY ]     ──▶ /to-map           (Traverse, Seams, docs/ARCHITECTURE.md)
 [ PERSISTENT MEMORY ]           ──▶ /to-memory        (Checkpoint to memory.instructions.md)
@@ -367,6 +378,19 @@ Do not write a single line of production code until both you and the user share 
   - *Interface Adapters (Controllers, Gateways, Presenters):* Converting data between use cases and external formats.
   - *Frameworks & Drivers (DB, Web, Devices):* External tools and libraries.
 - **Output:** Structured technical blueprint (**EXACTLY ONE** file) in `docs/spec/{slug}-spec.md` (never split into modular catalogs or mirrored under legacy naming) and ADRs in `docs/adr/` when applicable.
+
+---
+
+### Interactive Sparring: Socratic Design Interview (`/to-grill-me`)
+*Pólya Heuristic: Socratic Dialogue, Devil's Advocate & Decision Extraction*
+
+Act as a relentless Senior Principal sparring partner to pressure-test design decisions and trade-offs across Idea, PRD, Spec, or Plan:
+- **Phase-Adaptive Grilling:** Operates across raw ideas (Phase 0), product requirements (Phase 0.5), technical specifications (Phase 1), or execution plans (Phase 2).
+- **The 1-Question Rule:** Ask exactly ONE sharp question per interaction. Never flood the user with checklists.
+- **Do the Heavy Lifting (A/B Choices):** Propose 2–3 concrete, technically grounded options derived from codebase reality with explicit trade-offs.
+- **Opinionated Senior Recommendation:** Always provide a clear engineering recommendation based on Clean Architecture, SOLID, or YAGNI.
+- **Synergy with `/to-clarify`:** While `/to-grill-me` (or `/grill-me`) provides conversational, turn-by-turn sparring to resolve difficult design tensions, `/to-clarify` performs the formal static condition audit and scores Readiness (0-100).
+- **Output:** Synthesizes a structured Decisions & Alignment Log in chat and optionally generates an ADR in `docs/adr/`.
 
 ---
 
@@ -476,8 +500,10 @@ Execute the approved plan with surgical precision and discipline across two supp
 *Pólya Phase 4: Looking Back (Review, Consolidation & Launch Readiness)*
 
 Review, stress-test, and solidify the solution upon completion:
-- **Verify the Tests First (Mutation Check by Experiment):** Before trusting a green test suite, mentally or experimentally invert one condition added by the change (e.g., drop `!` or swap `&&`/`||`), verify the test suite turns **RED**, and immediately restore the code. If tests remain GREEN when logic is broken, flag a **Critical/Required** missing test assertion.
-- **Adversarial Doubt Cycle (Pólya's *"Examine Your Guess"*, p. 199):** For non-trivial or One-Way Door decisions (auth, concurrency, migrations, public contracts), strip author rationale and pass only `ARTIFACT + CONTRACT` to a fresh-context adversarial subagent biased to *disprove* rather than validate (with an optional sandboxed read-only cross-model second opinion offer), bounded to at most 3 cycles with **Doubt Theater** detection.
+- **Assess Change-Driven Risk Tier & Adaptive Review Depth (`Quick` | `Standard` | `Deep`):** Classify every diff or PR by blast radius and touched paths rather than author: **`Low (Tier 0)`** (docs, tests, copy, feature-flagged additive code $\to$ `Quick` mode, `0 Human Approvals Required`), **`Medium (Tier 1)`** (standard feature/use-case logic $\to$ `Standard` mode, `>= 1 Human Approval Required`), or **`High / Critical (Tier 2)`** (auth, billing, tenant isolation, migrations, CI/CD `.github/workflows`, installers/auto-updaters, or governance rules $\to$ `Deep` mode + **`[MANDATORY HUMAN AUDIT REQUIRED]`** with `>= 2 Human Approvals Required`). Enforce **The Rule of Immutable Governance Rules**: always evaluate PRs against `AGENTS.md`, `REVIEW.md`, and `docs/ARCHITECTURE.md` from the trusted base branch (`main`), never from a PR diff that weakens its own review policy. Check for base-branch drift and carry over Phase 3 `NOTICED BUT NOT TOUCHING` items into `[Pre-existing]`.
+- **High-Signal Categorization (`[Important]`, `[Nit]`, `[Pre-existing]`), Verifier Proof-of-Failure Filter, Bug Classes & Convergence:** Tag every finding as **`[Important]`** (blocking defects, logic errors, broken requirements, `CONFIRMED` vulnerabilities), **`[Nit]`** (non-blocking maintainability tweaks, capped $\le 3$; zero linter/formatting noise), or **`[Pre-existing]`** (legacy flaws in untouched baseline code, logged without blocking the author). Apply the **Verifier Proof-of-Failure Filter**: every `[Important]` finding must prove its *Call Chain + Trigger Condition + Failure Outcome* against source code (dropping speculative warnings). Specify the **`Bug Class`** on every finding so the author sweeps all sibling occurrences in one pass. On re-reviews, audit only the updated delta, respect validated dismissals, and trigger a **3-Round Convergence Circuit Breaker** if Iteration 3 still fails core `[Important]` checks (stepping back to `/to-plan`, `/to-spec`, or `/to-grill-me`).
+- **Verify the Tests First (Mutation Check & 5-Way Test Classification):** Before trusting a green test suite, verify proportional test coverage per [`TEST-WRITING-GUIDE.md`](.agents/skills/to-shared/references/TEST-WRITING-GUIDE.md) (`LOGIC`, `BOUNDARY`, `UI_COMPONENT`, `SECURITY_SURFACE`, `CONFIG_TRIVIAL`) and mentally or experimentally invert one condition added by the change (e.g., drop `!` or swap `&&`/`||`), verify the test suite turns **RED**, and immediately restore the code. If tests remain GREEN when logic is broken, flag a **Critical/Required (`[Important]`)** missing test assertion.
+- **Adversarial Doubt Cycle (Pólya's *"Examine Your Guess"*, p. 199):** For non-trivial or One-Way Door decisions (auth, concurrency, migrations, public contracts), strip author rationale and pass only `ARTIFACT + CONTRACT` to a fresh-context adversarial subagent biased to *disprove* rather than validate (with an optional sandboxed read-only cross-model second opinion offer), bounded to at most 3 cycles with **Doubt Theater** detection. Enforce the strict 3-state verdict taxonomy: **`CONFIRMED`** (complete source trace from entrypoint to sink with observed impact), **`NEEDS_VALIDATION`** (source-grounded candidate with exact missing deployment/infra fact and owner validation plan; strictly forbidden as a speculative bucket), or **`REJECTED`** (refuted by visible code controls or impossible preconditions).
 - **Validate with Specialization (Boundary & Extreme Cases):**
   - What happens when the input is empty (`[]`, `null`, `""`)?
   - What happens at boundary limits ($0$, $1$, maximum payload size, connection timeouts)?
@@ -486,20 +512,26 @@ Review, stress-test, and solidify the solution upon completion:
 - **SOLID Principles & Floor-Guard Diff Audit:**
   - Verify **SRP, OCP, LSP, ISP, and DIP** across all modified seams.
   - Inspect `git diff` against the **5 Floor-Guard Cheating Moves**: verify zero new suppressions (`@ts-ignore`, `eslint-disable`, `istanbul ignore`, `nosemgrep`), zero `.skip`/deleted assertions, zero `TODO`/empty `catch {}` stubs, zero weakened config thresholds/ratchets in `docs/ARCHITECTURE.md`, and zero unapproved exceptions.
-- **Defensive Security, Supply-Chain & LLM Hardening Audit:**
-  - **OWASP Top 10 & Trust Boundaries:** Audit against Injection, BOLA/IDOR, XSS, Broken Auth, mass assignment, and unsafe deserialization. Treat local process args, shared files, third-party API responses, and LLM outputs as **untrusted data**.
-  - **SSRF & Network Guards:** Verify outbound URL fetchers allowlist `https:`, resolve all DNS records (`all: true`), reject non-unicast IPs (`127.0.0.1`, `169.254.169.254`, private ranges), and disable redirects (`redirect: 'error'`).
-  - **Destructive Path Operations:** Verify any `rm`/`mv`/overwrite on derived paths resolves symlinks first (`realpath`), validates containment inside `ALLOWED_ROOTS` with `MIN_DEPTH >= 1`, and checks ownership.
-  - **Distributed Rate Limiting & Supply Chain:** Ensure auth/mutation rate limiters use shared stores (e.g., Redis) rather than per-process memory behind load balancers; verify lockfile integrity and block unverified dependency install scripts (`--ignore-scripts` / `strictDepBuilds`).
-  - **AI / LLM Security (OWASP LLM Top 10 2025):** Ensure model outputs are schema-validated (never passed to `eval`/`innerHTML`), permissions are enforced in code rather than system prompts, and RAG contexts are tenant-isolated.
+- **Defensive Security, Attack Classes & LLM Hardening Audit (Cloudflare Heuristics):**
+  - **OWASP Top 10, Trust Boundaries & Second-Order Injections:** Parameterized queries, sanitization, and second-order sink guards (data stored safely becoming dangerous in downstream regex, paths, or shell args).
+  - **Tenant & Object Data Isolation Lifecycle:** Row-level filtering enforced on every query/join/worker (field existence $\neq$ enforcement); tenant-namespaced cache keys; derived copies (indexes/caches/exports) immediately reflecting ACL changes.
+  - **AI, LLM, Agentic & MCP Boundaries:** Code-level authorization (prompt guardrails are never security boundaries); tool-argument validation; action-binding & confused-deputy guards; subagent least-privilege; persistent memory poisoning defense.
+  - **Web, Protocol & Identity Boundaries:** JWT signature/algorithm confusion defense (`alg: "none"`, `RS256` vs `HS256`); OAuth cryptographic state & exact redirect URI match; CORS reflected origin rejection; cookie `HttpOnly`/`Secure`/`SameSite` & session fixation defense.
+  - **Client-Side Sinks & DOM:** Zero unescaped `innerHTML`/`javascript:` sinks; prototype pollution rejection in deep merges; `postMessage` origin allowlists; zero tokens in `localStorage`.
+  - **Async Queues, Webhooks & Idempotency:** Idempotency keys enforced on side-effecting handlers; webhook HMAC signature & replay timestamp checks; transport envelope vs. payload identity alignment.
+  - **Resource Exhaustion & Cancellation:** Algorithmic complexity ($O(n^2)$), ReDoS, and decompression bombs; pre-auth work bounds; client cancellation (`AbortSignal`) propagated downstream.
+  - **SSRF & Destructive Path Operations:** Outbound URLs allowlist `https:`, resolve all DNS records, reject non-unicast/metadata IPs (`169.254.169.254`); path operations resolve `realpath` inside `ALLOWED_ROOTS` with `MIN_DEPTH >= 1`.
+  - **Zero Hardcoded Secrets & Git Hygiene:** Zero committed API keys or credentials; git history audited for committed/reverted secrets; lockfile diff check with `--ignore-scripts`.
+  - **Universal Execution Safety:** Source-first read-only inspection; local verification strictly non-destructive using dummy principals; zero probing of live deployed infrastructure or production databases.
 - **Database, Caching & Performance Audit (`EXPLAIN ANALYZE` & Keep-or-Revert Gate):**
   - Check for N+1 queries, unbounded fetches, connection pool exhaustion (`instances * max < max_connections`), and composite index column order (*equality columns first, then range/sort* verified via `EXPLAIN ANALYZE`).
   - Verify cache keys include every varying input (`tenant`, `viewer`, `locale`, `permissions`) with explicit invalidation and stampede protection.
   - **Keep-or-Revert Gate & Attempt Ledger:** Any performance optimization whose measured gain is within noise (*neutral*) MUST be reverted to prevent unnecessary complexity and logged in the review report's Attempt Ledger.
+- **Frontend, Accessibility & UI Disqualifier Audit (`UI-ENGINEERING-GUIDE.md` — When UI Files Are Touched):** Verify all **4 UI States** (Empty, Loading `aria-busy="true"`, Error, Success) across responsive breakpoints (`375px`, `768px`, `1280px`), **WCAG 2.1 AA** contrast ($\ge 4.5:1$ / $\ge 3:1$) and keyboard accessibility, zero **6 UI Disqualifiers**, zero **8 Banned AI Visual Defaults**, and zero browser console errors/warnings in an `--isolated` session.
 - **Reductio ad Absurdum, Test by Dimension & Symmetry (Pólya, p. 162–205):** Verify negative test proofs, dimensional unit consistency (ms vs s, integer cents vs float dollars, `Promise<T>` vs `T`), and round-trip lifecycle symmetry ($f^{-1}(f(x)) = x$, `open/close`, `acquire/release`).
 - **Derive Differently & Can You See It at a Glance? (Pólya, p. 59–61):** Challenge over-engineered abstractions and synthesize the implementation into a 30-second topological diagram.
 - **Pólya's Two Golden Questions & Generalization (Pólya, p. 61, 108):** Promote reusable DTOs/ports (*Can you use the result?*) and record proven patterns in `memory.instructions.md` (*Can you use the method?*).
-- **Release Readiness & Timed Rollback Gate (`GO | NO-GO`):** Conclude the review with an explicit **`GO | NO-GO`** release verdict (any Critical finding defaults to `NO-GO`), verifying feature flag hygiene (owner + expiration, no nested flags, tested ON/OFF), canary rollout thresholds (Error rate, P95 latency, Error budget), and a **Timed Rollback Plan** (Feature flag `< 1m`, Redeploy `< 5m`, Reversible DB migration `< 15m`).
+- **Release Readiness & Timed Rollback Gate (`GO | NO-GO`):** Conclude the review with an explicit **`GO | NO-GO`** release verdict (any unresolved Critical finding, any `CONFIRMED` security vulnerability, or any Floor-Guard violation defaults to `NO-GO`), verifying feature flag hygiene (owner + expiration, no nested flags, tested ON/OFF), canary rollout thresholds (Error rate, P95 latency, Error budget), and a **Timed Rollback Plan** (Feature flag `< 1m`, Redeploy `< 5m`, Reversible DB migration `< 15m`).
 - **Output:** Formal review report in `docs/reviews/{slug}-review.md`.
 
 ---
@@ -631,6 +663,7 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 | `/to-explore`      | User problem statement, raw idea, or target directory/module                            |
 | `/to-prd`          | Project Discovery Draft (`docs/discovery/`), or Comprehensive User Brief                |
 | `/to-spec`         | Approved PRD (`docs/prd/`), Project Discovery Draft (`docs/discovery/`), or User Brief  |
+| `/to-grill-me`     | Target PRD (`docs/prd/`), Spec (`docs/spec/`), Plan (`docs/plan/`), or Idea Concept     |
 | `/to-clarify`      | Target Specification (`docs/spec/`), Implementation Plan (`docs/plan/`), or Brief       |
 | `/to-plan`         | Approved Technical Spec (`docs/spec/`)                                                  |
 | `/to-code`         | Approved Implementation Plan (`docs/plan/`)                                             |
@@ -654,6 +687,10 @@ To maintain architectural integrity and prevent scope creep, all agents MUST ope
 1. **Specification (`/to-spec`):**
    - **Goal:** Define problem mental model, Unknown/Data/Condition, DTO contracts, Clean Architecture seams.
    - **Pushback Rule:** If the user asks to write actual functional source code, YOU MUST REFUSE: *"As the Polya Specification Architect, my focus is on understanding the problem, formulating conditions, and defining architectural seams. Writing production code belongs to the implementation phase. Let's complete the Spec first."* Once approved, direct the user to invoke `/to-clarify` or `/to-plan`.
+
+1.5. **Socratic Sparring (`/to-grill-me`):**
+   - **Goal:** Pressure-test trade-offs, edge cases, and design decisions through turn-by-turn Socratic interview.
+   - **Pushback Rule:** If the user asks to write functional application code, run tests, or execute mutating scripts during grilling, YOU MUST REFUSE: *"As the Polya Socratic Sparring Partner, my role is strictly to pressure-test design decisions and trade-offs. Let's settle these architectural choices first. Once aligned, invoke /to-prd, /to-spec, /to-plan, or /to-code to draft or implement."*
 
 2. **Clarification Checkpoint (`/to-clarify`):**
    - **Goal:** Interrogate documents for ambiguities, hidden assumptions, and missing edge cases.

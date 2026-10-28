@@ -221,10 +221,16 @@ a1c9e82 feat(payment): implement IdempotentEvent domain entity [TASK-001]
 
 ## Stage 6: Phase 4 — Looking Back (`docs/reviews/webhook-idempotency-review.md`)
 
-The agent audits the final implementation against SOLID principles and boundary specialization:
+The agent audits the final implementation using Change-Driven Risk Tiering, SOLID principles, boundary specialization, and the `GO | NO-GO` release gate:
 
 ```markdown
-# Quality Audit & SOLID Review: Idempotent Webhook Processing Engine
+# 🔍 Code Review & Quality Audit: Idempotent Webhook Processing Engine
+
+**Risk Tier:** **High/Critical (Tier 2 — Payment & Concurrency Locks)**  
+**Review Mode:** **Deep**  
+**Human Audit Gate:** **🚨 >= 2 Approvals [MANDATORY HUMAN AUDIT REQUIRED] (Tier 2)**  
+**Findings Summary:** **`[Important]: 0 | [Nit]: 0 | [Pre-existing]: 1`** — **"No blocking issues found"**  
+**Release Readiness Verdict:** **GO**  
 
 ## 1. SOLID Principles Audit
 - **SRP (Single Responsibility):** PASS — `IdempotentEvent` only validates domain state; `RedisDistributedLockAdapter` only touches Redis wire protocol.
@@ -235,9 +241,16 @@ The agent audits the final implementation against SOLID principles and boundary 
 - [x] 100 concurrent requests with identical `eventId` executed in parallel: exactly 1 acquired lock, 99 acknowledged safely with HTTP 200 `ALREADY_PROCESSED`.
 - [x] Dimension check: Redis TTL verified in milliseconds (`10_000ms`), not seconds.
 
-## 3. Pólya's Two Golden Questions
+## 3. Categorized Findings (`[Important]` ➔ `[Nit]` ➔ `[Pre-existing]`)
+* **"No blocking issues found."**
+1. **`[Pre-existing]` `src/adapters/http/LegacyWebhookLogger.ts:42` - `stdlib:` Legacy Date Formatter**
+   - **Bug Class & Sibling Sweep:** `Hand-Rolled Stdlib Duplication` (carried over from Phase 3 `NOTICED BUT NOT TOUCHING`)
+   - **Fix:** Replace custom date string builder with `Intl.DateTimeFormat` in a future cleanup ticket.
+
+## 4. Pólya's Two Golden Questions & Timed Rollback Plan
 - **Can you use the result?** Yes, `IdempotencyLockPort` is exported for reuse in background cron reconciliation jobs.
 - **Can you use the method?** Yes, promote the *Redis-to-Postgres Lock Fallback Seam* to `memory.instructions.md` Knowledge Base via `/to-memory`.
+- **Timed Rollback Plan (`< 5m`):** Toggle `FF_REDIS_WEBHOOK_LOCK=false` to route directly to PostgreSQL transactional row lock (`< 1m`), or `git revert f4a9b1c`.
 ```
 
 ---
